@@ -31,7 +31,7 @@ export function HomeDashboard({
             日語五十音學習系統
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            掌握 50 個基本假名，輕鬆踏出日語第一步
+            掌握 46 個基本平假名，輕鬆踏出日語第一步
           </h2>
           <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
             結合發音示範、單字例句與 SRS 間隔重複記憶法，快速告別死記硬背。

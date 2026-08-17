@@ -1,4 +1,5 @@
 export type KanaType = 'hiragana' | 'katakana';
+export type KanaCategory = 'basic-hiragana' | 'basic-katakana' | 'dakuten' | 'handakuten';
 
 export interface ExampleWord {
   word: string;
@@ -6,12 +7,15 @@ export interface ExampleWord {
   romaji: string;
   meaning: string;
   sentence: string;
+  sentenceDisplay?: string;
   sentenceMeaning: string;
+  requiredLevel?: 'basic' | 'dakuten' | 'handakuten' | 'youon';
 }
 
 export interface KanaItem {
   id: string;
   type: KanaType;
+  category?: KanaCategory;
   kana: string;
   romaji: string;
   row: string; // e.g., 'あ行'

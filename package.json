@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "validate:data": "python3 scripts/validate-kana-data.py"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
