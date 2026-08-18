@@ -42,26 +42,103 @@ export function QuizView({
         'kana-to-romaji',
         'audio-to-kana',
         'input-romaji',
+        'kana-to-kana',
       ];
       const type = questionTypes[Math.floor(Math.random() * questionTypes.length)];
 
-      // Pick 3 wrong option distractor items from allKana prioritized by same kana type and category
+      // ---- kana-to-kana 特殊處理：找對應的另一種假名 ----
+      if (type === 'kana-to-kana') {
+        const oppositeType = item.type === 'hiragana' ? 'katakana' : 'hiragana';
+        // 用相同 romaji + 相反 type 找對應假名
+        const counterpart = allKana.find(
+          (k) => k.type === oppositeType && k.romaji === item.romaji
+        );
+
+        // 若找不到對應（極少數情況），改出 kana-to-romaji
+        if (!counterpart) {
+          const fallbackType: QuizQuestion['type'] = 'kana-to-romaji';
+          const sameTypeAndCatPool = allKana.filter(
+            (k) =>
+              k.type === item.type &&
+              (k.category || 'basic') === (item.category || 'basic') &&
+              k.id !== item.id
+          );
+          const sameTypePool = allKana.filter((k) => k.type === item.type && k.id !== item.id);
+          const distractorPool =
+            sameTypeAndCatPool.length >= 3
+              ? sameTypeAndCatPool
+              : sameTypePool.length >= 3
+              ? sameTypePool
+              : allKana.filter((k) => k.id !== item.id);
+          const distractors = distractorPool.sort(() => 0.5 - Math.random()).slice(0, 3);
+          const options = [
+            { label: item.romaji, isCorrect: true, kana: item },
+            ...distractors.map((d) => ({
+              label: d.romaji,
+              isCorrect: false,
+              kana: d,
+            })),
+          ].sort(() => 0.5 - Math.random());
+          return { type: fallbackType, targetKana: item, options };
+        }
+
+        // 干擾選項：同為 oppositeType，優先同 category
+        const sameCatOpposite = allKana.filter(
+          (k) =>
+            k.type === oppositeType &&
+            (k.category || 'basic') === (item.category || 'basic') &&
+            k.id !== counterpart.id
+        );
+        const allOpposite = allKana.filter(
+          (k) => k.type === oppositeType && k.id !== counterpart.id
+        );
+        const distractorPool =
+          sameCatOpposite.length >= 3
+            ? sameCatOpposite
+            : allOpposite.length >= 3
+            ? allOpposite
+            : allKana.filter((k) => k.id !== counterpart.id);
+        const distractors = distractorPool.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+        const options = [
+          { label: counterpart.kana, isCorrect: true, kana: counterpart },
+          ...distractors.map((d) => ({
+            label: d.kana,
+            isCorrect: false,
+            kana: d,
+          })),
+        ].sort(() => 0.5 - Math.random());
+
+        return {
+          type: 'kana-to-kana',
+          targetKana: item, // 題目顯示的是原始假名
+          options,
+        };
+      }
+
+      // ---- 其他題型維持原邏輯 ----
       const sameTypeAndCatPool = allKana.filter(
-        (k) => k.type === item.type && (k.category || 'basic') === (item.category || 'basic') && k.id !== item.id
+        (k) =>
+          k.type === item.type &&
+          (k.category || 'basic') === (item.category || 'basic') &&
+          k.id !== item.id
       );
       const sameTypePool = allKana.filter((k) => k.type === item.type && k.id !== item.id);
-      const distractorPool = sameTypeAndCatPool.length >= 3
-        ? sameTypeAndCatPool
-        : sameTypePool.length >= 3
-        ? sameTypePool
-        : allKana.filter((k) => k.id !== item.id);
+      const distractorPool =
+        sameTypeAndCatPool.length >= 3
+          ? sameTypeAndCatPool
+          : sameTypePool.length >= 3
+          ? sameTypePool
+          : allKana.filter((k) => k.id !== item.id);
 
-      const distractors = distractorPool
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 3);
+      const distractors = distractorPool.sort(() => 0.5 - Math.random()).slice(0, 3);
 
       const options = [
-        { label: type === 'kana-to-romaji' ? item.romaji : item.kana, isCorrect: true, kana: item },
+        {
+          label: type === 'kana-to-romaji' ? item.romaji : item.kana,
+          isCorrect: true,
+          kana: item,
+        },
         ...distractors.map((d) => ({
           label: type === 'kana-to-romaji' ? d.romaji : d.kana,
           isCorrect: false,
@@ -210,6 +287,10 @@ export function QuizView({
               ? '看假名選羅馬字'
               : currentQ.type === 'audio-to-kana'
               ? '聽發音選假名'
+              : currentQ.type === 'kana-to-kana'
+              ? currentQ.targetKana.type === 'hiragana'
+                ? '看平假名選片假名'
+                : '看片假名選平假名'
               : '輸入對應羅馬字'}
           </span>
 

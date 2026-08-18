@@ -43,7 +43,7 @@ export interface UserProgress {
 export type NavigationTab = 'home' | 'grid' | 'study' | 'quiz' | 'review' | 'special';
 
 export interface QuizQuestion {
-  type: 'kana-to-romaji' | 'audio-to-kana' | 'input-romaji';
+  type: 'kana-to-romaji' | 'audio-to-kana' | 'input-romaji' | 'kana-to-kana';
   targetKana: KanaItem;
   options: {
     label: string;
