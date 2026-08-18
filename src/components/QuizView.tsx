@@ -20,7 +20,24 @@ export function QuizView({
   onProgressChange,
   onFinish,
 }: QuizViewProps) {
-  const pool = customPool && customPool.length > 0 ? customPool : allKana;
+  const [quizScope, setQuizScope] = useState<'all' | 'basic' | 'dakuten' | 'handakuten' | 'youon'>('all');
+
+  const scopedSource = customPool && customPool.length > 0 ? customPool : allKana;
+
+  const filteredByScope = scopedSource.filter((k) => {
+    if (quizScope === 'all') return true;
+    if (quizScope === 'basic') {
+      return (
+        k.category === 'basic-hiragana' ||
+        k.category === 'basic-katakana' ||
+        (!k.category && (k.type === 'hiragana' || k.type === 'katakana'))
+      );
+    }
+    return k.category === quizScope;
+  });
+
+  // 篩完為空時回退，避免無法出題
+  const pool = filteredByScope.length > 0 ? filteredByScope : scopedSource;
 
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -164,7 +181,7 @@ export function QuizView({
 
   useEffect(() => {
     generateQuiz();
-  }, [pool.length]);
+  }, [quizScope, pool.length, isReviewMode]);
 
   const currentQ = questions[currentIndex];
 
@@ -271,6 +288,36 @@ export function QuizView({
 
   return (
     <div className="max-w-xl mx-auto space-y-6">
+      {!isReviewMode && (
+        <div className="bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-xs">
+          <div className="text-xs font-bold text-[#64748B] mb-2">出題範圍</div>
+          <div className="flex flex-wrap gap-2">
+            {(
+              [
+                { id: 'all', label: '全部' },
+                { id: 'basic', label: '基本清音' },
+                { id: 'dakuten', label: '濁音' },
+                { id: 'handakuten', label: '半濁音' },
+                { id: 'youon', label: '拗音' },
+              ] as const
+            ).map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => setQuizScope(item.id)}
+                className={`px-3 py-1.5 text-xs font-extrabold rounded-xl transition-all cursor-pointer ${
+                  quizScope === item.id
+                    ? 'bg-[#00A86B] text-white shadow-xs'
+                    : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Quiz Progress Header */}
       <div className="flex items-center justify-between text-xs font-bold text-[#64748B]">
         <span>
