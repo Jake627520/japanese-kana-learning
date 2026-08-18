@@ -29,7 +29,8 @@ def parse_ts_file(filepath):
         return None, []
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
-    match = re.search(r'export\s+const\s+(\w+)(?::\s*KanaItem\[\])?\s*=\s*(\[\s*[\s\S]*\]);?', content)
+    content_cleaned = re.sub(r'export\s+const\s+ALL_KANA_DATA[\s\S]*$', '', content)
+    match = re.search(r'export\s+const\s+(\w+)(?::\s*KanaItem\[\])?\s*=\s*(\[\s*[\s\S]*\]);?', content_cleaned)
     if not match:
         return None, []
     var_name = match.group(1)

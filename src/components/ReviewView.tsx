@@ -188,6 +188,13 @@ export function ReviewView({
                         <span className="text-base font-extrabold text-[#00A86B] uppercase">
                           {item.romaji}
                         </span>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                          item.type === 'katakana' || item.category === 'basic-katakana'
+                            ? 'bg-[#E0F2FE] text-[#0284C7]'
+                            : 'bg-[#F1F5F9] text-[#64748B]'
+                        }`}>
+                          {item.type === 'katakana' || item.category === 'basic-katakana' ? '片假名' : '平假名'}
+                        </span>
                         <span className="text-[10px] font-bold text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded-md">
                           L{srsState.reviewLevel}
                         </span>

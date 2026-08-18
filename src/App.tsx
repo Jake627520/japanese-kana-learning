@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { UserProgress, KanaItem, NavigationTab, KanaType } from './types';
-import { HIRAGANA_DATA, KATAKANA_DATA } from './data/kanaData';
+import { HIRAGANA_DATA, KATAKANA_DATA, ALL_KANA_DATA } from './data/kanaData';
 import { getStoredProgress } from './utils/storage';
 import { HeaderStats } from './components/HeaderStats';
 import { HomeDashboard } from './components/HomeDashboard';
@@ -78,7 +78,7 @@ export default function App() {
 
             {currentTab === 'quiz' && (
               <QuizView
-                allKana={HIRAGANA_DATA}
+                allKana={ALL_KANA_DATA}
                 onProgressChange={refreshProgress}
                 onFinish={() => setCurrentTab('home')}
               />
@@ -86,7 +86,7 @@ export default function App() {
 
             {currentTab === 'review' && (
               <ReviewView
-                allKana={HIRAGANA_DATA}
+                allKana={ALL_KANA_DATA}
                 wrongIds={progress.wrongKanaIds}
                 onProgressChange={refreshProgress}
                 onStartStudyKana={handleStartStudyKana}

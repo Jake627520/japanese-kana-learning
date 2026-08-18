@@ -1,4 +1,5 @@
 import { KanaItem } from '../types';
+import { KATAKANA_DATA } from './katakanaData';
 export { KATAKANA_DATA } from './katakanaData';
 export { DAKUTEN_DATA } from './dakutenData';
 export { HANDAKUTEN_DATA } from './handakutenData';
@@ -918,4 +919,9 @@ export const HIRAGANA_DATA: KanaItem[] = [
     ],
     "category": "basic-hiragana"
   }
+];
+
+export const ALL_KANA_DATA: KanaItem[] = [
+  ...HIRAGANA_DATA,
+  ...KATAKANA_DATA,
 ];
