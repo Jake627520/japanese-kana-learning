@@ -8,6 +8,7 @@ import { GojuuonGrid } from './components/GojuuonGrid';
 import { KanaCardView } from './components/KanaCardView';
 import { QuizView } from './components/QuizView';
 import { ReviewView } from './components/ReviewView';
+import { SpecialSoundsView } from './components/SpecialSoundsView';
 import { Navigation } from './components/Navigation';
 
 export default function App() {
@@ -106,6 +107,8 @@ export default function App() {
                 onStartStudyKana={handleStartStudyKana}
               />
             )}
+
+            {currentTab === 'special' && <SpecialSoundsView />}
           </main>
         </div>
       </div>
