@@ -35,6 +35,8 @@ def parse_ts_file(filepath):
         return None, []
     var_name = match.group(1)
     json_str = match.group(2)
+    json_str = re.sub(r'//.*', '', json_str)
+    json_str = re.sub(r',\s*([\]}])', r'\1', json_str)
     try:
         data = json.loads(json_str)
         return var_name, data
@@ -49,6 +51,7 @@ def main():
         os.path.join(root_dir, 'src', 'data', 'katakanaData.ts'),
         os.path.join(root_dir, 'src', 'data', 'dakutenData.ts'),
         os.path.join(root_dir, 'src', 'data', 'handakutenData.ts'),
+        os.path.join(root_dir, 'src', 'data', 'youonData.ts'),
     ]
 
     total_files = 0
@@ -109,6 +112,15 @@ def main():
             elif cat == 'handakuten' or var_name == 'HANDAKUTEN_DATA':
                 if kana not in HIRAGANA_HANDAKUTEN and kana not in KATAKANA_HANDAKUTEN:
                     errors.append({'file': rel_path, 'id': item_id, 'field': 'kana', 'value': kana, 'reason': f'Kana "{kana}" is not a valid Handakuten character'})
+
+            # 6. Youon Range Check
+            elif cat == 'youon' or var_name == 'YOUON_DATA':
+                if item_type == 'hiragana':
+                    if any('\u30a0' <= ch <= '\u30ff' for ch in kana):
+                        errors.append({'file': rel_path, 'id': item_id, 'field': 'kana', 'value': kana, 'reason': 'Katakana character found in Hiragana Youon item'})
+                elif item_type == 'katakana':
+                    if any('\u3040' <= ch <= '\u309f' for ch in kana):
+                        errors.append({'file': rel_path, 'id': item_id, 'field': 'kana', 'value': kana, 'reason': 'Hiragana character found in Katakana Youon item'})
 
             # Check Examples
             for idx, ex in enumerate(item.get('examples', [])):

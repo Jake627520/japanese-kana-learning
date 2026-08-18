@@ -1,5 +1,5 @@
 export type KanaType = 'hiragana' | 'katakana';
-export type KanaCategory = 'basic-hiragana' | 'basic-katakana' | 'dakuten' | 'handakuten';
+export type KanaCategory = 'basic-hiragana' | 'basic-katakana' | 'dakuten' | 'handakuten' | 'youon';
 
 export interface ExampleWord {
   word: string;

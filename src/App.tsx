@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { UserProgress, KanaItem, NavigationTab, KanaType } from './types';
-import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, ALL_LEARNABLE_KANA } from './data/kanaData';
+import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, YOUON_DATA, ALL_LEARNABLE_KANA } from './data/kanaData';
 import { getStoredProgress } from './utils/storage';
 import { HeaderStats } from './components/HeaderStats';
 import { HomeDashboard } from './components/HomeDashboard';
@@ -13,7 +13,7 @@ import { Navigation } from './components/Navigation';
 export default function App() {
   const [progress, setProgress] = useState<UserProgress>(getStoredProgress());
   const [currentTab, setCurrentTab] = useState<NavigationTab>('home');
-  const [currentKanaCategory, setCurrentKanaCategory] = useState<'basic' | 'dakuten' | 'handakuten'>('basic');
+  const [currentKanaCategory, setCurrentKanaCategory] = useState<'basic' | 'dakuten' | 'handakuten' | 'youon'>('basic');
   const [currentKanaType, setCurrentKanaType] = useState<KanaType>('hiragana');
   const [selectedKana, setSelectedKana] = useState<KanaItem>(HIRAGANA_DATA[0]);
 
@@ -23,6 +23,9 @@ export default function App() {
     }
     if (currentKanaCategory === 'handakuten') {
       return HANDAKUTEN_DATA.filter((k) => k.type === currentKanaType);
+    }
+    if (currentKanaCategory === 'youon') {
+      return YOUON_DATA.filter((k) => k.type === currentKanaType);
     }
     return currentKanaType === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
   }, [currentKanaCategory, currentKanaType]);

@@ -6,8 +6,8 @@ import { Volume2, CheckCircle2 } from 'lucide-react';
 interface GojuuonGridProps {
   allKana: KanaItem[];
   masteredIds: string[];
-  kanaCategory?: 'basic' | 'dakuten' | 'handakuten';
-  onKanaCategoryChange?: (category: 'basic' | 'dakuten' | 'handakuten') => void;
+  kanaCategory?: 'basic' | 'dakuten' | 'handakuten' | 'youon';
+  onKanaCategoryChange?: (category: 'basic' | 'dakuten' | 'handakuten' | 'youon') => void;
   kanaType?: 'hiragana' | 'katakana';
   onKanaTypeChange?: (type: 'hiragana' | 'katakana') => void;
   onSelectKana: (kana: KanaItem) => void;
@@ -32,6 +32,8 @@ export function GojuuonGrid({
               ? '濁音'
               : kanaCategory === 'handakuten'
               ? '半濁音'
+              : kanaCategory === 'youon'
+              ? '拗音'
               : '五十音'}
             圖表
           </h2>
@@ -41,7 +43,7 @@ export function GojuuonGrid({
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          {/* Category Switcher (基本清音 / 濁音 / 半濁音) */}
+          {/* Category Switcher (基本清音 / 濁音 / 半濁音 / 拗音) */}
           {onKanaCategoryChange && (
             <div className="flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl">
               <button
@@ -76,6 +78,17 @@ export function GojuuonGrid({
                 }`}
               >
                 半濁音
+              </button>
+              <button
+                type="button"
+                onClick={() => onKanaCategoryChange('youon')}
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                  kanaCategory === 'youon'
+                    ? 'bg-white text-[#00A86B] shadow-xs'
+                    : 'text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                拗音
               </button>
             </div>
           )}

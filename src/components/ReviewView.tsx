@@ -205,6 +205,11 @@ export function ReviewView({
                             半濁音
                           </span>
                         )}
+                        {item.category === 'youon' && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#EDE9FE] text-[#7C3AED]">
+                            拗音
+                          </span>
+                        )}
                         <span className="text-[10px] font-bold text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded-md">
                           L{srsState.reviewLevel}
                         </span>
