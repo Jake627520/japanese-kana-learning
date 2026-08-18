@@ -1,5 +1,7 @@
 import { KanaItem } from '../types';
 import { KATAKANA_DATA } from './katakanaData';
+import { DAKUTEN_DATA } from './dakutenData';
+import { HANDAKUTEN_DATA } from './handakutenData';
 export { KATAKANA_DATA } from './katakanaData';
 export { DAKUTEN_DATA } from './dakutenData';
 export { HANDAKUTEN_DATA } from './handakutenData';
@@ -924,4 +926,11 @@ export const HIRAGANA_DATA: KanaItem[] = [
 export const ALL_KANA_DATA: KanaItem[] = [
   ...HIRAGANA_DATA,
   ...KATAKANA_DATA,
+];
+
+export const ALL_LEARNABLE_KANA: KanaItem[] = [
+  ...HIRAGANA_DATA,
+  ...KATAKANA_DATA,
+  ...DAKUTEN_DATA,
+  ...HANDAKUTEN_DATA,
 ];

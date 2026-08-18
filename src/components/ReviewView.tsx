@@ -189,12 +189,22 @@ export function ReviewView({
                           {item.romaji}
                         </span>
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                          item.type === 'katakana' || item.category === 'basic-katakana'
+                          item.type === 'katakana'
                             ? 'bg-[#E0F2FE] text-[#0284C7]'
                             : 'bg-[#F1F5F9] text-[#64748B]'
                         }`}>
-                          {item.type === 'katakana' || item.category === 'basic-katakana' ? '片假名' : '平假名'}
+                          {item.type === 'katakana' ? '片假名' : '平假名'}
                         </span>
+                        {item.category === 'dakuten' && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#FEF3C7] text-[#D97706]">
+                            濁音
+                          </span>
+                        )}
+                        {item.category === 'handakuten' && (
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#FCE7F3] text-[#DB2777]">
+                            半濁音
+                          </span>
+                        )}
                         <span className="text-[10px] font-bold text-[#64748B] bg-[#F1F5F9] px-2 py-0.5 rounded-md">
                           L{srsState.reviewLevel}
                         </span>

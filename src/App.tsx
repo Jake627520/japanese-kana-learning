@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { UserProgress, KanaItem, NavigationTab, KanaType } from './types';
-import { HIRAGANA_DATA, KATAKANA_DATA, ALL_KANA_DATA } from './data/kanaData';
+import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, ALL_LEARNABLE_KANA } from './data/kanaData';
 import { getStoredProgress } from './utils/storage';
 import { HeaderStats } from './components/HeaderStats';
 import { HomeDashboard } from './components/HomeDashboard';
@@ -13,10 +13,19 @@ import { Navigation } from './components/Navigation';
 export default function App() {
   const [progress, setProgress] = useState<UserProgress>(getStoredProgress());
   const [currentTab, setCurrentTab] = useState<NavigationTab>('home');
+  const [currentKanaCategory, setCurrentKanaCategory] = useState<'basic' | 'dakuten' | 'handakuten'>('basic');
   const [currentKanaType, setCurrentKanaType] = useState<KanaType>('hiragana');
   const [selectedKana, setSelectedKana] = useState<KanaItem>(HIRAGANA_DATA[0]);
 
-  const currentKanaData = currentKanaType === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
+  const currentKanaData = useMemo(() => {
+    if (currentKanaCategory === 'dakuten') {
+      return DAKUTEN_DATA.filter((k) => k.type === currentKanaType);
+    }
+    if (currentKanaCategory === 'handakuten') {
+      return HANDAKUTEN_DATA.filter((k) => k.type === currentKanaType);
+    }
+    return currentKanaType === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
+  }, [currentKanaCategory, currentKanaType]);
 
   // Refresh stored progress state
   const refreshProgress = () => {
@@ -49,7 +58,7 @@ export default function App() {
             {currentTab === 'home' && (
               <HomeDashboard
                 progress={progress}
-                allKana={HIRAGANA_DATA}
+                allKana={ALL_LEARNABLE_KANA}
                 onNavigate={(tab) => setCurrentTab(tab)}
                 onStartStudyKana={handleStartStudyKana}
               />
@@ -59,6 +68,8 @@ export default function App() {
               <GojuuonGrid
                 allKana={currentKanaData}
                 masteredIds={progress.masteredKanaIds}
+                kanaCategory={currentKanaCategory}
+                onKanaCategoryChange={(cat) => setCurrentKanaCategory(cat)}
                 kanaType={currentKanaType}
                 onKanaTypeChange={(type) => setCurrentKanaType(type)}
                 onSelectKana={handleStartStudyKana}
@@ -78,7 +89,7 @@ export default function App() {
 
             {currentTab === 'quiz' && (
               <QuizView
-                allKana={ALL_KANA_DATA}
+                allKana={ALL_LEARNABLE_KANA}
                 onProgressChange={refreshProgress}
                 onFinish={() => setCurrentTab('home')}
               />
@@ -86,7 +97,7 @@ export default function App() {
 
             {currentTab === 'review' && (
               <ReviewView
-                allKana={ALL_KANA_DATA}
+                allKana={ALL_LEARNABLE_KANA}
                 wrongIds={progress.wrongKanaIds}
                 onProgressChange={refreshProgress}
                 onStartStudyKana={handleStartStudyKana}

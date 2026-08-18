@@ -6,6 +6,8 @@ import { Volume2, CheckCircle2 } from 'lucide-react';
 interface GojuuonGridProps {
   allKana: KanaItem[];
   masteredIds: string[];
+  kanaCategory?: 'basic' | 'dakuten' | 'handakuten';
+  onKanaCategoryChange?: (category: 'basic' | 'dakuten' | 'handakuten') => void;
   kanaType?: 'hiragana' | 'katakana';
   onKanaTypeChange?: (type: 'hiragana' | 'katakana') => void;
   onSelectKana: (kana: KanaItem) => void;
@@ -14,6 +16,8 @@ interface GojuuonGridProps {
 export function GojuuonGrid({
   allKana,
   masteredIds,
+  kanaCategory = 'basic',
+  onKanaCategoryChange,
   kanaType = 'hiragana',
   onKanaTypeChange,
   onSelectKana,
@@ -23,7 +27,13 @@ export function GojuuonGrid({
       <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl font-extrabold text-[#1E293B]">
-            {kanaType === 'katakana' ? '片假名' : '平假名'}五十音圖表
+            {kanaType === 'katakana' ? '片假名' : '平假名'}
+            {kanaCategory === 'dakuten'
+              ? '濁音'
+              : kanaCategory === 'handakuten'
+              ? '半濁音'
+              : '五十音'}
+            圖表
           </h2>
           <p className="text-xs text-[#64748B] mt-1">
             點擊卡片播放標準發音並進入詳細發音與例句學習卡片。
@@ -31,13 +41,52 @@ export function GojuuonGrid({
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
+          {/* Category Switcher (基本清音 / 濁音 / 半濁音) */}
+          {onKanaCategoryChange && (
+            <div className="flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl">
+              <button
+                type="button"
+                onClick={() => onKanaCategoryChange('basic')}
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                  kanaCategory === 'basic'
+                    ? 'bg-white text-[#00A86B] shadow-xs'
+                    : 'text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                基本清音
+              </button>
+              <button
+                type="button"
+                onClick={() => onKanaCategoryChange('dakuten')}
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                  kanaCategory === 'dakuten'
+                    ? 'bg-white text-[#00A86B] shadow-xs'
+                    : 'text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                濁音
+              </button>
+              <button
+                type="button"
+                onClick={() => onKanaCategoryChange('handakuten')}
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                  kanaCategory === 'handakuten'
+                    ? 'bg-white text-[#00A86B] shadow-xs'
+                    : 'text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                半濁音
+              </button>
+            </div>
+          )}
+
           {/* Hiragana / Katakana Tab Switcher */}
           {onKanaTypeChange && (
             <div className="flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl">
               <button
                 type="button"
                 onClick={() => onKanaTypeChange('hiragana')}
-                className={`px-4 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
                   kanaType === 'hiragana'
                     ? 'bg-white text-[#00A86B] shadow-xs'
                     : 'text-[#64748B] hover:text-[#1E293B]'
@@ -48,7 +97,7 @@ export function GojuuonGrid({
               <button
                 type="button"
                 onClick={() => onKanaTypeChange('katakana')}
-                className={`px-4 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
                   kanaType === 'katakana'
                     ? 'bg-white text-[#00A86B] shadow-xs'
                     : 'text-[#64748B] hover:text-[#1E293B]'

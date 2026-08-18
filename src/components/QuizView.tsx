@@ -45,9 +45,17 @@ export function QuizView({
       ];
       const type = questionTypes[Math.floor(Math.random() * questionTypes.length)];
 
-      // Pick 3 wrong option distractor items from allKana of the same kana type
+      // Pick 3 wrong option distractor items from allKana prioritized by same kana type and category
+      const sameTypeAndCatPool = allKana.filter(
+        (k) => k.type === item.type && (k.category || 'basic') === (item.category || 'basic') && k.id !== item.id
+      );
       const sameTypePool = allKana.filter((k) => k.type === item.type && k.id !== item.id);
-      const distractorPool = sameTypePool.length >= 3 ? sameTypePool : allKana.filter((k) => k.id !== item.id);
+      const distractorPool = sameTypeAndCatPool.length >= 3
+        ? sameTypeAndCatPool
+        : sameTypePool.length >= 3
+        ? sameTypePool
+        : allKana.filter((k) => k.id !== item.id);
+
       const distractors = distractorPool
         .sort(() => 0.5 - Math.random())
         .slice(0, 3);
