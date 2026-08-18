@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { UserProgress, KanaItem, NavigationTab } from './types';
-import { HIRAGANA_DATA } from './data/kanaData';
+import { UserProgress, KanaItem, NavigationTab, KanaType } from './types';
+import { HIRAGANA_DATA, KATAKANA_DATA } from './data/kanaData';
 import { getStoredProgress } from './utils/storage';
 import { HeaderStats } from './components/HeaderStats';
 import { HomeDashboard } from './components/HomeDashboard';
@@ -13,7 +13,10 @@ import { Navigation } from './components/Navigation';
 export default function App() {
   const [progress, setProgress] = useState<UserProgress>(getStoredProgress());
   const [currentTab, setCurrentTab] = useState<NavigationTab>('home');
+  const [currentKanaType, setCurrentKanaType] = useState<KanaType>('hiragana');
   const [selectedKana, setSelectedKana] = useState<KanaItem>(HIRAGANA_DATA[0]);
+
+  const currentKanaData = currentKanaType === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
 
   // Refresh stored progress state
   const refreshProgress = () => {
@@ -54,8 +57,10 @@ export default function App() {
 
             {currentTab === 'grid' && (
               <GojuuonGrid
-                allKana={HIRAGANA_DATA}
+                allKana={currentKanaData}
                 masteredIds={progress.masteredKanaIds}
+                kanaType={currentKanaType}
+                onKanaTypeChange={(type) => setCurrentKanaType(type)}
                 onSelectKana={handleStartStudyKana}
               />
             )}
@@ -63,7 +68,7 @@ export default function App() {
             {currentTab === 'study' && (
               <KanaCardView
                 currentKana={selectedKana}
-                allKana={HIRAGANA_DATA}
+                allKana={currentKanaData}
                 masteredIds={progress.masteredKanaIds}
                 onProgressChange={refreshProgress}
                 onBackToGrid={() => setCurrentTab('grid')}

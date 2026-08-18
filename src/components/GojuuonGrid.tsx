@@ -6,24 +6,63 @@ import { Volume2, CheckCircle2 } from 'lucide-react';
 interface GojuuonGridProps {
   allKana: KanaItem[];
   masteredIds: string[];
+  kanaType?: 'hiragana' | 'katakana';
+  onKanaTypeChange?: (type: 'hiragana' | 'katakana') => void;
   onSelectKana: (kana: KanaItem) => void;
 }
 
-export function GojuuonGrid({ allKana, masteredIds, onSelectKana }: GojuuonGridProps) {
-  const rows = ['あ行', 'か行', 'さ行', 'た行', 'な行', 'は行', 'ま行', 'や行', 'ら行', 'わ行 / ん'];
-
+export function GojuuonGrid({
+  allKana,
+  masteredIds,
+  kanaType = 'hiragana',
+  onKanaTypeChange,
+  onSelectKana,
+}: GojuuonGridProps) {
   return (
     <div className="space-y-6">
       <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-extrabold text-[#1E293B]">清音五十音圖表</h2>
+          <h2 className="text-xl font-extrabold text-[#1E293B]">
+            {kanaType === 'katakana' ? '片假名' : '平假名'}五十音圖表
+          </h2>
           <p className="text-xs text-[#64748B] mt-1">
             點擊卡片播放標準發音並進入詳細發音與例句學習卡片。
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs font-bold text-[#64748B]">
-          <span className="w-3 h-3 rounded-full bg-[#00A86B] inline-block"></span>
-          精通標記
+
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Hiragana / Katakana Tab Switcher */}
+          {onKanaTypeChange && (
+            <div className="flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl">
+              <button
+                type="button"
+                onClick={() => onKanaTypeChange('hiragana')}
+                className={`px-4 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                  kanaType === 'hiragana'
+                    ? 'bg-white text-[#00A86B] shadow-xs'
+                    : 'text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                平假名
+              </button>
+              <button
+                type="button"
+                onClick={() => onKanaTypeChange('katakana')}
+                className={`px-4 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all ${
+                  kanaType === 'katakana'
+                    ? 'bg-white text-[#00A86B] shadow-xs'
+                    : 'text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                片假名
+              </button>
+            </div>
+          )}
+
+          <div className="flex items-center gap-2 text-xs font-bold text-[#64748B]">
+            <span className="w-3 h-3 rounded-full bg-[#00A86B] inline-block"></span>
+            精通標記
+          </div>
         </div>
       </div>
 
