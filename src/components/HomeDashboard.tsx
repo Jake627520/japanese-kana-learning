@@ -3,6 +3,7 @@ import { UserProgress, KanaItem, NavigationTab } from '../types';
 import { getDueReviewItems } from '../utils/storage';
 import { HeaderStats } from './HeaderStats';
 import { DataBackupCard } from './DataBackupCard';
+import { LearningPathCard } from './LearningPathCard';
 import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface HomeDashboardProps {
@@ -58,6 +59,9 @@ export function HomeDashboard({
 
       {/* Header Stats */}
       <HeaderStats progress={progress} totalKana={allKana.length} />
+
+      {/* Learning Path (soft, non-gated) */}
+      <LearningPathCard onNavigate={onNavigate} />
 
       {/* Data Portability / Backup Card */}
       <DataBackupCard />
