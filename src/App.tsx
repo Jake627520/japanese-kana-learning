@@ -9,6 +9,7 @@ import { KanaCardView } from './components/KanaCardView';
 import { QuizView } from './components/QuizView';
 import { ReviewView } from './components/ReviewView';
 import { SpecialSoundsView } from './components/SpecialSoundsView';
+import { JlptPracticeView } from './components/JlptPracticeView';
 import { Navigation } from './components/Navigation';
 
 export default function App() {
@@ -109,6 +110,8 @@ export default function App() {
             )}
 
             {currentTab === 'special' && <SpecialSoundsView />}
+
+            {currentTab === 'jlpt' && <JlptPracticeView />}
           </main>
         </div>
       </div>

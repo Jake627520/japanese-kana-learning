@@ -40,7 +40,7 @@ export interface UserProgress {
   reviewStates?: Record<string, KanaReviewState>;
 }
 
-export type NavigationTab = 'home' | 'grid' | 'study' | 'quiz' | 'review' | 'special';
+export type NavigationTab = 'home' | 'grid' | 'study' | 'quiz' | 'review' | 'special' | 'jlpt';
 
 export interface QuizQuestion {
   type: 'kana-to-romaji' | 'audio-to-kana' | 'input-romaji' | 'kana-to-kana';
@@ -50,4 +50,47 @@ export interface QuizQuestion {
     isCorrect: boolean;
     kana: KanaItem;
   }[];
+}
+
+// ── JLPT 模組（第一期）──
+export type JlptGrade = 'n5' | 'n4' | 'n3';
+
+export interface JlptTopic {
+  id: string;
+  type: string;
+  subject: string;
+  domain: string;
+  name: string;
+  description: string;
+  book: string;
+  chapter: string;
+  grade: JlptGrade;
+  evidence: string[];
+  assessmentPrompt?: string | null;
+}
+
+export interface JlptQuestion {
+  id: string;
+  subject: string;
+  year: number;
+  paper: string;
+  number: number;
+  type: 'single';
+  score: number;
+  stem: string;
+  options: string[];
+  answer: string; // "1" | "2" | "3" | "4"
+  explain: string;
+  source: {
+    book: string;
+    chapter: string;
+    level: string;
+    confirmed: boolean;
+    license: 'own';
+    origin: 'own';
+  };
+  topics: {
+    primary: string;
+    topicIds: string[];
+  };
 }
