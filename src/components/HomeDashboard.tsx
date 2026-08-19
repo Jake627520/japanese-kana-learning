@@ -5,7 +5,8 @@ import { HeaderStats } from './HeaderStats';
 import { DataBackupCard } from './DataBackupCard';
 import { LearningPathCard } from './LearningPathCard';
 import { KanaMasteryMap } from './KanaMasteryMap';
-import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2 } from 'lucide-react';
+import { getShadowingProgress, getTodaySentences } from '../lib/shadowingProgress';
+import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2, Headphones, Check } from 'lucide-react';
 
 interface HomeDashboardProps {
   progress: UserProgress;
@@ -23,6 +24,19 @@ export function HomeDashboard({
   const dueItems = getDueReviewItems(allKana, progress);
   const wrongKanaList = allKana.filter((k) => progress.wrongKanaIds.includes(k.id));
   const masteredKanaList = allKana.filter((k) => progress.masteredKanaIds.includes(k.id));
+
+  const shadowingProg = getShadowingProgress();
+  const todayShadowingSentences = getTodaySentences();
+  const shadowingDoneCount = shadowingProg.todayIds.filter(
+    (id) => (shadowingProg.practiceCount[id] ?? 0) > 0
+  ).length;
+
+  const handleStartTodayShadowing = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('shadowing-open-today', '1');
+    }
+    onNavigate('shadowing');
+  };
 
   return (
     <div className="space-y-6">
@@ -71,7 +85,51 @@ export function HomeDashboard({
       <DataBackupCard />
 
       {/* Quick Action Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Today Shadowing 3 Sentences Card */}
+        <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col justify-between gap-4">
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-[#00A86B] bg-[#E6F8F2] px-3 py-1 rounded-full flex items-center gap-1">
+                <Headphones className="w-3 h-3" />
+                口說跟讀
+              </span>
+              <span className="text-xs font-bold text-[#64748B]">今日進度：{shadowingDoneCount} / 3</span>
+            </div>
+            <h3 className="text-lg font-extrabold text-[#1E293B]">今日跟讀 · 3 句</h3>
+            <p className="text-xs text-[#64748B]">
+              每日精選 3 句實用語音，5 步跟讀法搭配自我比對錄音。
+            </p>
+          </div>
+
+          <div className="space-y-1.5 my-1">
+            {todayShadowingSentences.map((s) => {
+              const isDone = (shadowingProg.practiceCount[s.id] ?? 0) > 0;
+              return (
+                <div
+                  key={s.id}
+                  className="flex items-center gap-2 text-xs text-[#334155] bg-[#FAFBFB] px-3 py-2 rounded-xl border border-[#F1F5F9]"
+                >
+                  <span className={`font-extrabold ${isDone ? 'text-[#00A86B]' : 'text-slate-400'}`}>
+                    {isDone ? '✓' : '•'}
+                  </span>
+                  <span className="truncate font-medium">{s.japanese}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            onClick={handleStartTodayShadowing}
+            className="w-full py-3 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2"
+          >
+            <Headphones className="w-4 h-4" />
+            開始今日跟讀
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
         {/* Due Review Card */}
         <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col justify-between gap-4">
           <div className="space-y-2">
