@@ -4,6 +4,7 @@ import { getDueReviewItems } from '../utils/storage';
 import { HeaderStats } from './HeaderStats';
 import { DataBackupCard } from './DataBackupCard';
 import { LearningPathCard } from './LearningPathCard';
+import { KanaMasteryMap } from './KanaMasteryMap';
 import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface HomeDashboardProps {
@@ -59,6 +60,9 @@ export function HomeDashboard({
 
       {/* Header Stats */}
       <HeaderStats progress={progress} totalKana={allKana.length} />
+
+      {/* Kana Mastery Map (progress, non-gated) */}
+      <KanaMasteryMap masteredIds={progress.masteredKanaIds} onNavigate={onNavigate} />
 
       {/* Learning Path (soft, non-gated) */}
       <LearningPathCard onNavigate={onNavigate} />
