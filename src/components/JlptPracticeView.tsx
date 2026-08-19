@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { JlptTopic, JlptQuestion } from '../types';
 import { ALL_N5_TOPICS_UI, getQuestionsByTopic, getOwnJlptQuestions } from '../data/jlpt';
 import { recordJlptAnswer } from '../utils/jlptStorage';
+import { JlptWeakPointCard } from './JlptWeakPointCard';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle } from 'lucide-react';
 
 export function JlptPracticeView() {
@@ -280,6 +281,9 @@ export function JlptPracticeView() {
               隨機綜合演練 (10 題)
             </button>
           </div>
+
+          {/* 弱點分析 */}
+          <JlptWeakPointCard />
 
           {/* Topics Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
