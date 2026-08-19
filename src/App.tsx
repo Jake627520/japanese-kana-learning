@@ -10,6 +10,7 @@ import { QuizView } from './components/QuizView';
 import { ReviewView } from './components/ReviewView';
 import { SpecialSoundsView } from './components/SpecialSoundsView';
 import { JlptPracticeView } from './components/JlptPracticeView';
+import { ShadowingView } from './components/ShadowingView';
 import { Navigation } from './components/Navigation';
 
 export default function App() {
@@ -112,6 +113,8 @@ export default function App() {
             {currentTab === 'special' && <SpecialSoundsView />}
 
             {currentTab === 'jlpt' && <JlptPracticeView />}
+
+            {currentTab === 'shadowing' && <ShadowingView />}
           </main>
         </div>
       </div>
