@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { JlptTopic, JlptQuestion } from '../types';
 import { ALL_N5_TOPICS_UI, getQuestionsByTopic, getOwnJlptQuestions } from '../data/jlpt';
+import { recordJlptAnswer } from '../utils/jlptStorage';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle } from 'lucide-react';
 
 export function JlptPracticeView() {
@@ -62,6 +63,10 @@ export function JlptPracticeView() {
     const isCorrect = String(optionIndex + 1) === currentQ.answer;
     if (isCorrect) {
       setScore((prev) => prev + 1);
+    }
+
+    if (selectedTopic) {
+      recordJlptAnswer(currentQ.id, selectedTopic.id, optionIndex, isCorrect);
     }
   };
 

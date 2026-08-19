@@ -2,6 +2,7 @@ import React from 'react';
 import { UserProgress, KanaItem, NavigationTab } from '../types';
 import { getDueReviewItems } from '../utils/storage';
 import { HeaderStats } from './HeaderStats';
+import { DataBackupCard } from './DataBackupCard';
 import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface HomeDashboardProps {
@@ -57,6 +58,9 @@ export function HomeDashboard({
 
       {/* Header Stats */}
       <HeaderStats progress={progress} totalKana={allKana.length} />
+
+      {/* Data Portability / Backup Card */}
+      <DataBackupCard />
 
       {/* Quick Action Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
