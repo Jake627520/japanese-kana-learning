@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { JlptTopic, JlptQuestion } from '../types';
-import { N5_TOPICS_BATCH1, getQuestionsByTopic, getOwnJlptQuestions } from '../data/jlpt';
+import { ALL_N5_TOPICS_UI, getQuestionsByTopic, getOwnJlptQuestions } from '../data/jlpt';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle } from 'lucide-react';
 
 export function JlptPracticeView() {
@@ -278,7 +278,7 @@ export function JlptPracticeView() {
 
           {/* Topics Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {N5_TOPICS_BATCH1.map((topic) => {
+            {ALL_N5_TOPICS_UI.map((topic) => {
               const count = getQuestionsByTopic(topic.id).length;
 
               return (
