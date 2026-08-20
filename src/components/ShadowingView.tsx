@@ -68,6 +68,21 @@ export function ShadowingView() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const userAudioPlayerRef = useRef<HTMLAudioElement | null>(null);
+  const jaVoiceRef = useRef<SpeechSynthesisVoice | null>(null);
+
+  // 語音清單在 iOS Safari / 首次載入時，getVoices() 會同步回傳空陣列，要等
+  // 'voiceschanged' 事件才有內容。這裡在掛載時就快取日文語音，之後 speak 優先
+  // 讀 ref，避免第一次播放選不到日文語音、把日文念成英文腔（iOS 常見問題）。
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    const pick = () => {
+      const v = window.speechSynthesis.getVoices().find((x) => x.lang.startsWith('ja'));
+      if (v) jaVoiceRef.current = v;
+    };
+    pick();
+    window.speechSynthesis.addEventListener?.('voiceschanged', pick);
+    return () => window.speechSynthesis.removeEventListener?.('voiceschanged', pick);
+  }, []);
 
   const currentSentence: ShadowingSentence = list[Math.min(currentIndex, list.length - 1)] || allList[0];
 
@@ -139,8 +154,9 @@ export function ShadowingView() {
     utterance.lang = 'ja-JP';
     utterance.rate = rate;
 
-    const voices = window.speechSynthesis.getVoices();
-    const jaVoice = voices.find((v) => v.lang.startsWith('ja'));
+    const jaVoice =
+      jaVoiceRef.current ||
+      window.speechSynthesis.getVoices().find((v) => v.lang.startsWith('ja'));
     if (jaVoice) {
       utterance.voice = jaVoice;
     }
