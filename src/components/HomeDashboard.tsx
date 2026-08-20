@@ -5,6 +5,7 @@ import { HeaderStats } from './HeaderStats';
 import { DataBackupCard } from './DataBackupCard';
 import { LearningPathCard } from './LearningPathCard';
 import { KanaMasteryMap } from './KanaMasteryMap';
+import { WeakKanaShadowingCard } from './WeakKanaShadowingCard';
 import { getShadowingProgress, getTodaySentences } from '../lib/shadowingProgress';
 import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2, Headphones, Check } from 'lucide-react';
 
@@ -77,6 +78,9 @@ export function HomeDashboard({
 
       {/* Kana Mastery Map (progress, non-gated) */}
       <KanaMasteryMap masteredIds={progress.masteredKanaIds} onNavigate={onNavigate} />
+
+      {/* Kana weak-point ↔ shadowing linkage */}
+      <WeakKanaShadowingCard wrongKanaIds={progress.wrongKanaIds} onNavigate={onNavigate} />
 
       {/* Learning Path (soft, non-gated) */}
       <LearningPathCard onNavigate={onNavigate} />
