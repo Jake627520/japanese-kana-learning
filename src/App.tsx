@@ -11,6 +11,7 @@ import { ReviewView } from './components/ReviewView';
 import { SpecialSoundsView } from './components/SpecialSoundsView';
 import { JlptPracticeView } from './components/JlptPracticeView';
 import { ShadowingView } from './components/ShadowingView';
+import { ChatTutorView } from './components/ChatTutorView';
 import { Navigation } from './components/Navigation';
 
 export default function App() {
@@ -115,6 +116,8 @@ export default function App() {
             {currentTab === 'jlpt' && <JlptPracticeView />}
 
             {currentTab === 'shadowing' && <ShadowingView />}
+
+            {currentTab === 'chat' && <ChatTutorView onProgressChange={refreshProgress} />}
           </main>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationTab } from '../types';
-import { Home, Grid, BookOpen, BrainCircuit, RefreshCw, Sparkles, AudioLines, GraduationCap, Headphones } from 'lucide-react';
+import { Home, Grid, BookOpen, BrainCircuit, RefreshCw, Sparkles, AudioLines, GraduationCap, Headphones, MessagesSquare } from 'lucide-react';
 
 interface NavigationProps {
   currentTab: NavigationTab;
@@ -18,6 +18,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
     { id: 'special', label: '特殊音', icon: AudioLines },
     { id: 'jlpt', label: 'JLPT 練習', icon: GraduationCap },
     { id: 'shadowing', label: '跟讀練習', icon: Headphones },
+    { id: 'chat', label: '對話教室', icon: MessagesSquare },
   ];
 
   return (
