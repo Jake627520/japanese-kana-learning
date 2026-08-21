@@ -26,7 +26,7 @@ import { dirname, join } from 'node:path';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = join(ROOT, 'public', 'audio', 'shadowing');
 const ENGINE = process.env.VOICEVOX_URL || 'http://127.0.0.1:50021';
-const SPEAKER = Number(process.env.VOICEVOX_SPEAKER ?? 3); // 3 = ずんだもん ノーマル
+const SPEAKER = Number(process.env.VOICEVOX_SPEAKER ?? 2); // 2 = 四国めたん ノーマル（固定成同一位「老師」，中途換聲音會讓學習者以為換人）
 const SLOW_TEMPO = 0.7;
 const FORCE = process.argv.includes('--force');
 

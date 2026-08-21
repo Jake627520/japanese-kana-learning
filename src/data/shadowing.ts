@@ -27,6 +27,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['greeting'],
     tip: '注意「はじめまして」與「おねがいします」禮貌語氣的平穩降調。',
     focusKana: ['し'],
+    audio: { normal: 'audio/shadowing/sh-01.mp3', slow: 'audio/shadowing/sh-01-slow.mp3' },
   },
   {
     id: 'sh-02',
@@ -38,6 +39,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     focus: '助詞「は」「の」的自然語調與停頓',
     tags: ['daily'],
     tip: '助詞「は（wa）」「の」與名詞之間的自然連貫與微幅停頓。',
+    audio: { normal: 'audio/shadowing/sh-02.mp3', slow: 'audio/shadowing/sh-02-slow.mp3' },
   },
   {
     id: 'sh-03',
@@ -50,6 +52,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['daily', 'time'],
     tip: '時間助詞「に」與動作動詞「おきます」的輕快節奏。',
     focusKana: ['し', 'ち'],
+    audio: { normal: 'audio/shadowing/sh-03.mp3', slow: 'audio/shadowing/sh-03-slow.mp3' },
   },
   {
     id: 'sh-04',
@@ -62,6 +65,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['invitation'],
     tip: '促音「っ」的停頓拍子與邀約句尾「〜ませんか」的自然微揚。',
     focusKana: ['し'],
+    audio: { normal: 'audio/shadowing/sh-04.mp3', slow: 'audio/shadowing/sh-04-slow.mp3' },
   },
   {
     id: 'sh-05',
@@ -74,6 +78,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['past', 'action'],
     tip: '場所助詞「で」與過去式結尾「〜ました」的順暢過渡。',
     focusKana: ['し'],
+    audio: { normal: 'audio/shadowing/sh-05.mp3', slow: 'audio/shadowing/sh-05-slow.mp3' },
   },
   {
     id: 'sh-06',
@@ -86,6 +91,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['question', 'travel'],
     tip: '詢問疑問句「どこですか」的自然疑問語調。',
     focusKana: ['す'],
+    audio: { normal: 'audio/shadowing/sh-06.mp3', slow: 'audio/shadowing/sh-06-slow.mp3' },
   },
   {
     id: 'sh-07',
@@ -98,6 +104,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['adjective', 'taste'],
     tip: '副詞「とても」的加強語氣與「おいしいです」的起伏。',
     focusKana: ['り', 'し'],
+    audio: { normal: 'audio/shadowing/sh-07.mp3', slow: 'audio/shadowing/sh-07-slow.mp3' },
   },
   {
     id: 'sh-08',
@@ -110,6 +117,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['transport', 'movement'],
     tip: '交通手段「で」與移動方向助詞「へ (發音 e)」的發音。',
     focusKana: ['す'],
+    audio: { normal: 'audio/shadowing/sh-08.mp3', slow: 'audio/shadowing/sh-08-slow.mp3' },
   },
   {
     id: 'sh-09',
@@ -122,6 +130,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['plan', 'activity'],
     tip: '伴隨「と」與賓格「を」在長句中的平衡重音。',
     focusKana: ['ち', 'し'],
+    audio: { normal: 'audio/shadowing/sh-09.mp3', slow: 'audio/shadowing/sh-09-slow.mp3' },
   },
   {
     id: 'sh-10',
@@ -133,6 +142,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     focus: '句尾共感終助詞「ね」的自然降調與延伸',
     tags: ['conversation', 'weather'],
     tip: '句尾終助詞「ね」的共感語氣與放鬆降調。',
+    audio: { normal: 'audio/shadowing/sh-10.mp3', slow: 'audio/shadowing/sh-10-slow.mp3' },
   },
   {
     id: 'sh-11',
@@ -145,6 +155,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['daily'],
     tip: '句首「つ」是中文母語者的難音——ts＋不圓唇的 u，別念成「粗」。',
     focusKana: ['つ'],
+    audio: { normal: 'audio/shadowing/sh-11.mp3', slow: 'audio/shadowing/sh-11-slow.mp3' },
   },
   {
     id: 'sh-12',
@@ -157,6 +168,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['plan'],
     tip: '「なつ（tsu）」與「やすみ（su）」相鄰，剛好練 つ／す 的區別。',
     focusKana: ['つ', 'す'],
+    audio: { normal: 'audio/shadowing/sh-12.mp3', slow: 'audio/shadowing/sh-12-slow.mp3' },
   },
   {
     id: 'sh-13',
@@ -169,6 +181,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['conversation', 'weather'],
     tip: '「ふ」上齒不咬下唇，是雙唇留縫吹氣，像吹蠟燭。',
     focusKana: ['ふ'],
+    audio: { normal: 'audio/shadowing/sh-13.mp3', slow: 'audio/shadowing/sh-13-slow.mp3' },
   },
   {
     id: 'sh-14',
@@ -181,6 +194,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['past', 'action'],
     tip: '「あたらしい」的 ら 是彈舌一下，不是捲舌 r 也不是 l。',
     focusKana: ['ら', 'つ'],
+    audio: { normal: 'audio/shadowing/sh-14.mp3', slow: 'audio/shadowing/sh-14-slow.mp3' },
   },
   {
     id: 'sh-15',
@@ -193,6 +207,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['adjective', 'taste'],
     tip: '「りょうり」「からくない」連續的 ら行音，一路彈舌別捲舌。',
     focusKana: ['ら', 'り'],
+    audio: { normal: 'audio/shadowing/sh-15.mp3', slow: 'audio/shadowing/sh-15-slow.mp3' },
   },
   {
     id: 'sh-16',
@@ -205,6 +220,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['past', 'action'],
     tip: '「よる」的 る 與「はたらき」的 ら，都輕彈一下就走，不要停留。',
     focusKana: ['る', 'ら'],
+    audio: { normal: 'audio/shadowing/sh-16.mp3', slow: 'audio/shadowing/sh-16-slow.mp3' },
   },
   {
     id: 'sh-17',
@@ -217,6 +233,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['transport', 'travel'],
     tip: '「ひ」的氣流集中在硬顎，不要念成「西」。',
     focusKana: ['ひ'],
+    audio: { normal: 'audio/shadowing/sh-17.mp3', slow: 'audio/shadowing/sh-17-slow.mp3' },
   },
   {
     id: 'sh-18',
@@ -229,5 +246,6 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     tags: ['daily'],
     tip: '「ちいさい（chi）」與「つくえ（tsu）」剛好練 ち／つ 的區別。',
     focusKana: ['ち', 'つ'],
+    audio: { normal: 'audio/shadowing/sh-18.mp3', slow: 'audio/shadowing/sh-18-slow.mp3' },
   },
 ];

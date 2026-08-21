@@ -661,6 +661,12 @@ export function ShadowingView() {
           </button>
         </div>
       </div>
+
+      {/* 音檔來源標示。VOICEVOX 的使用條款要求標明使用了 VOICEVOX 與角色名稱，
+          這是使用其語音的必要條件，不是選擇性的裝飾。 */}
+      <p className="text-[11px] text-[#94A3B8] text-center">
+        示範語音：VOICEVOX:四国めたん
+      </p>
     </div>
   );
 }
