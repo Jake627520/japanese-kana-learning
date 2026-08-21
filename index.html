@@ -10,6 +10,10 @@
   <meta name="theme-color" content="#00A86B" />
   <link rel="icon" type="image/svg+xml" href="./icon.svg" />
   <link rel="apple-touch-icon" href="./icon.svg" />
+  <!-- 標準版給 Chrome/Android；apple- 前綴是舊版 iOS Safari 才認得的，
+       兩個都留：Chrome 會對只有 apple- 版本發出 deprecation 警告，
+       但舊 iOS 只認 apple- 版，拿掉會讓那些裝置失去全螢幕啟動。 -->
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="五十音" />
