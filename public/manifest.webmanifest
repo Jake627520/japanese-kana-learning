@@ -1,0 +1,15 @@
+{
+  "name": "日語五十音速成",
+  "short_name": "五十音",
+  "description": "五十音認讀、書寫、聽音、跟讀與 JLPT 練習，離線可用。",
+  "start_url": "/japanese-kana-learning/",
+  "scope": "/japanese-kana-learning/",
+  "display": "standalone",
+  "background_color": "#F8FAF8",
+  "theme_color": "#00A86B",
+  "lang": "zh-Hant",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
