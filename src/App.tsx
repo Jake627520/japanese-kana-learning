@@ -13,6 +13,7 @@ import { JlptPracticeView } from './components/JlptPracticeView';
 import { ShadowingView } from './components/ShadowingView';
 import { ChatTutorView } from './components/ChatTutorView';
 import { WritingPracticeView } from './components/WritingPracticeView';
+import { ConfusableView } from './components/ConfusableView';
 import { Navigation } from './components/Navigation';
 
 export default function App() {
@@ -121,6 +122,8 @@ export default function App() {
             {currentTab === 'chat' && <ChatTutorView onProgressChange={refreshProgress} />}
 
             {currentTab === 'writing' && <WritingPracticeView onProgressChange={refreshProgress} />}
+
+            {currentTab === 'confusable' && <ConfusableView onProgressChange={refreshProgress} />}
           </main>
         </div>
       </div>

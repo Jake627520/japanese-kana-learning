@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationTab } from '../types';
-import { Home, Grid, BookOpen, BrainCircuit, RefreshCw, Sparkles, AudioLines, GraduationCap, Headphones, MessagesSquare, PenLine } from 'lucide-react';
+import { Home, Grid, BookOpen, BrainCircuit, RefreshCw, Sparkles, AudioLines, GraduationCap, Headphones, MessagesSquare, PenLine, Layers } from 'lucide-react';
 
 interface NavigationProps {
   currentTab: NavigationTab;
@@ -15,6 +15,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
     { id: 'study', label: '假名卡片', icon: BookOpen },
     { id: 'writing', label: '書寫練習', icon: PenLine },
     { id: 'quiz', label: '綜合測驗', icon: BrainCircuit },
+    { id: 'confusable', label: '易混辨析', icon: Layers },
     { id: 'review', label: '複習中心', icon: RefreshCw, badge: wrongCount },
     { id: 'special', label: '特殊音', icon: AudioLines },
     { id: 'jlpt', label: 'JLPT 練習', icon: GraduationCap },
