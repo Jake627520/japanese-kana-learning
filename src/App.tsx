@@ -12,6 +12,7 @@ import { SpecialSoundsView } from './components/SpecialSoundsView';
 import { JlptPracticeView } from './components/JlptPracticeView';
 import { ShadowingView } from './components/ShadowingView';
 import { ChatTutorView } from './components/ChatTutorView';
+import { WritingPracticeView } from './components/WritingPracticeView';
 import { Navigation } from './components/Navigation';
 
 export default function App() {
@@ -118,6 +119,8 @@ export default function App() {
             {currentTab === 'shadowing' && <ShadowingView />}
 
             {currentTab === 'chat' && <ChatTutorView onProgressChange={refreshProgress} />}
+
+            {currentTab === 'writing' && <WritingPracticeView onProgressChange={refreshProgress} />}
           </main>
         </div>
       </div>
