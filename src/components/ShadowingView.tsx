@@ -140,14 +140,41 @@ export function ShadowingView() {
 
   // Play Native TTS
   const playNativeTts = (rate: number, onEndCallback?: () => void) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      alert('您的瀏覽器不支援語音合成功能。');
+    window.speechSynthesis?.cancel();
+    if (userAudioPlayerRef.current) {
+      userAudioPlayerRef.current.pause();
+    }
+
+    // 有預先生成的高品質音檔就優先播它——Web Speech 的日語在拗音、長音、
+    // 促音上常常不夠自然，而跟讀練的正是這些。rate < 0.9 視為要慢速版。
+    // 音檔缺任一速度時自動退回 TTS，所以可以一句一句補，不必等全部生完。
+    const clip = rate < 0.9 ? currentSentence.audio?.slow : currentSentence.audio?.normal;
+    if (clip) {
+      const el = new Audio(`${import.meta.env.BASE_URL}${clip}`);
+      setIsSpeakingTts(true);
+      el.onended = () => {
+        setIsSpeakingTts(false);
+        onEndCallback?.();
+      };
+      el.onerror = () => {
+        // 音檔壞掉或不存在時不要卡住流程，退回 TTS 繼續
+        setIsSpeakingTts(false);
+        speakWithTts(rate, onEndCallback);
+      };
+      el.play().catch(() => {
+        setIsSpeakingTts(false);
+        speakWithTts(rate, onEndCallback);
+      });
       return;
     }
 
-    window.speechSynthesis.cancel();
-    if (userAudioPlayerRef.current) {
-      userAudioPlayerRef.current.pause();
+    speakWithTts(rate, onEndCallback);
+  };
+
+  const speakWithTts = (rate: number, onEndCallback?: () => void) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      alert('您的瀏覽器不支援語音合成功能。');
+      return;
     }
 
     const utterance = new SpeechSynthesisUtterance(currentSentence.japanese);

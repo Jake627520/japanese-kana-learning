@@ -9,6 +9,10 @@ export interface ShadowingSentence {
   tags?: string[];
   tip?: string;
   focusKana?: string[]; // 這句適合練的「難音」假名（用來和使用者弱點假名比對推薦）
+  // 預先生成的高品質音檔（VOICEVOX）。留空時自動退回瀏覽器 Web Speech，
+  // 所以填不填都能用——這讓音檔可以一句一句補，不必等全部生完才上線。
+  // 路徑相對於站台 base（例如 'audio/shadowing/sh-01.mp3'）。
+  audio?: { normal?: string; slow?: string };
 }
 
 export const SHADOWING_SENTENCES: ShadowingSentence[] = [
