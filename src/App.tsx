@@ -126,6 +126,21 @@ export default function App() {
             {currentTab === 'confusable' && <ConfusableView onProgressChange={refreshProgress} />}
           </main>
         </div>
+
+        {/* 全站頁尾：音源標示。
+            VOICEVOX 的授權要求標明使用了 VOICEVOX 與角色名稱——站上 208 個假名
+            與 18 句跟讀都用它產生，所以標示放在全站頁尾而不是只放跟讀頁。
+            MIT 指的是本站程式碼，與音檔授權是兩回事，分開寫免得被誤解成
+            音檔也是 MIT。 */}
+        <footer className="mt-8 pt-6 border-t border-[#E2E8F0] text-center space-y-1 pb-24 lg:pb-6">
+          <p className="text-[11px] text-[#94A3B8]">
+            語音：<span className="font-semibold text-[#64748B]">VOICEVOX:四国めたん</span>
+            {' · '}部分內容使用瀏覽器內建語音合成
+          </p>
+          <p className="text-[11px] text-[#94A3B8]">
+            日語五十音速成 · 本站程式碼以 MIT 授權釋出
+          </p>
+        </footer>
       </div>
     </div>
   );
