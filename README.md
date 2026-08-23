@@ -1,71 +1,166 @@
-# 日文五十音學習 App (Japanese Kana Learning)
+# 日語五十音速成 (Japanese Kana Learning)
 
-這是一個以「認讀 → 聽音 → 輸出 → 測驗 → 錯題複習 → SRS」為核心的日文五十音學習 Web App。
+以「**認讀 → 聽音 → 書寫 → 辨析 → 口說 → 測驗 → 錯題 → SRS**」為核心的日文學習 Web App。純靜態、無後端、可離線使用。
 
-## Features
+🔗 **線上使用**：<https://jake627520.github.io/japanese-kana-learning/>
 
-- 基本平假名五十音圖表
-- 假名詳細學習卡片
-- 日文發音（Web Speech API）
-- 實用例詞與例句
-- 綜合測驗（多種題型）
-- 錯題庫與弱點複習
-- 今日到期 SRS 間隔複習
-- 錯題微測驗
-- 已克服假名追蹤
-- LocalStorage 學習進度自動保存
+---
 
-## Learning System
+## 特色
 
-- Phase 1 - Home Dashboard
-- Phase 2 - Kana Learning
-- Phase 3 - Comprehensive Quiz
-- Phase 4 - Review System
-- Phase 5 - SRS / Review Optimization
+### 1. 完整覆蓋 208 個假名，不只 46 音
 
-## Tech Stack
+| 分類 | 數量 |
+|---|---:|
+| 平假名清音 | 46 |
+| 片假名清音 | 46 |
+| 濁音 | 40 |
+| 半濁音 | 10 |
+| 拗音 | 66 |
+| **合計** | **208** |
 
-- React 19
-- TypeScript
-- Vite
-- Tailwind CSS
-- lucide-react
-- motion
+多數五十音工具停在基本 46 音，但濁音、拗音才是實際閱讀時的常見障礙。
 
-## Getting Started
+### 2. 真人級日語發音，不用瀏覽器 TTS
+
+全部 208 個假名與 18 句跟讀句都使用 **VOICEVOX** 預先生成音檔（244 個 mp3）。
+
+瀏覽器內建語音合成唸單一假名時品質不穩定——有些引擎會唸成字母名稱，拗音與促音也常糊掉，而這正是初學者最需要聽清楚的部分。改用預生成音檔後發音穩定，且離線也能播。
+
+全站語音固定使用同一個聲音，避免不同單元像換了老師。
+
+### 3. 書寫練習：會認 ≠ 會寫
+
+- 46 個平假名的**筆順說明**（筆畫數 + 每一畫的書寫要點）
+- Canvas 手寫區，可切換**描紅模式**（關掉就是默寫）
+- 十字參考線輔助抓字形比例
+- **刻意不做自動評分**——手寫相似度判斷不可靠，錯誤的回饋比沒有回饋更傷。改由學習者對照參考後自我判斷
+
+### 4. 易混假名辨析：干擾項只從同組抽
+
+21 組真實易混字，涵蓋四種干擾來源：
+
+- **繞不繞圈**：ぬ/め、る/ろ、ね/れ/わ
+- **鏡像**：さ/ち
+- **差一筆**：き/さ、は/ほ
+- **片假名方向陷阱**：シ/ツ、ソ/ン
+
+一般隨機測驗中，ぬ 的干擾項可能是 か/さ/と——太好猜，練不到真正困難的地方。這裡的選項**只從同一組易混字抽出**，逼使用者真的去分辨特徵。每組都附「**怎麼分辨**」的判斷點，因為這類錯誤需要的是決策規則，不是更多次重複。
+
+### 5. 跟讀練習：自我監聽迴圈，不打分數
+
+五步驟引導：**只聽 → 看字聽 → 輕聲跟 → 錄音 → 對照**
+
+- 正常 / 慢速（0.7x）雙速播放，慢速版由同一段原始音時間拉伸而成，語調一致才對得上
+- 瀏覽器錄音，播放「母語版 → 自己的錄音」連續對照
+- 可隱藏日文/假名/羅馬字，練到真正靠耳朵
+- **不做發音評分**：日語 pitch accent 的機器評分現階段不可靠，錯誤回饋會誤導初學者。價值在於自己聽出差距
+
+### 6. 假名弱點 ↔ 跟讀句聯動
+
+答錯的假名會對應到「練得到那個音的句子」。光背字形容易忘，放進句子裡唸過才記得牢——這把「認假名」和「口說」接成閉環。
+
+### 7. JLPT N5 練習：100 題原創，每題誘答都有診斷意義
+
+- **100 題 / 30 個考點**，涵蓋漢字読み、連濁、送り仮名、助数詞、助詞等
+- **弱點分析**：依實際作答找出最常錯的考點。每個考點都有 ≥3 題，確保足以判定（低於此只是雜訊）
+- 誘答取自真實錯誤來源，例如：て形從ます形變（のみて）、中文無體標記造成的干擾（住みます）、把例外當規則推（知っていません）
+
+### 8. SRS 間隔複習與進度追蹤
+
+- 6 階段間隔：10 分 → 1 天 → 3 天 → 7 天 → 14 天 → 30 天
+- 假名掌握地圖：五階段圓環進度（純顯示，**不設關卡**）
+- 進度匯出 / 匯入 JSON，換裝置或清快取前可備份
+
+### 9. PWA：可安裝、可離線
+
+可加入手機主畫面，離線完整使用。HTML 走 network-first（新版立即生效），靜態資產走 cache-first。
+
+### 10. 不設學習門檻
+
+假名與 JLPT 兩條路徑**永遠開放**。使用者可能已會五十音、或正在準備 N4，強制要求先通過假名測驗是錯的假設。
+
+---
+
+## 功能分頁
+
+| 分頁 | 內容 |
+|---|---|
+| 學習總覽 | 進度儀表板、假名掌握地圖、今日跟讀、弱點聯動 |
+| 五十音圖表 | 208 假名，可依清音/濁音/半濁音/拗音、平/片假名切換 |
+| 假名卡片 | 單字詳解、例詞例句 |
+| 書寫練習 | 筆順說明 + 描紅 + 手寫 |
+| 綜合測驗 | 多題型測驗 |
+| 易混辨析 | 21 組易混字對比 |
+| 複習中心 | 錯題庫 + SRS 到期複習 |
+| 特殊音 | 濁音、半濁音、拗音專區 |
+| JLPT 練習 | 100 題 N5 原創題 + 弱點分析 |
+| 跟讀練習 | 五步驟 shadowing + 錄音對照 |
+| 對話教室 | 聊天式假名引導教學 |
+
+---
+
+## 技術
+
+React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react · motion
+
+無後端、無 API key。學習進度存於 localStorage，音檔為靜態資源。
+
+## 開始使用
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build
+## 建置與預覽
 
 ```bash
 npm run build
-```
-
-## Preview
-
-```bash
 npm run preview
 ```
 
-## License
+## 重新產生音檔
 
-This project is licensed under the MIT License. See [LICENSE](./LICENSE).
+需先安裝並開啟 [VOICEVOX](https://voicevox.hiroshiba.jp/)（提供本機 API），以及 `ffmpeg`。
 
-## Third-Party Software
+```bash
+node scripts/gen-kana-audio.mjs    # 208 個假名
+node scripts/gen-audio.mjs         # 18 句跟讀（正常 + 慢速）
+```
 
-See [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md) for third-party software attribution.
+## 資料驗證
 
-## Copyright / Content Notice
+```bash
+npm run lint            # TypeScript 型別檢查
+npm run validate:data   # 假名資料校驗
+```
 
-1. **Original Source Code**: Licensed under the MIT License.
-2. **Third-Party Libraries**: Used under their respective open-source licenses as documented in `THIRD-PARTY-NOTICES.md`.
-3. **Educational Content**:
-   - Kana characters and standard romanization are used as linguistic reference information.
-   - Example words, sentences, explanations, and translations are authored for this project unless otherwise noted.
-   - Third-party textbook content, proprietary course materials, and copyrighted educational assets are not intentionally included.
-   - If third-party educational materials are added in the future, their source and license will be documented separately.
-4. **UI Icons**: Provided by Lucide Icons (`lucide-react`) under the ISC License.
+---
+
+## 授權
+
+### 程式碼
+
+本專案原始碼採 **MIT License**，見 [LICENSE](./LICENSE)。
+
+### 語音
+
+音檔由 **VOICEVOX:四国めたん** 產生。依 VOICEVOX 使用條款，商用與非商用皆可使用並可嵌入應用程式散布，但**必須標示使用了 VOICEVOX 與角色名稱**——本站已於全站頁尾標示。
+
+- VOICEVOX 官方：<https://voicevox.hiroshiba.jp/>
+- 四国めたん 使用規約：<https://zunko.jp/con_ongen_kiyaku.html>
+
+⚠️ 若 fork 本專案並繼續使用這些音檔，**同樣需要保留標示**。若改用其他角色，須改為該角色的標示並遵守其個別規約（VOICEVOX 各角色條款獨立）。
+
+### 第三方套件
+
+見 [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md)。UI 圖示由 Lucide Icons（ISC License）提供。
+
+### 教學內容
+
+1. 假名字元與標準羅馬拼音屬語言參考資訊。
+2. 例詞、例句、解說、翻譯、JLPT 練習題、跟讀句、筆順說明**皆為本專案原創**。
+3. JLPT 題目全部標記 `license: 'own'` 與 `origin: 'own'`，**不含任何官方真題或第三方教材內容**。
+4. 未刻意收錄第三方教科書內容、付費課程素材或受著作權保護的教材。
+5. 若日後加入第三方教材，將另行標註來源與授權。

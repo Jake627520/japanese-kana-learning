@@ -21,7 +21,13 @@ This audit evaluates the open-source compliance, asset licensing, and intellectu
 - **Details**: Documented in [`ASSET-LICENSE.md`](./ASSET-LICENSE.md).
 - **UI Icons**: Provided by `lucide-react` under the ISC License.
 - **Typography**: System native font stacks.
-- **Audio Output**: Leverages the user agent's native Web Speech API engine; no external audio assets or proprietary audio files are bundled.
+- **Audio Assets**: 244 mp3 files are bundled (208 kana + 36 shadowing clips), generated with
+  [VOICEVOX](https://voicevox.hiroshiba.jp/) using the character 四国めたん. Commercial and
+  non-commercial use and in-app redistribution are permitted, **conditional on crediting
+  「VOICEVOX:四国めたん」** — the credit is rendered in the site-wide footer. Per-character terms
+  are independent of the engine terms; see [`ASSET-LICENSE.md`](./ASSET-LICENSE.md).
+- **Audio Fallback**: Content without a pre-generated clip (example words and sentences) falls
+  back to the user agent's native Web Speech API engine.
 
 ### 2.4 Educational Content
 - **Linguistic Data**: Kana symbols (Hiragana/Katakana) and standard Hepburn/Nihon-shiki romanizations represent standard linguistic information.
