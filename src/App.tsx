@@ -137,6 +137,13 @@ export default function App() {
             語音：<span className="font-semibold text-[#64748B]">VOICEVOX:四国めたん</span>
             {' · '}部分內容使用瀏覽器內建語音合成
           </p>
+          {/* 常被問到的兩件事：音檔是預先錄好隨站附上的（不必裝任何東西），
+              以及 iPhone 側邊靜音開關會讓 Safari 的 HTML5 音訊完全靜音——
+              「手機聽不到聲音」十次有九次是這個，不是網站壞了。 */}
+          <p className="text-[11px] text-[#94A3B8] leading-relaxed max-w-md mx-auto">
+            所有發音都是預先錄製、隨網站一起下載的音檔，<span className="font-semibold text-[#64748B]">不需要安裝任何軟體</span>。
+            iPhone 若沒有聲音，請先確認機身側邊的<span className="font-semibold text-[#64748B]">靜音開關</span>已關閉，並把音量調高。
+          </p>
           <p className="text-[11px] text-[#94A3B8]">
             日語五十音速成 · 本站程式碼以 MIT 授權釋出
           </p>

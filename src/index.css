@@ -130,3 +130,14 @@
     transform: none;
   }
 }
+
+/* 更多面板由下滑入。250ms——比 hover 慢，因為移動距離大，
+   太快會看不出它是從底部長出來的。 */
+@keyframes sheetUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.sheet-up { animation: sheetUp 0.25s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .sheet-up { animation: none; }
+}
