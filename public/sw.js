@@ -4,15 +4,34 @@
 // （index-CCHaDl0G.js），每次改版都會變，寫死的清單改版後就會指向不存在的舊檔。
 // 改成安裝時只預快取入口頁，其餘資產「用到才存」(runtime caching)。
 //
-// 兩種策略分開用，因為它們要的東西相反：
-//   HTML  → network-first：新版上線時要馬上拿到新的入口頁，離線才退回快取
-//   靜態資產 → cache-first：檔名帶 hash，內容不可能變，命中快取就是最快且省流量
+// ── 為什麼不是所有資源都能 cache-first ──────────────────────────
+// 快取策略取決於「這個 URL 的內容會不會變」，不是「它是不是靜態檔」：
 //
-// 版本號變更時舊快取整批清掉；改版後想強制更新快取就把 VERSION +1。
+//   /assets/*        檔名帶 build hash，內容永遠不會變 → cache-first
+//   /audio/**        內容定死（重新產生會換檔名或整批換版）→ cache-first
+//   HTML             每次改版都變 → network-first
+//   manifest / icon  路徑固定但內容會改 → stale-while-revalidate
+//                    （先給快取讓畫面不卡，同時背景更新，下次就是新的）
+//
+// 之前把「所有非 HTML」一律當 cache-first，等於假設路徑固定就代表內容不變，
+// 那對 manifest 與 icon 是錯的——改了永遠推不出去。
+//
+// ── HTML 一定要繞過瀏覽器的 HTTP 快取 ──────────────────────────
+// GitHub Pages 對 HTML 回 cache-control: max-age=600。fetch() 預設會走
+// HTTP 快取，所以部署後最長 10 分鐘內，「network-first」其實可能拿到快取裡的
+// 舊 index.html；它指向舊的 hash 資產，而那些資產在 SW 快取裡一定命中——
+// 結果是整個 app 完全是舊版，而且看起來毫無異常。
+// 加上 cache: 'no-store' 才讓 network-first 名副其實。
 
-const VERSION = 'v1';
+// 改版且需要清掉舊快取時把版本號 +1。舊快取會在 activate 整批刪除——
+// 之前這個數字從沒動過，所以清理邏輯從沒真正跑過，每次部署的舊 hash
+// 資產都永久留著。
+const VERSION = 'v2';
 const CACHE = `kana-${VERSION}`;
 const ENTRY = '/japanese-kana-learning/';
+
+// 內容不可變、可以放心 cache-first 的路徑
+const IMMUTABLE = [`${ENTRY}assets/`, `${ENTRY}audio/`];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
@@ -34,15 +53,15 @@ self.addEventListener('fetch', (e) => {
   if (req.method !== 'GET') return;
 
   const url = new URL(req.url);
-  // 只管自己網域下的資源；外部請求（若有）一律直接放行
+  // 只管自己網域下的資源；外部請求（Google Fonts 等）一律直接放行
   if (url.origin !== self.location.origin) return;
 
   const isHTML = req.mode === 'navigate' || req.headers.get('accept')?.includes('text/html');
 
   if (isHTML) {
-    // network-first：有網路就拿新版入口頁，離線退回快取
+    // network-first，且繞過 HTTP 快取（見上方說明）
     e.respondWith(
-      fetch(req)
+      fetch(req, { cache: 'no-store' })
         .then((res) => {
           const copy = res.clone();
           caches.open(CACHE).then((c) => c.put(ENTRY, copy));
@@ -53,18 +72,40 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // cache-first：hash 檔名的靜態資產
+  const isImmutable = IMMUTABLE.some((p) => url.pathname.startsWith(p));
+
+  if (isImmutable) {
+    // cache-first：hash 檔名的資產與音檔
+    e.respondWith(
+      caches.match(req).then((hit) => {
+        if (hit) return hit;
+        return fetch(req).then((res) => {
+          // 只快取成功的同源回應，避免把錯誤頁存起來
+          if (res.ok && res.type === 'basic') {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy));
+          }
+          return res;
+        });
+      }),
+    );
+    return;
+  }
+
+  // 其餘同源資源（manifest、icon 等路徑固定但內容會改的）：
+  // stale-while-revalidate——先回快取不卡畫面，同時抓新版存起來供下次使用
   e.respondWith(
     caches.match(req).then((hit) => {
-      if (hit) return hit;
-      return fetch(req).then((res) => {
-        // 只快取成功的同源回應，避免把錯誤頁存起來
-        if (res.ok && res.type === 'basic') {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(req, copy));
-        }
-        return res;
-      });
+      const fresh = fetch(req)
+        .then((res) => {
+          if (res.ok && res.type === 'basic') {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => hit);
+      return hit || fresh;
     }),
   );
 });
