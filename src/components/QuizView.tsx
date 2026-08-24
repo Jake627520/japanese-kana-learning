@@ -48,10 +48,15 @@ export function QuizView({
   const [isCompleted, setIsCompleted] = useState(false);
   const [feedbackNote, setFeedbackNote] = useState('');
   const [correctStreakMap, setCorrectStreakMap] = useState<Record<string, number>>({});
+  // 逐題結果。改版前完成畫面只有 score/total，答完就沒了——使用者不知道
+  // 錯在哪幾個，也沒辦法接著練，SRS 在背景更新但完全感覺不到。
+  const [results, setResults] = useState<{ kana: KanaItem; isCorrect: boolean }[]>([]);
+  // 「再練這幾個弱點」用的題庫覆寫；null 代表照原本的範圍出題
+  const [retryPool, setRetryPool] = useState<KanaItem[] | null>(null);
 
   // Generate Questions
-  const generateQuiz = () => {
-    const shuffledPool = [...pool].sort(() => 0.5 - Math.random());
+  const generateQuiz = (sourcePool: KanaItem[] = pool) => {
+    const shuffledPool = [...sourcePool].sort(() => 0.5 - Math.random());
     const selectedItems = shuffledPool.slice(0, Math.min(10, shuffledPool.length));
 
     const generated: QuizQuestion[] = selectedItems.map((item) => {
@@ -177,17 +182,30 @@ export function QuizView({
     setIsCompleted(false);
     setSelectedOption(null);
     setInputRomaji('');
+    setResults([]);
+    setFeedbackNote('');
   };
 
   useEffect(() => {
+    setRetryPool(null);
     generateQuiz();
   }, [quizScope, pool.length, isReviewMode]);
+
+  // 只練這一輪答錯的假名。去重是必要的——同一個假名在一輪裡可能出現不只一次。
+  const handleRetryWeak = () => {
+    const weak = results.filter((r) => !r.isCorrect).map((r) => r.kana);
+    const unique = [...new Map<string, KanaItem>(weak.map((k) => [k.id, k])).values()];
+    if (unique.length === 0) return;
+    setRetryPool(unique);
+    generateQuiz(unique);
+  };
 
   const currentQ = questions[currentIndex];
 
   const handleAnswerResult = (targetKana: KanaItem, isCorrect: boolean) => {
     // Record SRS Result ONCE per answer
     recordReviewResult(targetKana.id, isCorrect);
+    setResults((prev) => [...prev, { kana: targetKana, isCorrect }]);
 
     if (isCorrect) {
       setScore((prev) => prev + 1);
@@ -250,37 +268,130 @@ export function QuizView({
   }
 
   if (isCompleted) {
+    const total = results.length || questions.length;
+    const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+    // 去重：同一個假名一輪裡可能出現不只一次，弱點清單要按假名算不是按題數算
+    const weakKana = [
+      ...new Map<string, KanaItem>(
+        results.filter((r) => !r.isCorrect).map((r) => [r.kana.id, r.kana]),
+      ).values(),
+    ];
+    const allCorrect = weakKana.length === 0;
+
     return (
-      <div className="max-w-md mx-auto bg-white p-8 rounded-3xl border border-[#E2E8F0] shadow-xs text-center space-y-6">
-        <div className="w-16 h-16 bg-[#E6F8F2] text-[#00A86B] rounded-2xl flex items-center justify-center mx-auto">
-          <Trophy className="w-8 h-8" />
-        </div>
-        <div>
-          <h2 className="text-2xl font-display font-bold text-[#1E293B]">測驗完成！</h2>
-          <p className="text-xs text-[#64748B] mt-1">恭喜完成本次測驗，系統已自動排程 SRS 複習。</p>
-        </div>
-
-        <div className="p-4 bg-[#FAFBFB] rounded-2xl border border-[#E2E8F0]">
-          <div className="text-xs font-bold text-[#64748B]">本次得分</div>
-          <div className="text-3xl font-extrabold text-[#00A86B] mt-1">
-            {score} / {questions.length}
+      <div className="max-w-md mx-auto bg-white rounded-3xl border border-[#E2E8F0] elev-2 overflow-hidden">
+        <div aria-hidden className={`h-1 ${allCorrect ? 'bg-[#00A86B]' : 'bg-gradient-to-r from-[#00A86B] to-amber-400'}`} />
+        <div className="p-8 space-y-6">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
+              allCorrect ? 'bg-[#E6F8F2] text-[#00A86B]' : 'bg-amber-50 text-amber-500'
+            }`}>
+              <Trophy className="w-8 h-8" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-display font-bold text-[#1E293B]">
+                {allCorrect ? '全部答對！' : '測驗完成'}
+              </h2>
+              <p className="text-xs text-[#64748B] mt-1">
+                答對的假名排到更久以後再複習，答錯的很快會再出現。
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="flex gap-3">
-          <button
-            onClick={generateQuiz}
-            className="flex-1 py-3 bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl hover:bg-white transition-all cursor-pointer flex items-center justify-center gap-2"
-          >
-            <RefreshCw className="w-4 h-4" />
-            再測驗一次
-          </button>
-          <button
-            onClick={onFinish}
-            className="flex-1 py-3 bg-[#00A86B] text-white font-bold text-xs rounded-xl hover:bg-[#008F5B] transition-all cursor-pointer"
-          >
-            返回學習總覽
-          </button>
+          <div className="p-5 bg-[#FAFBFB] rounded-2xl border border-[#E2E8F0] text-center space-y-3">
+            <div className="text-4xl font-extrabold text-[#00A86B] leading-none">{pct}%</div>
+            <div className="text-xs font-bold text-[#64748B]">
+              答對 {score} / {total} 題
+            </div>
+            <div className="h-1.5 rounded-full bg-[#E2E8F0] overflow-hidden">
+              <div
+                className="h-full rounded-full bg-[#00A86B] transition-[width] duration-700 ease-out"
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          </div>
+
+          {/* 逐題結果：改版前這裡什麼都沒有，使用者不知道自己錯在哪。
+              點得下去可以再聽一次發音——訂正的當下聽，比回頭找有用。 */}
+          {results.length > 0 && (
+            <div className="space-y-2">
+              <div className="text-xs font-bold text-[#64748B]">本次逐題</div>
+              <div className="flex flex-wrap gap-2">
+                {results.map((r, i) => (
+                  <button
+                    key={`${r.kana.id}-${i}`}
+                    type="button"
+                    onClick={() => speakJapanese(r.kana.kana)}
+                    title={`第 ${i + 1} 題 ${r.kana.kana}（${r.kana.romaji}）${r.isCorrect ? '答對' : '答錯'} — 點擊聽發音`}
+                    className={`w-11 h-11 rounded-xl border flex flex-col items-center justify-center leading-none btn-lift cursor-pointer ${
+                      r.isCorrect
+                        ? 'border-[#00A86B]/40 bg-[#F0FDF4] text-[#1E293B]'
+                        : 'border-red-300 bg-red-50 text-red-600'
+                    }`}
+                  >
+                    <span className="text-base font-extrabold">{r.kana.kana}</span>
+                    <span className="text-[9px] font-bold mt-0.5">
+                      {r.isCorrect ? '✓' : '✕'}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {!allCorrect && (
+            <div className="p-4 rounded-2xl bg-red-50 border border-red-200 space-y-2">
+              <div className="text-xs font-extrabold text-red-700">
+                本次弱點 · {weakKana.length} 個
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {weakKana.map((k) => (
+                  <span
+                    key={k.id}
+                    className="px-2.5 py-1 rounded-lg bg-white border border-red-200 text-xs font-extrabold text-red-600"
+                  >
+                    {k.kana}
+                    <span className="ml-1 font-bold text-red-400 uppercase">{k.romaji}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="space-y-2.5">
+            {/* 學習迴圈的接點：錯完可以立刻只練那幾個，不用回上一層自己想辦法 */}
+            {!allCorrect && (
+              <button
+                onClick={handleRetryWeak}
+                className="w-full py-3 bg-[#00A86B] text-white font-extrabold text-xs rounded-xl hover:bg-[#008F5B] btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
+              >
+                <RefreshCw className="w-4 h-4" />
+                只練這 {weakKana.length} 個弱點
+              </button>
+            )}
+            <div className="flex gap-2.5">
+              <button
+                onClick={() => {
+                  setRetryPool(null);
+                  generateQuiz();
+                }}
+                className="flex-1 py-3 bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl hover:bg-white hover:border-[#00A86B] btn-lift cursor-pointer flex items-center justify-center gap-2"
+              >
+                <RefreshCw className="w-4 h-4" />
+                {retryPool ? '回到完整測驗' : '再測驗一次'}
+              </button>
+              <button
+                onClick={onFinish}
+                className={`flex-1 py-3 font-bold text-xs rounded-xl btn-lift cursor-pointer ${
+                  allCorrect
+                    ? 'bg-[#00A86B] text-white hover:bg-[#008F5B] elev-green'
+                    : 'bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] hover:bg-white'
+                }`}
+              >
+                返回學習總覽
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
