@@ -76,7 +76,7 @@ export default function App() {
             {currentTab === 'grid' && (
               <GojuuonGrid
                 allKana={currentKanaData}
-                masteredIds={progress.masteredKanaIds}
+                progress={progress}
                 kanaCategory={currentKanaCategory}
                 onKanaCategoryChange={(cat) => setCurrentKanaCategory(cat)}
                 kanaType={currentKanaType}
