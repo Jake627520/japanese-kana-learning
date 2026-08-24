@@ -26,9 +26,9 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white border border-[#E2E8F0] rounded-3xl p-5 shadow-xs shrink-0 sticky top-8">
+      <aside className="hidden lg:flex flex-col w-64 bg-white border border-[#E2E8F0] rounded-3xl p-5 elev-2 shrink-0 sticky top-8">
         <div className="flex items-center gap-3 px-3 py-2 mb-6 border-b border-[#F1F5F9] pb-4">
-          <div className="w-10 h-10 bg-[#00A86B] text-white rounded-2xl flex items-center justify-center font-extrabold text-xl shadow-xs">
+          <div className="w-10 h-10 bg-gradient-to-br from-[#00A86B] to-[#008F5B] text-white rounded-2xl flex items-center justify-center font-extrabold text-xl elev-green">
             あ
           </div>
           <div>
@@ -50,8 +50,8 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
                 onClick={() => onSelectTab(item.id)}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl font-bold text-sm transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-[#00A86B] text-white shadow-xs'
-                    : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#FAFBFB]'
+                    ? 'bg-gradient-to-br from-[#00A86B] to-[#009960] text-white elev-green'
+                    : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#FAFBFB] hover:translate-x-0.5'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
           })}
         </nav>
 
-        <div className="mt-8 p-4 bg-[#FAFBFB] rounded-2xl border border-[#F1F5F9] text-xs text-[#64748B] space-y-2">
+        <div className="mt-8 p-4 bg-gradient-to-br from-[#F0FDF7] to-[#FAFBFB] rounded-2xl border border-[#E6F8F2] text-xs text-[#64748B] space-y-2">
           <div className="flex items-center gap-1.5 font-bold text-[#1E293B]">
             <Sparkles className="w-4 h-4 text-[#00A86B]" />
             高效記憶指引
@@ -82,7 +82,13 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
       </aside>
 
       {/* Mobile Bottom Navigation */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#E2E8F0] px-3 py-2 z-50 flex justify-around shadow-lg">
+      {/* 11 個項目在 375px 寬的手機上總寬會到 502px——justify-around 不會換行也不會捲動，
+          最後三項（JLPT 練習／跟讀練習／對話教室）會被切到畫面外，完全點不到。
+          改成可橫向捲動，並讓每一項不被壓縮；pb 留 iOS 的 home indicator 安全區。 */}
+      <div
+        className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#E2E8F0] px-2 pt-2 z-50 flex gap-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden shadow-lg"
+        style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
+      >
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = currentTab === item.id;
@@ -91,12 +97,12 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
             <button
               key={item.id}
               onClick={() => onSelectTab(item.id)}
-              className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all relative ${
-                isActive ? 'text-[#00A86B]' : 'text-[#64748B]'
+              className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all relative shrink-0 min-w-[64px] ${
+                isActive ? 'text-[#00A86B] bg-[#F0FDF7]' : 'text-[#64748B]'
               }`}
             >
               <Icon className="w-5 h-5" />
-              <span className="text-[10px] font-bold">{item.label}</span>
+              <span className="text-[10px] font-bold whitespace-nowrap">{item.label}</span>
               {item.badge !== undefined && item.badge > 0 && (
                 <span className="absolute -top-1 right-2 w-4 h-4 bg-red-500 text-white text-[9px] font-extrabold rounded-full flex items-center justify-center">
                   {item.badge}

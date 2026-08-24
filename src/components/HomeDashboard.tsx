@@ -5,6 +5,7 @@ import { HeaderStats } from './HeaderStats';
 import { DataBackupCard } from './DataBackupCard';
 import { LearningPathCard } from './LearningPathCard';
 import { KanaMasteryMap } from './KanaMasteryMap';
+import { SectionHeading } from './SectionHeading';
 import { WeakKanaShadowingCard } from './WeakKanaShadowingCard';
 import { getShadowingProgress, getTodaySentences } from '../lib/shadowingProgress';
 import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2, Headphones, Check } from 'lucide-react';
@@ -40,9 +41,20 @@ export function HomeDashboard({
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-7">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#00A86B] to-[#008F5B] rounded-3xl p-6 sm:p-8 text-white shadow-sm relative overflow-hidden">
+      <div className="bg-[linear-gradient(135deg,#00A86B_0%,#009B63_55%,#007E51_100%)] rounded-3xl p-6 sm:p-8 text-white elev-3 rise-in relative overflow-hidden">
+        {/* 假名水印：讓大面積綠色有厚度，而不是一塊平色。aria-hidden 因為它是裝飾。 */}
+        <div
+          aria-hidden
+          className="absolute top-0 -right-10 opacity-[0.08] text-[110px] sm:text-[150px] font-extrabold leading-[0.9] tracking-wide whitespace-nowrap select-none text-right pointer-events-none [mask-image:linear-gradient(to_left,black_25%,transparent_75%)]"
+        >
+          あかさたな
+          <br />
+          アカサタナ
+        </div>
+        {/* 頂緣高光 */}
+        <div aria-hidden className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
         <div className="relative z-10 space-y-3 max-w-xl">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 rounded-full text-xs font-bold backdrop-blur-xs">
             <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
@@ -57,14 +69,14 @@ export function HomeDashboard({
           <div className="flex flex-wrap gap-3 pt-2">
             <button
               onClick={() => onNavigate('grid')}
-              className="px-5 py-2.5 bg-white text-[#00A86B] font-extrabold text-xs sm:text-sm rounded-xl hover:bg-slate-50 transition-all shadow-xs cursor-pointer flex items-center gap-2"
+              className="px-5 py-2.5 bg-white text-[#00A86B] font-extrabold text-xs sm:text-sm rounded-xl hover:bg-slate-50 btn-lift shadow-[0_8px_20px_-8px_rgb(0_0_0/0.45)] cursor-pointer flex items-center gap-2"
             >
               <BookOpen className="w-4 h-4" />
               開始五十音圖表
             </button>
             <button
               onClick={() => onNavigate('quiz')}
-              className="px-5 py-2.5 bg-white/10 text-white font-extrabold text-xs sm:text-sm rounded-xl hover:bg-white/20 transition-all border border-white/20 cursor-pointer flex items-center gap-2"
+              className="px-5 py-2.5 bg-white/10 text-white font-extrabold text-xs sm:text-sm rounded-xl hover:bg-white/20 btn-lift border border-white/20 cursor-pointer flex items-center gap-2"
             >
               <Play className="w-4 h-4 fill-current" />
               快速綜合測驗
@@ -73,25 +85,27 @@ export function HomeDashboard({
         </div>
       </div>
 
-      {/* Header Stats */}
-      <HeaderStats progress={progress} totalKana={allKana.length} />
+      {/* 今日概況 */}
+      <div className="space-y-3">
+        <SectionHeading>今日概況</SectionHeading>
+        <HeaderStats progress={progress} totalKana={allKana.length} />
+        <KanaMasteryMap masteredIds={progress.masteredKanaIds} onNavigate={onNavigate} />
+      </div>
 
-      {/* Kana Mastery Map (progress, non-gated) */}
-      <KanaMasteryMap masteredIds={progress.masteredKanaIds} onNavigate={onNavigate} />
+      {/* 針對你的建議 */}
+      <div className="space-y-3">
+        <SectionHeading>針對你的建議</SectionHeading>
+        <WeakKanaShadowingCard wrongKanaIds={progress.wrongKanaIds} onNavigate={onNavigate} />
+        <LearningPathCard onNavigate={onNavigate} />
+      </div>
 
-      {/* Kana weak-point ↔ shadowing linkage */}
-      <WeakKanaShadowingCard wrongKanaIds={progress.wrongKanaIds} onNavigate={onNavigate} />
-
-      {/* Learning Path (soft, non-gated) */}
-      <LearningPathCard onNavigate={onNavigate} />
-
-      {/* Data Portability / Backup Card */}
-      <DataBackupCard />
-
-      {/* Quick Action Cards */}
+      {/* 今天可以做的事 */}
+      <SectionHeading>今天可以做的事</SectionHeading>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Today Shadowing 3 Sentences Card */}
-        <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col justify-between gap-4">
+        <div className="bg-white rounded-3xl border border-[#E2E8F0] elev-1 card-lift overflow-hidden flex flex-col">
+          <div aria-hidden className="h-1 bg-gradient-to-r from-[#00A86B] to-[#34D399]" />
+          <div className="p-6 flex flex-col justify-between gap-4 flex-1">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#00A86B] bg-[#E6F8F2] px-3 py-1 rounded-full flex items-center gap-1">
@@ -126,16 +140,19 @@ export function HomeDashboard({
           <button
             type="button"
             onClick={handleStartTodayShadowing}
-            className="w-full py-3 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2"
+            className="w-full py-3 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs rounded-xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
           >
             <Headphones className="w-4 h-4" />
             開始今日跟讀
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
+          </div>
         </div>
 
         {/* Due Review Card */}
-        <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col justify-between gap-4">
+        <div className="bg-white rounded-3xl border border-[#E2E8F0] elev-1 card-lift overflow-hidden flex flex-col">
+          <div aria-hidden className="h-1 bg-gradient-to-r from-blue-500 to-blue-300" />
+          <div className="p-6 flex flex-col justify-between gap-4 flex-1">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#00A86B] bg-[#E6F8F2] px-3 py-1 rounded-full">
@@ -173,10 +190,13 @@ export function HomeDashboard({
             進入複習中心
             <ArrowRight className="w-3.5 h-3.5 text-[#64748B]" />
           </button>
+          </div>
         </div>
 
         {/* Weak Kana Card */}
-        <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col justify-between gap-4">
+        <div className="bg-white rounded-3xl border border-[#E2E8F0] elev-1 card-lift overflow-hidden flex flex-col">
+          <div aria-hidden className="h-1 bg-gradient-to-r from-red-500 to-red-300" />
+          <div className="p-6 flex flex-col justify-between gap-4 flex-1">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full">
@@ -213,7 +233,14 @@ export function HomeDashboard({
             查看弱點並加強
             <ArrowRight className="w-3.5 h-3.5 text-[#64748B]" />
           </button>
+          </div>
         </div>
+      </div>
+
+      {/* 資料與備份 */}
+      <div className="space-y-3">
+        <SectionHeading>資料與備份</SectionHeading>
+        <DataBackupCard />
       </div>
     </div>
   );

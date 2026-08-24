@@ -1,3 +1,4 @@
+import { EmptyState } from './EmptyState';
 import React, { useState } from 'react';
 import { KanaItem, UserProgress } from '../types';
 import {
@@ -145,27 +146,25 @@ export function ReviewView({
 
       {/* Empty State Banner or Grid */}
       {displayList.length === 0 ? (
-        <div className="bg-white rounded-3xl p-8 border border-[#E2E8F0] shadow-xs text-center space-y-4">
-          <div className="w-14 h-14 bg-[#E6F8F2] text-[#00A86B] rounded-2xl flex items-center justify-center mx-auto">
-            <CheckCircle2 className="w-7 h-7" />
-          </div>
-          <h3 className="text-xl font-extrabold text-[#1E293B]">
-            {activeTab === 'due' ? '目前沒有到期複習' : '目前沒有錯題記錄'}
-          </h3>
-          <p className="text-xs text-[#64748B]">
-            {activeTab === 'due'
-              ? '太棒了！今天預定的卡片都已按時複習完成。'
-              : '太棒了！你在測驗中表現完美。'}
-          </p>
-          {activeTab === 'due' && wrongList.length > 0 && (
-            <button
-              onClick={() => setActiveTab('wrong')}
-              className="px-5 py-2.5 bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl hover:bg-white transition-all cursor-pointer"
-            >
-              查看全部弱點錯題 ({wrongList.length})
-            </button>
-          )}
-        </div>
+        <EmptyState
+          art={activeTab === 'due' ? 'calendar' : 'target'}
+          title={activeTab === 'due' ? '今天的複習都完成了' : '錯題庫是空的'}
+          body={
+            activeTab === 'due'
+              ? 'SRS 排程沒有到期項目，下一批會在明天自動出現。現在可以去練還沒學過的假名，或做一輪綜合測驗。'
+              : '目前沒有任何答錯記錄。測驗答錯的假名會自動收進這裡並排進加強複習——所以這一頁空著是好事。'
+          }
+          actions={
+            activeTab === 'due' && wrongList.length > 0 ? (
+              <button
+                onClick={() => setActiveTab('wrong')}
+                className="px-5 py-2.5 bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl hover:bg-white hover:border-[#00A86B] btn-lift cursor-pointer"
+              >
+                查看全部弱點錯題 ({wrongList.length})
+              </button>
+            ) : undefined
+          }
+        />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {displayList.map((item) => {

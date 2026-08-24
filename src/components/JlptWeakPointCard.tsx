@@ -1,3 +1,4 @@
+import { EmptyState } from './EmptyState';
 import React from 'react';
 import { AlertTriangle, TrendingUp, Target } from 'lucide-react';
 import { getStoredJlptRecords } from '../utils/jlptStorage';
@@ -72,7 +73,7 @@ export function JlptWeakPointCard() {
   }
 
   return (
-    <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-4">
+    <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] elev-2 space-y-4">
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-2">
           <Target className="w-4 h-4 text-[#00A86B]" />
@@ -85,9 +86,12 @@ export function JlptWeakPointCard() {
       </div>
 
       {weakPoints.length === 0 ? (
-        <p className="text-xs text-[#64748B] leading-relaxed">
-          目前還沒有明顯弱點——各考點答錯率都很低，繼續保持！（每個考點答滿 {MIN_ATTEMPTS} 題才會納入分析）
-        </p>
+        <EmptyState
+          bare
+          art="chart"
+          title="還看不出弱點"
+          body={`每個考點要答滿 ${MIN_ATTEMPTS} 題才會納入分析。目前答題量還不夠，先多練幾個知識點，這裡就會告訴你該補哪裡。`}
+        />
       ) : (
         <div className="space-y-3">
           <p className="text-xs text-[#64748B]">

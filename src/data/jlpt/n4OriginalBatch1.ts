@@ -1,0 +1,336 @@
+import { JlptQuestion } from '../../types';
+
+// N4 原創題 Batch1：文字・語彙的 10 個知識點，每點 3 題。
+//
+// 出題依據是 nihongo-tiku 知識圖譜裡每個節點的 evidence——題目要能驗證
+// evidence 描述的那個行為，而不是隨便造一個含該詞的句子。
+//
+// 誘答不是隨機湊的，每個都對應一種真實錯誤來源：
+//   中文一個詞對應日文多個詞（味／匂い、音／声）、
+//   自他動詞成對（見つかる／見つける）、同音異字（以外／意外）、
+//   「接縫都濁化」的錯誤直覺（反対 → はんだい）。
+// 答錯時看選項就知道自己是哪一種誤解。
+//
+// ⚠ source.confirmed 一律 false：這批由模型原創，自然度尚未經第三方覆核。
+//    比照 nihongo-tiku 的做法（DESIGN.md 9.2），覆核過才改 true。
+export const N4_ORIGINAL_BATCH1: JlptQuestion[] = [
+  // ── jpv_n4-i-adjectives ──
+  {
+    id: 'n4-own-b1-01', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 1,
+    type: 'single', score: 1,
+    stem: 'この パンは 古く なって、（　　）なりました。',
+    options: ['かたく', 'あまく', 'つめたく', 'ひろく'],
+    answer: '1',
+    explain: '正解：<b>かたく</b>（硬い）。麵包放久了會變硬，四個都是い形容詞的く形，只能靠語境選。<br>誘答：<b>あまく</b>（甜）與放久無關；<b>つめたく</b>（冰涼）講的是溫度不是質地；<b>ひろく</b>（寬廣）用在空間，不能形容麵包。<br>這一類題目四個選項的形態都正確，考的純粹是詞義與語境的搭配。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-i-adjectives', topicIds: ['jpv_n4-i-adjectives'] },
+  },
+  {
+    id: 'n4-own-b1-02', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 2,
+    type: 'single', score: 1,
+    stem: '山の 上から 見た 景色は とても （　　）です。',
+    options: ['美しかった', '楽しかった', '珍しかった', '優しかった'],
+    answer: '1',
+    explain: '正解：<b>美しかった</b>。景色配「美しい」是固定的搭配。<br>誘答：<b>楽しい</b>形容的是「活動讓人開心」，景色本身不會「楽しい」；<b>珍しい</b>是「罕見」，強調的是稀有度而不是美感；<b>優しい</b>用來形容人的性格。<br>要注意句子有「とても〜です」但空格是過去式：<b>美しかったです</b>才對，不是「美しいでした」。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-i-adjectives', topicIds: ['jpv_n4-i-adjectives'] },
+  },
+  {
+    id: 'n4-own-b1-03', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 3,
+    type: 'single', score: 1,
+    stem: 'きのうの パーティーは とても （　　）。',
+    options: ['楽しいでした', '楽しかったです', '楽しくでした', '楽しいかったです'],
+    answer: '2',
+    explain: '正解：<b>楽しかったです</b>。い形容詞的過去丁寧體是「〜かったです」，<b>不是「い形＋でした」</b>。<br>誘答各對應一種錯法：<b>楽しいでした</b>——把な形容詞／名詞的規則（〜でした）套到い形容詞上，這是最常見的錯；<b>楽しくでした</b>——把く形和でした硬接；<b>楽しいかったです</b>——沒把語尾的「い」去掉。<br>規則：<b>楽しい → 楽し<u>かった</u>です</b>（去い加かった）。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-i-adjectives', topicIds: ['jpv_n4-i-adjectives'] },
+  },
+
+  // ── jpv_n4-sensory-nouns ──
+  {
+    id: 'n4-own-b1-04', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 4,
+    type: 'single', score: 1,
+    stem: 'となりの へやから ピアノの （　　）が 聞こえます。',
+    options: ['音', '声', '味', 'におい'],
+    answer: '1',
+    explain: '正解：<b>音（おと）</b>。鋼琴是物體，物體發出的聲響用「音」。<br>誘答：<b>声（こえ）</b>只用在人或動物的聲帶發出的聲音——這是中文母語者最容易錯的一組，中文「聲音」一個詞涵蓋兩者，日文分得很清楚。<b>味</b>是嘴嚐到的，<b>におい</b>是鼻子聞到的，都不能用「聞こえる」。<br>整組記：<b>音＝物體、声＝人或動物</b>。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-sensory-nouns', topicIds: ['jpv_n4-sensory-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-05', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 5,
+    type: 'single', score: 1,
+    stem: 'だいどころから カレーの いい （　　）が します。',
+    options: ['におい', '味', '音', '色'],
+    answer: '1',
+    explain: '正解：<b>におい</b>。從廚房飄過來、用鼻子聞到的是「におい」。<br>誘答：<b>味（あじ）</b>是實際入口才嚐得到的——中文「香味」一個詞同時涵蓋鼻子與嘴巴，日文一定要分。人在廚房外面還沒吃到，所以不能用味。<b>音</b>是聲響，<b>色</b>是視覺。<br>固定搭配：<b>においが する</b>／<b>味が する</b>，兩個都用「する」而不是「あります」。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-sensory-nouns', topicIds: ['jpv_n4-sensory-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-06', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 6,
+    type: 'single', score: 1,
+    stem: 'あかちゃんの 泣く （　　）が 聞こえました。',
+    options: ['声', '音', 'におい', '味'],
+    answer: '1',
+    explain: '正解：<b>声（こえ）</b>。嬰兒是人，用聲帶發出的聲音一律是「声」。<br>誘答：<b>音</b>用在物體——「泣く音」在日文裡是不通的。這題和上一題（ピアノの音）是刻意成對的：同樣是「聽到聲音」，發聲的是物體還是生物決定用哪個字。<br>再記一次：<b>雨の音・車の音</b>／<b>人の声・犬の声</b>。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-sensory-nouns', topicIds: ['jpv_n4-sensory-nouns'] },
+  },
+
+  // ── jpv_n4-social-reaction-nouns ──
+  {
+    id: 'n4-own-b1-07', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 7,
+    type: 'single', score: 1,
+    stem: 'かえりが おそかったので、両親に （　　）を かけました。',
+    options: ['心配', '経験', '失礼', 'お辞儀'],
+    answer: '1',
+    explain: '正解：<b>心配</b>。「心配を かける」＝讓別人擔心，是固定搭配。<br>誘答：<b>経験</b>（經驗）不能用「かける」；<b>失礼</b>是「失禮」，用法是「失礼します／失礼な人」；<b>お辞儀</b>是鞠躬這個動作，用「する」。<br>同一組固定搭配：<b>心配を かける</b>（讓人擔心）／<b>迷惑を かける</b>（給人添麻煩）——兩個都用かける，可以一起記。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-social-reaction-nouns', topicIds: ['jpv_n4-social-reaction-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-08', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 8,
+    type: 'single', score: 1,
+    stem: '日本では 人に 会った とき、（　　）を します。',
+    options: ['お辞儀', '心配', '失礼', '経験'],
+    answer: '1',
+    explain: '正解：<b>お辞儀</b>。見面時彎腰行禮這個動作叫「お辞儀」，搭配「する」。<br>誘答：<b>心配</b>配的是「かける」不是這個語境；<b>失礼</b>意思相反，見面行禮不會是失禮；<b>経験</b>在這裡語意不通。<br>這一組詞的共通點是<b>多半可以加する變成動詞</b>（心配する・経験する・お辞儀する），但各自的搭配助詞與語境不同，要一組一組記。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-social-reaction-nouns', topicIds: ['jpv_n4-social-reaction-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-09', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 9,
+    type: 'single', score: 1,
+    stem: 'なにも 言わないで 帰るのは （　　）ですよ。',
+    options: ['失礼', '心配', '自由', '経験'],
+    answer: '1',
+    explain: '正解：<b>失礼</b>。不打招呼就離開＝失禮的行為。這裡「失礼です」是な形容詞的用法。<br>誘答：<b>心配</b>是「擔心」，主體是擔心的人而不是行為本身；<b>自由</b>是「自由」，語意不合；<b>経験</b>是名詞「經驗」，不能這樣當評價用。<br>順帶記：<b>失礼します</b>（進出房間、掛電話時的招呼）與<b>失礼な人</b>（失禮的人）是同一個詞的兩種常見用法。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-social-reaction-nouns', topicIds: ['jpv_n4-social-reaction-nouns'] },
+  },
+
+  // ── jpv_n4-inner-life-nouns ──
+  {
+    id: 'n4-own-b1-10', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 10,
+    type: 'single', score: 1,
+    stem: 'こどもの ころの （　　）を 話しました。',
+    options: ['思い出', '夢', '景色', '世話'],
+    answer: '1',
+    explain: '正解：<b>思い出</b>。「小時候的〜」講的是回憶，用「思い出」。<br>誘答：<b>夢</b>指的是未來的願望或睡覺時做的夢，方向剛好相反（往前 vs 往回）；<b>景色</b>是眼前的風景，不是內心的東西；<b>世話</b>是照顧。<br>一句話分辨：<b>思い出＝已經發生過的</b>、<b>夢＝還沒發生、想讓它發生的</b>。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-inner-life-nouns', topicIds: ['jpv_n4-inner-life-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-11', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 11,
+    type: 'single', score: 1,
+    stem: 'いしゃに なりたいという （　　）が あります。',
+    options: ['夢', '思い出', '世話', '景色'],
+    answer: '1',
+    explain: '正解：<b>夢</b>。「〜たいという＋名詞」是把願望包成名詞子句的句型，後面接的一定是表示願望的詞。<br>誘答：<b>思い出</b>是過去的回憶，不能接「〜たい」這種未來的願望；<b>世話</b>與<b>景色</b>語意完全不合。<br>句型本身也是考點：<b>［普通形］＋という＋名詞</b>，把一整句話變成修飾名詞的內容（医者に なりたい<u>という</u>夢）。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-inner-life-nouns', topicIds: ['jpv_n4-inner-life-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-12', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 12,
+    type: 'single', score: 1,
+    stem: 'にゅういん中、母が いろいろ （　　）を して くれました。',
+    options: ['世話', '経験', '思い出', '夢'],
+    answer: '1',
+    explain: '正解：<b>世話</b>。「世話を する」＝照顧某人。<br>誘答：<b>経験</b>不能用「〜をしてくれる」表示照顧；<b>思い出</b>與<b>夢</b>語意不合。<br>成組記這三種形式：<b>世話を する</b>（我照顧別人）／<b>世話に なる</b>（我受人照顧）／<b>お世話に なりました</b>（受您照顧了，道謝用語）。方向不同，助詞也跟著換。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-inner-life-nouns', topicIds: ['jpv_n4-inner-life-nouns'] },
+  },
+
+  // ── jpv_n4-status-nouns ──
+  {
+    id: 'n4-own-b1-13', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 13,
+    type: 'single', score: 1,
+    stem: '雨が ひどいので、うんどう会は （　　）に なりました。',
+    options: ['中止', '留守', '自由', '嘘'],
+    answer: '1',
+    explain: '正解：<b>中止</b>。活動因故取消用「中止に なる」。<br>誘答：<b>留守</b>是「不在家」，用在人；<b>自由</b>是「自由」；<b>嘘</b>是「謊言」，都與活動取消無關。<br>句型是這一組詞的共同考點：<b>名詞＋に なりました</b>表示狀態產生變化，這批詞（中止・自由・留守）常配這個形式出現。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-status-nouns', topicIds: ['jpv_n4-status-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-14', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 14,
+    type: 'single', score: 1,
+    stem: '何度 電話しても 出ません。（　　）のようです。',
+    options: ['留守', '中止', '自由', '失礼'],
+    answer: '1',
+    explain: '正解：<b>留守</b>。打了幾次都沒人接＝人不在家，用「留守」。<br>誘答：<b>中止</b>用在活動不用在人；<b>自由</b>與<b>失礼</b>語意不合。<br>「〜のようです」是根據眼前線索做的推測（沒人接電話 → 推測不在家）。這批狀態名詞常搭配<b>のようです</b>（推測）或<b>に なりました</b>（變化），看到這兩個形式就可以先往這一類詞想。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-status-nouns', topicIds: ['jpv_n4-status-nouns'] },
+  },
+  {
+    id: 'n4-own-b1-15', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 15,
+    type: 'single', score: 1,
+    stem: 'この へやは だれでも （　　）に 使えます。',
+    options: ['自由', '中止', '留守', '嘘'],
+    answer: '1',
+    explain: '正解：<b>自由</b>。「自由に 使えます」＝可以自由使用。自由是な形容詞，修飾動詞時變「自由<u>に</u>」。<br>誘答：<b>中止</b>、<b>留守</b>、<b>嘘</b> 都無法接「に 使えます」。<br>順帶注意句子前半的「だれでも」——<b>疑問詞＋でも</b>表示「不論是誰都…」，這也是 N4 的考點之一。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-status-nouns', topicIds: ['jpv_n4-status-nouns', 'jpg_interrogative-demo'] },
+  },
+
+  // ── jpg_n4-adverbs ──
+  {
+    id: 'n4-own-b1-16', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 16,
+    type: 'single', score: 1,
+    stem: 'あの 店の ラーメン、（　　）食べて みて ください。',
+    options: ['ぜひ', 'なかなか', 'やっと', 'あまり'],
+    answer: '1',
+    explain: '正解：<b>ぜひ</b>。<b>ぜひ 一定配「〜てください」或「〜たいです」</b>，表示強烈的推薦或願望。<br>誘答：<b>なかなか</b>後面必須接否定（なかなか 来ません），接「てください」不通；<b>やっと</b>是「終於」，用在事情實現的時候；<b>あまり</b>也是必須配否定的副詞。<br>這一類題的解法：<b>先看句尾</b>——句尾是てください就找ぜひ，句尾是否定就找なかなか／あまり。',
+    source: { book: 'JLPT N4', chapter: '副詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpg_n4-adverbs', topicIds: ['jpg_n4-adverbs'] },
+  },
+  {
+    id: 'n4-own-b1-17', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 17,
+    type: 'single', score: 1,
+    stem: '一時間 待ちましたが、バスは （　　）来ません。',
+    options: ['なかなか', 'ぜひ', 'きっと', 'だんだん'],
+    answer: '1',
+    explain: '正解：<b>なかなか</b>。<b>なかなか 後面一定接否定</b>，表示「怎麼等都不…」。句尾是「来ません」，是判斷的關鍵。<br>誘答：<b>ぜひ</b>配てください／たいです；<b>きっと</b>配推測（きっと 来るでしょう）；<b>だんだん</b>配漸進的變化，不配單純的否定。<br>成對記：<b>なかなか〜ない</b>（怎麼也不…）／<b>やっと〜た</b>（終於…了）——一個是還沒實現，一個是終於實現。',
+    source: { book: 'JLPT N4', chapter: '副詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpg_n4-adverbs', topicIds: ['jpg_n4-adverbs'] },
+  },
+  {
+    id: 'n4-own-b1-18', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 18,
+    type: 'single', score: 1,
+    stem: '春に なって、（　　）暖かく なって きました。',
+    options: ['だんだん', 'やっと', 'ぜひ', 'なかなか'],
+    answer: '1',
+    explain: '正解：<b>だんだん</b>。<b>だんだん 配「〜くなってきました」這種漸進的變化</b>。<br>誘答：<b>やっと</b>強調的是「終於達成」的那個時間點，配一次性的實現（やっと 着きました），與持續變化的語感不合；<b>ぜひ</b>配請求；<b>なかなか</b>配否定。<br>整組副詞的判斷依據都是<b>句尾的形式</b>：てください→ぜひ、否定→なかなか、〜た（實現）→やっと、〜てきました（漸變）→だんだん、〜でしょう（推測）→きっと。',
+    source: { book: 'JLPT N4', chapter: '副詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpg_n4-adverbs', topicIds: ['jpg_n4-adverbs'] },
+  },
+
+  // ── jpv_n4-suru-verbs ──
+  {
+    id: 'n4-own-b1-19', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 19,
+    type: 'single', score: 1,
+    stem: 'らいしゅう、自動車の 工場を （　　）します。',
+    options: ['見学', '見物', '利用', '生産'],
+    answer: '1',
+    explain: '正解：<b>見学</b>。到現場<b>為了學習而參觀</b>（工廠、學校、機構）用「見学」。<br>誘答：<b>見物</b>也是「參觀」，但指的是<b>觀光遊覽</b>（お祭りを 見物する），去工廠學習不用這個詞——這是這一組最容易混的一對。<b>利用</b>是「利用、使用」；<b>生産</b>是「生產」，工廠生產的是車不是工廠本身。<br>一句話分辨：<b>見学＝去學東西</b>、<b>見物＝去看熱鬧</b>。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-suru-verbs', topicIds: ['jpv_n4-suru-verbs'] },
+  },
+  {
+    id: 'n4-own-b1-20', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 20,
+    type: 'single', score: 1,
+    stem: '道が こんで います。（　　）を して いるようです。',
+    options: ['工事', '見学', '説明', '準備'],
+    answer: '1',
+    explain: '正解：<b>工事</b>。道路壅塞的常見原因是施工，「工事を する／工事中」。<br>誘答：<b>見学</b>是參觀學習；<b>説明</b>是說明；<b>準備</b>是準備——三個都不會讓道路塞住。<br>這一組漢語名詞加する的詞，考的是<b>依語境選對哪一個漢語詞</b>，する的部分本身沒有變化難度。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-suru-verbs', topicIds: ['jpv_n4-suru-verbs'] },
+  },
+  {
+    id: 'n4-own-b1-21', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 21,
+    type: 'single', score: 1,
+    stem: 'つかい方が わからないので、（　　）して ください。',
+    options: ['説明', '生産', '見物', '中止'],
+    answer: '1',
+    explain: '正解：<b>説明</b>。不懂使用方法，要請對方說明。<br>誘答：<b>生産</b>是生產；<b>見物</b>是觀光遊覽；<b>中止</b>是中止——都答非所問。<br>注意句尾的<b>「〜してください」</b>：這是對對方的請求，所以空格裡要填的是<b>希望對方做的動作</b>。先確認句子在請求誰做什麼，選項就好排除了。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-suru-verbs', topicIds: ['jpv_n4-suru-verbs'] },
+  },
+
+  // ── jpv_n4-verbs ──
+  {
+    id: 'n4-own-b1-22', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 22,
+    type: 'single', score: 1,
+    stem: 'なくした かぎが やっと （　　）。',
+    options: ['見つかりました', '見つけました', '見えました', '見ました'],
+    answer: '1',
+    explain: '正解：<b>見つかりました</b>。主語是「かぎ<u>が</u>」——鑰匙自己「被找到了」，要用<b>自動詞 見つかる</b>。<br>誘答：<b>見つけました</b>是他動詞，句型必須是「（私は）かぎ<u>を</u> 見つけました」，助詞對不上；<b>見えました</b>是「（自然而然）看得見」，不是「找到」；<b>見ました</b>是「看了」。<br>成對記：<b>Nが 見つかる</b>（自動詞）／<b>Nを 見つける</b>（他動詞）。<b>看助詞是が還是を，就知道要用哪一個。</b>',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-verbs', topicIds: ['jpv_n4-verbs'] },
+  },
+  {
+    id: 'n4-own-b1-23', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 23,
+    type: 'single', score: 1,
+    stem: '友だちを えいがに （　　）ました。',
+    options: ['さそい', 'つたえ', 'くらべ', 'うつし'],
+    answer: '1',
+    explain: '正解：<b>さそい</b>（誘う）。「AをBに 誘う」＝邀A去B，是固定句型。<br>誘答：<b>伝える</b>是「傳達（訊息）」，對象是話不是人的行動；<b>比べる</b>是「比較」；<b>写す</b>是「抄寫、拍照」。<br>句型本身就是提示：<b>「人を ＋ 場所／活動に」</b>這個組合，動詞幾乎只會是「誘う」或「連れて行く」。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-verbs', topicIds: ['jpv_n4-verbs'] },
+  },
+  {
+    id: 'n4-own-b1-24', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 24,
+    type: 'single', score: 1,
+    stem: 'ふたつの 写真を （　　）て みましょう。',
+    options: ['くらべ', 'さそい', 'つたえ', 'きり'],
+    answer: '1',
+    explain: '正解：<b>くらべ</b>（比べる）。「AとBを 比べる」「ふたつの〜を 比べる」＝比較兩者。<br>誘答：<b>誘う</b>的對象是人；<b>伝える</b>的對象是訊息；<b>切る</b>是「剪、切」。<br>提示在「ふたつの」：<b>句子裡出現「兩個」「哪一個比較…」時，動詞多半是 比べる</b>。',
+    source: { book: 'JLPT N4', chapter: '語彙', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_n4-verbs', topicIds: ['jpv_n4-verbs'] },
+  },
+
+  // ── jpv_homophone-kanji ──
+  {
+    id: 'n4-own-b1-25', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 25,
+    type: 'single', score: 1,
+    stem: '日曜日（　　）は まいにち はたらいて います。',
+    options: ['以外', '意外', '以内', '意見'],
+    answer: '1',
+    explain: '正解：<b>以外（いがい）</b>＝「除了…之外」。星期日以外的每一天都在工作。<br>誘答：<b>意外（いがい）</b>讀音<b>完全一樣</b>，意思卻是「意想不到」，只能靠漢字與前後文分辨——這正是這個考點的核心。<b>以内</b>是「以內」（範圍之內，方向相反）；<b>意見</b>是「意見」。<br>分辨法：<b>以外</b>前面接的是被排除的東西（日曜日以外）；<b>意外</b>後面多接「に＋形容詞」或「な＋名詞」。',
+    source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_homophone-kanji', topicIds: ['jpv_homophone-kanji'] },
+  },
+  {
+    id: 'n4-own-b1-26', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 26,
+    type: 'single', score: 1,
+    stem: 'テストは （　　）に かんたんでした。',
+    options: ['意外', '以外', '以内', '意見'],
+    answer: '1',
+    explain: '正解：<b>意外（いがい）</b>＝「出乎意料」。原以為很難，結果很簡單。<br>誘答：<b>以外</b>讀音相同但意思是「除了…之外」，「以外に かんたんでした」語意不通。這題和上一題刻意成對：<b>讀音一樣，位置與搭配不一樣</b>。<br>記搭配：<b>意外に＋形容詞</b>（意外に 簡単でした）、<b>意外な＋名詞</b>（意外な 結果）——<b>看到後面接に或な，就是意外不是以外。</b>',
+    source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_homophone-kanji', topicIds: ['jpv_homophone-kanji'] },
+  },
+  {
+    id: 'n4-own-b1-27', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 27,
+    type: 'single', score: 1,
+    stem: 'えきの まえで 友だちに （　　）ました。',
+    options: ['会い', '合い', '開き', '空き'],
+    answer: '1',
+    explain: '正解：<b>会い</b>（会う）＝與人見面。「人<u>に</u> 会う」，助詞用に。<br>誘答：<b>合う</b>讀音同樣是「あう」，意思卻是「合適、吻合」（サイズが 合う）——和会う 是最典型的同音異字組。<b>開く（あく）</b>是「開」，<b>空く（あく）</b>是「空出來」，讀音是あく不是あう，形也近。<br>分辨法：<b>對象是人 → 会う</b>；<b>對象是尺寸、意見、答案 → 合う</b>。',
+    source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_homophone-kanji', topicIds: ['jpv_homophone-kanji'] },
+  },
+
+  // ── jpv_no-rendaku-compounds ──
+  {
+    id: 'n4-own-b1-28', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 28,
+    type: 'single', score: 1,
+    stem: '「反対」の 読み方は どれですか。',
+    options: ['はんたい', 'はんだい', 'ほんたい', 'ばんたい'],
+    answer: '1',
+    explain: '正解：<b>はんたい</b>。<br>最大的陷阱是<b>はんだい</b>：N5 學過連濁（て＋かみ→てがみ），很容易養成「兩個詞接起來，後半就要濁化」的直覺。但<b>連濁不是通則</b>——像「反対」這種<b>音読み的漢語熟語，多半不連濁</b>。<br>其他誘答：<b>ほんたい</b>把「反」誤讀成「本」的音；<b>ばんたい</b>把前半濁化了。<br>記法：<b>訓読み的和語複合詞常連濁，音読み的漢語熟語常不連濁。</b>',
+    source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_no-rendaku-compounds', topicIds: ['jpv_no-rendaku-compounds'] },
+  },
+  {
+    id: 'n4-own-b1-29', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 29,
+    type: 'single', score: 1,
+    stem: '「世界」の 読み方は どれですか。',
+    options: ['せかい', 'せがい', 'よかい', 'せいかい'],
+    answer: '1',
+    explain: '正解：<b>せかい</b>。<br>誘答：<b>せがい</b>是連濁直覺造成的錯讀——「世界」是音読み熟語，<b>不</b>連濁。<b>よかい</b>把「世」誤用訓読み「よ」（世の中＝よのなか）；<b>せいかい</b>多了長音，那是「正解」的讀音。<br>同類不連濁的音読み熟語還有：<b>心配（しんぱい）</b>、<b>説明（せつめい）</b>、<b>洗濯（せんたく）</b>。',
+    source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_no-rendaku-compounds', topicIds: ['jpv_no-rendaku-compounds'] },
+  },
+  {
+    id: 'n4-own-b1-30', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 30,
+    type: 'single', score: 1,
+    stem: '「安心」の 読み方は どれですか。',
+    options: ['あんしん', 'あんじん', 'やすしん', 'あんこころ'],
+    answer: '1',
+    explain: '正解：<b>あんしん</b>。<br>誘答：<b>あんじん</b>是連濁直覺；<b>やすしん</b>與<b>あんこころ</b>是<b>音訓混讀</b>——把「安」讀訓読み（やすい）或把「心」讀訓読み（こころ），再和另一半的音読み拼在一起。<br><b>漢語熟語原則上整個詞都用音読み</b>，不會一半音読み一半訓読み。看到選項裡出現「一半訓一半音」的組合，通常可以直接排除。',
+    source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    topics: { primary: 'jpv_no-rendaku-compounds', topicIds: ['jpv_no-rendaku-compounds'] },
+  },
+];
