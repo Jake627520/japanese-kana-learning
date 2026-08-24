@@ -6,9 +6,10 @@ import { DataBackupCard } from './DataBackupCard';
 import { LearningPathCard } from './LearningPathCard';
 import { KanaMasteryMap } from './KanaMasteryMap';
 import { SectionHeading } from './SectionHeading';
+import { TodayPlanCard } from './TodayPlanCard';
 import { WeakKanaShadowingCard } from './WeakKanaShadowingCard';
 import { getShadowingProgress, getTodaySentences } from '../lib/shadowingProgress';
-import { ArrowRight, Play, BookOpen, RefreshCw, Sparkles, CheckCircle2, Headphones, Check } from 'lucide-react';
+import { ArrowRight, RefreshCw, Sparkles, Headphones } from 'lucide-react';
 
 interface HomeDashboardProps {
   progress: UserProgress;
@@ -66,24 +67,13 @@ export function HomeDashboard({
           <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
             支援清音・濁音・半濁音・拗音（平假名＋片假名），結合發音示範、例詞例句與 SRS 間隔重複記憶法，快速告別死記硬背。
           </p>
-          <div className="flex flex-wrap gap-3 pt-2">
-            <button
-              onClick={() => onNavigate('grid')}
-              className="px-5 py-2.5 bg-white text-[#00A86B] font-extrabold text-xs sm:text-sm rounded-xl hover:bg-slate-50 btn-lift shadow-[0_8px_20px_-8px_rgb(0_0_0/0.45)] cursor-pointer flex items-center gap-2"
-            >
-              <BookOpen className="w-4 h-4" />
-              開始五十音圖表
-            </button>
-            <button
-              onClick={() => onNavigate('quiz')}
-              className="px-5 py-2.5 bg-white/10 text-white font-extrabold text-xs sm:text-sm rounded-xl hover:bg-white/20 btn-lift border border-white/20 cursor-pointer flex items-center gap-2"
-            >
-              <Play className="w-4 h-4 fill-current" />
-              快速綜合測驗
-            </button>
-          </div>
+
         </div>
       </div>
+
+      {/* 今日學習：首頁唯一的決策點。放在 Hero 正下方，
+          讓「我今天要做什麼」在第一屏就有答案。 */}
+      <TodayPlanCard progress={progress} allKana={allKana} onNavigate={onNavigate} />
 
       {/* 今日概況 */}
       <div className="space-y-3">
@@ -100,7 +90,7 @@ export function HomeDashboard({
       </div>
 
       {/* 今天可以做的事 */}
-      <SectionHeading>今天可以做的事</SectionHeading>
+      <SectionHeading>其他練習</SectionHeading>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Today Shadowing 3 Sentences Card */}
         <div className="bg-white rounded-3xl border border-[#E2E8F0] elev-1 card-lift overflow-hidden flex flex-col">

@@ -1,5 +1,5 @@
 import { EmptyState } from './EmptyState';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { KanaItem, UserProgress } from '../types';
 import {
   getDueReviewItems,
@@ -7,6 +7,7 @@ import {
   formatNextReviewText,
   removeKanaFromWrong,
 } from '../utils/storage';
+import { getKanaStatus } from '../utils/kanaStatus';
 import { speakJapanese } from '../utils/speech';
 import { QuizView } from './QuizView';
 import {
@@ -21,31 +22,47 @@ import {
 
 interface ReviewViewProps {
   allKana: KanaItem[];
-  wrongIds: string[];
+  progress: UserProgress;
   onProgressChange: () => void;
   onStartStudyKana: (kana: KanaItem) => void;
 }
 
 export function ReviewView({
   allKana,
-  wrongIds,
+  progress,
   onProgressChange,
   onStartStudyKana,
 }: ReviewViewProps) {
   const [activeTab, setActiveTab] = useState<'due' | 'wrong'>('due');
+
+  // 首頁的「今日學習」會指定要開哪一頁（弱點或到期）。用 sessionStorage 傳遞
+  // 而不是加 prop，是為了不動到 onNavigate(tab) 的簽名——跟讀那邊的
+  // shadowing-open-today 已經是同一套做法。讀完就清掉，這是一次性的意圖，
+  // 留著會讓使用者下次自己點進複習中心時被莫名帶到另一頁。
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const want = sessionStorage.getItem('review-open-tab');
+    if (want === 'due' || want === 'wrong') {
+      setActiveTab(want);
+      sessionStorage.removeItem('review-open-tab');
+    }
+  }, []);
   const [isMiniQuizActive, setIsMiniQuizActive] = useState(false);
   const [selectedKanaDetail, setSelectedKanaDetail] = useState<KanaItem | null>(null);
   const [confirmModalKana, setConfirmModalKana] = useState<KanaItem | null>(null);
 
-  const progress: UserProgress = {
-    masteredKanaIds: [],
-    wrongKanaIds: wrongIds,
-    streakDays: 1,
-    lastStudyDate: '',
-  };
-
-  const wrongList = allKana.filter((k) => wrongIds.includes(k.id));
-  const dueList = getDueReviewItems(allKana, progress);
+  // 這裡原本是用 wrongIds 現拼一個假的 progress 物件，而且沒有 reviewStates。
+  // getDueReviewItems 讀的正是 reviewStates，拿到空物件——所以「今日到期複習」
+  // 分頁永遠是 0，SRS 排程在複習中心等於完全沒作用。首頁用的是真的 progress，
+  // 兩邊因此長期對不起來（首頁說到期 6、這裡說 0）。改成直接收真正的 progress。
+  const wrongList = allKana.filter((k) => progress.wrongKanaIds.includes(k.id));
+  // 到期清單排除弱點：同一個假名只出現在一個分頁，兩個分頁是互斥的分割而不是
+  // 重疊的集合——否則使用者會把同一個假名做兩次，兩處的數字加起來也不等於
+  // 實際要練的數量。優先序（weak > due）沿用 kanaStatus，讓首頁、五十音圖表、
+  // 複習中心三個地方講的是同一個故事。
+  const dueList = getDueReviewItems(allKana, progress).filter(
+    (k) => getKanaStatus(progress, k.id) === 'due'
+  );
 
   // Strictly map displayList according to activeTab
   const displayList = activeTab === 'due' ? dueList : wrongList;

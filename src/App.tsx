@@ -107,7 +107,7 @@ export default function App() {
             {currentTab === 'review' && (
               <ReviewView
                 allKana={ALL_LEARNABLE_KANA}
-                wrongIds={progress.wrongKanaIds}
+                progress={progress}
                 onProgressChange={refreshProgress}
                 onStartStudyKana={handleStartStudyKana}
               />
