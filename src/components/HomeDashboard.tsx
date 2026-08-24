@@ -192,13 +192,13 @@ export function HomeDashboard({
               <span className="text-xs font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full">
                 弱點加強
               </span>
-              <span className="text-xs font-bold text-[#64748B]">錯題記錄：{wrongKanaList.length}</span>
+              <span className="text-xs font-bold text-[#64748B]">答錯過：{wrongKanaList.length}</span>
             </div>
-            <h3 className="text-lg font-display font-bold text-[#1E293B]">弱點錯題庫</h3>
+            <h3 className="text-lg font-display font-bold text-[#1E293B]">弱點假名</h3>
             <p className="text-xs text-[#64748B]">
               {wrongKanaList.length > 0
                 ? `積累了 ${wrongKanaList.length} 個在測驗中出錯的假名，建議進行專屬微測驗。`
-                : '目前沒有任何錯題記錄，表現完美！'}
+                : '目前沒有答錯過的假名，表現完美！'}
             </p>
           </div>
 

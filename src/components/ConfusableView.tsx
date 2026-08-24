@@ -15,7 +15,7 @@ import { Volume2, Check, X, RotateCcw, Layers, AlertTriangle, ArrowRight } from 
 // 答錯時直接show出該組的判斷點（distinguish），因為這類錯誤補的不是記憶量，
 // 是「該看哪個特徵」——沒講清楚判斷點，再練幾次還是會錯。
 //
-// 對錯沿用 recordReviewResult：和綜合測驗共用同一套 SRS 與錯題本，
+// 對錯沿用 recordReviewResult：和綜合測驗共用同一套 SRS 與弱點記錄，
 // 不另開一套統計，否則兩邊的「弱點」會各說各話。
 
 interface Props {

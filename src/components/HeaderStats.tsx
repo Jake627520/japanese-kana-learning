@@ -9,7 +9,7 @@ interface HeaderStatsProps {
 
 // 每張卡下方多一條進度條：改版前這裡只有數字，看不出「離目標多遠」。
 // 條的分母都取自真實資料，不是裝飾——連續學習以 7 天為一輪，
-// 弱點錯題以佔全部假名的比例呈現。
+// 弱點假名以佔全部假名的比例呈現。
 export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
   const masteredCount = progress.masteredKanaIds.length;
   const wrongCount = progress.wrongKanaIds.length;
@@ -45,7 +45,7 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
     },
     {
       key: 'wrong',
-      label: '弱點錯題',
+      label: '弱點假名',
       value: String(wrongCount),
       unit: ' 個',
       tint: 'bg-red-50',
@@ -53,7 +53,7 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       bar: 'bg-red-500',
       pct: wrongPct,
       icon: <AlertTriangle className="w-5 h-5" />,
-      title: `${wrongCount} 個假名有錯題記錄，佔全部的 ${wrongPct}%`,
+      title: `${wrongCount} 個假名答錯過，佔全部的 ${wrongPct}%`,
     },
     {
       key: 'progress',

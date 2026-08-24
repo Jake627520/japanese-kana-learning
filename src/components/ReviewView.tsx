@@ -157,7 +157,7 @@ export function ReviewView({
               : 'border-transparent text-[#64748B] hover:text-[#1E293B]'
           }`}
         >
-          弱點錯題庫 ({wrongList.length})
+          弱點假名 ({wrongList.length})
         </button>
       </div>
 
@@ -165,7 +165,7 @@ export function ReviewView({
       {displayList.length === 0 ? (
         <EmptyState
           art={activeTab === 'due' ? 'calendar' : 'target'}
-          title={activeTab === 'due' ? '今天的複習都完成了' : '錯題庫是空的'}
+          title={activeTab === 'due' ? '今天的複習都完成了' : '還沒有弱點假名'}
           body={
             activeTab === 'due'
               ? 'SRS 排程沒有到期項目，下一批會在明天自動出現。現在可以去練還沒學過的假名，或做一輪綜合測驗。'
@@ -177,7 +177,7 @@ export function ReviewView({
                 onClick={() => setActiveTab('wrong')}
                 className="px-5 py-2.5 bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl hover:bg-white hover:border-[#00A86B] btn-lift cursor-pointer"
               >
-                查看全部弱點錯題 ({wrongList.length})
+                查看全部弱點假名 ({wrongList.length})
               </button>
             ) : undefined
           }

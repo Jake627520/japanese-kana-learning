@@ -20,7 +20,7 @@ const ART: Record<Art, React.ReactNode> = {
       <path className="stroke-[#A7F3D0]" d="M14 60h-6M112 60h6M18 40l-5-4M102 40l5-4" />
     </>
   ),
-  // 錯題庫是空的：靶心正中
+  // 還沒有弱點假名：靶心正中
   target: (
     <>
       <circle className="fill-[#E6F8F2]" cx="58" cy="56" r="30" />
