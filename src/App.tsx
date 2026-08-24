@@ -132,21 +132,36 @@ export default function App() {
             與 18 句跟讀都用它產生，所以標示放在全站頁尾而不是只放跟讀頁。
             MIT 指的是本站程式碼，與音檔授權是兩回事，分開寫免得被誤解成
             音檔也是 MIT。 */}
-        <footer className="mt-8 pt-6 border-t border-[#E2E8F0] text-center space-y-1 pb-24 lg:pb-6">
-          <p className="text-[11px] text-[#94A3B8]">
-            語音：<span className="font-semibold text-[#64748B]">VOICEVOX:四国めたん</span>
-            {' · '}部分內容使用瀏覽器內建語音合成
-          </p>
-          {/* 常被問到的兩件事：音檔是預先錄好隨站附上的（不必裝任何東西），
-              以及 iPhone 側邊靜音開關會讓 Safari 的 HTML5 音訊完全靜音——
-              「手機聽不到聲音」十次有九次是這個，不是網站壞了。 */}
-          <p className="text-[11px] text-[#94A3B8] leading-relaxed max-w-md mx-auto">
-            所有發音都是預先錄製、隨網站一起下載的音檔，<span className="font-semibold text-[#64748B]">不需要安裝任何軟體</span>。
-            iPhone 若沒有聲音，請先確認機身側邊的<span className="font-semibold text-[#64748B]">靜音開關</span>已關閉，並把音量調高。
-          </p>
-          <p className="text-[11px] text-[#94A3B8]">
-            日語五十音速成 · 本站程式碼以 MIT 授權釋出
-          </p>
+        <footer className="mt-10 pt-6 border-t border-[#E2E8F0] pb-28 lg:pb-8">
+          <div className="max-w-md mx-auto flex flex-col items-center gap-4 text-center">
+            {/* 音源標示。VOICEVOX 的授權要求標明使用了 VOICEVOX 與角色名稱——
+                站上 208 個假名與跟讀句都用它產生，所以放全站頁尾而不是只放跟讀頁。 */}
+            <p className="text-[11px] text-[#94A3B8]">
+              語音：<span className="font-semibold text-[#64748B]">VOICEVOX:四国めたん</span>
+              <span className="mx-1.5">·</span>
+              部分內容使用瀏覽器內建語音合成
+            </p>
+
+            {/* 最常被問到的兩件事，各自獨立一段——擠成一段會讀不出這是兩件事。
+                下面那條是「手機聽不到聲音」十次有九次的真正原因，不是網站壞了。 */}
+            <div className="w-full flex flex-col gap-2.5">
+              <p className="text-[11px] text-[#94A3B8] leading-[1.9] text-pretty">
+                所有發音都是預先錄製、隨網站一起下載的音檔，
+                <span className="font-semibold text-[#64748B]">不需要安裝任何軟體</span>。
+              </p>
+              <p className="text-[11px] text-[#94A3B8] leading-[1.9] text-pretty">
+                iPhone 若沒有聲音，請先確認機身側邊的
+                <span className="font-semibold text-[#64748B]">靜音開關</span>
+                已關閉，並把音量調高。
+              </p>
+            </div>
+
+            <p className="text-[11px] text-[#94A3B8] pt-3 border-t border-[#F1F5F9] w-full">
+              日語五十音速成
+              <span className="mx-1.5">·</span>
+              本站程式碼以 MIT 授權釋出
+            </p>
+          </div>
         </footer>
       </div>
     </div>

@@ -60,7 +60,7 @@ export function HomeDashboard({
             <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
             日語五十音學習系統
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold tracking-tight">
             掌握 208 個假名，完整打下日語基礎
           </h2>
           <p className="text-white/80 text-xs sm:text-sm leading-relaxed">
@@ -114,7 +114,7 @@ export function HomeDashboard({
               </span>
               <span className="text-xs font-bold text-[#64748B]">今日進度：{shadowingDoneCount} / 3</span>
             </div>
-            <h3 className="text-lg font-extrabold text-[#1E293B]">今日跟讀 · 3 句</h3>
+            <h3 className="text-lg font-display font-bold text-[#1E293B]">今日跟讀 · 3 句</h3>
             <p className="text-xs text-[#64748B]">
               每日精選 3 句實用語音，5 步跟讀法搭配自我比對錄音。
             </p>
@@ -160,7 +160,7 @@ export function HomeDashboard({
               </span>
               <span className="text-xs font-bold text-[#64748B]">到期數量：{dueItems.length}</span>
             </div>
-            <h3 className="text-lg font-extrabold text-[#1E293B]">今日到期複習</h3>
+            <h3 className="text-lg font-display font-bold text-[#1E293B]">今日到期複習</h3>
             <p className="text-xs text-[#64748B]">
               {dueItems.length > 0
                 ? `系統已安排 ${dueItems.length} 個需要及時複習的假名，及時鞏固長期記憶！`
@@ -204,7 +204,7 @@ export function HomeDashboard({
               </span>
               <span className="text-xs font-bold text-[#64748B]">錯題記錄：{wrongKanaList.length}</span>
             </div>
-            <h3 className="text-lg font-extrabold text-[#1E293B]">弱點錯題庫</h3>
+            <h3 className="text-lg font-display font-bold text-[#1E293B]">弱點錯題庫</h3>
             <p className="text-xs text-[#64748B]">
               {wrongKanaList.length > 0
                 ? `積累了 ${wrongKanaList.length} 個在測驗中出錯的假名，建議進行專屬微測驗。`

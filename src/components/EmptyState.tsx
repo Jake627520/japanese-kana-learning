@@ -94,7 +94,7 @@ export function EmptyState({ art, title, body, actions, bare = false }: EmptySta
         </svg>
       </div>
       <div className="space-y-2">
-        <h3 className="text-base font-extrabold text-[#1E293B]">{title}</h3>
+        <h3 className="text-base font-display font-bold text-[#1E293B]">{title}</h3>
         <p className="text-xs text-[#64748B] leading-relaxed max-w-xs mx-auto">{body}</p>
       </div>
       {actions && <div className="flex flex-wrap justify-center gap-2.5">{actions}</div>}

@@ -100,7 +100,7 @@ export function ConfusableView({ onProgressChange }: Props) {
     return (
       <div className="space-y-6">
         <div className="bg-white p-8 rounded-3xl border border-[#E2E8F0] shadow-xs text-center space-y-4">
-          <h2 className="text-2xl font-extrabold text-[#1E293B]">易混練習完成</h2>
+          <h2 className="text-2xl font-display font-bold text-[#1E293B]">易混練習完成</h2>
           <p className="text-sm text-[#64748B]">
             答對 <span className="text-[#00A86B] font-extrabold">{score.right}</span> / {total}
           </p>
@@ -124,7 +124,7 @@ export function ConfusableView({ onProgressChange }: Props) {
           <Layers className="w-3.5 h-3.5" />
           易混假名對比
         </div>
-        <h2 className="text-xl sm:text-2xl font-extrabold text-[#1E293B]">分辨長得像的假名</h2>
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">分辨長得像的假名</h2>
         <p className="text-xs text-[#64748B] leading-relaxed">
           干擾項只從同一組易混字裡抽——ぬ 的選項就是 め，逼你真的去看「繞不繞圈」，不是靠排除法猜。
         </p>

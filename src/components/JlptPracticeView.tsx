@@ -247,7 +247,7 @@ export function JlptPracticeView() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="text-2xl font-extrabold text-[#1E293B]">練習完成！</h3>
+              <h3 className="text-2xl font-display font-bold text-[#1E293B]">練習完成！</h3>
               <p className="text-xs text-[#64748B]">
                 【{selectedTopic.name}】考點演練已完成。
               </p>
@@ -294,7 +294,7 @@ export function JlptPracticeView() {
                   <Sparkles className="w-3.5 h-3.5" />
                   原創試題 · 零真題收錄
                 </div>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-[#1E293B]">
+                <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">
                   JLPT {level.toUpperCase()} 知識點專項練習
                 </h2>
                 <p className="text-xs text-[#64748B] leading-relaxed max-w-lg">
@@ -384,7 +384,7 @@ export function JlptPracticeView() {
                         </span>
                       </div>
 
-                      <h3 className="text-base font-extrabold text-[#1E293B] group-hover:text-[#00A86B] transition-colors">
+                      <h3 className="text-base font-display font-bold text-[#1E293B] group-hover:text-[#00A86B] transition-colors">
                         {topic.name}
                       </h3>
                       <p className="text-xs text-[#64748B] leading-relaxed">

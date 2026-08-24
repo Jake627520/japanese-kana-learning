@@ -320,7 +320,7 @@ export function ShadowingView() {
             <Headphones className="w-3.5 h-3.5" />
             影子跟讀法 (Shadowing v0.1)
           </div>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-[#1E293B]">
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">
             日語口說跟讀與發音自我比對
           </h2>
           <p className="text-xs text-[#64748B]">

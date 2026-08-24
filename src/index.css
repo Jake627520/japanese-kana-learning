@@ -14,6 +14,16 @@
    ──────────────────────────────────────────────────────────── */
 
 :root {
+  /* 標題用襯線（明體）。內文與假名維持無襯線——
+     襯線體的 さ・き・ふ 筆畫連斷與無襯線不同，那正是使用者在背的字形，
+     換掉會干擾學習，所以 .font-display 只上標題，絕不碰假名。
+
+     排在最前面的 Noto Serif TC 由 Google Fonts 載入；離線時（本站是 PWA）
+     自動落到系統明體：iOS/macOS 是 Songti TC、Windows 是 Yu Mincho、
+     Android 是 Noto Serif CJK。離線一樣是襯線，只是字形隨系統。 */
+  --font-display: "Noto Serif TC", "Songti TC", "Hiragino Mincho ProN", "Yu Mincho",
+    "MS Mincho", "Noto Serif CJK TC", serif;
+
   /* e1 基礎：不可點的資訊卡。等同原本的 shadow-xs。 */
   --elev-1: 0 1px 2px rgb(15 23 42 / 0.05);
   /* e2 承載：包住其他卡片的容器（側邊欄、掌握地圖），比裡面的內容重一階。 */
@@ -22,6 +32,13 @@
   --elev-3: 0 2px 4px rgb(15 23 42 / 0.04), 0 16px 32px -12px rgb(15 23 42 / 0.14);
   /* 綠光：主要按鈕與側邊欄選中項。同一畫面至多兩處，多了就失去指向性。 */
   --elev-green: 0 6px 18px -6px rgb(0 168 107 / 0.4);
+}
+
+/* 字重刻意用 700 不用 800：襯線 CJK 在 800 會把橫畫壓糊，
+   失去明體本來的粗細對比。字距放寬一點點，呼應襯線的呼吸感。 */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.015em;
 }
 
 .elev-1 { box-shadow: var(--elev-1); }

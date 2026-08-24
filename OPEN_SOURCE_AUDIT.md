@@ -20,8 +20,11 @@ This audit evaluates the open-source compliance, asset licensing, and intellectu
 ### 2.3 Assets & Media
 - **Details**: Documented in [`ASSET-LICENSE.md`](./ASSET-LICENSE.md).
 - **UI Icons**: Provided by `lucide-react` under the ISC License.
-- **Typography**: System native font stacks.
-- **Audio Assets**: 244 mp3 files are bundled (208 kana + 36 shadowing clips), generated with
+- **Typography**: Body text uses system native font stacks. Headings use Noto Serif TC, loaded
+  from Google Fonts under the SIL Open Font License 1.1, with system serif fallbacks so the site
+  still renders in serif offline.
+- **Audio Assets**: 656 mp3 files are bundled (208 kana + 412 example words/sentences +
+  36 shadowing clips), generated with
   [VOICEVOX](https://voicevox.hiroshiba.jp/) using the character 四国めたん. Commercial and
   non-commercial use and in-app redistribution are permitted, **conditional on crediting
   「VOICEVOX:四国めたん」** — the credit is rendered in the site-wide footer. Per-character terms

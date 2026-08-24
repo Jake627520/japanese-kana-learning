@@ -100,7 +100,7 @@ export function ReviewView({
       {/* Top Banner */}
       <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-extrabold text-[#1E293B]">SRS 複習中心</h2>
+          <h2 className="text-xl font-display font-bold text-[#1E293B]">SRS 複習中心</h2>
           <p className="text-xs text-[#64748B] mt-1">
             依據遺忘曲線自動進行多段式記憶排程，及時強固弱點。
           </p>
@@ -260,7 +260,7 @@ export function ReviewView({
       {confirmModalKana && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-xs z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl p-6 max-w-sm w-full border border-[#E2E8F0] shadow-xl space-y-4">
-            <h3 className="text-lg font-extrabold text-[#1E293B]">確認標記已克服？</h3>
+            <h3 className="text-lg font-display font-bold text-[#1E293B]">確認標記已克服？</h3>
             <p className="text-xs text-[#64748B]">
               將假名「<strong className="text-[#1E293B]">{confirmModalKana.kana}</strong>」移除出弱點名單。
             </p>

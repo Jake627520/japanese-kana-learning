@@ -23,9 +23,11 @@
 
 ### 2. 真人級日語發音，不用瀏覽器 TTS
 
-全部 208 個假名與 18 句跟讀句都使用 **VOICEVOX** 預先生成音檔（244 個 mp3）。
+全部 208 個假名、203 個例詞、204 句例句與 18 句跟讀句都使用 **VOICEVOX** 預先生成音檔（656 個 mp3，共 7.3MB）。
 
 瀏覽器內建語音合成唸單一假名時品質不穩定——有些引擎會唸成字母名稱，拗音與促音也常糊掉，而這正是初學者最需要聽清楚的部分。改用預生成音檔後發音穩定，且離線也能播。
+
+例詞與例句也一併預生成：在補齊之前，特殊音頁面唸的全是單字（がっこう・コーヒー），完全落在瀏覽器 TTS 上，同一個網站會出現兩種音色。
 
 全站語音固定使用同一個聲音，避免不同單元像換了老師。
 
@@ -127,8 +129,9 @@ npm run preview
 需先安裝並開啟 [VOICEVOX](https://voicevox.hiroshiba.jp/)（提供本機 API），以及 `ffmpeg`。
 
 ```bash
-node scripts/gen-kana-audio.mjs    # 208 個假名
-node scripts/gen-audio.mjs         # 18 句跟讀（正常 + 慢速）
+node scripts/gen-kana-audio.mjs     # 208 個假名
+node scripts/gen-content-audio.mjs  # 412 個例詞・例句・特殊音例字
+node scripts/gen-audio.mjs          # 18 句跟讀（正常 + 慢速）
 ```
 
 ## 資料驗證

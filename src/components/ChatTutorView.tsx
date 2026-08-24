@@ -265,7 +265,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
             あ
           </div>
           <div className="min-w-0">
-            <h2 className="font-extrabold text-[#1E293B] leading-tight truncate">あ老師・對話教室</h2>
+            <h2 className="font-display font-bold text-[#1E293B] leading-tight truncate">あ老師・對話教室</h2>
             <p className="text-xs text-[#64748B] truncate">聊天式互動，一行一行帶你學五十音</p>
           </div>
         </div>

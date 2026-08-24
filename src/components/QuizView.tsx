@@ -256,7 +256,7 @@ export function QuizView({
           <Trophy className="w-8 h-8" />
         </div>
         <div>
-          <h2 className="text-2xl font-extrabold text-[#1E293B]">測驗完成！</h2>
+          <h2 className="text-2xl font-display font-bold text-[#1E293B]">測驗完成！</h2>
           <p className="text-xs text-[#64748B] mt-1">恭喜完成本次測驗，系統已自動排程 SRS 複習。</p>
         </div>
 

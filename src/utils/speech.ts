@@ -1,4 +1,5 @@
 import { ALL_KANA_AUDIO } from '../data/kanaAudioMap';
+import { CONTENT_AUDIO } from '../data/contentAudioMap';
 
 // 全站的日語發音入口。8 個元件、17 個呼叫點都走這裡，所以音源策略集中在這一個
 // 函式：有預先生成的 VOICEVOX 音檔就用它，沒有才退回瀏覽器 Web Speech。
@@ -6,7 +7,12 @@ import { ALL_KANA_AUDIO } from '../data/kanaAudioMap';
 // 為什麼值得替假名準備音檔：瀏覽器 TTS 唸單一假名時品質很不穩定——有些引擎會
 // 把它當字母名稱唸、拗音與促音也常常糊掉，而這正是初學者要聽準的東西。
 //
-// 保留 Web Speech 作為 fallback，是因為例詞、例句這些沒有預生成音檔的內容仍要能發音。
+// 例詞、例句、特殊音例字也一併預生成了（見 gen-content-audio.mjs）：在補之前，
+// 特殊音頁唸的全是單字（がっこう・コーヒー），完全落在 TTS 上，同一個網站
+// 會出現兩種音色，聽起來像壞了。
+//
+// Web Speech 仍然保留當 fallback：對話教室的自由輸入無法預先生成，
+// 音檔缺失或解碼失敗時也要有東西能發聲。
 //
 // ⚠ 音檔為 VOICEVOX:四国めたん 產生，使用時必須標示（授權要求，見跟讀頁面）。
 
@@ -47,9 +53,17 @@ export function speakJapanese(text: string): void {
     current = null;
   }
 
-  const file = ALL_KANA_AUDIO[text];
-  if (file) {
-    const el = new Audio(`${import.meta.env.BASE_URL}audio/kana/${file}.mp3`);
+  // 先查單假名，再查例詞／例句；兩個 map 的 key 不重疊（單假名不會出現在例詞裡）
+  const kanaFile = ALL_KANA_AUDIO[text];
+  const contentFile = kanaFile ? null : CONTENT_AUDIO[text];
+  const src = kanaFile
+    ? `${import.meta.env.BASE_URL}audio/kana/${kanaFile}.mp3`
+    : contentFile
+    ? `${import.meta.env.BASE_URL}audio/content/${contentFile}.mp3`
+    : null;
+
+  if (src) {
+    const el = new Audio(src);
     current = el;
     // 音檔缺失或解碼失敗時不要靜默失敗，退回 TTS 讓使用者仍聽得到
     el.onerror = () => speakWithTts(text);

@@ -11,7 +11,7 @@ export function SpecialSoundsView() {
     <div className="space-y-6">
       {/* Header */}
       <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs">
-        <h2 className="text-xl font-extrabold text-[#1E293B]">特殊音規則</h2>
+        <h2 className="text-xl font-display font-bold text-[#1E293B]">特殊音規則</h2>
         <p className="text-xs text-[#64748B] mt-1">
           促音（っ）與長音是日語發音的重要規則。理解後，讀音與拼寫會更準確。
         </p>
@@ -20,7 +20,7 @@ export function SpecialSoundsView() {
       {/* 促音 Section */}
       <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-xs overflow-hidden">
         <div className="bg-[#FEF3C7] px-6 py-4 border-b border-[#FDE68A]">
-          <h3 className="text-base font-extrabold text-[#92400E] flex items-center gap-2">
+          <h3 className="text-base font-display font-bold text-[#92400E] flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
             促音（そくおん）— っ / ッ
           </h3>
@@ -78,7 +78,7 @@ export function SpecialSoundsView() {
       {/* 長音 Section */}
       <div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-xs overflow-hidden">
         <div className="bg-[#DBEAFE] px-6 py-4 border-b border-[#BFDBFE]">
-          <h3 className="text-base font-extrabold text-[#1E40AF] flex items-center gap-2">
+          <h3 className="text-base font-display font-bold text-[#1E40AF] flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
             長音（ちょうおん）— 母音延長
           </h3>

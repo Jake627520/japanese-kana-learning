@@ -61,7 +61,7 @@ export function DataBackupCard() {
       <div className="space-y-1">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-5 h-5 text-[#00A86B]" />
-          <h3 className="text-base font-extrabold text-[#1E293B]">學習進度備份與還原</h3>
+          <h3 className="text-base font-display font-bold text-[#1E293B]">學習進度備份與還原</h3>
         </div>
         <p className="text-xs text-[#64748B]">
           支援將假名熟練度、SRS 複習週期與 JLPT 答題紀錄匯出為 JSON 備份，隨時隨地安全還原。

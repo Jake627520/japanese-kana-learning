@@ -71,7 +71,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
             あ
           </div>
           <div>
-            <h1 className="font-extrabold text-base text-[#1E293B] tracking-tight">日語五十音速成</h1>
+            <h1 className="font-display font-bold text-base text-[#1E293B] tracking-tight">日語五十音速成</h1>
             <span className="text-[11px] font-semibold text-[#00A86B] bg-[#E6F8F2] px-2 py-0.5 rounded-full inline-block">
               SRS 記憶系統
             </span>
@@ -191,7 +191,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
               <span aria-hidden className="w-10 h-1 rounded-full bg-[#E2E8F0]" />
             </div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base font-extrabold text-[#1E293B]">更多</h2>
+              <h2 className="text-base font-display font-bold text-[#1E293B]">更多</h2>
               <button
                 onClick={() => setIsSheetOpen(false)}
                 aria-label="關閉"

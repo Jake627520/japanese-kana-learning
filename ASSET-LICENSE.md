@@ -10,9 +10,10 @@
 
 ## Audio attribution (required)
 
-244 mp3 files ship with this project:
+656 mp3 files ship with this project:
 
 - `public/audio/kana/` — 208 clips, one per kana
+- `public/audio/content/` — 412 clips (example words, example sentences, special-sound words)
 - `public/audio/shadowing/` — 36 clips (18 sentences × normal/slow)
 
 All were generated with [VOICEVOX](https://voicevox.hiroshiba.jp/) using the

@@ -153,7 +153,7 @@ export function WritingPracticeView({ onProgressChange }: Props) {
           <PenLine className="w-3.5 h-3.5" />
           書寫練習
         </div>
-        <h2 className="text-xl sm:text-2xl font-extrabold text-[#1E293B]">看筆順 → 描紅 → 自己寫</h2>
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">看筆順 → 描紅 → 自己寫</h2>
         <p className="text-xs text-[#64748B] leading-relaxed">
           寫得出來和認得出來是兩種能力。這裡不自動評分——照筆順寫完，自己和上方的字比對，再決定要不要標記為已掌握。
         </p>

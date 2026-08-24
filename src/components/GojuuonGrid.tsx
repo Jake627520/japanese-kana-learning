@@ -26,7 +26,7 @@ export function GojuuonGrid({
     <div className="space-y-6">
       <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-extrabold text-[#1E293B]">
+          <h2 className="text-xl font-display font-bold text-[#1E293B]">
             {kanaType === 'katakana' ? '片假名' : '平假名'}
             {kanaCategory === 'dakuten'
               ? '濁音'
