@@ -8,6 +8,7 @@ import {
 } from '../data/jlpt';
 import { recordJlptAnswer } from '../utils/jlptStorage';
 import { JlptWeakPointCard } from './JlptWeakPointCard';
+import { RichText } from './RichText';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle } from 'lucide-react';
 
 // 每個級別的說明文字。N3 的知識點在知識庫已經備妥，但原創題還沒寫完，
@@ -15,6 +16,7 @@ import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, S
 const LEVEL_BLURB: Record<string, string> = {
   n5: '精選 N5 核心考點，依知識點逐一突破漢字、讀音、連濁與助數詞弱點。',
   n4: 'N4 新增用法題與使役、受身、授受方向等文法，並含兩組読解短文。每個知識點 3 題。',
+  n3: 'N3 大量出現「四個選項文法都對、只有一個語感對」的題型：わけがない／わけではない、おかげで／せいで、ために／ように。含短文與資訊檢索読解。',
 };
 
 // 領域配色：綠＝文字語彙、藍＝文法、琥珀＝読解。只用三種，避免變成調色盤。
@@ -220,7 +222,7 @@ export function JlptPracticeView() {
                     題目解析
                   </div>
                   <p className="text-xs text-[#334155] leading-relaxed">
-                    {currentQ.explain}
+                    <RichText text={currentQ.explain} />
                   </p>
                 </div>
 
@@ -334,12 +336,6 @@ export function JlptPracticeView() {
                     {lv.toUpperCase()}
                   </button>
                 ))}
-                <span
-                  title="N3 題庫建置中"
-                  className="px-4 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg text-[#CBD5E1] cursor-not-allowed select-none"
-                >
-                  N3
-                </span>
               </div>
 
               {/* 級別總覽：不用進到每張卡就知道這一級有多少題 */}

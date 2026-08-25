@@ -11,6 +11,12 @@ export { N4_TOPICS_BATCH3 } from './n4TopicsBatch3';
 export { N4_ORIGINAL_BATCH1 } from './n4OriginalBatch1';
 export { N4_ORIGINAL_BATCH2 } from './n4OriginalBatch2';
 export { N4_ORIGINAL_BATCH3 } from './n4OriginalBatch3';
+export { N3_TOPICS_BATCH1 } from './n3TopicsBatch1';
+export { N3_TOPICS_BATCH2 } from './n3TopicsBatch2';
+export { N3_TOPICS_BATCH3 } from './n3TopicsBatch3';
+export { N3_ORIGINAL_BATCH1 } from './n3OriginalBatch1';
+export { N3_ORIGINAL_BATCH2 } from './n3OriginalBatch2';
+export { N3_ORIGINAL_BATCH3 } from './n3OriginalBatch3';
 
 import { N5_TOPICS_BATCH1 } from './n5TopicsBatch1';
 import { N5_TOPICS_BATCH2 } from './n5TopicsBatch2';
@@ -25,6 +31,12 @@ import { N4_TOPICS_BATCH3 } from './n4TopicsBatch3';
 import { N4_ORIGINAL_BATCH1 } from './n4OriginalBatch1';
 import { N4_ORIGINAL_BATCH2 } from './n4OriginalBatch2';
 import { N4_ORIGINAL_BATCH3 } from './n4OriginalBatch3';
+import { N3_TOPICS_BATCH1 } from './n3TopicsBatch1';
+import { N3_TOPICS_BATCH2 } from './n3TopicsBatch2';
+import { N3_TOPICS_BATCH3 } from './n3TopicsBatch3';
+import { N3_ORIGINAL_BATCH1 } from './n3OriginalBatch1';
+import { N3_ORIGINAL_BATCH2 } from './n3OriginalBatch2';
+import { N3_ORIGINAL_BATCH3 } from './n3OriginalBatch3';
 import { JlptQuestion, JlptTopic, JlptGrade } from '../../types';
 
 export const ALL_N5_TOPICS_UI: JlptTopic[] = [
@@ -39,11 +51,19 @@ export const ALL_N4_TOPICS_UI: JlptTopic[] = [
   ...N4_TOPICS_BATCH3,
 ];
 
-// 目前有題庫的級別。N3 的知識點在 nihongo-tiku 已經定義好，但原創題還沒寫，
-// 所以刻意不列進來——列了卻點不進去，比不列更糟。
-export const AVAILABLE_LEVELS: JlptGrade[] = ['n5', 'n4'];
+export const ALL_N3_TOPICS_UI: JlptTopic[] = [
+  ...N3_TOPICS_BATCH1,
+  ...N3_TOPICS_BATCH2,
+  ...N3_TOPICS_BATCH3,
+];
+
+// 三級都有完整題庫了（各 30 個知識點，每點至少 3 題）。
+// 這個陣列同時決定 UI 上的分級切換按鈕——沒題庫的級別不列進來，
+// 列了卻點不進去比不列更糟。
+export const AVAILABLE_LEVELS: JlptGrade[] = ['n5', 'n4', 'n3'];
 
 export function getTopicsByLevel(level: JlptGrade): JlptTopic[] {
+  if (level === 'n3') return ALL_N3_TOPICS_UI;
   if (level === 'n4') return ALL_N4_TOPICS_UI;
   if (level === 'n5') return ALL_N5_TOPICS_UI;
   return [];
@@ -60,6 +80,9 @@ export function getOwnJlptQuestions(): JlptQuestion[] {
     ...N4_ORIGINAL_BATCH1,
     ...N4_ORIGINAL_BATCH2,
     ...N4_ORIGINAL_BATCH3,
+    ...N3_ORIGINAL_BATCH1,
+    ...N3_ORIGINAL_BATCH2,
+    ...N3_ORIGINAL_BATCH3,
   ].filter((q) => q.source.license === 'own' && q.source.origin === 'own');
 }
 
@@ -69,6 +92,7 @@ const TOPIC_LEVEL: Record<string, JlptGrade> = (() => {
   const map: Record<string, JlptGrade> = {};
   for (const t of ALL_N5_TOPICS_UI) map[t.id] = 'n5';
   for (const t of ALL_N4_TOPICS_UI) map[t.id] = 'n4';
+  for (const t of ALL_N3_TOPICS_UI) map[t.id] = 'n3';
   return map;
 })();
 
