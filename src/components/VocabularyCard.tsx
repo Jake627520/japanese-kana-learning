@@ -49,7 +49,6 @@ export function VocabularyCard({
           title={`Play ${item.word}`}
         >
           <Volume2 size={20} aria-hidden="true" />
-          <span>🔊</span>
         </button>
       </div>
 
