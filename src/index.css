@@ -28,6 +28,9 @@
   --elev-3: 0 2px 4px rgb(15 23 42 / 0.04), 0 16px 32px -12px rgb(15 23 42 / 0.14);
   /* 綠光：主要按鈕與側邊欄選中項。同一畫面至多兩處，多了就失去指向性。 */
   --elev-green: 0 6px 18px -6px rgb(0 168 107 / 0.4);
+
+  --border-color: #E2E8F0;
+  --surface-color: #FAFBFB;
 }
 
 html[lang="zh-CN"] {
@@ -165,4 +168,94 @@ html[lang="en"] {
 .sheet-up { animation: sheetUp 0.25s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @media (prefers-reduced-motion: reduce) {
   .sheet-up { animation: none; }
+}
+
+/* ────────────────────────────────────────────────────────────
+   VocabularyCard 代表單字卡片
+   ──────────────────────────────────────────────────────────── */
+.vocabulary-card {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  background: var(--surface-color);
+  box-shadow: var(--elev-1);
+}
+
+.vocabulary-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.vocabulary-card__kanji {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1E293B;
+}
+
+.vocabulary-card__word {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin-top: 0.15rem;
+  color: #334155;
+}
+
+.vocabulary-card__romaji {
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+  color: #00A86B;
+  font-weight: 700;
+}
+
+.vocabulary-card__meaning {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.vocabulary-card__audio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.85rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background-color: #00A86B;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--elev-1);
+  transition: background-color 0.15s, transform 0.15s;
+}
+
+.vocabulary-card__audio:hover {
+  background-color: #008F5B;
+  transform: translateY(-1px);
+}
+
+.vocabulary-card__audio:active {
+  transform: translateY(0);
+}
+
+.vocabulary-card__audio:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .vocabulary-card {
+    padding: 0.85rem;
+  }
+
+  .vocabulary-card__kanji {
+    font-size: 1.5rem;
+  }
 }

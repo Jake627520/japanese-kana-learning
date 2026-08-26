@@ -2,7 +2,8 @@ import React from 'react';
 import { KanaItem } from '../types';
 import { speakJapanese } from '../utils/speech';
 import { toggleKanaMastered } from '../utils/storage';
-import { getPrimaryVocabularyByKanaId, playVocabularyAudio } from '../data/vocabulary';
+import { getPrimaryVocabularyByKanaId } from '../data/vocabulary';
+import { VocabularyCard } from './VocabularyCard';
 import { Volume2, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useI18n } from '../i18n';
 
@@ -90,48 +91,12 @@ export function KanaCardView({
           </button>
         </div>
 
-        {/* Representative Vocabulary (v1.6.0-B) */}
+        {/* Representative Vocabulary (v1.6.1 VocabularyCard) */}
         {primaryVocab && (
-          <div className="p-4 sm:p-5 bg-emerald-50/50 rounded-2xl border border-emerald-200/60 space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-extrabold text-[#00A86B] tracking-wide">
-                {t('study.representativeWord')}
-              </span>
-              {primaryVocab.type !== 'noun' && (
-                <span className="text-[10px] font-bold text-[#64748B] bg-white px-2 py-0.5 rounded-md border border-[#E2E8F0]">
-                  {primaryVocab.type}
-                </span>
-              )}
-            </div>
-
-            <div className="flex items-center justify-between gap-4">
-              <div className="space-y-1">
-                <div className="flex items-baseline gap-2">
-                  {primaryVocab.kanji ? (
-                    <>
-                      <span className="text-xl font-black text-[#1E293B]">{primaryVocab.kanji}</span>
-                      <span className="text-sm font-bold text-[#475569]">({primaryVocab.word})</span>
-                    </>
-                  ) : (
-                    <span className="text-xl font-black text-[#1E293B]">{primaryVocab.word}</span>
-                  )}
-                  <span className="text-xs font-bold text-[#00A86B]">[{primaryVocab.romaji}]</span>
-                </div>
-                <div className="text-xs font-semibold text-[#64748B]">
-                  {primaryVocab.meaning[language] || primaryVocab.meaning['zh-TW']}
-                </div>
-              </div>
-
-              <button
-                onClick={() => playVocabularyAudio(primaryVocab)}
-                aria-label={`${t('study.listenWord')}: ${primaryVocab.word}`}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#00A86B] text-white rounded-xl text-xs font-bold shadow-xs hover:bg-[#008F5B] transition-all cursor-pointer shrink-0"
-              >
-                <Volume2 className="w-4 h-4" />
-                <span>{t('study.listenWord')}</span>
-              </button>
-            </div>
-          </div>
+          <VocabularyCard
+            item={primaryVocab}
+            locale={language}
+          />
         )}
 
         {/* Existing Examples & Sentences */}

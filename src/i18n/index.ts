@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo } from 'react';
 import { Language, TranslationSchema } from './types';
+export type { Language, TranslationSchema };
 import { zhTW } from './zh-TW';
 import { zhCN } from './zh-CN';
 import { en } from './en';
