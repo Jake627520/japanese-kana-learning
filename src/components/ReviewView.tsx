@@ -9,6 +9,7 @@ import {
 } from '../utils/storage';
 import { getKanaStatus } from '../utils/kanaStatus';
 import { speakJapanese } from '../utils/speech';
+import { getPrimaryVocabularyByKanaId, playVocabularyAudio } from '../data/vocabulary';
 import { QuizView } from './QuizView';
 import { useI18n } from '../i18n';
 import {
@@ -31,7 +32,7 @@ export function ReviewView({
   onProgressChange,
   onStartStudyKana,
 }: ReviewViewProps) {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const [activeTab, setActiveTab] = useState<'due' | 'wrong'>('due');
 
   useEffect(() => {
@@ -231,11 +232,43 @@ export function ReviewView({
                   </button>
                 </div>
 
-                {firstEx && (
-                  <div className="bg-[#FAFBFB] p-3 rounded-xl text-xs text-[#64748B] border border-[#F1F5F9]">
-                    {t('study.examples')}: <strong className="text-[#1E293B] font-semibold">{firstEx.word}</strong> ({firstEx.meaning})
-                  </div>
-                )}
+                {(() => {
+                  const vocab = getPrimaryVocabularyByKanaId(item.id);
+                  if (vocab) {
+                    const meaning = vocab.meaning[language] || vocab.meaning['zh-TW'];
+                    return (
+                      <div className="bg-emerald-50/60 p-2.5 rounded-xl text-xs text-[#64748B] border border-emerald-100 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-bold text-[#00A86B]">{t('study.representativeWord')}:</span>
+                          <strong className="text-[#1E293B] font-bold">
+                            {vocab.kanji ? `${vocab.kanji} (${vocab.word})` : vocab.word}
+                          </strong>
+                          <span className="text-[#00A86B] font-semibold">[{vocab.romaji}]</span>
+                          <span className="text-[#64748B]">・ {meaning}</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            void playVocabularyAudio(vocab);
+                          }}
+                          className="p-1 text-[#00A86B] hover:text-[#008F5B] hover:bg-emerald-100 rounded-md transition-colors cursor-pointer shrink-0 ml-1.5"
+                          title={t('study.listenWord')}
+                        >
+                          <Volume2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    );
+                  }
+                  if (firstEx) {
+                    return (
+                      <div className="bg-[#FAFBFB] p-3 rounded-xl text-xs text-[#64748B] border border-[#F1F5F9]">
+                        {t('study.examples')}: <strong className="text-[#1E293B] font-semibold">{firstEx.word}</strong> ({firstEx.meaning})
+                      </div>
+                    );
+                  }
+                  return null;
+                })()}
 
                 <div className="flex items-center justify-between pt-2 border-t border-[#F1F5F9] gap-2">
                   <span className="text-xs font-bold text-[#00A86B] flex items-center gap-1">

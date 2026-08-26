@@ -3,6 +3,7 @@ import { KanaItem, QuizQuestion } from '../types';
 import { removeKanaFromWrong, recordReviewResult } from '../utils/storage';
 import { speakJapanese } from '../utils/speech';
 import { Volume2, CheckCircle2, XCircle, ArrowRight, RefreshCw, Trophy } from 'lucide-react';
+import { QuizVocabFeedback } from './QuizVocabFeedback';
 import { useI18n } from '../i18n';
 
 interface QuizViewProps {
@@ -338,7 +339,7 @@ export function QuizView({
           )}
 
           {!allCorrect && (
-            <div className="p-4 rounded-2xl bg-red-50 border border-red-200 space-y-2">
+            <div className="p-4 rounded-2xl bg-red-50 border border-red-200 space-y-3">
               <div className="text-xs font-extrabold text-red-700">
                 {t('quiz.wrongListTitle')} · {weakKana.length}
               </div>
@@ -351,6 +352,11 @@ export function QuizView({
                     {k.kana}
                     <span className="ml-1 font-bold text-red-400 uppercase">{k.romaji}</span>
                   </span>
+                ))}
+              </div>
+              <div className="space-y-1.5 pt-1">
+                {weakKana.map((k) => (
+                  <QuizVocabFeedback key={k.id} kanaId={k.id} compact={true} />
                 ))}
               </div>
             </div>
@@ -514,6 +520,7 @@ export function QuizView({
             {feedbackNote && (
               <div className="text-xs font-bold text-[#00A86B] text-center">{feedbackNote}</div>
             )}
+            <QuizVocabFeedback kanaId={currentQ.targetKana.id} />
             <button
               onClick={handleNext}
               className="w-full py-3 bg-[#00A86B] text-white font-bold text-xs rounded-2xl hover:bg-[#008F5B] transition-all cursor-pointer flex items-center justify-center gap-2"
