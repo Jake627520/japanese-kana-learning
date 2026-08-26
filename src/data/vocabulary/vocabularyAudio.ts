@@ -6,7 +6,7 @@ import { speakJapanese } from '../../utils/speech';
  * Transparently delegates to pre-recorded VOICEVOX audio in contentAudioMap / kanaAudioMap.
  */
 export const VOCABULARY_AUDIO_MAPPING: Record<string, string> = {
-  // Seion 46
+  // Hiragana Seion 46
   vocab_asa: 'あさ',
   vocab_inu: 'いぬ',
   vocab_umi: 'うみ',
@@ -54,7 +54,7 @@ export const VOCABULARY_AUDIO_MAPPING: Record<string, string> = {
   vocab_wo: 'を',
   vocab_nihon: 'にほん',
 
-  // Dakuten 20
+  // Hiragana Dakuten 20
   vocab_gakkou: 'がっこう',
   vocab_ginkou: 'ぎんこう',
   vocab_gunjin: 'ぐんじん',
@@ -76,14 +76,14 @@ export const VOCABULARY_AUDIO_MAPPING: Record<string, string> = {
   vocab_benkyou: 'べんきょう',
   vocab_boushi: 'ぼうし',
 
-  // Handakuten 5
+  // Hiragana Handakuten 5
   vocab_pan: 'ぱん',
   vocab_enpitsu: 'えんぴつ',
   vocab_tempura: 'てんぷら',
   vocab_pen: 'ぺん',
   vocab_sanpo: 'さんぽ',
 
-  // Youon 33
+  // Hiragana Youon 33
   vocab_kyaku: 'きゃく',
   vocab_kyuu: 'きゅう',
   vocab_kyou: 'きょう',
@@ -117,6 +117,54 @@ export const VOCABULARY_AUDIO_MAPPING: Record<string, string> = {
   vocab_ryaku: 'りゃく',
   vocab_ryuugaku: 'りゅうがく',
   vocab_ryokou: 'りょこう',
+
+  // Katakana Seion 46
+  vocab_k_aisu: 'アイス',
+  vocab_k_inku: 'インク',
+  vocab_k_webu: 'ウェブ',
+  vocab_k_eakon: 'エアコン',
+  vocab_k_orenji: 'オレンジ',
+  vocab_k_kamera: 'カメラ',
+  vocab_k_kiro: 'キロ',
+  vocab_k_kurasu: 'クラス',
+  vocab_k_keeki: 'ケーキ',
+  vocab_k_koin: 'コイン',
+  vocab_k_sain: 'サイン',
+  vocab_k_shatsu: 'シャツ',
+  vocab_k_suupu: 'スープ',
+  vocab_k_seetaa: 'セーター',
+  vocab_k_sofa: 'ソファ',
+  vocab_k_takushii: 'タクシー',
+  vocab_k_chiimu: 'チーム',
+  vocab_k_tsuaa: 'ツアー',
+  vocab_k_tesuto: 'テスト',
+  vocab_k_tomato: 'トマト',
+  vocab_k_naifu: 'ナイフ',
+  vocab_k_nyuusu: 'ニュース',
+  vocab_k_nuudoru: 'ヌードル',
+  vocab_k_nekutai: 'ネクタイ',
+  vocab_k_nooto: 'ノート',
+  vocab_k_hamu: 'ハム',
+  vocab_k_hiiroo: 'ヒーロー',
+  vocab_k_fooku: 'フォーク',
+  vocab_k_herumetto: 'ヘルメット',
+  vocab_k_hoteru: 'ホテル',
+  vocab_k_maiku: 'マイク',
+  vocab_k_miruku: 'ミルク',
+  vocab_k_muubii: 'ムービー',
+  vocab_k_memo: 'メモ',
+  vocab_k_moderu: 'モデル',
+  vocab_k_yaado: 'ヤード',
+  vocab_k_yunifoomu: 'ユニフォーム',
+  vocab_k_yooguruto: 'ヨーグルト',
+  vocab_k_rajio: 'ラジオ',
+  vocab_k_ringu: 'リング',
+  vocab_k_ruuru: 'ルール',
+  vocab_k_remon: 'レモン',
+  vocab_k_robotto: 'ロボット',
+  vocab_k_wain: 'ワイン',
+  vocab_k_wo: 'ヲ',
+  vocab_k_pen: 'ペン',
 };
 
 /**

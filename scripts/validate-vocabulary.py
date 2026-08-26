@@ -3,10 +3,10 @@
 validate-vocabulary.py
 
 Validates vocabulary datasets for Japanese Kana Learning:
-1. Verifies 46 Seion, 20 Dakuten, 5 Handakuten, and 33 Youon representative vocabulary items (104 total).
+1. Verifies 46 Seion, 20 Dakuten, 5 Handakuten, 33 Youon, and 46 Katakana Seion representative vocabulary items (150 total).
 2. Checks unique IDs across all entries.
 3. Validates required fields: word, romaji, type, primaryKanaId, kanaLinks, audioKey, meaning.
-4. Checks 100% primary kana ID coverage for Seion (46), Dakuten (20), Handakuten (5), Youon (33).
+4. Checks 100% primary kana ID coverage for Seion (46), Dakuten (20), Handakuten (5), Youon (33), Katakana Seion (46).
 5. Checks 100% trilingual meaning completeness (zh-TW, zh-CN, en).
 6. Validates every kanaLink strictly exists in the 208 Kana database with zero duplicates.
 7. Checks audioKey mapping in vocabularyAudio.ts, verifies contentAudioMap / kanaAudioMap and verifies physical MP3 existence.
@@ -54,6 +54,19 @@ YOUON_33_KANA_IDS = [
     'hy_rya', 'hy_ryu', 'hy_ryo',
 ]
 
+KATAKANA_SEION_46_KANA_IDS = [
+    'k_a', 'k_i', 'k_u', 'k_e', 'k_o',
+    'k_ka', 'k_ki', 'k_ku', 'k_ke', 'k_ko',
+    'k_sa', 'k_shi', 'k_su', 'k_se', 'k_so',
+    'k_ta', 'k_chi', 'k_tsu', 'k_te', 'k_to',
+    'k_na', 'k_ni', 'k_nu', 'k_ne', 'k_no',
+    'k_ha', 'k_hi', 'k_fu', 'k_he', 'k_ho',
+    'k_ma', 'k_mi', 'k_mu', 'k_me', 'k_mo',
+    'k_ya', 'k_yu', 'k_yo',
+    'k_ra', 'k_ri', 'k_ru', 'k_re', 'k_ro',
+    'k_wa', 'k_wo', 'k_n',
+]
+
 def main():
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     vocab_dir = os.path.join(root_dir, 'src', 'data', 'vocabulary')
@@ -65,22 +78,25 @@ def main():
 
     errors = []
 
-    # Load 208 Kana database IDs
+    # Load all 208 Kana database IDs
     with open(os.path.join(root_dir, 'src', 'data', 'kanaData.ts'), 'r') as f:
         kd1 = f.read()
+    with open(os.path.join(root_dir, 'src', 'data', 'katakanaData.ts'), 'r') as f:
+        kd_kata = f.read()
     with open(os.path.join(root_dir, 'src', 'data', 'dakutenData.ts'), 'r') as f:
         kd2 = f.read()
     with open(os.path.join(root_dir, 'src', 'data', 'handakutenData.ts'), 'r') as f:
         kd3 = f.read()
     with open(os.path.join(root_dir, 'src', 'data', 'youonData.ts'), 'r') as f:
         kd4 = f.read()
-    valid_db_kana_ids = set(re.findall(r'"id":\s*"([^"]+)"', kd1 + kd2 + kd3 + kd4))
+    valid_db_kana_ids = set(re.findall(r'"id":\s*"([^"]+)"', kd1 + kd_kata + kd2 + kd3 + kd4))
 
     files_to_check = [
         ('seion46.ts', 46, SEION_46_KANA_IDS),
         ('dakuten20.ts', 20, DAKUTEN_20_KANA_IDS),
         ('handakuten5.ts', 5, HANDAKUTEN_5_KANA_IDS),
         ('youon33.ts', 33, YOUON_33_KANA_IDS),
+        ('katakanaSeion46.ts', 46, KATAKANA_SEION_46_KANA_IDS),
     ]
 
     with open(audio_file, 'r', encoding='utf-8') as f:
@@ -210,8 +226,8 @@ def main():
         return 1
 
     print(f"\n✅ All vocabulary validation checks passed successfully!")
-    print(f"   - Total items validated: {total_items} (46 Seion + 20 Dakuten + 5 Handakuten + 33 Youon)")
-    print(f"   - 100% primaryKanaId coverage across Seion (46), Dakuten (20), Handakuten (5), Youon (33).")
+    print(f"   - Total items validated: {total_items} (46 Seion + 20 Dakuten + 5 Handakuten + 33 Youon + 46 Katakana Seion)")
+    print(f"   - 100% primaryKanaId coverage across all 150 representative words.")
     print(f"   - 100% kanaLinks verified against 208 Kana database with zero invalid IDs or duplicates.")
     print(f"   - 100% trilingual (zh-TW, zh-CN, en) meaning coverage.")
     print(f"   - All audio keys and physical MP3 assets verified on disk.")
