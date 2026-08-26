@@ -2,16 +2,19 @@ import React from 'react';
 import { Volume2 } from 'lucide-react';
 import type { VocabularyItem } from '../data/vocabulary/vocabularyTypes';
 import { playVocabularyAudio } from '../data/vocabulary/vocabularyAudio';
+import { VocabularyKanaBreakdown } from './VocabularyKanaBreakdown';
 import type { Language } from '../i18n';
 
 interface VocabularyCardProps {
   item: VocabularyItem;
   locale: Language;
+  currentKanaId?: string;
 }
 
 export function VocabularyCard({
   item,
   locale,
+  currentKanaId,
 }: VocabularyCardProps) {
   const meaning = item.meaning[locale] || item.meaning['zh-TW'];
 
@@ -25,20 +28,17 @@ export function VocabularyCard({
       aria-label={`${item.word} vocabulary`}
     >
       <div className="vocabulary-card__header">
-        <div>
+        <div className="space-y-1">
           {item.kanji && (
             <div className="vocabulary-card__kanji">
               {item.kanji}
             </div>
           )}
 
-          <div className="vocabulary-card__word">
-            {item.word}
-          </div>
-
-          <div className="vocabulary-card__romaji">
-            {item.romaji}
-          </div>
+          <VocabularyKanaBreakdown
+            item={item}
+            currentKanaId={currentKanaId}
+          />
         </div>
 
         <button

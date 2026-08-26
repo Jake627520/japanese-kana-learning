@@ -91,11 +91,12 @@ export function KanaCardView({
           </button>
         </div>
 
-        {/* Representative Vocabulary (v1.6.1 VocabularyCard) */}
+        {/* Representative Vocabulary (v1.6.2 VocabularyCard) */}
         {primaryVocab && (
           <VocabularyCard
             item={primaryVocab}
             locale={language}
+            currentKanaId={currentKana.id}
           />
         )}
 
