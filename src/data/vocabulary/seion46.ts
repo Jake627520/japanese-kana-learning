@@ -6,6 +6,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'あさ',
     kanji: '朝',
     romaji: 'asa',
+    primaryKanaId: 'h_a',
     kanaLinks: ['h_a', 'h_sa'],
     type: 'noun',
     meaning: {
@@ -21,6 +22,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'いぬ',
     kanji: '犬',
     romaji: 'inu',
+    primaryKanaId: 'h_i',
     kanaLinks: ['h_i', 'h_nu'],
     type: 'noun',
     meaning: {
@@ -36,6 +38,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'うみ',
     kanji: '海',
     romaji: 'umi',
+    primaryKanaId: 'h_u',
     kanaLinks: ['h_u', 'h_mi'],
     type: 'noun',
     meaning: {
@@ -51,6 +54,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'えき',
     kanji: '駅',
     romaji: 'eki',
+    primaryKanaId: 'h_e',
     kanaLinks: ['h_e', 'h_ki'],
     type: 'noun',
     meaning: {
@@ -66,6 +70,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'おちゃ',
     kanji: 'お茶',
     romaji: 'ocha',
+    primaryKanaId: 'h_o',
     kanaLinks: ['h_o', 'h_chi', 'h_ya'],
     type: 'noun',
     meaning: {
@@ -81,6 +86,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'かさ',
     kanji: '傘',
     romaji: 'kasa',
+    primaryKanaId: 'h_ka',
     kanaLinks: ['h_ka', 'h_sa'],
     type: 'noun',
     meaning: {
@@ -96,6 +102,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'きのう',
     kanji: '昨日',
     romaji: 'kinou',
+    primaryKanaId: 'h_ki',
     kanaLinks: ['h_ki', 'h_no', 'h_u'],
     type: 'noun',
     meaning: {
@@ -111,6 +118,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'くるま',
     kanji: '車',
     romaji: 'kuruma',
+    primaryKanaId: 'h_ku',
     kanaLinks: ['h_ku', 'h_ru', 'h_ma'],
     type: 'noun',
     meaning: {
@@ -126,6 +134,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'けいさつ',
     kanji: '警察',
     romaji: 'keisatsu',
+    primaryKanaId: 'h_ke',
     kanaLinks: ['h_ke', 'h_i', 'h_sa', 'h_tsu'],
     type: 'noun',
     meaning: {
@@ -141,12 +150,13 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'こども',
     kanji: '子供',
     romaji: 'kodomo',
-    kanaLinks: ['h_ko', 'h_do', 'h_mo'],
+    primaryKanaId: 'h_ko',
+    kanaLinks: ['h_ko', 'hd_do', 'h_mo'],
     type: 'noun',
     meaning: {
       'zh-TW': '小孩',
       'zh-CN': '小孩',
-      'en': 'child',
+      'en': 'child / children',
     },
     audioKey: 'vocab_kodomo',
     tag: 'seion46',
@@ -156,6 +166,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'さくら',
     kanji: '桜',
     romaji: 'sakura',
+    primaryKanaId: 'h_sa',
     kanaLinks: ['h_sa', 'h_ku', 'h_ra'],
     type: 'noun',
     meaning: {
@@ -171,7 +182,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'しんぶん',
     kanji: '新聞',
     romaji: 'shinbun',
-    kanaLinks: ['h_shi', 'h_n', 'h_bu'],
+    primaryKanaId: 'h_shi',
+    kanaLinks: ['h_shi', 'h_n', 'hd_bu'],
     type: 'noun',
     meaning: {
       'zh-TW': '報紙',
@@ -186,6 +198,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'すし',
     kanji: '寿司',
     romaji: 'sushi',
+    primaryKanaId: 'h_su',
     kanaLinks: ['h_su', 'h_shi'],
     type: 'noun',
     meaning: {
@@ -201,6 +214,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'せんせい',
     kanji: '先生',
     romaji: 'sensei',
+    primaryKanaId: 'h_se',
     kanaLinks: ['h_se', 'h_n', 'h_i'],
     type: 'noun',
     meaning: {
@@ -216,6 +230,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'そら',
     kanji: '空',
     romaji: 'sora',
+    primaryKanaId: 'h_so',
     kanaLinks: ['h_so', 'h_ra'],
     type: 'noun',
     meaning: {
@@ -231,7 +246,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'たまご',
     kanji: '卵',
     romaji: 'tamago',
-    kanaLinks: ['h_ta', 'h_ma', 'h_go'],
+    primaryKanaId: 'h_ta',
+    kanaLinks: ['h_ta', 'h_ma', 'hd_go'],
     type: 'noun',
     meaning: {
       'zh-TW': '雞蛋',
@@ -246,7 +262,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ちず',
     kanji: '地図',
     romaji: 'chizu',
-    kanaLinks: ['h_chi', 'h_zu'],
+    primaryKanaId: 'h_chi',
+    kanaLinks: ['h_chi', 'hd_zu'],
     type: 'noun',
     meaning: {
       'zh-TW': '地圖',
@@ -261,6 +278,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'つくえ',
     kanji: '机',
     romaji: 'tsukue',
+    primaryKanaId: 'h_tsu',
     kanaLinks: ['h_tsu', 'h_ku', 'h_e'],
     type: 'noun',
     meaning: {
@@ -276,7 +294,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'てがみ',
     kanji: '手紙',
     romaji: 'tegami',
-    kanaLinks: ['h_te', 'h_ga', 'h_mi'],
+    primaryKanaId: 'h_te',
+    kanaLinks: ['h_te', 'hd_ga', 'h_mi'],
     type: 'noun',
     meaning: {
       'zh-TW': '信件',
@@ -291,12 +310,13 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'とけい',
     kanji: '時計',
     romaji: 'tokei',
+    primaryKanaId: 'h_to',
     kanaLinks: ['h_to', 'h_ke', 'h_i'],
     type: 'noun',
     meaning: {
-      'zh-TW': '時鐘',
-      'zh-CN': '时钟',
-      'en': 'clock',
+      'zh-TW': '手錶 / 時鐘',
+      'zh-CN': '手表 / 时钟',
+      'en': 'clock / watch',
     },
     audioKey: 'vocab_tokei',
     tag: 'seion46',
@@ -306,6 +326,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'なつ',
     kanji: '夏',
     romaji: 'natsu',
+    primaryKanaId: 'h_na',
     kanaLinks: ['h_na', 'h_tsu'],
     type: 'noun',
     meaning: {
@@ -321,6 +342,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'にく',
     kanji: '肉',
     romaji: 'niku',
+    primaryKanaId: 'h_ni',
     kanaLinks: ['h_ni', 'h_ku'],
     type: 'noun',
     meaning: {
@@ -336,12 +358,13 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ぬの',
     kanji: '布',
     romaji: 'nuno',
+    primaryKanaId: 'h_nu',
     kanaLinks: ['h_nu', 'h_no'],
     type: 'noun',
     meaning: {
       'zh-TW': '布料',
       'zh-CN': '布料',
-      'en': 'cloth',
+      'en': 'cloth / fabric',
     },
     audioKey: 'vocab_nuno',
     tag: 'seion46',
@@ -351,6 +374,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ねこ',
     kanji: '猫',
     romaji: 'neko',
+    primaryKanaId: 'h_ne',
     kanaLinks: ['h_ne', 'h_ko'],
     type: 'noun',
     meaning: {
@@ -366,12 +390,13 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'のみもの',
     kanji: '飲み物',
     romaji: 'nomimono',
+    primaryKanaId: 'h_no',
     kanaLinks: ['h_no', 'h_mi', 'h_mo'],
     type: 'noun',
     meaning: {
       'zh-TW': '飲料',
       'zh-CN': '饮料',
-      'en': 'beverage',
+      'en': 'drink / beverage',
     },
     audioKey: 'vocab_nomimono',
     tag: 'seion46',
@@ -381,11 +406,12 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'はな',
     kanji: '花',
     romaji: 'hana',
+    primaryKanaId: 'h_ha',
     kanaLinks: ['h_ha', 'h_na'],
     type: 'noun',
     meaning: {
-      'zh-TW': '花朵',
-      'zh-CN': '花朵',
+      'zh-TW': '花',
+      'zh-CN': '花',
       'en': 'flower',
     },
     audioKey: 'vocab_hana',
@@ -396,6 +422,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ひかり',
     kanji: '光',
     romaji: 'hikari',
+    primaryKanaId: 'h_hi',
     kanaLinks: ['h_hi', 'h_ka', 'h_ri'],
     type: 'noun',
     meaning: {
@@ -411,12 +438,13 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ふね',
     kanji: '船',
     romaji: 'fune',
+    primaryKanaId: 'h_fu',
     kanaLinks: ['h_fu', 'h_ne'],
     type: 'noun',
     meaning: {
       'zh-TW': '船',
       'zh-CN': '船',
-      'en': 'boat',
+      'en': 'ship / boat',
     },
     audioKey: 'vocab_fune',
     tag: 'seion46',
@@ -426,6 +454,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'へや',
     kanji: '部屋',
     romaji: 'heya',
+    primaryKanaId: 'h_he',
     kanaLinks: ['h_he', 'h_ya'],
     type: 'noun',
     meaning: {
@@ -441,6 +470,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ほん',
     kanji: '本',
     romaji: 'hon',
+    primaryKanaId: 'h_ho',
     kanaLinks: ['h_ho', 'h_n'],
     type: 'noun',
     meaning: {
@@ -456,6 +486,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'まち',
     kanji: '町',
     romaji: 'machi',
+    primaryKanaId: 'h_ma',
     kanaLinks: ['h_ma', 'h_chi'],
     type: 'noun',
     meaning: {
@@ -471,7 +502,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'みず',
     kanji: '水',
     romaji: 'mizu',
-    kanaLinks: ['h_mi', 'h_zu'],
+    primaryKanaId: 'h_mi',
+    kanaLinks: ['h_mi', 'hd_zu'],
     type: 'noun',
     meaning: {
       'zh-TW': '水',
@@ -486,12 +518,13 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'むし',
     kanji: '虫',
     romaji: 'mushi',
+    primaryKanaId: 'h_mu',
     kanaLinks: ['h_mu', 'h_shi'],
     type: 'noun',
     meaning: {
       'zh-TW': '昆蟲',
       'zh-CN': '昆虫',
-      'en': 'insect',
+      'en': 'insect / bug',
     },
     audioKey: 'vocab_mushi',
     tag: 'seion46',
@@ -501,6 +534,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'め',
     kanji: '目',
     romaji: 'me',
+    primaryKanaId: 'h_me',
     kanaLinks: ['h_me'],
     type: 'noun',
     meaning: {
@@ -516,6 +550,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'もり',
     kanji: '森',
     romaji: 'mori',
+    primaryKanaId: 'h_mo',
     kanaLinks: ['h_mo', 'h_ri'],
     type: 'noun',
     meaning: {
@@ -531,6 +566,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'やま',
     kanji: '山',
     romaji: 'yama',
+    primaryKanaId: 'h_ya',
     kanaLinks: ['h_ya', 'h_ma'],
     type: 'noun',
     meaning: {
@@ -546,6 +582,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ゆき',
     kanji: '雪',
     romaji: 'yuki',
+    primaryKanaId: 'h_yu',
     kanaLinks: ['h_yu', 'h_ki'],
     type: 'noun',
     meaning: {
@@ -561,6 +598,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'よる',
     kanji: '夜',
     romaji: 'yoru',
+    primaryKanaId: 'h_yo',
     kanaLinks: ['h_yo', 'h_ru'],
     type: 'noun',
     meaning: {
@@ -576,7 +614,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'らいしゅう',
     kanji: '来週',
     romaji: 'raishuu',
-    kanaLinks: ['h_ra', 'h_i', 'h_shi', 'h_yu', 'h_u'],
+    primaryKanaId: 'h_ra',
+    kanaLinks: ['h_ra', 'h_i', 'h_shi', 'h_u'],
     type: 'noun',
     meaning: {
       'zh-TW': '下週',
@@ -591,7 +630,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'りんご',
     kanji: '林檎',
     romaji: 'ringo',
-    kanaLinks: ['h_ri', 'h_n', 'h_go'],
+    primaryKanaId: 'h_ri',
+    kanaLinks: ['h_ri', 'h_n', 'hd_go'],
     type: 'noun',
     meaning: {
       'zh-TW': '蘋果',
@@ -606,12 +646,13 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'るす',
     kanji: '留守',
     romaji: 'rusu',
+    primaryKanaId: 'h_ru',
     kanaLinks: ['h_ru', 'h_su'],
     type: 'noun',
     meaning: {
-      'zh-TW': '不在家',
-      'zh-CN': '不在家',
-      'en': 'away from home',
+      'zh-TW': '不在家 / 看家',
+      'zh-CN': '不在家 / 看家',
+      'en': 'absence / staying home alone',
     },
     audioKey: 'vocab_rusu',
     tag: 'seion46',
@@ -621,6 +662,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'れきし',
     kanji: '歴史',
     romaji: 'rekishi',
+    primaryKanaId: 'h_re',
     kanaLinks: ['h_re', 'h_ki', 'h_shi'],
     type: 'noun',
     meaning: {
@@ -636,6 +678,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'ろうそく',
     kanji: '蝋燭',
     romaji: 'rousoku',
+    primaryKanaId: 'h_ro',
     kanaLinks: ['h_ro', 'h_u', 'h_so', 'h_ku'],
     type: 'noun',
     meaning: {
@@ -651,6 +694,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'わたし',
     kanji: '私',
     romaji: 'watashi',
+    primaryKanaId: 'h_wa',
     kanaLinks: ['h_wa', 'h_ta', 'h_shi'],
     type: 'noun',
     meaning: {
@@ -665,6 +709,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     id: 'vocab_wo',
     word: 'を',
     romaji: 'wo',
+    primaryKanaId: 'h_wo',
     kanaLinks: ['h_wo'],
     type: 'particle',
     meaning: {
@@ -680,7 +725,8 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
     word: 'にほん',
     kanji: '日本',
     romaji: 'nihon',
-    kanaLinks: ['h_n', 'h_ni', 'h_ho'],
+    primaryKanaId: 'h_n',
+    kanaLinks: ['h_ni', 'h_ho', 'h_n'],
     type: 'sound-example',
     meaning: {
       'zh-TW': '日本 (撥音範例)',

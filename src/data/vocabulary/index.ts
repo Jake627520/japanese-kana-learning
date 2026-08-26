@@ -1,13 +1,19 @@
 export * from './vocabularyTypes';
 export * from './seion46';
+export * from './dakuten20';
+export * from './handakuten5';
 export * from './vocabularyAudio';
 
 import { SEION_46_VOCABULARY } from './seion46';
+import { DAKUTEN_20_VOCABULARY } from './dakuten20';
+import { HANDAKUTEN_5_VOCABULARY } from './handakuten5';
 import { VocabularyItem } from './vocabularyTypes';
 import { ALL_LEARNABLE_KANA } from '../kanaData';
 
 export const ALL_VOCABULARY: VocabularyItem[] = [
   ...SEION_46_VOCABULARY,
+  ...DAKUTEN_20_VOCABULARY,
+  ...HANDAKUTEN_5_VOCABULARY,
 ];
 
 const KANA_MAP = new Map<string, string>(
@@ -38,6 +44,7 @@ export function getVocabularyByKanaId(kanaId: string): VocabularyItem[] {
 }
 
 export function getPrimaryVocabularyByKanaId(kanaId: string): VocabularyItem | undefined {
-  return ALL_VOCABULARY.find((item) => item.kanaLinks[0] === kanaId) ||
+  return ALL_VOCABULARY.find((item) => item.primaryKanaId === kanaId) ||
+         ALL_VOCABULARY.find((item) => item.kanaLinks[0] === kanaId) ||
          ALL_VOCABULARY.find((item) => item.kanaLinks.includes(kanaId));
 }

@@ -3,9 +3,10 @@ import { speakJapanese } from '../../utils/speech';
 
 /**
  * Maps structured vocabulary audioKey to the actual Japanese speech text.
- * Future-proof for multi-clip variants (e.g. slow, pitch accent, shadowing).
+ * Transparently delegates to pre-recorded VOICEVOX audio in contentAudioMap / kanaAudioMap.
  */
 export const VOCABULARY_AUDIO_MAPPING: Record<string, string> = {
+  // Seion 46
   vocab_asa: 'あさ',
   vocab_inu: 'いぬ',
   vocab_umi: 'うみ',
@@ -52,6 +53,35 @@ export const VOCABULARY_AUDIO_MAPPING: Record<string, string> = {
   vocab_watashi: 'わたし',
   vocab_wo: 'を',
   vocab_nihon: 'にほん',
+
+  // Dakuten 20
+  vocab_gakkou: 'がっこう',
+  vocab_ginkou: 'ぎんこう',
+  vocab_gunjin: 'ぐんじん',
+  vocab_genki: 'げんき',
+  vocab_gohan: 'ごはん',
+  vocab_zasshi: 'ざっし',
+  vocab_jikan: 'じかん',
+  vocab_mizu_zu: 'みず',
+  vocab_zenbu: 'ぜんぶ',
+  vocab_zou: 'ぞう',
+  vocab_daigaku: 'だいがく',
+  vocab_hanaji: 'はなぢ',
+  vocab_tsuzuku: 'つづく',
+  vocab_denwa: 'でんわ',
+  vocab_doko: 'どこ',
+  vocab_bangou: 'ばんごう',
+  vocab_byouin: 'びょういん',
+  vocab_buta: 'ぶた',
+  vocab_benkyou: 'べんきょう',
+  vocab_boushi: 'ぼうし',
+
+  // Handakuten 5
+  vocab_pan: 'ぱん',
+  vocab_enpitsu: 'えんぴつ',
+  vocab_tempura: 'てんぷら',
+  vocab_pen: 'ぺん',
+  vocab_sanpo: 'さんぽ',
 };
 
 /**
