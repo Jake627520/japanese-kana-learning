@@ -3,10 +3,10 @@
 validate-vocabulary.py
 
 Validates vocabulary datasets for Japanese Kana Learning:
-1. Verifies 46 Seion, 20 Dakuten, and 5 Handakuten representative vocabulary items (71 total).
+1. Verifies 46 Seion, 20 Dakuten, 5 Handakuten, and 33 Youon representative vocabulary items (104 total).
 2. Checks unique IDs across all entries.
 3. Validates required fields: word, romaji, type, primaryKanaId, kanaLinks, audioKey, meaning.
-4. Checks 100% primary kana ID coverage for Seion (46), Dakuten (20), Handakuten (5).
+4. Checks 100% primary kana ID coverage for Seion (46), Dakuten (20), Handakuten (5), Youon (33).
 5. Checks 100% trilingual meaning completeness (zh-TW, zh-CN, en).
 6. Validates every kanaLink strictly exists in the 208 Kana database with zero duplicates.
 7. Checks audioKey mapping in vocabularyAudio.ts, verifies contentAudioMap / kanaAudioMap and verifies physical MP3 existence.
@@ -40,6 +40,20 @@ HANDAKUTEN_5_KANA_IDS = [
     'hp_pa', 'hp_pi', 'hp_pu', 'hp_pe', 'hp_po',
 ]
 
+YOUON_33_KANA_IDS = [
+    'hy_kya', 'hy_kyu', 'hy_kyo',
+    'hy_gya', 'hy_gyu', 'hy_gyo',
+    'hy_sha', 'hy_shu', 'hy_sho',
+    'hy_ja', 'hy_ju', 'hy_jo',
+    'hy_cha', 'hy_chu', 'hy_cho',
+    'hy_nya', 'hy_nyu', 'hy_nyo',
+    'hy_hya', 'hy_hyu', 'hy_hyo',
+    'hy_bya', 'hy_byu', 'hy_byo',
+    'hy_pya', 'hy_pyu', 'hy_pyo',
+    'hy_mya', 'hy_myu', 'hy_myo',
+    'hy_rya', 'hy_ryu', 'hy_ryo',
+]
+
 def main():
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     vocab_dir = os.path.join(root_dir, 'src', 'data', 'vocabulary')
@@ -66,6 +80,7 @@ def main():
         ('seion46.ts', 46, SEION_46_KANA_IDS),
         ('dakuten20.ts', 20, DAKUTEN_20_KANA_IDS),
         ('handakuten5.ts', 5, HANDAKUTEN_5_KANA_IDS),
+        ('youon33.ts', 33, YOUON_33_KANA_IDS),
     ]
 
     with open(audio_file, 'r', encoding='utf-8') as f:
@@ -195,8 +210,8 @@ def main():
         return 1
 
     print(f"\n✅ All vocabulary validation checks passed successfully!")
-    print(f"   - Total items validated: {total_items} (46 Seion + 20 Dakuten + 5 Handakuten)")
-    print(f"   - 100% primaryKanaId coverage across Seion (46), Dakuten (20), Handakuten (5).")
+    print(f"   - Total items validated: {total_items} (46 Seion + 20 Dakuten + 5 Handakuten + 33 Youon)")
+    print(f"   - 100% primaryKanaId coverage across Seion (46), Dakuten (20), Handakuten (5), Youon (33).")
     print(f"   - 100% kanaLinks verified against 208 Kana database with zero invalid IDs or duplicates.")
     print(f"   - 100% trilingual (zh-TW, zh-CN, en) meaning coverage.")
     print(f"   - All audio keys and physical MP3 assets verified on disk.")

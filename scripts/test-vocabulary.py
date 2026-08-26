@@ -18,7 +18,7 @@ class TestVocabularyValidation(unittest.TestCase):
         self.vocab_dir = os.path.join(self.root_dir, 'src', 'data', 'vocabulary')
 
     def test_vocabulary_files_exist(self):
-        for f in ['vocabularyTypes.ts', 'seion46.ts', 'dakuten20.ts', 'handakuten5.ts', 'vocabularyAudio.ts', 'index.ts']:
+        for f in ['vocabularyTypes.ts', 'seion46.ts', 'dakuten20.ts', 'handakuten5.ts', 'youon33.ts', 'vocabularyAudio.ts', 'index.ts']:
             path = os.path.join(self.vocab_dir, f)
             self.assertTrue(os.path.exists(path), f"File {f} must exist in vocabulary directory")
 
