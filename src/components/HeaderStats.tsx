@@ -1,16 +1,15 @@
 import React from 'react';
 import { UserProgress } from '../types';
 import { Flame, CheckCircle, AlertTriangle, BookOpen } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 interface HeaderStatsProps {
   progress: UserProgress;
   totalKana: number;
 }
 
-// 每張卡下方多一條進度條：改版前這裡只有數字，看不出「離目標多遠」。
-// 條的分母都取自真實資料，不是裝飾——連續學習以 7 天為一輪，
-// 弱點假名以佔全部假名的比例呈現。
 export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
+  const { t } = useI18n();
   const masteredCount = progress.masteredKanaIds.length;
   const wrongCount = progress.wrongKanaIds.length;
   const total = totalKana || 1;
@@ -21,19 +20,19 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
   const cards = [
     {
       key: 'streak',
-      label: '連續學習',
+      label: t('header.streak'),
       value: String(progress.streakDays),
-      unit: ' 天',
+      unit: ` ${t('header.days')}`,
       tint: 'bg-orange-50',
       fg: 'text-orange-500',
       bar: 'bg-orange-500',
       pct: streakPct,
       icon: <Flame className="w-5 h-5 fill-current" />,
-      title: `連續 ${progress.streakDays} 天，一輪以 7 天計`,
+      title: `${t('header.streak')} ${progress.streakDays} ${t('header.days')}`,
     },
     {
       key: 'mastered',
-      label: '精通假名',
+      label: t('header.mastered'),
       value: String(masteredCount),
       unit: ` / ${totalKana}`,
       tint: 'bg-[#E6F8F2]',
@@ -41,23 +40,23 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       bar: 'bg-[#00A86B]',
       pct: masteredPct,
       icon: <CheckCircle className="w-5 h-5" />,
-      title: `已精通 ${masteredCount} 個，共 ${totalKana} 個`,
+      title: `${t('header.mastered')} ${masteredCount} / ${totalKana}`,
     },
     {
       key: 'wrong',
-      label: '弱點假名',
+      label: t('header.weak'),
       value: String(wrongCount),
-      unit: ' 個',
+      unit: ` ${t('common.countUnit')}`,
       tint: 'bg-red-50',
       fg: 'text-red-500',
       bar: 'bg-red-500',
       pct: wrongPct,
       icon: <AlertTriangle className="w-5 h-5" />,
-      title: `${wrongCount} 個假名答錯過，佔全部的 ${wrongPct}%`,
+      title: `${t('header.weak')} ${wrongCount}`,
     },
     {
       key: 'progress',
-      label: '學習進度',
+      label: t('home.todayPlan.learningProgress'),
       value: String(masteredPct),
       unit: ' %',
       tint: 'bg-blue-50',
@@ -65,7 +64,7 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       bar: 'bg-blue-500',
       pct: masteredPct,
       icon: <BookOpen className="w-5 h-5" />,
-      title: `整體進度 ${masteredPct}%`,
+      title: `${t('home.todayPlan.learningProgress')} ${masteredPct}%`,
     },
   ];
 

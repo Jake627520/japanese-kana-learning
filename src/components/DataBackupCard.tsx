@@ -1,18 +1,20 @@
 import React, { useRef, useState } from 'react';
 import { Download, Upload, ShieldCheck, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { exportAllProgressData, validateAndImportProgressData } from '../utils/dataPortability';
+import { useI18n } from '../i18n';
 
 export function DataBackupCard() {
+  const { t } = useI18n();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleExport = () => {
     try {
       exportAllProgressData();
-      setFeedback({ type: 'success', message: '已成功匯出進度備份檔案！' });
+      setFeedback({ type: 'success', message: t('common.copied') });
       setTimeout(() => setFeedback(null), 4000);
     } catch (e) {
-      setFeedback({ type: 'error', message: '匯出備份失敗，請重試。' });
+      setFeedback({ type: 'error', message: t('home.backup.importError') });
       setTimeout(() => setFeedback(null), 4000);
     }
   };
@@ -32,24 +34,24 @@ export function DataBackupCard() {
     reader.onload = (event) => {
       const content = event.target?.result as string;
       if (!content) {
-        setFeedback({ type: 'error', message: '讀取檔案失敗。' });
+        setFeedback({ type: 'error', message: t('home.backup.importError') });
         return;
       }
 
       const result = validateAndImportProgressData(content);
       if (result.success) {
-        setFeedback({ type: 'success', message: '進度還原成功！正在重新載入...' });
+        setFeedback({ type: 'success', message: t('home.backup.importSuccess') });
         setTimeout(() => {
           window.location.reload();
         }, 1200);
       } else {
-        setFeedback({ type: 'error', message: result.message });
+        setFeedback({ type: 'error', message: result.message || t('home.backup.importError') });
         setTimeout(() => setFeedback(null), 5000);
       }
     };
 
     reader.onerror = () => {
-      setFeedback({ type: 'error', message: '無法讀取該檔案。' });
+      setFeedback({ type: 'error', message: t('home.backup.importError') });
       setTimeout(() => setFeedback(null), 4000);
     };
 
@@ -61,10 +63,10 @@ export function DataBackupCard() {
       <div className="space-y-1">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-5 h-5 text-[#00A86B]" />
-          <h3 className="text-base font-display font-bold text-[#1E293B]">學習進度備份與還原</h3>
+          <h3 className="text-base font-display font-bold text-[#1E293B]">{t('home.backup.title')}</h3>
         </div>
         <p className="text-xs text-[#64748B]">
-          支援將假名熟練度、SRS 複習週期與 JLPT 答題紀錄匯出為 JSON 備份，隨時隨地安全還原。
+          {t('home.backup.desc')}
         </p>
 
         {feedback && (
@@ -100,7 +102,7 @@ export function DataBackupCard() {
           className="flex-1 sm:flex-none px-4 py-2.5 bg-[#FAFBFB] hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5"
         >
           <Download className="w-4 h-4 text-[#00A86B]" />
-          匯出進度
+          {t('home.backup.btnExport')}
         </button>
 
         <button
@@ -109,7 +111,7 @@ export function DataBackupCard() {
           className="flex-1 sm:flex-none px-4 py-2.5 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
         >
           <Upload className="w-4 h-4" />
-          匯入還原
+          {t('home.backup.btnImport')}
         </button>
       </div>
     </div>

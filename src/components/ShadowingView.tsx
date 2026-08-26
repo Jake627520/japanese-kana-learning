@@ -21,18 +21,12 @@ import {
   Eye,
   EyeOff,
 } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
-const STEPS: { id: Step; label: string; hint: string }[] = [
-  { id: 1, label: '只聽', hint: '不看文字，專注聆聽母語發音的音調起伏與停頓節奏。' },
-  { id: 2, label: '看字聽', hint: '對照日文文字再次聆聽，把耳朵聽到的聲音與字形對齊。' },
-  { id: 3, label: '輕聲跟', hint: '邊播放母語發音邊小聲跟讀（同步跟隨），抓準語速與節拍。' },
-  { id: 4, label: '錄音', hint: '以正常音量完整錄下自己的跟讀版本。' },
-  { id: 5, label: '對照', hint: '連續播放「母語版 → 我的錄音」，用耳朵比對找出發音差異。' },
-];
-
 export function ShadowingView() {
+  const { t } = useI18n();
   const [progress, setProgress] = useState<ShadowingProgress>(() => getShadowingProgress());
   const [filterTodayOnly, setFilterTodayOnly] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
@@ -44,6 +38,14 @@ export function ShadowingView() {
     }
     return false;
   });
+
+  const stepsDef: { id: Step; label: string; hint: string }[] = [
+    { id: 1, label: t('shadowing.listenNative'), hint: t('shadowing.tips') },
+    { id: 2, label: t('common.details'), hint: t('shadowing.subtitle') },
+    { id: 3, label: t('shadowing.pitchAccent'), hint: t('shadowing.tips') },
+    { id: 4, label: t('shadowing.startRecord'), hint: t('shadowing.micHint') },
+    { id: 5, label: t('shadowing.feedback'), hint: t('shadowing.tips') },
+  ];
 
   const allList = SHADOWING_SENTENCES;
   const todayList = progress.todayIds
@@ -70,9 +72,6 @@ export function ShadowingView() {
   const userAudioPlayerRef = useRef<HTMLAudioElement | null>(null);
   const jaVoiceRef = useRef<SpeechSynthesisVoice | null>(null);
 
-  // 語音清單在 iOS Safari / 首次載入時，getVoices() 會同步回傳空陣列，要等
-  // 'voiceschanged' 事件才有內容。這裡在掛載時就快取日文語音，之後 speak 優先
-  // 讀 ref，避免第一次播放選不到日文語音、把日文念成英文腔（iOS 常見問題）。
   useEffect(() => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     const pick = () => {
@@ -86,7 +85,6 @@ export function ShadowingView() {
 
   const currentSentence: ShadowingSentence = list[Math.min(currentIndex, list.length - 1)] || allList[0];
 
-  // Stop any ongoing speech or playback
   const stopAllAudio = () => {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -104,205 +102,147 @@ export function ShadowingView() {
     setIsRecording(false);
   };
 
-  // Switch sentence clean up
-  const goTo = (i: number) => {
-    stopAllAudio();
-    if (userAudioUrl) {
-      URL.revokeObjectURL(userAudioUrl);
-    }
-    setUserAudioUrl(null);
-    setMicError(null);
-    setStep(1);
-    setCurrentIndex(i);
-  };
-
-  // Step change behavior: auto-hide in step 1, auto-show in step 2
-  useEffect(() => {
-    if (step === 1) {
-      setHideJapanese(true);
-      setHideKana(true);
-      setHideRomaji(true);
-    } else if (step === 2) {
-      setHideJapanese(false);
-      setHideKana(false);
-      setHideRomaji(false);
-    }
-  }, [step]);
-
-  useEffect(() => {
-    return () => {
+  const playPreGeneratedClip = (audioPath: string, rate = 1.0): Promise<void> => {
+    return new Promise((resolve) => {
       stopAllAudio();
-      if (userAudioUrl) {
-        URL.revokeObjectURL(userAudioUrl);
-      }
-    };
-  }, [userAudioUrl]);
-
-  // Play Native TTS
-  const playNativeTts = (rate: number, onEndCallback?: () => void) => {
-    window.speechSynthesis?.cancel();
-    if (userAudioPlayerRef.current) {
-      userAudioPlayerRef.current.pause();
-    }
-
-    // 有預先生成的高品質音檔就優先播它——Web Speech 的日語在拗音、長音、
-    // 促音上常常不夠自然，而跟讀練的正是這些。rate < 0.9 視為要慢速版。
-    // 音檔缺任一速度時自動退回 TTS，所以可以一句一句補，不必等全部生完。
-    const clip = rate < 0.9 ? currentSentence.audio?.slow : currentSentence.audio?.normal;
-    if (clip) {
-      const el = new Audio(`${import.meta.env.BASE_URL}${clip}`);
       setIsSpeakingTts(true);
-      el.onended = () => {
+      const audio = new Audio(audioPath);
+      audio.playbackRate = rate;
+      audio.onended = () => {
         setIsSpeakingTts(false);
-        onEndCallback?.();
+        resolve();
       };
-      el.onerror = () => {
-        // 音檔壞掉或不存在時不要卡住流程，退回 TTS 繼續
+      audio.onerror = () => {
         setIsSpeakingTts(false);
-        speakWithTts(rate, onEndCallback);
+        resolve();
       };
-      el.play().catch(() => {
+      audio.play().catch(() => {
         setIsSpeakingTts(false);
-        speakWithTts(rate, onEndCallback);
+        resolve();
       });
-      return;
-    }
-
-    speakWithTts(rate, onEndCallback);
+    });
   };
 
-  const speakWithTts = (rate: number, onEndCallback?: () => void) => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      alert('您的瀏覽器不支援語音合成功能。');
-      return;
+  const playNativeTts = (rate = 0.9): Promise<void> => {
+    const isSlow = rate < 0.8;
+    const clipPath = isSlow
+      ? currentSentence.audio?.slow || currentSentence.audio?.normal
+      : currentSentence.audio?.normal;
+
+    if (clipPath) {
+      return playPreGeneratedClip(clipPath, isSlow ? 0.9 : 1.0);
     }
 
-    const utterance = new SpeechSynthesisUtterance(currentSentence.japanese);
-    utterance.lang = 'ja-JP';
-    utterance.rate = rate;
-
-    const jaVoice =
-      jaVoiceRef.current ||
-      window.speechSynthesis.getVoices().find((v) => v.lang.startsWith('ja'));
-    if (jaVoice) {
-      utterance.voice = jaVoice;
-    }
-
-    setIsSpeakingTts(true);
-
-    utterance.onend = () => {
-      setIsSpeakingTts(false);
-      if (onEndCallback) {
-        onEndCallback();
+    return new Promise((resolve) => {
+      if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+        resolve();
+        return;
       }
-    };
+      stopAllAudio();
+      setIsSpeakingTts(true);
 
-    utterance.onerror = () => {
-      setIsSpeakingTts(false);
-      setIsComparing(false);
-    };
+      const utterance = new SpeechSynthesisUtterance(currentSentence.japanese);
+      utterance.lang = 'ja-JP';
+      utterance.rate = rate;
+      if (jaVoiceRef.current) utterance.voice = jaVoiceRef.current;
 
-    window.speechSynthesis.speak(utterance);
+      utterance.onend = () => {
+        setIsSpeakingTts(false);
+        resolve();
+      };
+      utterance.onerror = () => {
+        setIsSpeakingTts(false);
+        resolve();
+      };
+      window.speechSynthesis.speak(utterance);
+    });
   };
 
-  // Start recording
   const startRecording = async () => {
-    setMicError(null);
     stopAllAudio();
-
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      setMicError('您的瀏覽器或當前環境不支援麥克風錄音（請在 HTTPS 或 Localhost 下執行）。');
-      return;
-    }
-
+    setMicError(null);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(stream);
-      mediaRecorderRef.current = mediaRecorder;
       audioChunksRef.current = [];
+      const recorder = new MediaRecorder(stream);
+      mediaRecorderRef.current = recorder;
 
-      mediaRecorder.ondataavailable = (e) => {
-        if (e.data.size > 0) {
-          audioChunksRef.current.push(e.data);
-        }
+      recorder.ondataavailable = (event) => {
+        if (event.data.size > 0) audioChunksRef.current.push(event.data);
       };
 
-      mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
-        if (userAudioUrl) URL.revokeObjectURL(userAudioUrl);
-        const url = URL.createObjectURL(audioBlob);
+      recorder.onstop = () => {
+        const blob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+        const url = URL.createObjectURL(blob);
         setUserAudioUrl(url);
         stream.getTracks().forEach((track) => track.stop());
       };
 
-      mediaRecorder.start();
+      recorder.start();
       setIsRecording(true);
-    } catch (err) {
-      console.error('Microphone access denied or error:', err);
-      setMicError('無法取得麥克風權限，請確認瀏覽器已允許麥克風存取。');
+      setStep(4);
+    } catch (e) {
+      setMicError(t('shadowing.permissionDenied'));
+      setIsRecording(false);
     }
   };
 
-  // Stop recording
   const stopRecording = () => {
     if (mediaRecorderRef.current && mediaRecorderRef.current.state === 'recording') {
       mediaRecorderRef.current.stop();
       setIsRecording(false);
-      // Auto move to step 5 (compare)
-      setStep(5);
     }
   };
 
-  // Play user recording
-  const playUserRecording = (onEndCallback?: () => void) => {
-    if (!userAudioUrl) return;
-
-    window.speechSynthesis.cancel();
-    if (!userAudioPlayerRef.current) {
-      userAudioPlayerRef.current = new Audio(userAudioUrl);
-    } else {
-      userAudioPlayerRef.current.src = userAudioUrl;
-    }
-
-    const player = userAudioPlayerRef.current;
-    setIsPlayingUserAudio(true);
-
-    player.onended = () => {
-      setIsPlayingUserAudio(false);
-      if (onEndCallback) {
-        onEndCallback();
+  const playUserRecording = (): Promise<void> => {
+    return new Promise((resolve) => {
+      if (!userAudioUrl) {
+        resolve();
+        return;
       }
-    };
+      stopAllAudio();
+      setIsPlayingUserAudio(true);
 
-    player.onerror = () => {
-      setIsPlayingUserAudio(false);
-      setIsComparing(false);
-    };
+      const audio = new Audio(userAudioUrl);
+      userAudioPlayerRef.current = audio;
 
-    player.play().catch((e) => {
-      console.error('Play audio failed:', e);
-      setIsPlayingUserAudio(false);
-      setIsComparing(false);
+      audio.onended = () => {
+        setIsPlayingUserAudio(false);
+        resolve();
+      };
+      audio.onerror = () => {
+        setIsPlayingUserAudio(false);
+        resolve();
+      };
+      audio.play().catch(() => {
+        setIsPlayingUserAudio(false);
+        resolve();
+      });
     });
   };
 
-  // AB comparison: Play native TTS -> play user recording -> increment count
-  const handleCompare = () => {
-    if (!userAudioUrl) {
-      alert('請先在步驟 4 完成自己的錄音後再進行對照播放！');
-      return;
-    }
-
+  const handleCompare = async () => {
+    if (!userAudioUrl || isRecording || isSpeakingTts || isComparing) return;
     setIsComparing(true);
-    playNativeTts(0.9, () => {
-      setTimeout(() => {
-        playUserRecording(() => {
-          setIsComparing(false);
-          const updated = incrementPractice(currentSentence.id);
-          setProgress(updated);
-        });
-      }, 350);
-    });
+    setStep(5);
+
+    await playNativeTts(0.9);
+    setTimeout(async () => {
+      await playUserRecording();
+      setIsComparing(false);
+      const updated = incrementPractice(currentSentence.id);
+      setProgress(updated);
+    }, 400);
+  };
+
+  const goTo = (idx: number) => {
+    stopAllAudio();
+    setCurrentIndex(idx);
+    setUserAudioUrl(null);
+    setStep(1);
+    setHideJapanese(true);
+    setHideKana(true);
+    setHideRomaji(true);
   };
 
   const isCurrentSentenceMarkedOk = progress.markedOk.includes(currentSentence.id);
@@ -318,13 +258,13 @@ export function ShadowingView() {
         <div className="space-y-1">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6F8F2] text-[#00A86B] rounded-full text-xs font-bold">
             <Headphones className="w-3.5 h-3.5" />
-            影子跟讀法 (Shadowing v0.1)
+            {t('nav.shadowing')}
           </div>
           <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">
-            日語口說跟讀與發音自我比對
+            {t('shadowing.title')}
           </h2>
           <p className="text-xs text-[#64748B]">
-            5 步科學跟讀流程：只聽 → 看字聽 → 輕聲跟 → 錄音 → 連貫對照。
+            {t('shadowing.subtitle')}
           </p>
         </div>
 
@@ -343,7 +283,7 @@ export function ShadowingView() {
                   : 'text-[#64748B] hover:text-[#1E293B]'
               }`}
             >
-              全部 ({allList.length})
+              {t('shadowing.allTab')} ({allList.length})
             </button>
             <button
               type="button"
@@ -357,11 +297,11 @@ export function ShadowingView() {
                   : 'text-[#64748B] hover:text-[#1E293B]'
               }`}
             >
-              今日 3 句
+              {t('shadowing.todayTab')}
             </button>
           </div>
           <div className="text-xs text-[#64748B] font-bold">
-            今日已練：<span className="text-[#00A86B] font-extrabold">{todayDoneCount}</span> / 3
+            {t('home.todayPlan.dueCount')}: <span className="text-[#00A86B] font-extrabold">{todayDoneCount}</span> / 3
           </div>
         </div>
       </div>
@@ -369,9 +309,9 @@ export function ShadowingView() {
       {/* Step Guide Bar */}
       <div className="bg-white p-5 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-3">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <span className="text-xs font-extrabold text-[#1E293B]">步驟引導</span>
+          <span className="text-xs font-extrabold text-[#1E293B]">{t('common.details')}</span>
           <div className="flex flex-wrap gap-1.5">
-            {STEPS.map((st) => (
+            {stepsDef.map((st) => (
               <button
                 key={st.id}
                 type="button"
@@ -388,12 +328,12 @@ export function ShadowingView() {
           </div>
         </div>
         <p className="text-xs text-[#64748B] leading-relaxed">
-          {STEPS.find((x) => x.id === step)?.hint}
+          {stepsDef.find((x) => x.id === step)?.hint}
         </p>
         {currentSentence.tip && (
           <p className="text-xs text-[#00A86B] font-bold flex items-center gap-1.5 pt-1 border-t border-[#F1F5F9]">
             <Sparkles className="w-3.5 h-3.5 text-yellow-500 shrink-0" />
-            本句重點：{currentSentence.tip}
+            {currentSentence.tip}
           </p>
         )}
       </div>
@@ -412,7 +352,7 @@ export function ShadowingView() {
             }`}
           >
             {hideJapanese ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-            {hideJapanese ? '顯示日文' : '隱藏日文'}
+            {t('common.details')}
           </button>
           <button
             type="button"
@@ -424,7 +364,7 @@ export function ShadowingView() {
             }`}
           >
             {hideKana ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-            {hideKana ? '顯示假名' : '隱藏假名'}
+            {t('common.hiragana')}
           </button>
           <button
             type="button"
@@ -436,7 +376,7 @@ export function ShadowingView() {
             }`}
           >
             {hideRomaji ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-            {hideRomaji ? '顯示羅馬字' : '隱藏羅馬字'}
+            Romaji
           </button>
         </div>
 
@@ -487,11 +427,11 @@ export function ShadowingView() {
             <div className="flex items-center justify-between text-xs font-bold text-[#64748B]">
               <span className="flex items-center gap-2">
                 <Volume2 className="w-4 h-4 text-[#00A86B]" />
-                母語示範發音
+                {t('shadowing.listenNative')}
               </span>
               {step === 3 && (
                 <span className="text-[10px] text-[#00A86B] bg-[#E6F8F2] px-2 py-0.5 rounded-full font-bold">
-                  步驟 3：輕聲同步跟讀
+                  {t('shadowing.speed')}
                 </span>
               )}
             </div>
@@ -503,7 +443,7 @@ export function ShadowingView() {
                 className="flex-1 py-3 bg-white hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Play className="w-4 h-4 text-[#00A86B] fill-current" />
-                正常語速
+                {t('shadowing.normal')}
               </button>
               <button
                 type="button"
@@ -512,7 +452,7 @@ export function ShadowingView() {
                 className="flex-1 py-3 bg-white hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <span>🐢</span>
-                慢速朗讀
+                {t('shadowing.slow')}
               </button>
             </div>
           </div>
@@ -528,11 +468,11 @@ export function ShadowingView() {
             <div className="flex items-center justify-between text-xs font-bold text-[#64748B]">
               <span className="flex items-center gap-2">
                 <Mic className="w-4 h-4 text-[#00A86B]" />
-                你的跟讀錄音
+                {t('shadowing.playbackRecord')}
               </span>
               {userAudioUrl && (
                 <span className="text-[#00A86B] bg-[#E6F8F2] px-2 py-0.5 rounded-full text-[10px] font-bold">
-                  已錄製
+                  {t('common.completed')}
                 </span>
               )}
             </div>
@@ -545,7 +485,7 @@ export function ShadowingView() {
                   className="flex-1 py-3 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   <Mic className="w-4 h-4" />
-                  開始錄音
+                  {t('shadowing.startRecord')}
                 </button>
               ) : (
                 <button
@@ -554,7 +494,7 @@ export function ShadowingView() {
                   className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 animate-pulse"
                 >
                   <Square className="w-4 h-4 fill-current" />
-                  停止錄音
+                  {t('shadowing.stopRecord')}
                 </button>
               )}
 
@@ -565,7 +505,7 @@ export function ShadowingView() {
                 className="flex-1 py-3 bg-white hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <Play className="w-4 h-4 text-[#00A86B] fill-current" />
-                播放我的錄音
+                {t('shadowing.playbackRecord')}
               </button>
             </div>
           </div>
@@ -577,22 +517,18 @@ export function ShadowingView() {
             type="button"
             onClick={handleCompare}
             disabled={!userAudioUrl || isRecording || isSpeakingTts || isComparing || isPlayingUserAudio}
-            className={`w-full py-3.5 rounded-2xl font-extrabold text-xs sm:text-sm transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2.5 disabled:opacity-40 disabled:cursor-not-allowed ${
-              step === 5
-                ? 'bg-gradient-to-r from-[#00A86B] to-[#008F5B] text-white ring-2 ring-[#00A86B]/40'
-                : 'bg-gradient-to-r from-[#00A86B] to-[#008F5B] text-white'
-            }`}
+            className="w-full py-3.5 rounded-2xl font-extrabold text-xs sm:text-sm transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2.5 disabled:opacity-40 disabled:cursor-not-allowed bg-gradient-to-r from-[#00A86B] to-[#008F5B] text-white"
           >
             <AudioLines className="w-4 h-4" />
             {isComparing
-              ? '正在連續對照播放中...'
+              ? t('shadowing.feedback')
               : userAudioUrl
-              ? '步驟 5：母語版 → 我的錄音（連貫對照比對）'
-              : '母語版 → 我的錄音（請先在步驟 4 錄音）'}
+              ? `${t('shadowing.listenNative')} ➔ ${t('shadowing.playbackRecord')}`
+              : t('shadowing.startRecord')}
           </button>
         </div>
 
-        {/* Step Quick Navigation (上一步 / 下一步) */}
+        {/* Step Quick Navigation */}
         <div className="flex items-center justify-center gap-3 pt-2">
           <button
             type="button"
@@ -600,23 +536,23 @@ export function ShadowingView() {
             onClick={() => setStep((prev) => Math.max(1, prev - 1) as Step)}
             className="px-4 py-2 bg-[#FAFBFB] hover:bg-white border border-[#E2E8F0] text-[#64748B] hover:text-[#1E293B] font-bold text-xs rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            ← 上一步
+            ← {t('common.previous')}
           </button>
-          <span className="text-xs font-bold text-[#64748B]">步驟 {step} / 5</span>
+          <span className="text-xs font-bold text-[#64748B]">{step} / 5</span>
           <button
             type="button"
             disabled={step === 5}
             onClick={() => setStep((prev) => Math.min(5, prev + 1) as Step)}
             className="px-4 py-2 bg-[#FAFBFB] hover:bg-white border border-[#E2E8F0] text-[#64748B] hover:text-[#1E293B] font-bold text-xs rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            下一步 →
+            {t('common.next')} →
           </button>
         </div>
 
         {/* Practice Stats & Mark OK */}
         <div className="flex items-center justify-between gap-3 pt-4 border-t border-[#F1F5F9] text-xs text-[#64748B] flex-wrap">
           <span>
-            本句今日已練習：<span className="text-[#1E293B] font-extrabold">{currentSentencePracticedCount}</span> 次
+            {t('shadowing.practiceCount')}: <span className="text-[#1E293B] font-extrabold">{currentSentencePracticedCount}</span>
           </span>
           <button
             type="button"
@@ -626,10 +562,10 @@ export function ShadowingView() {
             {isCurrentSentenceMarkedOk ? (
               <>
                 <Check className="w-4 h-4" />
-                已標記 OK
+                {t('common.completed')}
               </>
             ) : (
-              '標記這句 OK'
+              t('common.confirm')
             )}
           </button>
         </div>
@@ -643,11 +579,11 @@ export function ShadowingView() {
             className="px-4 py-2.5 bg-[#FAFBFB] hover:bg-white border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            上一句
+            {t('common.previous')}
           </button>
 
           <span className="text-xs text-[#94A3B8] font-bold">
-            第 {currentIndex + 1} 句 / 共 {list.length} 句
+            {currentIndex + 1} / {list.length}
           </span>
 
           <button
@@ -656,16 +592,14 @@ export function ShadowingView() {
             disabled={currentIndex === list.length - 1}
             className="px-4 py-2.5 bg-[#00A86B] hover:bg-[#008F5B] text-white font-bold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            下一句
+            {t('common.next')}
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
 
-      {/* 音檔來源標示。VOICEVOX 的使用條款要求標明使用了 VOICEVOX 與角色名稱，
-          這是使用其語音的必要條件，不是選擇性的裝飾。 */}
       <p className="text-[11px] text-[#94A3B8] text-center">
-        示範語音：VOICEVOX:四国めたん
+        {t('footer.voicevoxPrefix')}{t('footer.voicevoxName')}
       </p>
     </div>
   );

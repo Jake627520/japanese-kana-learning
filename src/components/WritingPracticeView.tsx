@@ -4,24 +4,17 @@ import { HIRAGANA_DATA } from '../data/kanaData';
 import { HIRAGANA_STROKES } from '../data/strokeData';
 import { getStoredProgress, toggleKanaMastered } from '../utils/storage';
 import { speakJapanese } from '../utils/speech';
+import { useI18n } from '../i18n';
 import {
   Eraser, Volume2, Check, ChevronLeft, ChevronRight, PenLine, Eye, EyeOff,
 } from 'lucide-react';
-
-// 書寫練習：描紅 + 手寫 + 自我判斷。
-//
-// 刻意不做自動判分：手寫相似度判斷做不準（同一個字寫得歪一點就可能被判錯），
-// 而錯誤的回饋比沒有回饋更傷——這與 shadowing 不做發音評分是同一個理由。
-// 改成給描紅參考與筆順要點，由學習者自己比對後按「寫對了 / 再練一次」。
-//
-// 進度重用既有的 masteredKanaIds，不另立一套 storage：書寫練會了就是「這個假名
-// 掌握了」，和圖表／卡片的掌握狀態是同一件事，分開存只會讓兩邊數字打架。
 
 interface Props {
   onProgressChange?: () => void;
 }
 
 export function WritingPracticeView({ onProgressChange }: Props) {
+  const { t } = useI18n();
   const list: KanaItem[] = HIRAGANA_DATA;
   const [index, setIndex] = useState(0);
   const [showTrace, setShowTrace] = useState(true);
@@ -37,7 +30,6 @@ export function WritingPracticeView({ onProgressChange }: Props) {
   const guide = HIRAGANA_STROKES[kana.id];
   const isMastered = masteredIds.includes(kana.id);
 
-  // 每次換字或切換描紅都重畫底層（描紅字 + 十字參考線）
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -47,7 +39,6 @@ export function WritingPracticeView({ onProgressChange }: Props) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setHasInk(false);
 
-    // 十字參考線：讓初學者抓得到字的中心與比例
     ctx.strokeStyle = '#E2E8F0';
     ctx.lineWidth = 1;
     ctx.setLineDash([6, 6]);
@@ -71,7 +62,6 @@ export function WritingPracticeView({ onProgressChange }: Props) {
   const pos = (e: React.PointerEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current!;
     const r = canvas.getBoundingClientRect();
-    // canvas 內部解析度與 CSS 顯示大小可能不同，要換算，否則筆跡會偏移
     return {
       x: (e.clientX - r.left) * (canvas.width / r.width),
       y: (e.clientY - r.top) * (canvas.height / r.height),
@@ -104,16 +94,20 @@ export function WritingPracticeView({ onProgressChange }: Props) {
     ctx.stroke();
   };
 
-  const end = () => { drawingRef.current = false; };
+  const end = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!drawingRef.current) return;
+    drawingRef.current = false;
+    canvasRef.current?.releasePointerCapture(e.pointerId);
+  };
 
   const clearInk = () => {
-    // 用重設 key 的方式重畫底圖：直接清掉會連描紅一起清掉
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setHasInk(false);
+
     ctx.strokeStyle = '#E2E8F0';
     ctx.lineWidth = 1;
     ctx.setLineDash([6, 6]);
@@ -124,6 +118,7 @@ export function WritingPracticeView({ onProgressChange }: Props) {
     ctx.lineTo(canvas.width, canvas.height / 2);
     ctx.stroke();
     ctx.setLineDash([]);
+
     if (showTrace) {
       ctx.fillStyle = '#E8F5EE';
       ctx.font = `${Math.floor(canvas.height * 0.72)}px "Hiragino Sans", "Yu Gothic", sans-serif`;
@@ -133,52 +128,62 @@ export function WritingPracticeView({ onProgressChange }: Props) {
     }
   };
 
-  const goTo = (i: number) => {
-    setIndex(Math.max(0, Math.min(list.length - 1, i)));
-  };
-
   const handleMastered = () => {
     const updated = toggleKanaMastered(kana.id);
     setMasteredIds(updated.masteredKanaIds);
     onProgressChange?.();
-    if (!isMastered && index < list.length - 1) {
-      setTimeout(() => goTo(index + 1), 250);
-    }
+  };
+
+  const goTo = (i: number) => {
+    if (i < 0 || i >= list.length) return;
+    setIndex(i);
   };
 
   return (
     <div className="space-y-6">
-      <div className="space-y-1.5">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6F8F2] text-[#00A86B] rounded-full text-xs font-extrabold">
-          <PenLine className="w-3.5 h-3.5" />
-          書寫練習
+      {/* 標題 */}
+      <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex items-center justify-between gap-4 flex-wrap">
+        <div>
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6F8F2] text-[#00A86B] rounded-full text-xs font-bold mb-1">
+            <PenLine className="w-3.5 h-3.5" />
+            {t('writing.title')}
+          </div>
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">
+            {t('writing.title')}
+          </h2>
+          <p className="text-xs text-[#64748B] mt-0.5">
+            {t('writing.subtitle')}
+          </p>
         </div>
-        <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">看筆順 → 描紅 → 自己寫</h2>
-        <p className="text-xs text-[#64748B] leading-relaxed">
-          寫得出來和認得出來是兩種能力。這裡不自動評分——照筆順寫完，自己和上方的字比對，再決定要不要標記為已掌握。
-        </p>
       </div>
 
+      {/* 兩欄：左筆順、右手寫區 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {/* 左：字 + 筆順 */}
+        {/* 左：示範與筆順 */}
         <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-4">
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex items-baseline gap-3">
-              <span className="text-5xl font-extrabold text-[#1E293B] leading-none">{kana.kana}</span>
-              <span className="text-sm text-[#64748B] font-bold">{kana.romaji}</span>
-            </div>
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-extrabold text-[#1E293B]">{t('writing.strokeOrderTitle')}</span>
             <button
               onClick={() => speakJapanese(kana.kana)}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-xl hover:bg-slate-50 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold text-[#00A86B] bg-[#E6F8F2] rounded-lg hover:bg-[#D1F2E5] cursor-pointer"
             >
-              <Volume2 className="w-3.5 h-3.5" /> 發音
+              <Volume2 className="w-3.5 h-3.5" /> {t('common.playAudio')}
             </button>
           </div>
 
+          <div className="flex items-center justify-center p-8 bg-[#FAFBFB] rounded-2xl border border-[#F1F5F9]">
+            <div className="text-center space-y-2">
+              <div className="text-7xl font-extrabold text-[#1E293B]">{kana.kana}</div>
+              <div className="text-sm font-extrabold text-[#00A86B] uppercase tracking-wider">
+                {kana.romaji}
+              </div>
+            </div>
+          </div>
+
           {guide && (
-            <div className="space-y-2">
+            <div className="space-y-2 pt-2 border-t border-[#F1F5F9]">
               <div className="text-xs font-extrabold text-[#00A86B]">
-                共 {guide.count} 畫
+                {guide.count}
               </div>
               <ol className="space-y-1.5">
                 {guide.steps.map((s, i) => (
@@ -197,20 +202,20 @@ export function WritingPracticeView({ onProgressChange }: Props) {
         {/* 右：手寫區 */}
         <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-3">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs font-extrabold text-[#1E293B]">在這裡寫</span>
+            <span className="text-xs font-extrabold text-[#1E293B]">{t('writing.title')}</span>
             <div className="flex gap-2">
               <button
                 onClick={() => setShowTrace((v) => !v)}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 cursor-pointer"
               >
                 {showTrace ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                {showTrace ? '關閉描紅' : '顯示描紅'}
+                {showTrace ? t('writing.hideStroke') : t('writing.showStroke')}
               </button>
               <button
                 onClick={clearInk}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 cursor-pointer"
               >
-                <Eraser className="w-3.5 h-3.5" /> 清除
+                <Eraser className="w-3.5 h-3.5" /> {t('writing.clearCanvas')}
               </button>
             </div>
           </div>
@@ -236,7 +241,7 @@ export function WritingPracticeView({ onProgressChange }: Props) {
             }`}
           >
             <Check className="w-4 h-4" />
-            {isMastered ? '已標記為掌握（點此取消）' : '寫對了，標記為已掌握'}
+            {isMastered ? t('study.unmarkMastered') : t('study.markMastered')}
           </button>
         </div>
       </div>
@@ -248,17 +253,17 @@ export function WritingPracticeView({ onProgressChange }: Props) {
           disabled={index === 0}
           className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-xl hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
         >
-          <ChevronLeft className="w-4 h-4" /> 上一個
+          <ChevronLeft className="w-4 h-4" /> {t('common.previous')}
         </button>
         <span className="text-xs text-[#64748B] font-semibold">
-          {index + 1} / {list.length} 　已掌握 {masteredIds.filter((id) => id.startsWith('h_')).length} / {list.length}
+          {index + 1} / {list.length}
         </span>
         <button
           onClick={() => goTo(index + 1)}
           disabled={index === list.length - 1}
           className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-xl hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
         >
-          下一個 <ChevronRight className="w-4 h-4" />
+          {t('common.next')} <ChevronRight className="w-4 h-4" />
         </button>
       </div>
     </div>

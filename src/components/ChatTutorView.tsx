@@ -3,8 +3,8 @@ import { Volume2, Send, RotateCcw, Check, X, Sparkles } from 'lucide-react';
 import { KanaItem, KanaType } from '../types';
 import { HIRAGANA_DATA, KATAKANA_DATA } from '../data/kanaData';
 import { speakJapanese } from '../utils/speech';
+import { useI18n } from '../i18n';
 
-// ── 資料：把假名依「行」分組，維持資料原始順序 ──
 function groupByRow(data: KanaItem[]): KanaItem[][] {
   const order: string[] = [];
   const map = new Map<string, KanaItem[]>();
@@ -18,12 +18,11 @@ function groupByRow(data: KanaItem[]): KanaItem[][] {
   return order.map((r) => map.get(r)!);
 }
 
-// ── 對話訊息模型 ──
 type QuizState = {
-  prompt: string;          // 要找的羅馬拼音
-  answerId: string;        // 正解 kana id
-  options: KanaItem[];     // 選項
-  pickedId: string | null; // 使用者選的
+  prompt: string;
+  answerId: string;
+  options: KanaItem[];
+  pickedId: string | null;
 };
 
 type ChatMsg =
@@ -31,19 +30,16 @@ type ChatMsg =
   | { id: number; role: 'sensei'; kind: 'kana'; kana: KanaItem }
   | { id: number; role: 'sensei'; kind: 'quiz'; quiz: QuizState };
 
-// 教學階段狀態機
 type Stage =
   | { type: 'teaching'; rowIdx: number; kanaIdx: number }
   | { type: 'quiz'; rowIdx: number; qIdx: number; total: number; answered: boolean }
   | { type: 'done' };
 
-// 讓 Omit 在 discriminated union 上逐一分配，保留各分支的專屬欄位
 type WithoutId<T> = T extends unknown ? Omit<T, 'id'> : never;
 
 let MSG_SEQ = 0;
 const nextId = () => ++MSG_SEQ;
 
-// 從一「行」裡挑出小測題目（最多 3 題，選項含其他行干擾）
 function buildQuizzes(row: KanaItem[], allKana: KanaItem[]): QuizState[] {
   const picks = shuffle(row).slice(0, Math.min(3, row.length));
   return picks.map((target) => {
@@ -81,6 +77,7 @@ interface ChatTutorViewProps {
 }
 
 export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
+  const { t } = useI18n();
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [stage, setStage] = useState<Stage>({ type: 'teaching', rowIdx: 0, kanaIdx: 0 });
@@ -96,119 +93,133 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
   const push = (msg: WithoutId<ChatMsg>) =>
     setMessages((m) => [...m, { ...msg, id: nextId() } as ChatMsg]);
 
-  // 初始化 / 切換假名種類時重來
   const resetLesson = (type: KanaType) => {
-    const src = type === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
-    const grouped = groupByRow(src);
-    setMessages([]);
+    setKanaType(type);
     setScore({ correct: 0, total: 0 });
-    setQuizzes([]);
+    const s = type === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
+    const r = groupByRow(s);
     setStage({ type: 'teaching', rowIdx: 0, kanaIdx: 0 });
-    // 開場白 + 第一行介紹 + 第一個假名
-    const first = grouped[0];
-    setTimeout(() => {
-      setMessages([
-        {
-          id: nextId(),
-          role: 'sensei',
-          kind: 'text',
-          text: `你好，我是あ老師！👋 我會用聊天的方式，一行一行帶你把${type === 'hiragana' ? '平假名' : '片假名'}學起來。準備好就開始囉～`,
-        },
-        { id: nextId(), role: 'sensei', kind: 'text', text: `【${first[0].row}】${ROW_INTROS[first[0].row] ?? ''}` },
-        { id: nextId(), role: 'sensei', kind: 'kana', kana: first[0] },
-      ]);
-    }, 0);
+    setQuizzes([]);
+    setMessages([
+      {
+        id: nextId(),
+        role: 'sensei',
+        kind: 'text',
+        text: t('chat.welcomeMsg'),
+      },
+      {
+        id: nextId(),
+        role: 'sensei',
+        kind: 'text',
+        text: `【${r[0][0].row}】${ROW_INTROS[r[0][0].row] ?? ''}`,
+      },
+      {
+        id: nextId(),
+        role: 'sensei',
+        kind: 'kana',
+        kana: r[0][0],
+      },
+    ]);
   };
 
   useEffect(() => {
-    resetLesson(kanaType);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [kanaType]);
+    resetLesson('hiragana');
+  }, []);
 
-  // 自動捲到底
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // 使用者說了一句話（右側泡泡）
   const say = (text: string) => push({ role: 'user', kind: 'text', text });
 
-  // 前進到下一個假名 / 進入小測
   const handleNext = () => {
     if (stage.type !== 'teaching') return;
-    say('下一個 →');
     const row = rows[stage.rowIdx];
-    const nextKanaIdx = stage.kanaIdx + 1;
+    const isRowEnd = stage.kanaIdx + 1 >= row.length;
 
-    if (nextKanaIdx < row.length) {
-      setStage({ type: 'teaching', rowIdx: stage.rowIdx, kanaIdx: nextKanaIdx });
-      push({ role: 'sensei', kind: 'kana', kana: row[nextKanaIdx] });
+    if (!isRowEnd) {
+      const nextIdx = stage.kanaIdx + 1;
+      const kana = row[nextIdx];
+      say(t('common.next'));
+      setStage({ type: 'teaching', rowIdx: stage.rowIdx, kanaIdx: nextIdx });
+      push({ role: 'sensei', kind: 'kana', kana });
     } else {
-      // 本行教完 → 出小測
-      const qs = buildQuizzes(row, allKana);
-      setQuizzes(qs);
-      setStage({ type: 'quiz', rowIdx: stage.rowIdx, qIdx: 0, total: qs.length, answered: false });
-      push({ role: 'sensei', kind: 'text', text: `${row[0].row}學完了！來個小測驗，共 ${qs.length} 題 ✏️` });
-      push({ role: 'sensei', kind: 'quiz', quiz: qs[0] });
+      say(t('quiz.startQuiz'));
+      const qList = buildQuizzes(row, allKana);
+      setQuizzes(qList);
+      setStage({ type: 'quiz', rowIdx: stage.rowIdx, qIdx: 0, total: qList.length, answered: false });
+      push({
+        role: 'sensei',
+        kind: 'text',
+        text: `【${row[0].row}】${t('chat.title')} (${qList.length})`,
+      });
+      push({ role: 'sensei', kind: 'quiz', quiz: qList[0] });
     }
   };
 
-  // 使用者在小測中選了答案
-  const handlePick = (optId: string) => {
+  const handlePick = (pickedId: string) => {
     if (stage.type !== 'quiz' || stage.answered) return;
-    const q = quizzes[stage.qIdx];
-    const correct = optId === q.answerId;
-    const answer = q.options.find((o) => o.id === q.answerId)!;
+    const currentQ = quizzes[stage.qIdx];
+    if (!currentQ) return;
 
-    // 更新該題訊息的 pickedId（鎖定選項並顯示對錯）
-    setMessages((m) =>
-      m.map((msg) =>
-        msg.kind === 'quiz' && msg.quiz === q ? { ...msg, quiz: { ...q, pickedId: optId } } : msg,
-      ),
+    const isCorrect = pickedId === currentQ.answerId;
+    const updatedQuiz = { ...currentQ, pickedId };
+    setQuizzes((qs) => qs.map((q, i) => (i === stage.qIdx ? updatedQuiz : q)));
+    setMessages((ms) =>
+      ms.map((m) => (m.kind === 'quiz' && m.quiz.prompt === currentQ.prompt ? { ...m, quiz: updatedQuiz } : m))
     );
-    setScore((s) => ({ correct: s.correct + (correct ? 1 : 0), total: s.total + 1 }));
+
+    setScore((s) => ({ correct: s.correct + (isCorrect ? 1 : 0), total: s.total + 1 }));
     setStage({ ...stage, answered: true });
 
-    push({
-      role: 'sensei',
-      kind: 'text',
-      text: correct
-        ? `答對了！「${answer.kana}」就是 ${answer.romaji} 🎉`
-        : `再想想～ ${answer.romaji} 是「${answer.kana}」。沒關係，記起來就好！`,
-    });
+    const correctKana = allKana.find((k) => k.id === currentQ.answerId);
+    if (isCorrect) {
+      push({
+        role: 'sensei',
+        kind: 'text',
+        text: `🎉 ${t('quiz.correct')}「${correctKana?.kana}」= ${currentQ.prompt}`,
+      });
+      speakJapanese(correctKana?.kana || '');
+    } else {
+      push({
+        role: 'sensei',
+        kind: 'text',
+        text: `😅 ${t('quiz.incorrect')}「${correctKana?.kana}」= ${currentQ.prompt}`,
+      });
+      speakJapanese(correctKana?.kana || '');
+    }
     onProgressChange?.();
   };
 
-  // 小測下一題 / 下一行
   const handleAdvanceQuiz = () => {
     if (stage.type !== 'quiz' || !stage.answered) return;
-    const nextQ = stage.qIdx + 1;
-    if (nextQ < stage.total) {
-      say('下一題');
-      setStage({ ...stage, qIdx: nextQ, answered: false });
-      push({ role: 'sensei', kind: 'quiz', quiz: quizzes[nextQ] });
+    const isLastQuizInRow = stage.qIdx + 1 >= stage.total;
+
+    if (!isLastQuizInRow) {
+      const nextQIdx = stage.qIdx + 1;
+      say(t('quiz.nextQuestion'));
+      setStage({ ...stage, qIdx: nextQIdx, answered: false });
+      push({ role: 'sensei', kind: 'quiz', quiz: quizzes[nextQIdx] });
     } else {
-      // 進入下一行
       const nextRowIdx = stage.rowIdx + 1;
       if (nextRowIdx < rows.length) {
-        say('進入下一行 →');
+        say(`${t('common.next')} →`);
         const nextRow = rows[nextRowIdx];
         setStage({ type: 'teaching', rowIdx: nextRowIdx, kanaIdx: 0 });
         push({ role: 'sensei', kind: 'text', text: `【${nextRow[0].row}】${ROW_INTROS[nextRow[0].row] ?? ''}` });
         push({ role: 'sensei', kind: 'kana', kana: nextRow[0] });
       } else {
-        say('完成！🎊');
+        say(`${t('common.completed')}! 🎊`);
         setStage({ type: 'done' });
         push({
           role: 'sensei',
           kind: 'text',
-          text: `太棒了，全部學完了！🎊 小測共答對 ${score.correct}／${score.total} 題。想再練習可以點「重新開始」，或去「綜合測驗」驗收成果！`,
+          text: `${t('quiz.congratsPerfect')} ${score.correct} / ${score.total}`,
         });
       }
     }
   };
 
-  // 依階段決定底部快速回覆
   const quickReplies = useMemo(() => {
     if (stage.type === 'teaching') {
       const row = rows[stage.rowIdx];
@@ -218,85 +229,84 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
         <>
           {kana && (
             <Chip icon={<Volume2 className="w-4 h-4" />} onClick={() => speakJapanese(kana.kana)}>
-              再聽一次
+              {t('common.playAudio')}
             </Chip>
           )}
           <Chip primary icon={<Send className="w-4 h-4" />} onClick={handleNext}>
-            {row && stage.kanaIdx === row.length - 1 ? (isLast ? '完成' : '本行學完，來測驗') : '下一個'}
+            {row && stage.kanaIdx === row.length - 1 ? (isLast ? t('common.finish') : t('quiz.startQuiz')) : t('common.next')}
           </Chip>
         </>
       );
     }
     if (stage.type === 'quiz') {
       if (!stage.answered) {
-        return <span className="text-xs text-[#94A3B8] px-2">👆 點上方選項作答</span>;
+        return <span className="text-xs text-[#94A3B8] px-2">👆 {t('quiz.modeSelect')}</span>;
       }
       const isLastQuiz = stage.qIdx === stage.total - 1;
       const isLastRow = stage.rowIdx === rows.length - 1;
       return (
         <Chip primary icon={<Send className="w-4 h-4" />} onClick={handleAdvanceQuiz}>
-          {isLastQuiz ? (isLastRow ? '看成果' : '進入下一行') : '下一題'}
+          {isLastQuiz ? (isLastRow ? t('quiz.finishQuiz') : t('common.next')) : t('quiz.nextQuestion')}
         </Chip>
       );
     }
     return (
       <Chip primary icon={<RotateCcw className="w-4 h-4" />} onClick={() => resetLesson(kanaType)}>
-        重新開始
+        {t('common.reset')}
       </Chip>
     );
-  }, [stage, rows, quizzes, kanaType, score]);
+  }, [stage, rows, quizzes, kanaType, score, t]);
 
   const totalKana = allKana.length;
   const learnedApprox =
     stage.type === 'done'
       ? totalKana
-      : stage.type === 'quiz'
-      ? rows.slice(0, stage.rowIdx + 1).reduce((n, r) => n + r.length, 0)
       : rows.slice(0, stage.rowIdx).reduce((n, r) => n + r.length, 0) +
-        (stage.type === 'teaching' ? stage.kanaIdx + 1 : 0);
-  const progressPct = Math.round((learnedApprox / totalKana) * 100);
+        (stage.type === 'teaching' ? stage.kanaIdx + 1 : rows[stage.rowIdx]?.length ?? 0);
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8rem)] lg:h-[calc(100vh-4rem)] bg-white border border-[#E2E8F0] rounded-3xl shadow-xs overflow-hidden">
-      {/* 頂部標題列 */}
-      <div className="flex items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-[#F1F5F9] shrink-0">
-        <div className="flex items-center gap-3 min-w-0">
-          <div className="w-11 h-11 bg-[#00A86B] text-white rounded-2xl flex items-center justify-center font-extrabold text-2xl shadow-xs shrink-0">
+    <div className="bg-white border border-[#E2E8F0] rounded-3xl shadow-xs flex flex-col h-[75vh] max-h-[800px] min-h-[520px] overflow-hidden">
+      {/* 頂部導覽 */}
+      <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#F1F5F9] bg-[#FAFBFB] shrink-0">
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 bg-[#00A86B] text-white rounded-xl flex items-center justify-center font-bold text-sm">
             あ
           </div>
-          <div className="min-w-0">
-            <h2 className="font-display font-bold text-[#1E293B] leading-tight truncate">あ老師・對話教室</h2>
-            <p className="text-xs text-[#64748B] truncate">聊天式互動，一行一行帶你學五十音</p>
+          <div>
+            <div className="text-sm font-bold text-[#1E293B]">{t('chat.aiTutor')}</div>
+            <div className="text-[11px] text-[#64748B]">
+              {learnedApprox} / {totalKana}
+            </div>
           </div>
         </div>
-        {/* 假名種類切換 */}
-        <div className="flex bg-[#F1F5F9] rounded-full p-1 shrink-0">
-          {(['hiragana', 'katakana'] as KanaType[]).map((t) => (
+
+        <div className="flex items-center gap-2">
+          <div className="flex bg-[#E2E8F0] p-0.5 rounded-xl text-xs font-bold">
             <button
-              key={t}
-              onClick={() => setKanaType(t)}
-              className={`px-3 py-1.5 text-xs font-bold rounded-full transition-all cursor-pointer ${
-                kanaType === t ? 'bg-[#00A86B] text-white shadow-xs' : 'text-[#64748B]'
+              onClick={() => resetLesson('hiragana')}
+              className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
+                kanaType === 'hiragana' ? 'bg-white text-[#00A86B] shadow-xs' : 'text-[#64748B]'
               }`}
             >
-              {t === 'hiragana' ? 'ひらがな' : 'カタカナ'}
+              {t('common.hiragana')}
             </button>
-          ))}
-        </div>
-      </div>
-
-      {/* 進度條 */}
-      <div className="px-4 sm:px-6 py-2 border-b border-[#F1F5F9] shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="flex-1 h-2 bg-[#F1F5F9] rounded-full overflow-hidden">
-            <div
-              className="h-full bg-[#00A86B] rounded-full transition-all duration-500"
-              style={{ width: `${progressPct}%` }}
-            />
+            <button
+              onClick={() => resetLesson('katakana')}
+              className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
+                kanaType === 'katakana' ? 'bg-white text-[#00A86B] shadow-xs' : 'text-[#64748B]'
+              }`}
+            >
+              {t('common.katakana')}
+            </button>
           </div>
-          <span className="text-xs font-bold text-[#64748B] shrink-0">
-            {learnedApprox}/{totalKana}
-          </span>
+
+          <button
+            onClick={() => resetLesson(kanaType)}
+            className="p-2 text-[#64748B] hover:text-[#1E293B] rounded-lg hover:bg-white transition-colors cursor-pointer"
+            title={t('common.reset')}
+          >
+            <RotateCcw className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
@@ -318,7 +328,6 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
   );
 }
 
-// ── 單則訊息泡泡 ──
 function MessageBubble({
   msg,
   stage,
@@ -338,7 +347,6 @@ function MessageBubble({
     );
   }
 
-  // sensei 側：頭像 + 內容
   return (
     <div className="flex gap-2.5 items-end animate-[fadeIn_0.25s_ease]">
       <div className="w-8 h-8 bg-[#00A86B] text-white rounded-xl flex items-center justify-center font-bold text-sm shrink-0 mb-1">
@@ -357,7 +365,6 @@ function MessageBubble({
   );
 }
 
-// ── 假名教學卡（內嵌於對話） ──
 function KanaCard({ kana }: { kana: KanaItem }) {
   const example = kana.examples?.[0];
   return (
@@ -366,7 +373,7 @@ function KanaCard({ kana }: { kana: KanaItem }) {
         <button
           onClick={() => speakJapanese(kana.kana)}
           className="group relative w-20 h-20 bg-[#E6F8F2] rounded-2xl flex items-center justify-center shrink-0 cursor-pointer hover:bg-[#00A86B] transition-colors"
-          aria-label={`播放 ${kana.romaji} 發音`}
+          aria-label={`Play ${kana.romaji}`}
         >
           <span className="text-4xl font-extrabold text-[#00A86B] group-hover:text-white transition-colors">
             {kana.kana}
@@ -386,7 +393,7 @@ function KanaCard({ kana }: { kana: KanaItem }) {
               >
                 {example.word}
               </button>
-              <span className="text-[#94A3B8]">（{example.romaji}）</span>
+              <span className="text-[#94A3B8]"> ({example.romaji})</span>
               <div className="text-[#64748B]">{example.meaning}</div>
             </div>
           )}
@@ -396,7 +403,6 @@ function KanaCard({ kana }: { kana: KanaItem }) {
   );
 }
 
-// ── 小測卡 ──
 function QuizCard({
   quiz,
   stage,
@@ -411,7 +417,7 @@ function QuizCard({
     <div className="bg-white border border-[#E2E8F0] rounded-2xl rounded-bl-md p-4 shadow-xs w-72 max-w-full">
       <div className="flex items-center gap-1.5 text-xs font-bold text-[#00A86B] mb-3">
         <Sparkles className="w-4 h-4" />
-        哪一個是「{quiz.prompt}」？
+        {quiz.prompt}
       </div>
       <div className="grid grid-cols-2 gap-2">
         {quiz.options.map((opt) => {
@@ -445,7 +451,6 @@ function QuizCard({
   );
 }
 
-// ── 快速回覆按鈕 ──
 function Chip({
   children,
   onClick,

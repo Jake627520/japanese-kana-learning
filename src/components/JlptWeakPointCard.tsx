@@ -3,14 +3,7 @@ import React from 'react';
 import { AlertTriangle, TrendingUp, Target } from 'lucide-react';
 import { getStoredJlptRecords } from '../utils/jlptStorage';
 import { getOwnJlptQuestions, ALL_N5_TOPICS_UI } from '../data/jlpt';
-
-// JLPT 弱點分析：從作答紀錄找出最常錯的考點。
-// 關鍵：不信任紀錄裡存的 topicId（隨機模式會存成合成的 'all'），改用每筆的
-// questionId 反查題目的 topics.primary——這樣不論哪種練習模式都正確歸到真實
-// 考點。純顯示、不作答；看到弱點後往下捲到題目列表點該考點的「開始練習」即可。
-//
-// 門檻 MIN_ATTEMPTS 沿用 nihongo-tiku 的判斷哲學：證據不足（答太少）時不判人
-// 弱點，避免一兩題的雜訊被當成結論。
+import { useI18n } from '../i18n';
 
 const MIN_ATTEMPTS = 3;
 
@@ -19,10 +12,11 @@ interface WeakPoint {
   name: string;
   total: number;
   wrong: number;
-  rate: number; // 0–1 答錯率
+  rate: number;
 }
 
 export function JlptWeakPointCard() {
+  const { t } = useI18n();
   const records = getStoredJlptRecords();
 
   const qById = new Map(getOwnJlptQuestions().map((q) => [q.id, q] as const));
@@ -34,7 +28,7 @@ export function JlptWeakPointCard() {
 
   for (const r of records) {
     const q = qById.get(r.questionId);
-    if (!q) continue; // 舊紀錄指向已不存在的題目 → 略過，不污染統計
+    if (!q) continue;
     const tid = q.topics.primary;
     const cur = agg.get(tid) || { total: 0, wrong: 0 };
     cur.total += 1;
@@ -63,10 +57,10 @@ export function JlptWeakPointCard() {
       <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs">
         <div className="flex items-center gap-2 mb-1">
           <Target className="w-4 h-4 text-[#00A86B]" />
-          <h3 className="text-sm font-extrabold text-[#1E293B]">弱點分析</h3>
+          <h3 className="text-sm font-extrabold text-[#1E293B]">{t('jlpt.weakPoints')}</h3>
         </div>
         <p className="text-xs text-[#64748B] leading-relaxed">
-          開始練習後，這裡會依你的作答自動找出最常錯的考點，讓你知道該優先補哪裡。
+          {t('jlpt.subtitle')}
         </p>
       </div>
     );
@@ -77,11 +71,11 @@ export function JlptWeakPointCard() {
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-2">
           <Target className="w-4 h-4 text-[#00A86B]" />
-          <h3 className="text-sm font-extrabold text-[#1E293B]">弱點分析</h3>
+          <h3 className="text-sm font-extrabold text-[#1E293B]">{t('jlpt.weakPoints')}</h3>
         </div>
         <div className="flex items-center gap-1.5 text-xs text-[#64748B]">
           <TrendingUp className="w-3.5 h-3.5" />
-          已答 {totalAnswered} 題 · 正確率 {accuracy}%
+          {t('quiz.accuracy')}: {accuracy}% ({totalAnswered})
         </div>
       </div>
 
@@ -89,13 +83,13 @@ export function JlptWeakPointCard() {
         <EmptyState
           bare
           art="chart"
-          title="還看不出弱點"
-          body={`每個考點要答滿 ${MIN_ATTEMPTS} 題才會納入分析。目前答題量還不夠，先多練幾個知識點，這裡就會告訴你該補哪裡。`}
+          title={t('review.noWeakTitle')}
+          body={t('review.noWeakDesc')}
         />
       ) : (
         <div className="space-y-3">
           <p className="text-xs text-[#64748B]">
-            以下是你答錯率最高的考點，往下找到對應知識點點「開始練習」加強：
+            {t('home.weakShadowing.desc')}
           </p>
           {weakPoints.map((w) => (
             <div key={w.topicId} className="space-y-1">
@@ -105,7 +99,7 @@ export function JlptWeakPointCard() {
                   {w.name}
                 </span>
                 <span className="text-[#64748B] shrink-0">
-                  答錯 {w.wrong}/{w.total}（{Math.round(w.rate * 100)}%）
+                  {w.wrong}/{w.total} ({Math.round(w.rate * 100)}%)
                 </span>
               </div>
               <div className="h-1.5 w-full bg-[#F1F5F9] rounded-full overflow-hidden">

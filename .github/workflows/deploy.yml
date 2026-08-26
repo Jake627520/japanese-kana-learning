@@ -38,6 +38,9 @@ jobs:
       - name: Validate educational data
         run: npm run validate:data
 
+      - name: Validate i18n dictionaries
+        run: npm run validate:i18n
+
       - name: Type check
         run: npm run lint
 

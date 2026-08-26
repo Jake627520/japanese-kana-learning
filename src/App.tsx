@@ -15,8 +15,10 @@ import { ChatTutorView } from './components/ChatTutorView';
 import { WritingPracticeView } from './components/WritingPracticeView';
 import { ConfusableView } from './components/ConfusableView';
 import { Navigation } from './components/Navigation';
+import { I18nProvider, useI18n } from './i18n';
 
-export default function App() {
+function AppContent() {
+  const { t } = useI18n();
   const [progress, setProgress] = useState<UserProgress>(getStoredProgress());
   const [currentTab, setCurrentTab] = useState<NavigationTab>('home');
   const [currentKanaCategory, setCurrentKanaCategory] = useState<'basic' | 'dakuten' | 'handakuten' | 'youon'>('basic');
@@ -127,43 +129,45 @@ export default function App() {
           </main>
         </div>
 
-        {/* 全站頁尾：音源標示。
-            VOICEVOX 的授權要求標明使用了 VOICEVOX 與角色名稱——站上 208 個假名
-            與 18 句跟讀都用它產生，所以標示放在全站頁尾而不是只放跟讀頁。
-            MIT 指的是本站程式碼，與音檔授權是兩回事，分開寫免得被誤解成
-            音檔也是 MIT。 */}
+        {/* 全站頁尾：音源標示與說明 */}
         <footer className="mt-10 pt-6 border-t border-[#E2E8F0] pb-28 lg:pb-8">
           <div className="max-w-md mx-auto flex flex-col items-center gap-4 text-center">
-            {/* 音源標示。VOICEVOX 的授權要求標明使用了 VOICEVOX 與角色名稱——
-                站上 208 個假名與跟讀句都用它產生，所以放全站頁尾而不是只放跟讀頁。 */}
             <p className="text-[11px] text-[#94A3B8]">
-              語音：<span className="font-semibold text-[#64748B]">VOICEVOX:四国めたん</span>
+              {t('footer.voicevoxPrefix')}
+              <span className="font-semibold text-[#64748B]">{t('footer.voicevoxName')}</span>
               <span className="mx-1.5">·</span>
-              部分內容使用瀏覽器內建語音合成
+              {t('footer.browserSpeechNote')}
             </p>
 
-            {/* 最常被問到的兩件事，各自獨立一段——擠成一段會讀不出這是兩件事。
-                下面那條是「手機聽不到聲音」十次有九次的真正原因，不是網站壞了。 */}
             <div className="w-full flex flex-col gap-2.5">
               <p className="text-[11px] text-[#94A3B8] leading-[1.9] text-pretty">
-                所有發音都是預先錄製、隨網站一起下載的音檔，
-                <span className="font-semibold text-[#64748B]">不需要安裝任何軟體</span>。
+                {t('footer.noInstallNeeded')}
+                <span className="font-semibold text-[#64748B]">{t('footer.noInstallNeededBold')}</span>
+                {t('footer.noInstallNeededSuffix')}
               </p>
               <p className="text-[11px] text-[#94A3B8] leading-[1.9] text-pretty">
-                iPhone 若沒有聲音，請先確認機身側邊的
-                <span className="font-semibold text-[#64748B]">靜音開關</span>
-                已關閉，並把音量調高。
+                {t('footer.iphoneMuteTipPrefix')}
+                <span className="font-semibold text-[#64748B]">{t('footer.iphoneMuteTipBold')}</span>
+                {t('footer.iphoneMuteTipSuffix')}
               </p>
             </div>
 
             <p className="text-[11px] text-[#94A3B8] pt-3 border-t border-[#F1F5F9] w-full">
-              日語五十音速成
+              {t('footer.siteTitle')}
               <span className="mx-1.5">·</span>
-              本站程式碼以 MIT 授權釋出
+              {t('footer.mitLicense')}
             </p>
           </div>
         </footer>
       </div>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <I18nProvider>
+      <AppContent />
+    </I18nProvider>
   );
 }

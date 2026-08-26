@@ -11,5 +11,9 @@ __MACOSX/
 .vscode/
 *.zip
 
+# Python cache
+__pycache__/
+*.pyc
+
 # antigravity 的工作流程設定（本機用，不進公開 repo）
 .agents/

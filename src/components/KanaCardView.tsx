@@ -3,6 +3,7 @@ import { KanaItem } from '../types';
 import { speakJapanese } from '../utils/speech';
 import { toggleKanaMastered } from '../utils/storage';
 import { Volume2, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 interface KanaCardViewProps {
   currentKana: KanaItem;
@@ -21,6 +22,7 @@ export function KanaCardView({
   onBackToGrid,
   onSelectKana,
 }: KanaCardViewProps) {
+  const { t } = useI18n();
   const currentIndex = allKana.findIndex((k) => k.id === currentKana.id);
   const isMastered = masteredIds.includes(currentKana.id);
 
@@ -49,7 +51,7 @@ export function KanaCardView({
         className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#64748B] bg-white border border-[#E2E8F0] rounded-xl hover:text-[#1E293B] transition-colors cursor-pointer"
       >
         <ArrowLeft className="w-3.5 h-3.5" />
-        返回五十音圖表
+        {t('study.backToGrid')}
       </button>
 
       {/* Main Card */}
@@ -68,7 +70,7 @@ export function KanaCardView({
             }`}
           >
             <CheckCircle2 className="w-4 h-4" />
-            {isMastered ? '已標記精通' : '標記為精通'}
+            {isMastered ? t('study.unmarkMastered') : t('study.markMastered')}
           </button>
         </div>
 
@@ -82,13 +84,13 @@ export function KanaCardView({
             className="inline-flex items-center gap-2 px-4 py-2 bg-[#00A86B] text-white rounded-xl text-xs font-bold shadow-xs hover:bg-[#008F5B] transition-all cursor-pointer mt-2"
           >
             <Volume2 className="w-4 h-4" />
-            點擊播放發音
+            {t('study.listenPronounce')}
           </button>
         </div>
 
         {/* Examples */}
         <div className="space-y-3">
-          <h3 className="text-sm font-extrabold text-[#1E293B]">生活實用例句與單字</h3>
+          <h3 className="text-sm font-extrabold text-[#1E293B]">{t('study.examples')}</h3>
           <div className="space-y-3">
             {currentKana.examples.map((ex, idx) => (
               <div
@@ -103,7 +105,7 @@ export function KanaCardView({
                   <span className="text-xs font-bold text-[#64748B]">{ex.meaning}</span>
                 </div>
                 <div className="text-xs text-[#475569] pt-1">
-                  例句：{ex.sentence} ({ex.sentenceMeaning})
+                  {t('study.sentence')}: {ex.sentence} ({ex.sentenceMeaning})
                 </div>
               </div>
             ))}
@@ -118,7 +120,7 @@ export function KanaCardView({
             className="px-4 py-2 bg-[#FAFBFB] border border-[#E2E8F0] rounded-xl text-xs font-bold text-[#1E293B] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white cursor-pointer flex items-center gap-1.5"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            上一個假名
+            {t('study.prevKana')}
           </button>
 
           <span className="text-xs font-bold text-[#64748B]">
@@ -130,7 +132,7 @@ export function KanaCardView({
             disabled={currentIndex === allKana.length - 1}
             className="px-4 py-2 bg-[#00A86B] text-white rounded-xl text-xs font-bold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#008F5B] cursor-pointer flex items-center gap-1.5"
           >
-            下一個假名
+            {t('study.nextKana')}
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>

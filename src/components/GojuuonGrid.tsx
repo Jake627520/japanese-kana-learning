@@ -6,8 +6,10 @@ import {
   countKanaStatuses,
   KANA_STATUS_STYLE,
   KANA_STATUS_ORDER,
+  KanaStatus,
 } from '../utils/kanaStatus';
 import { Volume2, Check } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 interface GojuuonGridProps {
   allKana: KanaItem[];
@@ -19,13 +21,6 @@ interface GojuuonGridProps {
   onSelectKana: (kana: KanaItem) => void;
 }
 
-const CATEGORIES: { id: 'basic' | 'dakuten' | 'handakuten' | 'youon'; label: string }[] = [
-  { id: 'basic', label: '基本清音' },
-  { id: 'dakuten', label: '濁音' },
-  { id: 'handakuten', label: '半濁音' },
-  { id: 'youon', label: '拗音' },
-];
-
 export function GojuuonGrid({
   allKana,
   progress,
@@ -35,8 +30,35 @@ export function GojuuonGrid({
   onKanaTypeChange,
   onSelectKana,
 }: GojuuonGridProps) {
-  // 計數只算目前顯示的這一批，圖例的數字才對得上眼前看到的格子
+  const { t } = useI18n();
   const counts = countKanaStatuses(allKana, progress);
+
+  const categories: { id: 'basic' | 'dakuten' | 'handakuten' | 'youon'; label: string }[] = [
+    { id: 'basic', label: t('common.basic') },
+    { id: 'dakuten', label: t('common.dakuten') },
+    { id: 'handakuten', label: t('common.handakuten') },
+    { id: 'youon', label: t('common.youon') },
+  ];
+
+  const getStatusLabel = (s: KanaStatus): string => {
+    switch (s) {
+      case 'weak': return t('header.weak');
+      case 'due': return t('review.dueTab');
+      case 'mastered': return t('grid.statusMastered');
+      case 'learning': return t('grid.statusLearning');
+      case 'new': return t('grid.statusUnlearned');
+      default: return '';
+    }
+  };
+
+  const getCategoryTitle = (): string => {
+    const typeStr = kanaType === 'katakana' ? t('common.katakana') : t('common.hiragana');
+    let catStr = t('nav.gridShort');
+    if (kanaCategory === 'dakuten') catStr = t('common.dakuten');
+    else if (kanaCategory === 'handakuten') catStr = t('common.handakuten');
+    else if (kanaCategory === 'youon') catStr = t('common.youon');
+    return `${typeStr} ${catStr} ${t('nav.grid')}`;
+  };
 
   return (
     <div className="space-y-6">
@@ -44,25 +66,17 @@ export function GojuuonGrid({
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-xl font-display font-bold text-[#1E293B]">
-              {kanaType === 'katakana' ? '片假名' : '平假名'}
-              {kanaCategory === 'dakuten'
-                ? '濁音'
-                : kanaCategory === 'handakuten'
-                ? '半濁音'
-                : kanaCategory === 'youon'
-                ? '拗音'
-                : '五十音'}
-              圖表
+              {getCategoryTitle()}
             </h2>
             <p className="text-xs text-[#64748B] mt-1">
-              點擊卡片播放標準發音並進入詳細發音與例句學習卡片。顏色代表你在這個假名上的狀態。
+              {t('grid.subtitle')}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             {onKanaCategoryChange && (
               <div className="flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl">
-                {CATEGORIES.map((c) => (
+                {categories.map((c) => (
                   <button
                     key={c.id}
                     type="button"
@@ -81,18 +95,18 @@ export function GojuuonGrid({
 
             {onKanaTypeChange && (
               <div className="flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl">
-                {(['hiragana', 'katakana'] as const).map((t) => (
+                {(['hiragana', 'katakana'] as const).map((typeItem) => (
                   <button
-                    key={t}
+                    key={typeItem}
                     type="button"
-                    onClick={() => onKanaTypeChange(t)}
+                    onClick={() => onKanaTypeChange(typeItem)}
                     className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all cursor-pointer ${
-                      kanaType === t
+                      kanaType === typeItem
                         ? 'bg-white text-[#00A86B] elev-1'
                         : 'text-[#64748B] hover:text-[#1E293B]'
                     }`}
                   >
-                    {t === 'hiragana' ? '平假名' : '片假名'}
+                    {typeItem === 'hiragana' ? t('common.hiragana') : t('common.katakana')}
                   </button>
                 ))}
               </div>
@@ -100,15 +114,15 @@ export function GojuuonGrid({
           </div>
         </div>
 
-        {/* 圖例兼統計：一眼看出「這一批我還有多少沒熟」。
-            順序由「該處理」到「已完成」，和注意力順序一致。 */}
+        {/* 圖例兼統計 */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 border-t border-[#F1F5F9]">
           {KANA_STATUS_ORDER.map((s) => {
             const style = KANA_STATUS_STYLE[s];
+            const label = getStatusLabel(s);
             return (
-              <div key={s} className="flex items-center gap-1.5" title={style.hint}>
+              <div key={s} className="flex items-center gap-1.5" title={label}>
                 <span className={`w-2.5 h-2.5 rounded-full ${style.dot}`} />
-                <span className="text-xs font-bold text-[#64748B]">{style.label}</span>
+                <span className="text-xs font-bold text-[#64748B]">{label}</span>
                 <span className="text-xs font-extrabold text-[#1E293B]">{counts[s]}</span>
               </div>
             );
@@ -120,6 +134,7 @@ export function GojuuonGrid({
         {allKana.map((item, i) => {
           const status = getKanaStatus(progress, item.id);
           const style = KANA_STATUS_STYLE[status];
+          const statusLabel = getStatusLabel(status);
 
           return (
             <div
@@ -128,12 +143,10 @@ export function GojuuonGrid({
                 speakJapanese(item.kana);
                 onSelectKana(item);
               }}
-              title={`${item.kana}（${style.label}）— ${style.hint}`}
+              title={`${item.kana} (${statusLabel})`}
               className={`bg-white rounded-2xl border elev-1 card-lift rise-in overflow-hidden cursor-pointer relative group ${style.card}`}
               style={{ ['--stagger' as string]: `${Math.min(i, 11) * 25}ms` }}
             >
-              {/* 狀態帶。顏色之外還有位置與圖示兩層線索，
-                  不讓「分辨得出來」只靠顏色——色盲使用者一樣讀得到。 */}
               {style.bar && <div aria-hidden className={`h-1 w-full ${style.bar}`} />}
               {!style.bar && <div aria-hidden className="h-1 w-full" />}
 
@@ -163,8 +176,8 @@ export function GojuuonGrid({
                     e.stopPropagation();
                     speakJapanese(item.kana);
                   }}
-                  className="p-1.5 text-[#64748B] hover:text-[#00A86B] rounded-lg hover:bg-[#E6F8F2] transition-colors"
-                  title="發音"
+                  className="p-1.5 text-[#64748B] hover:text-[#00A86B] rounded-lg hover:bg-[#E6F8F2] transition-colors cursor-pointer"
+                  title={t('common.playAudio')}
                 >
                   <Volume2 className="w-3.5 h-3.5" />
                 </button>
