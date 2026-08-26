@@ -207,6 +207,8 @@ export interface TranslationSchema {
     prevKana: string;
     nextKana: string;
     listenPronounce: string;
+    representativeWord: string;
+    listenWord: string;
     mnemonic: string;
     examples: string;
     sentence: string;

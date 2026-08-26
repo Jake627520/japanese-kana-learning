@@ -2,6 +2,7 @@ import React from 'react';
 import { KanaItem } from '../types';
 import { speakJapanese } from '../utils/speech';
 import { toggleKanaMastered } from '../utils/storage';
+import { getPrimaryVocabularyByKanaId, playVocabularyAudio } from '../data/vocabulary';
 import { Volume2, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useI18n } from '../i18n';
 
@@ -22,9 +23,10 @@ export function KanaCardView({
   onBackToGrid,
   onSelectKana,
 }: KanaCardViewProps) {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const currentIndex = allKana.findIndex((k) => k.id === currentKana.id);
   const isMastered = masteredIds.includes(currentKana.id);
+  const primaryVocab = getPrimaryVocabularyByKanaId(currentKana.id);
 
   const handlePrev = () => {
     if (currentIndex > 0) {
@@ -88,29 +90,93 @@ export function KanaCardView({
           </button>
         </div>
 
-        {/* Examples */}
-        <div className="space-y-3">
-          <h3 className="text-sm font-extrabold text-[#1E293B]">{t('study.examples')}</h3>
-          <div className="space-y-3">
-            {currentKana.examples.map((ex, idx) => (
-              <div
-                key={idx}
-                className="p-4 bg-[#FAFBFB] rounded-2xl border border-[#E2E8F0] space-y-1"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base font-extrabold text-[#1E293B]">{ex.word}</span>
-                    <span className="text-xs font-bold text-[#00A86B]">({ex.romaji})</span>
-                  </div>
-                  <span className="text-xs font-bold text-[#64748B]">{ex.meaning}</span>
+        {/* Representative Vocabulary (v1.6.0-B) */}
+        {primaryVocab && (
+          <div className="p-4 sm:p-5 bg-emerald-50/50 rounded-2xl border border-emerald-200/60 space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-extrabold text-[#00A86B] tracking-wide">
+                {t('study.representativeWord')}
+              </span>
+              {primaryVocab.type !== 'noun' && (
+                <span className="text-[10px] font-bold text-[#64748B] bg-white px-2 py-0.5 rounded-md border border-[#E2E8F0]">
+                  {primaryVocab.type}
+                </span>
+              )}
+            </div>
+
+            <div className="flex items-center justify-between gap-4">
+              <div className="space-y-1">
+                <div className="flex items-baseline gap-2">
+                  {primaryVocab.kanji ? (
+                    <>
+                      <span className="text-xl font-black text-[#1E293B]">{primaryVocab.kanji}</span>
+                      <span className="text-sm font-bold text-[#475569]">({primaryVocab.word})</span>
+                    </>
+                  ) : (
+                    <span className="text-xl font-black text-[#1E293B]">{primaryVocab.word}</span>
+                  )}
+                  <span className="text-xs font-bold text-[#00A86B]">[{primaryVocab.romaji}]</span>
                 </div>
-                <div className="text-xs text-[#475569] pt-1">
-                  {t('study.sentence')}: {ex.sentence} ({ex.sentenceMeaning})
+                <div className="text-xs font-semibold text-[#64748B]">
+                  {primaryVocab.meaning[language] || primaryVocab.meaning['zh-TW']}
                 </div>
               </div>
-            ))}
+
+              <button
+                onClick={() => playVocabularyAudio(primaryVocab)}
+                aria-label={`${t('study.listenWord')}: ${primaryVocab.word}`}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#00A86B] text-white rounded-xl text-xs font-bold shadow-xs hover:bg-[#008F5B] transition-all cursor-pointer shrink-0"
+              >
+                <Volume2 className="w-4 h-4" />
+                <span>{t('study.listenWord')}</span>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* Existing Examples & Sentences */}
+        {currentKana.examples && currentKana.examples.length > 0 && (
+          <div className="space-y-3">
+            <h3 className="text-sm font-extrabold text-[#1E293B]">{t('study.examples')}</h3>
+            <div className="space-y-3">
+              {currentKana.examples.map((ex, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 bg-[#FAFBFB] rounded-2xl border border-[#E2E8F0] space-y-2"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-base font-extrabold text-[#1E293B]">{ex.word}</span>
+                      <span className="text-xs font-bold text-[#00A86B]">({ex.romaji})</span>
+                      <button
+                        onClick={() => speakJapanese(ex.word)}
+                        aria-label={`Play ${ex.word}`}
+                        className="p-1 text-[#64748B] hover:text-[#00A86B] transition-colors cursor-pointer rounded-md hover:bg-slate-100"
+                      >
+                        <Volume2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <span className="text-xs font-bold text-[#64748B]">{ex.meaning}</span>
+                  </div>
+                  {ex.sentence && (
+                    <div className="text-xs text-[#475569] pt-1 flex items-center justify-between">
+                      <span>
+                        {t('study.sentence')}: {ex.sentence} ({ex.sentenceMeaning})
+                      </span>
+                      <button
+                        onClick={() => speakJapanese(ex.sentence)}
+                        aria-label={`Play sentence: ${ex.sentence}`}
+                        className="p-1 text-[#64748B] hover:text-[#00A86B] transition-colors cursor-pointer rounded-md hover:bg-slate-100 shrink-0 ml-2"
+                      >
+                        <Volume2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Card Switch Controls */}
         <div className="flex items-center justify-between pt-4 border-t border-[#F1F5F9]">

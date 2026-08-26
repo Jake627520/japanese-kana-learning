@@ -41,6 +41,9 @@ jobs:
       - name: Validate i18n dictionaries
         run: npm run validate:i18n
 
+      - name: Validate vocabulary data
+        run: npm run validate:vocab
+
       - name: Type check
         run: npm run lint
 

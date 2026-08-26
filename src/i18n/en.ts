@@ -207,6 +207,8 @@ export const en: TranslationSchema = {
     prevKana: 'Previous Kana',
     nextKana: 'Next Kana',
     listenPronounce: 'Listen',
+    representativeWord: 'Representative Vocabulary',
+    listenWord: 'Play Word',
     mnemonic: 'Memory Mnemonic',
     examples: 'Vocabulary Examples',
     sentence: 'Example Sentence',

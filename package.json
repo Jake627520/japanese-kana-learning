@@ -10,7 +10,8 @@
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "validate:data": "python3 scripts/validate-kana-data.py",
-    "validate:i18n": "python3 scripts/validate-i18n.py"
+    "validate:i18n": "python3 scripts/validate-i18n.py",
+    "validate:vocab": "python3 scripts/validate-vocabulary.py"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",

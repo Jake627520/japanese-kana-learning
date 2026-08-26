@@ -207,6 +207,8 @@ export const zhTW: TranslationSchema = {
     prevKana: '上一個假名',
     nextKana: '下一個假名',
     listenPronounce: '聆聽發音',
+    representativeWord: '代表單字',
+    listenWord: '播放單字',
     mnemonic: '記憶聯想口訣',
     examples: '常用單字例詞',
     sentence: '實用例句',

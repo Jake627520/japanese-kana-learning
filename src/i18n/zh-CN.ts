@@ -207,6 +207,8 @@ export const zhCN: TranslationSchema = {
     prevKana: '上一个假名',
     nextKana: '下一个假名',
     listenPronounce: '聆听发音',
+    representativeWord: '代表单词',
+    listenWord: '播放单词',
     mnemonic: '记忆联想口诀',
     examples: '常用单词例词',
     sentence: '实用例句',
