@@ -165,6 +165,34 @@ export const VOCABULARY_AUDIO_MAPPING: Record<string, string> = {
   vocab_k_wain: 'ワイン',
   vocab_k_wo: 'ヲ',
   vocab_k_pen: 'ペン',
+
+  // Katakana Dakuten 20
+  vocab_k_garasu: 'ガラス',
+  vocab_k_gitaa: 'ギター',
+  vocab_k_gurasu: 'グラス',
+  vocab_k_geemu: 'ゲーム',
+  vocab_k_gorufu: 'ゴルフ',
+  vocab_k_dezain: 'デザイン',
+  vocab_k_juusu: 'ジュース',
+  vocab_k_zubon: 'ズボン',
+  vocab_k_zero: 'ゼロ',
+  vocab_k_zoon: 'ゾーン',
+  vocab_k_dansu: 'ダンス',
+  vocab_k_rajiodio: 'ラジオヂオ',
+  vocab_k_hanazuma: 'ハナヅマ',
+  vocab_k_depaato: 'デパート',
+  vocab_k_doa: 'ドア',
+  vocab_k_basu: 'バス',
+  vocab_k_biru: 'ビル',
+  vocab_k_buutsu: 'ブーツ',
+  vocab_k_beddo: 'ベッド',
+  vocab_k_booru: 'ボール',
+
+  // Katakana Handakuten 5
+  vocab_k_pan: 'パン',
+  vocab_k_piano: 'ピアノ',
+  vocab_k_puuru: 'プール',
+  vocab_k_posuto: 'ポスト',
 };
 
 /**
