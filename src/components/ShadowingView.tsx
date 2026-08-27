@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { SHADOWING_SENTENCES, ShadowingSentence } from '../data/shadowing';
+import { SHADOWING_SENTENCES, ShadowingSentence, getShadowingText } from '../data/shadowing';
 import {
   getShadowingProgress,
   incrementPractice,
@@ -26,7 +26,7 @@ import { useI18n } from '../i18n';
 type Step = 1 | 2 | 3 | 4 | 5;
 
 export function ShadowingView() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const [progress, setProgress] = useState<ShadowingProgress>(() => getShadowingProgress());
   const [filterTodayOnly, setFilterTodayOnly] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
@@ -333,7 +333,7 @@ export function ShadowingView() {
         {currentSentence.tip && (
           <p className="text-xs text-[#00A86B] font-bold flex items-center gap-1.5 pt-1 border-t border-[#F1F5F9]">
             <Sparkles className="w-3.5 h-3.5 text-yellow-500 shrink-0" />
-            {currentSentence.tip}
+            {getShadowingText(currentSentence.tip, language)}
           </p>
         )}
       </div>
@@ -344,39 +344,39 @@ export function ShadowingView() {
         <div className="flex flex-wrap justify-center gap-2">
           <button
             type="button"
-            onClick={() => setHideJapanese((v) => !v)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-extrabold border transition-all cursor-pointer flex items-center gap-1.5 ${
+            onClick={() => setHideJapanese(!hideJapanese)}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               hideJapanese
-                ? 'bg-[#1E293B] text-white border-[#1E293B]'
-                : 'bg-white text-[#64748B] border-[#E2E8F0] hover:bg-slate-50'
+                ? 'bg-[#FAFBFB] text-[#64748B] border-[#E2E8F0]'
+                : 'bg-[#00A86B]/10 text-[#00A86B] border-[#00A86B]/30'
             }`}
           >
             {hideJapanese ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-            {t('common.details')}
+            {t('shadowing.toggleJapanese')}
           </button>
           <button
             type="button"
-            onClick={() => setHideKana((v) => !v)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-extrabold border transition-all cursor-pointer flex items-center gap-1.5 ${
+            onClick={() => setHideKana(!hideKana)}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               hideKana
-                ? 'bg-[#1E293B] text-white border-[#1E293B]'
-                : 'bg-white text-[#64748B] border-[#E2E8F0] hover:bg-slate-50'
+                ? 'bg-[#FAFBFB] text-[#64748B] border-[#E2E8F0]'
+                : 'bg-[#00A86B]/10 text-[#00A86B] border-[#00A86B]/30'
             }`}
           >
             {hideKana ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-            {t('common.hiragana')}
+            {t('shadowing.toggleKana')}
           </button>
           <button
             type="button"
-            onClick={() => setHideRomaji((v) => !v)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-extrabold border transition-all cursor-pointer flex items-center gap-1.5 ${
+            onClick={() => setHideRomaji(!hideRomaji)}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               hideRomaji
-                ? 'bg-[#1E293B] text-white border-[#1E293B]'
-                : 'bg-white text-[#64748B] border-[#E2E8F0] hover:bg-slate-50'
+                ? 'bg-[#FAFBFB] text-[#64748B] border-[#E2E8F0]'
+                : 'bg-[#00A86B]/10 text-[#00A86B] border-[#00A86B]/30'
             }`}
           >
             {hideRomaji ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-            Romaji
+            {t('shadowing.toggleRomaji')}
           </button>
         </div>
 
@@ -402,7 +402,7 @@ export function ShadowingView() {
             </div>
           )}
           <div className="text-base font-bold text-[#00A86B]">
-            {currentSentence.meaning}
+            {getShadowingText(currentSentence.meaning, language)}
           </div>
         </div>
 
