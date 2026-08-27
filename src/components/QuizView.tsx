@@ -3,7 +3,19 @@ import { KanaItem, QuizQuestion } from '../types';
 import { removeKanaFromWrong, recordReviewResult } from '../utils/storage';
 import { logLearningEvent } from '../utils/learningEvents';
 import { speakJapanese } from '../utils/speech';
-import { Volume2, CheckCircle2, XCircle, ArrowRight, RefreshCw, Trophy, PenLine, BookOpen } from 'lucide-react';
+import { CONFUSABLE_GROUPS } from '../data/confusableData';
+import {
+  Volume2,
+  CheckCircle2,
+  XCircle,
+  ArrowRight,
+  RefreshCw,
+  Trophy,
+  PenLine,
+  BookOpen,
+  Headphones,
+  Sparkles,
+} from 'lucide-react';
 import { QuizVocabFeedback } from './QuizVocabFeedback';
 import { useI18n } from '../i18n';
 
@@ -18,6 +30,72 @@ interface QuizViewProps {
   onPracticeWriting?: (kana: KanaItem) => void;
 }
 
+/**
+ * Build distractors for listening recognition questions.
+ * Priority 1: Confusable group members (same type)
+ * Priority 2: Same row or category (close sounds)
+ * Priority 3: Random same-type fallback
+ * Guarantees 4 unique kana IDs (target + 3 distractors).
+ */
+function getListeningDistractors(
+  target: KanaItem,
+  allKana: KanaItem[],
+  pool: KanaItem[]
+): KanaItem[] {
+  const targetType = target.type;
+  const sameTypeAll = allKana.filter((k) => k.type === targetType && k.id !== target.id);
+  const selectedIds = new Set<string>([target.id]);
+  const distractors: KanaItem[] = [];
+
+  // Priority 1: Matching confusable group members
+  for (const group of CONFUSABLE_GROUPS) {
+    if (group.members.includes(target.id)) {
+      for (const mId of group.members) {
+        if (!selectedIds.has(mId)) {
+          const match = sameTypeAll.find((k) => k.id === mId);
+          if (match) {
+            selectedIds.add(mId);
+            distractors.push(match);
+            if (distractors.length >= 3) break;
+          }
+        }
+      }
+    }
+    if (distractors.length >= 3) break;
+  }
+
+  // Priority 2: Same row or same category / close sound from pool or sameTypeAll
+  if (distractors.length < 3) {
+    const sameRowOrCategory = sameTypeAll
+      .filter(
+        (k) =>
+          !selectedIds.has(k.id) &&
+          (k.row === target.row || k.category === target.category)
+      )
+      .sort(() => 0.5 - Math.random());
+
+    for (const k of sameRowOrCategory) {
+      selectedIds.add(k.id);
+      distractors.push(k);
+      if (distractors.length >= 3) break;
+    }
+  }
+
+  // Priority 3: Random same-type fallback
+  if (distractors.length < 3) {
+    const fallbackPool = sameTypeAll
+      .filter((k) => !selectedIds.has(k.id))
+      .sort(() => 0.5 - Math.random());
+    for (const k of fallbackPool) {
+      selectedIds.add(k.id);
+      distractors.push(k);
+      if (distractors.length >= 3) break;
+    }
+  }
+
+  return distractors.slice(0, 3);
+}
+
 export function QuizView({
   allKana,
   customPool,
@@ -28,6 +106,7 @@ export function QuizView({
   onPracticeWriting,
 }: QuizViewProps) {
   const { t } = useI18n();
+  const [quizMode, setQuizMode] = useState<'visual' | 'listening'>('visual');
   const [quizScope, setQuizScope] = useState<'all' | 'basic' | 'dakuten' | 'handakuten' | 'youon'>('all');
 
   const scopedSource = customPool && customPool.length > 0 ? customPool : allKana;
@@ -58,11 +137,33 @@ export function QuizView({
   const [results, setResults] = useState<{ kana: KanaItem; isCorrect: boolean }[]>([]);
   const [retryPool, setRetryPool] = useState<KanaItem[] | null>(null);
 
-  const generateQuiz = (sourcePool: KanaItem[] = pool) => {
+  const generateQuiz = (
+    sourcePool: KanaItem[] = pool,
+    mode: 'visual' | 'listening' = quizMode
+  ) => {
     const shuffledPool = [...sourcePool].sort(() => 0.5 - Math.random());
     const selectedItems = shuffledPool.slice(0, Math.min(10, shuffledPool.length));
 
     const generated: QuizQuestion[] = selectedItems.map((item) => {
+      // In listening mode, 100% of questions are audio-to-kana
+      if (mode === 'listening') {
+        const distractors = getListeningDistractors(item, allKana, sourcePool);
+        const options = [
+          { label: item.kana, isCorrect: true, kana: item },
+          ...distractors.map((d) => ({
+            label: d.kana,
+            isCorrect: false,
+            kana: d,
+          })),
+        ].sort(() => 0.5 - Math.random());
+
+        return {
+          type: 'audio-to-kana' as const,
+          targetKana: item,
+          options,
+        };
+      }
+
       const questionTypes: QuizQuestion['type'][] = [
         'kana-to-romaji',
         'audio-to-kana',
@@ -170,20 +271,7 @@ export function QuizView({
       }
 
       if (type === 'audio-to-kana') {
-        const sameTypeAndCatPool = allKana.filter(
-          (k) =>
-            k.type === item.type &&
-            (k.category || 'basic') === (item.category || 'basic') &&
-            k.id !== item.id
-        );
-        const sameTypePool = allKana.filter((k) => k.type === item.type && k.id !== item.id);
-        const distractorPool =
-          sameTypeAndCatPool.length >= 3
-            ? sameTypeAndCatPool
-            : sameTypePool.length >= 3
-            ? sameTypePool
-            : allKana.filter((k) => k.id !== item.id);
-        const distractors = distractorPool.sort(() => 0.5 - Math.random()).slice(0, 3);
+        const distractors = getListeningDistractors(item, allKana, sourcePool);
         const options = [
           { label: item.kana, isCorrect: true, kana: item },
           ...distractors.map((d) => ({
@@ -220,9 +308,16 @@ export function QuizView({
 
   useEffect(() => {
     generateQuiz();
-  }, [quizScope]);
+  }, [quizScope, quizMode]);
 
   const currentQ = questions[currentIndex];
+
+  // Auto-play audio when navigating questions in listening mode
+  useEffect(() => {
+    if (currentQ && quizMode === 'listening' && !isAnswered && !isCompleted) {
+      speakJapanese(currentQ.targetKana.kana);
+    }
+  }, [currentIndex, currentQ, quizMode, isCompleted]);
 
   const handleSelectOption = (label: string, isCorrect: boolean) => {
     if (isAnswered) return;
@@ -234,7 +329,7 @@ export function QuizView({
     recordReviewResult(targetKana.id, isCorrect);
     logLearningEvent({
       type: 'quiz_answer',
-      source: isReviewMode ? 'review_quiz' : 'quiz',
+      source: quizMode === 'listening' ? 'listening' : (isReviewMode ? 'review_quiz' : 'quiz'),
       kanaId: targetKana.id,
       correct: isCorrect,
     });
@@ -294,7 +389,7 @@ export function QuizView({
     const handleRetryWeak = () => {
       if (weakKana.length === 0) return;
       setRetryPool(weakKana);
-      generateQuiz(weakKana);
+      generateQuiz(weakKana, quizMode);
     };
 
     return (
@@ -409,7 +504,7 @@ export function QuizView({
               <button
                 onClick={() => {
                   setRetryPool(null);
-                  generateQuiz();
+                  generateQuiz(pool, quizMode);
                 }}
                 className="flex-1 py-3 bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl hover:bg-white hover:border-[#00A86B] btn-lift cursor-pointer flex items-center justify-center gap-2"
               >
@@ -433,11 +528,48 @@ export function QuizView({
     );
   }
 
+  const handleSwitchQuizMode = (mode: 'visual' | 'listening') => {
+    if (mode === 'listening' && quizScope === 'all') {
+      setQuizScope('basic');
+    }
+    setQuizMode(mode);
+  };
+
   return (
     <div className="max-w-xl mx-auto space-y-6">
       {!isReviewMode && (
-        <div className="bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-xs">
-          <div className="text-xs font-bold text-[#64748B] mb-2">{t('quiz.modeSelect')}</div>
+        <div className="bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-xs space-y-3">
+          {/* Mode Switcher: Visual vs Listening */}
+          <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-[#F1F5F9]">
+            <div className="text-xs font-bold text-[#64748B]">{t('quiz.modeSelect')}</div>
+            <div className="flex gap-1.5">
+              <button
+                type="button"
+                onClick={() => handleSwitchQuizMode('visual')}
+                className={`px-3 py-1.5 text-xs font-extrabold rounded-xl transition-all cursor-pointer ${
+                  quizMode === 'visual'
+                    ? 'bg-[#00A86B] text-white shadow-xs'
+                    : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                {t('quiz.visualMode')}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSwitchQuizMode('listening')}
+                className={`px-3 py-1.5 text-xs font-extrabold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
+                  quizMode === 'listening'
+                    ? 'bg-[#00A86B] text-white shadow-xs'
+                    : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#1E293B]'
+                }`}
+              >
+                <Headphones className="w-3.5 h-3.5" />
+                {t('quiz.listeningMode')}
+              </button>
+            </div>
+          </div>
+
+          {/* Scope Selector */}
           <div className="flex flex-wrap gap-2">
             {(
               [
@@ -452,10 +584,10 @@ export function QuizView({
                 key={item.id}
                 type="button"
                 onClick={() => setQuizScope(item.id)}
-                className={`px-3 py-1.5 text-xs font-extrabold rounded-xl transition-all cursor-pointer ${
+                className={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                   quizScope === item.id
-                    ? 'bg-[#00A86B] text-white shadow-xs'
-                    : 'bg-[#F1F5F9] text-[#64748B] hover:text-[#1E293B]'
+                    ? 'bg-emerald-100 text-[#00A86B] font-extrabold border border-emerald-300'
+                    : 'bg-[#F8FAFC] text-[#64748B] hover:text-[#1E293B] border border-transparent'
                 }`}
               >
                 {item.label}
@@ -475,31 +607,76 @@ export function QuizView({
 
       {/* Question Card */}
       <div className="bg-white p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-6">
-        <div className="text-center py-6 bg-[#FAFBFB] rounded-2xl border border-[#F1F5F9] space-y-3">
-          <span className="text-xs font-bold text-[#64748B] bg-[#F1F5F9] px-3 py-1 rounded-full">
-            {currentQ.type === 'kana-to-romaji'
-              ? t('quiz.typeKanaToRomaji')
-              : currentQ.type === 'audio-to-kana'
-              ? t('quiz.typeAudioToKana')
-              : currentQ.type === 'kana-to-kana'
-              ? t('quiz.typeKanaToKana')
-              : t('quiz.typeInputRomaji')}
-          </span>
+        {quizMode === 'listening' ? (
+          /* 🎧 聽音辨假名專屬題卡 */
+          <div className="text-center py-6 bg-[#FAFBFB] rounded-2xl border border-[#F1F5F9] space-y-4">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#00A86B] bg-[#E6F8F2] px-3 py-1 rounded-full">
+              <Headphones className="w-3.5 h-3.5" />
+              {t('quiz.listeningMode')}
+            </span>
 
-          {currentQ.type === 'audio-to-kana' ? (
-            <button
-              onClick={() => speakJapanese(currentQ.targetKana.kana)}
-              className="p-4 bg-[#00A86B] text-white rounded-2xl shadow-xs hover:bg-[#008F5B] transition-all cursor-pointer mx-auto block"
-            >
-              <Volume2 className="w-8 h-8" />
-            </button>
-          ) : (
-            <div className="text-6xl font-extrabold text-[#1E293B]">{currentQ.targetKana.kana}</div>
-          )}
-        </div>
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={() => speakJapanese(currentQ.targetKana.kana)}
+                aria-label={t('quiz.replayAudio')}
+                title={t('quiz.replayAudio')}
+                className="px-6 py-3.5 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-sm rounded-2xl elev-green btn-lift flex items-center justify-center gap-2.5 mx-auto cursor-pointer"
+              >
+                <Volume2 className="w-5 h-5" />
+                <span>{t('quiz.replayAudio')}</span>
+              </button>
+              <p className="text-xs text-[#64748B] font-medium">
+                {t('quiz.listenAndChoose')}
+              </p>
+            </div>
+
+            {isAnswered && (
+              <div className="text-xs font-extrabold pt-2">
+                {selectedOption === currentQ.targetKana.kana ? (
+                  <span className="text-[#00A86B] flex items-center justify-center gap-1">
+                    <CheckCircle2 className="w-4 h-4" />
+                    {t('quiz.listeningCorrect')}
+                  </span>
+                ) : (
+                  <span className="text-red-600 flex items-center justify-center gap-1">
+                    <XCircle className="w-4 h-4" />
+                    {t('quiz.listeningIncorrect')} {currentQ.targetKana.kana} ({currentQ.targetKana.romaji})
+                  </span>
+                )}
+              </div>
+            )}
+          </div>
+        ) : (
+          /* 綜合測驗題卡 */
+          <div className="text-center py-6 bg-[#FAFBFB] rounded-2xl border border-[#F1F5F9] space-y-3">
+            <span className="text-xs font-bold text-[#64748B] bg-[#F1F5F9] px-3 py-1 rounded-full">
+              {currentQ.type === 'kana-to-romaji'
+                ? t('quiz.typeKanaToRomaji')
+                : currentQ.type === 'audio-to-kana'
+                ? t('quiz.typeAudioToKana')
+                : currentQ.type === 'kana-to-kana'
+                ? t('quiz.typeKanaToKana')
+                : t('quiz.typeInputRomaji')}
+            </span>
+
+            {currentQ.type === 'audio-to-kana' ? (
+              <button
+                type="button"
+                onClick={() => speakJapanese(currentQ.targetKana.kana)}
+                aria-label={t('quiz.replayAudio')}
+                className="p-4 bg-[#00A86B] text-white rounded-2xl shadow-xs hover:bg-[#008F5B] transition-all cursor-pointer mx-auto block"
+              >
+                <Volume2 className="w-8 h-8" />
+              </button>
+            ) : (
+              <div className="text-6xl font-extrabold text-[#1E293B]">{currentQ.targetKana.kana}</div>
+            )}
+          </div>
+        )}
 
         {/* Answer Area */}
-        {currentQ.type === 'input-romaji' ? (
+        {currentQ.type === 'input-romaji' && quizMode !== 'listening' ? (
           <div className="space-y-3">
             <input
               type="text"

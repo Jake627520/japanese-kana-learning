@@ -258,6 +258,14 @@ export interface TranslationSchema {
     keepPracticing: string;
     reviewWeakInReview: string;
     practiceWriting: string;
+    visualMode: string;
+    listeningMode: string;
+    listeningModeDescription: string;
+    listenAndChoose: string;
+    replayAudio: string;
+    startListening: string;
+    listeningCorrect: string;
+    listeningIncorrect: string;
   };
   review: {
     title: string;
