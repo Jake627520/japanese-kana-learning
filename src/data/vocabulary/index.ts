@@ -6,6 +6,7 @@ export * from './youon33';
 export * from './katakanaSeion46';
 export * from './katakanaDakuten20';
 export * from './katakanaHandakuten5';
+export * from './katakanaYouon33';
 export * from './vocabularyAudio';
 
 import { SEION_46_VOCABULARY } from './seion46';
@@ -15,6 +16,7 @@ import { YOUON_33_VOCABULARY } from './youon33';
 import { KATAKANA_SEION_46_VOCABULARY } from './katakanaSeion46';
 import { KATAKANA_DAKUTEN_20_VOCABULARY } from './katakanaDakuten20';
 import { KATAKANA_HANDAKUTEN_5_VOCABULARY } from './katakanaHandakuten5';
+import { KATAKANA_YOUON_33_VOCABULARY } from './katakanaYouon33';
 import { VocabularyItem } from './vocabularyTypes';
 import { ALL_LEARNABLE_KANA } from '../kanaData';
 
@@ -26,6 +28,7 @@ export const ALL_VOCABULARY: VocabularyItem[] = [
   ...KATAKANA_SEION_46_VOCABULARY,
   ...KATAKANA_DAKUTEN_20_VOCABULARY,
   ...KATAKANA_HANDAKUTEN_5_VOCABULARY,
+  ...KATAKANA_YOUON_33_VOCABULARY,
 ];
 
 const KANA_MAP = new Map<string, string>(

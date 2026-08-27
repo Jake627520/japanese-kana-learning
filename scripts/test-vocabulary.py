@@ -27,6 +27,7 @@ class TestVocabularyValidation(unittest.TestCase):
             'katakanaSeion46.ts',
             'katakanaDakuten20.ts',
             'katakanaHandakuten5.ts',
+            'katakanaYouon33.ts',
             'vocabularyAudio.ts',
             'index.ts'
         ]:
