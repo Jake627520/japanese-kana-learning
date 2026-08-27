@@ -256,6 +256,8 @@ export const en: TranslationSchema = {
     congratsPerfect: 'Perfect Score! Amazing job!',
     greatJob: 'Well done! Keep it up!',
     keepPracticing: 'Keep practicing, you will master it soon!',
+    reviewWeakInReview: 'Review Weak Kana in SRS',
+    practiceWriting: 'Practice Writing',
   },
   review: {
     title: 'SRS Review Hub',

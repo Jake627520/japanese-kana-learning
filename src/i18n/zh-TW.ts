@@ -256,6 +256,8 @@ export const zhTW: TranslationSchema = {
     congratsPerfect: '太厲害了！滿分通過！',
     greatJob: '表現出色！繼續保持！',
     keepPracticing: '多加練習，很快就能熟練掌握！',
+    reviewWeakInReview: '前往複習中心 (SRS)',
+    practiceWriting: '手寫練習',
   },
   review: {
     title: 'SRS 複習中心',

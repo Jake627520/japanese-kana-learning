@@ -24,6 +24,7 @@ function AppContent() {
   const [currentKanaCategory, setCurrentKanaCategory] = useState<'basic' | 'dakuten' | 'handakuten' | 'youon'>('basic');
   const [currentKanaType, setCurrentKanaType] = useState<KanaType>('hiragana');
   const [selectedKana, setSelectedKana] = useState<KanaItem>(HIRAGANA_DATA[0]);
+  const [targetWritingKanaId, setTargetWritingKanaId] = useState<string | null>(null);
 
   const currentKanaData = useMemo(() => {
     if (currentKanaCategory === 'dakuten') {
@@ -52,6 +53,11 @@ function AppContent() {
     setCurrentTab('study');
   };
 
+  const handleSelectTab = (tab: NavigationTab) => {
+    setTargetWritingKanaId(null);
+    setCurrentTab(tab);
+  };
+
   return (
     <div className="min-h-screen bg-[#F8FAF8] text-[#2D3436] font-sans antialiased selection:bg-[#00D1B2]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
@@ -60,7 +66,7 @@ function AppContent() {
           {/* Sidebar & Mobile Nav Navigation */}
           <Navigation
             currentTab={currentTab}
-            onSelectTab={(tab) => setCurrentTab(tab)}
+            onSelectTab={handleSelectTab}
             wrongCount={progress.wrongKanaIds.length}
           />
 
@@ -70,7 +76,7 @@ function AppContent() {
               <HomeDashboard
                 progress={progress}
                 allKana={ALL_LEARNABLE_KANA}
-                onNavigate={(tab) => setCurrentTab(tab)}
+                onNavigate={handleSelectTab}
                 onStartStudyKana={handleStartStudyKana}
               />
             )}
@@ -103,6 +109,11 @@ function AppContent() {
                 allKana={ALL_LEARNABLE_KANA}
                 onProgressChange={refreshProgress}
                 onFinish={() => setCurrentTab('home')}
+                onNavigateToReview={() => setCurrentTab('review')}
+                onPracticeWriting={(kana) => {
+                  setTargetWritingKanaId(kana.id);
+                  setCurrentTab('writing');
+                }}
               />
             )}
 
@@ -123,7 +134,12 @@ function AppContent() {
 
             {currentTab === 'chat' && <ChatTutorView onProgressChange={refreshProgress} />}
 
-            {currentTab === 'writing' && <WritingPracticeView onProgressChange={refreshProgress} />}
+            {currentTab === 'writing' && (
+              <WritingPracticeView
+                initialKanaId={targetWritingKanaId}
+                onProgressChange={refreshProgress}
+              />
+            )}
 
             {currentTab === 'confusable' && <ConfusableView onProgressChange={refreshProgress} />}
           </main>

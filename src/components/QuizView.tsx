@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { KanaItem, QuizQuestion } from '../types';
 import { removeKanaFromWrong, recordReviewResult } from '../utils/storage';
 import { speakJapanese } from '../utils/speech';
-import { Volume2, CheckCircle2, XCircle, ArrowRight, RefreshCw, Trophy } from 'lucide-react';
+import { Volume2, CheckCircle2, XCircle, ArrowRight, RefreshCw, Trophy, PenLine, BookOpen } from 'lucide-react';
 import { QuizVocabFeedback } from './QuizVocabFeedback';
 import { useI18n } from '../i18n';
 
@@ -13,6 +13,8 @@ interface QuizViewProps {
   isReviewMode?: boolean;
   onProgressChange: () => void;
   onFinish: () => void;
+  onNavigateToReview?: () => void;
+  onPracticeWriting?: (kana: KanaItem) => void;
 }
 
 export function QuizView({
@@ -21,6 +23,8 @@ export function QuizView({
   isReviewMode = false,
   onProgressChange,
   onFinish,
+  onNavigateToReview,
+  onPracticeWriting,
 }: QuizViewProps) {
   const { t } = useI18n();
   const [quizScope, setQuizScope] = useState<'all' | 'basic' | 'dakuten' | 'handakuten' | 'youon'>('all');
@@ -347,10 +351,21 @@ export function QuizView({
                 {weakKana.map((k) => (
                   <span
                     key={k.id}
-                    className="px-2.5 py-1 rounded-lg bg-white border border-red-200 text-xs font-extrabold text-red-600"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-red-200 text-xs font-extrabold text-red-600"
                   >
-                    {k.kana}
-                    <span className="ml-1 font-bold text-red-400 uppercase">{k.romaji}</span>
+                    <span>{k.kana}</span>
+                    <span className="font-bold text-red-400 uppercase text-[11px]">{k.romaji}</span>
+                    {onPracticeWriting && (
+                      <button
+                        type="button"
+                        onClick={() => onPracticeWriting(k)}
+                        aria-label={`${t('quiz.practiceWriting')}: ${k.kana}`}
+                        title={`${t('quiz.practiceWriting')}: ${k.kana}`}
+                        className="p-0.5 text-red-400 hover:text-red-700 hover:bg-red-50 rounded transition-colors cursor-pointer ml-0.5"
+                      >
+                        <PenLine className="w-3 h-3" />
+                      </button>
+                    )}
                   </span>
                 ))}
               </div>
@@ -363,8 +378,19 @@ export function QuizView({
           )}
 
           <div className="space-y-2.5">
+            {!allCorrect && onNavigateToReview && (
+              <button
+                type="button"
+                onClick={onNavigateToReview}
+                className="w-full py-3 bg-[#FAFBFB] border border-emerald-300 text-[#00A86B] font-extrabold text-xs rounded-xl hover:bg-emerald-50/60 btn-lift cursor-pointer flex items-center justify-center gap-2"
+              >
+                <BookOpen className="w-4 h-4" />
+                {t('quiz.reviewWeakInReview')}
+              </button>
+            )}
             {!allCorrect && (
               <button
+                type="button"
                 onClick={handleRetryWeak}
                 className="w-full py-3 bg-[#00A86B] text-white font-extrabold text-xs rounded-xl hover:bg-[#008F5B] btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
               >

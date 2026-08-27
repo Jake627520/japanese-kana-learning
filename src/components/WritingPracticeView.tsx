@@ -10,13 +10,20 @@ import {
 } from 'lucide-react';
 
 interface Props {
+  initialKanaId?: string | null;
   onProgressChange?: () => void;
 }
 
-export function WritingPracticeView({ onProgressChange }: Props) {
+export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) {
   const { t } = useI18n();
   const list: KanaItem[] = HIRAGANA_DATA;
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(() => {
+    if (initialKanaId) {
+      const idx = HIRAGANA_DATA.findIndex((k) => k.id === initialKanaId);
+      return idx >= 0 ? idx : 0;
+    }
+    return 0;
+  });
   const [showTrace, setShowTrace] = useState(true);
   const [masteredIds, setMasteredIds] = useState<string[]>(
     () => getStoredProgress().masteredKanaIds,
@@ -26,7 +33,16 @@ export function WritingPracticeView({ onProgressChange }: Props) {
   const drawingRef = useRef(false);
   const [hasInk, setHasInk] = useState(false);
 
-  const kana = list[index];
+  useEffect(() => {
+    if (initialKanaId) {
+      const idx = list.findIndex((k) => k.id === initialKanaId);
+      if (idx >= 0) {
+        setIndex(idx);
+      }
+    }
+  }, [initialKanaId, list]);
+
+  const kana = list[index] || list[0];
   const guide = HIRAGANA_STROKES[kana.id];
   const isMastered = masteredIds.includes(kana.id);
 

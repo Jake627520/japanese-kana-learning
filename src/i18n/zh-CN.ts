@@ -253,9 +253,11 @@ export const zhCN: TranslationSchema = {
     submitAnswer: '确认答案',
     streakBonus: '连对加成！',
     reviewWrongCount: '个薄弱假名待强化',
-    congratsPerfect: '太棒了！满分通过！',
-    greatJob: '表现优秀！继续保持！',
+    congratsPerfect: '太厉害了！满分通过！',
+    greatJob: '表现出色！继续保持！',
     keepPracticing: '多加练习，很快就能熟练掌握！',
+    reviewWeakInReview: '前往复习中心 (SRS)',
+    practiceWriting: '手写练习',
   },
   review: {
     title: 'SRS 复习中心',

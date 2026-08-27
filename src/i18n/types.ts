@@ -256,6 +256,8 @@ export interface TranslationSchema {
     congratsPerfect: string;
     greatJob: string;
     keepPracticing: string;
+    reviewWeakInReview: string;
+    practiceWriting: string;
   };
   review: {
     title: string;
