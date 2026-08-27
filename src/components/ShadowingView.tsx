@@ -6,6 +6,7 @@ import {
   toggleMarkedOk,
   ShadowingProgress,
 } from '../lib/shadowingProgress';
+import { logLearningEvent } from '../utils/learningEvents';
 import {
   Headphones,
   Volume2,
@@ -231,6 +232,10 @@ export function ShadowingView() {
       await playUserRecording();
       setIsComparing(false);
       const updated = incrementPractice(currentSentence.id);
+      logLearningEvent({
+        type: 'shadowing_complete',
+        source: 'shadowing_view',
+      });
       setProgress(updated);
     }, 400);
   };

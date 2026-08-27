@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { KanaItem, QuizQuestion } from '../types';
 import { removeKanaFromWrong, recordReviewResult } from '../utils/storage';
+import { logLearningEvent } from '../utils/learningEvents';
 import { speakJapanese } from '../utils/speech';
 import { Volume2, CheckCircle2, XCircle, ArrowRight, RefreshCw, Trophy, PenLine, BookOpen } from 'lucide-react';
 import { QuizVocabFeedback } from './QuizVocabFeedback';
@@ -231,6 +232,12 @@ export function QuizView({
 
     const targetKana = currentQ.targetKana;
     recordReviewResult(targetKana.id, isCorrect);
+    logLearningEvent({
+      type: 'quiz_answer',
+      source: isReviewMode ? 'review_quiz' : 'quiz',
+      kanaId: targetKana.id,
+      correct: isCorrect,
+    });
     setResults((prev) => [...prev, { kana: targetKana, isCorrect }]);
 
     if (isCorrect) {

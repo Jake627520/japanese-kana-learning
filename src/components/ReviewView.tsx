@@ -9,6 +9,7 @@ import {
 } from '../utils/storage';
 import { getKanaStatus } from '../utils/kanaStatus';
 import { speakJapanese } from '../utils/speech';
+import { logLearningEvent } from '../utils/learningEvents';
 import { getPrimaryVocabularyByKanaId, playVocabularyAudio } from '../data/vocabulary';
 import { QuizView } from './QuizView';
 import { useI18n } from '../i18n';
@@ -93,7 +94,13 @@ export function ReviewView({
           customPool={miniQuizPool}
           isReviewMode={true}
           onProgressChange={onProgressChange}
-          onFinish={() => setIsMiniQuizActive(false)}
+          onFinish={() => {
+            logLearningEvent({
+              type: 'review_complete',
+              source: 'review_view',
+            });
+            setIsMiniQuizActive(false);
+          }}
         />
       </div>
     );

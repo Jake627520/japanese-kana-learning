@@ -3,6 +3,7 @@ import { KanaItem } from '../types';
 import { HIRAGANA_DATA } from '../data/kanaData';
 import { HIRAGANA_STROKES } from '../data/strokeData';
 import { getStoredProgress, toggleKanaMastered } from '../utils/storage';
+import { logLearningEvent } from '../utils/learningEvents';
 import { speakJapanese } from '../utils/speech';
 import { useI18n } from '../i18n';
 import {
@@ -146,6 +147,11 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
 
   const handleMastered = () => {
     const updated = toggleKanaMastered(kana.id);
+    logLearningEvent({
+      type: 'writing_complete',
+      source: 'writing_view',
+      kanaId: kana.id,
+    });
     setMasteredIds(updated.masteredKanaIds);
     onProgressChange?.();
   };

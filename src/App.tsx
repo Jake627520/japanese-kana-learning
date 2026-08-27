@@ -78,6 +78,10 @@ function AppContent() {
                 allKana={ALL_LEARNABLE_KANA}
                 onNavigate={handleSelectTab}
                 onStartStudyKana={handleStartStudyKana}
+                onPracticeWriting={(kana) => {
+                  setTargetWritingKanaId(kana.id);
+                  setCurrentTab('writing');
+                }}
               />
             )}
 

@@ -367,4 +367,27 @@ export interface TranslationSchema {
     practiceDrill: string;
     checkChoice: string;
   };
+  analytics: {
+    today: string;
+    quiz: string;
+    review: string;
+    writing: string;
+    shadowing: string;
+    total: string;
+    sevenDayTrend: string;
+    weakKana: string;
+    noWeakKana: string;
+    attempts: string;
+    errorRate: string;
+    recommendation: string;
+    startAction: string;
+    recommendationPracticeWriting: string;
+    recommendationReview: string;
+    recommendationShadowing: string;
+    recommendationQuiz: string;
+    recommendationHighErrorRate: string;
+    recommendationSrsDue: string;
+    recommendationShadowingWeak: string;
+    recommendationDailyChallenge: string;
+  };
 }
