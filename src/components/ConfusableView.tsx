@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { KanaItem } from '../types';
 import { HIRAGANA_DATA, KATAKANA_DATA } from '../data/kanaData';
 import { CONFUSABLE_GROUPS, ConfusableGroup } from '../data/confusableData';
@@ -95,6 +95,12 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
 
   const wrongIds = useMemo(() => getStoredProgress().wrongKanaIds, [index]);
 
+  const questionStartTimeRef = useRef<number>(Date.now());
+
+  useEffect(() => {
+    questionStartTimeRef.current = Date.now();
+  }, [index, q]);
+
   const restart = (
     s: 'all' | 'hiragana' | 'katakana' = scriptFilter,
     m: 'all' | 'visual' | 'listening' = modalityFilter
@@ -112,11 +118,12 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
     if (answered || !q) return;
     setPicked(id);
     const correct = id === q.target.id;
+    const responseMs = Math.max(10, Date.now() - questionStartTimeRef.current);
     setScore((s) => ({
       right: s.right + (correct ? 1 : 0),
       wrong: s.wrong + (correct ? 0 : 1),
     }));
-    recordReviewResult(q.target.id, correct);
+    recordReviewResult(q.target.id, correct, responseMs);
     logLearningEvent({
       type: 'quiz_answer',
       source: 'confusable_quiz',

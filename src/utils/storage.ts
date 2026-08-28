@@ -4,6 +4,7 @@ import {
   ReviewRating,
   migrateUserProgress,
   applyReviewResult,
+  mapQuizResultToRating,
 } from './srs';
 
 export const STORAGE_KEY_V1 = 'ai_japanese_learning_progress_v1';
@@ -160,7 +161,12 @@ export function getReviewState(progress: UserProgress, kanaId: string): KanaRevi
   };
 }
 
-export function recordReviewResult(kanaId: string, isCorrect: boolean): UserProgress {
+export function recordReviewResult(
+  kanaId: string,
+  isCorrect: boolean,
+  responseMs?: number,
+  manualRating?: ReviewRating
+): UserProgress {
   const current = getStoredProgress();
   const now = new Date();
   const state = getReviewState(current, kanaId);
@@ -205,7 +211,17 @@ export function recordReviewResult(kanaId: string, isCorrect: boolean): UserProg
     reviewStates: updatedReviewStates,
   };
 
+  // 1. Save v1 progress (100% legacy backward compatible)
   saveProgress(updatedProgress);
+
+  // 2. Dual-record to v2 via adapter for adaptive tracking
+  try {
+    const rating = mapQuizResultToRating(isCorrect, responseMs, manualRating);
+    recordAdaptiveReview(kanaId, rating, responseMs, now.getTime());
+  } catch (e) {
+    console.error('Failed to dual-record adaptive review:', e);
+  }
+
   return updatedProgress;
 }
 

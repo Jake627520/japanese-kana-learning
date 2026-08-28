@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { KanaItem, QuizQuestion } from '../types';
 import { removeKanaFromWrong, recordReviewResult } from '../utils/storage';
 import { logLearningEvent } from '../utils/learningEvents';
@@ -347,10 +347,12 @@ export function QuizView({
     generateQuiz();
   }, [quizScope, quizMode]);
 
+  const questionStartTimeRef = useRef<number>(Date.now());
   const currentQ = questions[currentIndex];
 
-  // Auto-play audio when navigating questions in listening mode
+  // Auto-play audio when navigating questions in listening mode and track start time
   useEffect(() => {
+    questionStartTimeRef.current = Date.now();
     if (currentQ && (quizMode === 'listening' || isConfusionMode) && !isAnswered && !isCompleted) {
       speakJapanese(currentQ.targetKana.kana);
     }
@@ -362,10 +364,11 @@ export function QuizView({
     setSelectedOption(label);
     setIsAnswered(true);
 
+    const responseMs = Math.max(10, Date.now() - questionStartTimeRef.current);
     const targetKana = currentQ.targetKana;
     const selectedKana = currentQ.options.find((o) => o.label === label)?.kana;
 
-    recordReviewResult(targetKana.id, isCorrect);
+    recordReviewResult(targetKana.id, isCorrect, responseMs);
     logLearningEvent({
       type: 'quiz_answer',
       source: isConfusionMode
