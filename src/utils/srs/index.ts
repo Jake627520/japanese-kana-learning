@@ -4,6 +4,7 @@ export * from './types';
 export * from './migration';
 export * from './engine';
 export * from './scheduler';
+export * from './reviewAdapter';
 
 /**
  * Feature Flag for SRS Engine Mode.

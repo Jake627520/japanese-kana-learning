@@ -1,7 +1,9 @@
 import { UserProgress, KanaReviewState, KanaItem } from '../types';
 import {
   UserProgressV2,
+  ReviewRating,
   migrateUserProgress,
+  applyReviewResult,
 } from './srs';
 
 export const STORAGE_KEY_V1 = 'ai_japanese_learning_progress_v1';
@@ -95,6 +97,14 @@ export function saveProgress(progress: UserProgress): void {
   }
 }
 
+export function saveProgressV2(progress: UserProgressV2): void {
+  try {
+    localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(progress));
+  } catch (e) {
+    console.error('Failed to save progress v2:', e);
+  }
+}
+
 export function getStoredProgressV2(): UserProgressV2 {
   try {
     const rawV2 = localStorage.getItem(STORAGE_KEY_V2);
@@ -122,6 +132,18 @@ export function getStoredProgressV2(): UserProgressV2 {
     console.error('Failed to read stored progress v2:', e);
     return migrateUserProgress(defaultProgress);
   }
+}
+
+export function recordAdaptiveReview(
+  kanaId: string,
+  rating: ReviewRating,
+  responseMs?: number,
+  reviewedAt: number = Date.now()
+): UserProgressV2 {
+  const currentV2 = getStoredProgressV2();
+  const updatedV2 = applyReviewResult(currentV2, kanaId, rating, reviewedAt, responseMs);
+  saveProgressV2(updatedV2);
+  return updatedV2;
 }
 
 export function getReviewState(progress: UserProgress, kanaId: string): KanaReviewState {
