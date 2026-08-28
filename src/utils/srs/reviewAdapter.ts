@@ -4,8 +4,10 @@ import {
   ReviewInput,
   UserProgressV2,
   SRSEngine,
+  SRSShadowLogEntry,
 } from './types';
-import { getSRSEngine } from './engine';
+import { getSRSEngine, LegacySRSEngine } from './engine';
+import { clampResponseMs, appendShadowLog } from './shadowEvaluator';
 
 /**
  * Maps quiz outcome / response timing to an SRS ReviewRating.
@@ -24,12 +26,12 @@ export function mapQuizResultToRating(
     return 'again';
   }
 
-  // Response time heuristics (if available)
-  if (typeof responseMs === 'number' && responseMs > 0) {
-    if (responseMs < 1200) {
+  const validMs = clampResponseMs(responseMs);
+  if (typeof validMs === 'number') {
+    if (validMs < 1200) {
       return 'easy'; // Instant effortless recall
     }
-    if (responseMs > 6000) {
+    if (validMs > 6000) {
       return 'hard'; // Slow, effortful recall
     }
   }
@@ -51,13 +53,15 @@ export function buildReviewInput(
     kanaId,
     reviewedAt,
     now: reviewedAt,
-    responseMs,
+    responseMs: clampResponseMs(responseMs),
   };
 }
 
+const legacyEngine = new LegacySRSEngine();
+
 /**
  * Pure function: Applies a review outcome to UserProgressV2.
- * Does not mutate input progress object.
+ * Generates shadow evaluation logs without mutating input progress object.
  */
 export function applyReviewResult(
   progress: UserProgressV2,
@@ -71,6 +75,24 @@ export function applyReviewResult(
   const input = buildReviewInput(rating, kanaId, reviewedAt, responseMs);
   const result = engine.review(existingState, input);
 
+  // Compute shadow legacy comparison
+  const legacyResult = legacyEngine.review(existingState, input);
+  const legacyIntervalMs = legacyResult.nextReviewAt - reviewedAt;
+  const adaptiveIntervalMs = result.nextReviewAt - reviewedAt;
+
+  const shadowEntry: SRSShadowLogEntry = {
+    kanaId,
+    timestamp: reviewedAt,
+    rating,
+    responseMs: clampResponseMs(responseMs),
+    legacyNextReviewAt: new Date(legacyResult.nextReviewAt).toISOString(),
+    adaptiveNextReviewAt: result.nextReviewAt,
+    legacyIntervalMs,
+    adaptiveIntervalMs,
+    stability: result.state.stability,
+    difficulty: result.state.difficulty,
+  };
+
   const updatedStates: Record<string, SRSStateV2> = {
     ...(progress.srsStates || {}),
     [kanaId]: result.state,
@@ -83,10 +105,13 @@ export function applyReviewResult(
     }
   }
 
+  const updatedShadowLogs = appendShadowLog(progress.shadowLogs, shadowEntry);
+
   return {
     ...progress,
     schemaVersion: 2,
     wrongKanaIds: updatedWrongIds,
     srsStates: updatedStates,
+    shadowLogs: updatedShadowLogs,
   };
 }

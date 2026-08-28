@@ -45,7 +45,21 @@ export interface SRSEngine {
 
 export type SRSMode =
   | 'legacy'
+  | 'shadow'
   | 'adaptive';
+
+export interface SRSShadowLogEntry {
+  kanaId: string;
+  timestamp: number;
+  rating: ReviewRating;
+  responseMs?: number;
+  legacyNextReviewAt: string;
+  adaptiveNextReviewAt: number;
+  legacyIntervalMs: number;
+  adaptiveIntervalMs: number;
+  stability: number;
+  difficulty: number;
+}
 
 export interface UserProgressV2 {
   schemaVersion: 2;
@@ -58,4 +72,5 @@ export interface UserProgressV2 {
 
   srsStates: Record<string, SRSStateV2>;
   reviewStates?: Record<string, KanaReviewState>;
+  shadowLogs?: SRSShadowLogEntry[];
 }

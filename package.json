@@ -13,7 +13,7 @@
     "validate:i18n": "python3 scripts/validate-i18n.py",
     "validate:vocab": "python3 scripts/validate-vocabulary.py",
     "validate:shadowing": "python3 scripts/validate-shadowing.py",
-    "test:srs": "python3 scripts/test-srs-migration.py && python3 scripts/test-srs-storage.py && python3 scripts/test-srs-engine.py && python3 scripts/test-srs-scheduler.py && python3 scripts/test-srs-review-adapter.py && python3 scripts/test-srs-opt-in.py"
+    "test:srs": "python3 scripts/test-srs-migration.py && python3 scripts/test-srs-storage.py && python3 scripts/test-srs-engine.py && python3 scripts/test-srs-scheduler.py && python3 scripts/test-srs-review-adapter.py && python3 scripts/test-srs-opt-in.py && python3 scripts/test-srs-shadow.py"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.14",
