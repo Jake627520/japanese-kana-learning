@@ -7,7 +7,10 @@ import {
   getWeakKanaRanking,
   getSevenDayTrend,
   getAIRecommendation,
+  getListeningWeaknesses,
+  getConfusionWeaknesses,
 } from '../utils/analytics';
+import { CONFUSABLE_GROUPS } from '../data/confusableData';
 import { HeaderStats } from './HeaderStats';
 import { DataBackupCard } from './DataBackupCard';
 import { LearningPathCard } from './LearningPathCard';
@@ -30,6 +33,9 @@ import {
   HelpCircle,
   CheckCircle2,
   AlertCircle,
+  Ear,
+  Eye,
+  Zap,
 } from 'lucide-react';
 
 interface HomeDashboardProps {
@@ -38,6 +44,7 @@ interface HomeDashboardProps {
   onNavigate: (tab: NavigationTab) => void;
   onStartStudyKana: (kana: KanaItem) => void;
   onPracticeWriting?: (kana: KanaItem) => void;
+  onPracticeConfusionGroup?: (groupId: string) => void;
 }
 
 export function HomeDashboard({
@@ -46,6 +53,7 @@ export function HomeDashboard({
   onNavigate,
   onStartStudyKana,
   onPracticeWriting,
+  onPracticeConfusionGroup,
 }: HomeDashboardProps) {
   const { t } = useI18n();
   const dueItems = getDueReviewItems(allKana, progress);
@@ -56,8 +64,16 @@ export function HomeDashboard({
   const todayStats = useMemo(() => getTodayStats(learningEvents), [learningEvents]);
   const sevenDayTrend = useMemo(() => getSevenDayTrend(learningEvents), [learningEvents]);
   const weakRanking = useMemo(() => getWeakKanaRanking(learningEvents, 3, 3), [learningEvents]);
+  const listeningWeaknesses = useMemo(
+    () => getListeningWeaknesses(learningEvents),
+    [learningEvents]
+  );
+  const confusionWeaknesses = useMemo(
+    () => getConfusionWeaknesses(learningEvents, CONFUSABLE_GROUPS),
+    [learningEvents]
+  );
   const aiRecommendation = useMemo(
-    () => getAIRecommendation(progress, learningEvents),
+    () => getAIRecommendation(progress, learningEvents, CONFUSABLE_GROUPS),
     [progress, learningEvents]
   );
 
@@ -75,7 +91,13 @@ export function HomeDashboard({
   };
 
   const handleRecommendationAction = () => {
-    if (aiRecommendation.recommendedAction === 'writing') {
+    if (aiRecommendation.recommendedAction === 'listening_confusion') {
+      if (aiRecommendation.targetConfusionGroupId && onPracticeConfusionGroup) {
+        onPracticeConfusionGroup(aiRecommendation.targetConfusionGroupId);
+        return;
+      }
+      onNavigate('confusable');
+    } else if (aiRecommendation.recommendedAction === 'writing') {
       if (aiRecommendation.targetKanaId && onPracticeWriting) {
         const target = allKana.find((k) => k.id === aiRecommendation.targetKanaId);
         if (target) {
@@ -140,6 +162,7 @@ export function HomeDashboard({
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <h3 className="text-base sm:text-lg font-bold text-[#1E293B] flex items-center gap-2">
+              {aiRecommendation.recommendedAction === 'listening_confusion' && <Headphones className="w-5 h-5 text-amber-600" />}
               {aiRecommendation.recommendedAction === 'writing' && <PenLine className="w-5 h-5 text-[#00A86B]" />}
               {aiRecommendation.recommendedAction === 'review' && <BookOpen className="w-5 h-5 text-[#00A86B]" />}
               {aiRecommendation.recommendedAction === 'shadowing' && <Headphones className="w-5 h-5 text-[#00A86B]" />}
@@ -245,6 +268,146 @@ export function HomeDashboard({
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* 聽力弱點智能診斷 (Listening Weakness Intelligence Card) */}
+      <div className="space-y-3">
+        <SectionHeading>{t('analytics.listeningWeaknessTitle')}</SectionHeading>
+
+        <div className="bg-white p-5 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-4">
+          {listeningWeaknesses.filter((w) => w.attempts >= 3).length > 0 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              {listeningWeaknesses
+                .filter((w) => w.attempts >= 3)
+                .slice(0, 3)
+                .map((w, idx) => {
+                  const kanaObj = allKana.find((k) => k.id === w.kanaId);
+                  const confusedObj = w.topConfusionKanaId
+                    ? allKana.find((k) => k.id === w.topConfusionKanaId)
+                    : undefined;
+
+                  const matchedGroup =
+                    CONFUSABLE_GROUPS.find(
+                      (g) =>
+                        g.members.includes(w.kanaId) &&
+                        (w.topConfusionKanaId ? g.members.includes(w.topConfusionKanaId) : true) &&
+                        (g.modality === 'both' || g.modality === 'listening')
+                    ) ||
+                    CONFUSABLE_GROUPS.find(
+                      (g) =>
+                        g.members.includes(w.kanaId) &&
+                        (g.modality === 'both' || g.modality === 'listening')
+                    );
+
+                  return (
+                    <div
+                      key={w.kanaId}
+                      className="p-4 bg-gradient-to-b from-[#FAFBFB] to-white rounded-2xl border border-amber-200/80 flex flex-col justify-between gap-3.5 shadow-2xs"
+                    >
+                      {/* Header: Kana badge & Confidence */}
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 font-extrabold text-xl flex items-center justify-center border border-amber-200">
+                            {kanaObj?.kana || w.kanaId}
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-[#1E293B]">
+                              #{idx + 1} {kanaObj?.romaji.toUpperCase()}
+                            </div>
+                            <div className="text-[10px] text-[#64748B]">
+                              Score {w.score}
+                            </div>
+                          </div>
+                        </div>
+
+                        <span
+                          className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full border ${
+                            w.confidence === 'high'
+                              ? 'bg-amber-100 text-amber-800 border-amber-300'
+                              : w.confidence === 'medium'
+                              ? 'bg-sky-100 text-sky-800 border-sky-300'
+                              : 'bg-slate-100 text-slate-600 border-slate-300'
+                          }`}
+                        >
+                          {w.confidence === 'high'
+                            ? t('analytics.confidenceHigh')
+                            : w.confidence === 'medium'
+                            ? t('analytics.confidenceMedium')
+                            : t('analytics.confidenceLow')}
+                        </span>
+                      </div>
+
+                      {/* Evidence: Metrics 3-Grid */}
+                      <div className="grid grid-cols-3 gap-1.5 p-2 bg-[#F8FAFC] rounded-xl border border-[#F1F5F9] text-center">
+                        <div>
+                          <div className="text-[10px] font-bold text-[#64748B]">
+                            {t('analytics.listeningAccuracyLabel')}
+                          </div>
+                          <div className="text-xs font-extrabold text-amber-700 mt-0.5">
+                            {Math.round(w.listeningAccuracy * 100)}%
+                          </div>
+                          <div className="text-[9px] text-[#94A3B8]">
+                            ({w.attempts - w.wrongCount}/{w.attempts})
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] font-bold text-[#64748B]">
+                            {t('analytics.visualAccuracyLabel')}
+                          </div>
+                          <div className="text-xs font-extrabold text-[#00A86B] mt-0.5">
+                            {Math.round(w.visualAccuracy * 100)}%
+                          </div>
+                        </div>
+                        <div>
+                          <div className="text-[10px] font-bold text-[#64748B]">
+                            {t('analytics.modalityGapLabel')}
+                          </div>
+                          <div className="text-xs font-extrabold text-rose-600 mt-0.5">
+                            {w.gap >= 0 ? '+' : ''}{Math.round(w.gap * 100)}%
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Diagnosis: Top Confusion */}
+                      {confusedObj ? (
+                        <div className="text-[11px] font-medium text-[#475569] bg-amber-50/60 px-2.5 py-1.5 rounded-lg border border-amber-100 flex items-center justify-between">
+                          <span className="text-[#64748B] text-[10px] font-bold">{t('analytics.mostConfusedWith')}:</span>
+                          <span className="font-extrabold text-amber-900">
+                            {kanaObj?.kana} → <span className="text-rose-600 font-black">{confusedObj.kana}</span> ({confusedObj.romaji})
+                          </span>
+                        </div>
+                      ) : (
+                        <div className="text-[10px] text-[#94A3B8] italic px-1">
+                          General Listening Weakness
+                        </div>
+                      )}
+
+                      {/* Action Button */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (matchedGroup && onPracticeConfusionGroup) {
+                            onPracticeConfusionGroup(matchedGroup.id);
+                          } else {
+                            onNavigate('confusable');
+                          }
+                        }}
+                        className="w-full py-2 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-xs"
+                      >
+                        <Headphones className="w-3.5 h-3.5" />
+                        <span>{t('analytics.startConfusionDrill')}</span>
+                      </button>
+                    </div>
+                  );
+                })}
+            </div>
+          ) : (
+            <div className="p-6 text-center text-xs font-bold text-[#64748B] flex items-center justify-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[#00A86B]" />
+              {t('analytics.noListeningWeakness')}
+            </div>
+          )}
         </div>
       </div>
 

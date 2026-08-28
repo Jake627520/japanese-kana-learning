@@ -10,6 +10,7 @@ import { QuizView } from './QuizView';
 import { Volume2, Check, X, RotateCcw, Layers, AlertTriangle, ArrowRight, Headphones } from 'lucide-react';
 
 interface Props {
+  initialGroupId?: string | null;
   onProgressChange?: () => void;
 }
 
@@ -53,7 +54,7 @@ function buildQuestions(
   return qs.sort(() => Math.random() - 0.5);
 }
 
-export function ConfusableView({ onProgressChange }: Props) {
+export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
   const { t } = useI18n();
   const [scriptFilter, setScriptFilter] = useState<'all' | 'hiragana' | 'katakana'>('all');
   const [modalityFilter, setModalityFilter] = useState<'all' | 'visual' | 'listening'>('all');
@@ -64,7 +65,22 @@ export function ConfusableView({ onProgressChange }: Props) {
   const [picked, setPicked] = useState<string | null>(null);
   const [score, setScore] = useState({ right: 0, wrong: 0 });
   const [done, setDone] = useState(false);
-  const [activeTrainingGroup, setActiveTrainingGroup] = useState<ConfusableGroup | null>(null);
+  const [activeTrainingGroup, setActiveTrainingGroup] = useState<ConfusableGroup | null>(() => {
+    if (initialGroupId) {
+      return CONFUSABLE_GROUPS.find((g) => g.id === initialGroupId) || null;
+    }
+    return null;
+  });
+
+  // Watch for external initialGroupId changes
+  React.useEffect(() => {
+    if (initialGroupId) {
+      const g = CONFUSABLE_GROUPS.find((group) => group.id === initialGroupId);
+      if (g) {
+        setActiveTrainingGroup(g);
+      }
+    }
+  }, [initialGroupId]);
 
   const q = questions[index];
   const answered = picked !== null;

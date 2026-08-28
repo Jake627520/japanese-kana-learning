@@ -403,9 +403,21 @@ export interface TranslationSchema {
     recommendationReview: string;
     recommendationShadowing: string;
     recommendationQuiz: string;
+    recommendationListeningConfusion: string;
     recommendationHighErrorRate: string;
     recommendationSrsDue: string;
     recommendationShadowingWeak: string;
     recommendationDailyChallenge: string;
+    recommendationHighConfusionRate: string;
+    listeningWeaknessTitle: string;
+    listeningAccuracyLabel: string;
+    visualAccuracyLabel: string;
+    modalityGapLabel: string;
+    mostConfusedWith: string;
+    confidenceHigh: string;
+    confidenceMedium: string;
+    confidenceLow: string;
+    startConfusionDrill: string;
+    noListeningWeakness: string;
   };
 }

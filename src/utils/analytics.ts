@@ -1,6 +1,5 @@
 import { LearningEvent } from '../types/learning';
 import { UserProgress } from '../types';
-import { ConfusableGroup } from '../data/confusableData';
 import {
   TodayStats,
   WeakKanaStat,
@@ -9,7 +8,11 @@ import {
   ConfusionMatrix,
   ConfusionGroupStat,
   ModalityAccuracy,
+  WeaknessConfidence,
+  ListeningWeakness,
+  ConfusionWeakness,
 } from '../types/analytics';
+import { CONFUSABLE_GROUPS, ConfusableGroup } from '../data/confusableData';
 
 /**
  * Format Date to local YYYY-MM-DD string.
@@ -19,6 +22,26 @@ function toLocalDateString(d: Date): string {
   const m = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
   return `${y}-${m}-${day}`;
+}
+
+/**
+ * Calculate 7-day half-life decay weight for a given timestamp.
+ */
+function getRecencyWeight(timestamp: number, nowMs: number): number {
+  const ageDays = Math.max(0, (nowMs - timestamp) / (1000 * 60 * 60 * 24));
+  return Math.pow(0.5, ageDays / 7);
+}
+
+/**
+ * Determine WeaknessConfidence level based on attempt count.
+ * < 3  -> 'low'
+ * 3-7  -> 'medium'
+ * >= 8 -> 'high'
+ */
+function getConfidenceLevel(attempts: number): WeaknessConfidence {
+  if (attempts < 3) return 'low';
+  if (attempts < 8) return 'medium';
+  return 'high';
 }
 
 /**
@@ -142,19 +165,243 @@ export function getSevenDayTrend(events: LearningEvent[], now = new Date()): Dai
 }
 
 /**
+ * Calculate per-kana Listening Weakness statistics with confidence, modality gap and recency scoring.
+ * Pure function: only evaluates source === 'listening' | 'listening_confusion'.
+ */
+export function getListeningWeaknesses(
+  events: LearningEvent[],
+  options?: { now?: number }
+): ListeningWeakness[] {
+  if (!Array.isArray(events)) return [];
+  const nowMs = options?.now ?? Date.now();
+
+  // Extract all distinct kanaIds evaluated in listening
+  const kanaSet = new Set<string>();
+  for (const e of events) {
+    if (
+      e &&
+      e.kanaId &&
+      e.type === 'quiz_answer' &&
+      (e.source === 'listening' || e.source === 'listening_confusion')
+    ) {
+      kanaSet.add(e.kanaId);
+    }
+  }
+
+  const results: ListeningWeakness[] = [];
+
+  for (const kanaId of kanaSet) {
+    // 1. Listening stats
+    const listeningEvents = events.filter(
+      (e) =>
+        e.kanaId === kanaId &&
+        e.type === 'quiz_answer' &&
+        (e.source === 'listening' || e.source === 'listening_confusion')
+    );
+
+    const attempts = listeningEvents.length;
+    const wrongCount = listeningEvents.filter((e) => e.correct === false).length;
+    const listeningAccuracy =
+      attempts > 0 ? Math.round(((attempts - wrongCount) / attempts) * 100) / 100 : 0;
+
+    // 2. Visual stats (only source === 'quiz')
+    const visualEvents = events.filter(
+      (e) => e.kanaId === kanaId && e.type === 'quiz_answer' && e.source === 'quiz'
+    );
+    const visualAttempts = visualEvents.length;
+    const visualCorrect = visualEvents.filter((e) => e.correct === true).length;
+    const visualAccuracy =
+      visualAttempts > 0 ? Math.round((visualCorrect / visualAttempts) * 100) / 100 : 0;
+
+    const gap = Math.round((visualAccuracy - listeningAccuracy) * 100) / 100;
+
+    // 3. Top confusion kanaId (from source === 'listening_confusion' where selected !== kanaId)
+    const confusionMap: Record<string, number> = {};
+    for (const e of listeningEvents) {
+      if (
+        e.source === 'listening_confusion' &&
+        e.selectedKanaId &&
+        e.selectedKanaId !== kanaId
+      ) {
+        confusionMap[e.selectedKanaId] = (confusionMap[e.selectedKanaId] || 0) + 1;
+      }
+    }
+
+    let topConfusionKanaId: string | undefined = undefined;
+    const sortedConfusions = Object.entries(confusionMap).sort((a, b) => {
+      if (b[1] !== a[1]) return b[1] - a[1];
+      return a[0].localeCompare(b[0]);
+    });
+    if (sortedConfusions.length > 0) {
+      topConfusionKanaId = sortedConfusions[0][0];
+    }
+
+    // 4. Confidence & Recency score
+    const confidence = getConfidenceLevel(attempts);
+    const wrongRate = attempts > 0 ? wrongCount / attempts : 0;
+    const volume = Math.max(0, Math.min(Math.log2(attempts + 1) / 5, 1));
+    const gapBonus = Math.max(gap, 0);
+
+    let totalWeight = 0;
+    let weightedWrong = 0;
+    for (const e of listeningEvents) {
+      const w = getRecencyWeight(e.timestamp, nowMs);
+      totalWeight += w;
+      if (e.correct === false) weightedWrong += w;
+    }
+    const recencyFactor = totalWeight > 0 ? weightedWrong / totalWeight : wrongRate;
+
+    const rawScore = wrongRate * 0.5 + volume * 0.2 + gapBonus * 0.2 + recencyFactor * 0.1;
+    const score = Math.round(Math.min(Math.max(rawScore, 0), 1) * 100) / 100;
+
+    results.push({
+      kanaId,
+      attempts,
+      wrongCount,
+      listeningAccuracy,
+      visualAccuracy,
+      gap,
+      topConfusionKanaId,
+      confidence,
+      score,
+    });
+  }
+
+  // Sort by score DESC, then attempts DESC, then kanaId ASC
+  results.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    if (b.attempts !== a.attempts) return b.attempts - a.attempts;
+    return a.kanaId.localeCompare(b.kanaId);
+  });
+
+  return results;
+}
+
+/**
+ * Calculate Confusion Group Weakness with strict group membership enforcement and directional analysis.
+ * Pure function: only considers source === 'listening_confusion' where target & selected both in group.
+ */
+export function getConfusionWeaknesses(
+  events: LearningEvent[],
+  groups: ConfusableGroup[] = CONFUSABLE_GROUPS,
+  options?: { now?: number }
+): ConfusionWeakness[] {
+  if (!Array.isArray(events)) return [];
+  const nowMs = options?.now ?? Date.now();
+  const confusionEvents = events.filter(
+    (e) => e && e.type === 'quiz_answer' && e.source === 'listening_confusion'
+  );
+
+  const results: ConfusionWeakness[] = [];
+
+  for (const g of groups) {
+    const memberSet = new Set(g.members);
+    const validGroupEvents = confusionEvents.filter(
+      (e) =>
+        e.kanaId &&
+        e.selectedKanaId &&
+        memberSet.has(e.kanaId) &&
+        memberSet.has(e.selectedKanaId)
+    );
+
+    const attempts = validGroupEvents.length;
+    const wrongCount = validGroupEvents.filter((e) => e.correct === false).length;
+    const wrongRate =
+      attempts > 0 ? Math.round((wrongCount / attempts) * 100) / 100 : 0;
+
+    // Top direction counting (target !== selected)
+    const dirMap: Record<string, { target: string; selected: string; count: number }> = {};
+    for (const e of validGroupEvents) {
+      if (e.kanaId && e.selectedKanaId && e.kanaId !== e.selectedKanaId) {
+        const key = `${e.kanaId}->${e.selectedKanaId}`;
+        if (!dirMap[key]) {
+          dirMap[key] = { target: e.kanaId, selected: e.selectedKanaId, count: 0 };
+        }
+        dirMap[key].count += 1;
+      }
+    }
+
+    const sortedDirs = Object.values(dirMap).sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      if (a.target !== b.target) return a.target.localeCompare(b.target);
+      return a.selected.localeCompare(b.selected);
+    });
+
+    const topDirection = sortedDirs.length > 0 ? sortedDirs[0] : undefined;
+    const confidence = getConfidenceLevel(attempts);
+    const volume = Math.max(0, Math.min(Math.log2(attempts + 1) / 5, 1));
+
+    let totalWeight = 0;
+    let weightedWrong = 0;
+    for (const e of validGroupEvents) {
+      const w = getRecencyWeight(e.timestamp, nowMs);
+      totalWeight += w;
+      if (e.correct === false) weightedWrong += w;
+    }
+    const recencyFactor = totalWeight > 0 ? weightedWrong / totalWeight : wrongRate;
+
+    const rawScore = wrongRate * 0.6 + volume * 0.3 + recencyFactor * 0.1;
+    const score = Math.round(Math.min(Math.max(rawScore, 0), 1) * 100) / 100;
+
+    results.push({
+      groupId: g.id,
+      memberKanaIds: [...g.members],
+      attempts,
+      wrongCount,
+      wrongRate,
+      topDirection,
+      confidence,
+      score,
+    });
+  }
+
+  // Sort by score DESC, then attempts DESC, then groupId ASC
+  results.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    if (b.attempts !== a.attempts) return b.attempts - a.attempts;
+    return a.groupId.localeCompare(b.groupId);
+  });
+
+  return results;
+}
+
+/**
  * Rule-based AI Recommendation Engine.
- * Synthesizes UserProgress and LearningEvents into targeted daily action.
- * Pure function: returns i18n key references and dynamic params.
+ * Synthesizes UserProgress, LearningEvents, and Confusion Weakness into targeted daily action.
+ * Priority hierarchy:
+ * 1. High-confidence listening confusion
+ * 2. High-confidence writing weakness
+ * 3. Due SRS reviews
+ * 4. General listening weakness / shadowing
+ * 5. Daily quiz challenge
  */
 export function getAIRecommendation(
   progress: UserProgress,
   events: LearningEvent[],
+  groups: ConfusableGroup[] = CONFUSABLE_GROUPS,
   now = new Date()
 ): AIRecommendation {
-  const weakList = getWeakKanaRanking(events, 3, 3);
   const nowMs = now.getTime();
 
-  // Rule 1: High Error Rate Kana (with >=3 attempts) -> Writing practice
+  // Rule 1: High-confidence Listening Confusion Drill
+  const confusionWeaknesses = getConfusionWeaknesses(events, groups, { now: nowMs });
+  const highConfWeakness = confusionWeaknesses.find(
+    (w) => w.confidence === 'high' && (w.wrongRate >= 0.4 || w.score >= 0.5)
+  );
+
+  if (highConfWeakness) {
+    return {
+      priority: 'high',
+      targetConfusionGroupId: highConfWeakness.groupId,
+      recommendedAction: 'listening_confusion',
+      titleKey: 'analytics.recommendationListeningConfusion',
+      reasonKey: 'analytics.recommendationHighConfusionRate',
+      reasonParams: { rate: Math.round(highConfWeakness.wrongRate * 100) },
+    };
+  }
+
+  // Rule 2: High Error Rate Kana (with >=3 attempts) -> Writing practice
+  const weakList = getWeakKanaRanking(events, 3, 3);
   if (weakList.length > 0 && weakList[0].wrongRate >= 0.5) {
     const topWeak = weakList[0];
     return {
@@ -167,7 +414,7 @@ export function getAIRecommendation(
     };
   }
 
-  // Rule 2: Due SRS Reviews -> Spaced repetition review
+  // Rule 3: Due SRS Reviews -> Spaced repetition review
   const states = progress.reviewStates || {};
   const dueKanaIds = Object.keys(states).filter((id) => {
     const nextAt = states[id].nextReviewAt;
@@ -185,7 +432,7 @@ export function getAIRecommendation(
     };
   }
 
-  // Rule 3: Weak Kana present in wrongKanaIds -> Shadowing / Quiz
+  // Rule 4: Weak Kana present in wrongKanaIds -> Shadowing
   if (progress.wrongKanaIds.length > 0) {
     const firstWrong = progress.wrongKanaIds[0];
     return {
@@ -197,7 +444,7 @@ export function getAIRecommendation(
     };
   }
 
-  // Rule 4: Normal daily learning flow -> General Quiz
+  // Rule 5: Normal daily learning flow -> General Quiz
   return {
     priority: 'normal',
     recommendedAction: 'quiz',

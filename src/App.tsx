@@ -25,6 +25,7 @@ function AppContent() {
   const [currentKanaType, setCurrentKanaType] = useState<KanaType>('hiragana');
   const [selectedKana, setSelectedKana] = useState<KanaItem>(HIRAGANA_DATA[0]);
   const [targetWritingKanaId, setTargetWritingKanaId] = useState<string | null>(null);
+  const [targetConfusionGroupId, setTargetConfusionGroupId] = useState<string | null>(null);
 
   const currentKanaData = useMemo(() => {
     if (currentKanaCategory === 'dakuten') {
@@ -55,6 +56,7 @@ function AppContent() {
 
   const handleSelectTab = (tab: NavigationTab) => {
     setTargetWritingKanaId(null);
+    setTargetConfusionGroupId(null);
     setCurrentTab(tab);
   };
 
@@ -81,6 +83,10 @@ function AppContent() {
                 onPracticeWriting={(kana) => {
                   setTargetWritingKanaId(kana.id);
                   setCurrentTab('writing');
+                }}
+                onPracticeConfusionGroup={(groupId) => {
+                  setTargetConfusionGroupId(groupId);
+                  setCurrentTab('confusable');
                 }}
               />
             )}
@@ -145,7 +151,12 @@ function AppContent() {
               />
             )}
 
-            {currentTab === 'confusable' && <ConfusableView onProgressChange={refreshProgress} />}
+            {currentTab === 'confusable' && (
+              <ConfusableView
+                initialGroupId={targetConfusionGroupId}
+                onProgressChange={refreshProgress}
+              />
+            )}
           </main>
         </div>
 
