@@ -47,6 +47,9 @@ jobs:
       - name: Validate shadowing data
         run: npm run validate:shadowing
 
+      - name: Run SRS tests
+        run: npm run test:srs
+
       - name: Type check
         run: npm run lint
 

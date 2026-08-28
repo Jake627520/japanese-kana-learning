@@ -1,6 +1,12 @@
 import { UserProgress, KanaReviewState, KanaItem } from '../types';
+import {
+  UserProgressV2,
+  migrateUserProgress,
+} from './srs';
 
-const STORAGE_KEY = 'ai_japanese_learning_progress_v1';
+export const STORAGE_KEY_V1 = 'ai_japanese_learning_progress_v1';
+export const STORAGE_KEY_V2 = 'ai_japanese_learning_progress_v2';
+const STORAGE_KEY = STORAGE_KEY_V1;
 
 export const REVIEW_INTERVALS: Record<number, number> = {
   0: 10 * 60 * 1000,           // Level 0: 10 mins
@@ -11,7 +17,7 @@ export const REVIEW_INTERVALS: Record<number, number> = {
   5: 30 * 24 * 60 * 60 * 1000, // Level 5: 30 days
 };
 
-const defaultProgress: UserProgress = {
+export const defaultProgress: UserProgress = {
   masteredKanaIds: [],
   wrongKanaIds: [],
   streakDays: 1,
@@ -21,8 +27,28 @@ const defaultProgress: UserProgress = {
 
 export function getStoredProgress(): UserProgress {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultProgress;
+    const raw = localStorage.getItem(STORAGE_KEY_V1);
+    if (!raw) {
+      // Fallback: If v2 exists, reconstruct v1
+      const rawV2 = localStorage.getItem(STORAGE_KEY_V2);
+      if (rawV2) {
+        try {
+          const parsedV2 = JSON.parse(rawV2) as UserProgressV2;
+          if (parsedV2 && parsedV2.schemaVersion === 2) {
+            return {
+              masteredKanaIds: Array.isArray(parsedV2.masteredKanaIds) ? parsedV2.masteredKanaIds : [],
+              wrongKanaIds: Array.isArray(parsedV2.wrongKanaIds) ? parsedV2.wrongKanaIds : [],
+              streakDays: typeof parsedV2.streakDays === 'number' ? parsedV2.streakDays : 1,
+              lastStudyDate: parsedV2.lastStudyDate || new Date().toISOString().split('T')[0],
+              reviewStates: parsedV2.reviewStates || {},
+            };
+          }
+        } catch {
+          // Ignore corrupted v2, fallback to default
+        }
+      }
+      return defaultProgress;
+    }
 
     const parsed = JSON.parse(raw) as UserProgress;
 
@@ -58,9 +84,43 @@ export function getStoredProgress(): UserProgress {
 
 export function saveProgress(progress: UserProgress): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    // 1. Persist v1 primary store (Zero breakage guarantee, v1 is NEVER deleted)
+    localStorage.setItem(STORAGE_KEY_V1, JSON.stringify(progress));
+
+    // 2. Dual-persist to v2 store via migration layer (Rollback-safe)
+    const v2 = migrateUserProgress(progress);
+    localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(v2));
   } catch (e) {
     console.error('Failed to save progress:', e);
+  }
+}
+
+export function getStoredProgressV2(): UserProgressV2 {
+  try {
+    const rawV2 = localStorage.getItem(STORAGE_KEY_V2);
+    if (rawV2) {
+      try {
+        const parsed = JSON.parse(rawV2) as UserProgressV2;
+        if (parsed && parsed.schemaVersion === 2 && parsed.srsStates && typeof parsed.srsStates === 'object') {
+          return parsed;
+        }
+      } catch {
+        // Corrupted v2 JSON -> will fallback to v1 migration
+      }
+    }
+
+    // Fallback: migrate from v1 (v1 precedence on missing or corrupt v2)
+    const v1 = getStoredProgress();
+    const migrated = migrateUserProgress(v1);
+    try {
+      localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(migrated));
+    } catch {
+      // ignore storage write error
+    }
+    return migrated;
+  } catch (e) {
+    console.error('Failed to read stored progress v2:', e);
+    return migrateUserProgress(defaultProgress);
   }
 }
 
@@ -188,7 +248,8 @@ export function removeKanaFromWrong(kanaId: string): UserProgress {
 
 export function clearAllProgress(): void {
   try {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY_V1);
+    localStorage.removeItem(STORAGE_KEY_V2);
   } catch (e) {
     console.error('Failed to clear progress:', e);
   }
