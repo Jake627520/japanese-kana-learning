@@ -433,5 +433,7 @@ export const zhCN: TranslationSchema = {
     trainingOutcomeImprovement: '改善幅度',
     trainingOutcomeResolved: '弱点已明显改善',
     trainingOutcomeRemaining: '仍需加强',
+    retryTraining: '再练 5 题',
+    finishTraining: '完成特训并返回',
   },
 };

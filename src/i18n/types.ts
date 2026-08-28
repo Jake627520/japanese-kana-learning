@@ -433,5 +433,7 @@ export interface TranslationSchema {
     trainingOutcomeImprovement: string;
     trainingOutcomeResolved: string;
     trainingOutcomeRemaining: string;
+    retryTraining: string;
+    finishTraining: string;
   };
 }

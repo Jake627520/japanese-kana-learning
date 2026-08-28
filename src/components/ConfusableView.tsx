@@ -3,11 +3,14 @@ import { KanaItem } from '../types';
 import { HIRAGANA_DATA, KATAKANA_DATA } from '../data/kanaData';
 import { CONFUSABLE_GROUPS, ConfusableGroup } from '../data/confusableData';
 import { recordReviewResult, getStoredProgress } from '../utils/storage';
-import { logLearningEvent } from '../utils/learningEvents';
+import { getLearningEvents, logLearningEvent } from '../utils/learningEvents';
+import { getTrainingOutcome } from '../utils/analytics';
+import { TrainingOutcome } from '../types/analytics';
+import { LearningEvent } from '../types/learning';
 import { speakJapanese } from '../utils/speech';
 import { useI18n } from '../i18n';
 import { QuizView } from './QuizView';
-import { Volume2, Check, X, RotateCcw, Layers, AlertTriangle, ArrowRight, Headphones } from 'lucide-react';
+import { Volume2, Check, X, RotateCcw, Layers, AlertTriangle, ArrowRight, Headphones, Sparkles, CheckCircle2 } from 'lucide-react';
 
 interface Props {
   initialGroupId?: string | null;
@@ -65,6 +68,8 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
   const [picked, setPicked] = useState<string | null>(null);
   const [score, setScore] = useState({ right: 0, wrong: 0 });
   const [done, setDone] = useState(false);
+  const [trainingOutcome, setTrainingOutcome] = useState<TrainingOutcome | null>(null);
+  const [eventsBeforeSnapshot, setEventsBeforeSnapshot] = useState<LearningEvent[]>(() => getLearningEvents());
   const [activeTrainingGroup, setActiveTrainingGroup] = useState<ConfusableGroup | null>(() => {
     if (initialGroupId) {
       return CONFUSABLE_GROUPS.find((g) => g.id === initialGroupId) || null;
@@ -77,6 +82,8 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
     if (initialGroupId) {
       const g = CONFUSABLE_GROUPS.find((group) => group.id === initialGroupId);
       if (g) {
+        setTrainingOutcome(null);
+        setEventsBeforeSnapshot(getLearningEvents());
         setActiveTrainingGroup(g);
       }
     }
@@ -129,7 +136,133 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
     setPicked(null);
   };
 
+  const handleTrainingFinish = () => {
+    if (activeTrainingGroup) {
+      const eventsAfter = getLearningEvents();
+      const outcome = getTrainingOutcome(
+        eventsBeforeSnapshot,
+        eventsAfter,
+        activeTrainingGroup.id,
+        CONFUSABLE_GROUPS
+      );
+      setTrainingOutcome(outcome);
+      onProgressChange?.();
+    }
+  };
+
   if (activeTrainingGroup) {
+    if (trainingOutcome) {
+      const remainingTargetObj = trainingOutcome.remainingTopDirection
+        ? byId.get(trainingOutcome.remainingTopDirection.target)
+        : undefined;
+      const remainingSelectedObj = trainingOutcome.remainingTopDirection
+        ? byId.get(trainingOutcome.remainingTopDirection.selected)
+        : undefined;
+
+      return (
+        <div className="space-y-6">
+          <div className="bg-gradient-to-br from-white to-[#F6FCF9] p-6 sm:p-8 rounded-3xl border border-emerald-200 shadow-xs space-y-6">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E6F8F2] text-[#00A86B] rounded-full text-xs font-extrabold">
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                {t('analytics.trainingOutcomeTitle')}
+              </div>
+              <span
+                className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border ${
+                  trainingOutcome.isResolved
+                    ? 'bg-emerald-100 text-[#00A86B] border-emerald-300'
+                    : 'bg-amber-100 text-amber-800 border-amber-300'
+                }`}
+              >
+                {trainingOutcome.isResolved
+                  ? t('analytics.trainingOutcomeResolved')
+                  : t('analytics.trainingOutcomeRemaining')}
+              </span>
+            </div>
+
+            <div className="space-y-1">
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">
+                {activeTrainingGroup.title} · {t('confusable.listeningPractice')}
+              </h2>
+              <p className="text-xs text-[#64748B]">
+                {activeTrainingGroup.distinguish}
+              </p>
+            </div>
+
+            {/* Metrics 3-Grid */}
+            <div className="grid grid-cols-3 gap-3 p-4 bg-white rounded-2xl border border-emerald-100 text-center">
+              <div>
+                <div className="text-xs font-bold text-[#64748B]">
+                  {t('analytics.trainingOutcomeSession')}
+                </div>
+                <div className="text-xl font-black text-[#00A86B] mt-1">
+                  {Math.round(trainingOutcome.sessionAccuracy * 100)}%
+                </div>
+              </div>
+              <div>
+                <div className="text-xs font-bold text-[#64748B]">
+                  {t('analytics.trainingOutcomeBefore')}
+                </div>
+                <div className="text-xl font-black text-[#64748B] mt-1">
+                  {Math.round(trainingOutcome.beforeAccuracy * 100)}%
+                </div>
+              </div>
+              <div>
+                <div className="text-xs font-bold text-[#64748B]">
+                  {t('analytics.trainingOutcomeImprovement')}
+                </div>
+                <div className={`text-xl font-black mt-1 ${trainingOutcome.improvement >= 0 ? 'text-[#00A86B]' : 'text-rose-600'}`}>
+                  {trainingOutcome.improvement >= 0 ? '+' : ''}
+                  {Math.round(trainingOutcome.improvement * 100)}%
+                </div>
+              </div>
+            </div>
+
+            {/* Remaining Confusion Direction */}
+            {remainingTargetObj && remainingSelectedObj ? (
+              <div className="p-3 bg-amber-50/70 rounded-xl border border-amber-200 text-xs font-medium text-[#475569] flex items-center justify-between">
+                <span className="text-[#64748B] font-bold">{t('analytics.mostConfusedWith')}:</span>
+                <span className="font-extrabold text-amber-900">
+                  {remainingTargetObj.kana} ({remainingTargetObj.romaji}) → <span className="text-rose-600 font-black">{remainingSelectedObj.kana}</span> ({remainingSelectedObj.romaji})
+                </span>
+              </div>
+            ) : (
+              <div className="p-3 bg-[#E6F8F2] rounded-xl border border-emerald-200 text-xs font-bold text-[#00A86B] flex items-center justify-center gap-1.5">
+                <CheckCircle2 className="w-4 h-4" />
+                <span>{t('analytics.trainingOutcomeResolved')}</span>
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setTrainingOutcome(null);
+                  setEventsBeforeSnapshot(getLearningEvents());
+                }}
+                className="flex-1 py-3 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-xs"
+              >
+                <RotateCcw className="w-4 h-4" />
+                <span>{t('analytics.retryTraining')}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setTrainingOutcome(null);
+                  setActiveTrainingGroup(null);
+                  onProgressChange?.();
+                }}
+                className="flex-1 py-3 bg-white hover:bg-slate-50 text-[#1E293B] font-bold text-xs rounded-xl border border-[#E2E8F0] cursor-pointer flex items-center justify-center gap-1.5 transition-all"
+              >
+                <span>{t('analytics.finishTraining')}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     const groupMembers = activeTrainingGroup.members
       .map((id) => byId.get(id))
       .filter(Boolean) as KanaItem[];
@@ -138,7 +271,10 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
       <div className="space-y-6">
         <button
           type="button"
-          onClick={() => setActiveTrainingGroup(null)}
+          onClick={() => {
+            setTrainingOutcome(null);
+            setActiveTrainingGroup(null);
+          }}
           className="inline-flex items-center gap-1.5 text-xs font-bold text-[#64748B] hover:text-[#1E293B] cursor-pointer"
         >
           ← {t('confusable.title')}
@@ -148,7 +284,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
           customPool={groupMembers}
           isConfusionMode={true}
           onProgressChange={onProgressChange ?? (() => {})}
-          onFinish={() => setActiveTrainingGroup(null)}
+          onFinish={handleTrainingFinish}
         />
       </div>
     );

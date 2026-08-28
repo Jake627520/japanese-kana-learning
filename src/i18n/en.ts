@@ -433,5 +433,7 @@ export const en: TranslationSchema = {
     trainingOutcomeImprovement: 'Improvement',
     trainingOutcomeResolved: 'Weakness significantly improved',
     trainingOutcomeRemaining: 'Still needs practice',
+    retryTraining: 'Practice 5 More Questions',
+    finishTraining: 'Finish Drill & Return',
   },
 };

@@ -433,5 +433,7 @@ export const zhTW: TranslationSchema = {
     trainingOutcomeImprovement: '改善幅度',
     trainingOutcomeResolved: '弱點已顯著改善',
     trainingOutcomeRemaining: '仍需加強',
+    retryTraining: '再練 5 題',
+    finishTraining: '完成特訓並返回',
   },
 };
