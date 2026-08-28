@@ -102,7 +102,7 @@ class TestC1ManualQA(unittest.TestCase):
 
     def test_listening_event_source_contract(self):
         """Verify logLearningEvent source is 'listening' in listening mode."""
-        self.assertIn("source: quizMode === 'listening' ? 'listening'", self.quiz_code)
+        self.assertIn("quizMode === 'listening'\n        ? 'listening'", self.quiz_code)
 
     def test_default_scope_status(self):
         """Check default scope initialized in QuizView."""

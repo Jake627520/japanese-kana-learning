@@ -1,10 +1,14 @@
 import { LearningEvent } from '../types/learning';
 import { UserProgress } from '../types';
+import { ConfusableGroup } from '../data/confusableData';
 import {
   TodayStats,
   WeakKanaStat,
   DailyTrendItem,
   AIRecommendation,
+  ConfusionMatrix,
+  ConfusionGroupStat,
+  ModalityAccuracy,
 } from '../types/analytics';
 
 /**
@@ -199,5 +203,114 @@ export function getAIRecommendation(
     recommendedAction: 'quiz',
     titleKey: 'analytics.recommendationQuiz',
     reasonKey: 'analytics.recommendationDailyChallenge',
+  };
+}
+
+/**
+ * Build directional Confusion Matrix (targetKanaId -> selectedKanaId -> count)
+ * Pure function: takes events array and returns nested frequency map.
+ * Only processes events with source === 'listening_confusion' where both kanaId and selectedKanaId exist.
+ */
+export function getConfusionMatrix(events: LearningEvent[]): ConfusionMatrix {
+  const matrix: ConfusionMatrix = {};
+
+  for (const e of events) {
+    if (e.source === 'listening_confusion' && e.kanaId && e.selectedKanaId) {
+      const target = e.kanaId;
+      const selected = e.selectedKanaId;
+
+      if (!matrix[target]) {
+        matrix[target] = {};
+      }
+      matrix[target][selected] = (matrix[target][selected] || 0) + 1;
+    }
+  }
+
+  return matrix;
+}
+
+/**
+ * Calculate statistics per ConfusableGroup for listening confusion drills.
+ * Pure function: only considers events with source === 'listening_confusion'
+ * where both target kana and selected kana belong to the group's members.
+ */
+export function getConfusionGroupStats(
+  events: LearningEvent[],
+  groups: ConfusableGroup[]
+): ConfusionGroupStat[] {
+  const confusionEvents = events.filter((e) => e.source === 'listening_confusion');
+
+  return groups.map((g) => {
+    const memberSet = new Set(g.members);
+    let attempts = 0;
+    let wrongCount = 0;
+
+    for (const e of confusionEvents) {
+      if (
+        e.kanaId &&
+        e.selectedKanaId &&
+        memberSet.has(e.kanaId) &&
+        memberSet.has(e.selectedKanaId)
+      ) {
+        attempts += 1;
+        if (e.correct === false) {
+          wrongCount += 1;
+        }
+      }
+    }
+
+    const wrongRate =
+      attempts > 0 ? Math.round((wrongCount / attempts) * 100) / 100 : 0;
+
+    return {
+      groupId: g.id,
+      attempts,
+      wrongCount,
+      wrongRate,
+    };
+  });
+}
+
+/**
+ * Calculate Visual vs Listening accuracy breakdown and gap.
+ * Visual: source === 'quiz' (excludes review_quiz and listening)
+ * Listening: source === 'listening' || source === 'listening_confusion'
+ */
+export function getModalityAccuracy(
+  events: LearningEvent[],
+  kanaId?: string
+): ModalityAccuracy {
+  let visualAttempts = 0;
+  let visualCorrect = 0;
+  let listeningAttempts = 0;
+  let listeningCorrect = 0;
+
+  for (const e of events) {
+    if (kanaId && e.kanaId !== kanaId) continue;
+
+    if (e.type === 'quiz_answer' && e.correct !== undefined) {
+      if (e.source === 'quiz') {
+        visualAttempts += 1;
+        if (e.correct) visualCorrect += 1;
+      } else if (e.source === 'listening' || e.source === 'listening_confusion') {
+        listeningAttempts += 1;
+        if (e.correct) listeningCorrect += 1;
+      }
+    }
+  }
+
+  const visualAccuracy =
+    visualAttempts > 0 ? Math.round((visualCorrect / visualAttempts) * 100) / 100 : 0;
+  const listeningAccuracy =
+    listeningAttempts > 0
+      ? Math.round((listeningCorrect / listeningAttempts) * 100) / 100
+      : 0;
+
+  const gap = Math.round((visualAccuracy - listeningAccuracy) * 100) / 100;
+
+  return {
+    visualAccuracy,
+    listeningAccuracy,
+    gap,
   };
 }

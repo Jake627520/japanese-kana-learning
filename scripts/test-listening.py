@@ -61,7 +61,7 @@ class TestListeningRecognition(unittest.TestCase):
         self.assertIn("for (const group of CONFUSABLE_GROUPS)", self.quiz_content)
 
     def test_8_listening_event_source(self):
-        self.assertIn("source: quizMode === 'listening' ? 'listening'", self.quiz_content)
+        self.assertIn("quizMode === 'listening'\n        ? 'listening'", self.quiz_content)
         self.assertIn("type: 'quiz_answer'", self.quiz_content)
 
     def test_9_replay_does_not_log_events(self):

@@ -374,6 +374,16 @@ export interface TranslationSchema {
     comparison: string;
     practiceDrill: string;
     checkChoice: string;
+    listeningPractice: string;
+    startListening: string;
+    fiveQuestions: string;
+    listeningMode: string;
+    all: string;
+    visual: string;
+    listening: string;
+    visualPractice: string;
+    listeningFiveQuestions: string;
+    confusionAccuracy: string;
   };
   analytics: {
     today: string;

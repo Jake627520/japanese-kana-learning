@@ -10,6 +10,7 @@ export interface LearningEvent {
   type: LearningEventType;
   source: string;
   kanaId?: string;
+  selectedKanaId?: string;
   correct?: boolean;
 }
 

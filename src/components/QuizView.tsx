@@ -24,6 +24,7 @@ interface QuizViewProps {
   masteredIds?: string[];
   customPool?: KanaItem[];
   isReviewMode?: boolean;
+  isConfusionMode?: boolean;
   onProgressChange: () => void;
   onFinish: () => void;
   onNavigateToReview?: () => void;
@@ -100,13 +101,16 @@ export function QuizView({
   allKana,
   customPool,
   isReviewMode = false,
+  isConfusionMode = false,
   onProgressChange,
   onFinish,
   onNavigateToReview,
   onPracticeWriting,
 }: QuizViewProps) {
   const { t } = useI18n();
-  const [quizMode, setQuizMode] = useState<'visual' | 'listening'>('visual');
+  const [quizMode, setQuizMode] = useState<'visual' | 'listening'>(
+    isConfusionMode ? 'listening' : 'visual'
+  );
   const [quizScope, setQuizScope] = useState<'all' | 'basic' | 'dakuten' | 'handakuten' | 'youon'>('all');
 
   const scopedSource = customPool && customPool.length > 0 ? customPool : allKana;
@@ -141,6 +145,39 @@ export function QuizView({
     sourcePool: KanaItem[] = pool,
     mode: 'visual' | 'listening' = quizMode
   ) => {
+    // Specialized 5-question Confusion Training
+    if (isConfusionMode) {
+      const count = 5;
+      const generated: QuizQuestion[] = [];
+      for (let i = 0; i < count; i++) {
+        const target = sourcePool[Math.floor(Math.random() * sourcePool.length)];
+        const options = sourcePool
+          .map((k) => ({
+            label: k.kana,
+            isCorrect: k.id === target.id,
+            kana: k,
+          }))
+          .sort(() => 0.5 - Math.random());
+
+        generated.push({
+          type: 'audio-to-kana' as const,
+          targetKana: target,
+          options,
+        });
+      }
+
+      setQuestions(generated);
+      setCurrentIndex(0);
+      setScore(0);
+      setSelectedOption(null);
+      setInputRomaji('');
+      setIsAnswered(false);
+      setIsCompleted(false);
+      setFeedbackNote('');
+      setResults([]);
+      return;
+    }
+
     const shuffledPool = [...sourcePool].sort(() => 0.5 - Math.random());
     const selectedItems = shuffledPool.slice(0, Math.min(10, shuffledPool.length));
 
@@ -314,10 +351,10 @@ export function QuizView({
 
   // Auto-play audio when navigating questions in listening mode
   useEffect(() => {
-    if (currentQ && quizMode === 'listening' && !isAnswered && !isCompleted) {
+    if (currentQ && (quizMode === 'listening' || isConfusionMode) && !isAnswered && !isCompleted) {
       speakJapanese(currentQ.targetKana.kana);
     }
-  }, [currentIndex, currentQ, quizMode, isCompleted]);
+  }, [currentIndex, currentQ, quizMode, isConfusionMode, isCompleted]);
 
   const handleSelectOption = (label: string, isCorrect: boolean) => {
     if (isAnswered) return;
@@ -326,11 +363,20 @@ export function QuizView({
     setIsAnswered(true);
 
     const targetKana = currentQ.targetKana;
+    const selectedKana = currentQ.options.find((o) => o.label === label)?.kana;
+
     recordReviewResult(targetKana.id, isCorrect);
     logLearningEvent({
       type: 'quiz_answer',
-      source: quizMode === 'listening' ? 'listening' : (isReviewMode ? 'review_quiz' : 'quiz'),
+      source: isConfusionMode
+        ? 'listening_confusion'
+        : quizMode === 'listening'
+        ? 'listening'
+        : isReviewMode
+        ? 'review_quiz'
+        : 'quiz',
       kanaId: targetKana.id,
+      selectedKanaId: selectedKana?.id,
       correct: isCorrect,
     });
     setResults((prev) => [...prev, { kana: targetKana, isCorrect }]);
@@ -389,7 +435,7 @@ export function QuizView({
     const handleRetryWeak = () => {
       if (weakKana.length === 0) return;
       setRetryPool(weakKana);
-      generateQuiz(weakKana, quizMode);
+      generateQuiz(weakKana, isConfusionMode ? 'listening' : quizMode);
     };
 
     return (
@@ -504,7 +550,7 @@ export function QuizView({
               <button
                 onClick={() => {
                   setRetryPool(null);
-                  generateQuiz(pool, quizMode);
+                  generateQuiz(isConfusionMode ? customPool : pool, isConfusionMode ? 'listening' : quizMode);
                 }}
                 className="flex-1 py-3 bg-[#FAFBFB] border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl hover:bg-white hover:border-[#00A86B] btn-lift cursor-pointer flex items-center justify-center gap-2"
               >
@@ -537,7 +583,7 @@ export function QuizView({
 
   return (
     <div className="max-w-xl mx-auto space-y-6">
-      {!isReviewMode && (
+      {!isReviewMode && !isConfusionMode && (
         <div className="bg-white p-4 rounded-2xl border border-[#E2E8F0] shadow-xs space-y-3">
           {/* Mode Switcher: Visual vs Listening */}
           <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-[#F1F5F9]">
@@ -594,6 +640,22 @@ export function QuizView({
               </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {isConfusionMode && (
+        <div className="bg-white p-3.5 rounded-2xl border border-emerald-200 bg-emerald-50/50 shadow-xs flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="p-1.5 bg-[#00A86B] text-white rounded-lg">
+              <Headphones className="w-4 h-4" />
+            </span>
+            <span className="text-xs font-extrabold text-[#1E293B]">
+              {t('confusable.fiveQuestions')}
+            </span>
+          </div>
+          <span className="text-[11px] font-bold text-[#00A86B] bg-white px-2.5 py-1 rounded-full border border-emerald-200">
+            {t('confusable.listeningPractice')}
+          </span>
         </div>
       )}
 

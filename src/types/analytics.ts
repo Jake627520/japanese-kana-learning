@@ -31,3 +31,18 @@ export interface AIRecommendation {
   reasonKey: string;
   reasonParams?: Record<string, string | number>;
 }
+
+export type ConfusionMatrix = Record<string, Record<string, number>>;
+
+export interface ConfusionGroupStat {
+  groupId: string;
+  attempts: number;
+  wrongCount: number;
+  wrongRate: number;
+}
+
+export interface ModalityAccuracy {
+  visualAccuracy: number;
+  listeningAccuracy: number;
+  gap: number;
+}
