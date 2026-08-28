@@ -7,7 +7,7 @@ export interface SRSStateV2 {
   due: number;              // epoch ms
   lastReview: number | null; // epoch ms or null
 
-  stability: number;        // days (float >= 0.005)
+  stability: number;        // days (float > 0)
   difficulty: number;       // 1 ~ 10
 
   reps: number;
@@ -25,19 +25,21 @@ export type ReviewRating =
   | 'easy';
 
 export interface ReviewInput {
-  state: SRSStateV2;
   rating: ReviewRating;
-  now: number;
+  reviewedAt?: number;      // epoch ms (defaults to Date.now())
+  now?: number;             // backward compatibility alias for reviewedAt
+  kanaId?: string;
   responseMs?: number;
 }
 
 export interface ReviewResult {
+  nextReviewAt: number;     // epoch ms
   state: SRSStateV2;
-  due: number;
+  due: number;              // backward compatibility alias for nextReviewAt
 }
 
 export interface SRSEngine {
-  review(input: ReviewInput): ReviewResult;
+  review(state: SRSStateV2 | null, input: ReviewInput): ReviewResult;
   getNextDue?(state: SRSStateV2, now: number): number;
 }
 
