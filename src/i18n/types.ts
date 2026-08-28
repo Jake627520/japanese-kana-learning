@@ -419,5 +419,19 @@ export interface TranslationSchema {
     confidenceLow: string;
     startConfusionDrill: string;
     noListeningWeakness: string;
+    recommendationWhy: string;
+    recommendationEvidenceListening: string;
+    recommendationEvidenceVisual: string;
+    recommendationEvidenceGap: string;
+    recommendationEvidenceAttempts: string;
+    recommendationEvidenceTopConfusion: string;
+    recommendationEvidenceConfidence: string;
+    trainingOutcomeTitle: string;
+    trainingOutcomeBefore: string;
+    trainingOutcomeSession: string;
+    trainingOutcomeAfter: string;
+    trainingOutcomeImprovement: string;
+    trainingOutcomeResolved: string;
+    trainingOutcomeRemaining: string;
   };
 }

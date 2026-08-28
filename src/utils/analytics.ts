@@ -5,12 +5,14 @@ import {
   WeakKanaStat,
   DailyTrendItem,
   AIRecommendation,
+  RecommendationEvidence,
+  TrainingOutcome,
   ConfusionMatrix,
   ConfusionGroupStat,
   ModalityAccuracy,
-  WeaknessConfidence,
   ListeningWeakness,
   ConfusionWeakness,
+  WeaknessConfidence,
 } from '../types/analytics';
 import { CONFUSABLE_GROUPS, ConfusableGroup } from '../data/confusableData';
 
@@ -390,6 +392,14 @@ export function getAIRecommendation(
   );
 
   if (highConfWeakness) {
+    const listeningWeaknesses = getListeningWeaknesses(events, { now: nowMs });
+    const memberSet = new Set(
+      groups.find((g) => g.id === highConfWeakness.groupId)?.members || []
+    );
+    const relatedListening = listeningWeaknesses.find((lw) =>
+      memberSet.has(lw.kanaId)
+    );
+
     return {
       priority: 'high',
       targetConfusionGroupId: highConfWeakness.groupId,
@@ -397,6 +407,21 @@ export function getAIRecommendation(
       titleKey: 'analytics.recommendationListeningConfusion',
       reasonKey: 'analytics.recommendationHighConfusionRate',
       reasonParams: { rate: Math.round(highConfWeakness.wrongRate * 100) },
+      evidence: {
+        listeningAccuracy: relatedListening?.listeningAccuracy ?? (1 - highConfWeakness.wrongRate),
+        visualAccuracy: relatedListening?.visualAccuracy ?? 1,
+        gap: relatedListening?.gap ?? highConfWeakness.wrongRate,
+        recentAttempts: highConfWeakness.attempts,
+        topDirection: highConfWeakness.topDirection
+          ? {
+              target: highConfWeakness.topDirection.target,
+              selected: highConfWeakness.topDirection.selected,
+              count: highConfWeakness.topDirection.count,
+            }
+          : undefined,
+        confidence: highConfWeakness.confidence,
+        score: highConfWeakness.score,
+      },
     };
   }
 
@@ -559,5 +584,110 @@ export function getModalityAccuracy(
     visualAccuracy,
     listeningAccuracy,
     gap,
+  };
+}
+
+/**
+ * Calculate post-training outcome comparing before vs after metrics.
+ * Pure function: rigorously separates pre-training baseline, session performance (last 5 events),
+ * and subsequent observation window without modifying underlying events.
+ */
+export function getTrainingOutcome(
+  eventsBefore: LearningEvent[],
+  eventsAfter: LearningEvent[],
+  groupId: string,
+  groups: ConfusableGroup[] = CONFUSABLE_GROUPS
+): TrainingOutcome | null {
+  if (!Array.isArray(eventsBefore) || !Array.isArray(eventsAfter)) {
+    return null;
+  }
+
+  const group = groups.find((item) => item.id === groupId);
+  if (!group) {
+    return null;
+  }
+
+  const members = new Set(group.members);
+
+  const valid = (event: LearningEvent) =>
+    Boolean(
+      event &&
+      event.type === 'quiz_answer' &&
+      event.source === 'listening_confusion' &&
+      event.kanaId &&
+      members.has(event.kanaId)
+    );
+
+  const before = eventsBefore.filter(valid);
+  const after = eventsAfter.filter(valid);
+
+  if (after.length === 0) {
+    return null;
+  }
+
+  /*
+   * The final 5-event block is treated as the training session.
+   * The remaining events are the post-training observation window.
+   */
+  const session = after.slice(-5);
+  const postTraining = after.slice(0, -5);
+
+  if (session.length === 0) {
+    return null;
+  }
+
+  const accuracy = (events: LearningEvent[]) =>
+    events.length === 0
+      ? 0
+      : Math.round((events.filter((event) => event.correct === true).length / events.length) * 100) / 100;
+
+  const beforeAccuracy = accuracy(before);
+  const sessionAccuracy = accuracy(session);
+  const afterAccuracy = postTraining.length > 0 ? accuracy(postTraining) : sessionAccuracy;
+
+  const directionCounts = new Map<string, {
+    target: string;
+    selected: string;
+    count: number;
+  }>();
+
+  const evalEvents = postTraining.length > 0 ? postTraining : session;
+  for (const event of evalEvents) {
+    if (
+      event.correct === false &&
+      event.kanaId &&
+      event.selectedKanaId &&
+      members.has(event.selectedKanaId)
+    ) {
+      const key = `${event.kanaId}->${event.selectedKanaId}`;
+      const existing = directionCounts.get(key);
+
+      if (existing) {
+        existing.count += 1;
+      } else {
+        directionCounts.set(key, {
+          target: event.kanaId,
+          selected: event.selectedKanaId,
+          count: 1,
+        });
+      }
+    }
+  }
+
+  const remainingTopDirection = [...directionCounts.values()]
+    .sort((a, b) => b.count - a.count)[0];
+
+  const improvement = Math.round((sessionAccuracy - beforeAccuracy) * 100) / 100;
+
+  return {
+    groupId,
+    beforeAccuracy,
+    afterAccuracy,
+    sessionAccuracy,
+    improvement,
+    remainingTopDirection,
+    isResolved:
+      sessionAccuracy >= 0.8 &&
+      (beforeAccuracy === 0 || improvement >= 0.15),
   };
 }

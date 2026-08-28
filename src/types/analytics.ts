@@ -33,6 +33,35 @@ export interface AIRecommendation {
   titleKey: string;
   reasonKey: string;
   reasonParams?: Record<string, string | number>;
+  evidence?: RecommendationEvidence;
+}
+
+export interface RecommendationEvidence {
+  listeningAccuracy?: number;
+  visualAccuracy?: number;
+  gap?: number;
+  recentAttempts?: number;
+  topDirection?: {
+    target: string;
+    selected: string;
+    count: number;
+  };
+  confidence?: WeaknessConfidence;
+  score?: number;
+}
+
+export interface TrainingOutcome {
+  groupId: string;
+  beforeAccuracy: number;
+  afterAccuracy: number;
+  sessionAccuracy: number;
+  improvement: number;
+  remainingTopDirection?: {
+    target: string;
+    selected: string;
+    count: number;
+  };
+  isResolved: boolean;
 }
 
 export type ConfusionMatrix = Record<string, Record<string, number>>;

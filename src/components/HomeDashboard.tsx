@@ -183,6 +183,43 @@ export function HomeDashboard({
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
+
+        {/* C1.4 推薦可解釋性面板 (Recommendation Evidence) */}
+        {aiRecommendation.evidence && (
+          <div className="pt-3 border-t border-emerald-100/80 space-y-2">
+            <div className="text-[11px] font-extrabold text-[#00A86B] flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{t('analytics.recommendationWhy')}</span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-white/80 p-3 rounded-2xl border border-emerald-100 text-center">
+              <div>
+                <div className="text-[10px] font-bold text-[#64748B]">{t('analytics.recommendationEvidenceListening')}</div>
+                <div className="text-xs font-black text-amber-700 mt-0.5">
+                  {Math.round((aiRecommendation.evidence.listeningAccuracy ?? 0) * 100)}%
+                </div>
+              </div>
+              <div>
+                <div className="text-[10px] font-bold text-[#64748B]">{t('analytics.recommendationEvidenceVisual')}</div>
+                <div className="text-xs font-black text-[#00A86B] mt-0.5">
+                  {Math.round((aiRecommendation.evidence.visualAccuracy ?? 1) * 100)}%
+                </div>
+              </div>
+              <div>
+                <div className="text-[10px] font-bold text-[#64748B]">{t('analytics.recommendationEvidenceGap')}</div>
+                <div className="text-xs font-black text-rose-600 mt-0.5">
+                  {(aiRecommendation.evidence.gap ?? 0) >= 0 ? '+' : ''}
+                  {Math.round((aiRecommendation.evidence.gap ?? 0) * 100)}%
+                </div>
+              </div>
+              <div>
+                <div className="text-[10px] font-bold text-[#64748B]">{t('analytics.recommendationEvidenceAttempts')}</div>
+                <div className="text-xs font-black text-[#1E293B] mt-0.5">
+                  {aiRecommendation.evidence.recentAttempts ?? 0}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* 今日學習 */}
