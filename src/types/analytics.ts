@@ -105,3 +105,32 @@ export interface ConfusionWeakness {
   confidence: WeaknessConfidence;
   score: number;
 }
+
+export interface ConfusionMasterySummary {
+  totalGroupsEvaluated: number;
+  resolvedCount: number;
+  activeWeakCount: number;
+  averageImprovement: number;
+  groupOutcomes: {
+    groupId: string;
+    groupTitle?: string;
+    beforeAccuracy: number;
+    recentAccuracy: number;
+    improvement: number;
+    isResolved: boolean;
+    remainingTopDirection?: {
+      target: string;
+      selected: string;
+      count: number;
+    };
+  }[];
+}
+
+export interface ConfusionMasteryOptions {
+  now?: number;
+  recentWindowDays?: number;
+  minBeforeAttempts?: number;
+  minRecentAttempts?: number;
+  resolvedAccuracy?: number;
+  resolvedImprovement?: number;
+}

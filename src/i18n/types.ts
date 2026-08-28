@@ -435,5 +435,14 @@ export interface TranslationSchema {
     trainingOutcomeRemaining: string;
     retryTraining: string;
     finishTraining: string;
+    masterySummaryTitle: string;
+    masteryResolvedGroups: string;
+    masteryAvgImprovement: string;
+    masteryResolvedList: string;
+    masteryActiveWeakList: string;
+    masteryRecentAccuracy: string;
+    masteryBeforeAccuracy: string;
+    masteryPracticeAgain: string;
+    masteryNoEvaluatedGroups: string;
   };
 }

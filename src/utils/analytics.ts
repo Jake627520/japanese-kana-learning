@@ -7,6 +7,8 @@ import {
   AIRecommendation,
   RecommendationEvidence,
   TrainingOutcome,
+  ConfusionMasterySummary,
+  ConfusionMasteryOptions,
   ConfusionMatrix,
   ConfusionGroupStat,
   ModalityAccuracy,
@@ -689,5 +691,124 @@ export function getTrainingOutcome(
     isResolved:
       sessionAccuracy >= 0.8 &&
       (beforeAccuracy === 0 || improvement >= 0.15),
+  };
+}
+
+/**
+ * Calculate long-term confusion mastery summary across groups.
+ * Pure function:
+ * 1. Segregates events into 'before' (older than recentWindowDays) and 'recent' (within recentWindowDays).
+ * 2. Enforces strict group membership (target in group && selected in group).
+ * 3. Requires minBeforeAttempts (default 3) and minRecentAttempts (default 3) to qualify as evaluated.
+ * 4. Resolves group if recentAccuracy >= resolvedAccuracy (default 0.8) and improvement >= resolvedImprovement (default 0.15).
+ */
+export function getConfusionMasterySummary(
+  events: LearningEvent[],
+  groups: ConfusableGroup[] = CONFUSABLE_GROUPS,
+  options?: ConfusionMasteryOptions
+): ConfusionMasterySummary {
+  if (!Array.isArray(events)) {
+    return {
+      totalGroupsEvaluated: 0,
+      resolvedCount: 0,
+      activeWeakCount: 0,
+      averageImprovement: 0,
+      groupOutcomes: [],
+    };
+  }
+
+  const nowMs = options?.now ?? Date.now();
+  const recentDays = options?.recentWindowDays ?? 7;
+  const cutoffMs = nowMs - recentDays * 24 * 60 * 60 * 1000;
+  const minBeforeAttempts = options?.minBeforeAttempts ?? 3;
+  const minRecentAttempts = options?.minRecentAttempts ?? 3;
+  const resolvedAccuracy = options?.resolvedAccuracy ?? 0.8;
+  const resolvedImprovement = options?.resolvedImprovement ?? 0.15;
+
+  const confusionEvents = events.filter(
+    (e) => e && e.type === 'quiz_answer' && e.source === 'listening_confusion'
+  );
+
+  const groupOutcomes: ConfusionMasterySummary['groupOutcomes'] = [];
+  let totalImprovement = 0;
+
+  for (const g of groups) {
+    const memberSet = new Set(g.members);
+    const validGroupEvents = confusionEvents.filter(
+      (e) =>
+        e.kanaId &&
+        e.selectedKanaId &&
+        memberSet.has(e.kanaId) &&
+        memberSet.has(e.selectedKanaId)
+    );
+
+    const beforeEvents = validGroupEvents.filter((e) => e.timestamp < cutoffMs);
+    const recentEvents = validGroupEvents.filter((e) => e.timestamp >= cutoffMs);
+
+    // Check evaluation threshold: requires both history and recent observation
+    if (beforeEvents.length < minBeforeAttempts || recentEvents.length < minRecentAttempts) {
+      continue;
+    }
+
+    const beforeCorrect = beforeEvents.filter((e) => e.correct === true).length;
+    const beforeAccuracy = Math.round((beforeCorrect / beforeEvents.length) * 100) / 100;
+
+    const recentCorrect = recentEvents.filter((e) => e.correct === true).length;
+    const recentAccuracy = Math.round((recentCorrect / recentEvents.length) * 100) / 100;
+
+    const improvement = Math.round((recentAccuracy - beforeAccuracy) * 100) / 100;
+
+    const isResolved =
+      recentEvents.length >= minRecentAttempts &&
+      recentAccuracy >= resolvedAccuracy &&
+      improvement >= resolvedImprovement;
+
+    // Remaining top direction in recent window (only wrong answers)
+    const dirMap: Record<string, { target: string; selected: string; count: number }> = {};
+    for (const e of recentEvents) {
+      if (e.correct === false && e.kanaId && e.selectedKanaId && e.kanaId !== e.selectedKanaId) {
+        const key = `${e.kanaId}->${e.selectedKanaId}`;
+        if (!dirMap[key]) {
+          dirMap[key] = { target: e.kanaId, selected: e.selectedKanaId, count: 0 };
+        }
+        dirMap[key].count += 1;
+      }
+    }
+
+    const sortedDirs = Object.values(dirMap).sort((a, b) => {
+      if (b.count !== a.count) return b.count - a.count;
+      if (a.target !== b.target) return a.target.localeCompare(b.target);
+      return a.selected.localeCompare(b.selected);
+    });
+
+    const remainingTopDirection = sortedDirs.length > 0 ? sortedDirs[0] : undefined;
+
+    groupOutcomes.push({
+      groupId: g.id,
+      groupTitle: g.members.join(' / '),
+      beforeAccuracy,
+      recentAccuracy,
+      improvement,
+      isResolved,
+      remainingTopDirection,
+    });
+
+    totalImprovement += improvement;
+  }
+
+  const totalGroupsEvaluated = groupOutcomes.length;
+  const resolvedCount = groupOutcomes.filter((o) => o.isResolved).length;
+  const activeWeakCount = totalGroupsEvaluated - resolvedCount;
+  const averageImprovement =
+    totalGroupsEvaluated > 0
+      ? Math.round((totalImprovement / totalGroupsEvaluated) * 100) / 100
+      : 0;
+
+  return {
+    totalGroupsEvaluated,
+    resolvedCount,
+    activeWeakCount,
+    averageImprovement,
+    groupOutcomes,
   };
 }

@@ -9,6 +9,7 @@ import {
   getAIRecommendation,
   getListeningWeaknesses,
   getConfusionWeaknesses,
+  getConfusionMasterySummary,
 } from '../utils/analytics';
 import { CONFUSABLE_GROUPS } from '../data/confusableData';
 import { HeaderStats } from './HeaderStats';
@@ -70,6 +71,10 @@ export function HomeDashboard({
   );
   const confusionWeaknesses = useMemo(
     () => getConfusionWeaknesses(learningEvents, CONFUSABLE_GROUPS),
+    [learningEvents]
+  );
+  const confusionMastery = useMemo(
+    () => getConfusionMasterySummary(learningEvents, CONFUSABLE_GROUPS),
     [learningEvents]
   );
   const aiRecommendation = useMemo(
@@ -443,6 +448,168 @@ export function HomeDashboard({
             <div className="p-6 text-center text-xs font-bold text-[#64748B] flex items-center justify-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-[#00A86B]" />
               {t('analytics.noListeningWeakness')}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* 混淆特訓長期成效 (Confusion Training Long-term Trends) */}
+      <div className="space-y-3">
+        <SectionHeading>{t('analytics.masterySummaryTitle')}</SectionHeading>
+
+        <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-5">
+          {confusionMastery.totalGroupsEvaluated > 0 ? (
+            <div className="space-y-4">
+              {/* Summary KPIs */}
+              <div className="grid grid-cols-2 gap-3 p-4 bg-[#F8FAFC] rounded-2xl border border-[#E2E8F0] text-center">
+                <div>
+                  <div className="text-xs font-bold text-[#64748B]">
+                    {t('analytics.masteryResolvedGroups')}
+                  </div>
+                  <div className="text-2xl font-black text-[#00A86B] mt-1">
+                    {confusionMastery.resolvedCount} / {confusionMastery.totalGroupsEvaluated}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[#64748B]">
+                    {t('analytics.masteryAvgImprovement')}
+                  </div>
+                  <div
+                    className={`text-2xl font-black mt-1 ${
+                      confusionMastery.averageImprovement >= 0
+                        ? 'text-[#00A86B]'
+                        : 'text-rose-600'
+                    }`}
+                  >
+                    {confusionMastery.averageImprovement >= 0 ? '+' : ''}
+                    {Math.round(confusionMastery.averageImprovement * 100)}%
+                  </div>
+                </div>
+              </div>
+
+              {/* Two columns: Resolved vs Active Weaknesses */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Resolved Groups */}
+                <div className="space-y-2">
+                  <div className="text-xs font-extrabold text-[#00A86B] flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>{t('analytics.masteryResolvedList')}</span>
+                  </div>
+
+                  {confusionMastery.groupOutcomes.filter((g) => g.isResolved).length > 0 ? (
+                    <div className="space-y-2">
+                      {confusionMastery.groupOutcomes
+                        .filter((g) => g.isResolved)
+                        .map((g) => {
+                          const confGroup = CONFUSABLE_GROUPS.find((cg) => cg.id === g.groupId);
+                          const titleDisplay = confGroup
+                            ? confGroup.members.map((id) => allKana.find((k) => k.id === id)?.kana || id).join(' / ')
+                            : g.groupTitle || g.groupId;
+
+                          return (
+                            <div
+                              key={g.groupId}
+                              className="p-3 bg-[#E6F8F2]/60 rounded-xl border border-emerald-200 flex items-center justify-between"
+                            >
+                              <div>
+                                <div className="text-xs font-bold text-[#1E293B]">
+                                  {titleDisplay}
+                                </div>
+                                <div className="text-[10px] text-[#64748B]">
+                                  {t('analytics.masteryRecentAccuracy')}:{' '}
+                                  <span className="font-extrabold text-[#00A86B]">
+                                    {Math.round(g.recentAccuracy * 100)}%
+                                  </span>
+                                </div>
+                              </div>
+                              <span className="text-xs font-black text-[#00A86B] bg-white px-2 py-0.5 rounded-lg border border-emerald-200">
+                                +{Math.round(g.improvement * 100)}%
+                              </span>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  ) : (
+                    <div className="p-4 bg-[#F8FAFC] rounded-xl border border-slate-200 text-center text-xs text-[#94A3B8] italic">
+                      {t('common.empty')}
+                    </div>
+                  )}
+                </div>
+
+                {/* Active Weak Groups */}
+                <div className="space-y-2">
+                  <div className="text-xs font-extrabold text-amber-700 flex items-center gap-1.5">
+                    <Target className="w-4 h-4" />
+                    <span>{t('analytics.masteryActiveWeakList')}</span>
+                  </div>
+
+                  {confusionMastery.groupOutcomes.filter((g) => !g.isResolved).length > 0 ? (
+                    <div className="space-y-2">
+                      {confusionMastery.groupOutcomes
+                        .filter((g) => !g.isResolved)
+                        .map((g) => {
+                          const confGroup = CONFUSABLE_GROUPS.find((cg) => cg.id === g.groupId);
+                          const titleDisplay = confGroup
+                            ? confGroup.members.map((id) => allKana.find((k) => k.id === id)?.kana || id).join(' / ')
+                            : g.groupTitle || g.groupId;
+
+                          const targetObj = g.remainingTopDirection
+                            ? allKana.find((k) => k.id === g.remainingTopDirection?.target)
+                            : undefined;
+                          const selectedObj = g.remainingTopDirection
+                            ? allKana.find((k) => k.id === g.remainingTopDirection?.selected)
+                            : undefined;
+
+                          return (
+                            <div
+                              key={g.groupId}
+                              className="p-3 bg-amber-50/60 rounded-xl border border-amber-200 flex items-center justify-between gap-2"
+                            >
+                              <div className="min-w-0 flex-1 space-y-0.5">
+                                <div className="text-xs font-bold text-[#1E293B] truncate">
+                                  {titleDisplay}
+                                </div>
+                                <div className="text-[10px] text-[#64748B]">
+                                  {t('analytics.masteryRecentAccuracy')}:{' '}
+                                  <span className="font-bold text-amber-800">
+                                    {Math.round(g.recentAccuracy * 100)}%
+                                  </span>
+                                  {targetObj && selectedObj && (
+                                    <span className="ml-1.5 text-[10px] text-[#64748B]">
+                                      ({targetObj.kana} → <span className="text-rose-600 font-bold">{selectedObj.kana}</span>)
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  if (onPracticeConfusionGroup) {
+                                    onPracticeConfusionGroup(g.groupId);
+                                  } else {
+                                    onNavigate('confusable');
+                                  }
+                                }}
+                                className="px-2.5 py-1 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-[11px] rounded-lg cursor-pointer transition-all shadow-xs shrink-0"
+                              >
+                                {t('analytics.masteryPracticeAgain')}
+                              </button>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  ) : (
+                    <div className="p-4 bg-[#E6F8F2]/60 rounded-xl border border-emerald-200 text-center text-xs text-[#00A86B] font-bold">
+                      {t('analytics.trainingOutcomeResolved')}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="p-4 text-center text-xs text-[#64748B] flex items-center justify-center gap-2">
+              <Sparkles className="w-4 h-4 text-amber-500" />
+              {t('analytics.masteryNoEvaluatedGroups')}
             </div>
           )}
         </div>
