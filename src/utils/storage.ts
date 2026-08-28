@@ -5,6 +5,7 @@ import {
   migrateUserProgress,
   applyReviewResult,
   mapQuizResultToRating,
+  SRS_MODE,
 } from './srs';
 
 export const STORAGE_KEY_V1 = 'ai_japanese_learning_progress_v1';
@@ -226,23 +227,35 @@ export function recordReviewResult(
 }
 
 export function getDueReviewItems(allKana: KanaItem[], progress: UserProgress): KanaItem[] {
-  const now = new Date();
+  const now = Date.now();
+  if (SRS_MODE === 'adaptive') {
+    const v2 = getStoredProgressV2();
+    const srsStates = v2.srsStates || {};
+    return allKana.filter((k) => {
+      const state = srsStates[k.id];
+      if (!state || !state.due) return false;
+      return state.due <= now;
+    });
+  }
+
+  // Legacy & Shadow modes: driven by legacy reviewStates for production safety
   const states = progress.reviewStates || {};
   return allKana.filter((k) => {
     const state = states[k.id];
     if (!state || !state.nextReviewAt) return false;
-    return new Date(state.nextReviewAt) <= now;
+    return new Date(state.nextReviewAt).getTime() <= now;
   });
 }
 
-export function formatNextReviewText(nextReviewAt: string | null): string {
+export function formatNextReviewText(nextReviewAt: string | number | null): string {
   if (!nextReviewAt) return '未排程';
-  const now = new Date();
-  const target = new Date(nextReviewAt);
+  const now = Date.now();
+  const targetMs = typeof nextReviewAt === 'number' ? nextReviewAt : new Date(nextReviewAt).getTime();
 
-  if (target <= now) return '已到期';
+  if (Number.isNaN(targetMs)) return '未排程';
+  if (targetMs <= now) return '已到期';
 
-  const diffMs = target.getTime() - now.getTime();
+  const diffMs = targetMs - now;
   const diffMins = Math.round(diffMs / (1000 * 60));
   const diffHours = Math.round(diffMs / (1000 * 60 * 60));
   const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
