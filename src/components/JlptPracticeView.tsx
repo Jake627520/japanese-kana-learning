@@ -7,6 +7,7 @@ import {
   getOwnJlptQuestionsByLevel,
 } from '../data/jlpt';
 import { recordJlptAnswer } from '../utils/jlptStorage';
+import { shuffle, withShuffledOptions } from '../utils/shuffle';
 import { JlptWeakPointCard } from './JlptWeakPointCard';
 import { RichText } from './RichText';
 import { useI18n } from '../i18n';
@@ -35,7 +36,7 @@ export function JlptPracticeView() {
     if (questions.length === 0) return;
 
     setSelectedTopic(topic);
-    setQuizQuestions([...questions].sort(() => 0.5 - Math.random()));
+    setQuizQuestions(shuffle(questions).map(withShuffledOptions));
     setCurrentIndex(0);
     setSelectedOption(null);
     setIsAnswered(false);
@@ -60,7 +61,7 @@ export function JlptPracticeView() {
       grade: level,
       evidence: [],
     });
-    setQuizQuestions([...all].sort(() => 0.5 - Math.random()).slice(0, 10));
+    setQuizQuestions(shuffle(all).slice(0, 10).map(withShuffledOptions));
     setCurrentIndex(0);
     setSelectedOption(null);
     setIsAnswered(false);
