@@ -27,7 +27,7 @@ export const N4_TOPICS_BATCH1: JlptTopic[] = [
   { id: 'jpg_n4-adverbs', type: 'grammar', subject: '日本語', domain: '文法',
     name: 'N4 常用副詞', book: 'JLPT N4', chapter: '副詞', grade: 'n4',
     description: '需靠句尾呼應的副詞：ぜひ（配てください）、なかなか（配否定）、やっと（配實現）、きっと（配推測）、だんだん（配漸進變化）。',
-    evidence: ['能依句尾形式選對副詞', '知道なかなか後面必須接否定'] },
+    evidence: ['能依句尾形式選對副詞', '知道なかなか當「怎麼也不…」講時要配否定（另有なかなかいい 的肯定用法）'] },
   { id: 'jpv_n4-suru-verbs', type: 'vocabulary', subject: '日本語', domain: '文字・語彙',
     name: 'N4 する動詞（漢語名詞＋する）', book: 'JLPT N4', chapter: '語彙', grade: 'n4',
     description: '説明・準備・利用・生産・見学・工事 等漢語名詞加する。要能依語境選對哪一個漢語詞。',
