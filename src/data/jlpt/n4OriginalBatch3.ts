@@ -16,7 +16,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['空きますそう', '空くそう', '空きそう', '空いたそう'],
     answer: '3',
     explain: '正解：<b>空きそう</b>（様態）。前面寫的是<b>眼前看到的情況</b>——那個人正在收拾準備走，所以判斷「快要空出來了」。接續是<b>ます形語幹＋そうです</b>：空き<u>ます</u> → 空き<b>そう</b>。<br>誘答：<b>空くそう</b> 是<b>傳聞</b>（聽說會空），但這句的訊息來自自己的眼睛，沒有任何「聽誰說」的來源；<b>空きますそう</b> 接續錯，そう 不接ます形整體；<b>空いたそう</b> 是「聽說已經空了」，與「還在收拾」矛盾。<br>判斷法：<b>訊息是自己看到的 → 様態（ます形語幹）；是別人說的 → 傳聞（普通形）</b>。所以題目一定會給你線索說明訊息從哪來。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_sou-appearance', topicIds: ['jpg_sou-appearance'] },
   },
   {
@@ -26,7 +26,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['ふったそう', 'ふるそう', 'ふりますそう', 'ふりそう'],
     answer: '2',
     explain: '正解：<b>ふるそう</b>（傳聞）。<b>「〜に よると」是傳聞的招牌前綴</b>——訊息來自氣象預報，不是自己看到的，所以要用傳聞的そう，接<b>普通形</b>：降る＋そうです。<br>誘答：<b>ふりそう</b> 是様態（看天色覺得快下了），但這句的訊息來源明確是預報；<b>ふりますそう</b> 接續錯；<b>ふったそう</b> 是「聽說下過了」，與「あしたは」矛盾。<br>這題和上一題成對：<b>兩個そうです 長得一模一樣，靠接續與訊息來源分辨。</b>',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_sou-appearance', topicIds: ['jpg_sou-appearance'] },
   },
   {
@@ -36,7 +36,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['見た かんじから、おいしいだろうと 思って いる', 'じっさいに 食べて、おいしかった', 'これから ケーキを 作る つもりだ', '人から 「おいしい」と 聞いた'],
     answer: '1',
     explain: '正解：<b>「見た かんじから、おいしいだろうと 思って いる」</b>。い形容詞的<b>様態</b>そう 是把語尾的「い」去掉再加そう：おいし<u>い</u> → おいし<b>そう</b>＝<b>看起來好像很好吃</b>（還沒吃）。<br>誘答：<br>・「人から『おいしい』と 聞いた」是傳聞，那要說「おいし<b>い</b>そうです」——<b>差一個「い」，意思完全不同</b>；<br>・「じっさいに 食べて、おいしかった」——吃過了要說「おいしかったです」；<br>・「これから ケーキを 作る つもりだ」語意不合。<br>い形容詞的兩種そう 只差一個假名，是這個考點最容易失分的地方：<b>おいしそう＝看起來好吃</b>／<b>おいしいそう＝聽說好吃</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_sou-appearance', topicIds: ['jpg_sou-appearance'] },
   },
 
@@ -48,7 +48,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['もらえますか', 'は いけませんか', 'も いいですか', 'いませんか'],
     answer: '1',
     explain: '正解：<b>もらえますか</b>。前面寫明<b>「わたしは 今 手が はなせない」</b>——自己走不開，所以是<b>請對方幫忙搬</b>。<br>誘答：<b>も いいですか</b> 是請求對方允許<b>自己</b>做，但自己正走不開，語意矛盾；<b>いませんか</b> 是確認狀態，不是請求；<b>は いけませんか</b> 是問禁止與否。<br>判斷兩件事就能選對：<b>①這個動作要誰做？②這句話是在請託還是在確認？</b>題幹的「手が はなせないので」正是用來鎖定「動作者是對方」的線索。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_te-moraemasu-request', topicIds: ['jpg_te-moraemasu-request'] },
   },
   {
@@ -58,7 +58,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['聞かれて いる 人（あいて）', '二人 いっしょに', 'だれでも いい', '話して いる 人（じぶん）'],
     answer: '1',
     explain: '正解：<b>あいて</b>。もらう 的方向是<b>「我從對方那裡得到」</b>，所以實際做「借出」這個動作的是<b>對方</b>。<br>常見的誤解是把它讀成「我可以借嗎」——那是「借りても いいですか」，動作者變成自己。<br>成對記：<br>・<b>〜てもらえますか</b>＝可以請<b>你</b>幫我做嗎（動作者是對方）<br>・<b>〜てもいいですか</b>＝<b>我</b>可以做嗎（動作者是自己）',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_te-moraemasu-request', topicIds: ['jpg_te-moraemasu-request'] },
   },
   {
@@ -68,7 +68,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['くれませんか', 'は いけませんか', 'もらえますか', 'も いいですか'],
     answer: '4',
     explain: '正解：<b>も いいですか</b>。B 回答「どうぞ」＝<b>給予許可</b>，所以 A 問的一定是<b>「我可以用嗎」</b>。<br>誘答：<b>もらえますか</b> 與 <b>くれませんか</b> 都是<b>請對方去做這個動作</b>——會變成「請你來用這張椅子」，但 B 回的是「どうぞ、使って ください」（把椅子讓給 A），方向剛好相反，接不上；<b>は いけませんか</b> 是在問「不可以嗎」，語氣是抗議或確認禁止，接「どうぞ」不順。<br><b>解題順序：先看回答</b>——回答是「どうぞ」（許可）就往てもいいですか 想。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_te-moraemasu-request', topicIds: ['jpg_te-moraemasu-request'] },
   },
 
@@ -80,7 +80,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['どこに おいたか', 'どこに おきましたか', 'どこに おいたです', 'どこに おいたの'],
     answer: '1',
     explain: '正解：<b>どこに おいたか</b>。「疑問詞＋動詞＋か」整串當成一個<b>名詞子句</b>，嵌進更大的句子裡當「覚えていません」的對象。<br>誘答：<br>・<b>どこに おいたです</b> 接續不成立；<br>・<b>どこに おきましたか</b> 是<b>獨立的疑問句</b>，不能直接接逗號再接下一句；<br>・<b>どこに おいたの</b> 是口語的疑問結尾，不能當子句嵌入。<br>組句順序：<b>先把子句組出來（どこ＋に＋置いた＋か），再安放進句子的骨架。</b>',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_embedded-question', topicIds: ['jpg_embedded-question'] },
   },
   {
@@ -90,7 +90,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['それだけで 一つの ぎもん文', '名詞と 同じ はたらき（「知って いますか」の たいしょう）', 'りゆうを あらわす', '「来る」を くわしく する はたらき（連体修飾）'],
     answer: '2',
     explain: '正解：<b>「名詞と 同じ はたらき（「知って いますか」の たいしょう）」</b>。這個子句雖然保留了疑問詞的形狀，但在句子裡<b>扮演的是名詞的角色</b>——它是「知っていますか」要知道的<b>那個東西</b>。<br>誘答：說它是<b>獨立的疑問句</b>是最常見的誤解——如果是獨立疑問句，就不能被塞進另一個句子裡當受詞；說它<b>修飾「来る」</b>是把它誤當成連体修飾（那要寫成「来る 時間」這種形式）；<b>表示理由</b>則與結構無關。<br>驗證方法：把整串換成一個名詞試試看——「<b>それを</b>、知っていますか」也通，代表它確實在扮演名詞。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_embedded-question', topicIds: ['jpg_embedded-question'] },
   },
   {
@@ -100,7 +100,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['か', 'は', 'が', 'を'],
     answer: '1',
     explain: '正解：<b>か</b>。疑問子句的結尾<b>一定要有か</b>——它是把整串「打包成名詞」的記號，少了它子句就沒有邊界。<br>誘答：<b>が／は／を</b> 都是標示句子成分的助詞，不能用來收束子句。<br>結構拆解：<b>［だれが パーティーに 来る<u>か</u>］＋まだ わかりません</b>。中括號裡的整串是「わかりません」的對象。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_embedded-question', topicIds: ['jpg_embedded-question'] },
   },
 
@@ -112,7 +112,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['に', 'を', 'で', 'の'],
     answer: '4',
     explain: '正解：<b>の</b>。動詞辞書形接の，把整個動作<b>變成一個名詞</b>，才能當「すきです」的對象。<br>誘答：<b>を／に／で</b> 都不能把動詞變成名詞，接上去整句就沒有主語可以配「が すきです」。<br>這個の 和 N5 學的「あかい<b>の</b>を ください」是<b>同一套邏輯</b>——從「代替一個東西」延伸到「把一整個動作變成東西」，不是新規則。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_verb-no-nominalizer', topicIds: ['jpg_verb-no-nominalizer'] },
   },
   {
@@ -122,7 +122,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['およぐの 上手です', 'およぎが 上手にです', 'およぐことに 上手です', 'およぐのが 上手です'],
     answer: '4',
     explain: '正解：<b>およぐのが 上手です</b>。<b>水泳（漢語的動作名詞）＝泳ぐの（動詞＋の）</b>，是同一件事的兩種說法，這正是「言い換え」題最常考的轉換。<br>誘答：<b>ことに</b> 助詞錯（要用が）；<b>上手にです</b> 是な形容詞的錯誤活用；<b>およぐの 上手です</b> 少了が。<br>看到題目給的是<b>漢語動作名詞</b>（水泳・勉強・運転），就要想到它可以換成<b>「動詞辞書形＋の」</b>。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_verb-no-nominalizer', topicIds: ['jpg_verb-no-nominalizer'] },
   },
   {
@@ -132,7 +132,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['た形', 'て形', 'じしょ形', 'ます形'],
     answer: '3',
     explain: '正解：<b>じしょ形</b>。<b>読む</b>のが すきです（○）／読み<b>ます</b>のが（×）／読<b>んで</b>のが（×）。<br>這是組句題最常被扣分的地方：意思想對了，但接續形式錯了照樣不給分。<br>順帶把整個結構記起來：<b>［動詞じしょ形］＋の＋が＋［すき／きらい／上手／下手］</b>。前面的部分可以很長（ピアノを ひく<u>の</u>が すきです），只要接在<b>じしょ形</b>後面就對了。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_verb-no-nominalizer', topicIds: ['jpg_verb-no-nominalizer'] },
   },
 
@@ -144,7 +144,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['くれた', 'あげた', 'もらった', 'やった'],
     answer: '1',
     explain: '正解：<b>くれた</b>。主語是「そふ<b>が</b>」、接受方是「わたし<b>に</b>」——<b>別人給我</b>，這個方向只能用くれる。<br>誘答：<b>もらった</b> 的に 是標示<b>給予方</b>（友だち<b>に</b> 本を もらった），所以這句會變成「祖父<b>從我這裡</b>得到的相機」，與後半「我現在還珍惜地在用」矛盾；<b>あげた／やった</b> 是「給出去」，但<b>不能以說話者自己為接受方</b>——「そふが わたしに あげた」是不成立的說法。<br>三個方向記牢：<b>あげる＝我→人</b>、<b>もらう＝人→我（我當主語）</b>、<b>くれる＝人→我（對方當主語）</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_kureru-direction', topicIds: ['jpg_kureru-direction'] },
   },
   {
@@ -154,7 +154,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['くれ', 'やり', 'あげ', 'もらい'],
     answer: '4',
     explain: '正解：<b>もらい</b>。前面寫明<b>「よく わからなかったので」</b>——不懂的是我，所以受益的是我，動作是<b>從朋友那裡得到</b>。<br>誘答：<b>あげ</b> 會變成「我教朋友」，和「我不懂」矛盾；<b>くれ</b> 的主語必須是給予的一方，要寫成「友だち<b>が</b> 教えて くれました」；<b>やり</b> 同あげ 但更隨便的說法。<br>同一件事的兩種說法，助詞跟著主語換：<br>・<b>私は 友だち<u>に</u> 教えて もらいました</b><br>・<b>友だち<u>が</u> 私に 教えて くれました</b><br>兩句意思一樣，受益的都是我——<b>差別只在誰站在主語的位置</b>。所以題目一定要給「誰受益」的線索，才分得出用哪一個。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_kureru-direction', topicIds: ['jpg_kureru-direction'] },
   },
   {
@@ -164,7 +164,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['ぶんしょうからは わからない', '山田さん', '二人 いっしょに', 'わたし'],
     answer: '2',
     explain: '正解：<b>山田さん</b>。くれる 的主語就是<b>做這個動作、把好處給我的那一方</b>。<br>這題考的是讀解時最容易弄反的方向。日文常常省略「私に」，只留下「山田さんが 手伝って くれました」——但只要看到<b>くれる</b>，就能確定<b>動作者是主語、受益者是我</b>。<br>讀長文時的習慣：<b>看到授受動詞，先在心裡畫一個箭頭</b>——くれる 的箭頭永遠指向「我」。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_kureru-direction', topicIds: ['jpg_kureru-direction'] },
   },
 
@@ -176,7 +176,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['行き ことが ない', '行った ことが ない', '行く ことが ない', '行って いる ことが ない'],
     answer: '2',
     explain: '正解：<b>行った ことが ない</b>。表示「沒有…過的經驗」，接續是<b>た形＋ことがない</b>。<br>誘答：<b>行く ことが ない</b> 是「沒有去的機會／不會去」，講的是頻率不是經驗；<b>行き ことが</b> 接續錯；<b>行って いる ことが ない</b> 不成立。<br>整句的邏輯串起來：<b>「〜たことが ないので、ぜひ〜たいです」</b>＝因為沒經驗過，所以很想試試看。這是這個句型最常出現的組合。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_ta-koto-ga-nai', topicIds: ['jpg_ta-koto-ga-nai'] },
   },
   {
@@ -186,7 +186,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['食べます ことが あります', '食べる ことが あります', '食べて ことが あります', '食べた ことが あります'],
     answer: '4',
     explain: '正解：<b>食べた ことが あります</b>。表示<b>經驗的有無</b>時，前面一定是<b>た形</b>。<br>要注意<b>食べる ことが あります</b> 文法上也成立，但意思完全不同——那是<b>「有時候會吃」</b>（頻率），不是「吃過」。<b>同一個「ことがある」，接た形是經驗，接辞書形是頻率。</b><br>其他兩個是接續錯誤。<br>成組記：<b>た形＋ことがある＝經驗</b>／<b>辞書形＋ことがある＝偶爾會</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_ta-koto-ga-nai', topicIds: ['jpg_ta-koto-ga-nai'] },
   },
   {
@@ -196,7 +196,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['どちらも みらいの よていを あらわす', 'いみは まったく 同じ', '前者が けいけん、後者が よてい', '前者は 「よていは あるが まだ」、後者は 「いままで 一度も」'],
     answer: '4',
     explain: '正解：<b>「前者は 「よていは あるが まだ」、後者は 「いままで 一度も」」</b>。<br>・<b>まだ 行って いません</b>＝<b>「還沒去」</b>，語感裡含著「之後會去」，講的是進度。<br>・<b>行った ことが ありません</b>＝<b>「至今一次也沒有過」</b>，講的是人生經驗的有無，不預設之後會不會去。<br>誘答「前者が けいけん、後者が よてい」 把兩者對調了，是最典型的誤解。<br>一句話：<b>「まだ〜ていません」看的是進度，「〜たことがない」看的是經歷。</b>',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_ta-koto-ga-nai', topicIds: ['jpg_ta-koto-ga-nai'] },
   },
 
@@ -208,7 +208,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['およがせる', 'およごう', 'およげる', 'およがれる'],
     answer: '3',
     explain: '正解：<b>およげる</b>。「泳ぐ」是 I 類動詞，可能形要<b>把語尾從う段改成え段再加る</b>：泳<u>ぐ</u> → 泳<u>げ</u> → 泳<b>げる</b>。<br>誘答：<b>およがれる</b> 是受身形；<b>およごう</b> 是意向形（一起游吧）；<b>およがせる</b> 是使役形。<br>I 類動詞的四種變化，落點各不相同：<b>可能→え段＋る</b>、<b>受身→あ段＋れる</b>、<b>使役→あ段＋せる</b>、<b>意向→お段＋う</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_youni-naru', topicIds: ['jpg_youni-naru'] },
   },
   {
@@ -218,7 +218,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['およいで おきました', 'およいで しまいました', 'およげる ように なりました', 'およぐ ことに なりました'],
     answer: '3',
     explain: '正解：<b>およげる ように なりました</b>。<b>可能形＋ようになる</b> 專門描述<b>「從不會到會」的漸進變化</b>——每週練習，終於變得會游了。<br>誘答：<b>およいで しまいました</b> 是「游完了／不小心游了」，帶完了或遺憾語感，和「やっと」的成就感不合；<b>およぐ ことに なりました</b> 用在<b>非自己意志的客觀安排</b>（被決定要去游泳），但這裡是自己努力的結果；<b>およいで おきました</b> 是「事先游好」。<br>句首的「まいしゅう れんしゅうして、やっと」就是提示：<b>有「持續努力」的鋪陳，後面接的就是能力養成的變化句。</b>',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_youni-naru', topicIds: ['jpg_youni-naru'] },
   },
   {
@@ -228,7 +228,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['話したいと 思って いる', '話さなければ ならない', '話すことに 決めた', 'まえは 話せなかったが、いまは 話せる'],
     answer: '4',
     explain: '正解：<b>「まえは 話せなかったが、いまは 話せる」</b>。ようになる 的核心是<b>「前後有變化」</b>——一定隱含著「以前不是這樣」。<br>誘答：<b>話すことに 決めた</b> 是決定（ことにする）；<b>話さなければ ならない</b> 是義務；<b>話したいと 思って いる</b> 是意願——三個都<b>沒有「產生了變化」這一層</b>。<br>所以看到ようになりました，要讀出的不只是「現在會了」，而是<b>「本來不會，現在會了」</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_youni-naru', topicIds: ['jpg_youni-naru'] },
   },
 
@@ -240,7 +240,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['行っだら', '行ったら', '行きたら', '行くたら'],
     answer: '2',
     explain: '正解：<b>行ったら</b>。たら 的變化規則和<b>た形完全相同</b>——先變た形（行く→行っ<b>た</b>），再把た 換成<b>たら</b>。<br>誘答各對應一種錯法：<b>行くたら</b> 接了辭書形；<b>行きたら</b> 接了ます形語幹；<b>行っだら</b> 濁化錯誤——た 變だ 只發生在兩種音便之後：ぬ／ぶ／む 結尾動詞的<b>ん音便</b>（飲ん<b>だ</b>ら・遊ん<b>だ</b>ら・死ん<b>だ</b>ら），以及ぐ 結尾動詞的<b>い音便</b>（泳い<b>だ</b>ら・急い<b>だ</b>ら）。促音「っ」後面一律用た。<br>只要た形會變，たら 就不用另外背：<b>飲む→飲んだ→飲んだら</b>、<b>見る→見た→見たら</b>、<b>する→した→したら</b>。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_tara-conditional', topicIds: ['jpg_tara-conditional'] },
   },
   {
@@ -250,7 +250,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['きまるから', 'きまるので', 'きまったら', 'きまって'],
     answer: '3',
     explain: '正解：<b>きまったら</b>。「決定<b>之後</b>再打電話」——たら 標示的是後面動作發生的<b>條件或時機</b>。<br>誘答：<b>きまって</b> 只是單純接續，少了「之後」的條件語感；<b>きまるので／きまるから</b> 是原因（因為會決定，所以…），邏輯不通——事情還沒決定，不能當成原因。<br>句型：<b>［V-たら］、［請求或結果］</b>。前半是條件，後半是條件成立後才發生的事。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_tara-conditional', topicIds: ['jpg_tara-conditional'] },
   },
   {
@@ -260,7 +260,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['いつ きまるのか 知りたい', '連絡を して 日と 時間を きめたい', '連絡は しなくても いい', '日と 時間が きまった あとで、連絡して ほしい'],
     answer: '4',
     explain: '正解：<b>「日と 時間が きまった あとで、連絡して ほしい」</b>。<br><b>這題是読解裡最常被誤讀的一種</b>。誘答「いつ きまるのか 知りたい」就是那個陷阱：句子裡有「きまったら」，望文生義很容易讀成「想知道<b>什麼時候</b>會決定」。但<b>たら 不是疑問詞，它標示的是「之後」這個條件</b>——說話者要的是「決定<u>之後</u>聯絡我」，不是在問時間點。<br>「連絡を して 日と 時間を きめたい」把因果顛倒了（變成用聯絡來決定）；「連絡は しなくても いい」與句意相反。<br>讀到「〜たら、〜てほしい／〜てください」時，先問一句：<b>條件是什麼？成立以後對方要做什麼？</b>',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_tara-conditional', topicIds: ['jpg_tara-conditional'] },
   },
 
@@ -272,7 +272,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['知らない 女の人', 'えきの 人', 'ぶんしょうからは わからない', 'わたし'],
     answer: '1',
     explain: '正解：<b>知らない 女の人</b>。關鍵在「女の人が こえを かけて <b>くれました</b>」——<b>くれる 的主語就是做這個動作的人</b>，而且方向指向「我」。<br>這一題就是這個考點的核心：日文常常把「私に」省略掉，只留下「〜が〜てくれました」。<b>看到くれる，就在心裡畫一個指向「我」的箭頭</b>，主語永遠是箭頭的起點。',
-    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpr_character-relationship-tracking', topicIds: ['jpr_character-relationship-tracking', 'jpg_kureru-direction'] },
   },
   {
@@ -282,7 +282,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['えきの 人', '二人とも', 'わたし', '知らない 女の人'],
     answer: '3',
     explain: '正解：<b>わたし</b>。這一句沒有省略主語——「<b>わたしは</b> お礼を 言って」寫得很清楚。<br>會答錯多半是<b>被前一句的「女の人」帶著走</b>，以為整段的主語都是她。<br>讀多人物的段落時，養成一個習慣：<b>每個動作都在心裡標上「誰對誰做的」</b>，不要靠語感一路滑過去。這一段的方向是：<b>女の人 →（幫助）→ わたし →（道謝）→ 女の人</b>。',
-    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpr_character-relationship-tracking', topicIds: ['jpr_character-relationship-tracking'] },
   },
   {
@@ -292,7 +292,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['知らない 女の人', 'わたし', 'えきの 人', 'ぶんしょうからは わからない'],
     answer: '2',
     explain: '正解：<b>わたし</b>。「たすかりました」是<b>受益者的感受</b>——被幫助的人才會這樣說。<br>怎麼確定受益者是誰？看前面的<b>「おしえて くれた」</b>：くれる 的箭頭指向「我」，所以得到好處的是我，感謝的也是我。<br>這三題合起來就是這個考點要練的：<b>整段沒有出現一次「私に」，但方向從頭到尾都是清楚的——靠的是授受動詞，不是關鍵字。</b>',
-    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpr_character-relationship-tracking', topicIds: ['jpr_character-relationship-tracking', 'jpg_kureru-direction'] },
   },
 
@@ -304,7 +304,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['古い かさは あたらしい かさより べんりだ', '店の 人は いつも わらって いる', '雨の 日には かさを わすれない ほうが いい', '人に しんせつに して もらった けいけんから、自分も そう したいと 思った'],
     answer: '4',
     explain: '正解：<b>「人に しんせつに して もらった けいけんから、自分も そう したいと 思った」</b>。文章的<b>核心事件</b>是「受到陌生人幫助」，<b>情緒轉折</b>落在最後一句「自分も 同じ ことを して あげたい」——主旨就在這兩者的連線上。<br>誘答的共通問題是<b>只抓到某一句的細節，沒有跳出來看整篇</b>：<br>・「古い かさは あたらしい かさより べんりだ」——文章沒有比較新舊傘；<br>・「雨の 日には かさを わすれない ほうが いい」——雖然開頭提到忘了帶傘，但那是事件的起點不是重點；<br>・「店の 人は いつも わらって いる」——與原文不符，文章裡那個人只笑過那一次。<br>主旨題的作法：<b>先用一句話說出「發生了什麼＋心情怎麼變」，再看哪個選項符合這條線。</b>',
-    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpr_passage-theme-synthesis', topicIds: ['jpr_passage-theme-synthesis'] },
   },
   {
@@ -314,7 +314,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['小さな しんせつは、人から 人へ つたわって いくのだと 思います。', 'つぎからは、かならず かさを 持って 出かけます。', 'あの 店の しなものは とても 安いです。', 'ちかくの 店の 場所を もっと しらべたいです。'],
     answer: '1',
     explain: '正解：<b>「小さな しんせつは、人から 人へ つたわって いくのだと 思います。」</b>。結尾句要<b>呼應整篇的主題</b>——「受人幫助 → 想把善意傳下去」，選項「小さな しんせつは、人から 人へ つたわって いくのだと 思います。」 正好把這條線收起來。<br>誘答的問題不是文法，<b>四句在文法上都完全正確</b>：<br>・「つぎからは、かならず かさを 持って 出かけます。」——只回應了開頭忘記帶傘的細節，跟主旨無關；<br>・「あの 店の しなものは とても 安いです。」——文章完全沒提商品價格；<br>・「ちかくの 店の 場所を もっと しらべたいです。」——與全文想傳達的心情沒有關係。<br>這題考的正是<b>能不能排除「語意通順但與主旨無關」的干擾選項</b>。',
-    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpr_passage-theme-synthesis', topicIds: ['jpr_passage-theme-synthesis'] },
   },
   {
@@ -324,7 +324,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['ぶんしょうからは わからない', '友だち', '店の 人', 'わたし'],
     answer: '3',
     explain: '正解：<b>店の 人</b>。「店の 人が かさを かして <b>くれました</b>」——くれる 的主語是給予的一方。<br>把這題和主旨題放在一起是有理由的：<b>要抓主旨，得先把人物方向理清楚</b>。如果把方向讀反（以為是「我」借傘給店員），最後那句「自分も 同じ ことを して あげたい」就完全講不通了——因為「同じ こと」指的正是<b>別人對我做過的那件事</b>。<br>先理方向，再談主旨，順序不能顛倒。',
-    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '読解', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpr_passage-theme-synthesis', topicIds: ['jpr_passage-theme-synthesis', 'jpg_kureru-direction'] },
   },
 ];
