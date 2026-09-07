@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
+    "gen:icons": "node scripts/gen-pwa-icons.mjs",
     "lint": "tsc --noEmit",
     "validate:data": "python3 scripts/validate-kana-data.py",
     "validate:i18n": "python3 scripts/validate-i18n.py",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4.1.14",
     "typescript": "~5.8.2"
   }
