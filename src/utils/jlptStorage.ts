@@ -43,3 +43,15 @@ export function recordJlptAnswer(
   });
   setStoredJlptRecords(records);
 }
+
+// 錯題清單：一題若「最新一筆作答」是錯的，就算待複習的錯題。
+// 用最新一筆判定（不是「曾經錯過」）——重做答對後，最新紀錄變成對，該題就
+// 自動畢業、從清單消失，不必另外記畢業狀態。ISO 8601 時間字串可直接字典序比大小。
+export function getWrongQuestionIds(): string[] {
+  const latest = new Map<string, JlptPracticeRecord>();
+  for (const r of getStoredJlptRecords()) {
+    const prev = latest.get(r.questionId);
+    if (!prev || r.answeredAt > prev.answeredAt) latest.set(r.questionId, r);
+  }
+  return [...latest.values()].filter((r) => !r.isCorrect).map((r) => r.questionId);
+}

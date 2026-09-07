@@ -5,10 +5,12 @@ import {
   getTopicsByLevel,
   getQuestionsByTopic,
   getOwnJlptQuestionsByLevel,
+  getOwnJlptQuestions,
 } from '../data/jlpt';
-import { recordJlptAnswer } from '../utils/jlptStorage';
+import { recordJlptAnswer, getWrongQuestionIds } from '../utils/jlptStorage';
 import { shuffle, withShuffledOptions } from '../utils/shuffle';
 import { JlptWeakPointCard } from './JlptWeakPointCard';
+import { JlptWrongRedoButton } from './JlptWrongRedoButton';
 import { RichText } from './RichText';
 import { useI18n } from '../i18n';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle } from 'lucide-react';
@@ -69,6 +71,31 @@ export function JlptPracticeView() {
     setIsCompleted(false);
   };
 
+  const handleStartWrong = () => {
+    const wrongIds = new Set(getWrongQuestionIds());
+    const questions = getOwnJlptQuestions().filter((q) => wrongIds.has(q.id));
+    if (questions.length === 0) return;
+
+    setSelectedTopic({
+      id: 'wrong',
+      type: 'LANGUAGE',
+      subject: '日本語',
+      domain: '錯題複習',
+      name: '錯題重做',
+      description: '重做你先前答錯的題目，答對後自動移除',
+      book: 'JLPT',
+      chapter: '錯題',
+      grade: level,
+      evidence: [],
+    });
+    setQuizQuestions(shuffle(questions).map(withShuffledOptions));
+    setCurrentIndex(0);
+    setSelectedOption(null);
+    setIsAnswered(false);
+    setScore(0);
+    setIsCompleted(false);
+  };
+
   const handleSelectOption = (optionIndex: number) => {
     if (isAnswered) return;
 
@@ -98,7 +125,9 @@ export function JlptPracticeView() {
 
   const handleRestart = () => {
     if (selectedTopic) {
-      if (selectedTopic.id === 'all') {
+      if (selectedTopic.id === 'wrong') {
+        handleStartWrong();
+      } else if (selectedTopic.id === 'all') {
         handleStartAll();
       } else {
         handleStartTopic(selectedTopic);
@@ -311,6 +340,9 @@ export function JlptPracticeView() {
               </div>
             </div>
           </div>
+
+          {/* 錯題重做 */}
+          <JlptWrongRedoButton onStart={handleStartWrong} />
 
           {/* 弱點分析 */}
           <JlptWeakPointCard />
