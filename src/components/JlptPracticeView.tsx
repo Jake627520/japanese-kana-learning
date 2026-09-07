@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { JlptTopic, JlptQuestion, JlptGrade } from '../types';
 import {
   AVAILABLE_LEVELS,
@@ -145,6 +145,63 @@ export function JlptPracticeView() {
     setIsCompleted(false);
   };
 
+  useEffect(() => {
+    if (!selectedTopic) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (isCompleted) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleRestart();
+        }
+        return;
+      }
+
+      if (!isAnswered) {
+        const keyMap: Record<string, number> = {
+          '1': 0,
+          '2': 1,
+          '3': 2,
+          '4': 3,
+          Numpad1: 0,
+          Numpad2: 1,
+          Numpad3: 2,
+          Numpad4: 3,
+        };
+        const optIdx = keyMap[e.key] ?? (e.code ? keyMap[e.code] : undefined);
+        if (optIdx !== undefined) {
+          const currentQ = quizQuestions[currentIndex];
+          if (currentQ && optIdx < currentQ.options.length) {
+            e.preventDefault();
+            handleSelectOption(optIdx);
+          }
+        }
+      } else {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleNext();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedTopic, quizQuestions, currentIndex, isAnswered, isCompleted]);
+
   const topics = getTopicsByLevel(level);
   const levelQuestionCount = getOwnJlptQuestionsByLevel(level).length;
   const levelCoverage = Math.min(100, Math.round((levelQuestionCount / 90) * 100));
@@ -234,7 +291,8 @@ export function JlptPracticeView() {
                     onClick={handleNext}
                     className="w-full py-3.5 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-sm rounded-2xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
                   >
-                    {currentIndex + 1 < quizQuestions.length ? t('quiz.nextQuestion') : t('quiz.finishQuiz')}
+                    <span>{currentIndex + 1 < quizQuestions.length ? t('quiz.nextQuestion') : t('quiz.finishQuiz')}</span>
+                    <kbd className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded font-mono font-bold leading-none">↵</kbd>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
