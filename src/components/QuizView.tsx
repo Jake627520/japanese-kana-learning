@@ -348,6 +348,7 @@ export function QuizView({
   }, [quizScope, quizMode]);
 
   const questionStartTimeRef = useRef<number>(Date.now());
+  const inputRef = useRef<HTMLInputElement>(null);
   const currentQ = questions[currentIndex];
 
   // Auto-play audio when navigating questions in listening mode and track start time
@@ -406,6 +407,7 @@ export function QuizView({
   const handleSubmitInput = () => {
     if (isAnswered) return;
 
+    inputRef.current?.blur();
     const isCorrect = inputRomaji.trim().toLowerCase() === currentQ.targetKana.romaji.toLowerCase();
     handleSelectOption(inputRomaji, isCorrect);
   };
@@ -421,6 +423,68 @@ export function QuizView({
       setIsCompleted(true);
     }
   };
+
+  useEffect(() => {
+    if (questions.length === 0) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+      const target = e.target as HTMLElement | null;
+      const isTargetInput =
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable);
+
+      // 未作答且焦點在輸入框上時，完全放行給輸入框自己處理，避免雙擊或干擾打字
+      if (!isAnswered && isTargetInput) return;
+
+      if (isCompleted) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          setRetryPool(null);
+          generateQuiz(
+            isConfusionMode ? customPool : pool,
+            isConfusionMode ? 'listening' : quizMode
+          );
+        }
+        return;
+      }
+
+      if (!isAnswered) {
+        const isChoiceMode = currentQ && (currentQ.type !== 'input-romaji' || quizMode === 'listening');
+        if (isChoiceMode && currentQ.options) {
+          const keyMap: Record<string, number> = {
+            '1': 0,
+            '2': 1,
+            '3': 2,
+            '4': 3,
+            Numpad1: 0,
+            Numpad2: 1,
+            Numpad3: 2,
+            Numpad4: 3,
+          };
+          const optIdx = keyMap[e.key] ?? (e.code ? keyMap[e.code] : undefined);
+          if (optIdx !== undefined && optIdx < currentQ.options.length) {
+            e.preventDefault();
+            const opt = currentQ.options[optIdx];
+            handleSelectOption(opt.label, opt.isCorrect);
+          }
+        }
+      } else {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleNext();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [questions, currentIndex, currentQ, isAnswered, isCompleted, quizMode, isConfusionMode, customPool, pool]);
 
   if (!currentQ && !isCompleted) {
     return <div className="p-8 text-center text-xs text-[#64748B]">{t('common.loading')}</div>;
@@ -744,6 +808,7 @@ export function QuizView({
         {currentQ.type === 'input-romaji' && quizMode !== 'listening' ? (
           <div className="space-y-3">
             <input
+              ref={inputRef}
               type="text"
               value={inputRomaji}
               disabled={isAnswered}
@@ -780,9 +845,12 @@ export function QuizView({
                   key={idx}
                   onClick={() => handleSelectOption(opt.label, opt.isCorrect)}
                   disabled={isAnswered}
-                  className={`p-4 border rounded-2xl text-lg font-bold transition-all cursor-pointer ${btnStyle}`}
+                  className={`p-4 border rounded-2xl text-lg font-bold transition-all cursor-pointer flex items-center justify-center relative ${btnStyle}`}
                 >
-                  {opt.label}
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#F1F5F9] text-[11px] font-bold text-[#64748B] flex items-center justify-center">
+                    {idx + 1}
+                  </span>
+                  <span>{opt.label}</span>
                 </button>
               );
             })}
@@ -800,7 +868,8 @@ export function QuizView({
               onClick={handleNext}
               className="w-full py-3 bg-[#00A86B] text-white font-bold text-xs rounded-2xl hover:bg-[#008F5B] transition-all cursor-pointer flex items-center justify-center gap-2"
             >
-              {currentIndex < questions.length - 1 ? t('quiz.nextQuestion') : t('quiz.finishQuiz')}
+              <span>{currentIndex < questions.length - 1 ? t('quiz.nextQuestion') : t('quiz.finishQuiz')}</span>
+              <kbd className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded font-mono font-bold leading-none">↵</kbd>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
