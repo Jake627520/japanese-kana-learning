@@ -89,6 +89,7 @@ export const zhCN: TranslationSchema = {
     details: '详细信息',
     items: '项',
     countUnit: '个',
+    empty: '暂无数据',
   },
   home: {
     hero: {
@@ -313,6 +314,9 @@ export const zhCN: TranslationSchema = {
     micHint: '点击“开始录音”后请直接对着麦克风朗读。',
     pitchAccent: '声调起伏示意',
     practiceCount: '累计练习次数',
+    toggleJapanese: '显示日文',
+    toggleKana: '显示假名',
+    toggleRomaji: '显示罗马字',
   },
   special: {
     title: '特殊音专题教学',

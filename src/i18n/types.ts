@@ -89,6 +89,7 @@ export interface TranslationSchema {
     details: string;
     items: string;
     countUnit: string;
+    empty: string;
   };
   home: {
     hero: {
@@ -313,6 +314,9 @@ export interface TranslationSchema {
     micHint: string;
     pitchAccent: string;
     practiceCount: string;
+    toggleJapanese: string;
+    toggleKana: string;
+    toggleRomaji: string;
   };
   special: {
     title: string;

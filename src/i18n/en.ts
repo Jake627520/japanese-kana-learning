@@ -89,6 +89,7 @@ export const en: TranslationSchema = {
     details: 'Details',
     items: 'items',
     countUnit: 'items',
+    empty: 'No data available',
   },
   home: {
     hero: {
@@ -313,6 +314,9 @@ export const en: TranslationSchema = {
     micHint: 'Click "Start Recording" and speak clearly into your microphone.',
     pitchAccent: 'Pitch Accent Contour',
     practiceCount: 'Practice Count',
+    toggleJapanese: 'Show Japanese',
+    toggleKana: 'Show Kana',
+    toggleRomaji: 'Show Romaji',
   },
   special: {
     title: 'Special Sounds Guide',

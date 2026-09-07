@@ -89,6 +89,7 @@ export const zhTW: TranslationSchema = {
     details: '詳細資訊',
     items: '項',
     countUnit: '個',
+    empty: '尚無資料',
   },
   home: {
     hero: {
@@ -313,6 +314,9 @@ export const zhTW: TranslationSchema = {
     micHint: '點擊「開始錄音」後請直接對著麥克風朗讀。',
     pitchAccent: '聲調起伏示意',
     practiceCount: '累計練習次數',
+    toggleJapanese: '顯示日文',
+    toggleKana: '顯示假名',
+    toggleRomaji: '顯示羅馬字',
   },
   special: {
     title: '特殊音專題教學',
