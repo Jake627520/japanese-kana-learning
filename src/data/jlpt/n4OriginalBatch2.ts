@@ -16,7 +16,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['デパートで くつを 見学して、買いました。', '弟の しゅくだいを 見学して あげました。', '週末は 家で テレビを 見学しました。', 'きのう、じどうしゃの 工場を 見学しました。'],
     answer: '4',
     explain: '正解：<b>「きのう、じどうしゃの 工場を 見学しました。」</b>。見学＝<b>到現場為了學習而參觀</b>，對象是工廠、學校、機構這類地方。<br>其他三句<b>文法上完全沒有錯</b>，錯的是「這個詞放進這句合不合適」：<br>・「デパートで くつを 見学して、買いました。」——買鞋是購物，該用「見る」；<br>・「弟の しゅくだいを 見学して あげました。」——該用「見る」；<br>・「週末は 家で テレビを 見学しました。」——看電視就是「見る」。<br>用法題的解法：<b>先問「這個詞的適用對象範圍是什麼」，再看哪一句落在範圍內</b>——不是去檢查文法通不通。',
-    source: { book: 'JLPT N4', chapter: '用法', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '用法', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_usage-appropriateness', topicIds: ['jpg_usage-appropriateness', 'jpv_n4-suru-verbs'] },
   },
   {
@@ -26,7 +26,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['テーブルに 花を かざりました。', 'のこった ごはんを れいぞうこに かざりました。', 'ふゆの ふくを たんすに かざりました。', '読みおわった 本を かばんに かざりました。'],
     answer: '1',
     explain: '正解：<b>「テーブルに 花を かざりました。」</b>。飾る＝<b>為了好看而擺出來</b>，對象是花、畫、照片這類裝飾品。<br>其他三句都是「把東西<b>收進去</b>」，方向剛好相反：<br>・「ふゆの ふくを たんすに かざりました。」——收進衣櫃該用「入れる」或「しまう」；<br>・「のこった ごはんを れいぞうこに かざりました。」——該用「入れる」；<br>・「読みおわった 本を かばんに かざりました。」——該用「入れる」。<br>這題的陷阱正是<b>「擺出來」與「收起來」被混為一談</b>——中文都可以說「放」，日文分得很清楚。',
-    source: { book: 'JLPT N4', chapter: '用法', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '用法', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_usage-appropriateness', topicIds: ['jpg_usage-appropriateness'] },
   },
   {
@@ -36,7 +36,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['かばんの 中が るすです。', '友だちの 家へ 行きましたが、るすでした。', '電車が るすだったので、すわれました。', 'きょうは 学校が るすです。'],
     answer: '2',
     explain: '正解：<b>「友だちの 家へ 行きましたが、るすでした。」</b>。留守＝<b>人不在家</b>，主體一定是「人」或「人的住處」。<br>其他三句的錯法都是<b>把「留守」用到不是人的東西上</b>：<br>・「きょうは 学校が るすです。」——放假該用「休み」；<br>・「かばんの 中が るすです。」——該用「空（から）」；<br>・「電車が るすだったので、すわれました。」——該用「空（す）いて いた」。<br>歸納這個詞的適用範圍——<b>只用在人不在</b>——四個選項就能一次篩掉三個。',
-    source: { book: 'JLPT N4', chapter: '用法', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '用法', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_usage-appropriateness', topicIds: ['jpg_usage-appropriateness', 'jpv_n4-status-nouns'] },
   },
 
@@ -48,7 +48,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['に', 'で', 'を', 'しか'],
     answer: '2',
     explain: '正解：<b>で</b>。「時間量＋で＋動詞」表示<b>完成一件事所花費的時間範圍</b>——用 20 分鐘就做完了。<br>誘答：<br>・<b>に</b> 標示的是<b>事情發生的時間點</b>（3時に 始まります），這裡講的是花掉多久，不是幾點。<br>・<b>を</b> 不能直接接在時間量詞後面再接自動詞（「20分を 終わりました」不通）。<br>・<b>しか</b> 後面<b>必須接否定</b>，但句尾是肯定的「終わりました」，直接矛盾。<br>判斷關鍵：<b>句尾是不是肯定的完成句</b>。',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_de-time-taken', topicIds: ['jpg_de-time-taken'] },
   },
   {
@@ -58,7 +58,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['から', 'まで', 'で', 'に'],
     answer: '3',
     explain: '正解：<b>で</b>。回答「用了 30 分鐘就做好了」，強調的是花費的時間範圍。<br>誘答：<b>に</b> 是時間點；<b>から</b> 是起點（30分から＝從 30 分開始，語意不通）；<b>まで</b> 是終點。<br>で 在 N5 已經學過標示<b>場所</b>（教室で）、<b>手段</b>（バスで）與<b>合計</b>（全部で 千円）。N4 多的這個「花費的時間」是同一個で 的延伸，不是新的字。',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_de-time-taken', topicIds: ['jpg_de-time-taken'] },
   },
   {
@@ -68,7 +68,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['まで', 'で', 'に', 'を'],
     answer: '3',
     explain: '正解：<b>に</b>。這題和前兩題刻意成對：<b>同樣是時間，で 和 に 標示的東西完全不同</b>。<br>・<b>3時に 始まります</b>＝三點<b>這個時間點</b>開始。<br>・<b>20分で 終わりました</b>＝花了二十分鐘<b>這段長度</b>做完。<br>誘答：<b>で</b> 在這裡會變成「用三點這段時間」，語意不通；<b>を</b> 不能標時間點；<b>まで</b> 標的是終點（3時まで＝到三點為止），和「始まります」矛盾。<br>判斷法：<b>空格前是時間「點」還是時間「量」</b>——點用に、量用で。<br>（補充：「3時<b>から</b> 始まります」也是完全正確的日文，強調的是「從三點起」這個起點。它和に 都對，所以不會出現在同一題的選項裡。）',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_de-time-taken', topicIds: ['jpg_de-time-taken'] },
   },
 
@@ -80,7 +80,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['泣ける', '泣かせる', '泣かさせる', '泣かれる'],
     answer: '2',
     explain: '正解：<b>泣かせる</b>。「泣く」是 I 類（五段）動詞，使役形要<b>把語尾退回あ段再加せる</b>：泣<u>く</u> → 泣<u>か</u> → 泣<b>かせる</b>。<br>誘答各對應一種混淆：<br>・<b>泣かれる</b> 是<b>受身形</b>（被…），變化位置一樣但接的是れる；<br>・<b>泣ける</b> 是<b>可能形</b>（哭得出來），語尾改え段加る；<br>・<b>泣かさせる</b> 是把 I 類的せる 和 II 類的させる 混在一起用。<br>整組記：I 類→あ段＋<b>せる</b>、II 類→去る＋<b>させる</b>、する→<b>させる</b>、くる→<b>こさせる</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_causative', topicIds: ['jpg_causative'] },
   },
   {
@@ -90,7 +90,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['が', 'を', 'に', 'で'],
     answer: '2',
     explain: '正解：<b>を</b>。使役句的基本型是「<b>AをV-させる</b>」＝讓 A 產生某個狀態或情緒。這裡是「讓父母擔心」，父母是<b>被影響、產生反應的對象</b>，用を 標示。<br>誘答：<b>に</b> 是這題真正的陷阱——使役對象確實有用に 的情況（見下一題），但<b>「心配させる」這種讓對方產生情緒的句子固定用を</b>；<b>が</b> 會讓父母變成主語，但主語是弟；<b>で</b> 標場所或手段。<br>注意這個を 不是單純的動作受詞——<b>它標的是「被弄得怎麼樣」的那個人</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_causative', topicIds: ['jpg_causative'] },
   },
   {
@@ -100,7 +100,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['で', 'に', 'が', 'を'],
     answer: '2',
     explain: '正解：<b>に</b>。<b>這題是上一題的對照組，要成對記</b>。<br>「飲む」是他動詞，這個使役動詞底下已經有一個を（くすり<u>を</u>）。這時使役的對象<b>必須改標に</b>，避免<b>同一個動詞</b>帶兩個を——「私を くすりを 飲ませた」是不成立的。<br>誘答：<b>を</b> 就是這個錯誤；<b>が</b> 會讓「私」變成主語，但主語是母；<b>で</b> 標手段或場所。<br>整理成三種情況——判準是<b>這個使役動詞底下有沒有を補語</b>，以及<b>動作是不是對方自己決定得了的</b>：<br>・<b>已經帶を補語</b>（くすり<u>を</u> 飲ませる）→ 對象只能用<b>に</b>，避免同一個動詞帶兩個を；<br>・<b>沒有を補語，動作對方意志可控</b>（行かせる・遊ばせる・読ませる）→ を／に 皆可，<b>を 偏強制</b>、<b>に 偏允許放任</b>（句中若已經有目的地的に，對象就用を：子どもを 学校に 行かせる）；<br>・<b>沒有を補語，是對方非意志的反應</b>（泣かせる・驚かせる・困らせる・喜ばせる・心配させる）→ <b>固定用を</b>。<br>注意判準只看<b>同一個動詞底下</b>：上一題的「けがを して、両親を 心配させました」整句雖然出現過を，但那個を 屬於「けがをする」，和「心配させる」不是同一個動詞，所以不受影響。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_causative', topicIds: ['jpg_causative'] },
   },
 
@@ -112,7 +112,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['も', 'で', 'に', 'が'],
     answer: '1',
     explain: '正解：<b>も</b>。「數量詞＋も」表示<b>數量多得超乎預期</b>，帶著驚訝或誇張的語氣——竟然吃了八個之多。<br>誘答：<b>に</b>、<b>が</b>、<b>で</b> 都不能直接接在數量詞後面表達「多達」的語感。<br>N5 學的も 是<b>「也」</b>（私<b>も</b> 行きます）；接在<b>數量詞</b>後面<b>且配肯定</b>時意思不同，表示<b>「竟然多達」</b>。<br>（配否定時意思相反，變成「連…都不到」——一時間も 寝て いません。見下一題。）',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_mo-quantity-emphasis', topicIds: ['jpg_mo-quantity-emphasis'] },
   },
   {
@@ -122,7 +122,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['だけ', 'しか', 'が', 'まで'],
     answer: '2',
     explain: '正解：<b>しか</b>。<b>しか 後面一定接否定</b>，表示「只有…（很少）」——只睡了三小時。句尾是「寝られませんでした」，是判斷的關鍵。<br>誘答：<b>だけ</b> 意思也是「只」，但它<b>配肯定</b>（三時間だけ 寝ました○／三時間だけ 寝られませんでした✗）——這是最值得記的一組對比；<b>まで</b> 標終點；<b>が</b> 在這裡不成句。<br>成組記：<br>・<b>數量＋しか＋否定</b>＝只有這麼少（三時間しか 寝られませんでした）<br>・<b>數量＋だけ＋肯定</b>＝只有這麼少（三時間だけ 寝ました）<br>・<b>數量＋も＋肯定</b>＝竟然這麼多（八つも 食べました）<br>（注意：「數量＋も」<b>也能接否定</b>，但意思變成「連…都不到」——一時間も 寝て いません。這是另一個用法，不要和上面的混在一起。）',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_mo-quantity-emphasis', topicIds: ['jpg_mo-quantity-emphasis'] },
   },
   {
@@ -132,7 +132,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['ほかの 人も 二時間 かかったと 言って いる', '時間が 少なくて うれしいと 思って いる', '二時間ぐらいだろうと よそうして いる', '思って いたより 時間が かかって、おどろいて いる'],
     answer: '4',
     explain: '正解：<b>「思って いたより 時間が かかって、おどろいて いる」</b>。數量詞後面的も 本身就<b>帶著「比預期多」的評價語氣</b>，不只是客觀報告數字。<br>誘答：<br>・「時間が 少なくて うれしいと 思って いる」方向相反，該用しか；<br>・「ほかの 人も 二時間 かかったと 言って いる」把它當成 N5 的「也、同樣」的も——同一個字，但接在<b>數量詞</b>後面時是「多達」的意思；<br>・4 「大概兩小時吧」是推測，該用「ぐらいでしょう」。<br>一句話：<b>看到「數量詞＋も」，就要讀出說話者覺得「太多了」的情緒</b>。',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_mo-quantity-emphasis', topicIds: ['jpg_mo-quantity-emphasis'] },
   },
 
@@ -144,7 +144,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['作られる', '作らせる', '作られさせる', '作れる'],
     answer: '1',
     explain: '正解：<b>作られる</b>。「作る」是 I 類動詞，受身形要<b>把語尾從う段改成あ段再加れる</b>：作<u>る</u> → 作<u>ら</u> → 作<b>られる</b>。<br>誘答：<b>作らせる</b> 是<b>使役形</b>（讓某人做）；<b>作れる</b> 是<b>可能形</b>（做得出來）；<b>作られさせる</b> 是把兩種變化疊在一起。<br>使役與受身的變化位置<b>完全一樣</b>（都退到あ段），差別只在後面接<b>せる</b>還是<b>れる</b>——這一個假名的差別就是兩個文法點。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_passive-niyotte', topicIds: ['jpg_passive-niyotte'] },
   },
   {
@@ -154,7 +154,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['から', 'を', 'によって', 'へ'],
     answer: '3',
     explain: '正解：<b>によって</b>。被動句裡標示<b>動作的執行者</b>（是誰做的），用在製作、發明、決定這類偏書面或正式的語境。<br>誘答：<br>・<b>から</b> 標的是<b>起點或原料來源</b>，不是製作者；<br>・<b>を</b> 不能用在被動句的動作者位置；<br>・<b>へ</b> 標方向。<br>句型：<b>Aによって（Bが）V-られる</b>。真正的主語（被製作的東西＝じしょ）用は 或が，執行者用によって。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_passive-niyotte', topicIds: ['jpg_passive-niyotte'] },
   },
   {
@@ -164,7 +164,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['に', 'へ', 'によって', 'から'],
     answer: '4',
     explain: '正解：<b>から</b>。這裡的米是<b>原料</b>——經過加工後已經看不出原本的樣子，用から。<br>誘答：<b>によって</b> 標的是<b>做這件事的一方，或造成事件的原因</b>（外国人によって 作られた／地震によって こわされた）；米在這裡是<b>被加工的原料</b>，不是動作的一方，所以用から。這題和上一題刻意成對，就是要分辨這一組。<br>順帶一提，同樣是材料，如果<b>加工後還看得出原樣</b>（木で 作った いす）習慣用<b>で</b>。<br>整理：<b>人 → によって</b>、<b>原料（變了樣）→ から</b>、<b>材料（看得出來）→ で</b>。',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_passive-niyotte', topicIds: ['jpg_passive-niyotte'] },
   },
 
@@ -176,7 +176,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['だれに', 'だれでも', 'だれを', 'だれが'],
     answer: '2',
     explain: '正解：<b>だれでも</b>。「疑問詞＋でも」表示<b>「不論是誰都…」的全稱肯定</b>。<br>誘答：<b>だれが／だれに／だれを</b> 是<b>疑問詞加助詞，用來發問</b>。但這句話後面接的是「が、よやくが ひつようです」——這是在<b>陳述規則</b>，不是在問問題。<br>判斷第一步：<b>先確認這句是陳述句還是疑問句</b>。是陳述句，就往「疑問詞＋でも」想。',
-    source: { book: 'JLPT N4', chapter: '指示詞・疑問詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '指示詞・疑問詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_interrogative-demo', topicIds: ['jpg_interrogative-demo'] },
   },
   {
@@ -186,7 +186,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['どこでも', 'どこか', 'どこに', 'どこが'],
     answer: '1',
     explain: '正解：<b>どこでも</b>＝不論在哪裡都買得到。<br>誘答：<b>どこが／どこに</b> 是發問用的；<b>どこか</b> 是「某個地方」（不確定的一處），語氣完全不同——「日本のどこかで買えます」意思會變成「在日本某處買得到」，那是在說很難找，跟原意相反。<br>這個句型的好處是<b>可以整組類推</b>，不必一個一個背：<b>だれでも・何でも・いつでも・どこでも・どれでも</b>。',
-    source: { book: 'JLPT N4', chapter: '指示詞・疑問詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '指示詞・疑問詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_interrogative-demo', topicIds: ['jpg_interrogative-demo'] },
   },
   {
@@ -196,7 +196,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['何を', '何が', '何でも', '何に'],
     answer: '3',
     explain: '正解：<b>何でも</b>＝不論什麼都可以拿。<br>誘答：<b>何が／何を／何に</b> 都是發問用的疑問詞組合，接在「〜てください」前面不成句。<br>語序上兩種說法都自然（「何でも 好きな ものを」與「好きな ものを 何でも」），差別只在焦點放哪裡，不是文法問題。<br>句子在<b>給對方許可</b>，不是在問對方要什麼——這個語境判斷就是選對的依據。',
-    source: { book: 'JLPT N4', chapter: '指示詞・疑問詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '指示詞・疑問詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_interrogative-demo', topicIds: ['jpg_interrogative-demo'] },
   },
 
@@ -208,7 +208,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['なのに', 'なら', 'ばかり', 'だから'],
     answer: '2',
     explain: '正解：<b>なら</b>。對方提出了兩個選項（あした／あさって），B <b>挑出其中成立的那一個回應</b>——這正是なら 最典型的用法。<br>誘答：<b>だから</b> 表因果，但「後天」和「沒問題」之間沒有因果關係；<b>なのに</b> 是逆接（明明…卻…），語意不合；<b>ばかり</b> 是「淨是、只有」，接在時間名詞後語意不通。<br>記法：<b>なら 緊接在名詞後面，用來對「對方剛提出的選項」做篩選。</b><br>（補充：「あさって<b>でも</b> だいじょうぶだよ」也是自然的日文，意思是「後天也行」。它和なら 都對，只是語感不同——なら 是挑出成立的那個，でも 是退一步說「這樣也可以」。）',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_nara-conditional', topicIds: ['jpg_nara-conditional'] },
   },
   {
@@ -218,7 +218,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['でも', 'まで', 'なら', 'だから'],
     answer: '3',
     explain: '正解：<b>なら</b>。B 接過 A 剛提出的話題（日本語の本），<b>針對這個話題給建議</b>——「如果是日文書的話，那家店不錯」。<br>誘答：<b>だから</b> 需要因果關係；<b>でも</b> 是轉折；<b>まで</b> 標終點。<br>這是なら 的另一個典型場合：<b>接過對方剛說的話題，再針對它回應</b>。跟上一題「從兩個選項挑一個」是同一種邏輯——都是對<b>已經被提出來的東西</b>做回應。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_nara-conditional', topicIds: ['jpg_nara-conditional'] },
   },
   {
@@ -228,7 +228,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['でも', 'より', 'なら', 'だから'],
     answer: '3',
     explain: '正解：<b>なら</b>＝「說到運動的話」。先把話題限定在某個範圍，再在範圍內回答。<br>誘答：<b>だから</b>（因為是運動，所以…）在這裡邏輯不通；<b>でも</b> 位置不對；<b>より</b> 是比較（〜より＝比起…）。<br>三題合起來看，なら 的共同點是<b>「先接住一個已經出現的話題或選項，再回應」</b>——不管那個話題是對方問的、對方提的，還是說話者自己拉出來的範圍。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_nara-conditional', topicIds: ['jpg_nara-conditional'] },
   },
 
@@ -240,7 +240,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['を', 'に', 'で', 'の'],
     answer: '4',
     explain: '正解：<b>の</b>。<b>「間」前面接名詞時一律用の 連接</b>：夏休み＋<b>の</b>＋間。這是名詞修飾名詞的基本規則，不是「間」的特殊用法。<br>誘答：<b>に／で／を</b> 都不能直接接在名詞後面再接「間」。<br>「間」在 N5 學的是<b>空間</b>上的「兩者之間」，N4 延伸出<b>時間</b>上的「期間」——同一個字，兩種距離。',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_period-no-aida', topicIds: ['jpg_period-no-aida'] },
   },
   {
@@ -250,7 +250,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['いた', 'いる', 'おく', 'ある'],
     answer: '2',
     explain: '正解：<b>いる</b>。前面如果是<b>動詞</b>，接續形式要改成<b>V-ている間</b>：話して<b>いる</b>間＝在老師說話的那段期間。<br>誘答：<b>いた</b> 是過去式，和後面的「してください」（現在的請求）時態不合；<b>ある</b> 用於他動詞留下的狀態；<b>おく</b> 是「事先做好」。<br>成對記兩種接續：<b>名詞＋の＋間</b>（夏休みの間）／<b>V-ている＋間</b>（話している間）。<b>前面是名詞就用の，是動詞就用ている。</b>',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_period-no-aida', topicIds: ['jpg_period-no-aida'] },
   },
   {
@@ -260,7 +260,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['で', 'から', 'の', 'に'],
     answer: '3',
     explain: '正解：<b>の</b>。這題的「間」是 N5 學過的<b>空間</b>意思（兩間教室之間），但<b>接續規則一模一樣</b>——前面是名詞就用の。<br>誘答：<b>に／で／から</b> 都不能直接接名詞再接「間」。<br>這題和第 22 題放在一起就是重點：<b>不管「間」講的是空間還是期間，前面接名詞一律用の</b>。意思變了，接續沒變。',
-    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_period-no-aida', topicIds: ['jpg_period-no-aida'] },
   },
 
@@ -272,7 +272,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['切ったり', '切るかどうか', '切りに', '切るのに'],
     answer: '4',
     explain: '正解：<b>切るのに</b>。「動詞辞書形＋のに」表示<b>為了做這件事所花費的代價</b>（時間、金錢、精力）。<br>誘答各對應一種接續錯誤：<br>・<b>切ったり</b> 是列舉（〜たり〜たり）；<br>・<b>切りに</b> 是「去做某事」的目的（買いに 行く），後面要接移動動詞；<br>・<b>切るかどうか</b> 是「是否要剪」的疑問子句。<br>重點：<b>這個のに 不是逆接（雖然…但是），而是表示用途或目的，接續一定是辞書形。</b>',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_noni-purpose', topicIds: ['jpg_noni-purpose'] },
   },
   {
@@ -282,7 +282,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['のに', 'から', 'ので', 'けど'],
     answer: '1',
     explain: '正解：<b>のに</b>。到車站要花三十分鐘——「花費多少」是這個句型的核心。<br>誘答：<b>ので</b> 與<b>から</b> 是原因（因為要去車站，所以…），但後半是「花 30 分鐘」，不是結果而是代價；<b>けど</b> 是轉折。<br>提示在句尾：<b>看到「〜かかります」「〜必要です」「〜便利です」這類講代價或用途的句尾，前面多半是「辞書形＋のに」。</b>',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_noni-purpose', topicIds: ['jpg_noni-purpose'] },
   },
   {
@@ -292,7 +292,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['のは', 'のが', 'ので', 'のに'],
     answer: '4',
     explain: '正解：<b>のに</b>。問這個工具是<b>用來做什麼的</b>——這是のに 的「用途」用法。<br>誘答：<b>ので</b> 是原因；<b>のが／のは</b> 是把動作名詞化後當主語或主題（泳ぐのが 好きです），不能接「つかいますか」。<br>整理のに 的兩種常見翻法，其實是同一件事的兩面：<b>「為了做…（要花多少）」與「用來做…」——都是在講這個動作的用途或代價。</b>',
-    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_noni-purpose', topicIds: ['jpg_noni-purpose'] },
   },
 
@@ -304,7 +304,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['ふってはいけません', 'ふるかもしれません', 'ふってください', 'ふったほうがいいです'],
     answer: '2',
     explain: '正解：<b>ふるかもしれません</b>。看到天色變暗，<b>說話者自己推測</b>可能會下雨。<br>誘答的問題都出在<b>語氣的主體</b>：<br>・<b>ふってください</b> 是對對方的請求——不能請求雨下下來；<br>・<b>ふったほうがいいです</b> 是給對方的建議；<br>・<b>ふってはいけません</b> 是禁止。<br>三個都是<b>對別人說話</b>，只有かもしれません 是<b>說話者對事情的猜測</b>。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_kamoshirenai', topicIds: ['jpg_kamoshirenai'] },
   },
   {
@@ -314,7 +314,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['おいしいだかもしれません', 'おいしくかもしれません', 'おいしいかもしれません', 'おいしいでかもしれません'],
     answer: '3',
     explain: '正解：<b>おいしいかもしれません</b>。かもしれません <b>接在普通形後面</b>，い形容詞的普通形就是原形本身，直接接上去即可。<br>誘答對應三種錯誤：<b>おいしいで</b>（把な形容詞的で 套過來）、<b>おいしく</b>（用了副詞形）、<b>おいしいだ</b>（多加了だ，い形容詞後面不接だ）。<br>各詞類的接法：<b>動詞</b>降る→降るかもしれません／<b>い形</b>おいしい→おいしいかもしれません／<b>な形</b>しずか→しずかかもしれません（<b>不加だ</b>）／<b>名詞</b>休み→休みかもしれません。',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_kamoshirenai', topicIds: ['jpg_kamoshirenai'] },
   },
   {
@@ -324,7 +324,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
     options: ['いたほうがいいです', 'いてください', 'いるかもしれません', 'いてはいけません'],
     answer: '3',
     explain: '正解：<b>いるかもしれません</b>。B 在<b>替遲到的原因做猜測</b>——說不定電車誤點了。<br>誘答仍然是語氣主體的問題：てください（請求）、ほうがいいです（建議）、てはいけません（禁止）三個都是<b>對聽話者說的話</b>，但這裡 B 談的是<b>不在場的第三者的狀況</b>，只能用推測。<br>一句話：<b>句子在講「別人或事情可能怎麼樣」→ かもしれません；在講「你該怎麼做」→ てください／ほうがいい。</b>',
-    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: false, license: 'own', origin: 'own' },
+    source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_kamoshirenai', topicIds: ['jpg_kamoshirenai'] },
   },
 ];
