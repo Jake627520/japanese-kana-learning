@@ -34,7 +34,9 @@ export function logLearningEvent(input: CreateLearningEventInput): LearningEvent
     type: input.type,
     source: input.source,
     ...(input.kanaId ? { kanaId: input.kanaId } : {}),
+    ...(input.selectedKanaId ? { selectedKanaId: input.selectedKanaId } : {}),
     ...(input.correct !== undefined ? { correct: input.correct } : {}),
+    ...(input.responseMs !== undefined ? { responseMs: input.responseMs } : {}),
   };
 
   if (typeof window === 'undefined' || !window.localStorage) {

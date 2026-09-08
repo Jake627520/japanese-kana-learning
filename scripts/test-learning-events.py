@@ -36,7 +36,9 @@ class TestLearningEventLayer(unittest.TestCase):
         self.assertIn("type: LearningEventType;", content)
         self.assertIn("source: string;", content)
         self.assertIn("kanaId?: string;", content)
+        self.assertIn("selectedKanaId?: string;", content)
         self.assertIn("correct?: boolean;", content)
+        self.assertIn("responseMs?: number;", content)
 
     def test_utils_storage_functions(self):
         self.assertTrue(os.path.exists(self.utils_file), "learningEvents.ts must exist")
@@ -48,6 +50,8 @@ class TestLearningEventLayer(unittest.TestCase):
         self.assertIn("MAX_LEARNING_EVENTS = 500", content)
         self.assertIn("export function getLearningEvents", content)
         self.assertIn("export function logLearningEvent", content)
+        self.assertIn("selectedKanaId", content)
+        self.assertIn("responseMs", content)
         self.assertIn("export function clearLearningEvents", content)
 
     def test_simulated_event_lifecycle(self):

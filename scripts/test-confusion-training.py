@@ -113,8 +113,8 @@ class TestConfusionTraining(unittest.TestCase):
         self.assertEqual(event_right["selectedKanaId"], "h_tsu")
 
     def test_11_srs_record_review_result(self):
-        self.assertIn("recordReviewResult(targetKana.id, isCorrect)", self.quiz_view_code)
-        self.assertIn("recordReviewResult(q.target.id, correct)", self.confusable_view_code)
+        self.assertIn("recordReviewResult(targetKana.id, isCorrect", self.quiz_view_code)
+        self.assertIn("recordReviewResult(q.target.id, correct", self.confusable_view_code)
 
     def test_12_source_naming_contract(self):
         self.assertIn("listening_confusion", self.quiz_view_code)

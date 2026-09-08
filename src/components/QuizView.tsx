@@ -382,6 +382,7 @@ export function QuizView({
       kanaId: targetKana.id,
       selectedKanaId: selectedKana?.id,
       correct: isCorrect,
+      responseMs,
     });
     setResults((prev) => [...prev, { kana: targetKana, isCorrect }]);
 

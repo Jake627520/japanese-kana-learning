@@ -12,6 +12,7 @@ export interface LearningEvent {
   kanaId?: string;
   selectedKanaId?: string;
   correct?: boolean;
+  responseMs?: number;
 }
 
 export type CreateLearningEventInput = Omit<LearningEvent, 'id' | 'timestamp'> & {
