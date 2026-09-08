@@ -90,6 +90,10 @@ export interface TranslationSchema {
     items: string;
     countUnit: string;
     empty: string;
+    answerCorrect: string;
+    answerWrongWithCorrect: string;
+    correctAnswer: string;
+    yourWrongAnswer: string;
   };
   home: {
     hero: {

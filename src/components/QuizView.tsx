@@ -734,6 +734,20 @@ export function QuizView({
         <span className="text-[#00A86B]">{t('quiz.score')}：{score}</span>
       </div>
 
+      {/* a11y: 螢幕報讀器結果播報（常駐 live region，作答後才有內容） */}
+      <div aria-live="assertive" aria-atomic="true" className="sr-only">
+        {isAnswered
+          ? results[results.length - 1]?.isCorrect
+            ? t('common.answerCorrect')
+            : t('common.answerWrongWithCorrect', {
+                answer:
+                  currentQ.type === 'input-romaji' && quizMode !== 'listening'
+                    ? currentQ.targetKana.romaji
+                    : currentQ.options.find((o) => o.isCorrect)?.label ?? '',
+              })
+          : ''}
+      </div>
+
       {/* Question Card */}
       <div className="bg-white p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-6">
         {quizMode === 'listening' ? (
@@ -799,7 +813,7 @@ export function QuizView({
                 <Volume2 className="w-8 h-8" />
               </button>
             ) : (
-              <div className="text-6xl font-extrabold text-[#1E293B]">{currentQ.targetKana.kana}</div>
+              <div lang="ja" className="text-6xl font-extrabold text-[#1E293B]">{currentQ.targetKana.kana}</div>
             )}
           </div>
         )}
@@ -850,7 +864,13 @@ export function QuizView({
                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#F1F5F9] text-[11px] font-bold text-[#64748B] flex items-center justify-center">
                     {idx + 1}
                   </span>
-                  <span>{opt.label}</span>
+                  <span lang={currentQ.type === 'kana-to-romaji' ? undefined : 'ja'}>{opt.label}</span>
+                  {isAnswered && opt.isCorrect && (
+                    <span className="sr-only">（{t('common.correctAnswer')}）</span>
+                  )}
+                  {isAnswered && isSelected && !opt.isCorrect && (
+                    <span className="sr-only">（{t('common.yourWrongAnswer')}）</span>
+                  )}
                 </button>
               );
             })}

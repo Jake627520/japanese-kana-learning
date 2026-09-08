@@ -90,6 +90,10 @@ export const en: TranslationSchema = {
     items: 'items',
     countUnit: 'items',
     empty: 'No data available',
+    answerCorrect: 'Correct',
+    answerWrongWithCorrect: 'Incorrect. The correct answer is {answer}',
+    correctAnswer: 'correct answer',
+    yourWrongAnswer: 'your answer, incorrect',
   },
   home: {
     hero: {

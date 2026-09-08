@@ -231,8 +231,19 @@ export function JlptPracticeView() {
                 </span>
               </div>
 
+              {/* a11y: 螢幕報讀器結果播報 */}
+              <div aria-live="assertive" aria-atomic="true" className="sr-only">
+                {isAnswered
+                  ? selectedOption !== null && String(selectedOption + 1) === currentQ.answer
+                    ? t('common.answerCorrect')
+                    : t('common.answerWrongWithCorrect', {
+                        answer: currentQ.options[Number(currentQ.answer) - 1] ?? '',
+                      })
+                  : ''}
+              </div>
+
               <div className="p-5 bg-[#FAFBFB] rounded-2xl border border-[#F1F5F9]">
-                <div className="text-lg font-bold text-[#1E293B] leading-relaxed">
+                <div lang="ja" className="text-lg font-bold text-[#1E293B] leading-relaxed">
                   <RichText text={currentQ.stem} />
                 </div>
               </div>
@@ -262,13 +273,19 @@ export function JlptPracticeView() {
                         <span className="w-6 h-6 rounded-full bg-[#F1F5F9] text-xs font-bold flex items-center justify-center shrink-0">
                           {idx + 1}
                         </span>
-                        <RichText text={opt} />
+                        <span lang="ja"><RichText text={opt} /></span>
                       </span>
                       {isAnswered && isCorrectAnswer && (
-                        <CheckCircle2 className="w-5 h-5 text-[#00A86B] shrink-0" />
+                        <>
+                          <CheckCircle2 className="w-5 h-5 text-[#00A86B] shrink-0" aria-hidden="true" />
+                          <span className="sr-only">（{t('common.correctAnswer')}）</span>
+                        </>
                       )}
                       {isAnswered && isSelected && !isCorrectAnswer && (
-                        <XCircle className="w-5 h-5 text-red-500 shrink-0" />
+                        <>
+                          <XCircle className="w-5 h-5 text-red-500 shrink-0" aria-hidden="true" />
+                          <span className="sr-only">（{t('common.yourWrongAnswer')}）</span>
+                        </>
                       )}
                     </button>
                   );

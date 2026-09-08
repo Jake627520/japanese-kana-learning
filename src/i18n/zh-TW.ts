@@ -90,6 +90,10 @@ export const zhTW: TranslationSchema = {
     items: '項',
     countUnit: '個',
     empty: '尚無資料',
+    answerCorrect: '答對了',
+    answerWrongWithCorrect: '答錯了，正確答案是 {answer}',
+    correctAnswer: '正確答案',
+    yourWrongAnswer: '你的答案，不正確',
   },
   home: {
     hero: {

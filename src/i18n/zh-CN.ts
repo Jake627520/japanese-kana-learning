@@ -90,6 +90,10 @@ export const zhCN: TranslationSchema = {
     items: '项',
     countUnit: '个',
     empty: '暂无数据',
+    answerCorrect: '答对了',
+    answerWrongWithCorrect: '答错了，正确答案是 {answer}',
+    correctAnswer: '正确答案',
+    yourWrongAnswer: '你的答案，不正确',
   },
   home: {
     hero: {
