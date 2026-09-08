@@ -126,7 +126,7 @@ export function HomeDashboard({
   return (
     <div className="space-y-7">
       {/* Top Banner */}
-      <div className="bg-[linear-gradient(135deg,#5C6B3D_0%,#47552F_55%,#3F4C29_100%)] rounded-3xl p-6 sm:p-8 text-[#F1EFE0] elev-3 rise-in relative overflow-hidden">
+      <div className="bg-[linear-gradient(150deg,#2D4A5B_0%,#24404F_55%,#1E3743_100%)] rounded-3xl p-6 sm:p-8 text-[#F1EFE0] elev-3 rise-in relative overflow-hidden">
         <div
           aria-hidden
           className="absolute top-0 -right-10 opacity-[0.08] text-[110px] sm:text-[150px] font-extrabold leading-[0.9] tracking-wide whitespace-nowrap select-none text-right pointer-events-none [mask-image:linear-gradient(to_left,black_25%,transparent_75%)]"
