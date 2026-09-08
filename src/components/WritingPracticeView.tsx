@@ -56,7 +56,7 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setHasInk(false);
 
-    ctx.strokeStyle = '#E2E8F0';
+    ctx.strokeStyle = '#D9CDB2';
     ctx.lineWidth = 1;
     ctx.setLineDash([6, 6]);
     ctx.beginPath();
@@ -68,7 +68,7 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
     ctx.setLineDash([]);
 
     if (showTrace) {
-      ctx.fillStyle = '#E8F5EE';
+      ctx.fillStyle = '#E6EAD5';
       ctx.font = `${Math.floor(canvas.height * 0.72)}px "Hiragino Sans", "Yu Gothic", sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -92,7 +92,7 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
     drawingRef.current = true;
     setHasInk(true);
     const p = pos(e);
-    ctx.strokeStyle = '#1E293B';
+    ctx.strokeStyle = '#221F18';
     ctx.lineWidth = 8;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -125,7 +125,7 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     setHasInk(false);
 
-    ctx.strokeStyle = '#E2E8F0';
+    ctx.strokeStyle = '#D9CDB2';
     ctx.lineWidth = 1;
     ctx.setLineDash([6, 6]);
     ctx.beginPath();
@@ -137,7 +137,7 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
     ctx.setLineDash([]);
 
     if (showTrace) {
-      ctx.fillStyle = '#E8F5EE';
+      ctx.fillStyle = '#E6EAD5';
       ctx.font = `${Math.floor(canvas.height * 0.72)}px "Hiragino Sans", "Yu Gothic", sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -164,16 +164,16 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
   return (
     <div className="space-y-6">
       {/* 標題 */}
-      <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex items-center justify-between gap-4 flex-wrap">
+      <div className="bg-[#F4EEDE] p-5 sm:p-6 rounded-3xl border border-[#D9CDB2] shadow-xs flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6F8F2] text-[#00A86B] rounded-full text-xs font-bold mb-1">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6EAD5] text-[#5C6B3D] rounded-full text-xs font-bold mb-1">
             <PenLine className="w-3.5 h-3.5" />
             {t('writing.title')}
           </div>
-          <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-[#221F18]">
             {t('writing.title')}
           </h2>
-          <p className="text-xs text-[#64748B] mt-0.5">
+          <p className="text-xs text-[#6B6252] mt-0.5">
             {t('writing.subtitle')}
           </p>
         </div>
@@ -182,38 +182,38 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
       {/* 兩欄：左筆順、右手寫區 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* 左：示範與筆順 */}
-        <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-4">
+        <div className="bg-[#F4EEDE] p-5 sm:p-6 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-extrabold text-[#1E293B]">{t('writing.strokeOrderTitle')}</span>
+            <span className="text-xs font-extrabold text-[#221F18]">{t('writing.strokeOrderTitle')}</span>
             <button
               onClick={() => speakJapanese(kana.kana)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold text-[#00A86B] bg-[#E6F8F2] rounded-lg hover:bg-[#D1F2E5] cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold text-[#5C6B3D] bg-[#E6EAD5] rounded-lg hover:bg-[#DBE1C8] cursor-pointer"
             >
               <Volume2 className="w-3.5 h-3.5" /> {t('common.playAudio')}
             </button>
           </div>
 
-          <div className="flex items-center justify-center p-8 bg-[#FAFBFB] rounded-2xl border border-[#F1F5F9]">
+          <div className="flex items-center justify-center p-8 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0]">
             <div className="text-center space-y-2">
-              <div className="text-7xl font-extrabold text-[#1E293B]">{kana.kana}</div>
-              <div className="text-sm font-extrabold text-[#00A86B] uppercase tracking-wider">
+              <div className="text-7xl font-extrabold text-[#221F18]">{kana.kana}</div>
+              <div className="text-sm font-extrabold text-[#5C6B3D] uppercase tracking-wider">
                 {kana.romaji}
               </div>
             </div>
           </div>
 
           {guide && (
-            <div className="space-y-2 pt-2 border-t border-[#F1F5F9]">
-              <div className="text-xs font-extrabold text-[#00A86B]">
+            <div className="space-y-2 pt-2 border-t border-[#ECE4D0]">
+              <div className="text-xs font-extrabold text-[#5C6B3D]">
                 {guide.count}
               </div>
               <ol className="space-y-1.5">
                 {guide.steps.map((s, i) => (
-                  <li key={i} className="text-xs text-[#1E293B] leading-relaxed">{s}</li>
+                  <li key={i} className="text-xs text-[#221F18] leading-relaxed">{s}</li>
                 ))}
               </ol>
               {guide.note && (
-                <p className="text-[11px] text-[#92400E] bg-[#FEF3C7] rounded-lg px-3 py-2 leading-relaxed">
+                <p className="text-[11px] text-[#7A5320] bg-[#EFE3C9] rounded-lg px-3 py-2 leading-relaxed">
                   {guide.note}
                 </p>
               )}
@@ -222,20 +222,20 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
         </div>
 
         {/* 右：手寫區 */}
-        <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-3">
+        <div className="bg-[#F4EEDE] p-5 sm:p-6 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-3">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-xs font-extrabold text-[#1E293B]">{t('writing.title')}</span>
+            <span className="text-xs font-extrabold text-[#221F18]">{t('writing.title')}</span>
             <div className="flex gap-2">
               <button
                 onClick={() => setShowTrace((v) => !v)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-[#221F18] bg-[#F4EEDE] border border-[#D9CDB2] rounded-lg hover:bg-[#F0E9D8] cursor-pointer"
               >
                 {showTrace ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
                 {showTrace ? t('writing.hideStroke') : t('writing.showStroke')}
               </button>
               <button
                 onClick={clearInk}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-lg hover:bg-slate-50 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-bold text-[#221F18] bg-[#F4EEDE] border border-[#D9CDB2] rounded-lg hover:bg-[#F0E9D8] cursor-pointer"
               >
                 <Eraser className="w-3.5 h-3.5" /> {t('writing.clearCanvas')}
               </button>
@@ -250,7 +250,7 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
             onPointerMove={move}
             onPointerUp={end}
             onPointerLeave={end}
-            className="w-full aspect-square rounded-2xl border-2 border-dashed border-[#E2E8F0] touch-none cursor-crosshair bg-white"
+            className="w-full aspect-square rounded-2xl border-2 border-dashed border-[#D9CDB2] touch-none cursor-crosshair bg-[#F4EEDE]"
           />
 
           <button
@@ -258,8 +258,8 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
             disabled={!hasInk && !isMastered}
             className={`w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 font-extrabold text-sm rounded-2xl transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${
               isMastered
-                ? 'bg-[#E6F8F2] text-[#00A86B] border border-[#00A86B]/30'
-                : 'bg-[#00A86B] text-white hover:bg-[#008F5B]'
+                ? 'bg-[#E6EAD5] text-[#5C6B3D] border border-[#5C6B3D]/30'
+                : 'bg-[#5C6B3D] text-[#F1EFE0] hover:bg-[#47552F]'
             }`}
           >
             <Check className="w-4 h-4" />
@@ -273,17 +273,17 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
         <button
           onClick={() => goTo(index - 1)}
           disabled={index === 0}
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-xl hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-[#221F18] bg-[#F4EEDE] border border-[#D9CDB2] rounded-xl hover:bg-[#F0E9D8] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4" /> {t('common.previous')}
         </button>
-        <span className="text-xs text-[#64748B] font-semibold">
+        <span className="text-xs text-[#6B6252] font-semibold">
           {index + 1} / {list.length}
         </span>
         <button
           onClick={() => goTo(index + 1)}
           disabled={index === list.length - 1}
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-[#1E293B] bg-white border border-[#E2E8F0] rounded-xl hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-[#221F18] bg-[#F4EEDE] border border-[#D9CDB2] rounded-xl hover:bg-[#F0E9D8] disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
         >
           {t('common.next')} <ChevronRight className="w-4 h-4" />
         </button>

@@ -259,23 +259,23 @@ export function ShadowingView() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-[#F4EEDE] p-6 rounded-3xl border border-[#D9CDB2] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6F8F2] text-[#00A86B] rounded-full text-xs font-bold">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6EAD5] text-[#5C6B3D] rounded-full text-xs font-bold">
             <Headphones className="w-3.5 h-3.5" />
             {t('nav.shadowing')}
           </div>
-          <h2 className="text-xl sm:text-2xl font-display font-bold text-[#1E293B]">
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-[#221F18]">
             {t('shadowing.title')}
           </h2>
-          <p className="text-xs text-[#64748B]">
+          <p className="text-xs text-[#6B6252]">
             {t('shadowing.subtitle')}
           </p>
         </div>
 
         {/* Scope Switcher & Progress */}
         <div className="flex flex-col items-start sm:items-end gap-2 shrink-0">
-          <div className="flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl">
+          <div className="flex items-center gap-1 bg-[#ECE4D0] p-1 rounded-xl">
             <button
               type="button"
               onClick={() => {
@@ -284,8 +284,8 @@ export function ShadowingView() {
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition-all cursor-pointer ${
                 !filterTodayOnly
-                  ? 'bg-white text-[#1E293B] shadow-xs'
-                  : 'text-[#64748B] hover:text-[#1E293B]'
+                  ? 'bg-[#F4EEDE] text-[#221F18] shadow-xs'
+                  : 'text-[#6B6252] hover:text-[#221F18]'
               }`}
             >
               {t('shadowing.allTab')} ({allList.length})
@@ -298,23 +298,23 @@ export function ShadowingView() {
               }}
               className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition-all cursor-pointer ${
                 filterTodayOnly
-                  ? 'bg-[#00A86B] text-white shadow-xs'
-                  : 'text-[#64748B] hover:text-[#1E293B]'
+                  ? 'bg-[#5C6B3D] text-[#F1EFE0] shadow-xs'
+                  : 'text-[#6B6252] hover:text-[#221F18]'
               }`}
             >
               {t('shadowing.todayTab')}
             </button>
           </div>
-          <div className="text-xs text-[#64748B] font-bold">
-            {t('home.todayPlan.dueCount')}: <span className="text-[#00A86B] font-extrabold">{todayDoneCount}</span> / 3
+          <div className="text-xs text-[#6B6252] font-bold">
+            {t('home.todayPlan.dueCount')}: <span className="text-[#5C6B3D] font-extrabold">{todayDoneCount}</span> / 3
           </div>
         </div>
       </div>
 
       {/* Step Guide Bar */}
-      <div className="bg-white p-5 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-3">
+      <div className="bg-[#F4EEDE] p-5 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-3">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <span className="text-xs font-extrabold text-[#1E293B]">{t('common.details')}</span>
+          <span className="text-xs font-extrabold text-[#221F18]">{t('common.details')}</span>
           <div className="flex flex-wrap gap-1.5">
             {stepsDef.map((st) => (
               <button
@@ -323,8 +323,8 @@ export function ShadowingView() {
                 onClick={() => setStep(st.id)}
                 className={`px-3 py-1 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                   step === st.id
-                    ? 'bg-[#00A86B] text-white shadow-xs'
-                    : 'bg-[#FAFBFB] text-[#64748B] border border-[#E2E8F0] hover:bg-white hover:text-[#1E293B]'
+                    ? 'bg-[#5C6B3D] text-[#F1EFE0] shadow-xs'
+                    : 'bg-[#F4EEDE] text-[#6B6252] border border-[#D9CDB2] hover:bg-[#F4EEDE] hover:text-[#221F18]'
                 }`}
               >
                 {st.id}. {st.label}
@@ -332,11 +332,11 @@ export function ShadowingView() {
             ))}
           </div>
         </div>
-        <p className="text-xs text-[#64748B] leading-relaxed">
+        <p className="text-xs text-[#6B6252] leading-relaxed">
           {stepsDef.find((x) => x.id === step)?.hint}
         </p>
         {currentSentence.tip && (
-          <p className="text-xs text-[#00A86B] font-bold flex items-center gap-1.5 pt-1 border-t border-[#F1F5F9]">
+          <p className="text-xs text-[#5C6B3D] font-bold flex items-center gap-1.5 pt-1 border-t border-[#ECE4D0]">
             <Sparkles className="w-3.5 h-3.5 text-yellow-500 shrink-0" />
             {getShadowingText(currentSentence.tip, language)}
           </p>
@@ -344,7 +344,7 @@ export function ShadowingView() {
       </div>
 
       {/* Main Practice Card */}
-      <div className="bg-white p-6 sm:p-8 rounded-3xl border border-[#E2E8F0] shadow-xs space-y-6">
+      <div className="bg-[#F4EEDE] p-6 sm:p-8 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-6">
         {/* Text Visibility Toggles */}
         <div className="flex flex-wrap justify-center gap-2">
           <button
@@ -352,8 +352,8 @@ export function ShadowingView() {
             onClick={() => setHideJapanese(!hideJapanese)}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               hideJapanese
-                ? 'bg-[#FAFBFB] text-[#64748B] border-[#E2E8F0]'
-                : 'bg-[#00A86B]/10 text-[#00A86B] border-[#00A86B]/30'
+                ? 'bg-[#F4EEDE] text-[#6B6252] border-[#D9CDB2]'
+                : 'bg-[#5C6B3D]/10 text-[#5C6B3D] border-[#5C6B3D]/30'
             }`}
           >
             {hideJapanese ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -364,8 +364,8 @@ export function ShadowingView() {
             onClick={() => setHideKana(!hideKana)}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               hideKana
-                ? 'bg-[#FAFBFB] text-[#64748B] border-[#E2E8F0]'
-                : 'bg-[#00A86B]/10 text-[#00A86B] border-[#00A86B]/30'
+                ? 'bg-[#F4EEDE] text-[#6B6252] border-[#D9CDB2]'
+                : 'bg-[#5C6B3D]/10 text-[#5C6B3D] border-[#5C6B3D]/30'
             }`}
           >
             {hideKana ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -376,8 +376,8 @@ export function ShadowingView() {
             onClick={() => setHideRomaji(!hideRomaji)}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border ${
               hideRomaji
-                ? 'bg-[#FAFBFB] text-[#64748B] border-[#E2E8F0]'
-                : 'bg-[#00A86B]/10 text-[#00A86B] border-[#00A86B]/30'
+                ? 'bg-[#F4EEDE] text-[#6B6252] border-[#D9CDB2]'
+                : 'bg-[#5C6B3D]/10 text-[#5C6B3D] border-[#5C6B3D]/30'
             }`}
           >
             {hideRomaji ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
@@ -386,10 +386,10 @@ export function ShadowingView() {
         </div>
 
         {/* Sentence Display Area */}
-        <div className="space-y-4 text-center py-6 border-y border-[#F1F5F9] bg-[#FAFBFB]/50 rounded-2xl">
-          <div className="text-2xl sm:text-3xl font-extrabold text-[#1E293B] tracking-wide leading-relaxed min-h-[3rem] flex items-center justify-center">
+        <div className="space-y-4 text-center py-6 border-y border-[#ECE4D0] bg-[#F4EEDE]/50 rounded-2xl">
+          <div className="text-2xl sm:text-3xl font-extrabold text-[#221F18] tracking-wide leading-relaxed min-h-[3rem] flex items-center justify-center">
             {hideJapanese ? (
-              <span className="text-slate-300 font-mono tracking-widest select-none">
+              <span className="text-[#6B6252] font-mono tracking-widest select-none">
                 •••• ••••••••
               </span>
             ) : (
@@ -397,23 +397,23 @@ export function ShadowingView() {
             )}
           </div>
           {!hideKana && (
-            <div className="text-sm font-bold text-[#64748B]">
+            <div className="text-sm font-bold text-[#6B6252]">
               {currentSentence.kana || currentSentence.reading}
             </div>
           )}
           {!hideRomaji && (
-            <div className="text-xs font-medium text-[#94A3B8] font-mono">
+            <div className="text-xs font-medium text-[#8F8674] font-mono">
               {currentSentence.romaji}
             </div>
           )}
-          <div className="text-base font-bold text-[#00A86B]">
+          <div className="text-base font-bold text-[#5C6B3D]">
             {getShadowingText(currentSentence.meaning, language)}
           </div>
         </div>
 
         {/* Mic Permission Error Alert */}
         {micError && (
-          <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-2xl text-xs font-bold flex items-center gap-2">
+          <div className="p-3 bg-[#EFDBD5] border border-[#D8B8B0] text-[#A6443A] rounded-2xl text-xs font-bold flex items-center gap-2">
             <VolumeX className="w-4 h-4 shrink-0" />
             {micError}
           </div>
@@ -425,17 +425,17 @@ export function ShadowingView() {
           <div
             className={`p-5 rounded-2xl border transition-all space-y-3 ${
               step === 1 || step === 2 || step === 3
-                ? 'bg-white border-[#00A86B] ring-1 ring-[#00A86B]/30 shadow-xs'
-                : 'bg-[#FAFBFB] border-[#E2E8F0]'
+                ? 'bg-[#F4EEDE] border-[#5C6B3D] ring-1 ring-[#5C6B3D]/30 shadow-xs'
+                : 'bg-[#F4EEDE] border-[#D9CDB2]'
             }`}
           >
-            <div className="flex items-center justify-between text-xs font-bold text-[#64748B]">
+            <div className="flex items-center justify-between text-xs font-bold text-[#6B6252]">
               <span className="flex items-center gap-2">
-                <Volume2 className="w-4 h-4 text-[#00A86B]" />
+                <Volume2 className="w-4 h-4 text-[#5C6B3D]" />
                 {t('shadowing.listenNative')}
               </span>
               {step === 3 && (
-                <span className="text-[10px] text-[#00A86B] bg-[#E6F8F2] px-2 py-0.5 rounded-full font-bold">
+                <span className="text-[10px] text-[#5C6B3D] bg-[#E6EAD5] px-2 py-0.5 rounded-full font-bold">
                   {t('shadowing.speed')}
                 </span>
               )}
@@ -445,16 +445,16 @@ export function ShadowingView() {
                 type="button"
                 onClick={() => playNativeTts(0.9)}
                 disabled={isSpeakingTts || isComparing}
-                className="flex-1 py-3 bg-white hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
+                className="flex-1 py-3 bg-[#F4EEDE] hover:bg-[#F0E9D8] border border-[#D9CDB2] hover:border-[#5C6B3D] text-[#221F18] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
               >
-                <Play className="w-4 h-4 text-[#00A86B] fill-current" />
+                <Play className="w-4 h-4 text-[#5C6B3D] fill-current" />
                 {t('shadowing.normal')}
               </button>
               <button
                 type="button"
                 onClick={() => playNativeTts(0.6)}
                 disabled={isSpeakingTts || isComparing}
-                className="flex-1 py-3 bg-white hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
+                className="flex-1 py-3 bg-[#F4EEDE] hover:bg-[#F0E9D8] border border-[#D9CDB2] hover:border-[#5C6B3D] text-[#221F18] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <span>🐢</span>
                 {t('shadowing.slow')}
@@ -466,17 +466,17 @@ export function ShadowingView() {
           <div
             className={`p-5 rounded-2xl border transition-all space-y-3 ${
               step === 4
-                ? 'bg-white border-[#00A86B] ring-1 ring-[#00A86B]/30 shadow-xs'
-                : 'bg-[#FAFBFB] border-[#E2E8F0]'
+                ? 'bg-[#F4EEDE] border-[#5C6B3D] ring-1 ring-[#5C6B3D]/30 shadow-xs'
+                : 'bg-[#F4EEDE] border-[#D9CDB2]'
             }`}
           >
-            <div className="flex items-center justify-between text-xs font-bold text-[#64748B]">
+            <div className="flex items-center justify-between text-xs font-bold text-[#6B6252]">
               <span className="flex items-center gap-2">
-                <Mic className="w-4 h-4 text-[#00A86B]" />
+                <Mic className="w-4 h-4 text-[#5C6B3D]" />
                 {t('shadowing.playbackRecord')}
               </span>
               {userAudioUrl && (
-                <span className="text-[#00A86B] bg-[#E6F8F2] px-2 py-0.5 rounded-full text-[10px] font-bold">
+                <span className="text-[#5C6B3D] bg-[#E6EAD5] px-2 py-0.5 rounded-full text-[10px] font-bold">
                   {t('common.completed')}
                 </span>
               )}
@@ -487,7 +487,7 @@ export function ShadowingView() {
                   type="button"
                   onClick={startRecording}
                   disabled={isSpeakingTts || isComparing}
-                  className="flex-1 py-3 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="flex-1 py-3 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   <Mic className="w-4 h-4" />
                   {t('shadowing.startRecord')}
@@ -496,7 +496,7 @@ export function ShadowingView() {
                 <button
                   type="button"
                   onClick={stopRecording}
-                  className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-white font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 animate-pulse"
+                  className="flex-1 py-3 bg-red-600 hover:bg-red-700 text-[#F1EFE0] font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2 animate-pulse"
                 >
                   <Square className="w-4 h-4 fill-current" />
                   {t('shadowing.stopRecord')}
@@ -507,9 +507,9 @@ export function ShadowingView() {
                 type="button"
                 onClick={() => playUserRecording()}
                 disabled={!userAudioUrl || isRecording || isSpeakingTts || isComparing || isPlayingUserAudio}
-                className="flex-1 py-3 bg-white hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex-1 py-3 bg-[#F4EEDE] hover:bg-[#F0E9D8] border border-[#D9CDB2] hover:border-[#5C6B3D] text-[#221F18] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                <Play className="w-4 h-4 text-[#00A86B] fill-current" />
+                <Play className="w-4 h-4 text-[#5C6B3D] fill-current" />
                 {t('shadowing.playbackRecord')}
               </button>
             </div>
@@ -522,7 +522,7 @@ export function ShadowingView() {
             type="button"
             onClick={handleCompare}
             disabled={!userAudioUrl || isRecording || isSpeakingTts || isComparing || isPlayingUserAudio}
-            className="w-full py-3.5 rounded-2xl font-extrabold text-xs sm:text-sm transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2.5 disabled:opacity-40 disabled:cursor-not-allowed bg-gradient-to-r from-[#00A86B] to-[#008F5B] text-white"
+            className="w-full py-3.5 rounded-2xl font-extrabold text-xs sm:text-sm transition-all shadow-xs cursor-pointer flex items-center justify-center gap-2.5 disabled:opacity-40 disabled:cursor-not-allowed bg-gradient-to-r from-[#5C6B3D] to-[#47552F] text-[#F1EFE0]"
           >
             <AudioLines className="w-4 h-4" />
             {isComparing
@@ -539,30 +539,30 @@ export function ShadowingView() {
             type="button"
             disabled={step === 1}
             onClick={() => setStep((prev) => Math.max(1, prev - 1) as Step)}
-            className="px-4 py-2 bg-[#FAFBFB] hover:bg-white border border-[#E2E8F0] text-[#64748B] hover:text-[#1E293B] font-bold text-xs rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-4 py-2 bg-[#F4EEDE] hover:bg-[#F4EEDE] border border-[#D9CDB2] text-[#6B6252] hover:text-[#221F18] font-bold text-xs rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
           >
             ← {t('common.previous')}
           </button>
-          <span className="text-xs font-bold text-[#64748B]">{step} / 5</span>
+          <span className="text-xs font-bold text-[#6B6252]">{step} / 5</span>
           <button
             type="button"
             disabled={step === 5}
             onClick={() => setStep((prev) => Math.min(5, prev + 1) as Step)}
-            className="px-4 py-2 bg-[#FAFBFB] hover:bg-white border border-[#E2E8F0] text-[#64748B] hover:text-[#1E293B] font-bold text-xs rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+            className="px-4 py-2 bg-[#F4EEDE] hover:bg-[#F4EEDE] border border-[#D9CDB2] text-[#6B6252] hover:text-[#221F18] font-bold text-xs rounded-xl transition-all cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
           >
             {t('common.next')} →
           </button>
         </div>
 
         {/* Practice Stats & Mark OK */}
-        <div className="flex items-center justify-between gap-3 pt-4 border-t border-[#F1F5F9] text-xs text-[#64748B] flex-wrap">
+        <div className="flex items-center justify-between gap-3 pt-4 border-t border-[#ECE4D0] text-xs text-[#6B6252] flex-wrap">
           <span>
-            {t('shadowing.practiceCount')}: <span className="text-[#1E293B] font-extrabold">{currentSentencePracticedCount}</span>
+            {t('shadowing.practiceCount')}: <span className="text-[#221F18] font-extrabold">{currentSentencePracticedCount}</span>
           </span>
           <button
             type="button"
             onClick={() => setProgress(toggleMarkedOk(currentSentence.id))}
-            className="font-extrabold text-[#00A86B] hover:underline cursor-pointer flex items-center gap-1.5"
+            className="font-extrabold text-[#5C6B3D] hover:underline cursor-pointer flex items-center gap-1.5"
           >
             {isCurrentSentenceMarkedOk ? (
               <>
@@ -576,18 +576,18 @@ export function ShadowingView() {
         </div>
 
         {/* Sentence Navigation */}
-        <div className="flex items-center justify-between pt-4 border-t border-[#F1F5F9]">
+        <div className="flex items-center justify-between pt-4 border-t border-[#ECE4D0]">
           <button
             type="button"
             onClick={() => goTo(Math.max(0, currentIndex - 1))}
             disabled={currentIndex === 0}
-            className="px-4 py-2.5 bg-[#FAFBFB] hover:bg-white border border-[#E2E8F0] text-[#1E293B] font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="px-4 py-2.5 bg-[#F4EEDE] hover:bg-[#F4EEDE] border border-[#D9CDB2] text-[#221F18] font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             {t('common.previous')}
           </button>
 
-          <span className="text-xs text-[#94A3B8] font-bold">
+          <span className="text-xs text-[#8F8674] font-bold">
             {currentIndex + 1} / {list.length}
           </span>
 
@@ -595,7 +595,7 @@ export function ShadowingView() {
             type="button"
             onClick={() => goTo(Math.min(list.length - 1, currentIndex + 1))}
             disabled={currentIndex === list.length - 1}
-            className="px-4 py-2.5 bg-[#00A86B] hover:bg-[#008F5B] text-white font-bold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="px-4 py-2.5 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-bold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {t('common.next')}
             <ArrowRight className="w-3.5 h-3.5" />
@@ -603,7 +603,7 @@ export function ShadowingView() {
         </div>
       </div>
 
-      <p className="text-[11px] text-[#94A3B8] text-center">
+      <p className="text-[11px] text-[#8F8674] text-center">
         {t('footer.voicevoxPrefix')}{t('footer.voicevoxName')}
       </p>
     </div>

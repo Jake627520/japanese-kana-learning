@@ -54,21 +54,21 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-label={t('header.selectLanguage')}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#E2E8F0] bg-white text-xs font-bold text-[#475569] hover:text-[#1E293B] hover:border-[#CBD5E1] hover:bg-[#F8FAFC] active:scale-95 transition-all shadow-xs cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-[#00A86B]/30 ${
-          isOpen ? 'ring-2 ring-[#00A86B]/40 border-[#00A86B]' : ''
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D9CDB2] bg-[#F4EEDE] text-xs font-bold text-[#55503F] hover:text-[#221F18] hover:border-[#CABFA6] hover:bg-[#F0E9D8] active:scale-95 transition-all shadow-xs cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-[#5C6B3D]/30 ${
+          isOpen ? 'ring-2 ring-[#5C6B3D]/40 border-[#5C6B3D]' : ''
         }`}
       >
-        <Globe className="w-3.5 h-3.5 text-[#00A86B]" />
+        <Globe className="w-3.5 h-3.5 text-[#5C6B3D]" />
         <span className="hidden sm:inline">{currentLangObj.label}</span>
         <span className="sm:hidden">{currentLangObj.flag}</span>
-        <ChevronDown className={`w-3 h-3 text-[#94A3B8] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3 h-3 text-[#8F8674] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
         <div
           role="listbox"
           aria-label={t('header.selectLanguage')}
-          className="absolute right-0 mt-1.5 w-40 bg-white rounded-2xl shadow-xl border border-[#E2E8F0] py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150"
+          className="absolute right-0 mt-1.5 w-40 bg-[#F4EEDE] rounded-2xl shadow-xl border border-[#D9CDB2] py-1.5 z-50 animate-in fade-in zoom-in-95 duration-150"
         >
           {LANGUAGES.map((lang) => {
             const isSelected = language === lang.code;
@@ -80,15 +80,15 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
                 onClick={() => handleSelect(lang.code)}
                 className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-bold transition-colors cursor-pointer text-left ${
                   isSelected
-                    ? 'bg-[#F0FDF7] text-[#00A86B]'
-                    : 'text-[#475569] hover:bg-[#F8FAFC] hover:text-[#1E293B]'
+                    ? 'bg-[#EEF0E3] text-[#5C6B3D]'
+                    : 'text-[#55503F] hover:bg-[#F0E9D8] hover:text-[#221F18]'
                 }`}
               >
                 <div className="flex items-center gap-2">
                   <span>{lang.flag}</span>
                   <span>{lang.label}</span>
                 </div>
-                {isSelected && <Check className="w-3.5 h-3.5 text-[#00A86B]" />}
+                {isSelected && <Check className="w-3.5 h-3.5 text-[#5C6B3D]" />}
               </button>
             );
           })}

@@ -42,13 +42,13 @@ export function KanaMasteryMap({ masteredIds, onNavigate }: KanaMasteryMapProps)
   const allKana = stagesDef.flatMap((s) => s.data);
 
   return (
-    <div className="bg-white p-5 sm:p-6 rounded-3xl border border-[#E2E8F0] elev-2 space-y-5">
+    <div className="bg-[#F4EEDE] p-5 sm:p-6 rounded-3xl border border-[#D9CDB2] elev-2 space-y-5">
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-2">
-          <Map className="w-4 h-4 text-[#00A86B]" />
-          <h3 className="text-sm font-extrabold text-[#1E293B]">{t('home.masteryMap.title')}</h3>
+          <Map className="w-4 h-4 text-[#5C6B3D]" />
+          <h3 className="text-sm font-extrabold text-[#221F18]">{t('home.masteryMap.title')}</h3>
         </div>
-        <span className="text-xs text-[#64748B]">
+        <span className="text-xs text-[#6B6252]">
           {grandDone}/{grandTotal} ({grandPct}%)
         </span>
       </div>
@@ -65,14 +65,14 @@ export function KanaMasteryMap({ masteredIds, onNavigate }: KanaMasteryMapProps)
             >
               <div className="relative w-14 h-14 sm:w-[68px] sm:h-[68px] transition-transform group-hover:scale-105">
                 <svg viewBox="0 0 68 68" className="w-full h-full -rotate-90">
-                  <circle cx="34" cy="34" r={RADIUS} fill="none" stroke="#F1F5F9" strokeWidth="7" />
+                  <circle cx="34" cy="34" r={RADIUS} fill="none" stroke="#ECE4D0" strokeWidth="7" />
                   <circle
                     className="ring-draw"
                     cx="34"
                     cy="34"
                     r={RADIUS}
                     fill="none"
-                    stroke="#00A86B"
+                    stroke="#5C6B3D"
                     strokeWidth="7"
                     strokeLinecap="round"
                     strokeDasharray={CIRCUMFERENCE}
@@ -86,17 +86,17 @@ export function KanaMasteryMap({ masteredIds, onNavigate }: KanaMasteryMapProps)
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {complete ? (
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#00A86B]" />
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#5C6B3D]" />
                   ) : (
-                    <span className="text-[11px] sm:text-[13px] font-extrabold text-[#1E293B]">
+                    <span className="text-[11px] sm:text-[13px] font-extrabold text-[#221F18]">
                       {Math.round(s.pct * 100)}%
                     </span>
                   )}
                 </div>
               </div>
               <div className="text-center leading-tight">
-                <div className="text-[11px] sm:text-xs font-bold text-[#1E293B]">{s.label}</div>
-                <div className="text-[10px] text-[#64748B]">
+                <div className="text-[11px] sm:text-xs font-bold text-[#221F18]">{s.label}</div>
+                <div className="text-[10px] text-[#6B6252]">
                   {s.done}/{s.total}
                 </div>
               </div>
@@ -108,8 +108,8 @@ export function KanaMasteryMap({ masteredIds, onNavigate }: KanaMasteryMapProps)
       {/* 每一點代表一個假名 */}
       <div>
         <div className="flex items-baseline justify-between mb-2">
-          <span className="text-[11px] font-bold text-[#64748B]">{grandTotal} {t('common.countUnit')}</span>
-          <span className="text-[11px] text-[#94A3B8]">{t('grid.legendTitle')}</span>
+          <span className="text-[11px] font-bold text-[#6B6252]">{grandTotal} {t('common.countUnit')}</span>
+          <span className="text-[11px] text-[#8F8674]">{t('grid.legendTitle')}</span>
         </div>
         <div className="flex flex-wrap gap-1">
           {allKana.map((k) => (
@@ -117,14 +117,14 @@ export function KanaMasteryMap({ masteredIds, onNavigate }: KanaMasteryMapProps)
               key={k.id}
               title={`${k.kana} ${mastered.has(k.id) ? `(${t('grid.statusMastered')})` : `(${t('grid.statusLearning')})`}`}
               className={`w-[7px] h-[7px] rounded-[2px] transition-transform hover:scale-[1.8] ${
-                mastered.has(k.id) ? 'bg-[#00A86B]' : 'bg-[#E2E8F0]'
+                mastered.has(k.id) ? 'bg-[#5C6B3D]' : 'bg-[#D9CDB2]'
               }`}
             />
           ))}
         </div>
       </div>
 
-      <p className="text-[11px] text-[#94A3B8] leading-relaxed">
+      <p className="text-[11px] text-[#8F8674] leading-relaxed">
         {t('home.masteryMap.viewGrid')}
       </p>
     </div>

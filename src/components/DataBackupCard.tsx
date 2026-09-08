@@ -59,13 +59,13 @@ export function DataBackupCard() {
   };
 
   return (
-    <div className="bg-white p-6 rounded-3xl border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div className="bg-[#F4EEDE] p-6 rounded-3xl border border-[#D9CDB2] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div className="space-y-1">
         <div className="flex items-center gap-2">
-          <ShieldCheck className="w-5 h-5 text-[#00A86B]" />
-          <h3 className="text-base font-display font-bold text-[#1E293B]">{t('home.backup.title')}</h3>
+          <ShieldCheck className="w-5 h-5 text-[#5C6B3D]" />
+          <h3 className="text-base font-display font-bold text-[#221F18]">{t('home.backup.title')}</h3>
         </div>
-        <p className="text-xs text-[#64748B]">
+        <p className="text-xs text-[#6B6252]">
           {t('home.backup.desc')}
         </p>
 
@@ -73,8 +73,8 @@ export function DataBackupCard() {
           <div
             className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold mt-2 ${
               feedback.type === 'success'
-                ? 'bg-[#E6F8F2] text-[#00A86B]'
-                : 'bg-red-50 text-red-600'
+                ? 'bg-[#E6EAD5] text-[#5C6B3D]'
+                : 'bg-[#EFDBD5] text-[#A6443A]'
             }`}
           >
             {feedback.type === 'success' ? (
@@ -99,16 +99,16 @@ export function DataBackupCard() {
         <button
           type="button"
           onClick={handleExport}
-          className="flex-1 sm:flex-none px-4 py-2.5 bg-[#FAFBFB] hover:bg-slate-50 border border-[#E2E8F0] hover:border-[#00A86B] text-[#1E293B] font-extrabold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5"
+          className="flex-1 sm:flex-none px-4 py-2.5 bg-[#F4EEDE] hover:bg-[#F0E9D8] border border-[#D9CDB2] hover:border-[#5C6B3D] text-[#221F18] font-extrabold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-1.5"
         >
-          <Download className="w-4 h-4 text-[#00A86B]" />
+          <Download className="w-4 h-4 text-[#5C6B3D]" />
           {t('home.backup.btnExport')}
         </button>
 
         <button
           type="button"
           onClick={handleImportClick}
-          className="flex-1 sm:flex-none px-4 py-2.5 bg-[#00A86B] hover:bg-[#008F5B] text-white font-extrabold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+          className="flex-1 sm:flex-none px-4 py-2.5 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-xs rounded-xl transition-all shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
         >
           <Upload className="w-4 h-4" />
           {t('home.backup.btnImport')}

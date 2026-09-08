@@ -58,15 +58,15 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white border border-[#E2E8F0] rounded-3xl p-5 elev-2 shrink-0 sticky top-8">
-        <div className="flex items-center justify-between gap-3 px-3 py-2 mb-4 border-b border-[#F1F5F9] pb-4">
+      <aside className="hidden lg:flex flex-col w-64 bg-[#F4EEDE] border border-[#D9CDB2] rounded-3xl p-5 elev-2 shrink-0 sticky top-8">
+        <div className="flex items-center justify-between gap-3 px-3 py-2 mb-4 border-b border-[#ECE4D0] pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#00A86B] to-[#008F5B] text-white rounded-2xl flex items-center justify-center font-extrabold text-xl elev-green">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#5C6B3D] to-[#47552F] text-[#F1EFE0] rounded-2xl flex items-center justify-center font-extrabold text-xl elev-green">
               あ
             </div>
             <div>
-              <h1 className="font-display font-bold text-base text-[#1E293B] tracking-tight">{t('nav.appTitle')}</h1>
-              <span className="text-[11px] font-semibold text-[#00A86B] bg-[#E6F8F2] px-2 py-0.5 rounded-full inline-block">
+              <h1 className="font-display font-bold text-base text-[#221F18] tracking-tight">{t('nav.appTitle')}</h1>
+              <span className="text-[11px] font-semibold text-[#5C6B3D] bg-[#E6EAD5] px-2 py-0.5 rounded-full inline-block">
                 {t('nav.srsBadge')}
               </span>
             </div>
@@ -74,8 +74,8 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
         </div>
 
         {/* Language Selector in Desktop Sidebar */}
-        <div className="px-3 pb-3 mb-2 flex items-center justify-between border-b border-[#F1F5F9]">
-          <span className="text-xs font-bold text-[#64748B]">{t('header.selectLanguage')}</span>
+        <div className="px-3 pb-3 mb-2 flex items-center justify-between border-b border-[#ECE4D0]">
+          <span className="text-xs font-bold text-[#6B6252]">{t('header.selectLanguage')}</span>
           <LanguageSelector variant="header" />
         </div>
 
@@ -90,8 +90,8 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
                 onClick={() => onSelectTab(item.id)}
                 className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl font-bold text-sm transition-all cursor-pointer ${
                   isActive
-                    ? 'bg-gradient-to-br from-[#00A86B] to-[#009960] text-white elev-green'
-                    : 'text-[#64748B] hover:text-[#1E293B] hover:bg-[#FAFBFB] hover:translate-x-0.5'
+                    ? 'bg-gradient-to-br from-[#5C6B3D] to-[#47552F] text-[#F1EFE0] elev-green'
+                    : 'text-[#6B6252] hover:text-[#221F18] hover:bg-[#F4EEDE] hover:translate-x-0.5'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -101,7 +101,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
                 {item.badge !== undefined && item.badge > 0 && (
                   <span
                     className={`px-2 py-0.5 text-xs font-extrabold rounded-full ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-red-100 text-red-600'
+                      isActive ? 'bg-[#f4eede]/20 text-[#F1EFE0]' : 'bg-[#E7CCC5] text-[#A6443A]'
                     }`}
                   >
                     {item.badge}
@@ -112,9 +112,9 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
           })}
         </nav>
 
-        <div className="mt-8 p-4 bg-gradient-to-br from-[#F0FDF7] to-[#FAFBFB] rounded-2xl border border-[#E6F8F2] text-xs text-[#64748B] space-y-2">
-          <div className="flex items-center gap-1.5 font-bold text-[#1E293B]">
-            <Sparkles className="w-4 h-4 text-[#00A86B]" />
+        <div className="mt-8 p-4 bg-gradient-to-br from-[#EEF0E3] to-[#F4EEDE] rounded-2xl border border-[#E6EAD5] text-xs text-[#6B6252] space-y-2">
+          <div className="flex items-center gap-1.5 font-bold text-[#221F18]">
+            <Sparkles className="w-4 h-4 text-[#5C6B3D]" />
             {t('nav.memoryGuideTitle')}
           </div>
           <p>{t('nav.memoryGuideDesc')}</p>
@@ -122,19 +122,19 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
       </aside>
 
       {/* Mobile Top Bar with App Title & Language Selector */}
-      <div className="lg:hidden w-full flex items-center justify-between px-4 py-3 bg-white border border-[#E2E8F0] rounded-2xl mb-4 shadow-xs">
+      <div className="lg:hidden w-full flex items-center justify-between px-4 py-3 bg-[#F4EEDE] border border-[#D9CDB2] rounded-2xl mb-4 shadow-xs">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-[#00A86B] to-[#008F5B] text-white rounded-xl flex items-center justify-center font-extrabold text-sm elev-green">
+          <div className="w-8 h-8 bg-gradient-to-br from-[#5C6B3D] to-[#47552F] text-[#F1EFE0] rounded-xl flex items-center justify-center font-extrabold text-sm elev-green">
             あ
           </div>
-          <span className="font-display font-bold text-sm text-[#1E293B]">{t('nav.appTitle')}</span>
+          <span className="font-display font-bold text-sm text-[#221F18]">{t('nav.appTitle')}</span>
         </div>
         <LanguageSelector variant="compact" />
       </div>
 
       {/* Mobile Bottom Navigation */}
       <div
-        className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-[#E2E8F0] px-2 pt-2 z-50 grid grid-cols-5 gap-1 shadow-lg"
+        className="lg:hidden fixed bottom-0 left-0 right-0 bg-[#F4EEDE] border-t border-[#D9CDB2] px-2 pt-2 z-50 grid grid-cols-5 gap-1 shadow-lg"
         style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
       >
         {PRIMARY_TABS.map((id) => {
@@ -148,13 +148,13 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
               key={item.id}
               onClick={() => onSelectTab(item.id)}
               className={`flex flex-col items-center justify-center gap-1 min-h-[52px] px-1 rounded-xl transition-all relative cursor-pointer ${
-                isActive ? 'text-[#00A86B] bg-[#F0FDF7]' : 'text-[#64748B] active:bg-[#F1F5F9]'
+                isActive ? 'text-[#5C6B3D] bg-[#EEF0E3]' : 'text-[#6B6252] active:bg-[#ECE4D0]'
               }`}
             >
               <Icon className="w-5 h-5" />
               <span className="text-[10px] font-bold whitespace-nowrap">{item.shortLabel}</span>
               {item.badge !== undefined && item.badge > 0 && (
-                <span className="absolute top-0 right-1.5 min-w-4 h-4 px-1 bg-red-500 text-white text-[9px] font-extrabold rounded-full flex items-center justify-center">
+                <span className="absolute top-0 right-1.5 min-w-4 h-4 px-1 bg-red-500 text-[#F1EFE0] text-[9px] font-extrabold rounded-full flex items-center justify-center">
                   {item.badge}
                 </span>
               )}
@@ -174,7 +174,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
               aria-haspopup="dialog"
               aria-expanded={isSheetOpen}
               className={`flex flex-col items-center justify-center gap-1 min-h-[52px] px-1 rounded-xl transition-all cursor-pointer ${
-                activeInSheet ? 'text-[#00A86B] bg-[#F0FDF7]' : 'text-[#64748B] active:bg-[#F1F5F9]'
+                activeInSheet ? 'text-[#5C6B3D] bg-[#EEF0E3]' : 'text-[#6B6252] active:bg-[#ECE4D0]'
               }`}
             >
               <Icon className="w-5 h-5" />
@@ -194,18 +194,18 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
             onClick={() => setIsSheetOpen(false)}
           />
           <div
-            className="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl border-t border-[#E2E8F0] px-5 pt-3 sheet-up max-h-[85vh] overflow-y-auto"
+            className="absolute bottom-0 left-0 right-0 bg-[#F4EEDE] rounded-t-3xl border-t border-[#D9CDB2] px-5 pt-3 sheet-up max-h-[85vh] overflow-y-auto"
             style={{ paddingBottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
           >
             <div className="flex justify-center pb-3">
-              <span aria-hidden className="w-10 h-1 rounded-full bg-[#E2E8F0]" />
+              <span aria-hidden className="w-10 h-1 rounded-full bg-[#D9CDB2]" />
             </div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-base font-display font-bold text-[#1E293B]">{t('nav.more')}</h2>
+              <h2 className="text-base font-display font-bold text-[#221F18]">{t('nav.more')}</h2>
               <button
                 onClick={() => setIsSheetOpen(false)}
                 aria-label={t('common.close')}
-                className="w-9 h-9 rounded-xl flex items-center justify-center text-[#64748B] active:bg-[#F1F5F9] cursor-pointer"
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-[#6B6252] active:bg-[#ECE4D0] cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -215,10 +215,10 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
               {sheetGroups.map((group) => (
                 <div key={group.label} className="space-y-2.5">
                   <div className="flex items-baseline gap-2.5">
-                    <span className="text-[13px] font-extrabold text-[#1E293B] tracking-tight">
+                    <span className="text-[13px] font-extrabold text-[#221F18] tracking-tight">
                       {group.label}
                     </span>
-                    <span className="flex-1 h-px bg-gradient-to-r from-[#E2E8F0] to-transparent" />
+                    <span className="flex-1 h-px bg-gradient-to-r from-[#D9CDB2] to-transparent" />
                   </div>
                   <div className="grid grid-cols-2 gap-2.5">
                     {group.ids.map((id) => {
@@ -236,13 +236,13 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
                           }}
                           className={`flex items-center gap-3 min-h-[56px] px-3.5 rounded-2xl border text-left transition-all cursor-pointer ${
                             isActive
-                              ? 'border-[#00A86B] bg-[#F0FDF7] text-[#00A86B]'
-                              : 'border-[#E2E8F0] text-[#1E293B] active:bg-[#FAFBFB]'
+                              ? 'border-[#5C6B3D] bg-[#EEF0E3] text-[#5C6B3D]'
+                              : 'border-[#D9CDB2] text-[#221F18] active:bg-[#F4EEDE]'
                           }`}
                         >
                           <span
                             className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-                              isActive ? 'bg-[#00A86B] text-white' : 'bg-[#F1F5F9] text-[#64748B]'
+                              isActive ? 'bg-[#5C6B3D] text-[#F1EFE0]' : 'bg-[#ECE4D0] text-[#6B6252]'
                             }`}
                           >
                             <Icon className="w-4.5 h-4.5" />

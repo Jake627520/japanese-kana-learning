@@ -35,9 +35,9 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       label: t('header.mastered'),
       value: String(masteredCount),
       unit: ` / ${totalKana}`,
-      tint: 'bg-[#E6F8F2]',
-      fg: 'text-[#00A86B]',
-      bar: 'bg-[#00A86B]',
+      tint: 'bg-[#E6EAD5]',
+      fg: 'text-[#5C6B3D]',
+      bar: 'bg-[#5C6B3D]',
       pct: masteredPct,
       icon: <CheckCircle className="w-5 h-5" />,
       title: `${t('header.mastered')} ${masteredCount} / ${totalKana}`,
@@ -47,8 +47,8 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       label: t('header.weak'),
       value: String(wrongCount),
       unit: ` ${t('common.countUnit')}`,
-      tint: 'bg-red-50',
-      fg: 'text-red-500',
+      tint: 'bg-[#EFDBD5]',
+      fg: 'text-[#B0554A]',
       bar: 'bg-red-500',
       pct: wrongPct,
       icon: <AlertTriangle className="w-5 h-5" />,
@@ -74,7 +74,7 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
         <div
           key={c.key}
           title={c.title}
-          className="bg-white p-4 rounded-2xl border border-[#E2E8F0] elev-1 card-lift rise-in flex flex-col gap-3"
+          className="bg-[#F4EEDE] p-4 rounded-2xl border border-[#D9CDB2] elev-1 card-lift rise-in flex flex-col gap-3"
           style={{ ['--stagger' as string]: `${i * 40}ms` }}
         >
           <div className="flex items-center gap-3">
@@ -82,14 +82,14 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
               {c.icon}
             </div>
             <div>
-              <div className="text-xs font-bold text-[#64748B]">{c.label}</div>
-              <div className="text-lg font-extrabold text-[#1E293B] leading-tight">
+              <div className="text-xs font-bold text-[#6B6252]">{c.label}</div>
+              <div className="text-lg font-extrabold text-[#221F18] leading-tight">
                 {c.value}
-                <span className="text-xs font-normal text-[#94A3B8]">{c.unit}</span>
+                <span className="text-xs font-normal text-[#8F8674]">{c.unit}</span>
               </div>
             </div>
           </div>
-          <div className="h-1 rounded-full bg-[#F1F5F9] overflow-hidden">
+          <div className="h-1 rounded-full bg-[#ECE4D0] overflow-hidden">
             <div
               className={`h-full rounded-full ${c.bar} transition-[width] duration-700 ease-out`}
               style={{ width: `${c.pct}%` }}

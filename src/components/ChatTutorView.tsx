@@ -240,7 +240,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
     }
     if (stage.type === 'quiz') {
       if (!stage.answered) {
-        return <span className="text-xs text-[#94A3B8] px-2">👆 {t('quiz.modeSelect')}</span>;
+        return <span className="text-xs text-[#8F8674] px-2">👆 {t('quiz.modeSelect')}</span>;
       }
       const isLastQuiz = stage.qIdx === stage.total - 1;
       const isLastRow = stage.rowIdx === rows.length - 1;
@@ -265,27 +265,27 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
         (stage.type === 'teaching' ? stage.kanaIdx + 1 : rows[stage.rowIdx]?.length ?? 0);
 
   return (
-    <div className="bg-white border border-[#E2E8F0] rounded-3xl shadow-xs flex flex-col h-[75vh] max-h-[800px] min-h-[520px] overflow-hidden">
+    <div className="bg-[#F4EEDE] border border-[#D9CDB2] rounded-3xl shadow-xs flex flex-col h-[75vh] max-h-[800px] min-h-[520px] overflow-hidden">
       {/* 頂部導覽 */}
-      <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#F1F5F9] bg-[#FAFBFB] shrink-0">
+      <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#ECE4D0] bg-[#F4EEDE] shrink-0">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 bg-[#00A86B] text-white rounded-xl flex items-center justify-center font-bold text-sm">
+          <div className="w-9 h-9 bg-[#5C6B3D] text-[#F1EFE0] rounded-xl flex items-center justify-center font-bold text-sm">
             あ
           </div>
           <div>
-            <div className="text-sm font-bold text-[#1E293B]">{t('chat.aiTutor')}</div>
-            <div className="text-[11px] text-[#64748B]">
+            <div className="text-sm font-bold text-[#221F18]">{t('chat.aiTutor')}</div>
+            <div className="text-[11px] text-[#6B6252]">
               {learnedApprox} / {totalKana}
             </div>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex bg-[#E2E8F0] p-0.5 rounded-xl text-xs font-bold">
+          <div className="flex bg-[#D9CDB2] p-0.5 rounded-xl text-xs font-bold">
             <button
               onClick={() => resetLesson('hiragana')}
               className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
-                kanaType === 'hiragana' ? 'bg-white text-[#00A86B] shadow-xs' : 'text-[#64748B]'
+                kanaType === 'hiragana' ? 'bg-[#F4EEDE] text-[#5C6B3D] shadow-xs' : 'text-[#6B6252]'
               }`}
             >
               {t('common.hiragana')}
@@ -293,7 +293,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
             <button
               onClick={() => resetLesson('katakana')}
               className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
-                kanaType === 'katakana' ? 'bg-white text-[#00A86B] shadow-xs' : 'text-[#64748B]'
+                kanaType === 'katakana' ? 'bg-[#F4EEDE] text-[#5C6B3D] shadow-xs' : 'text-[#6B6252]'
               }`}
             >
               {t('common.katakana')}
@@ -302,7 +302,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
 
           <button
             onClick={() => resetLesson(kanaType)}
-            className="p-2 text-[#64748B] hover:text-[#1E293B] rounded-lg hover:bg-white transition-colors cursor-pointer"
+            className="p-2 text-[#6B6252] hover:text-[#221F18] rounded-lg hover:bg-[#F4EEDE] transition-colors cursor-pointer"
             title={t('common.reset')}
           >
             <RotateCcw className="w-4 h-4" />
@@ -311,7 +311,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
       </div>
 
       {/* 對話串 */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 sm:px-6 py-4 space-y-3 bg-[#F8FAF8]">
+      <div ref={scrollRef} className="flex-1 overflow-y-auto px-3 sm:px-6 py-4 space-y-3 bg-[#F4EEDE]">
         {messages.map((msg) => (
           <React.Fragment key={msg.id}>
             <MessageBubble msg={msg} stage={stage} onPick={handlePick} />
@@ -321,7 +321,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
       </div>
 
       {/* 底部快速回覆 */}
-      <div className="flex items-center gap-2 flex-wrap px-3 sm:px-6 py-3 border-t border-[#F1F5F9] bg-white shrink-0">
+      <div className="flex items-center gap-2 flex-wrap px-3 sm:px-6 py-3 border-t border-[#ECE4D0] bg-[#F4EEDE] shrink-0">
         {quickReplies}
       </div>
     </div>
@@ -340,7 +340,7 @@ function MessageBubble({
   if (msg.role === 'user') {
     return (
       <div className="flex justify-end animate-[fadeIn_0.25s_ease]">
-        <div className="max-w-[75%] bg-[#00A86B] text-white px-4 py-2.5 rounded-2xl rounded-br-md text-sm font-medium shadow-xs">
+        <div className="max-w-[75%] bg-[#5C6B3D] text-[#F1EFE0] px-4 py-2.5 rounded-2xl rounded-br-md text-sm font-medium shadow-xs">
           {msg.kind === 'text' ? msg.text : ''}
         </div>
       </div>
@@ -349,12 +349,12 @@ function MessageBubble({
 
   return (
     <div className="flex gap-2.5 items-end animate-[fadeIn_0.25s_ease]">
-      <div className="w-8 h-8 bg-[#00A86B] text-white rounded-xl flex items-center justify-center font-bold text-sm shrink-0 mb-1">
+      <div className="w-8 h-8 bg-[#5C6B3D] text-[#F1EFE0] rounded-xl flex items-center justify-center font-bold text-sm shrink-0 mb-1">
         あ
       </div>
       <div className="max-w-[85%]">
         {msg.kind === 'text' && (
-          <div className="bg-white border border-[#E2E8F0] px-4 py-2.5 rounded-2xl rounded-bl-md text-sm text-[#2D3436] leading-relaxed shadow-xs">
+          <div className="bg-[#F4EEDE] border border-[#D9CDB2] px-4 py-2.5 rounded-2xl rounded-bl-md text-sm text-[#221F18] leading-relaxed shadow-xs">
             {msg.text}
           </div>
         )}
@@ -368,33 +368,33 @@ function MessageBubble({
 function KanaCard({ kana }: { kana: KanaItem }) {
   const example = kana.examples?.[0];
   return (
-    <div className="bg-white border border-[#E2E8F0] rounded-2xl rounded-bl-md p-4 shadow-xs w-64 max-w-full">
+    <div className="bg-[#F4EEDE] border border-[#D9CDB2] rounded-2xl rounded-bl-md p-4 shadow-xs w-64 max-w-full">
       <div className="flex items-center gap-4">
         <button
           onClick={() => speakJapanese(kana.kana)}
-          className="group relative w-20 h-20 bg-[#E6F8F2] rounded-2xl flex items-center justify-center shrink-0 cursor-pointer hover:bg-[#00A86B] transition-colors"
+          className="group relative w-20 h-20 bg-[#E6EAD5] rounded-2xl flex items-center justify-center shrink-0 cursor-pointer hover:bg-[#5C6B3D] transition-colors"
           aria-label={`Play ${kana.romaji}`}
         >
-          <span className="text-4xl font-extrabold text-[#00A86B] group-hover:text-white transition-colors">
+          <span className="text-4xl font-extrabold text-[#5C6B3D] group-hover:text-[#F1EFE0] transition-colors">
             {kana.kana}
           </span>
-          <span className="absolute bottom-1 right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-xs">
-            <Volume2 className="w-3 h-3 text-[#00A86B]" />
+          <span className="absolute bottom-1 right-1 w-5 h-5 bg-[#F4EEDE] rounded-full flex items-center justify-center shadow-xs">
+            <Volume2 className="w-3 h-3 text-[#5C6B3D]" />
           </span>
         </button>
         <div className="min-w-0">
-          <div className="text-2xl font-extrabold text-[#1E293B] leading-none">{kana.romaji}</div>
-          <div className="text-xs text-[#94A3B8] mt-1">{kana.row}・{kana.col}</div>
+          <div className="text-2xl font-extrabold text-[#221F18] leading-none">{kana.romaji}</div>
+          <div className="text-xs text-[#8F8674] mt-1">{kana.row}・{kana.col}</div>
           {example && (
-            <div className="mt-2 text-xs text-[#64748B]">
+            <div className="mt-2 text-xs text-[#6B6252]">
               <button
                 onClick={() => speakJapanese(example.word)}
-                className="font-bold text-[#00A86B] cursor-pointer hover:underline"
+                className="font-bold text-[#5C6B3D] cursor-pointer hover:underline"
               >
                 {example.word}
               </button>
-              <span className="text-[#94A3B8]"> ({example.romaji})</span>
-              <div className="text-[#64748B]">{example.meaning}</div>
+              <span className="text-[#8F8674]"> ({example.romaji})</span>
+              <div className="text-[#6B6252]">{example.meaning}</div>
             </div>
           )}
         </div>
@@ -414,8 +414,8 @@ function QuizCard({
 }) {
   const locked = quiz.pickedId !== null;
   return (
-    <div className="bg-white border border-[#E2E8F0] rounded-2xl rounded-bl-md p-4 shadow-xs w-72 max-w-full">
-      <div className="flex items-center gap-1.5 text-xs font-bold text-[#00A86B] mb-3">
+    <div className="bg-[#F4EEDE] border border-[#D9CDB2] rounded-2xl rounded-bl-md p-4 shadow-xs w-72 max-w-full">
+      <div className="flex items-center gap-1.5 text-xs font-bold text-[#5C6B3D] mb-3">
         <Sparkles className="w-4 h-4" />
         {quiz.prompt}
       </div>
@@ -423,10 +423,10 @@ function QuizCard({
         {quiz.options.map((opt) => {
           const isAnswer = opt.id === quiz.answerId;
           const isPicked = opt.id === quiz.pickedId;
-          let cls = 'border-[#E2E8F0] bg-white text-[#1E293B] hover:border-[#00A86B] hover:bg-[#E6F8F2]';
-          if (locked && isAnswer) cls = 'border-[#00A86B] bg-[#E6F8F2] text-[#00A86B]';
-          else if (locked && isPicked && !isAnswer) cls = 'border-red-300 bg-red-50 text-red-500';
-          else if (locked) cls = 'border-[#F1F5F9] bg-[#FAFBFB] text-[#94A3B8]';
+          let cls = 'border-[#D9CDB2] bg-[#F4EEDE] text-[#221F18] hover:border-[#5C6B3D] hover:bg-[#E6EAD5]';
+          if (locked && isAnswer) cls = 'border-[#5C6B3D] bg-[#E6EAD5] text-[#5C6B3D]';
+          else if (locked && isPicked && !isAnswer) cls = 'border-[#CAA096] bg-[#EFDBD5] text-[#B0554A]';
+          else if (locked) cls = 'border-[#ECE4D0] bg-[#F4EEDE] text-[#8F8674]';
           return (
             <button
               key={opt.id}
@@ -438,7 +438,7 @@ function QuizCard({
             >
               {opt.kana}
               {locked && isAnswer && (
-                <Check className="absolute top-1 right-1 w-4 h-4 text-[#00A86B]" />
+                <Check className="absolute top-1 right-1 w-4 h-4 text-[#5C6B3D]" />
               )}
               {locked && isPicked && !isAnswer && (
                 <X className="absolute top-1 right-1 w-4 h-4 text-red-400" />
@@ -467,8 +467,8 @@ function Chip({
       onClick={onClick}
       className={`flex items-center gap-1.5 px-4 py-2.5 rounded-full text-sm font-bold transition-all cursor-pointer ${
         primary
-          ? 'bg-[#00A86B] text-white shadow-xs hover:bg-[#00915C]'
-          : 'bg-[#F1F5F9] text-[#64748B] hover:bg-[#E2E8F0]'
+          ? 'bg-[#5C6B3D] text-[#F1EFE0] shadow-xs hover:bg-[#47552F]'
+          : 'bg-[#ECE4D0] text-[#6B6252] hover:bg-[#D9CDB2]'
       }`}
     >
       {icon}

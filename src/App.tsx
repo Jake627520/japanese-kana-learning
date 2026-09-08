@@ -61,7 +61,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAF8] text-[#2D3436] font-sans antialiased selection:bg-[#00D1B2]/20">
+    <div className="min-h-screen bg-[#E9E1CF] text-[#221F18] font-sans antialiased selection:bg-[#4A6B5E]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-8">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
           
@@ -161,29 +161,29 @@ function AppContent() {
         </div>
 
         {/* 全站頁尾：音源標示與說明 */}
-        <footer className="mt-10 pt-6 border-t border-[#E2E8F0] pb-28 lg:pb-8">
+        <footer className="mt-10 pt-6 border-t border-[#D9CDB2] pb-28 lg:pb-8">
           <div className="max-w-md mx-auto flex flex-col items-center gap-4 text-center">
-            <p className="text-[11px] text-[#94A3B8]">
+            <p className="text-[11px] text-[#8F8674]">
               {t('footer.voicevoxPrefix')}
-              <span className="font-semibold text-[#64748B]">{t('footer.voicevoxName')}</span>
+              <span className="font-semibold text-[#6B6252]">{t('footer.voicevoxName')}</span>
               <span className="mx-1.5">·</span>
               {t('footer.browserSpeechNote')}
             </p>
 
             <div className="w-full flex flex-col gap-2.5">
-              <p className="text-[11px] text-[#94A3B8] leading-[1.9] text-pretty">
+              <p className="text-[11px] text-[#8F8674] leading-[1.9] text-pretty">
                 {t('footer.noInstallNeeded')}
-                <span className="font-semibold text-[#64748B]">{t('footer.noInstallNeededBold')}</span>
+                <span className="font-semibold text-[#6B6252]">{t('footer.noInstallNeededBold')}</span>
                 {t('footer.noInstallNeededSuffix')}
               </p>
-              <p className="text-[11px] text-[#94A3B8] leading-[1.9] text-pretty">
+              <p className="text-[11px] text-[#8F8674] leading-[1.9] text-pretty">
                 {t('footer.iphoneMuteTipPrefix')}
-                <span className="font-semibold text-[#64748B]">{t('footer.iphoneMuteTipBold')}</span>
+                <span className="font-semibold text-[#6B6252]">{t('footer.iphoneMuteTipBold')}</span>
                 {t('footer.iphoneMuteTipSuffix')}
               </p>
             </div>
 
-            <p className="text-[11px] text-[#94A3B8] pt-3 border-t border-[#F1F5F9] w-full">
+            <p className="text-[11px] text-[#8F8674] pt-3 border-t border-[#ECE4D0] w-full">
               {t('footer.siteTitle')}
               <span className="mx-1.5">·</span>
               {t('footer.mitLicense')}
