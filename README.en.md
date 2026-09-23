@@ -76,7 +76,8 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 
 - 6 interval stages: 10 min → 1 day → 3 days → 7 days → 14 days → 30 days.
 - Mastery ring visualization across 5 proficiency tiers (informational only; **no arbitrary progression locks**).
-- JSON export and import for seamless cross-device migration and backup.
+- **Data is stored only on this device.** Progress (kana mastery, SRS schedule, quiz records) is saved in this browser's `localStorage`. There is no account or server, so records do **not** sync across devices or browsers automatically.
+- **Using another device?** Open the **Backup & Restore Data** card on the dashboard, **Export** a JSON file here, then **Import** it on the other device. Export before clearing browser data or using private/incognito mode.
 
 ### 9. Progressive Web App (PWA): Installable & Fully Offline
 
