@@ -10,6 +10,7 @@
     "clean": "rm -rf dist",
     "gen:icons": "node scripts/gen-pwa-icons.mjs",
     "lint": "tsc --noEmit",
+    "test": "vitest run",
     "validate:data": "python3 scripts/validate-kana-data.py",
     "validate:i18n": "python3 scripts/validate-i18n.py",
     "validate:vocab": "python3 scripts/validate-vocabulary.py",
@@ -21,7 +22,6 @@
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
     "lucide-react": "^0.546.0",
-    "motion": "^12.23.24",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "vite": "^6.2.3"
@@ -31,6 +31,7 @@
     "autoprefixer": "^10.4.21",
     "sharp": "^0.35.4",
     "tailwindcss": "^4.1.14",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "vitest": "4.1.11"
   }
 }

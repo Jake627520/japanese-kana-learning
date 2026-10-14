@@ -50,6 +50,9 @@ jobs:
       - name: Run SRS tests
         run: npm run test:srs
 
+      - name: Run unit tests
+        run: npm test
+
       - name: Type check
         run: npm run lint
 
