@@ -78,6 +78,7 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 - Mastery ring visualization across 5 proficiency tiers (informational only; **no arbitrary progression locks**).
 - **Data is stored only on this device.** Progress (kana mastery, SRS schedule, quiz records) is saved in this browser's `localStorage`. There is no account or server, so records do **not** sync across devices or browsers automatically.
 - **Using another device?** Open the **Backup & Restore Data** card on the dashboard, **Export** a JSON file here, then **Import** it on the other device. Export before clearing browser data or using private/incognito mode.
+- **What a backup contains:** kana mastery, SRS review schedule (including the adaptive scheduler state), answer history (used by the dashboard stats, weak-kana ranking and confusable-pair analysis), shadowing progress, chat-lesson position, JLPT records, and your UI language. Backups exported before this change contain only kana progress and JLPT records; importing one keeps the other data already on the device.
 
 ### 9. Progressive Web App (PWA): Installable & Fully Offline
 

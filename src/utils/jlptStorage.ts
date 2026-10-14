@@ -6,7 +6,7 @@ export interface JlptPracticeRecord {
   answeredAt: string; // ISO 8601 string
 }
 
-const JLPT_STORAGE_KEY = 'japanese_jlpt_practice_records';
+export const JLPT_STORAGE_KEY = 'japanese_jlpt_practice_records';
 
 export function getStoredJlptRecords(): JlptPracticeRecord[] {
   try {

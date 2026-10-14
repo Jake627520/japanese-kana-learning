@@ -31,6 +31,16 @@ function loadRaw(): ShadowingProgress | null {
   }
 }
 
+/** 備份匯出用：原樣讀出儲存內容，不像 getShadowingProgress 會換日重抽。沒有資料時回傳 null。 */
+export function getShadowingProgressRaw(): ShadowingProgress | null {
+  return loadRaw();
+}
+
+/** 備份匯入用：整份覆寫。日期不是今天時，getShadowingProgress 會自己重抽今日句子並保留 markedOk。 */
+export function replaceShadowingProgress(p: ShadowingProgress): void {
+  save(p);
+}
+
 function save(p: ShadowingProgress) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(p));

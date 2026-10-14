@@ -55,6 +55,20 @@ export function logLearningEvent(input: CreateLearningEventInput): LearningEvent
 }
 
 /**
+ * Replace all learning events (used by backup import). Keeps the newest MAX_LEARNING_EVENTS.
+ */
+export function replaceLearningEvents(events: LearningEvent[]): void {
+  if (typeof window === 'undefined' || !window.localStorage) {
+    return;
+  }
+  try {
+    localStorage.setItem(LEARNING_EVENTS_STORAGE_KEY, JSON.stringify(events.slice(0, MAX_LEARNING_EVENTS)));
+  } catch (e) {
+    console.error('Failed to replace learning events:', e);
+  }
+}
+
+/**
  * Clear all learning events.
  */
 export function clearLearningEvents(): void {

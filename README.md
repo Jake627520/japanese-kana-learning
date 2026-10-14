@@ -84,6 +84,7 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 - Mastery ring visualization across 5 proficiency tiers (informational only; **no arbitrary progression locks**).
 - **Data is stored only on this device.** Progress (kana mastery, SRS schedule, quiz records) is saved in this browser's `localStorage`. There is no account or server, so records do **not** sync across devices or browsers automatically.
 - **Using another device?** Open the **Backup & Restore Data** card on the dashboard, **Export** a JSON file here, then **Import** it on the other device. Export before clearing browser data or using private/incognito mode.
+- **What a backup contains:** kana mastery, SRS review schedule (including the adaptive scheduler state), answer history (used by the dashboard stats, weak-kana ranking and confusable-pair analysis), shadowing progress, chat-lesson position, JLPT records, and your UI language. Backups exported before this change contain only kana progress and JLPT records; importing one keeps the other data already on the device.
 
 #### 9. Progressive Web App (PWA): Installable & Fully Offline
 
@@ -198,6 +199,7 @@ npm run preview
 - 假名掌握地圖：五階段圓環進度（純顯示，**不設關卡**）
 - **資料只存在你目前這台裝置的瀏覽器**：進度（假名掌握、SRS 排程、測驗紀錄）存在本機瀏覽器 `localStorage`，沒有帳號也沒有伺服器，**不會在不同裝置或瀏覽器之間自動同步**。
 - **要換到另一台裝置？** 到「學習總覽」頁的 **資料備份與還原** 卡片，在這台 **匯出** JSON 檔，再到另一台 **匯入**。清除瀏覽器資料或用無痕模式前也請先匯出。
+- **備份包含什麼**：假名掌握、SRS 複習排程（含調適排程狀態）、作答紀錄（首頁統計、弱點排行、易混辨析都靠它）、跟讀進度、對話教室進度、JLPT 紀錄、介面語言。這次改版前匯出的舊備份只有假名進度和 JLPT 紀錄；匯入舊檔時，本機其餘資料會保留不動。
 
 #### 9. PWA：可安裝、可離線
 
@@ -298,6 +300,7 @@ npm run preview
 - 假名掌握度矩阵：5 阶环形进度指示（仅呈现数据，**不设置强制作业关卡**）
 - **数据只保存在你当前这台设备的浏览器**：进度（假名掌握、SRS 排程、测验记录）存在本机浏览器 `localStorage`，没有账号也没有服务器，**不会在不同设备或浏览器之间自动同步**。
 - **要换到另一台设备？** 到「学习总览」页的 **数据备份与还原** 卡片，在这台 **导出** JSON 文件，再到另一台 **导入**。清除浏览器数据或用无痕模式前也请先导出。
+- **备份包含什么**：假名掌握、SRS 复习计划（含自适应排程状态）、答题记录（首页统计、弱点排行、易混辨析都依赖它）、跟读进度、对话教室进度、JLPT 记录、界面语言。这次改版前导出的旧备份只有假名进度和 JLPT 记录；导入旧文件时，本机其余数据会保留不动。
 
 #### 9. PWA 规范：支持安装与完全离线
 
