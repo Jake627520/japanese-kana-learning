@@ -1,26 +1,54 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, lazy, Suspense, startTransition } from 'react';
 import { UserProgress, KanaItem, NavigationTab, KanaType } from './types';
 import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, YOUON_DATA, ALL_LEARNABLE_KANA } from './data/kanaData';
 import { getStoredProgress } from './utils/storage';
-import { HeaderStats } from './components/HeaderStats';
 import { HomeDashboard } from './components/HomeDashboard';
-import { GojuuonGrid } from './components/GojuuonGrid';
-import { KanaCardView } from './components/KanaCardView';
-import { QuizView } from './components/QuizView';
-import { ReviewView } from './components/ReviewView';
-import { SpecialSoundsView } from './components/SpecialSoundsView';
-import { JlptPracticeView } from './components/JlptPracticeView';
-import { ShadowingView } from './components/ShadowingView';
-import { ChatTutorView } from './components/ChatTutorView';
-import { WritingPracticeView } from './components/WritingPracticeView';
-import { ConfusableView } from './components/ConfusableView';
 import { Navigation } from './components/Navigation';
 import { I18nProvider, useI18n } from './i18n';
+
+// 首頁與導覽列以外的分頁改為按需載入，縮小首屏 JS（JLPT 題庫、單字等資料只進各自的 chunk）
+const tabLoaders = {
+  grid: () => import('./components/GojuuonGrid'),
+  study: () => import('./components/KanaCardView'),
+  quiz: () => import('./components/QuizView'),
+  review: () => import('./components/ReviewView'),
+  special: () => import('./components/SpecialSoundsView'),
+  jlpt: () => import('./components/JlptPracticeView'),
+  shadowing: () => import('./components/ShadowingView'),
+  chat: () => import('./components/ChatTutorView'),
+  writing: () => import('./components/WritingPracticeView'),
+  confusable: () => import('./components/ConfusableView'),
+};
+
+const GojuuonGrid = lazy(() => tabLoaders.grid().then((m) => ({ default: m.GojuuonGrid })));
+const KanaCardView = lazy(() => tabLoaders.study().then((m) => ({ default: m.KanaCardView })));
+const QuizView = lazy(() => tabLoaders.quiz().then((m) => ({ default: m.QuizView })));
+const ReviewView = lazy(() => tabLoaders.review().then((m) => ({ default: m.ReviewView })));
+const SpecialSoundsView = lazy(() => tabLoaders.special().then((m) => ({ default: m.SpecialSoundsView })));
+const JlptPracticeView = lazy(() => tabLoaders.jlpt().then((m) => ({ default: m.JlptPracticeView })));
+const ShadowingView = lazy(() => tabLoaders.shadowing().then((m) => ({ default: m.ShadowingView })));
+const ChatTutorView = lazy(() => tabLoaders.chat().then((m) => ({ default: m.ChatTutorView })));
+const WritingPracticeView = lazy(() => tabLoaders.writing().then((m) => ({ default: m.WritingPracticeView })));
+const ConfusableView = lazy(() => tabLoaders.confusable().then((m) => ({ default: m.ConfusableView })));
+
+// 首屏畫完、瀏覽器閒置時預先抓所有分頁 chunk：
+// 1. 之後切分頁幾乎不會看到佔位；2. Service worker 用「用到才存」，
+//    不預抓的話，離線時沒開過的分頁會載不到 chunk。
+function prefetchTabChunks() {
+  Object.values(tabLoaders).forEach((load) => load().catch(() => {}));
+}
+
+// 分頁 chunk 載入中的佔位：不放 spinner，只保留高度，避免頁尾瞬間上跳
+function TabLoadingFallback() {
+  return <div className="min-h-[60vh]" aria-busy="true" />;
+}
 
 function AppContent() {
   const { t } = useI18n();
   const [progress, setProgress] = useState<UserProgress>(getStoredProgress());
-  const [currentTab, setCurrentTab] = useState<NavigationTab>('home');
+  const [currentTab, setCurrentTabState] = useState<NavigationTab>('home');
+  // 切換分頁走 transition：新分頁的 chunk 還沒好時先留著舊畫面，不閃出空白佔位
+  const setCurrentTab = (tab: NavigationTab) => startTransition(() => setCurrentTabState(tab));
   const [currentKanaCategory, setCurrentKanaCategory] = useState<'basic' | 'dakuten' | 'handakuten' | 'youon'>('basic');
   const [currentKanaType, setCurrentKanaType] = useState<KanaType>('hiragana');
   const [selectedKana, setSelectedKana] = useState<KanaItem>(HIRAGANA_DATA[0]);
@@ -49,6 +77,16 @@ function AppContent() {
     refreshProgress();
   }, [currentTab]);
 
+  useEffect(() => {
+    // Safari 沒有 requestIdleCallback，退回 setTimeout
+    if (typeof window.requestIdleCallback === 'function') {
+      const id = window.requestIdleCallback(prefetchTabChunks, { timeout: 5000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(prefetchTabChunks, 2000);
+    return () => clearTimeout(id);
+  }, []);
+
   const handleStartStudyKana = (kana: KanaItem) => {
     setSelectedKana(kana);
     setCurrentTab('study');
@@ -74,89 +112,91 @@ function AppContent() {
 
           {/* Main Content View Container */}
           <main className="flex-1 w-full min-w-0 pb-24 lg:pb-8">
-            {currentTab === 'home' && (
-              <HomeDashboard
-                progress={progress}
-                allKana={ALL_LEARNABLE_KANA}
-                onNavigate={handleSelectTab}
-                onStartStudyKana={handleStartStudyKana}
-                onPracticeWriting={(kana) => {
-                  setTargetWritingKanaId(kana.id);
-                  setCurrentTab('writing');
-                }}
-                onPracticeConfusionGroup={(groupId) => {
-                  setTargetConfusionGroupId(groupId);
-                  setCurrentTab('confusable');
-                }}
-              />
-            )}
+            <Suspense fallback={<TabLoadingFallback />}>
+              {currentTab === 'home' && (
+                <HomeDashboard
+                  progress={progress}
+                  allKana={ALL_LEARNABLE_KANA}
+                  onNavigate={handleSelectTab}
+                  onStartStudyKana={handleStartStudyKana}
+                  onPracticeWriting={(kana) => {
+                    setTargetWritingKanaId(kana.id);
+                    setCurrentTab('writing');
+                  }}
+                  onPracticeConfusionGroup={(groupId) => {
+                    setTargetConfusionGroupId(groupId);
+                    setCurrentTab('confusable');
+                  }}
+                />
+              )}
 
-            {currentTab === 'grid' && (
-              <GojuuonGrid
-                allKana={currentKanaData}
-                progress={progress}
-                kanaCategory={currentKanaCategory}
-                onKanaCategoryChange={(cat) => setCurrentKanaCategory(cat)}
-                kanaType={currentKanaType}
-                onKanaTypeChange={(type) => setCurrentKanaType(type)}
-                onSelectKana={handleStartStudyKana}
-              />
-            )}
+              {currentTab === 'grid' && (
+                <GojuuonGrid
+                  allKana={currentKanaData}
+                  progress={progress}
+                  kanaCategory={currentKanaCategory}
+                  onKanaCategoryChange={(cat) => setCurrentKanaCategory(cat)}
+                  kanaType={currentKanaType}
+                  onKanaTypeChange={(type) => setCurrentKanaType(type)}
+                  onSelectKana={handleStartStudyKana}
+                />
+              )}
 
-            {currentTab === 'study' && (
-              <KanaCardView
-                currentKana={selectedKana}
-                allKana={currentKanaData}
-                masteredIds={progress.masteredKanaIds}
-                onProgressChange={refreshProgress}
-                onBackToGrid={() => setCurrentTab('grid')}
-                onSelectKana={(kana) => setSelectedKana(kana)}
-              />
-            )}
+              {currentTab === 'study' && (
+                <KanaCardView
+                  currentKana={selectedKana}
+                  allKana={currentKanaData}
+                  masteredIds={progress.masteredKanaIds}
+                  onProgressChange={refreshProgress}
+                  onBackToGrid={() => setCurrentTab('grid')}
+                  onSelectKana={(kana) => setSelectedKana(kana)}
+                />
+              )}
 
-            {currentTab === 'quiz' && (
-              <QuizView
-                allKana={ALL_LEARNABLE_KANA}
-                onProgressChange={refreshProgress}
-                onFinish={() => setCurrentTab('home')}
-                onNavigateToReview={() => setCurrentTab('review')}
-                onPracticeWriting={(kana) => {
-                  setTargetWritingKanaId(kana.id);
-                  setCurrentTab('writing');
-                }}
-              />
-            )}
+              {currentTab === 'quiz' && (
+                <QuizView
+                  allKana={ALL_LEARNABLE_KANA}
+                  onProgressChange={refreshProgress}
+                  onFinish={() => setCurrentTab('home')}
+                  onNavigateToReview={() => setCurrentTab('review')}
+                  onPracticeWriting={(kana) => {
+                    setTargetWritingKanaId(kana.id);
+                    setCurrentTab('writing');
+                  }}
+                />
+              )}
 
-            {currentTab === 'review' && (
-              <ReviewView
-                allKana={ALL_LEARNABLE_KANA}
-                progress={progress}
-                onProgressChange={refreshProgress}
-                onStartStudyKana={handleStartStudyKana}
-              />
-            )}
+              {currentTab === 'review' && (
+                <ReviewView
+                  allKana={ALL_LEARNABLE_KANA}
+                  progress={progress}
+                  onProgressChange={refreshProgress}
+                  onStartStudyKana={handleStartStudyKana}
+                />
+              )}
 
-            {currentTab === 'special' && <SpecialSoundsView />}
+              {currentTab === 'special' && <SpecialSoundsView />}
 
-            {currentTab === 'jlpt' && <JlptPracticeView />}
+              {currentTab === 'jlpt' && <JlptPracticeView />}
 
-            {currentTab === 'shadowing' && <ShadowingView />}
+              {currentTab === 'shadowing' && <ShadowingView />}
 
-            {currentTab === 'chat' && <ChatTutorView onProgressChange={refreshProgress} />}
+              {currentTab === 'chat' && <ChatTutorView onProgressChange={refreshProgress} />}
 
-            {currentTab === 'writing' && (
-              <WritingPracticeView
-                initialKanaId={targetWritingKanaId}
-                onProgressChange={refreshProgress}
-              />
-            )}
+              {currentTab === 'writing' && (
+                <WritingPracticeView
+                  initialKanaId={targetWritingKanaId}
+                  onProgressChange={refreshProgress}
+                />
+              )}
 
-            {currentTab === 'confusable' && (
-              <ConfusableView
-                initialGroupId={targetConfusionGroupId}
-                onProgressChange={refreshProgress}
-              />
-            )}
+              {currentTab === 'confusable' && (
+                <ConfusableView
+                  initialGroupId={targetConfusionGroupId}
+                  onProgressChange={refreshProgress}
+                />
+              )}
+            </Suspense>
           </main>
         </div>
 
