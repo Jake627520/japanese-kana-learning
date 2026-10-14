@@ -5,6 +5,7 @@ import { HIRAGANA_DATA, KATAKANA_DATA } from '../data/kanaData';
 import { speakJapanese } from '../utils/speech';
 import { recordReviewResult } from '../utils/storage';
 import { logLearningEvent } from '../utils/learningEvents';
+import { loadChatTutorProgress, saveChatTutorRow } from '../lib/chatTutorProgress';
 import { useI18n } from '../i18n';
 
 function groupByRow(data: KanaItem[]): KanaItem[][] {
@@ -60,19 +61,14 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-const ROW_INTROS: Record<string, string> = {
-  'あ行': 'あ行是所有音的基礎，全部都是母音喔！先把這 5 個念熟，後面就簡單了 💪',
-  'か行': 'か行是「K + 母音」，注意 か・き・く・け・こ 的節奏～',
-  'さ行': 'さ行是「S 音」，其中 し 唸作「shi」不是「si」，要特別記住！',
-  'た行': 'た行有兩個特別的：ち 唸「chi」、つ 唸「tsu」，其他照規則走。',
-  'な行': 'な行是「N 音」，發音柔和，像在哼歌一樣～',
-  'は行': 'は行是「H 音」，但 ふ 的音介於 hu / fu 之間，聽聽看！',
-  'ま行': 'ま行是「M 音」，閉嘴發聲，很好記！',
-  'や行': 'や行只有 3 個：や・ゆ・よ，是半母音，常用在拗音裡。',
-  'ら行': 'ら行是「R 音」，其實比較接近輕彈的「L/D」，多聽幾次就抓到了。',
-  'わ行': 'わ行剩下 わ 和 を，を 幾乎只當助詞用，唸法同 お。',
-  'ん行': '最後的 ん 是唯一的「鼻音」，不能單獨開頭，放在字尾收音用。',
-};
+// 依作答比例挑結業評語：全對、七成以上、其他
+function praiseKey(correct: number, total: number): string {
+  if (total > 0 && correct === total) return 'quiz.congratsPerfect';
+  if (total > 0 && correct / total >= 0.7) return 'quiz.greatJob';
+  return 'quiz.keepPracticing';
+}
+
+const OPTION_KEYS: Record<string, number> = { '1': 0, '2': 1, '3': 2, '4': 3 };
 
 interface ChatTutorViewProps {
   onProgressChange?: () => void;
@@ -85,6 +81,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
   const [stage, setStage] = useState<Stage>({ type: 'teaching', rowIdx: 0, kanaIdx: 0 });
   const [quizzes, setQuizzes] = useState<QuizState[]>([]);
   const [score, setScore] = useState({ correct: 0, total: 0 });
+  const rootRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   // 題目出現的時間點，用來算作答秒數給 SRS
@@ -97,37 +94,44 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
   const push = (msg: WithoutId<ChatMsg>) =>
     setMessages((m) => [...m, { ...msg, id: nextId() } as ChatMsg]);
 
-  const resetLesson = (type: KanaType) => {
+  // 每行第一個假名的 romaji（a, ka, sa…n）就是 i18n 的鍵，平假名與片假名共用同一組介紹
+  const rowIntroText = (row: KanaItem[]) =>
+    `【${row[0].row}】${t(`chat.rowIntros.${row[0].romaji}`, { kana: row.map((k) => k.kana).join('・') })}`;
+
+  const startLesson = (type: KanaType, startRow: number) => {
+    const r = groupByRow(type === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA);
+    const rowIdx = startRow < r.length ? startRow : 0;
     setKanaType(type);
     setScore({ correct: 0, total: 0 });
-    const s = type === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
-    const r = groupByRow(s);
-    setStage({ type: 'teaching', rowIdx: 0, kanaIdx: 0 });
+    setStage({ type: 'teaching', rowIdx, kanaIdx: 0 });
     setQuizzes([]);
+    const greeting =
+      rowIdx > 0
+        ? t('chat.welcomeBack', { row: r[rowIdx][0].row })
+        : t('chat.welcomeMsg', { script: t(type === 'hiragana' ? 'common.hiragana' : 'common.katakana') });
     setMessages([
-      {
-        id: nextId(),
-        role: 'sensei',
-        kind: 'text',
-        text: t('chat.welcomeMsg'),
-      },
-      {
-        id: nextId(),
-        role: 'sensei',
-        kind: 'text',
-        text: `【${r[0][0].row}】${ROW_INTROS[r[0][0].row] ?? ''}`,
-      },
-      {
-        id: nextId(),
-        role: 'sensei',
-        kind: 'kana',
-        kana: r[0][0],
-      },
+      { id: nextId(), role: 'sensei', kind: 'text', text: greeting },
+      { id: nextId(), role: 'sensei', kind: 'text', text: rowIntroText(r[rowIdx]) },
+      { id: nextId(), role: 'sensei', kind: 'kana', kana: r[rowIdx][0] },
     ]);
   };
 
+  // 從上次存的那一行繼續
+  const resumeLesson = (type: KanaType) => startLesson(type, loadChatTutorProgress()[type]);
+
+  const restartLesson = () => {
+    saveChatTutorRow(kanaType, 0);
+    startLesson(kanaType, 0);
+  };
+
+  const switchKanaType = (type: KanaType) => {
+    if (type !== kanaType) resumeLesson(type);
+  };
+
   useEffect(() => {
-    resetLesson('hiragana');
+    resumeLesson('hiragana');
+    // 開啟時把焦點放進對話區，Enter 立刻就能用，不會落在剛點過的導覽按鈕上
+    rootRef.current?.focus({ preventScroll: true });
   }, []);
 
   useEffect(() => {
@@ -155,7 +159,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
       push({
         role: 'sensei',
         kind: 'text',
-        text: `【${row[0].row}】${t('chat.title')} (${qList.length})`,
+        text: t('chat.rowQuizIntro', { row: row[0].row, count: qList.length }),
       });
       push({ role: 'sensei', kind: 'quiz', quiz: qList[0] });
       quizShownAtRef.current = Date.now();
@@ -226,16 +230,20 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
       if (nextRowIdx < rows.length) {
         say(`${t('common.next')} →`);
         const nextRow = rows[nextRowIdx];
+        // 整行連同小測都做完才存，回來時從下一行開頭開始
+        saveChatTutorRow(kanaType, nextRowIdx);
         setStage({ type: 'teaching', rowIdx: nextRowIdx, kanaIdx: 0 });
-        push({ role: 'sensei', kind: 'text', text: `【${nextRow[0].row}】${ROW_INTROS[nextRow[0].row] ?? ''}` });
+        push({ role: 'sensei', kind: 'text', text: rowIntroText(nextRow) });
         push({ role: 'sensei', kind: 'kana', kana: nextRow[0] });
       } else {
         say(`${t('common.completed')}! 🎊`);
+        // 全部學完，下次打開從頭開始
+        saveChatTutorRow(kanaType, 0);
         setStage({ type: 'done' });
         push({
           role: 'sensei',
           kind: 'text',
-          text: `${t('quiz.congratsPerfect')} ${score.correct} / ${score.total}`,
+          text: `${t(praiseKey(score.correct, score.total))} ${t('chat.doneScore', score)}`,
         });
       }
     }
@@ -245,7 +253,6 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
     if (stage.type === 'teaching') {
       const row = rows[stage.rowIdx];
       const kana = row?.[stage.kanaIdx];
-      const isLast = stage.rowIdx === rows.length - 1 && stage.kanaIdx === row.length - 1;
       return (
         <>
           {kana && (
@@ -254,14 +261,15 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
             </Chip>
           )}
           <Chip primary icon={<Send className="w-4 h-4" />} onClick={handleNext}>
-            {row && stage.kanaIdx === row.length - 1 ? (isLast ? t('common.finish') : t('quiz.startQuiz')) : t('common.next')}
+            {/* 每一行（包括最後的 ん 行）教完都接小測驗，所以行尾一律是「開始測驗」 */}
+            {row && stage.kanaIdx === row.length - 1 ? t('quiz.startQuiz') : t('common.next')}
           </Chip>
         </>
       );
     }
     if (stage.type === 'quiz') {
       if (!stage.answered) {
-        return <span className="text-xs text-[#8F8674] px-2">👆 {t('quiz.modeSelect')}</span>;
+        return <span className="text-xs text-[#8F8674] px-2">{t('chat.pickHint')}</span>;
       }
       const isLastQuiz = stage.qIdx === stage.total - 1;
       const isLastRow = stage.rowIdx === rows.length - 1;
@@ -272,11 +280,55 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
       );
     }
     return (
-      <Chip primary icon={<RotateCcw className="w-4 h-4" />} onClick={() => resetLesson(kanaType)}>
+      <Chip primary icon={<RotateCcw className="w-4 h-4" />} onClick={restartLesson}>
         {t('common.reset')}
       </Chip>
     );
   }, [stage, rows, quizzes, kanaType, score, t]);
+
+  // 鍵盤：1～4 選答案，Enter 執行底部主按鈕。
+  // 監聽器只註冊一次，透過 ref 拿到每次 render 最新的 stage 與處理函式。
+  const keyActionsRef = useRef({ pick: (_idx: number) => {}, primary: () => {} });
+  keyActionsRef.current = {
+    pick: (idx) => {
+      if (stage.type !== 'quiz' || stage.answered) return;
+      const opt = quizzes[stage.qIdx]?.options[idx];
+      if (opt) handlePick(opt.id);
+    },
+    primary: () => {
+      if (stage.type === 'teaching') handleNext();
+      else if (stage.type === 'quiz') handleAdvanceQuiz();
+      else restartLesson();
+    },
+  };
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable)) {
+        return;
+      }
+
+      const optIdx = OPTION_KEYS[e.key];
+      if (optIdx !== undefined) {
+        e.preventDefault();
+        keyActionsRef.current.pick(optIdx);
+        return;
+      }
+
+      if (e.key === 'Enter') {
+        // 焦點在對話區外的按鈕或連結（例如導覽列）時，Enter 留給它自己。
+        // 對話區內一律當「繼續」：剛點過發音鍵再按 Enter，使用者要的是下一步，不是重播。
+        const inChat = !!target && !!rootRef.current?.contains(target);
+        if (!inChat && target && (target.tagName === 'BUTTON' || target.tagName === 'A')) return;
+        e.preventDefault();
+        keyActionsRef.current.primary();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
 
   const totalKana = allKana.length;
   const learnedApprox =
@@ -286,7 +338,11 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
         (stage.type === 'teaching' ? stage.kanaIdx + 1 : rows[stage.rowIdx]?.length ?? 0);
 
   return (
-    <div className="bg-[#F4EEDE] border border-[#D9CDB2] rounded-3xl shadow-xs flex flex-col h-[75vh] max-h-[800px] min-h-[520px] overflow-hidden">
+    <div
+      ref={rootRef}
+      tabIndex={-1}
+      className="bg-[#F4EEDE] border border-[#D9CDB2] rounded-3xl shadow-xs flex flex-col h-[75vh] max-h-[800px] min-h-[520px] overflow-hidden focus:outline-none"
+    >
       {/* 頂部導覽 */}
       <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#ECE4D0] bg-[#F4EEDE] shrink-0">
         <div className="flex items-center gap-2.5">
@@ -304,7 +360,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
         <div className="flex items-center gap-2">
           <div className="flex bg-[#D9CDB2] p-0.5 rounded-xl text-xs font-bold">
             <button
-              onClick={() => resetLesson('hiragana')}
+              onClick={() => switchKanaType('hiragana')}
               className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
                 kanaType === 'hiragana' ? 'bg-[#F4EEDE] text-[#5C6B3D] shadow-xs' : 'text-[#6B6252]'
               }`}
@@ -312,7 +368,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
               {t('common.hiragana')}
             </button>
             <button
-              onClick={() => resetLesson('katakana')}
+              onClick={() => switchKanaType('katakana')}
               className={`px-3 py-1 rounded-lg transition-colors cursor-pointer ${
                 kanaType === 'katakana' ? 'bg-[#F4EEDE] text-[#5C6B3D] shadow-xs' : 'text-[#6B6252]'
               }`}
@@ -322,7 +378,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
           </div>
 
           <button
-            onClick={() => resetLesson(kanaType)}
+            onClick={restartLesson}
             className="p-2 text-[#6B6252] hover:text-[#221F18] rounded-lg hover:bg-[#F4EEDE] transition-colors cursor-pointer"
             title={t('common.reset')}
           >
@@ -442,7 +498,7 @@ function QuizCard({
         {t('chat.whichKana', { romaji: quiz.prompt })}
       </div>
       <div className="grid grid-cols-2 gap-2">
-        {quiz.options.map((opt) => {
+        {quiz.options.map((opt, i) => {
           const isAnswer = opt.id === quiz.answerId;
           const isPicked = opt.id === quiz.pickedId;
           let cls = 'border-[#D9CDB2] bg-[#F4EEDE] text-[#221F18] hover:border-[#5C6B3D] hover:bg-[#E6EAD5]';
@@ -455,10 +511,16 @@ function QuizCard({
               key={opt.id}
               disabled={locked}
               onClick={() => onPick(opt.id)}
+              aria-keyshortcuts={String(i + 1)}
               className={`relative flex items-center justify-center h-14 rounded-xl border-2 text-2xl font-display font-bold transition-all ${cls} ${
                 locked ? 'cursor-default' : 'cursor-pointer'
               }`}
             >
+              {!locked && (
+                <span className="absolute top-1 left-1.5 text-[10px] font-sans font-bold text-[#8F8674]" aria-hidden="true">
+                  {i + 1}
+                </span>
+              )}
               {opt.kana}
               {locked && isAnswer && (
                 <Check className="absolute top-1 right-1 w-4 h-4 text-[#5C6B3D]" />

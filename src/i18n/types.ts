@@ -351,16 +351,26 @@ export interface TranslationSchema {
     vocabularyCheck: string;
   };
   chat: {
-    title: string;
-    subtitle: string;
     aiTutor: string;
-    inputPlaceholder: string;
-    send: string;
-    quickPrompts: string;
-    typing: string;
-    clearHistory: string;
     welcomeMsg: string;
+    welcomeBack: string;
     whichKana: string;
+    pickHint: string;
+    rowQuizIntro: string;
+    doneScore: string;
+    rowIntros: {
+      a: string;
+      ka: string;
+      sa: string;
+      ta: string;
+      na: string;
+      ha: string;
+      ma: string;
+      ya: string;
+      ra: string;
+      wa: string;
+      n: string;
+    };
   };
   writing: {
     title: string;
