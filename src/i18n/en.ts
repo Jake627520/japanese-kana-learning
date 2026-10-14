@@ -133,6 +133,8 @@ export const en: TranslationSchema = {
       desc: 'Export your learning progress, mastery levels, and SRS data as a JSON file, or restore from a backup.',
       btnExport: 'Export Progress JSON',
       btnImport: 'Import Backup File',
+      exportSuccess: 'Backup file downloaded. Keep it somewhere safe.',
+      exportError: 'Export failed. Please try again.',
       importSuccess: 'Progress imported successfully!',
       importError: 'Invalid backup file format. Please check and try again.',
     },

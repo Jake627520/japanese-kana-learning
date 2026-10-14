@@ -11,10 +11,10 @@ export function DataBackupCard() {
   const handleExport = () => {
     try {
       exportAllProgressData();
-      setFeedback({ type: 'success', message: t('common.copied') });
+      setFeedback({ type: 'success', message: t('home.backup.exportSuccess') });
       setTimeout(() => setFeedback(null), 4000);
     } catch (e) {
-      setFeedback({ type: 'error', message: t('home.backup.importError') });
+      setFeedback({ type: 'error', message: t('home.backup.exportError') });
       setTimeout(() => setFeedback(null), 4000);
     }
   };
@@ -45,7 +45,9 @@ export function DataBackupCard() {
           window.location.reload();
         }, 1200);
       } else {
-        setFeedback({ type: 'error', message: result.message || t('home.backup.importError') });
+        // result.message 是寫死的繁中除錯訊息，畫面上一律顯示目前語言的提示
+        console.warn('Backup import rejected:', result.message);
+        setFeedback({ type: 'error', message: t('home.backup.importError') });
         setTimeout(() => setFeedback(null), 5000);
       }
     };

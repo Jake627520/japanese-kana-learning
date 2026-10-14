@@ -133,6 +133,8 @@ export interface TranslationSchema {
       desc: string;
       btnExport: string;
       btnImport: string;
+      exportSuccess: string;
+      exportError: string;
       importSuccess: string;
       importError: string;
     };

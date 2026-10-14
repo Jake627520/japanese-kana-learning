@@ -133,6 +133,8 @@ export const zhTW: TranslationSchema = {
       desc: '將你的學習進度、掌握度與 SRS 記憶紀錄匯出成檔案，或從備份檔還原。',
       btnExport: '匯出進度 JSON',
       btnImport: '匯入備份檔',
+      exportSuccess: '已下載備份檔，請妥善保存。',
+      exportError: '匯出失敗，請再試一次。',
       importSuccess: '進度匯入成功！',
       importError: '備份檔格式不正確，請重新確認。',
     },

@@ -133,6 +133,8 @@ export const zhCN: TranslationSchema = {
       desc: '将你的学习进度、掌握度与 SRS 记忆数据导出为文件，或从备份文件还原。',
       btnExport: '导出进度 JSON',
       btnImport: '导入备份文件',
+      exportSuccess: '已下载备份文件，请妥善保存。',
+      exportError: '导出失败，请再试一次。',
       importSuccess: '进度导入成功！',
       importError: '备份文件格式不正确，请重新确认。',
     },
