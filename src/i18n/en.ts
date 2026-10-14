@@ -360,6 +360,7 @@ export const en: TranslationSchema = {
     typing: 'Sakura is typing...',
     clearHistory: 'Clear Chat History',
     welcomeMsg: 'Konnichiwa! I am your Japanese learning assistant Sakura. Ask me anything about kana, pronunciation, or grammar!',
+    whichKana: 'Which one is "{romaji}"?',
   },
   writing: {
     title: 'Kana Stroke Order Practice',

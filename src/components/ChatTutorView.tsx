@@ -3,6 +3,8 @@ import { Volume2, Send, RotateCcw, Check, X, Sparkles } from 'lucide-react';
 import { KanaItem, KanaType } from '../types';
 import { HIRAGANA_DATA, KATAKANA_DATA } from '../data/kanaData';
 import { speakJapanese } from '../utils/speech';
+import { recordReviewResult } from '../utils/storage';
+import { logLearningEvent } from '../utils/learningEvents';
 import { useI18n } from '../i18n';
 
 function groupByRow(data: KanaItem[]): KanaItem[][] {
@@ -85,6 +87,8 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
   const [score, setScore] = useState({ correct: 0, total: 0 });
   const scrollRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
+  // 題目出現的時間點，用來算作答秒數給 SRS
+  const quizShownAtRef = useRef(0);
 
   const source = kanaType === 'hiragana' ? HIRAGANA_DATA : KATAKANA_DATA;
   const rows = useMemo(() => groupByRow(source), [source]);
@@ -154,6 +158,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
         text: `【${row[0].row}】${t('chat.title')} (${qList.length})`,
       });
       push({ role: 'sensei', kind: 'quiz', quiz: qList[0] });
+      quizShownAtRef.current = Date.now();
     }
   };
 
@@ -163,6 +168,21 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
     if (!currentQ) return;
 
     const isCorrect = pickedId === currentQ.answerId;
+    const responseMs = Math.max(10, Date.now() - quizShownAtRef.current);
+
+    // 寫回 SRS：與 QuizView 同一套記錄，熟練度、錯題本、複習排程才會跟著動。
+    // 不在這裡移出錯題本：QuizView 要求連對 2 次才移出，而對話小測每個假名一輪只考一次，
+    // 答對一次不足以證明弱點已克服——移出交給測驗／複習中心的連對規則。
+    recordReviewResult(currentQ.answerId, isCorrect, responseMs);
+    logLearningEvent({
+      type: 'quiz_answer',
+      source: 'chat_quiz',
+      kanaId: currentQ.answerId,
+      selectedKanaId: pickedId,
+      correct: isCorrect,
+      responseMs,
+    });
+
     const updatedQuiz = { ...currentQ, pickedId };
     setQuizzes((qs) => qs.map((q, i) => (i === stage.qIdx ? updatedQuiz : q)));
     setMessages((ms) =>
@@ -200,6 +220,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
       say(t('quiz.nextQuestion'));
       setStage({ ...stage, qIdx: nextQIdx, answered: false });
       push({ role: 'sensei', kind: 'quiz', quiz: quizzes[nextQIdx] });
+      quizShownAtRef.current = Date.now();
     } else {
       const nextRowIdx = stage.rowIdx + 1;
       if (nextRowIdx < rows.length) {
@@ -339,7 +360,7 @@ function MessageBubble({
 }) {
   if (msg.role === 'user') {
     return (
-      <div className="flex justify-end animate-[fadeIn_0.25s_ease]">
+      <div className="flex justify-end rise-in">
         <div className="max-w-[75%] bg-[#5C6B3D] text-[#F1EFE0] px-4 py-2.5 rounded-2xl rounded-br-md text-sm font-medium shadow-xs">
           {msg.kind === 'text' ? msg.text : ''}
         </div>
@@ -348,7 +369,7 @@ function MessageBubble({
   }
 
   return (
-    <div className="flex gap-2.5 items-end animate-[fadeIn_0.25s_ease]">
+    <div className="flex gap-2.5 items-end rise-in">
       <div className="w-8 h-8 bg-[#5C6B3D] text-[#F1EFE0] rounded-xl flex items-center justify-center font-bold text-sm shrink-0 mb-1">
         あ
       </div>
@@ -375,7 +396,7 @@ function KanaCard({ kana }: { kana: KanaItem }) {
           className="group relative w-20 h-20 bg-[#E6EAD5] rounded-2xl flex items-center justify-center shrink-0 cursor-pointer hover:bg-[#5C6B3D] transition-colors"
           aria-label={`Play ${kana.romaji}`}
         >
-          <span className="text-4xl font-extrabold text-[#5C6B3D] group-hover:text-[#F1EFE0] transition-colors">
+          <span className="text-4xl font-display font-bold text-[#5C6B3D] group-hover:text-[#F1EFE0] transition-colors">
             {kana.kana}
           </span>
           <span className="absolute bottom-1 right-1 w-5 h-5 bg-[#F4EEDE] rounded-full flex items-center justify-center shadow-xs">
@@ -412,27 +433,29 @@ function QuizCard({
   stage: Stage;
   onPick: (id: string) => void;
 }) {
+  const { t } = useI18n();
   const locked = quiz.pickedId !== null;
   return (
     <div className="bg-[#F4EEDE] border border-[#D9CDB2] rounded-2xl rounded-bl-md p-4 shadow-xs w-72 max-w-full">
       <div className="flex items-center gap-1.5 text-xs font-bold text-[#5C6B3D] mb-3">
         <Sparkles className="w-4 h-4" />
-        {quiz.prompt}
+        {t('chat.whichKana', { romaji: quiz.prompt })}
       </div>
       <div className="grid grid-cols-2 gap-2">
         {quiz.options.map((opt) => {
           const isAnswer = opt.id === quiz.answerId;
           const isPicked = opt.id === quiz.pickedId;
           let cls = 'border-[#D9CDB2] bg-[#F4EEDE] text-[#221F18] hover:border-[#5C6B3D] hover:bg-[#E6EAD5]';
-          if (locked && isAnswer) cls = 'border-[#5C6B3D] bg-[#E6EAD5] text-[#5C6B3D]';
-          else if (locked && isPicked && !isAnswer) cls = 'border-[#CAA096] bg-[#EFDBD5] text-[#B0554A]';
+          // 鎖定後：正解脈衝、選錯左右晃——不只靠顏色區分對錯
+          if (locked && isAnswer) cls = 'border-[#5C6B3D] bg-[#E6EAD5] text-[#5C6B3D] feedback-correct';
+          else if (locked && isPicked && !isAnswer) cls = 'border-[#CAA096] bg-[#EFDBD5] text-[#A6443A] feedback-wrong';
           else if (locked) cls = 'border-[#ECE4D0] bg-[#F4EEDE] text-[#8F8674]';
           return (
             <button
               key={opt.id}
               disabled={locked}
               onClick={() => onPick(opt.id)}
-              className={`relative flex items-center justify-center h-14 rounded-xl border-2 text-2xl font-extrabold transition-all ${cls} ${
+              className={`relative flex items-center justify-center h-14 rounded-xl border-2 text-2xl font-display font-bold transition-all ${cls} ${
                 locked ? 'cursor-default' : 'cursor-pointer'
               }`}
             >
@@ -441,7 +464,7 @@ function QuizCard({
                 <Check className="absolute top-1 right-1 w-4 h-4 text-[#5C6B3D]" />
               )}
               {locked && isPicked && !isAnswer && (
-                <X className="absolute top-1 right-1 w-4 h-4 text-red-400" />
+                <X className="absolute top-1 right-1 w-4 h-4 text-[#A6443A]" />
               )}
             </button>
           );

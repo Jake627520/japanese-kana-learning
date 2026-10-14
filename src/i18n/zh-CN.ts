@@ -360,6 +360,7 @@ export const zhCN: TranslationSchema = {
     typing: '老师正在思考回复中...',
     clearHistory: '清空对话记录',
     welcomeMsg: '你好！我是你的日语学习助教 Sakura。有任何五十音、发音或日语语法的问题，都可以随时问我哦！',
+    whichKana: '哪一个是「{romaji}」？',
   },
   writing: {
     title: '假名笔顺书写练习',

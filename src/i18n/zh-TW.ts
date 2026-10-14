@@ -360,6 +360,7 @@ export const zhTW: TranslationSchema = {
     typing: '老師正在思考回覆中...',
     clearHistory: '清空對話紀錄',
     welcomeMsg: '你好！我是你的日語學習助教 Sakura。有任何五十音、發音或日語文法的問題，都可以隨時問我喔！',
+    whichKana: '哪一個是「{romaji}」？',
   },
   writing: {
     title: '假名筆順書寫練習',

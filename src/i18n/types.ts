@@ -360,6 +360,7 @@ export interface TranslationSchema {
     typing: string;
     clearHistory: string;
     welcomeMsg: string;
+    whichKana: string;
   };
   writing: {
     title: string;
