@@ -70,7 +70,8 @@ class TestListeningRecognition(unittest.TestCase):
         self.assertTrue(len(matches) >= 1, "Replay button should directly invoke speakJapanese")
 
     def test_10_srs_record_review_result(self):
-        self.assertIn("recordReviewResult(targetKana.id, isCorrect)", self.quiz_content)
+        # 只比對前兩個參數：之後加了 responseMs，整句比對會誤報失敗
+        self.assertRegex(self.quiz_content, r"recordReviewResult\(targetKana\.id, isCorrect[,)]")
 
     def test_11_core_files_untouched(self):
         for rel_path in [
