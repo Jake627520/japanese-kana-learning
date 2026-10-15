@@ -394,7 +394,12 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
             {isListeningAvailable && (
               <button
                 type="button"
-                onClick={() => setActiveTrainingGroup(q.group)}
+                onClick={() => {
+                  // 和其他特訓入口一樣先拍快照，結果才只算這一次特訓
+                  setTrainingOutcome(null);
+                  setEventsBeforeSnapshot(getLearningEvents());
+                  setActiveTrainingGroup(q.group);
+                }}
                 className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-extrabold text-[#5C6B3D] bg-[#E6EAD5] hover:bg-[#DBE1C8] rounded-lg transition-all cursor-pointer border border-[#A8B487]"
               >
                 <Headphones className="w-3 h-3" />

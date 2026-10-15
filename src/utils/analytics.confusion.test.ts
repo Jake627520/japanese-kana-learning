@@ -333,22 +333,36 @@ describe('getTrainingOutcome', () => {
     });
   });
 
-  it('after 超過 5 筆時，陣列最後 5 筆是 session，其餘是觀察窗（afterAccuracy 與 remainingTopDirection 取觀察窗）', () => {
-    const observation = [confusion('h_shi', 'h_tsu'), confusion('h_shi', 'h_tsu'), confusion('h_tsu', 'h_tsu')];
-    const session = times(5, () => confusion('h_tsu', 'h_tsu'));
-    expect(getTrainingOutcome([], [...observation, ...session], 'cf_tsu_shi', [TSU_SHI])).toMatchObject({
-      sessionAccuracy: 1,
-      afterAccuracy: 0.33,
-      remainingTopDirection: { target: 'h_shi', selected: 'h_tsu', count: 2 },
+  it('after 含特訓前的歷史時，只有快照裡沒有的事件算 session；方向統計也只看 session', () => {
+    // 歷史裡錯得很多（shi → tsu），這次特訓只錯一題 tsu → shi
+    const history = [confusion('h_shi', 'h_tsu'), confusion('h_shi', 'h_tsu'), confusion('h_tsu', 'h_tsu')];
+    const session = [...times(4, () => confusion('h_tsu', 'h_tsu')), confusion('h_tsu', 'h_shi')];
+    // 和實際存放一樣：最新在前
+    const after = [...session.reverse(), ...history];
+
+    expect(getTrainingOutcome(history, after, 'cf_tsu_shi', [TSU_SHI])).toMatchObject({
+      beforeAccuracy: 0.33,
+      sessionAccuracy: 0.8,
+      afterAccuracy: 0.8,
+      improvement: 0.47,
+      remainingTopDirection: { target: 'h_tsu', selected: 'h_shi', count: 1 },
+      isResolved: true,
     });
   });
 
-  // MISMATCH: scripts/test-c1-5.py:7 says getTrainingOutcome isolates the session ("session isolation"),
-  // TS (src/utils/analytics.ts:634) takes `after.slice(-5)` as the session, but the caller
-  // (src/components/ConfusableView.tsx:148) passes getLearningEvents(), which is the FULL log, newest first
-  // (src/utils/learningEvents.ts:48). With earlier history in the group, slice(-5) picks the 5 OLDEST
-  // historical events, not the drill just finished.
-  it.skip('實際流程：先有歷史再特訓，session 應該是剛做完的 5 題', () => {
+  it('session 不限 5 題：7 題全部計入', () => {
+    const session = [...times(6, () => confusion('h_tsu', 'h_tsu')), confusion('h_tsu', 'h_shi')];
+    expect(getTrainingOutcome([], session, 'cf_tsu_shi', [TSU_SHI])).toMatchObject({ sessionAccuracy: 0.86 });
+  });
+
+  it('快照之後沒有新的群組事件時回傳 null', () => {
+    const history = times(3, () => confusion('h_tsu', 'h_tsu'));
+    expect(getTrainingOutcome(history, history, 'cf_tsu_shi', [TSU_SHI])).toBeNull();
+  });
+
+  // 回歸測試：舊寫法取 after.slice(-5)，而事件是最新在前，
+  // 有歷史時會把最舊的 5 筆當成本次特訓（scripts/test-c1-5.py 的 session isolation）
+  it('實際流程：先有歷史再特訓，session 應該是剛做完的 5 題', () => {
     // 歷史：5 題對 2 題（0.4）
     for (let i = 0; i < 5; i++) {
       const selected = i < 2 ? 'h_tsu' : 'h_shi';

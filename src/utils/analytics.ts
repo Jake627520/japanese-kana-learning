@@ -591,8 +591,8 @@ export function getModalityAccuracy(
 
 /**
  * Calculate post-training outcome comparing before vs after metrics.
- * Pure function: rigorously separates pre-training baseline, session performance (last 5 events),
- * and subsequent observation window without modifying underlying events.
+ * Pure function. `eventsBefore` is the snapshot taken when the training started;
+ * the session is every group event in `eventsAfter` whose id is not in that snapshot.
  */
 export function getTrainingOutcome(
   eventsBefore: LearningEvent[],
@@ -628,11 +628,13 @@ export function getTrainingOutcome(
   }
 
   /*
-   * The final 5-event block is treated as the training session.
-   * The remaining events are the post-training observation window.
+   * 本次特訓 = 結束時有、開始時的快照裡沒有的事件。
+   * 不能用陣列位置判斷：事件存放順序是最新在前（learningEvents.ts），
+   * 而且一次特訓不一定剛好 5 題。舊寫法取 after.slice(-5)，
+   * 只要這一組有過去的紀錄，取到的就是最舊的 5 筆。
    */
-  const session = after.slice(-5);
-  const postTraining = after.slice(0, -5);
+  const beforeIds = new Set(eventsBefore.map((event) => event?.id));
+  const session = after.filter((event) => !beforeIds.has(event.id));
 
   if (session.length === 0) {
     return null;
@@ -645,7 +647,8 @@ export function getTrainingOutcome(
 
   const beforeAccuracy = accuracy(before);
   const sessionAccuracy = accuracy(session);
-  const afterAccuracy = postTraining.length > 0 ? accuracy(postTraining) : sessionAccuracy;
+  // 特訓一結束就計算，之後還沒有新的作答，所以「特訓後」就是這次特訓本身
+  const afterAccuracy = sessionAccuracy;
 
   const directionCounts = new Map<string, {
     target: string;
@@ -653,8 +656,7 @@ export function getTrainingOutcome(
     count: number;
   }>();
 
-  const evalEvents = postTraining.length > 0 ? postTraining : session;
-  for (const event of evalEvents) {
+  for (const event of session) {
     if (
       event.correct === false &&
       event.kanaId &&
