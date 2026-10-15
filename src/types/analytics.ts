@@ -84,8 +84,10 @@ export interface ListeningWeakness {
   attempts: number;
   wrongCount: number;
   listeningAccuracy: number;
-  visualAccuracy: number;
-  gap: number;
+  /** null：這個假名沒有視覺測驗紀錄，不是正確率 0 */
+  visualAccuracy: number | null;
+  /** 視覺減聽力；沒有視覺紀錄時為 null */
+  gap: number | null;
   topConfusionKanaId?: string;
   confidence: WeaknessConfidence;
   score: number;

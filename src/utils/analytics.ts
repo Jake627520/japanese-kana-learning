@@ -214,10 +214,11 @@ export function getListeningWeaknesses(
     );
     const visualAttempts = visualEvents.length;
     const visualCorrect = visualEvents.filter((e) => e.correct === true).length;
+    // 沒有視覺紀錄時是「沒有資料」，不能當成 0%：否則畫面顯示「視覺 0%」，差距也變成負數
     const visualAccuracy =
-      visualAttempts > 0 ? Math.round((visualCorrect / visualAttempts) * 100) / 100 : 0;
+      visualAttempts > 0 ? Math.round((visualCorrect / visualAttempts) * 100) / 100 : null;
 
-    const gap = Math.round((visualAccuracy - listeningAccuracy) * 100) / 100;
+    const gap = visualAccuracy === null ? null : Math.round((visualAccuracy - listeningAccuracy) * 100) / 100;
 
     // 3. Top confusion kanaId (from source === 'listening_confusion' where selected !== kanaId)
     const confusionMap: Record<string, number> = {};
@@ -244,7 +245,8 @@ export function getListeningWeaknesses(
     const confidence = getConfidenceLevel(attempts);
     const wrongRate = attempts > 0 ? wrongCount / attempts : 0;
     const volume = Math.max(0, Math.min(Math.log2(attempts + 1) / 5, 1));
-    const gapBonus = Math.max(gap, 0);
+    // 沒有視覺資料就沒有差距可加分；舊寫法在這種情況下 gap 為負數，加分同樣是 0，分數不變
+    const gapBonus = Math.max(gap ?? 0, 0);
 
     let totalWeight = 0;
     let weightedWrong = 0;
@@ -411,8 +413,9 @@ export function getAIRecommendation(
       reasonParams: { rate: Math.round(highConfWeakness.wrongRate * 100) },
       evidence: {
         listeningAccuracy: relatedListening?.listeningAccuracy ?? (1 - highConfWeakness.wrongRate),
-        visualAccuracy: relatedListening?.visualAccuracy ?? 1,
-        gap: relatedListening?.gap ?? highConfWeakness.wrongRate,
+        // 沒有資料就不填，畫面顯示「—」；以前填 1 和 wrongRate，是沒有根據的數字
+        visualAccuracy: relatedListening?.visualAccuracy ?? undefined,
+        gap: relatedListening?.gap ?? undefined,
         recentAttempts: highConfWeakness.attempts,
         topDirection: highConfWeakness.topDirection
           ? {

@@ -378,18 +378,24 @@ describe('getAIRecommendation：規則優先順序', () => {
     expect(rec.evidence?.score).toBeGreaterThanOrEqual(0.5);
   });
 
-  it('Rule 1 沒有視覺測驗資料時：evidence 的 visualAccuracy 回報 0、gap 為 0（現況）', () => {
-    // 群組事件的目標字一定會出現在 getListeningWeaknesses 裡，所以 evidence 永遠取自 relatedListening；
-    // 該字沒有 source='quiz' 的資料時，visualAccuracy 是 0 而不是「未知」。
+  it('Rule 1 沒有視覺測驗資料時：evidence 的 visualAccuracy 與 gap 留空（畫面顯示 —），不是 0', () => {
+    // 回歸測試：以前回報視覺 0%、差距 0，首頁推薦卡因此顯示「視覺 0%」
     const events = times(8, () => confusion('h_shi', 'h_tsu'));
     const rec = getAIRecommendation(progress(), events, [TSU_SHI], NOW_DATE);
     expect(rec.recommendedAction).toBe('listening_confusion');
     expect(rec.evidence).toMatchObject({
       listeningAccuracy: 0,
-      visualAccuracy: 0,
-      gap: 0,
       topDirection: { target: 'h_shi', selected: 'h_tsu', count: 8 },
     });
+    expect(rec.evidence?.visualAccuracy).toBeUndefined();
+    expect(rec.evidence?.gap).toBeUndefined();
+  });
+
+  it('Rule 1 有視覺測驗資料時：evidence 帶出實際的視覺正確率與差距', () => {
+    const events = [...times(8, () => confusion('h_shi', 'h_tsu')), ...times(4, () => quiz('h_shi', true))];
+    const rec = getAIRecommendation(progress(), events, [TSU_SHI], NOW_DATE);
+    expect(rec.recommendedAction).toBe('listening_confusion');
+    expect(rec.evidence).toMatchObject({ listeningAccuracy: 0, visualAccuracy: 1, gap: 1 });
   });
 
   it('QA-2 / Test 15：低信心（2/2 全錯）不觸發 listening_confusion，退回 quiz', () => {

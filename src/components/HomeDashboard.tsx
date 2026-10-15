@@ -39,6 +39,11 @@ import {
   Zap,
 } from 'lucide-react';
 
+// 沒有資料（null / undefined）時顯示「—」，不要用 0% 或 100% 頂替
+const formatPercent = (v: number | null | undefined) => (v == null ? '—' : `${Math.round(v * 100)}%`);
+const formatSignedPercent = (v: number | null | undefined) =>
+  v == null ? '—' : `${v >= 0 ? '+' : ''}${Math.round(v * 100)}%`;
+
 interface HomeDashboardProps {
   progress: UserProgress;
   allKana: KanaItem[];
@@ -206,14 +211,13 @@ export function HomeDashboard({
               <div>
                 <div className="text-[10px] font-bold text-[#6B6252]">{t('analytics.recommendationEvidenceVisual')}</div>
                 <div className="text-xs font-black text-[#5C6B3D] mt-0.5">
-                  {Math.round((aiRecommendation.evidence.visualAccuracy ?? 1) * 100)}%
+                  {formatPercent(aiRecommendation.evidence.visualAccuracy)}
                 </div>
               </div>
               <div>
                 <div className="text-[10px] font-bold text-[#6B6252]">{t('analytics.recommendationEvidenceGap')}</div>
                 <div className="text-xs font-black text-rose-600 mt-0.5">
-                  {(aiRecommendation.evidence.gap ?? 0) >= 0 ? '+' : ''}
-                  {Math.round((aiRecommendation.evidence.gap ?? 0) * 100)}%
+                  {formatSignedPercent(aiRecommendation.evidence.gap)}
                 </div>
               </div>
               <div>
@@ -398,7 +402,7 @@ export function HomeDashboard({
                             {t('analytics.visualAccuracyLabel')}
                           </div>
                           <div className="text-xs font-extrabold text-[#5C6B3D] mt-0.5">
-                            {Math.round(w.visualAccuracy * 100)}%
+                            {formatPercent(w.visualAccuracy)}
                           </div>
                         </div>
                         <div>
@@ -406,7 +410,7 @@ export function HomeDashboard({
                             {t('analytics.modalityGapLabel')}
                           </div>
                           <div className="text-xs font-extrabold text-rose-600 mt-0.5">
-                            {w.gap >= 0 ? '+' : ''}{Math.round(w.gap * 100)}%
+                            {formatSignedPercent(w.gap)}
                           </div>
                         </div>
                       </div>

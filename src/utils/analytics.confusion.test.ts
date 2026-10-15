@@ -76,7 +76,8 @@ describe('getListeningWeaknesses', () => {
       ev({ type: 'quiz_answer', source: 'review_quiz', kanaId: 'h_a', correct: false }),
     ];
     const [w] = getListeningWeaknesses(events, { now: NOW });
-    expect(w).toMatchObject({ attempts: 2, wrongCount: 1, listeningAccuracy: 0.5, visualAccuracy: 0 });
+    // review_quiz 不算視覺，所以這個字沒有視覺資料：是 null（沒有資料），不是 0%
+    expect(w).toMatchObject({ attempts: 2, wrongCount: 1, listeningAccuracy: 0.5, visualAccuracy: null, gap: null });
   });
 
   it('只做過視覺測驗的假名不會出現', () => {
