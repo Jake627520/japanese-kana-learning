@@ -64,12 +64,16 @@ describe('上線關卡', () => {
     }
   });
 
-  // MISMATCH: python 認為穩定度永遠 ≤ 365 天（scripts/test-srs-promotion-gate.py:67-79 把 stab 夾在 365，
-  // 斷言在 :137）；TS 的 calculateStability（src/utils/srs/scheduler.ts:98-99）沒有上限，
-  // 365 天上限只套在間隔（scheduler.ts:134）。
-  it.skip('關卡 2：120 次複習後穩定度 ≤ 365 天', () => {
+  // CHG-006 M3 回歸測試：穩定度封頂 365 天。修正前沒有上限，這組輸入會到 746.7。
+  it('關卡 2：120 次複習後穩定度 ≤ 365 天', () => {
     for (const state of runSeeded()) {
       expect(state.stability).toBeLessThanOrEqual(MAX_INTERVAL_DAYS);
+    }
+  });
+
+  it('關卡 2：每次排定的間隔都不超過 365 天（修正前曾因精度問題多出 1024 ms）', () => {
+    for (const state of runSeeded()) {
+      expect(state.due - state.lastReview!).toBeLessThanOrEqual(MAX_INTERVAL_DAYS * DAY_MS);
     }
   });
 
@@ -143,9 +147,8 @@ describe('上線關卡', () => {
     expect(state.difficulty).toBe(1.0);
   });
 
-  // MISMATCH: python 認為連續 50 次 easy 後穩定度 ≤ 365 天（scripts/test-srs-promotion-gate.py:75、:79，
-  // 斷言在 :213）；TS 的 calculateStability（src/utils/srs/scheduler.ts:98-99）沒有上限，穩定度會無限成長。
-  it.skip('關卡 7、8：連續 50 次 easy，穩定度 ≤ 365 天', () => {
+  // CHG-006 M4 回歸測試：連按 easy 也不超過 365 天。修正前會成長到約 1.7e27。
+  it('關卡 7、8：連續 50 次 easy，穩定度 ≤ 365 天', () => {
     expect(runEasy50().stability).toBeLessThanOrEqual(MAX_INTERVAL_DAYS);
   });
 });

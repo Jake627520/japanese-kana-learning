@@ -75,10 +75,8 @@ describe('AdaptiveSRSEngine：新卡初始排程', () => {
     expect(state.consecutiveCorrect).toBe(0);
   });
 
-  // MISMATCH: python 認為新卡 hard 的 due = now + 1 天（scripts/test-srs-engine.py:61、:152，
-  // 用 stability 直接當間隔）；TS 在 src/utils/srs/scheduler.ts:190 走 calculateInterval，
-  // hard 乘 0.85（scheduler.ts:123-124），due = now + 0.85 天。
-  it.skip('hard → 1 天，連對 1', () => {
+  // CHG-006 M1 回歸測試：首次複習固定 1 天。修正前誤乘 hard 倍率 0.85，得到 0.85 天。
+  it('hard → 1 天，連對 1', () => {
     const { state } = adaptive.review(null, { rating: 'hard', reviewedAt: NOW, kanaId: 'a' });
     expect(state.stability).toBe(1.0);
     expect(state.due).toBe(NOW + DAY_MS);
@@ -98,10 +96,8 @@ describe('AdaptiveSRSEngine：新卡初始排程', () => {
     expect(state.consecutiveCorrect).toBe(1);
   });
 
-  // MISMATCH: python 認為新卡 easy 的 due = now + 3 天（scripts/test-srs-engine.py:61、:164）；
-  // TS 在 src/utils/srs/scheduler.ts:190 走 calculateInterval，easy 乘 1.3（scheduler.ts:129-130），
-  // due = now + 3.9 天。
-  it.skip('easy → 3 天，連對 1', () => {
+  // CHG-006 M2 回歸測試：首次複習固定 3 天。修正前誤乘 easy 倍率 1.3，得到 3.9 天。
+  it('easy → 3 天，連對 1', () => {
     const { state } = adaptive.review(null, { rating: 'easy', reviewedAt: NOW, kanaId: 'a' });
     expect(state.stability).toBe(3.0);
     expect(state.due).toBe(NOW + 3 * DAY_MS);

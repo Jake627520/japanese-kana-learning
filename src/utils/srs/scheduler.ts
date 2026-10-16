@@ -2,6 +2,9 @@ import { SRSStateV2, ReviewRating, ReviewResult } from './types';
 
 export const TEN_MINUTES_IN_DAYS = 10 / (24 * 60); // ≈ 0.00694 days
 export const DEFAULT_MAX_INTERVAL_DAYS = 365; // 1 year cap
+// CHG-006 M3/M4：穩定度也封頂 365 天。沒有上限時連按 easy 會成長到 1e27，
+// 日期計算超過 Number.MAX_SAFE_INTEGER 而失去精度；promotion gates 也以此為前提。
+export const MAX_STABILITY_DAYS = 365;
 
 export interface SchedulerOptions {
   maxIntervalDays?: number;
@@ -95,7 +98,7 @@ export function calculateStability(
       break;
   }
 
-  const nextStability = Math.max(0.1, stab * baseGrowth * overdueBonus);
+  const nextStability = Math.min(MAX_STABILITY_DAYS, Math.max(0.1, stab * baseGrowth * overdueBonus));
   return Math.round(nextStability * 10000) / 10000;
 }
 
@@ -187,7 +190,9 @@ export function scheduleAdaptiveReview(
         break;
     }
 
-    const intervalDays = calculateInterval(initialStability, rating, options);
+    // CHG-006 M1/M2：首次複習用固定間隔（again 10 分鐘、hard 1 天、good 1 天、easy 3 天），
+    // 也就是初始穩定度本身；0.85 / 1.3 的倍率只從第二次複習開始套用。
+    const intervalDays = initialStability;
     const nextDue = calculateNextReviewAt(reviewedAt, intervalDays);
 
     const nextState: SRSStateV2 = {
