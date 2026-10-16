@@ -1,4 +1,4 @@
-import { getStoredProgress, saveProgress, saveProgressV2, STORAGE_KEY_V2 } from './storage';
+import { getStoredProgress, saveProgress, saveProgressV2, resetProgressV2FromV1, STORAGE_KEY_V2 } from './storage';
 import { getStoredJlptRecords, setStoredJlptRecords, JlptPracticeRecord } from './jlptStorage';
 import { LEARNING_EVENTS_STORAGE_KEY, replaceLearningEvents } from './learningEvents';
 import { getShadowingProgressRaw, replaceShadowingProgress, ShadowingProgress } from '../lib/shadowingProgress';
@@ -129,8 +129,10 @@ export function validateAndImportProgressData(jsonString: string): { success: bo
       reviewStates: rawKana.reviewStates && typeof rawKana.reviewStates === 'object' ? rawKana.reviewStates : {},
     };
 
-    // 儲存假名進度（同時會用 v1 重新產生 v2，所以 progressV2 必須在這之後才寫）
+    // 儲存假名進度。saveProgress 會保留本機既有的 v2 調適資料（CHG-006 M5），
+    // 但匯入是整份還原，所以 v2 改依匯入的 v1 重建；檔案帶有合法 progressV2 時，下面會再覆寫。
     saveProgress(validatedKanaProgress);
+    resetProgressV2FromV1(validatedKanaProgress);
 
     // 儲存 JLPT 作答記錄（若有）
     if (Array.isArray(parsed.jlptRecords)) {

@@ -86,13 +86,61 @@ export function getStoredProgress(): UserProgress {
   }
 }
 
+/**
+ * CHG-006 M5：v2 調適資料的版本。
+ * 修正前，每次寫 v1 都會用 migrateUserProgress 整份重建 v2，
+ * srsStates 與 shadowLogs 從未真正累積。讀到沒有這個版本標記的 v2 時，整份捨棄、從目前的 v1 重新開始。
+ */
+export const ADAPTIVE_DATA_VERSION = 2;
+
+/** 讀取目前版本的 v2；不存在、壞掉或是修正前的舊資料時回傳 null */
+function readCurrentV2(): UserProgressV2 | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY_V2);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as UserProgressV2;
+    if (
+      parsed &&
+      parsed.schemaVersion === 2 &&
+      parsed.srsStates &&
+      typeof parsed.srsStates === 'object' &&
+      parsed.adaptiveDataVersion === ADAPTIVE_DATA_VERSION
+    ) {
+      return parsed;
+    }
+  } catch {
+    // 壞掉的 JSON 視同沒有
+  }
+  return null;
+}
+
+/** 從 v1 建一份全新的 v2：調適狀態由 v1 推算，shadow log 清空 */
+function freshV2FromV1(v1: UserProgress): UserProgressV2 {
+  return { ...migrateUserProgress(v1), shadowLogs: [], adaptiveDataVersion: ADAPTIVE_DATA_VERSION };
+}
+
+/** 捨棄現有的 v2，依指定的 v1 重建（備份匯入時用，讓 v2 對應匯入的 v1） */
+export function resetProgressV2FromV1(v1: UserProgress): void {
+  saveProgressV2(freshV2FromV1(v1));
+}
+
 export function saveProgress(progress: UserProgress): void {
   try {
     // 1. Persist v1 primary store (Zero breakage guarantee, v1 is NEVER deleted)
     localStorage.setItem(STORAGE_KEY_V1, JSON.stringify(progress));
 
-    // 2. Dual-persist to v2 store via migration layer (Rollback-safe)
-    const v2 = migrateUserProgress(progress);
+    // 2. 同步 v1 的鏡像欄位到 v2，但保留既有的調適狀態與 shadow log（CHG-006 M5）。
+    //    只有還沒有 v2 狀態的假名才從 v1 推算；v2 不存在或是舊資料時，從 v1 整份重建。
+    const existing = readCurrentV2();
+    const migrated = migrateUserProgress(progress);
+    const v2: UserProgressV2 = existing
+      ? {
+          ...migrated,
+          srsStates: { ...migrated.srsStates, ...existing.srsStates },
+          shadowLogs: existing.shadowLogs ?? [],
+          adaptiveDataVersion: ADAPTIVE_DATA_VERSION,
+        }
+      : freshV2FromV1(progress);
     localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(v2));
   } catch (e) {
     console.error('Failed to save progress:', e);
@@ -109,30 +157,21 @@ export function saveProgressV2(progress: UserProgressV2): void {
 
 export function getStoredProgressV2(): UserProgressV2 {
   try {
-    const rawV2 = localStorage.getItem(STORAGE_KEY_V2);
-    if (rawV2) {
-      try {
-        const parsed = JSON.parse(rawV2) as UserProgressV2;
-        if (parsed && parsed.schemaVersion === 2 && parsed.srsStates && typeof parsed.srsStates === 'object') {
-          return parsed;
-        }
-      } catch {
-        // Corrupted v2 JSON -> will fallback to v1 migration
-      }
-    }
+    const current = readCurrentV2();
+    if (current) return current;
 
-    // Fallback: migrate from v1 (v1 precedence on missing or corrupt v2)
-    const v1 = getStoredProgress();
-    const migrated = migrateUserProgress(v1);
+    // v2 不存在、壞掉，或是修正前的舊資料：從目前的 v1 重建一次並寫回
+    const fresh = freshV2FromV1(getStoredProgress());
     try {
-      localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(migrated));
+      localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(fresh));
     } catch {
       // ignore storage write error
     }
-    return migrated;
+    return fresh;
   } catch (e) {
     console.error('Failed to read stored progress v2:', e);
-    return migrateUserProgress(defaultProgress);
+    // 也要帶版本標記，否則寫回後下次讀取會被當成舊資料再捨棄一次
+    return freshV2FromV1(defaultProgress);
   }
 }
 
@@ -170,6 +209,16 @@ export function recordReviewResult(
 ): UserProgress {
   const current = getStoredProgress();
   const now = new Date();
+
+  // 1. 先用「作答前」的 v2 狀態跑調適引擎（CHG-006 M5）。全新的假名沒有狀態，就走新卡路徑（M1）。
+  //    舊順序是先 saveProgress：用已更新的 v1 重建 v2 後再套一次，同一次作答被算兩次、調適歷史也不累積。
+  try {
+    const rating = mapQuizResultToRating(isCorrect, responseMs, manualRating);
+    recordAdaptiveReview(kanaId, rating, responseMs, now.getTime());
+  } catch (e) {
+    console.error('Failed to dual-record adaptive review:', e);
+  }
+
   const state = getReviewState(current, kanaId);
 
   let newLevel = state.reviewLevel;
@@ -212,16 +261,8 @@ export function recordReviewResult(
     reviewStates: updatedReviewStates,
   };
 
-  // 1. Save v1 progress (100% legacy backward compatible)
+  // 2. Save v1 progress (100% legacy backward compatible)。v2 的調適狀態由 saveProgress 保留，不會被重建
   saveProgress(updatedProgress);
-
-  // 2. Dual-record to v2 via adapter for adaptive tracking
-  try {
-    const rating = mapQuizResultToRating(isCorrect, responseMs, manualRating);
-    recordAdaptiveReview(kanaId, rating, responseMs, now.getTime());
-  } catch (e) {
-    console.error('Failed to dual-record adaptive review:', e);
-  }
 
   return updatedProgress;
 }

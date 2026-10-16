@@ -73,4 +73,10 @@ export interface UserProgressV2 {
   srsStates: Record<string, SRSStateV2>;
   reviewStates?: Record<string, KanaReviewState>;
   shadowLogs?: SRSShadowLogEntry[];
+
+  /**
+   * 調適資料的版本（CHG-006 M5）。沒有這個欄位或版本較舊的 v2，
+   * 是修正前每次寫 v1 都被重建的資料，讀取時會整份捨棄、從 v1 重新開始。
+   */
+  adaptiveDataVersion?: number;
 }
