@@ -12,7 +12,7 @@ import { speakJapanese } from '../utils/speech';
 import { logLearningEvent } from '../utils/learningEvents';
 import { getPrimaryVocabularyByKanaId, playVocabularyAudio } from '../data/vocabulary';
 import { QuizView } from './QuizView';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 import {
   Volume2,
   Play,
@@ -242,7 +242,7 @@ export function ReviewView({
                 {(() => {
                   const vocab = getPrimaryVocabularyByKanaId(item.id);
                   if (vocab) {
-                    const meaning = vocab.meaning[language] || vocab.meaning['zh-TW'];
+                    const meaning = localize(vocab.meaning, language);
                     return (
                       <div className="bg-[#E6EAD5]/60 p-2.5 rounded-xl text-xs text-[#6B6252] border border-[#D9E0C6] flex items-center justify-between">
                         <div className="flex items-center gap-1.5 flex-wrap">

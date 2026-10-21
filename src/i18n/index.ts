@@ -4,14 +4,23 @@ export type { Language, TranslationSchema };
 import { zhTW } from './zh-TW';
 import { zhCN } from './zh-CN';
 import { en } from './en';
+import { ko } from './ko';
+import { es } from './es';
 
 export * from './types';
+export { localize } from './localize';
 
 export const translations: Record<Language, TranslationSchema> = {
   'zh-TW': zhTW,
   'zh-CN': zhCN,
   en: en,
+  ko: ko,
+  es: es,
 };
+
+export function isLanguage(v: unknown): v is Language {
+  return typeof v === 'string' && Object.hasOwn(translations, v);
+}
 
 export const LANGUAGE_STORAGE_KEY = 'kana_learning_language';
 
@@ -19,8 +28,8 @@ export function getInitialLanguage(): Language {
   if (typeof window === 'undefined') return 'zh-TW';
 
   try {
-    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language | null;
-    if (saved && (saved === 'zh-TW' || saved === 'zh-CN' || saved === 'en')) {
+    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+    if (isLanguage(saved)) {
       return saved;
     }
   } catch (e) {
@@ -30,6 +39,7 @@ export function getInitialLanguage(): Language {
   try {
     const browserLang = navigator.language || (navigator as { userLanguage?: string }).userLanguage || '';
     const lower = browserLang.toLowerCase();
+    const primary = lower.split('-')[0];
 
     if (lower.startsWith('zh-tw') || lower.startsWith('zh-hk') || lower.startsWith('zh-mo') || lower.startsWith('zh-hant')) {
       return 'zh-TW';
@@ -39,6 +49,12 @@ export function getInitialLanguage(): Language {
     }
     if (lower.startsWith('en')) {
       return 'en';
+    }
+    if (primary === 'ko') {
+      return 'ko';
+    }
+    if (primary === 'es') {
+      return 'es';
     }
   } catch (e) {
     console.warn('Failed to detect browser language:', e);
@@ -90,16 +106,16 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   };
 
   const dictionary = useMemo(() => {
-    return translations[language] || translations['zh-TW'];
+    return translations[language] || translations.en;
   }, [language]);
 
   const t = useMemo(() => {
     return (path: string, params?: Record<string, string | number>): string => {
       let val = resolvePath(dictionary, path);
 
-      // Fallback to zh-TW if missing in current dictionary
-      if (val === undefined && language !== 'zh-TW') {
-        val = resolvePath(translations['zh-TW'], path);
+      // Fallback to English if missing in current dictionary
+      if (val === undefined && language !== 'en') {
+        val = resolvePath(translations.en, path);
       }
 
       if (typeof val !== 'string') {

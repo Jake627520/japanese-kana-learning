@@ -1,3 +1,5 @@
+import type { Language } from '../../i18n/types';
+
 export type VocabularyType =
   | 'noun'
   | 'verb'
@@ -6,11 +8,7 @@ export type VocabularyType =
   | 'particle'
   | 'sound-example';
 
-export interface LocalizedString {
-  'zh-TW': string;
-  'zh-CN': string;
-  'en': string;
-}
+export type LocalizedString = Record<Language, string>;
 
 export interface VocabularyItem {
   id: string;

@@ -3,7 +3,7 @@ import { Volume2 } from 'lucide-react';
 import type { VocabularyItem } from '../data/vocabulary/vocabularyTypes';
 import { playVocabularyAudio } from '../data/vocabulary/vocabularyAudio';
 import { VocabularyKanaBreakdown } from './VocabularyKanaBreakdown';
-import type { Language } from '../i18n';
+import { localize, type Language } from '../i18n';
 
 interface VocabularyCardProps {
   item: VocabularyItem;
@@ -16,7 +16,7 @@ export function VocabularyCard({
   locale,
   currentKanaId,
 }: VocabularyCardProps) {
-  const meaning = item.meaning[locale] || item.meaning['zh-TW'];
+  const meaning = localize(item.meaning, locale);
 
   const handlePlay = () => {
     void playVocabularyAudio(item);

@@ -1,4 +1,4 @@
-export type Language = 'zh-TW' | 'zh-CN' | 'en';
+export type Language = 'zh-TW' | 'zh-CN' | 'en' | 'ko' | 'es';
 
 export interface TranslationSchema {
   nav: {

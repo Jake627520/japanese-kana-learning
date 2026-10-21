@@ -8,12 +8,10 @@ import {
   sanitizeChatTutorProgress,
   ChatTutorProgress,
 } from '../lib/chatTutorProgress';
-import { LANGUAGE_STORAGE_KEY, Language } from '../i18n';
+import { LANGUAGE_STORAGE_KEY, Language, isLanguage } from '../i18n';
 import { UserProgress } from '../types';
 import { UserProgressV2 } from './srs/types';
 import { LearningEvent } from '../types/learning';
-
-const LANGUAGES: Language[] = ['en', 'zh-TW', 'zh-CN'];
 
 /**
  * 備份檔格式（CHG-005）。
@@ -202,8 +200,4 @@ function isLearningEvent(e: unknown): e is LearningEvent {
 
 function isShadowingProgress(v: unknown): v is ShadowingProgress {
   return isObject(v) && typeof v.date === 'string' && Array.isArray(v.todayIds);
-}
-
-function isLanguage(v: unknown): v is Language {
-  return typeof v === 'string' && (LANGUAGES as string[]).includes(v);
 }

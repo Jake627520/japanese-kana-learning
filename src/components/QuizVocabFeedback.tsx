@@ -2,7 +2,7 @@ import React from 'react';
 import { Volume2 } from 'lucide-react';
 import { getPrimaryVocabularyByKanaId, playVocabularyAudio } from '../data/vocabulary';
 import { VocabularyKanaBreakdown } from './VocabularyKanaBreakdown';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 
 interface QuizVocabFeedbackProps {
   key?: React.Key;
@@ -16,7 +16,7 @@ export function QuizVocabFeedback({ kanaId, compact = false }: QuizVocabFeedback
 
   if (!vocab) return null;
 
-  const meaning = vocab.meaning[language] || vocab.meaning['zh-TW'];
+  const meaning = localize(vocab.meaning, language);
 
   const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
