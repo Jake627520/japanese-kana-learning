@@ -7,7 +7,7 @@ Validates vocabulary datasets for Japanese Kana Learning:
 2. Checks unique IDs across all entries.
 3. Validates required fields: word, romaji, type, primaryKanaId, kanaLinks, audioKey, meaning.
 4. Checks 100% primary kana ID coverage for all 208 kana.
-5. Checks 100% trilingual meaning completeness (zh-TW, zh-CN, en).
+5. Checks 100% meaning completeness for every locale in LOCALES.
 6. Validates every kanaLink strictly exists in the 208 Kana database with zero duplicates.
 7. Checks audioKey mapping in vocabularyAudio.ts, verifies contentAudioMap / kanaAudioMap and verifies physical MP3 existence.
 """
@@ -91,6 +91,17 @@ KATAKANA_YOUON_33_KANA_IDS = [
     'ky_mya', 'ky_myu', 'ky_myo',
     'ky_rya', 'ky_ryu', 'ky_ryo',
 ]
+
+LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es']
+
+def find_meaning(raw, lang):
+    m = re.search(
+        rf'[\'"]{re.escape(lang)}[\'"]:\s*(?:\'((?:[^\'\\]|\\.)*)\'|"((?:[^"\\]|\\.)*)")',
+        raw,
+    )
+    if not m:
+        return None
+    return m.group(1) if m.group(1) is not None else m.group(2)
 
 def main():
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -229,17 +240,11 @@ def main():
                         if os.path.exists(public_kana_audio_dir) and not os.path.exists(audio_path):
                             errors.append(f"[{v_id}] Kana audio asset missing on disk: {audio_path}")
 
-            # Trilingual meaning
-            meaning_tw_m = re.search(r'[\'"]zh-TW[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            meaning_cn_m = re.search(r'[\'"]zh-CN[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            meaning_en_m = re.search(r'[\'"]en[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-
-            if not meaning_tw_m or not meaning_tw_m.group(1).strip():
-                errors.append(f"[{v_id}] Missing 'zh-TW' meaning")
-            if not meaning_cn_m or not meaning_cn_m.group(1).strip():
-                errors.append(f"[{v_id}] Missing 'zh-CN' meaning")
-            if not meaning_en_m or not meaning_en_m.group(1).strip():
-                errors.append(f"[{v_id}] Missing 'en' meaning")
+            # Meaning in every locale
+            for lang in LOCALES:
+                text = find_meaning(raw, lang)
+                if not text or not text.strip():
+                    errors.append(f"[{v_id}] Missing '{lang}' meaning")
 
         missing_kana = set(expected_kana_ids) - covered_primary_kana
         if missing_kana:
@@ -257,7 +262,7 @@ def main():
     print(f"   - Total items validated: {total_items} (46 Seion + 20 Dakuten + 5 Handakuten + 33 Youon + 46 Katakana Seion + 20 Katakana Dakuten + 5 Katakana Handakuten + 33 Katakana Youon = 208)")
     print(f"   - 100% primaryKanaId coverage across all 208 representative words.")
     print(f"   - 100% kanaLinks verified against 208 Kana database with zero invalid IDs or duplicates.")
-    print(f"   - 100% trilingual (zh-TW, zh-CN, en) meaning coverage.")
+    print(f"   - 100% meaning coverage in {len(LOCALES)} locales ({', '.join(LOCALES)}).")
     print(f"   - All audio keys and physical MP3 assets verified on disk.")
     return 0
 

@@ -12,9 +12,7 @@ import { LearningEvent } from '../types/learning';
 import { AIRecommendation } from '../types/analytics';
 import { UserProgress, KanaReviewState } from '../types';
 import { ConfusableGroup } from '../data/confusableData';
-import { zhTW } from '../i18n/zh-TW';
-import { zhCN } from '../i18n/zh-CN';
-import { en } from '../i18n/en';
+import { translations } from '../i18n';
 
 // 取代 scripts/test-analytics.py、test-b8-manual-qa.py、test-listening-weakness.py（推薦部分）、
 // test-c1-3-manual-qa.py（QA-1/2/3）、test-c1-4.py（evidence）。
@@ -423,8 +421,8 @@ describe('getAIRecommendation：規則優先順序', () => {
   });
 });
 
-describe('getAIRecommendation：每個分支的 i18n 鍵在三語都存在，參數佔位符齊全', () => {
-  const locales = { 'zh-TW': zhTW, 'zh-CN': zhCN, en } as const;
+describe('getAIRecommendation：每個分支的 i18n 鍵在每個語言都存在，參數佔位符齊全', () => {
+  const locales = translations;
 
   function resolve(dict: unknown, path: string): unknown {
     return path.split('.').reduce<unknown>((obj, key) => {

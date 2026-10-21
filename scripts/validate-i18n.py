@@ -3,7 +3,7 @@
 validate-i18n.py
 
 Validates i18n translation dictionaries for Japanese Kana Learning:
-1. Ensures zh-TW, zh-CN, and en translation files exist.
+1. Ensures a translation file exists for every locale in LOCALES.
 2. Extracts and parses object keys recursively.
 3. Checks 100% key parity (no missing keys, no extra keys).
 4. Verifies non-empty string values.
@@ -13,6 +13,8 @@ Validates i18n translation dictionaries for Japanese Kana Learning:
 import sys
 import os
 import re
+
+LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es']
 
 def extract_keys_and_values(file_path):
     if not os.path.exists(file_path):
@@ -74,11 +76,7 @@ def main():
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     i18n_dir = os.path.join(root_dir, 'src', 'i18n')
 
-    locales = {
-        'zh-TW': os.path.join(i18n_dir, 'zh-TW.ts'),
-        'zh-CN': os.path.join(i18n_dir, 'zh-CN.ts'),
-        'en': os.path.join(i18n_dir, 'en.ts'),
-    }
+    locales = {lang: os.path.join(i18n_dir, f'{lang}.ts') for lang in LOCALES}
 
     errors = []
     parsed = {}

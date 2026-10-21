@@ -6,8 +6,8 @@ Validates Shadowing conversational datasets for Japanese Kana Learning:
 1. Verifies 18 Shadowing sentence items (sh-01 through sh-18).
 2. Checks unique IDs across all entries.
 3. Validates required fields: japanese, kana, romaji, meaning.
-4. Checks 100% trilingual meaning completeness (zh-TW, zh-CN, en) with non-empty values.
-5. Checks 100% trilingual focus & tip completeness when present.
+4. Checks meaning completeness for every locale in LOCALES with non-empty values.
+5. Checks focus & tip completeness for every locale when present.
 6. Verifies physical normal and slow VOICEVOX MP3 assets exist on disk in public/audio/shadowing/.
 """
 
@@ -16,6 +16,19 @@ import os
 import re
 
 EXPECTED_SHADOWING_COUNT = 18
+LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es']
+
+STRING_RE = r'(?:\'(?:[^\'\\]|\\.)*\'|"(?:[^"\\]|\\.)*")'
+
+def find_block(raw, field):
+    m = re.search(rf'\b{field}:\s*\{{((?:[^}}\'"]|{STRING_RE})*)\}}', raw)
+    return m.group(1) if m else None
+
+def find_string(block, lang):
+    m = re.search(rf'[\'"]{re.escape(lang)}[\'"]:\s*(?:\'((?:[^\'\\]|\\.)*)\'|"((?:[^"\\]|\\.)*)")', block)
+    if not m:
+        return None
+    return m.group(1) if m.group(1) is not None else m.group(2)
 
 def main():
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -65,33 +78,17 @@ def main():
         if not romaji_m or not romaji_m.group(1).strip():
             errors.append(f"[{s_id}] Missing or empty 'romaji'")
 
-        # meaning (trilingual)
-        meaning_tw_m = re.search(r'meaning:\s*\{[\s\S]*?[\'"]zh-TW[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-        meaning_cn_m = re.search(r'meaning:\s*\{[\s\S]*?[\'"]zh-CN[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-        meaning_en_m = re.search(r'meaning:\s*\{[\s\S]*?[\'"]en[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-
-        if not meaning_tw_m or not meaning_tw_m.group(1).strip():
-            errors.append(f"[{s_id}] Missing or empty 'zh-TW' meaning")
-        if not meaning_cn_m or not meaning_cn_m.group(1).strip():
-            errors.append(f"[{s_id}] Missing or empty 'zh-CN' meaning")
-        if not meaning_en_m or not meaning_en_m.group(1).strip():
-            errors.append(f"[{s_id}] Missing or empty 'en' meaning")
-
-        # focus (trilingual if present)
-        if 'focus:' in raw:
-            focus_tw_m = re.search(r'focus:\s*\{[\s\S]*?[\'"]zh-TW[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            focus_cn_m = re.search(r'focus:\s*\{[\s\S]*?[\'"]zh-CN[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            focus_en_m = re.search(r'focus:\s*\{[\s\S]*?[\'"]en[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            if not focus_tw_m or not focus_cn_m or not focus_en_m:
-                errors.append(f"[{s_id}] Incomplete trilingual 'focus' object")
-
-        # tip (trilingual if present)
-        if 'tip:' in raw:
-            tip_tw_m = re.search(r'tip:\s*\{[\s\S]*?[\'"]zh-TW[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            tip_cn_m = re.search(r'tip:\s*\{[\s\S]*?[\'"]zh-CN[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            tip_en_m = re.search(r'tip:\s*\{[\s\S]*?[\'"]en[\'"]:\s*[\'"]([^\'"]+)[\'"]', raw)
-            if not tip_tw_m or not tip_cn_m or not tip_en_m:
-                errors.append(f"[{s_id}] Incomplete trilingual 'tip' object")
+        # meaning is required; focus and tip must be complete when present
+        for field, required in (('meaning', True), ('focus', False), ('tip', False)):
+            block = find_block(raw, field)
+            if block is None:
+                if required or re.search(rf'\b{field}:', raw):
+                    errors.append(f"[{s_id}] '{field}' is missing or not a localized object")
+                continue
+            for lang in LOCALES:
+                text = find_string(block, lang)
+                if not text or not text.strip():
+                    errors.append(f"[{s_id}] Missing or empty '{lang}' in '{field}'")
 
         # audio files
         audio_norm_m = re.search(r'normal:\s*[\'"]([^\'"]+)[\'"]', raw)
@@ -118,7 +115,7 @@ def main():
 
     print(f"\n✅ All Shadowing validation checks passed successfully!")
     print(f"   - Total sentences validated: {len(seen_ids)} (sh-01 through sh-18)")
-    print(f"   - 100% trilingual (zh-TW, zh-CN, en) meaning, focus, and tip completeness.")
+    print(f"   - 100% meaning, focus, and tip completeness in {len(LOCALES)} locales ({', '.join(LOCALES)}).")
     print(f"   - 100% normal & slow audio files verified on disk (36/36 MP3s).")
     return 0
 
