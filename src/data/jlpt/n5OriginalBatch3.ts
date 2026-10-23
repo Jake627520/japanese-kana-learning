@@ -23,7 +23,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -54,7 +54,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -85,7 +85,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -118,7 +118,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -149,7 +149,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -180,7 +180,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -213,7 +213,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -244,7 +244,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -275,7 +275,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -308,7 +308,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -339,7 +339,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -370,7 +370,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -403,7 +403,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -434,7 +434,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -465,7 +465,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -498,7 +498,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -529,7 +529,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -560,7 +560,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -593,7 +593,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -624,7 +624,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -646,8 +646,8 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['りんごも バナナも みかんを かいました。', 'りんごへ バナナへ みかんを かいました。', 'りんごや バナナや みかんを かいました。', 'りんごと バナナと みかんを かいました。'],
     answer: '4',
     explain: {
-      'zh-TW': '題幹強調「ぜんぶ（全部窮盡）」，完整窮盡列舉必須使用「と」。「や」代表非窮盡列舉（可能還有其他），故選 2。',
-      'zh-CN': '题干强调「ぜんぶ（全部穷尽）」，完整穷尽的列举必须用「と」。「や」表示非穷尽列举（可能还有其他），所以选 2。',
+      'zh-TW': '題幹強調「ぜんぶ（全部窮盡）」，完整窮盡列舉必須使用「と」。「や」代表非窮盡列舉（可能還有其他），故選 4。',
+      'zh-CN': '题干强调「ぜんぶ（全部穷尽）」，完整穷尽的列举必须用「と」。「や」表示非穷尽列举（可能还有其他），所以选 4。',
       'en': 'The stem stresses 「ぜんぶ」 (all of them), and a complete list must use 「と」. 「や」 gives an incomplete list (there may be other items), so the answer is 4.',
       'ko': '문제 문장은「ぜんぶ」(전부)를 강조하므로, 빠짐없이 모두 나열할 때 쓰는「と」를 써야 해요. 「や」는 다른 것도 있을 수 있는 일부 나열이에요. 그래서 정답은 4예요.',
       'es': 'El enunciado subraya 「ぜんぶ」 (todo, la lista completa), y una enumeración completa requiere 「と」. 「や」 indica una enumeración incompleta (puede haber más cosas). Por eso la respuesta es la 4.',
@@ -655,7 +655,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -688,7 +688,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -719,7 +719,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -750,7 +750,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -783,7 +783,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -814,7 +814,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -845,7 +845,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -878,7 +878,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -909,7 +909,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -931,8 +931,8 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     options: ['パンや きれいです。', 'パンや たべます。', 'パンを や ごはんを たべます。', 'パンや ごはんを たべます。'],
     answer: '4',
     explain: {
-      'zh-TW': '「や」專門連接兩個名詞進行部分列舉，因此「パンや ごはん」語法正確。2 缺少列舉項，3 助詞位置錯置，4 連接形容詞違背詞性規則。',
-      'zh-CN': '「や」专门连接两个名词进行部分列举，所以「パンや ごはん」语法正确。选项 2 缺少列举项，选项 3 助词位置错误，选项 4 连接形容词，违背词性规则。',
+      'zh-TW': '「や」專門連接兩個名詞進行部分列舉，因此「パンや ごはん」語法正確。1 連接形容詞違背詞性規則，2 缺少列舉項，3 助詞位置錯置。',
+      'zh-CN': '「や」专门连接两个名词进行部分列举，所以「パンや ごはん」语法正确。选项 1 连接形容词，违背词性规则；选项 2 缺少列举项；选项 3 助词位置错误。',
       'en': '「や」 only links nouns to give a partial list, so 「パンや ごはん」 is correct. Option 1 links a noun to an adjective, which breaks the rule. Option 2 is missing the second item. In option 3, the particles are in the wrong place.',
       'ko': '「や」는 두 명사를 이어 일부를 나열할 때만 쓰므로「パンや ごはん」이 문법적으로 맞아요. 1은 형용사와 이어져 품사 규칙에 어긋나고, 2는 나열할 항목이 빠졌고, 3은 조사 위치가 잘못됐어요.',
       'es': '「や」 une dos sustantivos en una enumeración parcial, así que 「パンや ごはん」 es correcto. La 1 une 「や」 con un adjetivo, lo que va contra las reglas de categoría gramatical; a la 2 le falta el segundo elemento; en la 3 la partícula está mal colocada.',
@@ -940,7 +940,7 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',

@@ -150,8 +150,8 @@ export const N3_TOPICS_BATCH3: JlptTopic[] = [
     },
     book: 'JLPT N3', chapter: '目的與期望', grade: 'n3',
     description: {
-      'zh-TW': '為了讓某狀態實現，後半多搭配非意志動詞、可能形或否定形（忘れないようにメモを取る）。與ために 的分界就在前面那個動詞是不是自己能控制的意志動作。',
-      'zh-CN': '为了让某状态实现，后半多搭配非意志动词、可能形或否定形（忘れないようにメモを取る）。与ために 的分界就在前面那个动词是不是自己能控制的意志动作。',
+      'zh-TW': '為了讓某狀態實現，前半（ように前面的動詞）多搭配非意志動詞、可能形或否定形（忘れないようにメモを取る）。與ために 的分界就在前面那個動詞是不是自己能控制的意志動作。',
+      'zh-CN': '为了让某状态实现，前半（ように前面的动词）多搭配非意志动词、可能形或否定形（忘れないようにメモを取る）。与ために 的分界就在前面那个动词是不是自己能控制的意志动作。',
       'en': 'Used to bring about a certain state. The verb before ように is usually non-volitional, a potential form or a negative (忘れないようにメモを取る). The line between it and ために is whether that verb is a deliberate action you can control.',
       'ko': '어떤 상태가 이루어지게 하려는 목적이에요. 앞부분에는 주로 무의지 동사, 가능형, 부정형이 와요 (忘れないようにメモを取る). ために와의 경계는 앞의 동사가 스스로 조절할 수 있는 의지 동작인지에 있어요.',
       'es': 'Expresa el fin de lograr un estado; la parte que va antes de ように suele llevar verbos no volitivos, la forma potencial o la negativa (忘れないようにメモを取る). La frontera con ために está en si ese verbo es una acción volitiva que uno puede controlar.',

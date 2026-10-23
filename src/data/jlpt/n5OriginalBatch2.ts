@@ -23,7 +23,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -54,7 +54,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -85,7 +85,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -118,7 +118,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -149,7 +149,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -180,7 +180,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -213,7 +213,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -244,7 +244,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -275,7 +275,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -308,7 +308,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -326,20 +326,20 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     number: 11,
     type: 'single',
     score: 1,
-    stem: 'わたしは あねに プレゼントを（　　）。',
+    stem: 'わたしは あねから プレゼントを（　　）。',
     options: ['あげました', 'やりました', 'もらいました', 'かしました'],
     answer: '3',
     explain: {
-      'zh-TW': '句型「わたしは [人]に [物]を もらいました」表示「我從某人那裡得到禮物」。',
-      'zh-CN': '句型「わたしは [人]に [物]を もらいました」表示「我从某人那里得到礼物」。',
-      'en': 'The pattern 「わたしは [person]に [thing]を もらいました」 means "I received something from someone."',
-      'ko': '「わたしは [사람]に [물건]を もらいました」는 \'나는 누구에게서 선물을 받았어요\'라는 뜻이에요.',
-      'es': 'La estructura 「わたしは [人]に [物]を もらいました」 significa «recibí algo de alguien».',
+      'zh-TW': '「から」表示來源，「あねから」就是「從姊姊那裡」。從某人那裡收到東西用「もらう」，所以是「もらいました」。',
+      'zh-CN': '「から」表示来源，「あねから」就是「从姐姐那里」。从某人那里收到东西用「もらう」，所以是「もらいました」。',
+      'en': '「から」 marks the source: 「あねから」 means "from my older sister." Receiving something from someone uses 「もらう」, so the answer is 「もらいました」.',
+      'ko': '「から」는 출처를 나타내요. 「あねから」는 \'언니(누나)에게서\'라는 뜻이에요. 누군가에게서 무언가를 받을 때는 「もらう」를 쓰므로 정답은 「もらいました」예요.',
+      'es': '「から」 marca el origen: 「あねから」 significa «de mi hermana mayor». Para recibir algo de alguien se usa 「もらう」, así que la respuesta es 「もらいました」.',
     },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -358,19 +358,19 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     type: 'single',
     score: 1,
     stem: 'ともだちは わたしに ペンを（　　）。',
-    options: ['もらいました', 'かしました', 'あげました', 'かりました'],
+    options: ['もらいました', 'かしました', 'くれました', 'かりました'],
     answer: '3',
     explain: {
-      'zh-TW': '主詞為朋友（第三人稱），動作方向為給予，使用「あげました」。（註：亦可使用くれました，此題選項中給予動詞為あげました）。',
-      'zh-CN': '主语是朋友（第三人称），动作方向是给予，用「あげました」。（注：也可以用くれました，但本题选项中的给予动词是あげました。）',
-      'en': 'The subject is a friend (a third person), and the action is giving, so the answer key uses 「あげました」. (Note: when someone gives to you, the standard verb is くれました. Among the options here, the giving verb is あげました.)',
-      'ko': '주어가 친구(제3자)이고 동작의 방향이 \'주다\'이므로「あげました」를 써요. (참고: くれました도 쓸 수 있지만, 이 문제의 선택지에서 \'주다\' 동사는 あげました예요.)',
-      'es': 'El sujeto es el amigo y la acción es dar. Ojo: cuando quien recibe soy yo (わたしに), lo natural en japonés es 「くれました」; 「あげました」 se usa cuando el que recibe no es el hablante. Entre estas opciones, el único verbo de dar es 「あげました」.',
+      'zh-TW': '主詞是朋友，接受東西的是「我」（わたしに）。別人給我要用「くれる」，所以是「くれました」；「あげる」是給別人時用的。',
+      'zh-CN': '主语是朋友，接受东西的是「我」（わたしに）。别人给我要用「くれる」，所以是「くれました」；「あげる」是给别人时用的。',
+      'en': 'The subject is the friend, and the receiver is 「わたし」 (わたしに). When someone gives something to me, Japanese uses 「くれる」, so the answer is 「くれました」. 「あげる」 is for giving to someone else.',
+      'ko': '주어는 친구이고, 받는 사람은 「わたし」(わたしに)예요. 다른 사람이 나에게 줄 때는 「くれる」를 쓰므로 정답은 「くれました」예요. 「あげる」는 다른 사람에게 줄 때 써요.',
+      'es': 'El sujeto es el amigo y quien recibe soy yo (わたしに). Cuando alguien me da algo a mí, en japonés se usa 「くれる」, así que la respuesta es 「くれました」. 「あげる」 se usa cuando se da algo a otra persona.',
     },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -403,7 +403,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -434,7 +434,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -465,7 +465,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -498,7 +498,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -529,7 +529,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -560,7 +560,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -593,7 +593,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -624,7 +624,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -655,7 +655,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -688,7 +688,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -719,7 +719,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -750,7 +750,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -783,7 +783,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '外来語',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -814,7 +814,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '外来語',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -845,7 +845,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '外来語',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -878,7 +878,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '類義・言い換え',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -909,7 +909,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '類義・言い換え',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',
@@ -940,7 +940,7 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     source: {
       book: 'JLPT N5',
       chapter: '類義・言い換え',
-      level: 'n5',
+      level: 'N5',
       confirmed: true,
       license: 'own',
       origin: 'own',

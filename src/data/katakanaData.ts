@@ -1099,19 +1099,19 @@ export const KATAKANA_DATA: KanaItem[] = [
         "word": "ヤード",
         "romaji": "yaado",
         "meaning": {
-          "zh-TW": "碼 (長度單位)",
-          "zh-CN": "码 (长度单位)",
-          "en": "yard (unit of length) / yard (open area)",
-          "ko": "야드 (길이 단위) / 마당",
-          "es": "yarda (unidad de longitud); patio, recinto"
+          "zh-TW": "院子；碼（長度單位）",
+          "zh-CN": "院子；码（长度单位）",
+          "en": "yard (open area); yard (unit of length)",
+          "ko": "마당; 야드 (길이 단위)",
+          "es": "patio, recinto; yarda (unidad de longitud)"
         },
         "sentence": "ひろいヤードです。",
         "sentenceMeaning": {
-          "zh-TW": "是寬廣的碼。",
-          "zh-CN": "是宽广的码。",
+          "zh-TW": "是很寬敞的院子。",
+          "zh-CN": "是很宽敞的院子。",
           "en": "It's a spacious yard.",
-          "ko": "넓은 야드예요.",
-          "es": "Es un recinto amplio."
+          "ko": "넓은 마당이에요.",
+          "es": "Es un patio amplio."
         },
         "sentenceDisplay": "ひろい ヤード です。"
       }
