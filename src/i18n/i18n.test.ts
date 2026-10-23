@@ -136,3 +136,10 @@ describe('formatNextReviewText：下次複習時間依語言顯示', () => {
     expect(fmt(lang, now + offset)).toBe(expected);
   });
 });
+
+describe('chat.welcomeMsg 的 {script} 用句中寫法', () => {
+  it('es 句中小寫', () => {
+    const script = translate('es', 'chat.scriptHiragana');
+    expect(translate('es', 'chat.welcomeMsg', { script })).toContain('Te guiaré por el hiragana');
+  });
+});

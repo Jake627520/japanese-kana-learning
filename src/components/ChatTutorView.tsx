@@ -108,7 +108,7 @@ export function ChatTutorView({ onProgressChange }: ChatTutorViewProps) {
     const greeting =
       rowIdx > 0
         ? t('chat.welcomeBack', { row: r[rowIdx][0].row })
-        : t('chat.welcomeMsg', { script: t(type === 'hiragana' ? 'common.hiragana' : 'common.katakana') });
+        : t('chat.welcomeMsg', { script: t(type === 'hiragana' ? 'chat.scriptHiragana' : 'chat.scriptKatakana') });
     setMessages([
       { id: nextId(), role: 'sensei', kind: 'text', text: greeting },
       { id: nextId(), role: 'sensei', kind: 'text', text: rowIntroText(r[rowIdx]) },

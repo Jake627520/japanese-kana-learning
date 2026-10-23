@@ -63,7 +63,7 @@ export const KATAKANA_HANDAKUTEN_5_VOCABULARY: VocabularyItem[] = [
       'zh-TW': '筆 (ペ代表)',
       'zh-CN': '笔 (ペ代表)',
       'en': 'pen',
-      'ko': '펜 (ペ 대표)',
+      'ko': '펜 (ペ 예시)',
       'es': 'bolígrafo',
     },
     audioKey: 'vocab_k_pen',

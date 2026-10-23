@@ -377,6 +377,8 @@ export interface TranslationSchema {
     aiTutor: string;
     welcomeMsg: string;
     welcomeBack: string;
+    scriptHiragana: string;
+    scriptKatakana: string;
     whichKana: string;
     pickHint: string;
     rowQuizIntro: string;
