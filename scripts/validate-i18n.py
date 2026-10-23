@@ -16,6 +16,16 @@ import re
 
 LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es']
 
+# t() looks up `key_<CLDR plural category>` before `key` when params.count is a
+# number, so a locale may add plural forms that the base locale lacks.
+PLURAL_FORM = re.compile(r'^(.+)_(zero|one|two|few|many)$')
+
+def base_key_of(key, base_keys):
+    m = PLURAL_FORM.match(key)
+    if m and key not in base_keys and m.group(1) in base_keys:
+        return m.group(1)
+    return key
+
 def extract_keys_and_values(file_path):
     if not os.path.exists(file_path):
         print(f"ERROR: File not found: {file_path}")
@@ -104,7 +114,7 @@ def main():
     for lang, dict_data in parsed.items():
         keys = set(dict_data.keys())
         missing = base_keys - keys
-        extra = keys - base_keys
+        extra = {k for k in keys if base_key_of(k, base_keys) not in base_keys}
 
         if missing:
             for k in sorted(missing):
@@ -118,8 +128,11 @@ def main():
                 errors.append(f"[{lang}] Empty translation for key: '{k}'")
 
             # Check placeholders
-            if lang != base_lang and k in parsed[base_lang]:
-                base_placeholders = set(re.findall(r'\{(\w+)\}', parsed[base_lang][k]))
+            base_k = base_key_of(k, base_keys)
+            if base_k != k and '{count}' not in parsed[base_lang][base_k]:
+                errors.append(f"[{lang}] Plural form '{k}' has a base key without {{count}}")
+            if base_k != k or (lang != base_lang and k in parsed[base_lang]):
+                base_placeholders = set(re.findall(r'\{(\w+)\}', parsed[base_lang][base_k]))
                 lang_placeholders = set(re.findall(r'\{(\w+)\}', v))
                 if base_placeholders != lang_placeholders:
                     errors.append(

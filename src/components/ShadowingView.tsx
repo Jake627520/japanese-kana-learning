@@ -306,7 +306,7 @@ export function ShadowingView() {
             </button>
           </div>
           <div className="text-xs text-[#6B6252] font-bold">
-            {t('home.todayPlan.dueCount')}: <span className="text-[#5C6B3D] font-extrabold">{todayDoneCount}</span> / 3
+            {t('shadowing.todayDone')}: <span className="text-[#5C6B3D] font-extrabold">{todayDoneCount}</span> / 3
           </div>
         </div>
       </div>

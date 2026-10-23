@@ -66,7 +66,7 @@ export function getInitialLanguage(): Language {
 interface I18nContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (path: string, params?: Record<string, string | number>) => string;
+  t: (path: string, params?: TranslateParams) => string;
   dictionary: TranslationSchema;
 }
 
@@ -85,6 +85,46 @@ function resolvePath(obj: unknown, path: string): unknown {
     }
   }
   return current;
+}
+
+const pluralRules = new Map<Language, Intl.PluralRules>();
+
+function pluralCategory(lang: Language, count: number): Intl.LDMLPluralRule {
+  let rules = pluralRules.get(lang);
+  if (!rules) {
+    rules = new Intl.PluralRules(lang);
+    pluralRules.set(lang, rules);
+  }
+  return rules.select(count);
+}
+
+// A plural form is the key plus a CLDR category suffix (`_one`, `_few`...).
+// Locales add only the forms they need; everything else uses the bare key.
+function lookup(lang: Language, path: string, count: number | undefined): string | undefined {
+  const dictionary = translations[lang];
+  if (count !== undefined) {
+    const form = resolvePath(dictionary, `${path}_${pluralCategory(lang, count)}`);
+    if (typeof form === 'string') return form;
+  }
+  const val = resolvePath(dictionary, path);
+  return typeof val === 'string' ? val : undefined;
+}
+
+export type TranslateParams = Record<string, string | number>;
+
+export function translate(lang: Language, path: string, params?: TranslateParams): string {
+  const count = typeof params?.count === 'number' ? params.count : undefined;
+  const val = lookup(lang, path, count) ?? (lang === 'en' ? undefined : lookup('en', path, count));
+
+  if (val === undefined) {
+    console.warn(`[i18n] Translation missing for key: "${path}" in language: "${lang}"`);
+    return path;
+  }
+  if (!params) return val;
+  return Object.entries(params).reduce(
+    (acc, [key, replacement]) => acc.replace(new RegExp(`\\{${key}\\}`, 'g'), String(replacement)),
+    val,
+  );
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
@@ -109,29 +149,10 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     return translations[language] || translations.en;
   }, [language]);
 
-  const t = useMemo(() => {
-    return (path: string, params?: Record<string, string | number>): string => {
-      let val = resolvePath(dictionary, path);
-
-      // Fallback to English if missing in current dictionary
-      if (val === undefined && language !== 'en') {
-        val = resolvePath(translations.en, path);
-      }
-
-      if (typeof val !== 'string') {
-        console.warn(`[i18n] Translation missing for key: "${path}" in language: "${language}"`);
-        return path;
-      }
-
-      if (params) {
-        return Object.entries(params).reduce((acc, [key, replacement]) => {
-          return acc.replace(new RegExp(`\\{${key}\\}`, 'g'), String(replacement));
-        }, val);
-      }
-
-      return val;
-    };
-  }, [dictionary, language]);
+  const t = useMemo(
+    () => (path: string, params?: TranslateParams) => translate(language, path, params),
+    [language],
+  );
 
   return React.createElement(
     I18nContext.Provider,

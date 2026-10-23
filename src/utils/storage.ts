@@ -288,23 +288,25 @@ export function getDueReviewItems(allKana: KanaItem[], progress: UserProgress): 
   });
 }
 
-export function formatNextReviewText(nextReviewAt: string | number | null): string {
-  if (!nextReviewAt) return '未排程';
-  const now = Date.now();
+export function formatNextReviewText(
+  nextReviewAt: string | number | null,
+  t: (path: string, params?: { count: number }) => string,
+  now: number = Date.now(),
+): string {
+  if (!nextReviewAt) return t('study.notScheduled');
   const targetMs = typeof nextReviewAt === 'number' ? nextReviewAt : new Date(nextReviewAt).getTime();
 
-  if (Number.isNaN(targetMs)) return '未排程';
-  if (targetMs <= now) return '已到期';
+  if (Number.isNaN(targetMs)) return t('study.notScheduled');
+  if (targetMs <= now) return t('study.dueNow');
 
   const diffMs = targetMs - now;
-  const diffMins = Math.round(diffMs / (1000 * 60));
+  const diffMins = Math.max(1, Math.round(diffMs / (1000 * 60)));
   const diffHours = Math.round(diffMs / (1000 * 60 * 60));
   const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
 
-  if (diffMins <= 1) return '1 分鐘後';
-  if (diffMins < 60) return `${diffMins} 分鐘後`;
-  if (diffHours < 24) return `${diffHours} 小時後`;
-  return `${diffDays} 天後`;
+  if (diffMins < 60) return t('study.minutesLater', { count: diffMins });
+  if (diffHours < 24) return t('study.hoursLater', { count: diffHours });
+  return t('study.daysLater', { count: diffDays });
 }
 
 export function toggleKanaMastered(kanaId: string): UserProgress {

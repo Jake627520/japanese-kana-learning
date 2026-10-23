@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { getInitialLanguage, isLanguage, localize, translations, LANGUAGE_STORAGE_KEY, Language } from './index';
+import { getInitialLanguage, isLanguage, localize, translate, translations, LANGUAGE_STORAGE_KEY, Language } from './index';
+import { formatNextReviewText } from '../utils/storage';
 
 const stubBrowserLanguage = (language: string) => vi.stubGlobal('navigator', { language });
 
@@ -69,5 +70,69 @@ describe('localize：缺少的語言退回英文', () => {
 
   it('空字串視為缺少', () => {
     expect(localize({ ...partial, es: '' }, 'es')).toBe('school');
+  });
+});
+
+describe('translate：依 count 選複數形', () => {
+  it('count 為 1 時，en、es 用 _one 形', () => {
+    expect(translate('en', 'chat.rowQuizIntro', { row: 'ん行', count: 1 })).toBe('ん行 done! Quick quiz: 1 question ✏️');
+    expect(translate('es', 'chat.rowQuizIntro', { row: 'ん行', count: 1 })).toBe('¡Terminaste la fila ん行! Test rápido: 1 pregunta ✏️');
+    expect(translate('es', 'analytics.recommendationSrsDue', { count: 1 })).toMatch(/^Tienes 1 kana pendiente de repaso\./);
+  });
+
+  it('其他數量用原本的 key', () => {
+    expect(translate('en', 'chat.rowQuizIntro', { row: 'あ行', count: 5 })).toBe('あ行 done! Quick quiz: 5 questions ✏️');
+    expect(translate('es', 'header.streakDays', { count: 0 })).toBe('0 días');
+  });
+
+  it('沒有複數形的語言照常用原本的 key', () => {
+    expect(translate('ko', 'chat.rowQuizIntro', { row: 'ん行', count: 1 })).toBe('ん行 완료! 짧은 퀴즈 1문제 ✏️');
+  });
+
+  it('count 是字串時不選複數形', () => {
+    expect(translate('en', 'header.streakDays', { count: '1' })).toBe('1 days');
+  });
+});
+
+describe('數字＋單位的間距由各語系決定', () => {
+  it.each<[Language, string, string]>([
+    ['ko', '5일', '5개'],
+    ['zh-TW', '5 天', '5 個'],
+    ['zh-CN', '5 天', '5 个'],
+    ['en', '5 days', '5 items'],
+    ['es', '5 días', '5 kana'],
+  ])('%s', (lang, days, kana) => {
+    expect(translate(lang, 'header.streakDays', { count: 5 })).toBe(days);
+    expect(translate(lang, 'common.kanaCount', { count: 5 })).toBe(kana);
+  });
+
+  it('en、es 的 1 用單數', () => {
+    expect(translate('en', 'header.streakDays', { count: 1 })).toBe('1 day');
+    expect(translate('es', 'header.streakDays', { count: 1 })).toBe('1 día');
+  });
+});
+
+describe('formatNextReviewText：下次複習時間依語言顯示', () => {
+  const now = Date.UTC(2026, 0, 1);
+  const minute = 60 * 1000;
+  const fmt = (lang: Language, at: string | number | null) =>
+    formatNextReviewText(at, (path, params) => translate(lang, path, params), now);
+
+  it('未排程、已到期', () => {
+    expect(fmt('en', null)).toBe('Not scheduled');
+    expect(fmt('en', 'not a date')).toBe('Not scheduled');
+    expect(fmt('ko', now - minute)).toBe('지금');
+    expect(fmt('zh-TW', now)).toBe('已到期');
+  });
+
+  it.each<[Language, number, string]>([
+    ['zh-TW', 30 * minute, '30 分鐘後'],
+    ['en', 30 * minute, 'in 30 minutes'],
+    ['en', 20 * 1000, 'in 1 minute'],
+    ['ko', 3 * 60 * minute, '3시간 후'],
+    ['es', 60 * minute, 'en 1 hora'],
+    ['es', 2 * 24 * 60 * minute, 'en 2 días'],
+  ])('%s +%ims -> %s', (lang, offset, expected) => {
+    expect(fmt(lang, now + offset)).toBe(expected);
   });
 });

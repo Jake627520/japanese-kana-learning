@@ -58,7 +58,7 @@ export function TodayPlanCard({ progress, allKana, onNavigate }: TodayPlanCardPr
     steps.push({
       key: 'weak',
       label: t('home.todayPlan.weakCount'),
-      detail: `${weakCount} ${t('common.countUnit')}`,
+      detail: t('common.kanaCount', { count: weakCount }),
       icon: AlertTriangle,
       tint: 'bg-[#EFDBD5]',
       fg: 'text-[#B0554A]',
@@ -70,7 +70,7 @@ export function TodayPlanCard({ progress, allKana, onNavigate }: TodayPlanCardPr
     steps.push({
       key: 'due',
       label: t('home.todayPlan.dueCount'),
-      detail: `${dueCount} ${t('common.countUnit')}`,
+      detail: t('common.kanaCount', { count: dueCount }),
       icon: RefreshCw,
       tint: 'bg-[#EFE3C9]',
       fg: 'text-amber-500',
@@ -82,7 +82,7 @@ export function TodayPlanCard({ progress, allKana, onNavigate }: TodayPlanCardPr
     steps.push({
       key: 'new',
       label: t('home.todayPlan.newKanaCount'),
-      detail: `${newCount} ${t('common.countUnit')}`,
+      detail: t('common.kanaCount', { count: newCount }),
       icon: BookOpen,
       tint: 'bg-blue-50',
       fg: 'text-blue-500',

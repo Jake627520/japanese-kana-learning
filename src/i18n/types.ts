@@ -37,7 +37,8 @@ export interface TranslationSchema {
     mastered: string;
     weak: string;
     streak: string;
-    days: string;
+    streakDays: string;
+    streakDays_one?: string;
     srsTag: string;
     selectLanguage: string;
     langZhTW: string;
@@ -87,8 +88,8 @@ export interface TranslationSchema {
     completed: string;
     actions: string;
     details: string;
-    items: string;
-    countUnit: string;
+    kanaCount: string;
+    kanaCount_one?: string;
     empty: string;
     answerCorrect: string;
     answerWrongWithCorrect: string;
@@ -229,8 +230,11 @@ export interface TranslationSchema {
     notScheduled: string;
     dueNow: string;
     minutesLater: string;
+    minutesLater_one?: string;
     hoursLater: string;
+    hoursLater_one?: string;
     daysLater: string;
+    daysLater_one?: string;
   };
   quiz: {
     title: string;
@@ -323,6 +327,7 @@ export interface TranslationSchema {
     toggleJapanese: string;
     toggleKana: string;
     toggleRomaji: string;
+    todayDone: string;
   };
   special: {
     title: string;
@@ -336,6 +341,11 @@ export interface TranslationSchema {
     youonDesc: string;
     sokuonDesc: string;
     chouonDesc: string;
+    sokuonTip: string;
+    vowelHeader: string;
+    ruleHeader: string;
+    ruleAdd: string;
+    ruleUsuallyAdd: string;
   };
   jlpt: {
     title: string;
@@ -351,6 +361,17 @@ export interface TranslationSchema {
     referenceBook: string;
     grammarCheck: string;
     vocabularyCheck: string;
+    allTopicDomain: string;
+    allTopicName: string;
+    allTopicDescription: string;
+    allTopicChapter: string;
+    wrongRedoDomain: string;
+    wrongRedoTitle: string;
+    wrongRedoDesc: string;
+    wrongRedoChapter: string;
+    wrongRedoEmpty: string;
+    questionCount: string;
+    questionCount_one?: string;
   };
   chat: {
     aiTutor: string;
@@ -359,6 +380,7 @@ export interface TranslationSchema {
     whichKana: string;
     pickHint: string;
     rowQuizIntro: string;
+    rowQuizIntro_one?: string;
     doneScore: string;
     rowIntros: {
       a: string;
@@ -427,6 +449,7 @@ export interface TranslationSchema {
     recommendationListeningConfusion: string;
     recommendationHighErrorRate: string;
     recommendationSrsDue: string;
+    recommendationSrsDue_one?: string;
     recommendationShadowingWeak: string;
     recommendationDailyChallenge: string;
     recommendationHighConfusionRate: string;

@@ -108,7 +108,7 @@ export function KanaMasteryMap({ masteredIds, onNavigate }: KanaMasteryMapProps)
       {/* 每一點代表一個假名 */}
       <div>
         <div className="flex items-baseline justify-between mb-2">
-          <span className="text-[11px] font-bold text-[#6B6252]">{grandTotal} {t('common.countUnit')}</span>
+          <span className="text-[11px] font-bold text-[#6B6252]">{t('common.kanaCount', { count: grandTotal })}</span>
           <span className="text-[11px] text-[#8F8674]">{t('grid.legendTitle')}</span>
         </div>
         <div className="flex flex-wrap gap-1">

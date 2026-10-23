@@ -17,18 +17,22 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
   const streakPct = Math.min(100, Math.round((progress.streakDays / 7) * 100));
   const wrongPct = Math.min(100, Math.round((wrongCount / total) * 100));
 
+  // The phrase owns the number-unit spacing per locale ("5 天", "5일"); the number
+  // is pulled out only so it can be styled larger than its unit.
+  const unitOf = (key: string, count: number) => t(key, { count }).replace(String(count), '');
+
   const cards = [
     {
       key: 'streak',
       label: t('header.streak'),
       value: String(progress.streakDays),
-      unit: ` ${t('header.days')}`,
+      unit: unitOf('header.streakDays', progress.streakDays),
       tint: 'bg-orange-50',
       fg: 'text-orange-500',
       bar: 'bg-orange-500',
       pct: streakPct,
       icon: <Flame className="w-5 h-5 fill-current" />,
-      title: `${t('header.streak')} ${progress.streakDays} ${t('header.days')}`,
+      title: `${t('header.streak')} ${t('header.streakDays', { count: progress.streakDays })}`,
     },
     {
       key: 'mastered',
@@ -46,7 +50,7 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       key: 'wrong',
       label: t('header.weak'),
       value: String(wrongCount),
-      unit: ` ${t('common.countUnit')}`,
+      unit: unitOf('common.kanaCount', wrongCount),
       tint: 'bg-[#EFDBD5]',
       fg: 'text-[#B0554A]',
       bar: 'bg-red-500',

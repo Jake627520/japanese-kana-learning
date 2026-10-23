@@ -1,10 +1,27 @@
 import React from 'react';
 import { Volume2, BookOpen, Lightbulb } from 'lucide-react';
 import { speakJapanese } from '../utils/speech';
-import { useI18n } from '../i18n';
+import { useI18n, Language } from '../i18n';
+
+const SOKUON_EXAMPLES: { word: string; romaji: string; meaning: Record<Language, string>; note: string }[] = [
+  { word: 'がっこう', romaji: 'gakkou', meaning: { 'zh-TW': '學校', 'zh-CN': '学校', en: 'school', ko: '학교', es: 'escuela' }, note: 'っ + こ → kk' },
+  { word: 'きっぷ', romaji: 'kippu', meaning: { 'zh-TW': '車票', 'zh-CN': '车票', en: 'ticket', ko: '표 (승차권)', es: 'boleto / billete' }, note: 'っ + ぷ → pp' },
+  { word: 'ざっし', romaji: 'zasshi', meaning: { 'zh-TW': '雜誌', 'zh-CN': '杂志', en: 'magazine', ko: '잡지', es: 'revista' }, note: 'っ + し → ssh' },
+  { word: 'みっつ', romaji: 'mittsu', meaning: { 'zh-TW': '三個', 'zh-CN': '三个', en: 'three (things)', ko: '세 개', es: 'tres (cosas)' }, note: 'っ + つ → tts' },
+  { word: 'ベッド', romaji: 'beddo', meaning: { 'zh-TW': '床', 'zh-CN': '床', en: 'bed', ko: '침대', es: 'cama' }, note: 'ッ + ド' },
+  { word: 'カップ', romaji: 'kappu', meaning: { 'zh-TW': '杯子', 'zh-CN': '杯子', en: 'cup', ko: '컵', es: 'taza' }, note: 'ッ + プ' },
+];
+
+const CHOUON_RULES: { column: string; kana: string; usually: boolean; example: string }[] = [
+  { column: 'あ段', kana: 'あ', usually: false, example: 'おかあさん (okaasan)' },
+  { column: 'い段', kana: 'い', usually: false, example: 'おにいさん (oniisan)' },
+  { column: 'う段', kana: 'う', usually: false, example: 'くうき (kuuki)' },
+  { column: 'え段', kana: 'い', usually: true, example: 'せんせい (sensei)' },
+  { column: 'お段', kana: 'う', usually: true, example: 'とうきょう (toukyou)' },
+];
 
 export function SpecialSoundsView() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
 
   const handlePlay = (text: string) => {
     speakJapanese(text);
@@ -35,21 +52,14 @@ export function SpecialSoundsView() {
             </p>
             <div className="flex items-start gap-2 bg-[#F3ECD6] p-3 rounded-xl text-xs text-[#7A5320]">
               <Lightbulb className="w-4 h-4 shrink-0 mt-0.5" />
-              <span>促音不會單獨出現，一定接在後面還有假名。常見於「雙子音」的感覺，例如 kk、ss、tt、pp。</span>
+              <span>{t('special.sokuonTip')}</span>
             </div>
           </div>
 
           <div>
             <h4 className="text-sm font-extrabold text-[#221F18] mb-3">{t('special.examplesTitle')}</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {[
-                { word: 'がっこう', romaji: 'gakkou', meaning: '學校', note: 'っ + こ → kk' },
-                { word: 'きっぷ', romaji: 'kippu', meaning: '車票', note: 'っ + ぷ → pp' },
-                { word: 'ざっし', romaji: 'zasshi', meaning: '雜誌', note: 'っ + し → ssh' },
-                { word: 'みっつ', romaji: 'mittsu', meaning: '三個', note: 'っ + つ → tts' },
-                { word: 'ベッド', romaji: 'beddo', meaning: '床', note: 'ッ + ド' },
-                { word: 'カップ', romaji: 'kappu', meaning: '杯子', note: 'ッ + プ' },
-              ].map((item) => (
+              {SOKUON_EXAMPLES.map((item) => (
                 <div
                   key={item.word}
                   className="flex items-center justify-between gap-3 p-3 bg-[#F4EEDE] border border-[#ECE4D0] rounded-2xl"
@@ -60,7 +70,7 @@ export function SpecialSoundsView() {
                       <span className="text-xs font-bold text-[#5C6B3D] uppercase">{item.romaji}</span>
                     </div>
                     <div className="text-xs text-[#6B6252] mt-0.5">
-                      {item.meaning} · {item.note}
+                      {item.meaning[language]} · {item.note}
                     </div>
                   </div>
                   <button
@@ -98,37 +108,21 @@ export function SpecialSoundsView() {
               <table className="w-full text-xs border-collapse">
                 <thead>
                   <tr className="bg-[#F0E9D8]">
-                    <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">母音</th>
-                    <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">規則</th>
+                    <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">{t('special.vowelHeader')}</th>
+                    <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">{t('special.ruleHeader')}</th>
                     <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">{t('special.examplesTitle')}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="p-2.5 border border-[#D9CDB2] font-bold">あ段</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">加「あ」</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">おかあさん (okaasan)</td>
-                  </tr>
-                  <tr className="bg-[#F4EEDE]">
-                    <td className="p-2.5 border border-[#D9CDB2] font-bold">い段</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">加「い」</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">おにいさん (oniisan)</td>
-                  </tr>
-                  <tr>
-                    <td className="p-2.5 border border-[#D9CDB2] font-bold">う段</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">加「う」</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">くうき (kuuki)</td>
-                  </tr>
-                  <tr className="bg-[#F4EEDE]">
-                    <td className="p-2.5 border border-[#D9CDB2] font-bold">え段</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">通常加「い」</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">せんせい (sensei)</td>
-                  </tr>
-                  <tr>
-                    <td className="p-2.5 border border-[#D9CDB2] font-bold">お段</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">通常加「う」</td>
-                    <td className="p-2.5 border border-[#D9CDB2]">とうきょう (toukyou)</td>
-                  </tr>
+                  {CHOUON_RULES.map((rule, i) => (
+                    <tr key={rule.column} className={i % 2 === 1 ? 'bg-[#F4EEDE]' : undefined}>
+                      <td className="p-2.5 border border-[#D9CDB2] font-bold">{rule.column}</td>
+                      <td className="p-2.5 border border-[#D9CDB2]">
+                        {t(rule.usually ? 'special.ruleUsuallyAdd' : 'special.ruleAdd', { kana: rule.kana })}
+                      </td>
+                      <td className="p-2.5 border border-[#D9CDB2]">{rule.example}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

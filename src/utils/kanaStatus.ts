@@ -30,53 +30,41 @@ export function getKanaStatus(progress: UserProgress, kanaId: string): KanaStatu
 }
 
 export interface KanaStatusStyle {
-  label: string;
   /** 圖例與狀態點的顏色 */
   dot: string;
   /** 卡片的邊框與底色 */
   card: string;
   /** 卡片上方那條狀態帶；'new' 沒有 */
   bar: string | null;
-  hint: string;
 }
 
 // 四種狀態各自的顏色都取自站上既有的用色（綠／紅／藍／琥珀），
 // 沒有引入新色票——這裡要的是讓顏色變成「學習狀態的語言」，不是換配色。
 export const KANA_STATUS_STYLE: Record<KanaStatus, KanaStatusStyle> = {
   weak: {
-    label: '弱點',
     dot: 'bg-red-500',
     card: 'border-[#CAA096] bg-[#EFDBD5]/60',
     bar: 'bg-red-500',
-    hint: '答錯過，建議優先加強',
   },
   due: {
-    label: '今日到期',
     dot: 'bg-amber-500',
     card: 'border-amber-300 bg-[#EFE3C9]/60',
     bar: 'bg-amber-500',
-    hint: 'SRS 排到今天，該再確認一次',
   },
   mastered: {
-    label: '已掌握',
     dot: 'bg-[#5C6B3D]',
     card: 'border-[#5C6B3D] bg-[#EEF0E3]/60',
     bar: 'bg-[#5C6B3D]',
-    hint: '已標記精通',
   },
   learning: {
-    label: '學習中',
     dot: 'bg-blue-500',
     card: 'border-blue-200 bg-blue-50/50',
     bar: 'bg-blue-400',
-    hint: '練過但還沒精通',
   },
   new: {
-    label: '未學習',
     dot: 'bg-[#CABFA6]',
     card: 'border-[#D9CDB2]',
     bar: null,
-    hint: '還沒碰過',
   },
 };
 

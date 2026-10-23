@@ -225,7 +225,7 @@ export function ReviewView({
                         </span>
                       </div>
                       <div className="text-xs text-[#6B6252] mt-0.5">
-                        {t('study.nextReviewTime')}: {formatNextReviewText(srsState.nextReviewAt)}
+                        {t('study.nextReviewTime')}: {formatNextReviewText(srsState.nextReviewAt, t)}
                       </div>
                     </div>
                   </div>
