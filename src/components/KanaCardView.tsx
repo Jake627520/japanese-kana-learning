@@ -5,7 +5,7 @@ import { toggleKanaMastered } from '../utils/storage';
 import { getPrimaryVocabularyByKanaId } from '../data/vocabulary';
 import { VocabularyCard } from './VocabularyCard';
 import { Volume2, ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 
 interface KanaCardViewProps {
   currentKana: KanaItem;
@@ -122,12 +122,12 @@ export function KanaCardView({
                         <Volume2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                    <span className="text-xs font-bold text-[#6B6252]">{ex.meaning}</span>
+                    <span className="text-xs font-bold text-[#6B6252]">{localize(ex.meaning, language)}</span>
                   </div>
                   {ex.sentence && (
                     <div className="text-xs text-[#55503F] pt-1 flex items-center justify-between">
                       <span>
-                        {t('study.sentence')}: {ex.sentence} ({ex.sentenceMeaning})
+                        {t('study.sentence')}: {ex.sentence} ({localize(ex.sentenceMeaning, language)})
                       </span>
                       <button
                         onClick={() => speakJapanese(ex.sentence)}

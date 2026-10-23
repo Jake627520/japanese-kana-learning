@@ -1,3 +1,5 @@
+import type { LocalizedText } from './i18n/types';
+
 export type KanaType = 'hiragana' | 'katakana';
 export type KanaCategory = 'basic-hiragana' | 'basic-katakana' | 'dakuten' | 'handakuten' | 'youon';
 
@@ -5,10 +7,10 @@ export interface ExampleWord {
   word: string;
   kanji?: string;
   romaji: string;
-  meaning: string;
+  meaning: LocalizedText;
   sentence: string;
   sentenceDisplay?: string;
-  sentenceMeaning: string;
+  sentenceMeaning: LocalizedText;
   requiredLevel?: 'basic' | 'dakuten' | 'handakuten' | 'youon';
 }
 
@@ -60,8 +62,8 @@ export interface JlptTopic {
   type: string;
   subject: string;
   domain: string;
-  name: string;
-  description: string;
+  name: LocalizedText;
+  description: LocalizedText;
   book: string;
   chapter: string;
   grade: JlptGrade;
@@ -80,7 +82,7 @@ export interface JlptQuestion {
   stem: string;
   options: string[];
   answer: string; // "1" | "2" | "3" | "4"
-  explain: string;
+  explain: LocalizedText;
   source: {
     book: string;
     chapter: string;

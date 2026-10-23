@@ -1,7 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { ALL_VOCABULARY } from './vocabulary';
 import { SHADOWING_SENTENCES, getShadowingText } from './shadowing';
-import { translations, Language } from '../i18n';
+import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, YOUON_DATA } from './kanaData';
+import { CONFUSABLE_GROUPS } from './confusableData';
+import { ALL_N5_TOPICS_UI, ALL_N4_TOPICS_UI, ALL_N3_TOPICS_UI, getOwnJlptQuestions } from './jlpt';
+import { translations, Language, LocalizedText } from '../i18n';
 
 const LANGUAGES = Object.keys(translations) as Language[];
 
@@ -30,6 +33,51 @@ describe('詞彙與跟讀內容：每個語言都有非空字串', () => {
           const text = getShadowingText(value, lang);
           expect(text.trim() !== '', `${sentence.id}.${field} 缺 ${lang}`).toBe(true);
         }
+      }
+    }
+  });
+});
+
+describe('假名例詞、易混辨析、JLPT 內容：每個語言都有非空字串', () => {
+  const expectComplete = (value: LocalizedText, where: string) => {
+    for (const lang of LANGUAGES) {
+      const text = value[lang];
+      expect(typeof text === 'string' && text.trim() !== '', `${where} 缺 ${lang}`).toBe(true);
+    }
+  };
+
+  it('每個假名例詞的 meaning、sentenceMeaning', () => {
+    const kana = [...HIRAGANA_DATA, ...KATAKANA_DATA, ...DAKUTEN_DATA, ...HANDAKUTEN_DATA, ...YOUON_DATA];
+    const examples = kana.flatMap((k) => k.examples.map((ex, i) => ({ ex, where: `${k.id}#${i}` })));
+    expect(examples).toHaveLength(213);
+    for (const { ex, where } of examples) {
+      expectComplete(ex.meaning, `${where}.meaning`);
+      expectComplete(ex.sentenceMeaning, `${where}.sentenceMeaning`);
+    }
+  });
+
+  it('每個易混組的 distinguish', () => {
+    expect(CONFUSABLE_GROUPS).toHaveLength(21);
+    for (const g of CONFUSABLE_GROUPS) expectComplete(g.distinguish, `${g.id}.distinguish`);
+  });
+
+  it('每個 JLPT 知識點的 name、description', () => {
+    const topics = [...ALL_N5_TOPICS_UI, ...ALL_N4_TOPICS_UI, ...ALL_N3_TOPICS_UI];
+    expect(topics).toHaveLength(90);
+    for (const topic of topics) {
+      expectComplete(topic.name, `${topic.id}.name`);
+      expectComplete(topic.description, `${topic.id}.description`);
+    }
+  });
+
+  it('每題 JLPT 解說都有五種語言，且 HTML 標籤組成一致', () => {
+    const tags = (s: string) => (s.match(/<\/?[a-z]+[^>]*>/gi) ?? []).map((t) => t.toLowerCase()).sort().join('');
+    const questions = getOwnJlptQuestions();
+    expect(questions).toHaveLength(280);
+    for (const q of questions) {
+      expectComplete(q.explain, `${q.id}.explain`);
+      for (const lang of LANGUAGES) {
+        expect(tags(q.explain[lang]), `${q.id}.explain ${lang} 的標籤和 zh-TW 不同`).toBe(tags(q.explain['zh-TW']));
       }
     }
   });

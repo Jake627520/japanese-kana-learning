@@ -15,10 +15,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "きゃく",
         "romaji": "kyaku",
-        "meaning": "客人",
+        "meaning": {
+          "zh-TW": "客人",
+          "zh-CN": "客人",
+          "en": "guest, customer",
+          "ko": "손님",
+          "es": "cliente, invitado"
+        },
         "sentence": "きゃくがきます。",
         "sentenceDisplay": "きゃく が きます。",
-        "sentenceMeaning": "客人來了。"
+        "sentenceMeaning": {
+          "zh-TW": "客人來了。",
+          "zh-CN": "客人来了。",
+          "en": "A guest is coming.",
+          "ko": "손님이 와요.",
+          "es": "Llegan clientes."
+        }
       }
     ]
   },
@@ -34,10 +46,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "きゅう",
         "romaji": "kyuu",
-        "meaning": "九 / 急",
+        "meaning": {
+          "zh-TW": "九 / 急",
+          "zh-CN": "九 / 急",
+          "en": "nine / sudden",
+          "ko": "9 / 갑자기 (急)",
+          "es": "nueve / repentino"
+        },
         "sentence": "きゅうにでます。",
         "sentenceDisplay": "きゅう に でます。",
-        "sentenceMeaning": "突然出去。"
+        "sentenceMeaning": {
+          "zh-TW": "突然出去。",
+          "zh-CN": "突然出去。",
+          "en": "I leave suddenly.",
+          "ko": "갑자기 나가요.",
+          "es": "Sale de repente."
+        }
       }
     ]
   },
@@ -53,10 +77,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "きょう",
         "romaji": "kyou",
-        "meaning": "今天",
+        "meaning": {
+          "zh-TW": "今天",
+          "zh-CN": "今天",
+          "en": "today",
+          "ko": "오늘",
+          "es": "hoy"
+        },
         "sentence": "きょうはいいてんきです。",
         "sentenceDisplay": "きょう は いい てんき です。",
-        "sentenceMeaning": "今天是好天氣。"
+        "sentenceMeaning": {
+          "zh-TW": "今天是好天氣。",
+          "zh-CN": "今天是好天气。",
+          "en": "The weather is nice today.",
+          "ko": "오늘은 날씨가 좋아요.",
+          "es": "Hoy hace buen tiempo."
+        }
       }
     ]
   },
@@ -73,10 +109,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ぎゃく",
         "romaji": "gyaku",
-        "meaning": "相反",
+        "meaning": {
+          "zh-TW": "相反",
+          "zh-CN": "相反",
+          "en": "the opposite, reverse",
+          "ko": "반대",
+          "es": "lo contrario"
+        },
         "sentence": "ぎゃくです。",
         "sentenceDisplay": "ぎゃく です。",
-        "sentenceMeaning": "是相反的。"
+        "sentenceMeaning": {
+          "zh-TW": "是相反的。",
+          "zh-CN": "是相反的。",
+          "en": "It's the opposite.",
+          "ko": "반대예요.",
+          "es": "Es al revés."
+        }
       }
     ]
   },
@@ -92,10 +140,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ぎゅうにゅう",
         "romaji": "gyuunyuu",
-        "meaning": "牛奶",
+        "meaning": {
+          "zh-TW": "牛奶",
+          "zh-CN": "牛奶",
+          "en": "milk",
+          "ko": "우유",
+          "es": "leche (de vaca)"
+        },
         "sentence": "ぎゅうにゅうをのみます。",
         "sentenceDisplay": "ぎゅうにゅう を のみます。",
-        "sentenceMeaning": "喝牛奶。"
+        "sentenceMeaning": {
+          "zh-TW": "喝牛奶。",
+          "zh-CN": "喝牛奶。",
+          "en": "I drink milk.",
+          "ko": "우유를 마셔요.",
+          "es": "Tomo leche."
+        }
       }
     ]
   },
@@ -111,10 +171,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ぎょうざ",
         "romaji": "gyouza",
-        "meaning": "煎餃",
+        "meaning": {
+          "zh-TW": "煎餃",
+          "zh-CN": "煎饺",
+          "en": "gyoza, pan-fried dumplings",
+          "ko": "군만두, 교자",
+          "es": "gyoza (empanadilla a la plancha)"
+        },
         "sentence": "ぎょうざをたべます。",
         "sentenceDisplay": "ぎょうざ を たべます。",
-        "sentenceMeaning": "吃煎餃。"
+        "sentenceMeaning": {
+          "zh-TW": "吃煎餃。",
+          "zh-CN": "吃煎饺。",
+          "en": "I eat gyoza.",
+          "ko": "교자를 먹어요.",
+          "es": "Como gyozas."
+        }
       }
     ]
   },
@@ -131,10 +203,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "しゃしん",
         "romaji": "shashin",
-        "meaning": "照片",
+        "meaning": {
+          "zh-TW": "照片",
+          "zh-CN": "照片",
+          "en": "photograph",
+          "ko": "사진",
+          "es": "foto"
+        },
         "sentence": "しゃしんをとります。",
         "sentenceDisplay": "しゃしん を とります。",
-        "sentenceMeaning": "拍照。"
+        "sentenceMeaning": {
+          "zh-TW": "拍照。",
+          "zh-CN": "拍照。",
+          "en": "I take a photo.",
+          "ko": "사진을 찍어요.",
+          "es": "Tomo una foto."
+        }
       }
     ]
   },
@@ -150,10 +234,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "しゅみ",
         "romaji": "shumi",
-        "meaning": "興趣",
+        "meaning": {
+          "zh-TW": "興趣",
+          "zh-CN": "爱好 / 兴趣",
+          "en": "hobby",
+          "ko": "취미",
+          "es": "afición, pasatiempo"
+        },
         "sentence": "しゅみはなにですか。",
         "sentenceDisplay": "しゅみ は なに です か。",
-        "sentenceMeaning": "興趣是什麼？"
+        "sentenceMeaning": {
+          "zh-TW": "興趣是什麼？",
+          "zh-CN": "爱好是什么？",
+          "en": "What are your hobbies?",
+          "ko": "취미가 뭐예요?",
+          "es": "¿Cuál es tu pasatiempo?"
+        }
       }
     ]
   },
@@ -169,10 +265,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "しょくじ",
         "romaji": "shokuji",
-        "meaning": "用餐",
+        "meaning": {
+          "zh-TW": "用餐",
+          "zh-CN": "用餐",
+          "en": "meal",
+          "ko": "식사",
+          "es": "comida (el acto de comer)"
+        },
         "sentence": "しょくじをします。",
         "sentenceDisplay": "しょくじ を します。",
-        "sentenceMeaning": "用餐。"
+        "sentenceMeaning": {
+          "zh-TW": "用餐。",
+          "zh-CN": "用餐。",
+          "en": "I have a meal.",
+          "ko": "식사를 해요.",
+          "es": "Como."
+        }
       }
     ]
   },
@@ -189,10 +297,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "じゃま",
         "romaji": "jama",
-        "meaning": "妨礙",
+        "meaning": {
+          "zh-TW": "妨礙",
+          "zh-CN": "妨碍",
+          "en": "hindrance, nuisance",
+          "ko": "방해",
+          "es": "estorbo, molestia"
+        },
         "sentence": "じゃまをしないでください。",
         "sentenceDisplay": "じゃま を しないで ください。",
-        "sentenceMeaning": "請不要妨礙。"
+        "sentenceMeaning": {
+          "zh-TW": "請不要妨礙。",
+          "zh-CN": "请不要妨碍。",
+          "en": "Please don't get in the way.",
+          "ko": "방해하지 마세요.",
+          "es": "Por favor, no molestes."
+        }
       }
     ]
   },
@@ -208,10 +328,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "じゅう",
         "romaji": "juu",
-        "meaning": "十",
+        "meaning": {
+          "zh-TW": "十",
+          "zh-CN": "十",
+          "en": "ten",
+          "ko": "10",
+          "es": "diez"
+        },
         "sentence": "じゅうじです。",
         "sentenceDisplay": "じゅう じ です。",
-        "sentenceMeaning": "是十點。"
+        "sentenceMeaning": {
+          "zh-TW": "是十點。",
+          "zh-CN": "是十点。",
+          "en": "It's ten o'clock.",
+          "ko": "10시예요.",
+          "es": "Son las diez."
+        }
       }
     ]
   },
@@ -227,10 +359,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "じょうず",
         "romaji": "jouzu",
-        "meaning": "擅長",
+        "meaning": {
+          "zh-TW": "擅長",
+          "zh-CN": "擅长",
+          "en": "skillful, good at",
+          "ko": "잘함, 능숙함",
+          "es": "hábil, que hace algo bien"
+        },
         "sentence": "にほんごがじょうずです。",
         "sentenceDisplay": "にほんご が じょうず です。",
-        "sentenceMeaning": "日語很擅長。"
+        "sentenceMeaning": {
+          "zh-TW": "日語很擅長。",
+          "zh-CN": "日语说得很好。",
+          "en": "Your Japanese is very good.",
+          "ko": "일본어를 잘해요.",
+          "es": "Hablas japonés muy bien."
+        }
       }
     ]
   },
@@ -247,10 +391,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "おちゃ",
         "romaji": "ocha",
-        "meaning": "茶",
+        "meaning": {
+          "zh-TW": "茶",
+          "zh-CN": "茶",
+          "en": "tea",
+          "ko": "차",
+          "es": "té"
+        },
         "sentence": "おちゃをのみます。",
         "sentenceDisplay": "おちゃ を のみます。",
-        "sentenceMeaning": "喝茶。"
+        "sentenceMeaning": {
+          "zh-TW": "喝茶。",
+          "zh-CN": "喝茶。",
+          "en": "I drink tea.",
+          "ko": "차를 마셔요.",
+          "es": "Tomo té."
+        }
       }
     ]
   },
@@ -266,10 +422,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ちゅうごく",
         "romaji": "chuugoku",
-        "meaning": "中國",
+        "meaning": {
+          "zh-TW": "中國",
+          "zh-CN": "中国",
+          "en": "China",
+          "ko": "중국",
+          "es": "China"
+        },
         "sentence": "ちゅうごくからきました。",
         "sentenceDisplay": "ちゅうごく から きました。",
-        "sentenceMeaning": "從中國來。"
+        "sentenceMeaning": {
+          "zh-TW": "從中國來。",
+          "zh-CN": "从中国来。",
+          "en": "I came from China.",
+          "ko": "중국에서 왔어요.",
+          "es": "Vengo de China."
+        }
       }
     ]
   },
@@ -285,10 +453,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ちょっと",
         "romaji": "chotto",
-        "meaning": "一下 / 有點",
+        "meaning": {
+          "zh-TW": "一下 / 有點",
+          "zh-CN": "一下 / 有点",
+          "en": "a little, a moment",
+          "ko": "잠깐 / 조금",
+          "es": "un momento / un poco"
+        },
         "sentence": "ちょっとまってください。",
         "sentenceDisplay": "ちょっと まって ください。",
-        "sentenceMeaning": "請稍等一下。"
+        "sentenceMeaning": {
+          "zh-TW": "請稍等一下。",
+          "zh-CN": "请稍等一下。",
+          "en": "Please wait a moment.",
+          "ko": "잠깐만 기다려 주세요.",
+          "es": "Espera un momento, por favor."
+        }
       }
     ]
   },
@@ -305,10 +485,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "にゃんこ",
         "romaji": "nyanko",
-        "meaning": "小貓（口語）",
+        "meaning": {
+          "zh-TW": "小貓（口語）",
+          "zh-CN": "小猫（口语）",
+          "en": "kitty (casual)",
+          "ko": "야옹이, 고양이 (구어)",
+          "es": "gatito (coloquial)"
+        },
         "sentence": "かわいいにゃんこです。",
         "sentenceDisplay": "かわいい にゃんこ です。",
-        "sentenceMeaning": "是可愛的小貓。"
+        "sentenceMeaning": {
+          "zh-TW": "是可愛的小貓。",
+          "zh-CN": "是可爱的小猫。",
+          "en": "It's a cute kitty.",
+          "ko": "귀여운 야옹이예요.",
+          "es": "Es un gatito adorable."
+        }
       }
     ]
   },
@@ -324,10 +516,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "にゅうがく",
         "romaji": "nyuugaku",
-        "meaning": "入學",
+        "meaning": {
+          "zh-TW": "入學",
+          "zh-CN": "入学",
+          "en": "school enrollment",
+          "ko": "입학",
+          "es": "ingreso en la escuela"
+        },
         "sentence": "にゅうがくします。",
         "sentenceDisplay": "にゅうがく します。",
-        "sentenceMeaning": "入學。"
+        "sentenceMeaning": {
+          "zh-TW": "入學。",
+          "zh-CN": "入学。",
+          "en": "I start school.",
+          "ko": "입학해요.",
+          "es": "Ingreso en la escuela."
+        }
       }
     ]
   },
@@ -343,10 +547,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "にょうぼう",
         "romaji": "nyoubou",
-        "meaning": "妻子（舊稱）",
+        "meaning": {
+          "zh-TW": "妻子（舊稱）",
+          "zh-CN": "妻子（旧称）",
+          "en": "wife (old-fashioned)",
+          "ko": "아내 (옛 표현)",
+          "es": "esposa (término antiguo)"
+        },
         "sentence": "にょうぼうです。",
         "sentenceDisplay": "にょうぼう です。",
-        "sentenceMeaning": "是妻子。"
+        "sentenceMeaning": {
+          "zh-TW": "是妻子。",
+          "zh-CN": "是妻子。",
+          "en": "She's my wife.",
+          "ko": "아내예요.",
+          "es": "Es mi esposa."
+        }
       }
     ]
   },
@@ -363,10 +579,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ひゃく",
         "romaji": "hyaku",
-        "meaning": "一百",
+        "meaning": {
+          "zh-TW": "一百",
+          "zh-CN": "一百",
+          "en": "one hundred",
+          "ko": "100",
+          "es": "cien"
+        },
         "sentence": "ひゃくえんです。",
         "sentenceDisplay": "ひゃく えん です。",
-        "sentenceMeaning": "是一百日圓。"
+        "sentenceMeaning": {
+          "zh-TW": "是一百日圓。",
+          "zh-CN": "是一百日圆。",
+          "en": "It's 100 yen.",
+          "ko": "100엔이에요.",
+          "es": "Son cien yenes."
+        }
       }
     ]
   },
@@ -382,10 +610,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ひゅうが",
         "romaji": "hyuuga",
-        "meaning": "日向（地名）",
+        "meaning": {
+          "zh-TW": "日向（地名）",
+          "zh-CN": "日向（地名）",
+          "en": "Hyuga (place name)",
+          "ko": "휴가 (日向, 지명)",
+          "es": "Hyūga (topónimo)"
+        },
         "sentence": "ひゅうがにいきます。",
         "sentenceDisplay": "ひゅうが に いきます。",
-        "sentenceMeaning": "去日向。"
+        "sentenceMeaning": {
+          "zh-TW": "去日向。",
+          "zh-CN": "去日向。",
+          "en": "I'm going to Hyuga.",
+          "ko": "휴가(日向) 지방에 가요.",
+          "es": "Voy a Hyūga."
+        }
       }
     ]
   },
@@ -401,10 +641,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ひょう",
         "romaji": "hyou",
-        "meaning": "表 / 豹",
+        "meaning": {
+          "zh-TW": "表 / 豹",
+          "zh-CN": "表 / 豹",
+          "en": "chart, table / leopard",
+          "ko": "표 / 표범",
+          "es": "tabla / leopardo"
+        },
         "sentence": "ひょうをみます。",
         "sentenceDisplay": "ひょう を みます。",
-        "sentenceMeaning": "看表。"
+        "sentenceMeaning": {
+          "zh-TW": "看表。",
+          "zh-CN": "看表。",
+          "en": "I look at the chart.",
+          "ko": "표를 봐요.",
+          "es": "Miro la tabla."
+        }
       }
     ]
   },
@@ -421,10 +673,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "びゃくや",
         "romaji": "byakuya",
-        "meaning": "白夜",
+        "meaning": {
+          "zh-TW": "白夜",
+          "zh-CN": "白夜",
+          "en": "white night, midnight sun",
+          "ko": "백야",
+          "es": "noche blanca"
+        },
         "sentence": "びゃくやです。",
         "sentenceDisplay": "びゃくや です。",
-        "sentenceMeaning": "是白夜。"
+        "sentenceMeaning": {
+          "zh-TW": "是白夜。",
+          "zh-CN": "是白夜。",
+          "en": "It's a white night.",
+          "ko": "백야예요.",
+          "es": "Es una noche blanca."
+        }
       }
     ]
   },
@@ -440,10 +704,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "びゅう",
         "romaji": "byuu",
-        "meaning": "呼嘯聲",
+        "meaning": {
+          "zh-TW": "呼嘯聲",
+          "zh-CN": "呼啸声",
+          "en": "whoosh (sound of wind)",
+          "ko": "휭 (바람 소리)",
+          "es": "silbido (del viento)"
+        },
         "sentence": "かぜがびゅうとふきます。",
         "sentenceDisplay": "かぜ が びゅう と ふきます。",
-        "sentenceMeaning": "風呼嘯地吹。"
+        "sentenceMeaning": {
+          "zh-TW": "風呼嘯地吹。",
+          "zh-CN": "风呼啸地吹。",
+          "en": "The wind blows with a whoosh.",
+          "ko": "바람이 휭 하고 불어요.",
+          "es": "El viento sopla silbando."
+        }
       }
     ]
   },
@@ -459,10 +735,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "びょういん",
         "romaji": "byouin",
-        "meaning": "醫院",
+        "meaning": {
+          "zh-TW": "醫院",
+          "zh-CN": "医院",
+          "en": "hospital",
+          "ko": "병원",
+          "es": "hospital"
+        },
         "sentence": "びょういんにいきます。",
         "sentenceDisplay": "びょういん に いきます。",
-        "sentenceMeaning": "去醫院。"
+        "sentenceMeaning": {
+          "zh-TW": "去醫院。",
+          "zh-CN": "去医院。",
+          "en": "I go to the hospital.",
+          "ko": "병원에 가요.",
+          "es": "Voy al hospital."
+        }
       }
     ]
   },
@@ -479,10 +767,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ぴゃっ",
         "romaji": "pya",
-        "meaning": "擬聲（輕快）",
+        "meaning": {
+          "zh-TW": "擬聲（輕快）",
+          "zh-CN": "拟声（轻快）",
+          "en": "onomatopoeia (light, quick)",
+          "ko": "휙 (가볍고 재빠른 모양)",
+          "es": "onomatopeya (movimiento ligero)"
+        },
         "sentence": "ぴゃっとおどります。",
         "sentenceDisplay": "ぴゃっ と おどります。",
-        "sentenceMeaning": "輕快地跳舞。"
+        "sentenceMeaning": {
+          "zh-TW": "輕快地跳舞。",
+          "zh-CN": "轻快地跳舞。",
+          "en": "I dance with a light hop.",
+          "ko": "가볍게 춤을 춰요.",
+          "es": "Baila con ligereza."
+        }
       }
     ]
   },
@@ -498,10 +798,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ぴゅう",
         "romaji": "pyuu",
-        "meaning": "呼嘯聲",
+        "meaning": {
+          "zh-TW": "呼嘯聲",
+          "zh-CN": "呼啸声",
+          "en": "whoosh (sound of wind)",
+          "ko": "쌩 (바람 소리)",
+          "es": "silbido (del viento)"
+        },
         "sentence": "かぜがぴゅうとふきます。",
         "sentenceDisplay": "かぜ が ぴゅう と ふきます。",
-        "sentenceMeaning": "風呼嘯地吹。"
+        "sentenceMeaning": {
+          "zh-TW": "風呼嘯地吹。",
+          "zh-CN": "风呼啸地吹。",
+          "en": "The wind blows with a whoosh.",
+          "ko": "바람이 쌩 하고 불어요.",
+          "es": "El viento sopla silbando."
+        }
       }
     ]
   },
@@ -517,10 +829,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ぴょん",
         "romaji": "pyon",
-        "meaning": "跳躍聲",
+        "meaning": {
+          "zh-TW": "跳躍聲",
+          "zh-CN": "跳跃声",
+          "en": "boing (sound of a hop)",
+          "ko": "깡충 (뛰는 모양)",
+          "es": "sonido de un salto"
+        },
         "sentence": "うさぎがぴょんととびます。",
         "sentenceDisplay": "うさぎ が ぴょん と とびます。",
-        "sentenceMeaning": "兔子跳一下。"
+        "sentenceMeaning": {
+          "zh-TW": "兔子跳一下。",
+          "zh-CN": "兔子跳一下。",
+          "en": "The rabbit hops.",
+          "ko": "토끼가 깡충 뛰어요.",
+          "es": "El conejo da un saltito."
+        }
       }
     ]
   },
@@ -537,10 +861,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "みゃく",
         "romaji": "myaku",
-        "meaning": "脈搏",
+        "meaning": {
+          "zh-TW": "脈搏",
+          "zh-CN": "脉搏",
+          "en": "pulse",
+          "ko": "맥박",
+          "es": "pulso"
+        },
         "sentence": "みゃくをはかります。",
         "sentenceDisplay": "みゃく を はかります。",
-        "sentenceMeaning": "量脈搏。"
+        "sentenceMeaning": {
+          "zh-TW": "量脈搏。",
+          "zh-CN": "量脉搏。",
+          "en": "I take my pulse.",
+          "ko": "맥박을 재요.",
+          "es": "Tomo el pulso."
+        }
       }
     ]
   },
@@ -556,10 +892,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "みゅうじっく",
         "romaji": "myuujikku",
-        "meaning": "音樂（外來語）",
+        "meaning": {
+          "zh-TW": "音樂（外來語）",
+          "zh-CN": "音乐（外来语）",
+          "en": "music (loanword)",
+          "ko": "음악 (외래어)",
+          "es": "música (préstamo)"
+        },
         "sentence": "みゅうじっくをききます。",
         "sentenceDisplay": "みゅうじっく を ききます。",
-        "sentenceMeaning": "聽音樂。"
+        "sentenceMeaning": {
+          "zh-TW": "聽音樂。",
+          "zh-CN": "听音乐。",
+          "en": "I listen to music.",
+          "ko": "음악을 들어요.",
+          "es": "Escucho música."
+        }
       }
     ]
   },
@@ -575,10 +923,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "みょうじ",
         "romaji": "myouji",
-        "meaning": "姓氏",
+        "meaning": {
+          "zh-TW": "姓氏",
+          "zh-CN": "姓氏",
+          "en": "family name, surname",
+          "ko": "성, 성씨",
+          "es": "apellido"
+        },
         "sentence": "みょうじはなんですか。",
         "sentenceDisplay": "みょうじ は なん です か。",
-        "sentenceMeaning": "姓氏是什麼？"
+        "sentenceMeaning": {
+          "zh-TW": "姓氏是什麼？",
+          "zh-CN": "姓氏是什么？",
+          "en": "What is your family name?",
+          "ko": "성이 어떻게 되세요?",
+          "es": "¿Cuál es tu apellido?"
+        }
       }
     ]
   },
@@ -595,10 +955,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "りゃく",
         "romaji": "ryaku",
-        "meaning": "省略",
+        "meaning": {
+          "zh-TW": "省略",
+          "zh-CN": "省略",
+          "en": "abbreviation, omission",
+          "ko": "생략",
+          "es": "abreviatura, omisión"
+        },
         "sentence": "りゃくします。",
         "sentenceDisplay": "りゃく します。",
-        "sentenceMeaning": "省略。"
+        "sentenceMeaning": {
+          "zh-TW": "省略。",
+          "zh-CN": "省略。",
+          "en": "I'll skip that.",
+          "ko": "생략할게요.",
+          "es": "Lo abrevio."
+        }
       }
     ]
   },
@@ -614,10 +986,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "りゅうがく",
         "romaji": "ryuugaku",
-        "meaning": "留學",
+        "meaning": {
+          "zh-TW": "留學",
+          "zh-CN": "留学",
+          "en": "studying abroad",
+          "ko": "유학",
+          "es": "estudiar en el extranjero"
+        },
         "sentence": "りゅうがくします。",
         "sentenceDisplay": "りゅうがく します。",
-        "sentenceMeaning": "留學。"
+        "sentenceMeaning": {
+          "zh-TW": "留學。",
+          "zh-CN": "留学。",
+          "en": "I study abroad.",
+          "ko": "유학을 가요.",
+          "es": "Me voy a estudiar al extranjero."
+        }
       }
     ]
   },
@@ -633,10 +1017,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "りょこう",
         "romaji": "ryokou",
-        "meaning": "旅行",
+        "meaning": {
+          "zh-TW": "旅行",
+          "zh-CN": "旅行",
+          "en": "trip, travel",
+          "ko": "여행",
+          "es": "viaje"
+        },
         "sentence": "りょこうにいきます。",
         "sentenceDisplay": "りょこう に いきます。",
-        "sentenceMeaning": "去旅行。"
+        "sentenceMeaning": {
+          "zh-TW": "去旅行。",
+          "zh-CN": "去旅行。",
+          "en": "I go on a trip.",
+          "ko": "여행을 가요.",
+          "es": "Me voy de viaje."
+        }
       }
     ]
   },
@@ -655,10 +1051,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "キャンプ",
         "romaji": "kyanpu",
-        "meaning": "露營",
+        "meaning": {
+          "zh-TW": "露營",
+          "zh-CN": "露营",
+          "en": "camping",
+          "ko": "캠핑",
+          "es": "campamento"
+        },
         "sentence": "キャンプにいきます。",
         "sentenceDisplay": "キャンプ に いきます。",
-        "sentenceMeaning": "去露營。"
+        "sentenceMeaning": {
+          "zh-TW": "去露營。",
+          "zh-CN": "去露营。",
+          "en": "I go camping.",
+          "ko": "캠핑하러 가요.",
+          "es": "Me voy de campamento."
+        }
       }
     ]
   },
@@ -674,10 +1082,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "キュート",
         "romaji": "kyuuto",
-        "meaning": "可愛的",
+        "meaning": {
+          "zh-TW": "可愛的",
+          "zh-CN": "可爱的",
+          "en": "cute",
+          "ko": "귀여운, 큐트한",
+          "es": "mono, adorable"
+        },
         "sentence": "キュートなねこです。",
         "sentenceDisplay": "キュート な ねこ です。",
-        "sentenceMeaning": "是可愛的貓。"
+        "sentenceMeaning": {
+          "zh-TW": "是可愛的貓。",
+          "zh-CN": "是可爱的猫。",
+          "en": "It's a cute cat.",
+          "ko": "귀여운 고양이예요.",
+          "es": "Es un gato adorable."
+        }
       }
     ]
   },
@@ -693,10 +1113,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "キョウ",
         "romaji": "kyou",
-        "meaning": "今日（片假名表記）",
+        "meaning": {
+          "zh-TW": "今日（片假名表記）",
+          "zh-CN": "今日（片假名表记）",
+          "en": "today (今日, written in katakana)",
+          "ko": "오늘 (가타카나 표기)",
+          "es": "hoy (escrito en katakana)"
+        },
         "sentence": "キョウはやすみです。",
         "sentenceDisplay": "キョウ は やすみ です。",
-        "sentenceMeaning": "今天休息。"
+        "sentenceMeaning": {
+          "zh-TW": "今天休息。",
+          "zh-CN": "今天休息。",
+          "en": "Today is a day off.",
+          "ko": "오늘은 쉬는 날이에요.",
+          "es": "Hoy es día libre."
+        }
       }
     ]
   },
@@ -713,10 +1145,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ギャグ",
         "romaji": "gyagu",
-        "meaning": "笑話 / 梗",
+        "meaning": {
+          "zh-TW": "笑話 / 梗",
+          "zh-CN": "笑话 / 梗",
+          "en": "joke, gag",
+          "ko": "개그 / 농담",
+          "es": "chiste, gag"
+        },
         "sentence": "ギャグをいいます。",
         "sentenceDisplay": "ギャグ を いいます。",
-        "sentenceMeaning": "說笑話。"
+        "sentenceMeaning": {
+          "zh-TW": "說笑話。",
+          "zh-CN": "说笑话。",
+          "en": "I tell a joke.",
+          "ko": "개그를 해요.",
+          "es": "Cuento un chiste."
+        }
       }
     ]
   },
@@ -732,10 +1176,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ギュウニク",
         "romaji": "gyuuniku",
-        "meaning": "牛肉",
+        "meaning": {
+          "zh-TW": "牛肉",
+          "zh-CN": "牛肉",
+          "en": "beef",
+          "ko": "소고기",
+          "es": "carne de res"
+        },
         "sentence": "ギュウニクをたべます。",
         "sentenceDisplay": "ギュウニク を たべます。",
-        "sentenceMeaning": "吃牛肉。"
+        "sentenceMeaning": {
+          "zh-TW": "吃牛肉。",
+          "zh-CN": "吃牛肉。",
+          "en": "I eat beef.",
+          "ko": "소고기를 먹어요.",
+          "es": "Como carne de res."
+        }
       }
     ]
   },
@@ -751,10 +1207,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ギョーザ",
         "romaji": "gyouza",
-        "meaning": "煎餃",
+        "meaning": {
+          "zh-TW": "煎餃",
+          "zh-CN": "煎饺",
+          "en": "gyoza, pan-fried dumplings",
+          "ko": "군만두, 교자",
+          "es": "gyoza (empanadilla a la plancha)"
+        },
         "sentence": "ギョーザをたべます。",
         "sentenceDisplay": "ギョーザ を たべます。",
-        "sentenceMeaning": "吃煎餃。"
+        "sentenceMeaning": {
+          "zh-TW": "吃煎餃。",
+          "zh-CN": "吃煎饺。",
+          "en": "I eat gyoza.",
+          "ko": "교자를 먹어요.",
+          "es": "Como gyozas."
+        }
       }
     ]
   },
@@ -771,10 +1239,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "シャツ",
         "romaji": "shatsu",
-        "meaning": "襯衫",
+        "meaning": {
+          "zh-TW": "襯衫",
+          "zh-CN": "衬衫",
+          "en": "shirt",
+          "ko": "셔츠",
+          "es": "camisa"
+        },
         "sentence": "シャツをきます。",
         "sentenceDisplay": "シャツ を きます。",
-        "sentenceMeaning": "穿襯衫。"
+        "sentenceMeaning": {
+          "zh-TW": "穿襯衫。",
+          "zh-CN": "穿衬衫。",
+          "en": "I put on a shirt.",
+          "ko": "셔츠를 입어요.",
+          "es": "Me pongo la camisa."
+        }
       }
     ]
   },
@@ -790,10 +1270,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "シューズ",
         "romaji": "shuuzu",
-        "meaning": "鞋子",
+        "meaning": {
+          "zh-TW": "鞋子",
+          "zh-CN": "鞋子",
+          "en": "shoes",
+          "ko": "신발, 슈즈",
+          "es": "zapatos"
+        },
         "sentence": "シューズをはきます。",
         "sentenceDisplay": "シューズ を はきます。",
-        "sentenceMeaning": "穿鞋子。"
+        "sentenceMeaning": {
+          "zh-TW": "穿鞋子。",
+          "zh-CN": "穿鞋子。",
+          "en": "I put on my shoes.",
+          "ko": "신발을 신어요.",
+          "es": "Me pongo los zapatos."
+        }
       }
     ]
   },
@@ -809,10 +1301,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ショッピング",
         "romaji": "shoppingu",
-        "meaning": "購物",
+        "meaning": {
+          "zh-TW": "購物",
+          "zh-CN": "购物",
+          "en": "shopping",
+          "ko": "쇼핑",
+          "es": "compras"
+        },
         "sentence": "ショッピングにいきます。",
         "sentenceDisplay": "ショッピング に いきます。",
-        "sentenceMeaning": "去購物。"
+        "sentenceMeaning": {
+          "zh-TW": "去購物。",
+          "zh-CN": "去购物。",
+          "en": "I go shopping.",
+          "ko": "쇼핑하러 가요.",
+          "es": "Me voy de compras."
+        }
       }
     ]
   },
@@ -829,10 +1333,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ジャズ",
         "romaji": "jazu",
-        "meaning": "爵士樂",
+        "meaning": {
+          "zh-TW": "爵士樂",
+          "zh-CN": "爵士乐",
+          "en": "jazz",
+          "ko": "재즈",
+          "es": "jazz"
+        },
         "sentence": "ジャズをききます。",
         "sentenceDisplay": "ジャズ を ききます。",
-        "sentenceMeaning": "聽爵士樂。"
+        "sentenceMeaning": {
+          "zh-TW": "聽爵士樂。",
+          "zh-CN": "听爵士乐。",
+          "en": "I listen to jazz.",
+          "ko": "재즈를 들어요.",
+          "es": "Escucho jazz."
+        }
       }
     ]
   },
@@ -848,10 +1364,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ジュース",
         "romaji": "juusu",
-        "meaning": "果汁",
+        "meaning": {
+          "zh-TW": "果汁",
+          "zh-CN": "果汁",
+          "en": "juice",
+          "ko": "주스",
+          "es": "jugo"
+        },
         "sentence": "ジュースをのみます。",
         "sentenceDisplay": "ジュース を のみます。",
-        "sentenceMeaning": "喝果汁。"
+        "sentenceMeaning": {
+          "zh-TW": "喝果汁。",
+          "zh-CN": "喝果汁。",
+          "en": "I drink juice.",
+          "ko": "주스를 마셔요.",
+          "es": "Tomo jugo."
+        }
       }
     ]
   },
@@ -867,10 +1395,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ジョギング",
         "romaji": "jogingu",
-        "meaning": "慢跑",
+        "meaning": {
+          "zh-TW": "慢跑",
+          "zh-CN": "慢跑",
+          "en": "jogging",
+          "ko": "조깅",
+          "es": "trote, jogging"
+        },
         "sentence": "ジョギングをします。",
         "sentenceDisplay": "ジョギング を します。",
-        "sentenceMeaning": "慢跑。"
+        "sentenceMeaning": {
+          "zh-TW": "慢跑。",
+          "zh-CN": "慢跑。",
+          "en": "I go jogging.",
+          "ko": "조깅을 해요.",
+          "es": "Salgo a trotar."
+        }
       }
     ]
   },
@@ -887,10 +1427,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "チャンス",
         "romaji": "chansu",
-        "meaning": "機會",
+        "meaning": {
+          "zh-TW": "機會",
+          "zh-CN": "机会",
+          "en": "chance, opportunity",
+          "ko": "기회, 찬스",
+          "es": "oportunidad"
+        },
         "sentence": "チャンスです。",
         "sentenceDisplay": "チャンス です。",
-        "sentenceMeaning": "是機會。"
+        "sentenceMeaning": {
+          "zh-TW": "是機會。",
+          "zh-CN": "是机会。",
+          "en": "It's a chance.",
+          "ko": "기회예요.",
+          "es": "Es una oportunidad."
+        }
       }
     ]
   },
@@ -906,10 +1458,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "チューリップ",
         "romaji": "chuurippu",
-        "meaning": "鬱金香",
+        "meaning": {
+          "zh-TW": "鬱金香",
+          "zh-CN": "郁金香",
+          "en": "tulip",
+          "ko": "튤립",
+          "es": "tulipán"
+        },
         "sentence": "チューリップがきれいです。",
         "sentenceDisplay": "チューリップ が きれい です。",
-        "sentenceMeaning": "鬱金香很漂亮。"
+        "sentenceMeaning": {
+          "zh-TW": "鬱金香很漂亮。",
+          "zh-CN": "郁金香很漂亮。",
+          "en": "The tulips are beautiful.",
+          "ko": "튤립이 예뻐요.",
+          "es": "Los tulipanes son preciosos."
+        }
       }
     ]
   },
@@ -925,10 +1489,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "チョコ",
         "romaji": "choko",
-        "meaning": "巧克力",
+        "meaning": {
+          "zh-TW": "巧克力",
+          "zh-CN": "巧克力",
+          "en": "chocolate",
+          "ko": "초콜릿",
+          "es": "chocolate"
+        },
         "sentence": "チョコをたべます。",
         "sentenceDisplay": "チョコ を たべます。",
-        "sentenceMeaning": "吃巧克力。"
+        "sentenceMeaning": {
+          "zh-TW": "吃巧克力。",
+          "zh-CN": "吃巧克力。",
+          "en": "I eat chocolate.",
+          "ko": "초콜릿을 먹어요.",
+          "es": "Como chocolate."
+        }
       }
     ]
   },
@@ -945,10 +1521,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ニャー",
         "romaji": "nyaa",
-        "meaning": "喵（貓叫聲）",
+        "meaning": {
+          "zh-TW": "喵（貓叫聲）",
+          "zh-CN": "喵（猫叫声）",
+          "en": "meow (a cat's cry)",
+          "ko": "야옹 (고양이 울음소리)",
+          "es": "miau (maullido)"
+        },
         "sentence": "ねこがニャーとなきます。",
         "sentenceDisplay": "ねこ が ニャー と なきます。",
-        "sentenceMeaning": "貓喵喵叫。"
+        "sentenceMeaning": {
+          "zh-TW": "貓喵喵叫。",
+          "zh-CN": "猫喵喵叫。",
+          "en": "The cat meows.",
+          "ko": "고양이가 야옹 하고 울어요.",
+          "es": "El gato maúlla."
+        }
       }
     ]
   },
@@ -964,10 +1552,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ニュース",
         "romaji": "nyuusu",
-        "meaning": "新聞 / 新聞報導",
+        "meaning": {
+          "zh-TW": "新聞 / 新聞報導",
+          "zh-CN": "新闻 / 新闻报导",
+          "en": "news / news report",
+          "ko": "뉴스",
+          "es": "noticias / noticiero"
+        },
         "sentence": "ニュースをみます。",
         "sentenceDisplay": "ニュース を みます。",
-        "sentenceMeaning": "看新聞。"
+        "sentenceMeaning": {
+          "zh-TW": "看新聞。",
+          "zh-CN": "看新闻。",
+          "en": "I watch the news.",
+          "ko": "뉴스를 봐요.",
+          "es": "Veo las noticias."
+        }
       }
     ]
   },
@@ -983,10 +1583,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ニョキニョキ",
         "romaji": "nyokinyoki",
-        "meaning": "快速冒出（擬態）",
+        "meaning": {
+          "zh-TW": "快速冒出（擬態）",
+          "zh-CN": "快速冒出（拟态）",
+          "en": "springing up fast (mimetic word)",
+          "ko": "쑥쑥 (빠르게 돋아나는 모양)",
+          "es": "brotar rápidamente (mimético)"
+        },
         "sentence": "きのこがニョキニョキはえます。",
         "sentenceDisplay": "きのこ が ニョキニョキ はえます。",
-        "sentenceMeaning": "蘑菇快速長出來。"
+        "sentenceMeaning": {
+          "zh-TW": "蘑菇快速長出來。",
+          "zh-CN": "蘑菇快速长出来。",
+          "en": "Mushrooms are sprouting up fast.",
+          "ko": "버섯이 쑥쑥 돋아나요.",
+          "es": "Los hongos brotan uno tras otro."
+        }
       }
     ]
   },
@@ -1003,10 +1615,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ヒャク",
         "romaji": "hyaku",
-        "meaning": "一百",
+        "meaning": {
+          "zh-TW": "一百",
+          "zh-CN": "一百",
+          "en": "one hundred",
+          "ko": "100",
+          "es": "cien"
+        },
         "sentence": "ヒャクえんです。",
         "sentenceDisplay": "ヒャク えん です。",
-        "sentenceMeaning": "是一百日圓。"
+        "sentenceMeaning": {
+          "zh-TW": "是一百日圓。",
+          "zh-CN": "是一百日圆。",
+          "en": "It's 100 yen.",
+          "ko": "100엔이에요.",
+          "es": "Son cien yenes."
+        }
       }
     ]
   },
@@ -1022,10 +1646,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ヒュー",
         "romaji": "hyuu",
-        "meaning": "呼嘯聲",
+        "meaning": {
+          "zh-TW": "呼嘯聲",
+          "zh-CN": "呼啸声",
+          "en": "whoosh (sound of wind)",
+          "ko": "휭 (바람 소리)",
+          "es": "silbido (del viento)"
+        },
         "sentence": "かぜがヒューとふきます。",
         "sentenceDisplay": "かぜ が ヒュー と ふきます。",
-        "sentenceMeaning": "風呼嘯地吹。"
+        "sentenceMeaning": {
+          "zh-TW": "風呼嘯地吹。",
+          "zh-CN": "风呼啸地吹。",
+          "en": "The wind blows with a whoosh.",
+          "ko": "바람이 휭 하고 불어요.",
+          "es": "El viento sopla silbando."
+        }
       }
     ]
   },
@@ -1041,10 +1677,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ヒョウ",
         "romaji": "hyou",
-        "meaning": "豹",
+        "meaning": {
+          "zh-TW": "豹",
+          "zh-CN": "豹",
+          "en": "leopard",
+          "ko": "표범",
+          "es": "leopardo"
+        },
         "sentence": "ヒョウをみます。",
         "sentenceDisplay": "ヒョウ を みます。",
-        "sentenceMeaning": "看豹。"
+        "sentenceMeaning": {
+          "zh-TW": "看豹。",
+          "zh-CN": "看豹。",
+          "en": "I look at the leopard.",
+          "ko": "표범을 봐요.",
+          "es": "Miro el leopardo."
+        }
       }
     ]
   },
@@ -1061,10 +1709,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ビャクヤ",
         "romaji": "byakuya",
-        "meaning": "白夜",
+        "meaning": {
+          "zh-TW": "白夜",
+          "zh-CN": "白夜",
+          "en": "white night, midnight sun",
+          "ko": "백야",
+          "es": "noche blanca"
+        },
         "sentence": "ビャクヤです。",
         "sentenceDisplay": "ビャクヤ です。",
-        "sentenceMeaning": "是白夜。"
+        "sentenceMeaning": {
+          "zh-TW": "是白夜。",
+          "zh-CN": "是白夜。",
+          "en": "It's a white night.",
+          "ko": "백야예요.",
+          "es": "Es una noche blanca."
+        }
       }
     ]
   },
@@ -1080,10 +1740,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ビュー",
         "romaji": "byuu",
-        "meaning": "景色 / 視圖",
+        "meaning": {
+          "zh-TW": "景色 / 視圖",
+          "zh-CN": "景色 / 视图",
+          "en": "view / scenery",
+          "ko": "경치, 전망 / 뷰",
+          "es": "vista, paisaje"
+        },
         "sentence": "ビューがきれいです。",
         "sentenceDisplay": "ビュー が きれい です。",
-        "sentenceMeaning": "景色很漂亮。"
+        "sentenceMeaning": {
+          "zh-TW": "景色很漂亮。",
+          "zh-CN": "景色很漂亮。",
+          "en": "The view is beautiful.",
+          "ko": "경치가 아름다워요.",
+          "es": "La vista es preciosa."
+        }
       }
     ]
   },
@@ -1099,10 +1771,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ビョウイン",
         "romaji": "byouin",
-        "meaning": "醫院",
+        "meaning": {
+          "zh-TW": "醫院",
+          "zh-CN": "医院",
+          "en": "hospital",
+          "ko": "병원",
+          "es": "hospital"
+        },
         "sentence": "ビョウインにいきます。",
         "sentenceDisplay": "ビョウイン に いきます。",
-        "sentenceMeaning": "去醫院。"
+        "sentenceMeaning": {
+          "zh-TW": "去醫院。",
+          "zh-CN": "去医院。",
+          "en": "I go to the hospital.",
+          "ko": "병원에 가요.",
+          "es": "Voy al hospital."
+        }
       }
     ]
   },
@@ -1119,10 +1803,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ピャッ",
         "romaji": "pya",
-        "meaning": "擬聲",
+        "meaning": {
+          "zh-TW": "擬聲",
+          "zh-CN": "拟声",
+          "en": "onomatopoeia",
+          "ko": "휙 (의성어)",
+          "es": "onomatopeya"
+        },
         "sentence": "ピャっとおどります。",
         "sentenceDisplay": "ピャっ と おどります。",
-        "sentenceMeaning": "輕快地跳舞。"
+        "sentenceMeaning": {
+          "zh-TW": "輕快地跳舞。",
+          "zh-CN": "轻快地跳舞。",
+          "en": "I dance with a light hop.",
+          "ko": "가볍게 춤을 춰요.",
+          "es": "Baila con ligereza."
+        }
       }
     ]
   },
@@ -1138,10 +1834,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ピュア",
         "romaji": "pyua",
-        "meaning": "純真",
+        "meaning": {
+          "zh-TW": "純真",
+          "zh-CN": "纯真",
+          "en": "pure",
+          "ko": "순수함, 퓨어",
+          "es": "puro, inocente"
+        },
         "sentence": "ピュアなこころです。",
         "sentenceDisplay": "ピュア な こころ です。",
-        "sentenceMeaning": "是純真的心。"
+        "sentenceMeaning": {
+          "zh-TW": "是純真的心。",
+          "zh-CN": "是纯真的心。",
+          "en": "It's a pure heart.",
+          "ko": "순수한 마음이에요.",
+          "es": "Es un corazón puro."
+        }
       }
     ]
   },
@@ -1157,10 +1865,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ピョン",
         "romaji": "pyon",
-        "meaning": "跳躍聲",
+        "meaning": {
+          "zh-TW": "跳躍聲",
+          "zh-CN": "跳跃声",
+          "en": "boing (sound of a hop)",
+          "ko": "깡충 (뛰는 모양)",
+          "es": "sonido de un salto"
+        },
         "sentence": "うさぎがピョンととびます。",
         "sentenceDisplay": "うさぎ が ピョン と とびます。",
-        "sentenceMeaning": "兔子跳一下。"
+        "sentenceMeaning": {
+          "zh-TW": "兔子跳一下。",
+          "zh-CN": "兔子跳一下。",
+          "en": "The rabbit hops.",
+          "ko": "토끼가 깡충 뛰어요.",
+          "es": "El conejo da un saltito."
+        }
       }
     ]
   },
@@ -1177,10 +1897,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ミャク",
         "romaji": "myaku",
-        "meaning": "脈搏",
+        "meaning": {
+          "zh-TW": "脈搏",
+          "zh-CN": "脉搏",
+          "en": "pulse",
+          "ko": "맥박",
+          "es": "pulso"
+        },
         "sentence": "ミャクをはかります。",
         "sentenceDisplay": "ミャク を はかります。",
-        "sentenceMeaning": "量脈搏。"
+        "sentenceMeaning": {
+          "zh-TW": "量脈搏。",
+          "zh-CN": "量脉搏。",
+          "en": "I take my pulse.",
+          "ko": "맥박을 재요.",
+          "es": "Tomo el pulso."
+        }
       }
     ]
   },
@@ -1196,10 +1928,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ミュージック",
         "romaji": "myuujikku",
-        "meaning": "音樂",
+        "meaning": {
+          "zh-TW": "音樂",
+          "zh-CN": "音乐",
+          "en": "music",
+          "ko": "음악, 뮤직",
+          "es": "música"
+        },
         "sentence": "ミュージックをききます。",
         "sentenceDisplay": "ミュージック を ききます。",
-        "sentenceMeaning": "聽音樂。"
+        "sentenceMeaning": {
+          "zh-TW": "聽音樂。",
+          "zh-CN": "听音乐。",
+          "en": "I listen to music.",
+          "ko": "음악을 들어요.",
+          "es": "Escucho música."
+        }
       }
     ]
   },
@@ -1215,10 +1959,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "ミョウジ",
         "romaji": "myouji",
-        "meaning": "姓氏",
+        "meaning": {
+          "zh-TW": "姓氏",
+          "zh-CN": "姓氏",
+          "en": "family name, surname",
+          "ko": "성, 성씨",
+          "es": "apellido"
+        },
         "sentence": "ミョウジはなんですか。",
         "sentenceDisplay": "ミョウジ は なん です か。",
-        "sentenceMeaning": "姓氏是什麼？"
+        "sentenceMeaning": {
+          "zh-TW": "姓氏是什麼？",
+          "zh-CN": "姓氏是什么？",
+          "en": "What is your family name?",
+          "ko": "성이 어떻게 되세요?",
+          "es": "¿Cuál es tu apellido?"
+        }
       }
     ]
   },
@@ -1235,10 +1991,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "リャク",
         "romaji": "ryaku",
-        "meaning": "省略",
+        "meaning": {
+          "zh-TW": "省略",
+          "zh-CN": "省略",
+          "en": "abbreviation, omission",
+          "ko": "생략",
+          "es": "abreviatura, omisión"
+        },
         "sentence": "リャクします。",
         "sentenceDisplay": "リャク します。",
-        "sentenceMeaning": "省略。"
+        "sentenceMeaning": {
+          "zh-TW": "省略。",
+          "zh-CN": "省略。",
+          "en": "I'll skip that.",
+          "ko": "생략할게요.",
+          "es": "Lo abrevio."
+        }
       }
     ]
   },
@@ -1254,10 +2022,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "リュック",
         "romaji": "ryukku",
-        "meaning": "後背包",
+        "meaning": {
+          "zh-TW": "後背包",
+          "zh-CN": "双肩包",
+          "en": "backpack",
+          "ko": "배낭, 백팩",
+          "es": "mochila"
+        },
         "sentence": "リュックをせおいます。",
         "sentenceDisplay": "リュック を せおいます。",
-        "sentenceMeaning": "背後背包。"
+        "sentenceMeaning": {
+          "zh-TW": "背後背包。",
+          "zh-CN": "背双肩包。",
+          "en": "I put on my backpack.",
+          "ko": "배낭을 메요.",
+          "es": "Me cuelgo la mochila."
+        }
       }
     ]
   },
@@ -1273,10 +2053,22 @@ export const YOUON_DATA: KanaItem[] = [
       {
         "word": "リョコウ",
         "romaji": "ryokou",
-        "meaning": "旅行",
+        "meaning": {
+          "zh-TW": "旅行",
+          "zh-CN": "旅行",
+          "en": "trip, travel",
+          "ko": "여행",
+          "es": "viaje"
+        },
         "sentence": "リョコウにいきます。",
         "sentenceDisplay": "リョコウ に いきます。",
-        "sentenceMeaning": "去旅行。"
+        "sentenceMeaning": {
+          "zh-TW": "去旅行。",
+          "zh-CN": "去旅行。",
+          "en": "I go on a trip.",
+          "ko": "여행을 가요.",
+          "es": "Me voy de viaje."
+        }
       }
     ]
   }

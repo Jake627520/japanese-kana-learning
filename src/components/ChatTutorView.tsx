@@ -6,7 +6,7 @@ import { speakJapanese } from '../utils/speech';
 import { recordReviewResult } from '../utils/storage';
 import { logLearningEvent } from '../utils/learningEvents';
 import { loadChatTutorProgress, saveChatTutorRow } from '../lib/chatTutorProgress';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 
 function groupByRow(data: KanaItem[]): KanaItem[][] {
   const order: string[] = [];
@@ -443,6 +443,7 @@ function MessageBubble({
 }
 
 function KanaCard({ kana }: { kana: KanaItem }) {
+  const { language } = useI18n();
   const example = kana.examples?.[0];
   return (
     <div className="bg-[#F4EEDE] border border-[#D9CDB2] rounded-2xl rounded-bl-md p-4 shadow-xs w-64 max-w-full">
@@ -471,7 +472,7 @@ function KanaCard({ kana }: { kana: KanaItem }) {
                 {example.word}
               </button>
               <span className="text-[#8F8674]"> ({example.romaji})</span>
-              <div className="text-[#6B6252]">{example.meaning}</div>
+              <div className="text-[#6B6252]">{localize(example.meaning, language)}</div>
             </div>
           )}
         </div>

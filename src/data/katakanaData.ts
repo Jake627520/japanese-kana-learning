@@ -13,10 +13,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "アイス",
         "romaji": "aisu",
-        "meaning": "冰淇淋",
+        "meaning": {
+          "zh-TW": "冰淇淋",
+          "zh-CN": "冰淇淋",
+          "en": "ice cream",
+          "ko": "아이스크림",
+          "es": "helado"
+        },
         "sentence": "アイスをたべます。",
         "sentenceDisplay": "アイス を たべます。",
-        "sentenceMeaning": "吃冰淇淋。"
+        "sentenceMeaning": {
+          "zh-TW": "吃冰淇淋。",
+          "zh-CN": "吃冰淇淋。",
+          "en": "I eat ice cream.",
+          "ko": "아이스크림을 먹어요.",
+          "es": "Como helado."
+        }
       }
     ]
   },
@@ -32,10 +44,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "インク",
         "romaji": "inku",
-        "meaning": "墨水",
+        "meaning": {
+          "zh-TW": "墨水",
+          "zh-CN": "墨水",
+          "en": "ink",
+          "ko": "잉크",
+          "es": "tinta"
+        },
         "sentence": "あかいインクです。",
         "sentenceDisplay": "あかい インク です。",
-        "sentenceMeaning": "是紅色的墨水。"
+        "sentenceMeaning": {
+          "zh-TW": "是紅色的墨水。",
+          "zh-CN": "是红色的墨水。",
+          "en": "It's red ink.",
+          "ko": "빨간 잉크예요.",
+          "es": "Es tinta roja."
+        }
       }
     ]
   },
@@ -51,10 +75,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ウェブ",
         "romaji": "webu",
-        "meaning": "網路",
+        "meaning": {
+          "zh-TW": "網路",
+          "zh-CN": "网络",
+          "en": "the web",
+          "ko": "웹",
+          "es": "web"
+        },
         "sentence": "ウェブをみます。",
         "sentenceDisplay": "ウェブ を みます。",
-        "sentenceMeaning": "看網頁。"
+        "sentenceMeaning": {
+          "zh-TW": "看網頁。",
+          "zh-CN": "看网页。",
+          "en": "I browse the web.",
+          "ko": "웹을 봐요.",
+          "es": "Miro la web."
+        }
       }
     ]
   },
@@ -70,10 +106,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "エアコン",
         "romaji": "eakon",
-        "meaning": "空調",
+        "meaning": {
+          "zh-TW": "空調",
+          "zh-CN": "空调",
+          "en": "air conditioner",
+          "ko": "에어컨",
+          "es": "aire acondicionado"
+        },
         "sentence": "エアコンをつけます。",
         "sentenceDisplay": "エアコン を つけます。",
-        "sentenceMeaning": "開空調。"
+        "sentenceMeaning": {
+          "zh-TW": "開空調。",
+          "zh-CN": "开空调。",
+          "en": "I turn on the air conditioner.",
+          "ko": "에어컨을 켜요.",
+          "es": "Enciendo el aire acondicionado."
+        }
       }
     ]
   },
@@ -89,10 +137,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "オレンジ",
         "romaji": "orenji",
-        "meaning": "柳橙",
+        "meaning": {
+          "zh-TW": "柳橙",
+          "zh-CN": "橙子",
+          "en": "orange",
+          "ko": "오렌지",
+          "es": "naranja"
+        },
         "sentence": "オレンジをたべます。",
         "sentenceDisplay": "オレンジ を たべます。",
-        "sentenceMeaning": "吃柳橙。"
+        "sentenceMeaning": {
+          "zh-TW": "吃柳橙。",
+          "zh-CN": "吃橙子。",
+          "en": "I eat an orange.",
+          "ko": "오렌지를 먹어요.",
+          "es": "Como una naranja."
+        }
       }
     ]
   },
@@ -108,10 +168,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "カメラ",
         "romaji": "kamera",
-        "meaning": "相機",
+        "meaning": {
+          "zh-TW": "相機",
+          "zh-CN": "相机",
+          "en": "camera",
+          "ko": "카메라",
+          "es": "cámara"
+        },
         "sentence": "カメラをかいます。",
         "sentenceDisplay": "カメラ を かいます。",
-        "sentenceMeaning": "買相機。"
+        "sentenceMeaning": {
+          "zh-TW": "買相機。",
+          "zh-CN": "买相机。",
+          "en": "I buy a camera.",
+          "ko": "카메라를 사요.",
+          "es": "Compro una cámara."
+        }
       }
     ]
   },
@@ -127,10 +199,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "キロ",
         "romaji": "kiro",
-        "meaning": "公斤 / 公里",
+        "meaning": {
+          "zh-TW": "公斤 / 公里",
+          "zh-CN": "公斤 / 公里",
+          "en": "kilogram / kilometer",
+          "ko": "킬로그램 / 킬로미터",
+          "es": "kilo / kilómetro"
+        },
         "sentence": "いちキロです。",
         "sentenceDisplay": "いち キロ です。",
-        "sentenceMeaning": "是一公斤。"
+        "sentenceMeaning": {
+          "zh-TW": "是一公斤。",
+          "zh-CN": "是一公斤。",
+          "en": "It's one kilo.",
+          "ko": "1킬로예요.",
+          "es": "Es un kilo."
+        }
       }
     ]
   },
@@ -146,10 +230,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "クラス",
         "romaji": "kurasu",
-        "meaning": "班級",
+        "meaning": {
+          "zh-TW": "班級",
+          "zh-CN": "班级",
+          "en": "class",
+          "ko": "반, 학급",
+          "es": "clase, grupo"
+        },
         "sentence": "たのしいクラスです。",
         "sentenceDisplay": "たのしい クラス です。",
-        "sentenceMeaning": "是愉快的班級。"
+        "sentenceMeaning": {
+          "zh-TW": "是愉快的班級。",
+          "zh-CN": "是愉快的班级。",
+          "en": "It's a fun class.",
+          "ko": "즐거운 반이에요.",
+          "es": "Es una clase divertida."
+        }
       }
     ]
   },
@@ -165,10 +261,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ケーキ",
         "romaji": "keeki",
-        "meaning": "蛋糕",
+        "meaning": {
+          "zh-TW": "蛋糕",
+          "zh-CN": "蛋糕",
+          "en": "cake",
+          "ko": "케이크",
+          "es": "pastel"
+        },
         "sentence": "ケーキをたべます。",
         "sentenceDisplay": "ケーキ を たべます。",
-        "sentenceMeaning": "吃蛋糕。"
+        "sentenceMeaning": {
+          "zh-TW": "吃蛋糕。",
+          "zh-CN": "吃蛋糕。",
+          "en": "I eat cake.",
+          "ko": "케이크를 먹어요.",
+          "es": "Como pastel."
+        }
       }
     ]
   },
@@ -184,10 +292,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "コイン",
         "romaji": "koin",
-        "meaning": "硬幣",
+        "meaning": {
+          "zh-TW": "硬幣",
+          "zh-CN": "硬币",
+          "en": "coin",
+          "ko": "동전",
+          "es": "moneda"
+        },
         "sentence": "コインをいれます。",
         "sentenceDisplay": "コイン を いれます。",
-        "sentenceMeaning": "放入硬幣。"
+        "sentenceMeaning": {
+          "zh-TW": "放入硬幣。",
+          "zh-CN": "放入硬币。",
+          "en": "I put in a coin.",
+          "ko": "동전을 넣어요.",
+          "es": "Meto una moneda."
+        }
       }
     ]
   },
@@ -203,10 +323,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "サイン",
         "romaji": "sain",
-        "meaning": "簽名",
+        "meaning": {
+          "zh-TW": "簽名",
+          "zh-CN": "签名",
+          "en": "signature, autograph",
+          "ko": "사인, 서명",
+          "es": "firma"
+        },
         "sentence": "サインをかきます。",
         "sentenceDisplay": "サイン を かきます。",
-        "sentenceMeaning": "簽名。"
+        "sentenceMeaning": {
+          "zh-TW": "簽名。",
+          "zh-CN": "签名。",
+          "en": "I sign my name.",
+          "ko": "사인을 해요.",
+          "es": "Firmo."
+        }
       }
     ]
   },
@@ -222,10 +354,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "シャツ",
         "romaji": "shatsu",
-        "meaning": "襯衫",
+        "meaning": {
+          "zh-TW": "襯衫",
+          "zh-CN": "衬衫",
+          "en": "shirt",
+          "ko": "셔츠",
+          "es": "camisa"
+        },
         "sentence": "しろいシャツです。",
         "sentenceDisplay": "しろい シャツ です。",
-        "sentenceMeaning": "是白襯衫。"
+        "sentenceMeaning": {
+          "zh-TW": "是白襯衫。",
+          "zh-CN": "是白衬衫。",
+          "en": "It's a white shirt.",
+          "ko": "흰 셔츠예요.",
+          "es": "Es una camisa blanca."
+        }
       }
     ]
   },
@@ -241,10 +385,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "スープ",
         "romaji": "suupu",
-        "meaning": "湯",
+        "meaning": {
+          "zh-TW": "湯",
+          "zh-CN": "汤",
+          "en": "soup",
+          "ko": "수프",
+          "es": "sopa"
+        },
         "sentence": "スープをのみます。",
         "sentenceDisplay": "スープ を のみます。",
-        "sentenceMeaning": "喝湯。"
+        "sentenceMeaning": {
+          "zh-TW": "喝湯。",
+          "zh-CN": "喝汤。",
+          "en": "I have soup.",
+          "ko": "수프를 먹어요.",
+          "es": "Tomo sopa."
+        }
       }
     ]
   },
@@ -260,10 +416,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "セーター",
         "romaji": "seetaa",
-        "meaning": "毛衣",
+        "meaning": {
+          "zh-TW": "毛衣",
+          "zh-CN": "毛衣",
+          "en": "sweater",
+          "ko": "스웨터",
+          "es": "suéter"
+        },
         "sentence": "あかいセーターです。",
         "sentenceDisplay": "あかい セーター です。",
-        "sentenceMeaning": "是紅毛衣。"
+        "sentenceMeaning": {
+          "zh-TW": "是紅毛衣。",
+          "zh-CN": "是红毛衣。",
+          "en": "It's a red sweater.",
+          "ko": "빨간 스웨터예요.",
+          "es": "Es un suéter rojo."
+        }
       }
     ]
   },
@@ -279,10 +447,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ソファ",
         "romaji": "sofa",
-        "meaning": "沙發",
+        "meaning": {
+          "zh-TW": "沙發",
+          "zh-CN": "沙发",
+          "en": "sofa",
+          "ko": "소파",
+          "es": "sofá"
+        },
         "sentence": "ソファにすわります。",
         "sentenceDisplay": "ソファ に すわります。",
-        "sentenceMeaning": "坐在沙發上。"
+        "sentenceMeaning": {
+          "zh-TW": "坐在沙發上。",
+          "zh-CN": "坐在沙发上。",
+          "en": "I sit on the sofa.",
+          "ko": "소파에 앉아요.",
+          "es": "Me siento en el sofá."
+        }
       }
     ]
   },
@@ -298,10 +478,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "タクシー",
         "romaji": "takushii",
-        "meaning": "計程車",
+        "meaning": {
+          "zh-TW": "計程車",
+          "zh-CN": "出租车",
+          "en": "taxi",
+          "ko": "택시",
+          "es": "taxi"
+        },
         "sentence": "タクシーにのります。",
         "sentenceDisplay": "タクシー に のります。",
-        "sentenceMeaning": "搭計程車。"
+        "sentenceMeaning": {
+          "zh-TW": "搭計程車。",
+          "zh-CN": "坐出租车。",
+          "en": "I take a taxi.",
+          "ko": "택시를 타요.",
+          "es": "Tomo un taxi."
+        }
       }
     ]
   },
@@ -317,10 +509,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "チーム",
         "romaji": "chiimu",
-        "meaning": "團隊",
+        "meaning": {
+          "zh-TW": "團隊",
+          "zh-CN": "团队",
+          "en": "team",
+          "ko": "팀",
+          "es": "equipo"
+        },
         "sentence": "つよいチームです。",
         "sentenceDisplay": "つよい チーム です。",
-        "sentenceMeaning": "是強大的團隊。"
+        "sentenceMeaning": {
+          "zh-TW": "是強大的團隊。",
+          "zh-CN": "是强大的团队。",
+          "en": "It's a strong team.",
+          "ko": "강한 팀이에요.",
+          "es": "Es un equipo fuerte."
+        }
       }
     ]
   },
@@ -336,10 +540,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ツアー",
         "romaji": "tsuaa",
-        "meaning": "旅遊團",
+        "meaning": {
+          "zh-TW": "旅遊團",
+          "zh-CN": "旅游团",
+          "en": "tour",
+          "ko": "투어, 단체 여행",
+          "es": "tour, viaje organizado"
+        },
         "sentence": "ツアーにさんかします。",
         "sentenceDisplay": "ツアー に さんかします。",
-        "sentenceMeaning": "參加旅行團。"
+        "sentenceMeaning": {
+          "zh-TW": "參加旅行團。",
+          "zh-CN": "参加旅游团。",
+          "en": "I join a tour.",
+          "ko": "투어에 참가해요.",
+          "es": "Participo en un tour."
+        }
       }
     ]
   },
@@ -355,10 +571,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "テスト",
         "romaji": "tesuto",
-        "meaning": "考試",
+        "meaning": {
+          "zh-TW": "考試",
+          "zh-CN": "考试",
+          "en": "test, exam",
+          "ko": "시험",
+          "es": "examen, prueba"
+        },
         "sentence": "テストをうけます。",
         "sentenceDisplay": "テスト を うけます。",
-        "sentenceMeaning": "參加考試。"
+        "sentenceMeaning": {
+          "zh-TW": "參加考試。",
+          "zh-CN": "参加考试。",
+          "en": "I take a test.",
+          "ko": "시험을 봐요.",
+          "es": "Hago un examen."
+        }
       }
     ]
   },
@@ -374,10 +602,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "トマト",
         "romaji": "tomato",
-        "meaning": "番茄",
+        "meaning": {
+          "zh-TW": "番茄",
+          "zh-CN": "番茄",
+          "en": "tomato",
+          "ko": "토마토",
+          "es": "tomate"
+        },
         "sentence": "トマトをたべます。",
         "sentenceDisplay": "トマト を たべます。",
-        "sentenceMeaning": "吃番茄。"
+        "sentenceMeaning": {
+          "zh-TW": "吃番茄。",
+          "zh-CN": "吃番茄。",
+          "en": "I eat a tomato.",
+          "ko": "토마토를 먹어요.",
+          "es": "Como tomate."
+        }
       }
     ]
   },
@@ -393,10 +633,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ナイフ",
         "romaji": "naifu",
-        "meaning": "刀子",
+        "meaning": {
+          "zh-TW": "刀子",
+          "zh-CN": "刀子",
+          "en": "knife",
+          "ko": "나이프, 칼",
+          "es": "cuchillo"
+        },
         "sentence": "ナイフをつかいます。",
         "sentenceDisplay": "ナイフ を つかいます。",
-        "sentenceMeaning": "使用刀子。"
+        "sentenceMeaning": {
+          "zh-TW": "使用刀子。",
+          "zh-CN": "使用刀子。",
+          "en": "I use a knife.",
+          "ko": "나이프를 사용해요.",
+          "es": "Uso un cuchillo."
+        }
       }
     ]
   },
@@ -412,10 +664,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ニュース",
         "romaji": "nyuusu",
-        "meaning": "新聞",
+        "meaning": {
+          "zh-TW": "新聞",
+          "zh-CN": "新闻",
+          "en": "news",
+          "ko": "뉴스",
+          "es": "noticias"
+        },
         "sentence": "ニュースをみます。",
         "sentenceDisplay": "ニュース を みます。",
-        "sentenceMeaning": "看新聞。"
+        "sentenceMeaning": {
+          "zh-TW": "看新聞。",
+          "zh-CN": "看新闻。",
+          "en": "I watch the news.",
+          "ko": "뉴스를 봐요.",
+          "es": "Veo las noticias."
+        }
       }
     ]
   },
@@ -431,10 +695,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ヌードル",
         "romaji": "nuudoru",
-        "meaning": "麵條",
+        "meaning": {
+          "zh-TW": "麵條",
+          "zh-CN": "面条",
+          "en": "noodles",
+          "ko": "국수, 누들",
+          "es": "fideos"
+        },
         "sentence": "ヌードルをたべます。",
         "sentenceDisplay": "ヌードル を たべます。",
-        "sentenceMeaning": "吃麵條。"
+        "sentenceMeaning": {
+          "zh-TW": "吃麵條。",
+          "zh-CN": "吃面条。",
+          "en": "I eat noodles.",
+          "ko": "국수를 먹어요.",
+          "es": "Como fideos."
+        }
       }
     ]
   },
@@ -450,10 +726,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ネクタイ",
         "romaji": "nekutai",
-        "meaning": "領帶",
+        "meaning": {
+          "zh-TW": "領帶",
+          "zh-CN": "领带",
+          "en": "necktie",
+          "ko": "넥타이",
+          "es": "corbata"
+        },
         "sentence": "ネクタイをしめます。",
         "sentenceDisplay": "ネクタイ を しめます。",
-        "sentenceMeaning": "繫領帶。"
+        "sentenceMeaning": {
+          "zh-TW": "繫領帶。",
+          "zh-CN": "系领带。",
+          "en": "I put on a tie.",
+          "ko": "넥타이를 매요.",
+          "es": "Me pongo la corbata."
+        }
       }
     ]
   },
@@ -469,10 +757,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ノート",
         "romaji": "nooto",
-        "meaning": "筆記本",
+        "meaning": {
+          "zh-TW": "筆記本",
+          "zh-CN": "笔记本",
+          "en": "notebook",
+          "ko": "공책, 노트",
+          "es": "cuaderno"
+        },
         "sentence": "ノートにかきます。",
         "sentenceDisplay": "ノート に かきます。",
-        "sentenceMeaning": "寫在筆記本上。"
+        "sentenceMeaning": {
+          "zh-TW": "寫在筆記本上。",
+          "zh-CN": "写在笔记本上。",
+          "en": "I write in my notebook.",
+          "ko": "노트에 써요.",
+          "es": "Escribo en el cuaderno."
+        }
       }
     ]
   },
@@ -488,10 +788,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ハム",
         "romaji": "hamu",
-        "meaning": "火腿",
+        "meaning": {
+          "zh-TW": "火腿",
+          "zh-CN": "火腿",
+          "en": "ham",
+          "ko": "햄",
+          "es": "jamón"
+        },
         "sentence": "ハムをたべます。",
         "sentenceDisplay": "ハム を たべます。",
-        "sentenceMeaning": "吃火腿。"
+        "sentenceMeaning": {
+          "zh-TW": "吃火腿。",
+          "zh-CN": "吃火腿。",
+          "en": "I eat ham.",
+          "ko": "햄을 먹어요.",
+          "es": "Como jamón."
+        }
       }
     ]
   },
@@ -507,10 +819,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ヒーロー",
         "romaji": "hiiroo",
-        "meaning": "英雄",
+        "meaning": {
+          "zh-TW": "英雄",
+          "zh-CN": "英雄",
+          "en": "hero",
+          "ko": "영웅, 히어로",
+          "es": "héroe"
+        },
         "sentence": "かっこいいヒーローです。",
         "sentenceDisplay": "かっこいい ヒーロー です。",
-        "sentenceMeaning": "是帥氣的英雄。"
+        "sentenceMeaning": {
+          "zh-TW": "是帥氣的英雄。",
+          "zh-CN": "是帅气的英雄。",
+          "en": "He's a cool hero.",
+          "ko": "멋진 히어로예요.",
+          "es": "Es un héroe genial."
+        }
       }
     ]
   },
@@ -526,10 +850,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "フォーク",
         "romaji": "fooku",
-        "meaning": "叉子",
+        "meaning": {
+          "zh-TW": "叉子",
+          "zh-CN": "叉子",
+          "en": "fork",
+          "ko": "포크",
+          "es": "tenedor"
+        },
         "sentence": "フォークをつかいます。",
         "sentenceDisplay": "フォーク を つかいます。",
-        "sentenceMeaning": "使用叉子。"
+        "sentenceMeaning": {
+          "zh-TW": "使用叉子。",
+          "zh-CN": "使用叉子。",
+          "en": "I use a fork.",
+          "ko": "포크를 사용해요.",
+          "es": "Uso un tenedor."
+        }
       }
     ]
   },
@@ -545,10 +881,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ヘルメット",
         "romaji": "herumetto",
-        "meaning": "安全帽",
+        "meaning": {
+          "zh-TW": "安全帽",
+          "zh-CN": "头盔",
+          "en": "helmet",
+          "ko": "헬멧",
+          "es": "casco"
+        },
         "sentence": "ヘルメットをかぶります。",
         "sentenceDisplay": "ヘルメット を かぶります。",
-        "sentenceMeaning": "戴安全帽。"
+        "sentenceMeaning": {
+          "zh-TW": "戴安全帽。",
+          "zh-CN": "戴头盔。",
+          "en": "I put on a helmet.",
+          "ko": "헬멧을 써요.",
+          "es": "Me pongo el casco."
+        }
       }
     ]
   },
@@ -564,10 +912,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ホテル",
         "romaji": "hoteru",
-        "meaning": "飯店",
+        "meaning": {
+          "zh-TW": "飯店",
+          "zh-CN": "酒店",
+          "en": "hotel",
+          "ko": "호텔",
+          "es": "hotel"
+        },
         "sentence": "ホテルにとまります。",
         "sentenceDisplay": "ホテル に とまります。",
-        "sentenceMeaning": "住宿在飯店。"
+        "sentenceMeaning": {
+          "zh-TW": "住宿在飯店。",
+          "zh-CN": "住在酒店。",
+          "en": "I stay at a hotel.",
+          "ko": "호텔에 묵어요.",
+          "es": "Me alojo en un hotel."
+        }
       }
     ]
   },
@@ -583,10 +943,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "マイク",
         "romaji": "maiku",
-        "meaning": "麥克風",
+        "meaning": {
+          "zh-TW": "麥克風",
+          "zh-CN": "麦克风",
+          "en": "microphone",
+          "ko": "마이크",
+          "es": "micrófono"
+        },
         "sentence": "マイクではなします。",
         "sentenceDisplay": "マイク で はなします。",
-        "sentenceMeaning": "用麥克風說話。"
+        "sentenceMeaning": {
+          "zh-TW": "用麥克風說話。",
+          "zh-CN": "用麦克风说话。",
+          "en": "I speak into the microphone.",
+          "ko": "마이크로 말해요.",
+          "es": "Hablo por el micrófono."
+        }
       }
     ]
   },
@@ -602,10 +974,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ミルク",
         "romaji": "miruku",
-        "meaning": "牛奶",
+        "meaning": {
+          "zh-TW": "牛奶",
+          "zh-CN": "牛奶",
+          "en": "milk",
+          "ko": "우유",
+          "es": "leche"
+        },
         "sentence": "ミルクをのみます。",
         "sentenceDisplay": "ミルク を のみます。",
-        "sentenceMeaning": "喝牛奶。"
+        "sentenceMeaning": {
+          "zh-TW": "喝牛奶。",
+          "zh-CN": "喝牛奶。",
+          "en": "I drink milk.",
+          "ko": "우유를 마셔요.",
+          "es": "Tomo leche."
+        }
       }
     ]
   },
@@ -621,10 +1005,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ムービー",
         "romaji": "muubii",
-        "meaning": "電影 / 影片",
+        "meaning": {
+          "zh-TW": "電影 / 影片",
+          "zh-CN": "电影 / 视频",
+          "en": "movie / video",
+          "ko": "영화 / 영상",
+          "es": "película / video"
+        },
         "sentence": "ムービーをみます。",
         "sentenceDisplay": "ムービー を みます。",
-        "sentenceMeaning": "看影片。"
+        "sentenceMeaning": {
+          "zh-TW": "看影片。",
+          "zh-CN": "看视频。",
+          "en": "I watch a movie.",
+          "ko": "영상을 봐요.",
+          "es": "Veo un video."
+        }
       }
     ]
   },
@@ -640,10 +1036,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "メモ",
         "romaji": "memo",
-        "meaning": "便條 / 備忘錄",
+        "meaning": {
+          "zh-TW": "便條 / 備忘錄",
+          "zh-CN": "便条 / 备忘录",
+          "en": "memo, note",
+          "ko": "메모",
+          "es": "nota, apunte"
+        },
         "sentence": "メモをとります。",
         "sentenceDisplay": "メモ を とります。",
-        "sentenceMeaning": "做筆記。"
+        "sentenceMeaning": {
+          "zh-TW": "做筆記。",
+          "zh-CN": "做笔记。",
+          "en": "I take notes.",
+          "ko": "메모를 해요.",
+          "es": "Tomo notas."
+        }
       }
     ]
   },
@@ -659,10 +1067,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "モデル",
         "romaji": "moderu",
-        "meaning": "模特兒 / 模型",
+        "meaning": {
+          "zh-TW": "模特兒 / 模型",
+          "zh-CN": "模特 / 模型",
+          "en": "model (person) / model (replica)",
+          "ko": "모델 / 모형",
+          "es": "modelo (persona) / maqueta"
+        },
         "sentence": "ステキなモデルです。",
         "sentenceDisplay": "ステキな モデル です。",
-        "sentenceMeaning": "是出色的模特兒。"
+        "sentenceMeaning": {
+          "zh-TW": "是出色的模特兒。",
+          "zh-CN": "是出色的模特。",
+          "en": "She's a gorgeous model.",
+          "ko": "멋진 모델이에요.",
+          "es": "Es una modelo fantástica."
+        }
       }
     ]
   },
@@ -678,9 +1098,21 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ヤード",
         "romaji": "yaado",
-        "meaning": "碼 (長度單位)",
+        "meaning": {
+          "zh-TW": "碼 (長度單位)",
+          "zh-CN": "码 (长度单位)",
+          "en": "yard (unit of length) / yard (open area)",
+          "ko": "야드 (길이 단위) / 마당",
+          "es": "yarda (unidad de longitud); patio, recinto"
+        },
         "sentence": "ひろいヤードです。",
-        "sentenceMeaning": "是寬廣的碼。",
+        "sentenceMeaning": {
+          "zh-TW": "是寬廣的碼。",
+          "zh-CN": "是宽广的码。",
+          "en": "It's a spacious yard.",
+          "ko": "넓은 야드예요.",
+          "es": "Es un recinto amplio."
+        },
         "sentenceDisplay": "ひろい ヤード です。"
       }
     ]
@@ -697,10 +1129,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ユニフォーム",
         "romaji": "yunifoomu",
-        "meaning": "制服",
+        "meaning": {
+          "zh-TW": "制服",
+          "zh-CN": "制服",
+          "en": "uniform",
+          "ko": "유니폼",
+          "es": "uniforme"
+        },
         "sentence": "あおいユニフォームです。",
         "sentenceDisplay": "あおい ユニフォーム です。",
-        "sentenceMeaning": "是藍色制服。"
+        "sentenceMeaning": {
+          "zh-TW": "是藍色制服。",
+          "zh-CN": "是蓝色制服。",
+          "en": "It's a blue uniform.",
+          "ko": "파란 유니폼이에요.",
+          "es": "Es un uniforme azul."
+        }
       }
     ]
   },
@@ -716,10 +1160,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ヨーグルト",
         "romaji": "yooguruto",
-        "meaning": "優格",
+        "meaning": {
+          "zh-TW": "優格",
+          "zh-CN": "酸奶",
+          "en": "yogurt",
+          "ko": "요구르트",
+          "es": "yogur"
+        },
         "sentence": "ヨーグルトをたべます。",
         "sentenceDisplay": "ヨーグルト を たべます。",
-        "sentenceMeaning": "吃優格。"
+        "sentenceMeaning": {
+          "zh-TW": "吃優格。",
+          "zh-CN": "吃酸奶。",
+          "en": "I eat yogurt.",
+          "ko": "요구르트를 먹어요.",
+          "es": "Como yogur."
+        }
       }
     ]
   },
@@ -735,10 +1191,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ラジオ",
         "romaji": "rajio",
-        "meaning": "收音機",
+        "meaning": {
+          "zh-TW": "收音機",
+          "zh-CN": "收音机",
+          "en": "radio",
+          "ko": "라디오",
+          "es": "radio"
+        },
         "sentence": "ラジオをききます。",
         "sentenceDisplay": "ラジオ を ききます。",
-        "sentenceMeaning": "聽收音機。"
+        "sentenceMeaning": {
+          "zh-TW": "聽收音機。",
+          "zh-CN": "听收音机。",
+          "en": "I listen to the radio.",
+          "ko": "라디오를 들어요.",
+          "es": "Escucho la radio."
+        }
       }
     ]
   },
@@ -754,10 +1222,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "リング",
         "romaji": "ringu",
-        "meaning": "戒指",
+        "meaning": {
+          "zh-TW": "戒指",
+          "zh-CN": "戒指",
+          "en": "ring",
+          "ko": "반지",
+          "es": "anillo"
+        },
         "sentence": "きれいなリングです。",
         "sentenceDisplay": "きれいな リング です。",
-        "sentenceMeaning": "是漂亮的戒指。"
+        "sentenceMeaning": {
+          "zh-TW": "是漂亮的戒指。",
+          "zh-CN": "是漂亮的戒指。",
+          "en": "It's a pretty ring.",
+          "ko": "예쁜 반지예요.",
+          "es": "Es un anillo bonito."
+        }
       }
     ]
   },
@@ -773,10 +1253,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ルール",
         "romaji": "ruuru",
-        "meaning": "規則",
+        "meaning": {
+          "zh-TW": "規則",
+          "zh-CN": "规则",
+          "en": "rule",
+          "ko": "규칙, 룰",
+          "es": "regla, norma"
+        },
         "sentence": "ルールをまもります。",
         "sentenceDisplay": "ルール を まもります。",
-        "sentenceMeaning": "遵守規則。"
+        "sentenceMeaning": {
+          "zh-TW": "遵守規則。",
+          "zh-CN": "遵守规则。",
+          "en": "I follow the rules.",
+          "ko": "규칙을 지켜요.",
+          "es": "Respeto las reglas."
+        }
       }
     ]
   },
@@ -792,10 +1284,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "レモン",
         "romaji": "remon",
-        "meaning": "檸檬",
+        "meaning": {
+          "zh-TW": "檸檬",
+          "zh-CN": "柠檬",
+          "en": "lemon",
+          "ko": "레몬",
+          "es": "limón"
+        },
         "sentence": "きいろいレモンです。",
         "sentenceDisplay": "きいろい レモン です。",
-        "sentenceMeaning": "是黃檸檬。"
+        "sentenceMeaning": {
+          "zh-TW": "是黃檸檬。",
+          "zh-CN": "是黄柠檬。",
+          "en": "It's a yellow lemon.",
+          "ko": "노란 레몬이에요.",
+          "es": "Es un limón amarillo."
+        }
       }
     ]
   },
@@ -811,10 +1315,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ロボット",
         "romaji": "robotto",
-        "meaning": "機器人",
+        "meaning": {
+          "zh-TW": "機器人",
+          "zh-CN": "机器人",
+          "en": "robot",
+          "ko": "로봇",
+          "es": "robot"
+        },
         "sentence": "ロボットがうごきます。",
         "sentenceDisplay": "ロボット が うごきます。",
-        "sentenceMeaning": "機器人移動。"
+        "sentenceMeaning": {
+          "zh-TW": "機器人移動。",
+          "zh-CN": "机器人移动。",
+          "en": "The robot moves.",
+          "ko": "로봇이 움직여요.",
+          "es": "El robot se mueve."
+        }
       }
     ]
   },
@@ -830,10 +1346,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ワイン",
         "romaji": "wain",
-        "meaning": "葡萄酒",
+        "meaning": {
+          "zh-TW": "葡萄酒",
+          "zh-CN": "葡萄酒",
+          "en": "wine",
+          "ko": "와인",
+          "es": "vino"
+        },
         "sentence": "ワインをのみます。",
         "sentenceDisplay": "ワイン を のみます。",
-        "sentenceMeaning": "喝葡萄酒。"
+        "sentenceMeaning": {
+          "zh-TW": "喝葡萄酒。",
+          "zh-CN": "喝葡萄酒。",
+          "en": "I drink wine.",
+          "ko": "와인을 마셔요.",
+          "es": "Tomo vino."
+        }
       }
     ]
   },
@@ -849,10 +1377,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "ヲ",
         "romaji": "wo",
-        "meaning": "助詞ヲ (現代日語多用平假名を)",
+        "meaning": {
+          "zh-TW": "助詞ヲ (現代日語多用平假名を)",
+          "zh-CN": "助词ヲ (现代日语多用平假名を)",
+          "en": "the particle ヲ (modern Japanese usually writes it in hiragana as を)",
+          "ko": "조사 ヲ (현대 일본어에서는 보통 히라가나 を를 써요)",
+          "es": "la partícula ヲ (en japonés moderno se escribe casi siempre en hiragana: を)"
+        },
         "sentence": "ヲはじょしです。",
         "sentenceDisplay": "ヲ は じょし です。",
-        "sentenceMeaning": "ヲ是助詞。"
+        "sentenceMeaning": {
+          "zh-TW": "ヲ是助詞。",
+          "zh-CN": "ヲ是助词。",
+          "en": "ヲ is a particle.",
+          "ko": "ヲ는 조사예요.",
+          "es": "ヲ es una partícula."
+        }
       }
     ]
   },
@@ -868,10 +1408,22 @@ export const KATAKANA_DATA: KanaItem[] = [
       {
         "word": "コイン",
         "romaji": "koin",
-        "meaning": "硬幣",
+        "meaning": {
+          "zh-TW": "硬幣",
+          "zh-CN": "硬币",
+          "en": "coin",
+          "ko": "동전",
+          "es": "moneda"
+        },
         "sentence": "コインをつかいます。",
         "sentenceDisplay": "コイン を つかいます。",
-        "sentenceMeaning": "使用硬幣。"
+        "sentenceMeaning": {
+          "zh-TW": "使用硬幣。",
+          "zh-CN": "使用硬币。",
+          "en": "I use a coin.",
+          "ko": "동전을 사용해요.",
+          "es": "Uso monedas."
+        }
       }
     ]
   }

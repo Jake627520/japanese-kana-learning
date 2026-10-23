@@ -270,7 +270,7 @@ export function ReviewView({
                   if (firstEx) {
                     return (
                       <div className="bg-[#F4EEDE] p-3 rounded-xl text-xs text-[#6B6252] border border-[#ECE4D0]">
-                        {t('study.examples')}: <strong className="text-[#221F18] font-semibold">{firstEx.word}</strong> ({firstEx.meaning})
+                        {t('study.examples')}: <strong className="text-[#221F18] font-semibold">{firstEx.word}</strong> ({localize(firstEx.meaning, language)})
                       </div>
                     );
                   }

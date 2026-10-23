@@ -12,7 +12,7 @@ import { shuffle, withShuffledOptions } from '../utils/shuffle';
 import { JlptWeakPointCard } from './JlptWeakPointCard';
 import { JlptWrongRedoButton } from './JlptWrongRedoButton';
 import { RichText } from './RichText';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle } from 'lucide-react';
 
 const DOMAIN_STYLE: Record<string, { band: string; tint: string; fg: string }> = {
@@ -22,10 +22,13 @@ const DOMAIN_STYLE: Record<string, { band: string; tint: string; fg: string }> =
 };
 const DOMAIN_FALLBACK = { band: 'from-slate-400 to-slate-300', tint: 'bg-[#ECE4D0]', fg: 'text-[#6B6252]' };
 
+// 一次測驗是單一知識點，或兩種跨知識點的場次：全部隨機（all）、錯題重做（wrong）。
+type JlptSession = JlptTopic | { id: 'all' } | { id: 'wrong' };
+
 export function JlptPracticeView() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const [level, setLevel] = useState<JlptGrade>('n5');
-  const [selectedTopic, setSelectedTopic] = useState<JlptTopic | null>(null);
+  const [selectedTopic, setSelectedTopic] = useState<JlptSession | null>(null);
   const [quizQuestions, setQuizQuestions] = useState<JlptQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
@@ -50,19 +53,7 @@ export function JlptPracticeView() {
     const all = getOwnJlptQuestionsByLevel(level);
     if (all.length === 0) return;
 
-    const label = level.toUpperCase();
-    setSelectedTopic({
-      id: 'all',
-      type: 'LANGUAGE',
-      subject: '日本語',
-      domain: t('jlpt.allTopicDomain'),
-      name: t('jlpt.allTopicName', { level: label }),
-      description: t('jlpt.allTopicDescription'),
-      book: `JLPT ${label}`,
-      chapter: t('jlpt.allTopicChapter'),
-      grade: level,
-      evidence: [],
-    });
+    setSelectedTopic({ id: 'all' });
     setQuizQuestions(shuffle(all).slice(0, 10).map(withShuffledOptions));
     setCurrentIndex(0);
     setSelectedOption(null);
@@ -76,18 +67,7 @@ export function JlptPracticeView() {
     const questions = getOwnJlptQuestions().filter((q) => wrongIds.has(q.id));
     if (questions.length === 0) return;
 
-    setSelectedTopic({
-      id: 'wrong',
-      type: 'LANGUAGE',
-      subject: '日本語',
-      domain: t('jlpt.wrongRedoDomain'),
-      name: t('jlpt.wrongRedoTitle'),
-      description: t('jlpt.wrongRedoDesc'),
-      book: 'JLPT',
-      chapter: t('jlpt.wrongRedoChapter'),
-      grade: level,
-      evidence: [],
-    });
+    setSelectedTopic({ id: 'wrong' });
     setQuizQuestions(shuffle(questions).map(withShuffledOptions));
     setCurrentIndex(0);
     setSelectedOption(null);
@@ -124,16 +104,19 @@ export function JlptPracticeView() {
   };
 
   const handleRestart = () => {
-    if (selectedTopic) {
-      if (selectedTopic.id === 'wrong') {
-        handleStartWrong();
-      } else if (selectedTopic.id === 'all') {
-        handleStartAll();
-      } else {
-        handleStartTopic(selectedTopic);
-      }
-    }
+    if (!selectedTopic) return;
+    if ('name' in selectedTopic) handleStartTopic(selectedTopic);
+    else if (selectedTopic.id === 'wrong') handleStartWrong();
+    else handleStartAll();
   };
+
+  const sessionTitle = !selectedTopic
+    ? ''
+    : 'name' in selectedTopic
+      ? localize(selectedTopic.name, language)
+      : selectedTopic.id === 'wrong'
+        ? t('jlpt.wrongRedoTitle')
+        : t('jlpt.allTopicName', { level: level.toUpperCase() });
 
   const handleBackToTopics = () => {
     setSelectedTopic(null);
@@ -224,7 +207,7 @@ export function JlptPracticeView() {
             <div className="bg-[#F4EEDE] p-6 sm:p-8 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-6">
               <div className="flex items-center justify-between gap-3 flex-wrap">
                 <span className="text-xs font-bold text-[#5C6B3D] bg-[#E6EAD5] px-3 py-1 rounded-full">
-                  {selectedTopic.name}
+                  {sessionTitle}
                 </span>
                 <span className="text-xs font-bold text-[#6B6252]">
                   {t('jlpt.questionProgress')}: {currentIndex + 1} / {quizQuestions.length}
@@ -300,7 +283,7 @@ export function JlptPracticeView() {
                       {t('jlpt.explainTitle')}
                     </div>
                     <div className="text-xs text-[#6B6252] leading-relaxed">
-                      <RichText text={currentQ.explain} />
+                      <RichText text={localize(currentQ.explain, language)} />
                     </div>
                   </div>
 
@@ -322,7 +305,7 @@ export function JlptPracticeView() {
               </div>
               <div>
                 <h3 className="text-xl font-display font-bold text-[#221F18]">{t('quiz.resultTitle')}</h3>
-                <p className="text-xs text-[#6B6252] mt-1">{selectedTopic.name}</p>
+                <p className="text-xs text-[#6B6252] mt-1">{sessionTitle}</p>
               </div>
 
               <div className="p-6 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] max-w-xs mx-auto space-y-2">
@@ -447,10 +430,10 @@ export function JlptPracticeView() {
                       </div>
 
                       <h3 className="text-base font-display font-bold text-[#221F18] group-hover:text-[#5C6B3D] transition-colors">
-                        {topic.name}
+                        {localize(topic.name, language)}
                       </h3>
                       <p className="text-xs text-[#6B6252] leading-relaxed">
-                        {topic.description}
+                        {localize(topic.description, language)}
                       </p>
                     </div>
 

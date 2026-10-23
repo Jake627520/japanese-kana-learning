@@ -8,7 +8,7 @@ import { getTrainingOutcome } from '../utils/analytics';
 import { TrainingOutcome } from '../types/analytics';
 import { LearningEvent } from '../types/learning';
 import { speakJapanese } from '../utils/speech';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 import { QuizView } from './QuizView';
 import { Volume2, Check, X, RotateCcw, Layers, AlertTriangle, ArrowRight, Headphones, Sparkles, CheckCircle2 } from 'lucide-react';
 
@@ -58,7 +58,7 @@ function buildQuestions(
 }
 
 export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const [scriptFilter, setScriptFilter] = useState<'all' | 'hiragana' | 'katakana'>('all');
   const [modalityFilter, setModalityFilter] = useState<'all' | 'visual' | 'listening'>('all');
   const [questions, setQuestions] = useState<Question[]>(() =>
@@ -192,7 +192,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
                 {activeTrainingGroup.title} · {t('confusable.listeningPractice')}
               </h2>
               <p className="text-xs text-[#6B6252]">
-                {activeTrainingGroup.distinguish}
+                {localize(activeTrainingGroup.distinguish, language)}
               </p>
             </div>
 
@@ -469,7 +469,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
             }`}
           >
             <span className="font-extrabold">{t('confusable.comparison')}: </span>
-            {q.group.distinguish}
+            {localize(q.group.distinguish, language)}
           </div>
         )}
 

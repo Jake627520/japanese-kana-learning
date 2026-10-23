@@ -1,5 +1,7 @@
 export type Language = 'zh-TW' | 'zh-CN' | 'en' | 'ko' | 'es';
 
+export type LocalizedText = Record<Language, string>;
+
 export interface TranslationSchema {
   nav: {
     home: string;
@@ -361,14 +363,9 @@ export interface TranslationSchema {
     referenceBook: string;
     grammarCheck: string;
     vocabularyCheck: string;
-    allTopicDomain: string;
     allTopicName: string;
-    allTopicDescription: string;
-    allTopicChapter: string;
-    wrongRedoDomain: string;
     wrongRedoTitle: string;
     wrongRedoDesc: string;
-    wrongRedoChapter: string;
     wrongRedoEmpty: string;
     questionCount: string;
     questionCount_one?: string;

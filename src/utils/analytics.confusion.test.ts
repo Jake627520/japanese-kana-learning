@@ -43,7 +43,7 @@ const times = <T>(n: number, f: (i: number) => T): T[] => Array.from({ length: n
 const group = (id: string, members: string[]): ConfusableGroup => ({
   id,
   members,
-  distinguish: 'x',
+  distinguish: { 'zh-TW': 'x', 'zh-CN': 'x', en: 'x', ko: 'x', es: 'x' },
   category: members[0].startsWith('k_') ? 'katakana' : 'hiragana',
   modality: 'both',
 });

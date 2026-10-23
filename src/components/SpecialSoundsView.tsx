@@ -1,9 +1,9 @@
 import React from 'react';
 import { Volume2, BookOpen, Lightbulb } from 'lucide-react';
 import { speakJapanese } from '../utils/speech';
-import { useI18n, Language } from '../i18n';
+import { useI18n, LocalizedText } from '../i18n';
 
-const SOKUON_EXAMPLES: { word: string; romaji: string; meaning: Record<Language, string>; note: string }[] = [
+const SOKUON_EXAMPLES: { word: string; romaji: string; meaning: LocalizedText; note: string }[] = [
   { word: 'がっこう', romaji: 'gakkou', meaning: { 'zh-TW': '學校', 'zh-CN': '学校', en: 'school', ko: '학교', es: 'escuela' }, note: 'っ + こ → kk' },
   { word: 'きっぷ', romaji: 'kippu', meaning: { 'zh-TW': '車票', 'zh-CN': '车票', en: 'ticket', ko: '표 (승차권)', es: 'boleto / billete' }, note: 'っ + ぷ → pp' },
   { word: 'ざっし', romaji: 'zasshi', meaning: { 'zh-TW': '雜誌', 'zh-CN': '杂志', en: 'magazine', ko: '잡지', es: 'revista' }, note: 'っ + し → ssh' },

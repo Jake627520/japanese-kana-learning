@@ -13,10 +13,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "ぱん",
         "romaji": "pan",
-        "meaning": "麵包",
+        "meaning": {
+          "zh-TW": "麵包",
+          "zh-CN": "面包",
+          "en": "bread",
+          "ko": "빵",
+          "es": "pan"
+        },
         "sentence": "ぱんをたべます。",
         "sentenceDisplay": "ぱん を たべます。",
-        "sentenceMeaning": "吃麵包。"
+        "sentenceMeaning": {
+          "zh-TW": "吃麵包。",
+          "zh-CN": "吃面包。",
+          "en": "I eat bread.",
+          "ko": "빵을 먹어요.",
+          "es": "Como pan."
+        }
       }
     ]
   },
@@ -32,10 +44,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "えんぴつ",
         "romaji": "empitsu",
-        "meaning": "鉛筆",
+        "meaning": {
+          "zh-TW": "鉛筆",
+          "zh-CN": "铅笔",
+          "en": "pencil",
+          "ko": "연필",
+          "es": "lápiz"
+        },
         "sentence": "えんぴつでかきます。",
         "sentenceDisplay": "えんぴつ で かきます。",
-        "sentenceMeaning": "用鉛筆寫。"
+        "sentenceMeaning": {
+          "zh-TW": "用鉛筆寫。",
+          "zh-CN": "用铅笔写。",
+          "en": "I write with a pencil.",
+          "ko": "연필로 써요.",
+          "es": "Escribo con un lápiz."
+        }
       }
     ]
   },
@@ -51,10 +75,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "てんぷら",
         "romaji": "tempura",
-        "meaning": "天婦羅",
+        "meaning": {
+          "zh-TW": "天婦羅",
+          "zh-CN": "天妇罗",
+          "en": "tempura",
+          "ko": "튀김, 덴푸라",
+          "es": "tempura"
+        },
         "sentence": "てんぷらをたべます。",
         "sentenceDisplay": "てんぷら を たべます。",
-        "sentenceMeaning": "吃天婦羅。"
+        "sentenceMeaning": {
+          "zh-TW": "吃天婦羅。",
+          "zh-CN": "吃天妇罗。",
+          "en": "I eat tempura.",
+          "ko": "덴푸라를 먹어요.",
+          "es": "Como tempura."
+        }
       }
     ]
   },
@@ -70,10 +106,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "ぺん",
         "romaji": "pen",
-        "meaning": "筆",
+        "meaning": {
+          "zh-TW": "筆",
+          "zh-CN": "笔",
+          "en": "pen",
+          "ko": "펜",
+          "es": "bolígrafo, pluma"
+        },
         "sentence": "ぺんでかきます。",
         "sentenceDisplay": "ぺん で かきます。",
-        "sentenceMeaning": "用筆寫。"
+        "sentenceMeaning": {
+          "zh-TW": "用筆寫。",
+          "zh-CN": "用笔写。",
+          "en": "I write with a pen.",
+          "ko": "펜으로 써요.",
+          "es": "Escribo con un bolígrafo."
+        }
       }
     ]
   },
@@ -89,10 +137,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "さんぽ",
         "romaji": "sampo",
-        "meaning": "散步",
+        "meaning": {
+          "zh-TW": "散步",
+          "zh-CN": "散步",
+          "en": "walk, stroll",
+          "ko": "산책",
+          "es": "paseo"
+        },
         "sentence": "さんぽをします。",
         "sentenceDisplay": "さんぽ を します。",
-        "sentenceMeaning": "散步。"
+        "sentenceMeaning": {
+          "zh-TW": "散步。",
+          "zh-CN": "散步。",
+          "en": "I take a walk.",
+          "ko": "산책을 해요.",
+          "es": "Doy un paseo."
+        }
       }
     ]
   },
@@ -108,10 +168,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "パン",
         "romaji": "pan",
-        "meaning": "麵包",
+        "meaning": {
+          "zh-TW": "麵包",
+          "zh-CN": "面包",
+          "en": "bread",
+          "ko": "빵",
+          "es": "pan"
+        },
         "sentence": "パンをたべます。",
         "sentenceDisplay": "パン を たべます。",
-        "sentenceMeaning": "吃麵包。"
+        "sentenceMeaning": {
+          "zh-TW": "吃麵包。",
+          "zh-CN": "吃面包。",
+          "en": "I eat bread.",
+          "ko": "빵을 먹어요.",
+          "es": "Como pan."
+        }
       }
     ]
   },
@@ -127,10 +199,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "ピアノ",
         "romaji": "piano",
-        "meaning": "鋼琴",
+        "meaning": {
+          "zh-TW": "鋼琴",
+          "zh-CN": "钢琴",
+          "en": "piano",
+          "ko": "피아노",
+          "es": "piano"
+        },
         "sentence": "ピアノをひきます。",
         "sentenceDisplay": "ピアノ を ひきます。",
-        "sentenceMeaning": "彈鋼琴。"
+        "sentenceMeaning": {
+          "zh-TW": "彈鋼琴。",
+          "zh-CN": "弹钢琴。",
+          "en": "I play the piano.",
+          "ko": "피아노를 쳐요.",
+          "es": "Toco el piano."
+        }
       }
     ]
   },
@@ -146,10 +230,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "プール",
         "romaji": "puuru",
-        "meaning": "游泳池",
+        "meaning": {
+          "zh-TW": "游泳池",
+          "zh-CN": "游泳池",
+          "en": "swimming pool",
+          "ko": "수영장",
+          "es": "piscina"
+        },
         "sentence": "プールでおよぎます。",
         "sentenceDisplay": "プール で およぎます。",
-        "sentenceMeaning": "在游泳池游泳。"
+        "sentenceMeaning": {
+          "zh-TW": "在游泳池游泳。",
+          "zh-CN": "在游泳池游泳。",
+          "en": "I swim in the pool.",
+          "ko": "수영장에서 수영해요.",
+          "es": "Nado en la piscina."
+        }
       }
     ]
   },
@@ -165,10 +261,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "ペン",
         "romaji": "pen",
-        "meaning": "鋼筆 / 筆",
+        "meaning": {
+          "zh-TW": "鋼筆 / 筆",
+          "zh-CN": "钢笔 / 笔",
+          "en": "pen",
+          "ko": "펜",
+          "es": "pluma / bolígrafo"
+        },
         "sentence": "ペンでかきます。",
         "sentenceDisplay": "ペン で かきます。",
-        "sentenceMeaning": "用筆寫。"
+        "sentenceMeaning": {
+          "zh-TW": "用筆寫。",
+          "zh-CN": "用笔写。",
+          "en": "I write with a pen.",
+          "ko": "펜으로 써요.",
+          "es": "Escribo con un bolígrafo."
+        }
       }
     ]
   },
@@ -184,10 +292,22 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
       {
         "word": "ポスト",
         "romaji": "posuto",
-        "meaning": "郵筒",
+        "meaning": {
+          "zh-TW": "郵筒",
+          "zh-CN": "邮筒",
+          "en": "mailbox, postbox",
+          "ko": "우체통",
+          "es": "buzón"
+        },
         "sentence": "てがみをポストにいれます。",
         "sentenceDisplay": "てがみ を ポスト に いれます。",
-        "sentenceMeaning": "把信放入郵筒。"
+        "sentenceMeaning": {
+          "zh-TW": "把信放入郵筒。",
+          "zh-CN": "把信放入邮筒。",
+          "en": "I put the letter in the mailbox.",
+          "ko": "편지를 우체통에 넣어요.",
+          "es": "Echo la carta al buzón."
+        }
       }
     ]
   }

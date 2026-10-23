@@ -3,7 +3,7 @@ import React from 'react';
 import { AlertTriangle, TrendingUp, Target } from 'lucide-react';
 import { getStoredJlptRecords } from '../utils/jlptStorage';
 import { getOwnJlptQuestions, ALL_N5_TOPICS_UI } from '../data/jlpt';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 
 const MIN_ATTEMPTS = 3;
 
@@ -16,11 +16,11 @@ interface WeakPoint {
 }
 
 export function JlptWeakPointCard() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const records = getStoredJlptRecords();
 
   const qById = new Map(getOwnJlptQuestions().map((q) => [q.id, q] as const));
-  const nameById = new Map(ALL_N5_TOPICS_UI.map((t) => [t.id, t.name] as const));
+  const nameById = new Map(ALL_N5_TOPICS_UI.map((topic) => [topic.id, localize(topic.name, language)] as const));
 
   const agg = new Map<string, { total: number; wrong: number }>();
   let totalAnswered = 0;

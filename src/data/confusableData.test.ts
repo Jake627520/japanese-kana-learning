@@ -56,10 +56,6 @@ describe('CONFUSABLE_GROUPS 資料完整性', () => {
     const keys = CONFUSABLE_GROUPS.map((g) => [...g.members].sort().join('|'));
     expect(new Set(keys).size).toBe(keys.length);
   });
-
-  it('每組都有非空的判斷點 distinguish', () => {
-    for (const g of CONFUSABLE_GROUPS) expect(g.distinguish.trim().length, g.id).toBeGreaterThan(0);
-  });
 });
 
 describe('CONFUSABLE_GROUPS modality 分類（test-confusion-taxonomy.py Test 1/3/4）', () => {

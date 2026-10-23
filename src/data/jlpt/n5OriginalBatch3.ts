@@ -13,7 +13,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '「わたしは りんごが すきです。」の「は」は 何を 表しますか。',
     options: ['時間', '話題', '場所', '手段'],
     answer: '2',
-    explain: '「は」在這裡標示「わたし」這個話題，意思是「至於我，我喜歡蘋果」。它不是場所、時間或手段助詞。',
+    explain: {
+      'zh-TW': '「は」在這裡標示「わたし」這個話題，意思是「至於我，我喜歡蘋果」。它不是場所、時間或手段助詞。',
+      'zh-CN': '「は」在这里标示「わたし」这个话题，意思是「至于我，我喜欢苹果」。它不是表示场所、时间或手段的助词。',
+      'en': 'Here 「は」 marks 「わたし」 as the topic: "As for me, I like apples." It is not a particle for place, time or means.',
+      'ko': '여기서「は」는「わたし」라는 화제를 나타내요. \'나로 말하자면, 사과를 좋아해요\'라는 뜻이에요. 장소·시간·수단을 나타내는 조사가 아니에요.',
+      'es': 'Aquí 「は」 marca 「わたし」 como tema: «En cuanto a mí, me gustan las manzanas». No es una partícula de lugar, tiempo ni medio.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -38,7 +44,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '「わたしは コーヒーを のみます。おちゃ（　　）のみません。」',
     options: ['に', 'を', 'が', 'は'],
     answer: '4',
-    explain: '第二句是在對比「咖啡」與「茶」，因此使用「は」表示對比：「茶則不喝」。這裡不是單純把「を」重複放入。',
+    explain: {
+      'zh-TW': '第二句是在對比「咖啡」與「茶」，因此使用「は」表示對比：「茶則不喝」。這裡不是單純把「を」重複放入。',
+      'zh-CN': '第二句是在对比「咖啡」与「茶」，所以用「は」表示对比：「茶则不喝」。这里不是单纯把「を」重复放进去。',
+      'en': 'The second sentence contrasts coffee with tea, so it uses the contrastive 「は」: "Tea, I don\'t drink." Simply repeating 「を」 is not the point here.',
+      'ko': '두 번째 문장은 \'커피\'와 \'차\'를 대비하고 있으므로 대비의「は」를 써요. \'차는 마시지 않아요\'라는 뜻이에요. 여기서는「を」를 그냥 반복하는 것이 아니에요.',
+      'es': 'La segunda oración contrasta el café con el té, por eso se usa 「は」 de contraste: «el té, en cambio, no lo bebo». No se trata de repetir 「を」 sin más.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -63,7 +75,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '「はなさんは がくせいです。」の「は」の よみかたは どれですか。',
     options: ['ば', 'わ', 'は', 'が'],
     answer: '2',
-    explain: '作為助詞時「は」讀作「わ（wa）」，雖然平假名本身寫成「は」。',
+    explain: {
+      'zh-TW': '作為助詞時「は」讀作「わ（wa）」，雖然平假名本身寫成「は」。',
+      'zh-CN': '作为助词时「は」读作「わ（wa）」，虽然平假名本身写成「は」。',
+      'en': 'As a particle, 「は」 is pronounced 「わ」 (wa), even though it is written with the hiragana 「は」.',
+      'ko': '조사로 쓰일 때「は」는 히라가나로는「は」라고 쓰지만「わ（wa）」로 읽어요.',
+      'es': 'Como partícula, 「は」 se pronuncia 「わ（wa）」, aunque se escriba con el hiragana 「は」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -90,7 +108,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'つくえの うえに ほん（　　）あります。',
     options: ['を', 'で', 'が', 'は'],
     answer: '3',
-    explain: '存在句「〜に 〜があります」中，存在的東西用「が」標示，因此是「ほんがあります」。',
+    explain: {
+      'zh-TW': '存在句「〜に 〜があります」中，存在的東西用「が」標示，因此是「ほんがあります」。',
+      'zh-CN': '在存在句「〜に 〜があります」中，存在的事物用「が」标示，所以是「ほんがあります」。',
+      'en': 'In the existence pattern 「〜に 〜があります」, the thing that exists is marked with 「が」, so the answer is 「ほんがあります」.',
+      'ko': '존재문「〜に 〜があります」에서 있는 대상은「が」로 나타내므로「ほんがあります」예요.',
+      'es': 'En la oración de existencia 「〜に 〜があります」, lo que existe se marca con 「が」: 「ほんがあります」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -115,7 +139,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'わたしは さかな（　　）すきです。',
     options: ['へ', 'が', 'で', 'を'],
     answer: '2',
-    explain: '「すきです（喜歡）」的情感對象在基本句型中固定使用「が」標示，因此是「さかながすきです」。',
+    explain: {
+      'zh-TW': '「すきです（喜歡）」的情感對象在基本句型中固定使用「が」標示，因此是「さかながすきです」。',
+      'zh-CN': '「すきです（喜欢）」的情感对象在基本句型中固定用「が」标示，所以是「さかながすきです」。',
+      'en': 'In the basic pattern, the object of a feeling like 「すきです」 (to like) is always marked with 「が」, so the answer is 「さかながすきです」.',
+      'ko': '「すきです」(좋아해요)의 대상은 기본 문형에서「が」로 나타내므로「さかながすきです」예요. 한국어 \'~을/를 좋아하다\'와 달라요.',
+      'es': 'En la estructura básica, lo que gusta con 「すきです」 (gustar) se marca siempre con 「が」: 「さかながすきです」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -140,7 +170,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'だれ（　　）まどを あけましたか。',
     options: ['が', 'に', 'を', 'で'],
     answer: '1',
-    explain: '疑問詞「だれ」作為句子的主語／動作者詢問是誰開窗時，疑問詞後必須使用「が」，不可使用「は」。',
+    explain: {
+      'zh-TW': '疑問詞「だれ」作為句子的主語／動作者詢問是誰開窗時，疑問詞後必須使用「が」，不可使用「は」。',
+      'zh-CN': '疑问词「だれ」作为句子的主语／动作者，询问是谁开了窗时，疑问词后必须用「が」，不能用「は」。',
+      'en': 'When the question word 「だれ」 is the subject (asking who opened the window), it must be followed by 「が」, never 「は」.',
+      'ko': '의문사「だれ」가 주어(동작주)가 되어 누가 창문을 열었는지 물을 때는 의문사 뒤에 반드시「が」를 쓰고,「は」는 쓸 수 없어요.',
+      'es': 'Cuando el interrogativo 「だれ」 es el sujeto (quien hace la acción) y se pregunta quién abrió la ventana, detrás del interrogativo va 「が」, nunca 「は」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -167,7 +203,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'まいにち パン（　　）たべます。',
     options: ['に', 'へ', 'が', 'を'],
     answer: '4',
-    explain: '「たべます（吃）」是他動詞，麵包是被吃的賓語（受詞），使用賓格助詞「を」。',
+    explain: {
+      'zh-TW': '「たべます（吃）」是他動詞，麵包是被吃的賓語（受詞），使用賓格助詞「を」。',
+      'zh-CN': '「たべます（吃）」是他动词，面包是被吃的宾语，使用宾格助词「を」。',
+      'en': '「たべます」 (to eat) is a transitive verb. The bread is its direct object, so it takes the object particle 「を」.',
+      'ko': '「たべます」(먹어요)는 타동사이고, 빵은 먹히는 목적어이므로 목적격 조사「を」를 써요.',
+      'es': '「たべます」 (comer) es un verbo transitivo; el pan es el objeto directo, lo que se come, así que se marca con la partícula de objeto 「を」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -192,7 +234,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'あさ 7じに うち（　　）でました。',
     options: ['で', 'を', 'が', 'と'],
     answer: '2',
-    explain: '動詞「出る（出門／離開）」表示從某場所離開時，離開的起點場所使用「を」標示，因此是「うちを出ました」。',
+    explain: {
+      'zh-TW': '動詞「出る（出門／離開）」表示從某場所離開時，離開的起點場所使用「を」標示，因此是「うちを出ました」。',
+      'zh-CN': '动词「出る（出门／离开）」表示从某个场所离开时，离开的起点场所用「を」标示，所以是「うちを出ました」。',
+      'en': 'With 「出る」 (to leave, to go out), the place you leave from is marked with 「を」, so the answer is 「うちを出ました」.',
+      'ko': '동사「出る」(나가다/떠나다)가 어떤 장소를 떠나는 것을 나타낼 때, 출발점은「を」로 나타내므로「うちを出ました」예요.',
+      'es': 'Con el verbo 「出る」 (salir), el lugar del que se sale se marca con 「を」: 「うちを出ました」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -217,7 +265,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'こうえん（　　）あるいて、えきへ いきました。',
     options: ['に', 'を', 'が', 'と'],
     answer: '2',
-    explain: '動詞「あるく（走／漫步）」表示穿過、通過特定空間場所時，路徑使用「を」標示，故為「こうえんをあるいて」。',
+    explain: {
+      'zh-TW': '動詞「あるく（走／漫步）」表示穿過、通過特定空間場所時，路徑使用「を」標示，故為「こうえんをあるいて」。',
+      'zh-CN': '动词「あるく（走／散步）」表示经过、穿过某个空间场所时，路径用「を」标示，所以是「こうえんをあるいて」。',
+      'en': 'With 「あるく」 (to walk), a space you walk through or along is marked with 「を」, so the answer is 「こうえんをあるいて」.',
+      'ko': '동사「あるく」(걷다)가 특정 공간을 지나가는 것을 나타낼 때, 경로는「を」로 나타내므로「こうえんをあるいて」예요.',
+      'es': 'Cuando 「あるく」 (caminar) indica recorrer o atravesar un espacio, el recorrido se marca con 「を」: 「こうえんをあるいて」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -244,7 +298,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'まいあさ 6じ（　　）おきます。',
     options: ['に', 'で', 'が', 'を'],
     answer: '1',
-    explain: '在具體帶有數字的鐘點、日期之後，使用助詞「に」表示動作發生的精確時間點，因此是「6じにおきます」。',
+    explain: {
+      'zh-TW': '在具體帶有數字的鐘點、日期之後，使用助詞「に」表示動作發生的精確時間點，因此是「6じにおきます」。',
+      'zh-CN': '在带有具体数字的钟点、日期之后，用助词「に」表示动作发生的准确时间点，所以是「6じにおきます」。',
+      'en': 'After a specific clock time or date with a number, use 「に」 to mark the exact time of the action, so the answer is 「6じにおきます」.',
+      'ko': '숫자가 들어간 구체적인 시각이나 날짜 뒤에는 조사「に」를 써서 동작이 일어나는 정확한 시점을 나타내므로「6じにおきます」예요.',
+      'es': 'Detrás de horas o fechas concretas con número se usa 「に」 para marcar el momento exacto de la acción: 「6じにおきます」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -269,7 +329,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'らいしゅう きょうと（　　）いきます。',
     options: ['を', 'に', 'と', 'で'],
     answer: '2',
-    explain: '「行きます」的移動到達目的地使用「に」標示，所以是「きょうとにいきます」。「らいしゅう」為相對時間詞不加「に」。',
+    explain: {
+      'zh-TW': '「行きます」的移動到達目的地使用「に」標示，所以是「きょうとにいきます」。「らいしゅう」為相對時間詞不加「に」。',
+      'zh-CN': '「行きます」的移动到达目的地用「に」标示，所以是「きょうとにいきます」。「らいしゅう」是相对时间词，不加「に」。',
+      'en': 'The destination of 「行きます」 is marked with 「に」, so the answer is 「きょうとにいきます」. 「らいしゅう」 is a relative time word, so it takes no 「に」.',
+      'ko': '「行きます」의 도착 목적지는「に」로 나타내므로「きょうとにいきます」예요. 「らいしゅう」같은 상대적 시간 표현에는「に」를 붙이지 않아요.',
+      'es': 'El destino del movimiento de 「行きます」 se marca con 「に」: 「きょうとにいきます」. 「らいしゅう」 es una palabra de tiempo relativo y no lleva 「に」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -294,7 +360,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'せんせい（　　）でんわを しました。',
     options: ['が', 'を', 'へ', 'に'],
     answer: '4',
-    explain: '「電話をする」「会う」「聞く」等動作的對象使用「に」標示，因此「給老師打電話」是「せんせいにでんわをしました」。',
+    explain: {
+      'zh-TW': '「電話をする」「会う」「聞く」等動作的對象使用「に」標示，因此「給老師打電話」是「せんせいにでんわをしました」。',
+      'zh-CN': '「電話をする」「会う」「聞く」等动作的对象用「に」标示，所以「给老师打电话」是「せんせいにでんわをしました」。',
+      'en': 'The person you do an action toward, with verbs like 「電話をする」, 「会う」 and 「聞く」, is marked with 「に」. "I called the teacher" is 「せんせいにでんわをしました」.',
+      'ko': '「電話をする」「会う」「聞く」같은 동작의 상대는「に」로 나타내요. 그래서 \'선생님께 전화했어요\'는「せんせいにでんわをしました」예요.',
+      'es': 'La persona a quien se dirigen acciones como 「電話をする」, 「会う」 o 「聞く」 se marca con 「に」. «Llamé al profesor» es 「せんせいにでんわをしました」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -321,7 +393,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'としょかん（　　）ほんを よみます。',
     options: ['に', 'へ', 'で', 'を'],
     answer: '3',
-    explain: '讀書（ほんをよみます）是動態動作，動作發生的場所使用「で」標示。「に」用於靜態存在場所或到達點。',
+    explain: {
+      'zh-TW': '讀書（ほんをよみます）是動態動作，動作發生的場所使用「で」標示。「に」用於靜態存在場所或到達點。',
+      'zh-CN': '读书（ほんをよみます）是动态动作，动作发生的场所用「で」标示。「に」用于静态存在的场所或到达点。',
+      'en': 'Reading a book (ほんをよみます) is an action, and the place where an action happens is marked with 「で」. 「に」 is used for a place where something simply exists, or for a destination.',
+      'ko': '책을 읽는(ほんをよみます) 것은 동적인 동작이므로, 동작이 일어나는 장소는「で」로 나타내요. 「に」는 정적인 존재 장소나 도착점에 써요.',
+      'es': 'Leer (ほんをよみます) es una acción, y el lugar donde ocurre una acción se marca con 「で」. 「に」 se usa para el lugar de existencia o el punto de llegada.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -346,7 +424,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'バス（　　）がっこうへ いきます。',
     options: ['に', 'を', 'で', 'が'],
     answer: '3',
-    explain: '乘坐的交通工具是移動的手段工具，使用「で」標示，因此是「バスでいきます」。',
+    explain: {
+      'zh-TW': '乘坐的交通工具是移動的手段工具，使用「で」標示，因此是「バスでいきます」。',
+      'zh-CN': '乘坐的交通工具是移动的手段、工具，用「で」标示，所以是「バスでいきます」。',
+      'en': 'A vehicle you ride is the means of travel, so it is marked with 「で」: 「バスでいきます」.',
+      'ko': '타고 가는 교통수단은 이동의 수단이므로「で」로 나타내요. 그래서「バスでいきます」예요.',
+      'es': 'El vehículo en el que viajas es el medio del desplazamiento y se marca con 「で」: 「バスでいきます」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -371,7 +455,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'りんごを みっつ（　　）500えんです。',
     options: ['が', 'に', 'を', 'で'],
     answer: '4',
-    explain: '「數量詞＋で＋金額」表示數量範圍的合計總價，所以「みっつで500えん」表示三個一共 500 日圓。',
+    explain: {
+      'zh-TW': '「數量詞＋で＋金額」表示數量範圍的合計總價，所以「みっつで500えん」表示三個一共 500 日圓。',
+      'zh-CN': '「数量词＋で＋金额」表示该数量的合计总价，所以「みっつで500えん」表示三个一共 500 日元。',
+      'en': '"Quantity + で + price" gives the total for that quantity, so 「みっつで500えん」 means "500 yen for three."',
+      'ko': '「수량＋で＋금액」은 그 수량을 합친 총액을 나타내요. 「みっつで500えん」은 세 개에 모두 500엔이라는 뜻이에요.',
+      'es': '«Cantidad + で + precio» indica el precio total de esa cantidad: 「みっつで500えん」 significa que los tres cuestan 500 yenes en total.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -398,7 +488,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'らいげつ にほん（　　）いきます。',
     options: ['へ', 'が', 'で', 'を'],
     answer: '1',
-    explain: '「行きます」是移動動詞，助詞「へ（讀作 e）」用來標示移動的方向或目標地，因此「去日本」填「へ」。',
+    explain: {
+      'zh-TW': '「行きます」是移動動詞，助詞「へ（讀作 e）」用來標示移動的方向或目標地，因此「去日本」填「へ」。',
+      'zh-CN': '「行きます」是移动动词，助词「へ（读作 e）」用来标示移动的方向或目的地，所以「去日本」填「へ」。',
+      'en': '「行きます」 is a verb of movement. The particle 「へ」 (pronounced e) marks the direction or destination, so "go to Japan" takes 「へ」.',
+      'ko': '「行きます」는 이동 동사이고, 조사「へ」(e로 읽음)는 이동의 방향이나 목적지를 나타내요. 그래서 \'일본에 가다\'에는「へ」를 넣어요.',
+      'es': '「行きます」 es un verbo de movimiento, y la partícula 「へ」 (se pronuncia e) marca la dirección o el destino. Por eso «ir a Japón» lleva 「へ」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -423,7 +519,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'まいにち 7じに かいしゃ（　　）かえります。',
     options: ['へ', 'を', 'が', 'で'],
     answer: '1',
-    explain: '「帰ります」是移動動詞，方向使用「へ」標示為「会社へ帰ります」。',
+    explain: {
+      'zh-TW': '「帰ります」是移動動詞，方向使用「へ」標示為「会社へ帰ります」。',
+      'zh-CN': '「帰ります」是移动动词，方向用「へ」标示，即「会社へ帰ります」。',
+      'en': '「帰ります」 is a verb of movement, so the direction is marked with 「へ」: 「会社へ帰ります」.',
+      'ko': '「帰ります」는 이동 동사이므로 방향을「へ」로 나타내「会社へ帰ります」가 돼요.',
+      'es': '「帰ります」 es un verbo de movimiento y la dirección se marca con 「へ」: 「会社へ帰ります」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -448,7 +550,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'つぎの うち、「へ」が 使えない ものは どれですか。',
     options: ['うちへ かえります', 'へやへ ほんが あります', 'がっこうへ きます', 'きょうとへ いきます'],
     answer: '2',
-    explain: '「へ」必須搭配移動動詞表示方向。「ほんがあります」是靜態存在句，存在地點必須使用「に」，不能使用「へ」。',
+    explain: {
+      'zh-TW': '「へ」必須搭配移動動詞表示方向。「ほんがあります」是靜態存在句，存在地點必須使用「に」，不能使用「へ」。',
+      'zh-CN': '「へ」必须搭配移动动词表示方向。「ほんがあります」是静态存在句，存在地点必须用「に」，不能用「へ」。',
+      'en': '「へ」 must go with a verb of movement to show direction. 「ほんがあります」 is a sentence of static existence, so its location must take 「に」, not 「へ」.',
+      'ko': '「へ」는 이동 동사와 함께 방향을 나타내요. 「ほんがあります」는 정적인 존재문이라서 존재 장소에는「に」를 써야 하고,「へ」는 쓸 수 없어요.',
+      'es': '「へ」 tiene que ir con un verbo de movimiento para indicar dirección. 「ほんがあります」 es una oración de existencia (estática), y el lugar donde algo existe debe ir con 「に」, no con 「へ」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -475,7 +583,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'スーパーで パン（　　）くだものを かいました。',
     options: ['が', 'で', 'と', 'に'],
     answer: '3',
-    explain: '完整列舉買的兩樣東西（麵包與水果），名詞與名詞之間使用助詞「と」。',
+    explain: {
+      'zh-TW': '完整列舉買的兩樣東西（麵包與水果），名詞與名詞之間使用助詞「と」。',
+      'zh-CN': '完整列举买的两样东西（面包和水果），名词与名词之间用助词「と」。',
+      'en': 'To list the two things you bought in full (bread and fruit), join the nouns with 「と」.',
+      'ko': '산 물건 두 가지(빵과 과일)를 빠짐없이 나열할 때는 명사와 명사 사이에 조사「と」를 써요.',
+      'es': 'Para enumerar de forma completa las dos cosas compradas (pan y fruta), entre los sustantivos se usa la partícula 「と」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -500,7 +614,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'あした いもうと（　　）いっしょに えいがを みます。',
     options: ['を', 'が', 'へ', 'と'],
     answer: '4',
-    explain: '表示與某人共同進行某動作，使用固定句型「〜と いっしょに」，因此是「いもうとといっしょに」。',
+    explain: {
+      'zh-TW': '表示與某人共同進行某動作，使用固定句型「〜と いっしょに」，因此是「いもうとといっしょに」。',
+      'zh-CN': '表示与某人一起做某个动作，用固定句型「〜と いっしょに」，所以是「いもうとといっしょに」。',
+      'en': 'To say you do something together with someone, use the set pattern 「〜と いっしょに」: 「いもうとといっしょに」.',
+      'ko': '누군가와 함께 어떤 동작을 할 때는 고정 문형「〜と いっしょに」를 써요. 그래서「いもうとといっしょに」예요.',
+      'es': 'Para hacer algo junto con alguien se usa la estructura fija 「〜と いっしょに」: 「いもうとといっしょに」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -525,7 +645,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '「りんご、バナナ、みかんを ぜんぶ かいました。」と 同じ意味になる文は どれですか。',
     options: ['りんごも バナナも みかんを かいました。', 'りんごへ バナナへ みかんを かいました。', 'りんごや バナナや みかんを かいました。', 'りんごと バナナと みかんを かいました。'],
     answer: '4',
-    explain: '題幹強調「ぜんぶ（全部窮盡）」，完整窮盡列舉必須使用「と」。「や」代表非窮盡列舉（可能還有其他），故選 2。',
+    explain: {
+      'zh-TW': '題幹強調「ぜんぶ（全部窮盡）」，完整窮盡列舉必須使用「と」。「や」代表非窮盡列舉（可能還有其他），故選 2。',
+      'zh-CN': '题干强调「ぜんぶ（全部穷尽）」，完整穷尽的列举必须用「と」。「や」表示非穷尽列举（可能还有其他），所以选 2。',
+      'en': 'The stem stresses 「ぜんぶ」 (all of them), and a complete list must use 「と」. 「や」 gives an incomplete list (there may be other items), so the answer is 4.',
+      'ko': '문제 문장은「ぜんぶ」(전부)를 강조하므로, 빠짐없이 모두 나열할 때 쓰는「と」를 써야 해요. 「や」는 다른 것도 있을 수 있는 일부 나열이에요. 그래서 정답은 4예요.',
+      'es': 'El enunciado subraya 「ぜんぶ」 (todo, la lista completa), y una enumeración completa requiere 「と」. 「や」 indica una enumeración incompleta (puede haber más cosas). Por eso la respuesta es la 4.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -552,7 +678,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'たなかさんは コーヒーを のみます。わたし（　　）コーヒーを のみます。',
     options: ['に', 'へ', 'も', 'は'],
     answer: '3',
-    explain: '前文已提及田中先生喝咖啡，後文表示自己情況相同「我也喝咖啡」，使用「も」取代「は」。',
+    explain: {
+      'zh-TW': '前文已提及田中先生喝咖啡，後文表示自己情況相同「我也喝咖啡」，使用「も」取代「は」。',
+      'zh-CN': '前文提到田中先生喝咖啡，后文表示自己的情况相同，「我也喝咖啡」，用「も」代替「は」。',
+      'en': 'The previous sentence says Mr. Tanaka drinks coffee, and the second says the same is true for the speaker: "I also drink coffee." So 「も」 replaces 「は」.',
+      'ko': '앞 문장에서 다나카 씨가 커피를 마신다고 했고, 뒤 문장은 나도 마찬가지라는 \'나도 커피를 마셔요\'이므로「は」대신「も」를 써요.',
+      'es': 'Antes se dice que Tanaka bebe café; después se dice que a mí me pasa lo mismo («yo también bebo café»), así que 「も」 sustituye a 「は」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -577,7 +709,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'A: だれが きましたか。\nB: たなかさん（　　）きました。',
     options: ['で', 'を', 'も', 'が'],
     answer: '4',
-    explain: '直接回答「だれが（是誰來了）」的疑問句時，焦點在動作者主語身上，回答使用「が」，為「たなかさんがきました」。',
+    explain: {
+      'zh-TW': '直接回答「だれが（是誰來了）」的疑問句時，焦點在動作者主語身上，回答使用「が」，為「たなかさんがきました」。',
+      'zh-CN': '直接回答「だれが（是谁来了）」这类疑问句时，焦点在动作者主语上，回答用「が」，即「たなかさんがきました」。',
+      'en': 'A direct answer to 「だれが」 (who came?) focuses on the subject, so the answer uses 「が」: 「たなかさんがきました」.',
+      'ko': '「だれが」(누가 왔어요?)라는 의문문에 바로 답할 때는 초점이 동작주인 주어에 있으므로「が」를 써서「たなかさんがきました」라고 답해요.',
+      'es': 'Al responder directamente a 「だれが」 (¿quién vino?), el foco está en quien hace la acción, así que la respuesta usa 「が」: 「たなかさんがきました」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -602,7 +740,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '「わたしは きょう しごとを します。あした（　　）しごとを します。」前文の内容から、「あしたも」が 表す意味は どれですか。',
     options: ['今日だけ仕事をする', '明日も同じように仕事をする', '明日は仕事をしない', '明日会社へ行かない'],
     answer: '2',
-    explain: '「も」表示與前文提及的情況相同，因此「あしたも」代表「明天也同樣要工作」，選 2。',
+    explain: {
+      'zh-TW': '「も」表示與前文提及的情況相同，因此「あしたも」代表「明天也同樣要工作」，選 2。',
+      'zh-CN': '「も」表示与前文提到的情况相同，所以「あしたも」表示「明天也同样要工作」，选 2。',
+      'en': '「も」 means the same situation as in the previous sentence applies, so 「あしたも」 means "I will work tomorrow too." The answer is 2.',
+      'ko': '「も」는 앞에서 말한 상황과 같음을 나타내요. 그래서「あしたも」는 \'내일도 똑같이 일한다\'는 뜻이고, 정답은 2예요.',
+      'es': '「も」 indica que pasa lo mismo que lo dicho antes, así que 「あしたも」 significa «mañana también trabajo». La respuesta es la 2.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -629,7 +773,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'これは わたし（　　）かばんです。',
     options: ['が', 'に', 'を', 'の'],
     answer: '4',
-    explain: '「わたしのかばん（我的包包）」中，助詞「の」連接兩個名詞並標示所屬所有關係。',
+    explain: {
+      'zh-TW': '「わたしのかばん（我的包包）」中，助詞「の」連接兩個名詞並標示所屬所有關係。',
+      'zh-CN': '在「わたしのかばん（我的包）」中，助词「の」连接两个名词，表示所属、所有关系。',
+      'en': 'In 「わたしのかばん」 (my bag), the particle 「の」 links two nouns and shows possession.',
+      'ko': '「わたしのかばん」(내 가방)에서 조사「の」는 두 명사를 이어 소유 관계를 나타내요.',
+      'es': 'En 「わたしのかばん」 (mi bolso), la partícula 「の」 une dos sustantivos y marca posesión.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -654,7 +804,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'これは にほん（　　）くるまです。',
     options: ['と', 'で', 'へ', 'の'],
     answer: '4',
-    explain: '「日本の車」表示產地、出處等名詞修飾屬性關係，名詞之間使用「の」連接。',
+    explain: {
+      'zh-TW': '「日本の車」表示產地、出處等名詞修飾屬性關係，名詞之間使用「の」連接。',
+      'zh-CN': '「日本の車」表示产地、出处等名词修饰属性的关系，名词之间用「の」连接。',
+      'en': '「日本の車」 describes origin or another attribute of the noun, so the two nouns are linked with 「の」.',
+      'ko': '「日本の車」는 생산지나 출처 같은 수식 관계를 나타내며, 명사 사이를「の」로 이어요.',
+      'es': '「日本の車」 expresa el origen o la procedencia; entre un sustantivo y el sustantivo al que modifica se usa 「の」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -679,7 +835,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '「これは あにの ともだちの しゃしんです。」で、「ともだちの」は 何を 修飾していますか。',
     options: ['これは', 'しゃしん', 'あに', 'です'],
     answer: '2',
-    explain: '在名詞連綴修飾結構「あにの ともだちの しゃしん」中，「ともだちの」直接修飾後面的核心名詞「しゃしん（照片）」，指朋友的照片。',
+    explain: {
+      'zh-TW': '在名詞連綴修飾結構「あにの ともだちの しゃしん」中，「ともだちの」直接修飾後面的核心名詞「しゃしん（照片）」，指朋友的照片。',
+      'zh-CN': '在名词连续修饰的结构「あにの ともだちの しゃしん」中，「ともだちの」直接修饰后面的核心名词「しゃしん（照片）」，指朋友的照片。',
+      'en': 'In the chain of noun modifiers 「あにの ともだちの しゃしん」, 「ともだちの」 directly modifies the head noun 「しゃしん」 (photo): it is the friend\'s photo.',
+      'ko': '명사가 이어지는 수식 구조「あにの ともだちの しゃしん」에서「ともだちの」는 바로 뒤의 중심 명사「しゃしん」(사진)을 수식해요. 즉 친구의 사진이라는 뜻이에요.',
+      'es': 'En la cadena 「あにの ともだちの しゃしん」, 「ともだちの」 modifica directamente al sustantivo principal que sigue, 「しゃしん」 (foto): es la foto del amigo.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -706,7 +868,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: 'つくえの うえに ほん（　　）ノートなどが あります。',
     options: ['や', 'と', 'が', 'を'],
     answer: '1',
-    explain: '句中有「など（等等）」，明確表示為部分非窮盡列舉，名詞之間搭配使用「や」，形成「〜や〜など」結構。',
+    explain: {
+      'zh-TW': '句中有「など（等等）」，明確表示為部分非窮盡列舉，名詞之間搭配使用「や」，形成「〜や〜など」結構。',
+      'zh-CN': '句中有「など（等等）」，明确表示是部分的、非穷尽的列举，名词之间搭配使用「や」，构成「〜や〜など」结构。',
+      'en': 'The sentence has 「など」 (and so on), which clearly marks an incomplete list, so the nouns are joined with 「や」, forming the 「〜や〜など」 pattern.',
+      'ko': '문장에「など」(등)가 있어 일부만 나열한다는 것이 분명하므로, 명사 사이에「や」를 써서「〜や〜など」구조를 만들어요.',
+      'es': 'La oración lleva 「など」 (etcétera), que deja claro que la lista es parcial, así que entre los sustantivos va 「や」: la estructura 「〜や〜など」.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -731,7 +899,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '「くだものを いくつか かいました。」と 同じように、いくつかの例を あげる 文は どれですか。',
     options: ['りんごへ バナナを かいました。', 'りんごや バナナを かいました。', 'りんごと バナナを かいました。', 'りんごが バナナを かいました。'],
     answer: '2',
-    explain: '「いくつかの例をあげる（舉出數個代表例子）」為非窮盡部分列舉，使用助詞「や」，如「りんごや バナナ」；「と」則為完全窮盡列舉。',
+    explain: {
+      'zh-TW': '「いくつかの例をあげる（舉出數個代表例子）」為非窮盡部分列舉，使用助詞「や」，如「りんごや バナナ」；「と」則為完全窮盡列舉。',
+      'zh-CN': '「いくつかの例をあげる（举出几个代表性的例子）」是非穷尽的部分列举，用助词「や」，如「りんごや バナナ」；「と」则是完全穷尽的列举。',
+      'en': '「いくつかの例をあげる」 (giving a few examples) is an incomplete list, which uses the particle 「や」, as in 「りんごや バナナ」. 「と」 gives a complete list.',
+      'ko': '「いくつかの例をあげる」(몇 가지 예를 들다)는 일부만 나열하는 것이므로「りんごや バナナ」처럼 조사「や」를 써요. 「と」는 빠짐없이 모두 나열할 때 써요.',
+      'es': '「いくつかの例をあげる」 (dar algunos ejemplos) es una enumeración parcial y usa la partícula 「や」, como en 「りんごや バナナ」. 「と」, en cambio, es una enumeración completa.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',
@@ -756,7 +930,13 @@ export const N5_ORIGINAL_BATCH3: JlptQuestion[] = [
     stem: '次の文で、「や」の使い方が 正しいものは どれですか。',
     options: ['パンや きれいです。', 'パンや たべます。', 'パンを や ごはんを たべます。', 'パンや ごはんを たべます。'],
     answer: '4',
-    explain: '「や」專門連接兩個名詞進行部分列舉，因此「パンや ごはん」語法正確。2 缺少列舉項，3 助詞位置錯置，4 連接形容詞違背詞性規則。',
+    explain: {
+      'zh-TW': '「や」專門連接兩個名詞進行部分列舉，因此「パンや ごはん」語法正確。2 缺少列舉項，3 助詞位置錯置，4 連接形容詞違背詞性規則。',
+      'zh-CN': '「や」专门连接两个名词进行部分列举，所以「パンや ごはん」语法正确。选项 2 缺少列举项，选项 3 助词位置错误，选项 4 连接形容词，违背词性规则。',
+      'en': '「や」 only links nouns to give a partial list, so 「パンや ごはん」 is correct. Option 1 links a noun to an adjective, which breaks the rule. Option 2 is missing the second item. In option 3, the particles are in the wrong place.',
+      'ko': '「や」는 두 명사를 이어 일부를 나열할 때만 쓰므로「パンや ごはん」이 문법적으로 맞아요. 1은 형용사와 이어져 품사 규칙에 어긋나고, 2는 나열할 항목이 빠졌고, 3은 조사 위치가 잘못됐어요.',
+      'es': '「や」 une dos sustantivos en una enumeración parcial, así que 「パンや ごはん」 es correcto. La 1 une 「や」 con un adjetivo, lo que va contra las reglas de categoría gramatical; a la 2 le falta el segundo elemento; en la 3 la partícula está mal colocada.',
+    },
     source: {
       book: 'JLPT N5',
       chapter: '助詞',

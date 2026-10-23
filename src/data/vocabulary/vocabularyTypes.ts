@@ -1,4 +1,4 @@
-import type { Language } from '../../i18n/types';
+import type { LocalizedText } from '../../i18n/types';
 
 export type VocabularyType =
   | 'noun'
@@ -8,8 +8,6 @@ export type VocabularyType =
   | 'particle'
   | 'sound-example';
 
-export type LocalizedString = Record<Language, string>;
-
 export interface VocabularyItem {
   id: string;
   word: string;
@@ -18,7 +16,7 @@ export interface VocabularyItem {
   primaryKanaId: string;
   kanaLinks: string[];
   type: VocabularyType;
-  meaning: LocalizedString;
+  meaning: LocalizedText;
   audioKey: string;
   tag?: string;
 }
