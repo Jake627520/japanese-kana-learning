@@ -5,7 +5,7 @@ import { HIRAGANA_STROKES } from '../data/strokeData';
 import { getStoredProgress, toggleKanaMastered } from '../utils/storage';
 import { logLearningEvent } from '../utils/learningEvents';
 import { speakJapanese } from '../utils/speech';
-import { useI18n } from '../i18n';
+import { useI18n, localize } from '../i18n';
 import {
   Eraser, Volume2, Check, ChevronLeft, ChevronRight, PenLine, Eye, EyeOff,
 } from 'lucide-react';
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const list: KanaItem[] = HIRAGANA_DATA;
   const [index, setIndex] = useState(() => {
     if (initialKanaId) {
@@ -209,12 +209,12 @@ export function WritingPracticeView({ initialKanaId, onProgressChange }: Props) 
               </div>
               <ol className="space-y-1.5">
                 {guide.steps.map((s, i) => (
-                  <li key={i} className="text-xs text-[#221F18] leading-relaxed">{s}</li>
+                  <li key={i} className="text-xs text-[#221F18] leading-relaxed">{localize(s, language)}</li>
                 ))}
               </ol>
               {guide.note && (
                 <p className="text-[11px] text-[#7A5320] bg-[#EFE3C9] rounded-lg px-3 py-2 leading-relaxed">
-                  {guide.note}
+                  {localize(guide.note, language)}
                 </p>
               )}
             </div>
