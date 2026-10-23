@@ -2,7 +2,7 @@ import { EmptyState } from './EmptyState';
 import React from 'react';
 import { AlertTriangle, TrendingUp, Target } from 'lucide-react';
 import { getStoredJlptRecords } from '../utils/jlptStorage';
-import { getOwnJlptQuestions, ALL_N5_TOPICS_UI } from '../data/jlpt';
+import { getOwnJlptQuestions, findJlptTopic } from '../data/jlpt';
 import { useI18n, localize } from '../i18n';
 
 const MIN_ATTEMPTS = 3;
@@ -20,7 +20,6 @@ export function JlptWeakPointCard() {
   const records = getStoredJlptRecords();
 
   const qById = new Map(getOwnJlptQuestions().map((q) => [q.id, q] as const));
-  const nameById = new Map(ALL_N5_TOPICS_UI.map((topic) => [topic.id, localize(topic.name, language)] as const));
 
   const agg = new Map<string, { total: number; wrong: number }>();
   let totalAnswered = 0;
@@ -39,13 +38,16 @@ export function JlptWeakPointCard() {
   }
 
   const weakPoints: WeakPoint[] = [...agg.entries()]
-    .map(([topicId, v]) => ({
-      topicId,
-      name: nameById.get(topicId) || topicId,
-      total: v.total,
-      wrong: v.wrong,
-      rate: v.wrong / v.total,
-    }))
+    .map(([topicId, v]) => {
+      const topic = findJlptTopic(topicId);
+      return {
+        topicId,
+        name: topic ? localize(topic.name, language) : topicId,
+        total: v.total,
+        wrong: v.wrong,
+        rate: v.wrong / v.total,
+      };
+    })
     .filter((w) => w.total >= MIN_ATTEMPTS && w.wrong > 0)
     .sort((a, b) => b.rate - a.rate || b.wrong - a.wrong)
     .slice(0, 5);

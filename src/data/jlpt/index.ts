@@ -69,6 +69,14 @@ export function getTopicsByLevel(level: JlptGrade): JlptTopic[] {
   return [];
 }
 
+const TOPIC_BY_ID = new Map(
+  [...ALL_N5_TOPICS_UI, ...ALL_N4_TOPICS_UI, ...ALL_N3_TOPICS_UI].map((topic) => [topic.id, topic] as const),
+);
+
+export function findJlptTopic(id: string): JlptTopic | undefined {
+  return TOPIC_BY_ID.get(id);
+}
+
 // license/origin 都是 own 才放行：這個過濾是公開版能不能散布的界線，
 // 不是效能考量——歷屆真題集授權不明，絕對不能混進來。
 export function getOwnJlptQuestions(): JlptQuestion[] {
