@@ -67,6 +67,7 @@ interface I18nContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (path: string, params?: TranslateParams) => string;
+  tAroundCount: (path: string, count: number) => [before: string, after: string];
   dictionary: TranslationSchema;
 }
 
@@ -112,19 +113,31 @@ function lookup(lang: Language, path: string, count: number | undefined): string
 
 export type TranslateParams = Record<string, string | number>;
 
-export function translate(lang: Language, path: string, params?: TranslateParams): string {
-  const count = typeof params?.count === 'number' ? params.count : undefined;
+function template(lang: Language, path: string, count: number | undefined): string {
   const val = lookup(lang, path, count) ?? (lang === 'en' ? undefined : lookup('en', path, count));
-
   if (val === undefined) {
     console.warn(`[i18n] Translation missing for key: "${path}" in language: "${lang}"`);
     return path;
   }
+  return val;
+}
+
+export function translate(lang: Language, path: string, params?: TranslateParams): string {
+  const val = template(lang, path, typeof params?.count === 'number' ? params.count : undefined);
   if (!params) return val;
   return Object.entries(params).reduce(
     (acc, [key, replacement]) => acc.replace(new RegExp(`\\{${key}\\}`, 'g'), String(replacement)),
     val,
   );
+}
+
+/**
+ * The text before and after `{count}` in a count phrase, so the number can be
+ * styled apart from its unit while the locale keeps its own spacing and order.
+ */
+export function translateAroundCount(lang: Language, path: string, count: number): [before: string, after: string] {
+  const [before, after = ''] = template(lang, path, count).split('{count}');
+  return [before, after];
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
@@ -154,9 +167,14 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     [language],
   );
 
+  const tAroundCount = useMemo(
+    () => (path: string, count: number) => translateAroundCount(language, path, count),
+    [language],
+  );
+
   return React.createElement(
     I18nContext.Provider,
-    { value: { language, setLanguage, t, dictionary } },
+    { value: { language, setLanguage, t, tAroundCount, dictionary } },
     children
   );
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { getInitialLanguage, isLanguage, localize, translate, translations, LANGUAGE_STORAGE_KEY, Language } from './index';
+import { getInitialLanguage, isLanguage, localize, translate, translateAroundCount, translations, LANGUAGE_STORAGE_KEY, Language } from './index';
 import { formatNextReviewText } from '../utils/storage';
 
 const stubBrowserLanguage = (language: string) => vi.stubGlobal('navigator', { language });
@@ -99,7 +99,7 @@ describe('數字＋單位的間距由各語系決定', () => {
     ['ko', '5일', '5개'],
     ['zh-TW', '5 天', '5 個'],
     ['zh-CN', '5 天', '5 个'],
-    ['en', '5 days', '5 items'],
+    ['en', '5 days', '5 kana'],
     ['es', '5 días', '5 kana'],
   ])('%s', (lang, days, kana) => {
     expect(translate(lang, 'header.streakDays', { count: 5 })).toBe(days);
@@ -109,6 +109,29 @@ describe('數字＋單位的間距由各語系決定', () => {
   it('en、es 的 1 用單數', () => {
     expect(translate('en', 'header.streakDays', { count: 1 })).toBe('1 day');
     expect(translate('es', 'header.streakDays', { count: 1 })).toBe('1 día');
+  });
+});
+
+describe('translateAroundCount：數字前後的文字，讓數字能單獨放大', () => {
+  it.each<[Language, number, string, string]>([
+    ['zh-TW', 5, '', ' 天'],
+    ['ko', 5, '', '일'],
+    ['en', 5, '', ' days'],
+    ['en', 1, '', ' day'],
+    ['es', 1, '', ' día'],
+  ])('%s %i -> [%s, %s]', (lang, count, before, after) => {
+    expect(translateAroundCount(lang, 'header.streakDays', count)).toEqual([before, after]);
+  });
+
+  it('前後文字夾住數字後等於 translate 的結果', () => {
+    for (const lang of Object.keys(translations) as Language[]) {
+      for (const count of [0, 1, 2, 7, 11]) {
+        for (const key of ['header.streakDays', 'common.kanaCount']) {
+          const [before, after] = translateAroundCount(lang, key, count);
+          expect(before + count + after).toBe(translate(lang, key, { count }));
+        }
+      }
+    }
   });
 });
 

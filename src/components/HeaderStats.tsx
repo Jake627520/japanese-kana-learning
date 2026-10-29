@@ -9,7 +9,7 @@ interface HeaderStatsProps {
 }
 
 export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
-  const { t } = useI18n();
+  const { t, tAroundCount } = useI18n();
   const masteredCount = progress.masteredKanaIds.length;
   const wrongCount = progress.wrongKanaIds.length;
   const total = totalKana || 1;
@@ -17,16 +17,12 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
   const streakPct = Math.min(100, Math.round((progress.streakDays / 7) * 100));
   const wrongPct = Math.min(100, Math.round((wrongCount / total) * 100));
 
-  // The phrase owns the number-unit spacing per locale ("5 天", "5일"); the number
-  // is pulled out only so it can be styled larger than its unit.
-  const unitOf = (key: string, count: number) => t(key, { count }).replace(String(count), '');
-
   const cards = [
     {
       key: 'streak',
       label: t('header.streak'),
-      value: String(progress.streakDays),
-      unit: unitOf('header.streakDays', progress.streakDays),
+      value: progress.streakDays,
+      around: tAroundCount('header.streakDays', progress.streakDays),
       tint: 'bg-orange-50',
       fg: 'text-orange-500',
       bar: 'bg-orange-500',
@@ -37,8 +33,8 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
     {
       key: 'mastered',
       label: t('header.mastered'),
-      value: String(masteredCount),
-      unit: ` / ${totalKana}`,
+      value: masteredCount,
+      around: ['', ` / ${totalKana}`],
       tint: 'bg-[#E6EAD5]',
       fg: 'text-[#5C6B3D]',
       bar: 'bg-[#5C6B3D]',
@@ -49,8 +45,8 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
     {
       key: 'wrong',
       label: t('header.weak'),
-      value: String(wrongCount),
-      unit: unitOf('common.kanaCount', wrongCount),
+      value: wrongCount,
+      around: tAroundCount('common.kanaCount', wrongCount),
       tint: 'bg-[#EFDBD5]',
       fg: 'text-[#B0554A]',
       bar: 'bg-red-500',
@@ -61,8 +57,8 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
     {
       key: 'progress',
       label: t('home.todayPlan.learningProgress'),
-      value: String(masteredPct),
-      unit: ' %',
+      value: masteredPct,
+      around: ['', ' %'],
       tint: 'bg-blue-50',
       fg: 'text-blue-500',
       bar: 'bg-blue-500',
@@ -88,8 +84,9 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
             <div>
               <div className="text-xs font-bold text-[#6B6252]">{c.label}</div>
               <div className="text-lg font-extrabold text-[#221F18] leading-tight">
+                {c.around[0] && <span className="text-xs font-normal text-[#8F8674]">{c.around[0]}</span>}
                 {c.value}
-                <span className="text-xs font-normal text-[#8F8674]">{c.unit}</span>
+                <span className="text-xs font-normal text-[#8F8674]">{c.around[1]}</span>
               </div>
             </div>
           </div>
