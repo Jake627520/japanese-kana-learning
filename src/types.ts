@@ -82,7 +82,6 @@ export interface JlptQuestion {
   stem: string;
   options: string[];
   answer: string; // "1" | "2" | "3" | "4"
-  explain: LocalizedText;
   source: {
     book: string;
     chapter: string;

@@ -4,7 +4,8 @@ import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, YOUON_DATA
 import { getStoredProgress } from './utils/storage';
 import { HomeDashboard } from './components/HomeDashboard';
 import { Navigation } from './components/Navigation';
-import { I18nProvider, Messages, useI18n } from './i18n';
+import { I18nProvider, Language, Messages, useI18n } from './i18n';
+import { loadJlptExplanations } from './data/jlpt/explanations';
 
 // 首頁與導覽列以外的分頁改為按需載入，縮小首屏 JS（JLPT 題庫、單字等資料只進各自的 chunk）
 const tabLoaders = {
@@ -31,11 +32,13 @@ const ChatTutorView = lazy(() => tabLoaders.chat().then((m) => ({ default: m.Cha
 const WritingPracticeView = lazy(() => tabLoaders.writing().then((m) => ({ default: m.WritingPracticeView })));
 const ConfusableView = lazy(() => tabLoaders.confusable().then((m) => ({ default: m.ConfusableView })));
 
-// 首屏畫完、瀏覽器閒置時預先抓所有分頁 chunk：
+// 首屏畫完、瀏覽器閒置時預先抓所有分頁 chunk 與目前語言的 JLPT 解說：
 // 1. 之後切分頁幾乎不會看到佔位；2. Service worker 用「用到才存」，
 //    不預抓的話，離線時沒開過的分頁會載不到 chunk。
-function prefetchTabChunks() {
+// 其他語言的解說不抓；換語言後會再跑一次，抓新語言的那份。
+function prefetchForOffline(language: Language) {
   Object.values(tabLoaders).forEach((load) => load().catch(() => {}));
+  loadJlptExplanations(language).catch(() => {});
 }
 
 // 分頁 chunk 載入中的佔位：不放 spinner，只保留高度，避免頁尾瞬間上跳
@@ -44,7 +47,7 @@ function TabLoadingFallback() {
 }
 
 function AppContent() {
-  const { t } = useI18n();
+  const { t, language } = useI18n();
   const [progress, setProgress] = useState<UserProgress>(getStoredProgress());
   const [currentTab, setCurrentTabState] = useState<NavigationTab>('home');
   // 切換分頁走 transition：新分頁的 chunk 還沒好時先留著舊畫面，不閃出空白佔位
@@ -79,13 +82,14 @@ function AppContent() {
 
   useEffect(() => {
     // Safari 沒有 requestIdleCallback，退回 setTimeout
+    const prefetch = () => prefetchForOffline(language);
     if (typeof window.requestIdleCallback === 'function') {
-      const id = window.requestIdleCallback(prefetchTabChunks, { timeout: 5000 });
+      const id = window.requestIdleCallback(prefetch, { timeout: 5000 });
       return () => window.cancelIdleCallback(id);
     }
-    const id = setTimeout(prefetchTabChunks, 2000);
+    const id = setTimeout(prefetch, 2000);
     return () => clearTimeout(id);
-  }, []);
+  }, [language]);
 
   const handleStartStudyKana = (kana: KanaItem) => {
     setSelectedKana(kana);

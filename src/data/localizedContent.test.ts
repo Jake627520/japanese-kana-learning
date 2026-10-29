@@ -5,6 +5,8 @@ import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, YOUON_DATA
 import { CONFUSABLE_GROUPS } from './confusableData';
 import { ALL_N5_TOPICS_UI, ALL_N4_TOPICS_UI, ALL_N3_TOPICS_UI, getOwnJlptQuestions } from './jlpt';
 import { LANGUAGES, Language, LocalizedText } from '../i18n';
+import { loadJlptExplanations } from './jlpt/explanations';
+import { JLPT_EXPLANATIONS } from '../test/jlptExplanations';
 
 
 describe('詞彙與跟讀內容：每個語言都有非空字串', () => {
@@ -69,16 +71,22 @@ describe('假名例詞、易混辨析、JLPT 內容：每個語言都有非空�
     }
   });
 
-  it('每題 JLPT 解說都有五種語言，且 HTML 標籤組成一致', () => {
+  it('每題 JLPT 解說在每個語言模組都有非空字串，沒有多餘的 id，HTML 標籤組成與 zh-TW 一致', () => {
     const tags = (s: string) => (s.match(/<\/?[a-z]+[^>]*>/gi) ?? []).map((t) => t.toLowerCase()).sort().join('');
-    const questions = getOwnJlptQuestions();
-    expect(questions).toHaveLength(280);
-    for (const q of questions) {
-      expectComplete(q.explain, `${q.id}.explain`);
-      for (const lang of LANGUAGES) {
-        expect(tags(q.explain[lang]), `${q.id}.explain ${lang} 的標籤和 zh-TW 不同`).toBe(tags(q.explain['zh-TW']));
+    const ids = getOwnJlptQuestions().map((q) => q.id);
+    expect(ids).toHaveLength(280);
+    for (const lang of LANGUAGES) {
+      const byId = JLPT_EXPLANATIONS[lang];
+      expect(Object.keys(byId).sort(), `${lang} 的題目 id 與題庫不同`).toEqual([...ids].sort());
+      for (const id of ids) {
+        expect(byId[id].trim(), `${id} 缺 ${lang} 解說`).not.toBe('');
+        expect(tags(byId[id]), `${id} ${lang} 的標籤和 zh-TW 不同`).toBe(tags(JLPT_EXPLANATIONS['zh-TW'][id]));
       }
     }
+  });
+
+  it.each(LANGUAGES)('loadJlptExplanations(%s) 載入該語言的解說模組', async (lang) => {
+    expect(await loadJlptExplanations(lang)).toBe(JLPT_EXPLANATIONS[lang]);
   });
 });
 

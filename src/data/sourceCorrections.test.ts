@@ -2,13 +2,14 @@ import { describe, it, expect } from 'vitest';
 import { getOwnJlptQuestions, ALL_N3_TOPICS_UI } from './jlpt';
 import { KATAKANA_DATA } from './kanaData';
 import { ALL_VOCABULARY } from './vocabulary';
-import { LANGUAGES } from '../i18n';
-
+import { LANGUAGES, LocalizedText } from '../i18n';
+import { JLPT_EXPLANATIONS } from '../test/jlptExplanations';
 
 const question = (id: string) => {
   const q = getOwnJlptQuestions().find((x) => x.id === id);
   if (!q) throw new Error(`找不到題目 ${id}`);
-  return q;
+  const explain = Object.fromEntries(LANGUAGES.map((lang) => [lang, JLPT_EXPLANATIONS[lang][id]])) as LocalizedText;
+  return { ...q, explain };
 };
 
 describe('JLPT 題庫勘誤（.audit/jlpt-source-errors.md）', () => {

@@ -12,7 +12,8 @@ import { shuffle, withShuffledOptions } from '../utils/shuffle';
 import { JlptWeakPointCard } from './JlptWeakPointCard';
 import { JlptWrongRedoButton } from './JlptWrongRedoButton';
 import { RichText } from './RichText';
-import { useI18n, localize } from '../i18n';
+import { useI18n, localize, Language } from '../i18n';
+import { JlptExplanations, loadJlptExplanations } from '../data/jlpt/explanations';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle } from 'lucide-react';
 
 const DOMAIN_STYLE: Record<string, { band: string; tint: string; fg: string }> = {
@@ -35,6 +36,18 @@ export function JlptPracticeView() {
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
+  const [explanations, setExplanations] = useState<{ language: Language; byId: JlptExplanations } | null>(null);
+
+  useEffect(() => {
+    let current = true;
+    loadJlptExplanations(language).then(
+      (byId) => current && setExplanations({ language, byId }),
+      (e) => console.warn(`[jlpt] Failed to load ${language} explanations:`, e),
+    );
+    return () => {
+      current = false;
+    };
+  }, [language]);
 
   const handleStartTopic = (topic: JlptTopic) => {
     const questions = getQuestionsByTopic(topic.id);
@@ -190,6 +203,8 @@ export function JlptPracticeView() {
   const levelCoverage = Math.min(100, Math.round((levelQuestionCount / 90) * 100));
 
   const currentQ = quizQuestions[currentIndex];
+  const explanation =
+    currentQ && explanations?.language === language ? explanations.byId[currentQ.id] : undefined;
 
   return (
     <div className="space-y-6">
@@ -277,15 +292,17 @@ export function JlptPracticeView() {
 
               {isAnswered && (
                 <div className="space-y-4 pt-4 border-t border-[#ECE4D0]">
-                  <div className="p-4 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] space-y-2">
-                    <div className="text-xs font-extrabold text-[#221F18] flex items-center gap-1.5">
-                      <HelpCircle className="w-4 h-4 text-[#5C6B3D]" />
-                      {t('jlpt.explainTitle')}
+                  {explanation !== undefined && (
+                    <div className="p-4 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] space-y-2">
+                      <div className="text-xs font-extrabold text-[#221F18] flex items-center gap-1.5">
+                        <HelpCircle className="w-4 h-4 text-[#5C6B3D]" />
+                        {t('jlpt.explainTitle')}
+                      </div>
+                      <div className="text-xs text-[#6B6252] leading-relaxed">
+                        <RichText text={explanation} />
+                      </div>
                     </div>
-                    <div className="text-xs text-[#6B6252] leading-relaxed">
-                      <RichText text={localize(currentQ.explain, language)} />
-                    </div>
-                  </div>
+                  )}
 
                   <button
                     onClick={handleNext}

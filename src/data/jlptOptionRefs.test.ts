@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getOwnJlptQuestions } from './jlpt';
 import { LANGUAGES } from '../i18n';
+import { JLPT_EXPLANATIONS } from '../test/jlptExplanations';
 
 
 // withShuffledOptions 會打亂選項順序，所以解說裡的「選 2」「option 3」指到的
@@ -50,7 +51,7 @@ describe('JLPT 解說不以編號指稱選項', () => {
   it('所有題目、所有語言的解說都引用選項內容而非編號', () => {
     const offenders = getOwnJlptQuestions().flatMap((q) =>
       LANGUAGES.flatMap((lang) => {
-        const hit = findOptionNumberRef(q.explain[lang]);
+        const hit = findOptionNumberRef(JLPT_EXPLANATIONS[lang][q.id]);
         return hit === undefined ? [] : [`${q.id} [${lang}] ${hit}`];
       }),
     );

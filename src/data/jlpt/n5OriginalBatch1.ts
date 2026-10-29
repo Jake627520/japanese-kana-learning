@@ -12,13 +12,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: '外は 雨 が ふって います。「雨」の 読み方は どれですか。',
     options: ['あめ', 'かぜ', 'くも', 'ゆき'],
     answer: '1',
-    explain: {
-      'zh-TW': '「雨」單獨出現讀訓読み「あめ」。句意為「外面正在下雨」。',
-      'zh-CN': '「雨」单独出现时读训読み「あめ」。句意为「外面正在下雨」。',
-      'en': 'When 「雨」 stands alone, it takes its kun\'yomi (native Japanese reading) 「あめ」. The sentence means "It is raining outside."',
-      'ko': '「雨」가 단독으로 쓰이면 훈독「あめ」로 읽어요. 문장 뜻은 \'밖에 비가 오고 있어요\'예요.',
-      'es': 'Cuando 「雨」 aparece solo, se lee con kun\'yomi: 「あめ」. La oración significa «Afuera está lloviendo».',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -43,13 +36,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'きょうは 空 が とても あおいです。「空」の 読み方は どれですか。',
     options: ['うみ', 'かわ', 'やま', 'そら'],
     answer: '4',
-    explain: {
-      'zh-TW': '「空」單獨出現讀訓読み「そら」。句意為「今天天空非常藍」。',
-      'zh-CN': '「空」单独出现时读训読み「そら」。句意为「今天天空非常蓝」。',
-      'en': 'When 「空」 stands alone, it takes its kun\'yomi 「そら」. The sentence means "The sky is very blue today."',
-      'ko': '「空」가 단독으로 쓰이면 훈독「そら」로 읽어요. 문장 뜻은 \'오늘은 하늘이 아주 파래요\'예요.',
-      'es': 'Cuando 「空」 aparece solo, se lee con kun\'yomi: 「そら」. La oración significa «Hoy el cielo está muy azul».',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -74,13 +60,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'あさ ８時に 学校 へ 行きます。「学校」の 読み方は どれですか。',
     options: ['がくこう', 'がこう', 'かっこう', 'がっこう'],
     answer: '4',
-    explain: {
-      'zh-TW': '「学校」為二字熟語，讀音読み「がっこう」，注意「がく＋こう」產生促音變為「がっこう」。',
-      'zh-CN': '「学校」是二字熟语，读音読み「がっこう」。注意「がく＋こう」发生促音变化，变成「がっこう」。',
-      'en': '「学校」 is a two-kanji compound, so it uses on\'yomi (Chinese-derived readings): 「がっこう」. Note that 「がく」 + 「こう」 becomes 「がっこう」 with a small っ (double consonant).',
-      'ko': '「学校」는 두 글자 한자어라서 음독「がっこう」로 읽어요. 「がく＋こう」가 이어지면서 촉음이 생겨「がっこう」가 되는 점에 주의하세요.',
-      'es': '「学校」 es un compuesto de dos kanji y se lee con on\'yomi: 「がっこう」. Ojo: 「がく＋こう」 se contrae con un sokuon (っ) y da 「がっこう」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -105,13 +84,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: '来月 ともだちが 日本へ きます。「来月」の 読み方は どれですか。',
     options: ['らいげつ', 'まいげつ', 'こんげつ', 'せんげつ'],
     answer: '1',
-    explain: {
-      'zh-TW': '「来月」讀音読み「らいげつ」。「来」讀「らい」，「月」在此讀「げつ」。',
-      'zh-CN': '「来月」读音読み「らいげつ」。「来」读「らい」，「月」在这里读「げつ」。',
-      'en': '「来月」 is read with on\'yomi as 「らいげつ」. 「来」 is read 「らい」, and 「月」 is read 「げつ」 here.',
-      'ko': '「来月」는 음독「らいげつ」로 읽어요. 「来」는「らい」, 「月」는 여기서「げつ」로 읽어요.',
-      'es': '「来月」 se lee con on\'yomi: 「らいげつ」. 「来」 se lee 「らい」 y 「月」 aquí se lee 「げつ」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -136,13 +108,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'リンゴを 半分 たべました。「半分」の 読み方は どれですか。',
     options: ['ほんぷん', 'はんぶん', 'はんふん', 'ほんぶん'],
     answer: '2',
-    explain: {
-      'zh-TW': '「半分」的「分」因連濁讀濁音「ぶん」，全詞讀「はんぶん」。',
-      'zh-CN': '「半分」的「分」因连浊读浊音「ぶん」，整词读「はんぶん」。',
-      'en': 'In 「半分」, the 「分」 becomes voiced as 「ぶん」 (rendaku, sequential voicing), so the whole word is read 「はんぶん」.',
-      'ko': '「半分」의「分」은 연탁(連濁)으로 탁음「ぶん」이 되어, 전체를「はんぶん」으로 읽어요.',
-      'es': 'En 「半分」, 「分」 se sonoriza por rendaku y se lee 「ぶん」; la palabra completa es 「はんぶん」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -167,13 +132,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'あしたは 火曜日 です。「火曜日」の 読み方は どれですか。',
     options: ['もくようび', 'すいようび', 'かようび', 'きんようび'],
     answer: '3',
-    explain: {
-      'zh-TW': '「火曜日」讀「かようび」。「火」音讀「か」，「日」因連濁讀「び」。',
-      'zh-CN': '「火曜日」读「かようび」。「火」音读「か」，「日」因连浊读「び」。',
-      'en': '「火曜日」 is read 「かようび」. 「火」 takes the on\'yomi 「か」, and 「日」 becomes 「び」 through rendaku.',
-      'ko': '「火曜日」는「かようび」로 읽어요. 「火」는 음독「か」, 「日」는 연탁으로「び」가 돼요.',
-      'es': '「火曜日」 se lee 「かようび」. 「火」 se lee 「か」 (on\'yomi) y 「日」 se sonoriza por rendaku y se lee 「び」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -198,13 +156,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'この いぬは とても 小さい です。「小さい」の 読み方は どれですか。',
     options: ['おおきい', 'ちいさい', 'すこさい', 'ちさい'],
     answer: '2',
-    explain: {
-      'zh-TW': '「小さい」漢字「小」後接送假名「さい」，讀「ちいさい」，注意為長音「ちい」。',
-      'zh-CN': '「小さい」是汉字「小」后接送假名「さい」，读「ちいさい」，注意是长音「ちい」。',
-      'en': 'In 「小さい」, the kanji 「小」 is followed by the okurigana 「さい」, giving 「ちいさい」. Note the long vowel in 「ちい」.',
-      'ko': '「小さい」는 한자「小」뒤에 오쿠리가나「さい」가 붙어「ちいさい」로 읽어요. 「ちい」가 장음인 점에 주의하세요.',
-      'es': 'El kanji 「小」 va seguido del okurigana 「さい」 y se lee 「ちいさい」. Ojo con la vocal larga de 「ちい」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -229,13 +180,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'てがみを 書いて ください。「書いて」の 読み方は どれですか。',
     options: ['きいて', 'かいて', 'こいて', 'かって'],
     answer: '2',
-    explain: {
-      'zh-TW': '動詞「書く（かく）」的て形為「書いて（かいて）」，發生イ音便。',
-      'zh-CN': '动词「書く（かく）」的て形是「書いて（かいて）」，发生了イ音便。',
-      'en': 'The te-form of the verb 「書く（かく）」 is 「書いて（かいて）」. This is the i-sound change (イ音便).',
-      'ko': '동사「書く（かく）」의 て형은「書いて（かいて）」이고, イ음편이 일어나요.',
-      'es': 'La forma -te del verbo 「書く（かく）」 es 「書いて（かいて）」, con el cambio fonético llamado i-onbin.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '漢字読み',
@@ -260,13 +204,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'この まちには かわ が おおいです。「かわ」の 漢字は どれですか。',
     options: ['川', '山', '田', '木'],
     answer: '1',
-    explain: {
-      'zh-TW': '「かわ」在此指河流，正確漢字表記為「川」。句意為「這個城鎮河流很多」。',
-      'zh-CN': '「かわ」在这里指河流，正确的汉字写法是「川」。句意为「这个城镇河流很多」。',
-      'en': 'Here 「かわ」 means a river, and its correct kanji is 「川」. The sentence means "This town has many rivers."',
-      'ko': '여기서「かわ」는 강을 뜻하므로 올바른 한자 표기는「川」예요. 문장 뜻은 \'이 마을에는 강이 많아요\'예요.',
-      'es': 'Aquí 「かわ」 significa río, y su kanji correcto es 「川」. La oración significa «En esta ciudad hay muchos ríos».',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '表記',
@@ -291,13 +228,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'らいねん に にほんへ 行きます。「らいねん」の 漢字は どれですか。',
     options: ['来年', '来月', '来週', '先日'],
     answer: '1',
-    explain: {
-      'zh-TW': '「らいねん」表示明年，正確漢字表記為「来年」。「来週」為らいしゅう，「来月」為らいげつ。',
-      'zh-CN': '「らいねん」表示明年，正确的汉字写法是「来年」。「来週」读らいしゅう，「来月」读らいげつ。',
-      'en': '「らいねん」 means "next year", and its correct kanji is 「来年」. 「来週」 is らいしゅう (next week), and 「来月」 is らいげつ (next month).',
-      'ko': '「らいねん」은 \'내년\'을 뜻하고, 올바른 한자 표기는「来年」예요. 「来週」는 らいしゅう, 「来月」는 らいげつ예요.',
-      'es': '「らいねん」 significa el año que viene, y su kanji correcto es 「来年」. 「来週」 se lee らいしゅう y 「来月」 se lee らいげつ.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '表記',
@@ -322,13 +252,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'あそこに がっこう が あります。「がっこう」の 正しい 漢字は どれですか。',
     options: ['宇校', '学校', '学枝', '字校'],
     answer: '2',
-    explain: {
-      'zh-TW': '「がっこう」的正確漢字為「学校」。「学」上方為「⺍」，「校」右邊為「交」，不可與形近字「宇」「字」「枝」搞混。',
-      'zh-CN': '「がっこう」的正确汉字是「学校」。「学」上方是「⺍」，「校」右边是「交」，不要与形近字「宇」「字」「枝」混淆。',
-      'en': 'The correct kanji for 「がっこう」 is 「学校」. The top of 「学」 is 「⺍」, and the right side of 「校」 is 「交」. Do not confuse them with the look-alike kanji 「宇」, 「字」 and 「枝」.',
-      'ko': '「がっこう」의 올바른 한자는「学校」예요. 「学」의 윗부분은「⺍」, 「校」의 오른쪽은「交」예요. 모양이 비슷한「宇」「字」「枝」와 헷갈리지 마세요.',
-      'es': 'El kanji correcto de 「がっこう」 es 「学校」. La parte superior de 「学」 es 「⺍」 y la parte derecha de 「校」 es 「交」. No lo confundas con los kanji de forma parecida 「宇」, 「字」 y 「枝」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '表記',
@@ -353,13 +276,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'えいがを みます。「みます」の 正しい 漢字は どれですか。',
     options: ['見ます', '貝ます', '自ます', '目ます'],
     answer: '1',
-    explain: {
-      'zh-TW': '「みる（看）」的漢字為「見」，由「目＋儿」組成，不可與形近字「貝」「目」「自」混淆。',
-      'zh-CN': '「みる（看）」的汉字是「見」，由「目＋儿」组成，不要与形近字「貝」「目」「自」混淆。',
-      'en': 'The kanji for 「みる」 (to see, to watch) is 「見」, made of 「目」 + 「儿」. Do not confuse it with the look-alike kanji 「貝」, 「目」 and 「自」.',
-      'ko': '「みる」(보다)의 한자는「見」이고,「目＋儿」로 이루어져 있어요. 모양이 비슷한「貝」「目」「自」와 헷갈리지 마세요.',
-      'es': 'El kanji de 「みる」 (ver) es 「見」, formado por 「目＋儿」. No lo confundas con los kanji de forma parecida 「貝」, 「目」 y 「自」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '表記',
@@ -384,13 +300,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'たまごを 三つ かいました。「三つ」の 読み方は どれですか。',
     options: ['ひとつ', 'ふたつ', 'よっつ', 'みっつ'],
     answer: '4',
-    explain: {
-      'zh-TW': '日語通用量詞計數：一つ（ひとつ）、二つ（ふたつ）、三つ（みっつ）、四つ（よっつ）。「三つ」讀「みっつ」，含促音。',
-      'zh-CN': '日语通用的数量表达：一つ（ひとつ）、二つ（ふたつ）、三つ（みっつ）、四つ（よっつ）。「三つ」读「みっつ」，含促音。',
-      'en': 'The general Japanese counters go: 一つ（ひとつ）, 二つ（ふたつ）, 三つ（みっつ）, 四つ（よっつ）. 「三つ」 is read 「みっつ」, with a small っ.',
-      'ko': '일본어의 고유어 수 세기: 一つ（ひとつ）, 二つ（ふたつ）, 三つ（みっつ）, 四つ（よっつ）. 「三つ」는 촉음이 들어간「みっつ」로 읽어요.',
-      'es': 'Contadores genéricos del japonés: 一つ（ひとつ）, 二つ（ふたつ）, 三つ（みっつ）, 四つ（よっつ）. 「三つ」 se lee 「みっつ」, con sokuon.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '数詞・助数詞',
@@ -415,13 +324,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'ペンが 二本 あります。「二本」の 読み方は どれですか。',
     options: ['にふん', 'にほん', 'にぽん', 'にぼん'],
     answer: '2',
-    explain: {
-      'zh-TW': '細長物體助數詞為「〜本（ほん）」。接在「二」後讀清音「にほん」（注意「一本」為いっぽん，「三本」為さんぼん）。',
-      'zh-CN': '细长物体的量词是「〜本（ほん）」。接在「二」后读清音「にほん」（注意「一本」读いっぽん，「三本」读さんぼん）。',
-      'en': 'The counter for long, thin objects is 「〜本（ほん）」. After 「二」 it stays unvoiced: 「にほん」. (Compare 「一本」 いっぽん and 「三本」 さんぼん.)',
-      'ko': '가늘고 긴 물건을 세는 조수사는「〜本（ほん）」이에요. 「二」뒤에서는 청음 그대로「にほん」으로 읽어요(「一本」은 いっぽん,「三本」은 さんぼん인 점에 주의).',
-      'es': 'El contador para objetos largos y delgados es 「〜本（ほん）」. Detrás de 「二」 se lee sin sonorizar: 「にほん」 (ojo: 「一本」 es いっぽん y 「三本」 es さんぼん).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '数詞・助数詞',
@@ -446,13 +348,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: '（　　）は 日本語の テストが あります。がんばります。',
     options: ['さくじつ', 'おととい', 'きのう', 'あした'],
     answer: '4',
-    explain: {
-      'zh-TW': '後句動詞為現在/未來式「あります（將有考試）」，因此填表示未來的時間詞「あした（明天）」。',
-      'zh-CN': '后一句的动词是现在/将来时「あります（将有考试）」，所以填表示将来的时间词「あした（明天）」。',
-      'en': 'The verb in the sentence is non-past: 「あります」 (there will be a test). So the blank needs a future time word, 「あした」 (tomorrow).',
-      'ko': '뒤 문장의 동사가 현재/미래형「あります」(시험이 있을 거예요)이므로, 미래를 나타내는 시간 표현「あした」(내일)를 넣어요.',
-      'es': 'El verbo de la segunda oración está en presente/futuro, 「あります」 (habrá un examen), así que va la palabra de tiempo futuro 「あした」 (mañana).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -477,13 +372,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: '（　　）は とても さむかったです。',
     options: ['あさって', 'あした', 'らいしゅう', 'きのう'],
     answer: '4',
-    explain: {
-      'zh-TW': '後句形容詞為過去式「さむかったです（很冷）」，應選擇過去時間名詞「きのう（昨天）」。',
-      'zh-CN': '后一句的形容词是过去式「さむかったです（很冷）」，应选过去的时间名词「きのう（昨天）」。',
-      'en': 'The adjective is in the past tense: 「さむかったです」 (it was cold). So choose the past time word 「きのう」 (yesterday).',
-      'ko': '뒤 문장의 형용사가 과거형「さむかったです」(추웠어요)이므로, 과거를 나타내는 시간 명사「きのう」(어제)를 골라요.',
-      'es': 'El adjetivo está en pasado, 「さむかったです」 (hacía mucho frío), así que hay que elegir la palabra de tiempo pasado 「きのう」 (ayer).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -508,13 +396,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'いま なんじですか。（　　）を みて ください。',
     options: ['くつ', 'かさ', 'つくえ', 'とけい'],
     answer: '4',
-    explain: {
-      'zh-TW': '詢問時間「幾點了」，最合理的是看「とけい（鐘錶）」。',
-      'zh-CN': '询问时间「几点了」，最合理的做法是看「とけい（钟表）」。',
-      'en': 'The speaker asks what time it is, so the most natural thing to look at is a 「とけい」 (clock, watch).',
-      'ko': '\'지금 몇 시예요?\'라고 시간을 묻고 있으니, 「とけい」(시계)를 보는 것이 가장 자연스러워요.',
-      'es': 'Se pregunta «¿Qué hora es?», así que lo lógico es mirar el 「とけい」 (reloj).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -539,13 +420,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'あめが ふって いますから、（　　）を さします。',
     options: ['シャツ', 'かさ', 'ぼうし', 'めがね'],
     answer: '2',
-    explain: {
-      'zh-TW': '「傘をさす」為固定搭配表示「撐傘」，因為正在下雨所以撐傘。',
-      'zh-CN': '「傘をさす」是固定搭配，表示「撑伞」，因为正在下雨所以撑伞。',
-      'en': '「傘をさす」 is a set phrase meaning "to put up an umbrella". It is raining, so you put up an umbrella.',
-      'ko': '「傘をさす」는 \'우산을 쓰다\'라는 고정 표현이에요. 비가 오고 있으니 우산을 써요.',
-      'es': '「傘をさす」 es una combinación fija que significa «abrir el paraguas». Como está lloviendo, se abre el paraguas.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -570,13 +444,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'ほんや は ぎんこう と スーパーの（　　）に あります。',
     options: ['あいだ', 'なか', 'した', 'うえ'],
     answer: '1',
-    explain: {
-      'zh-TW': '「AとBのあいだ」表示「A與B之間」。書店在銀行與超市之間。',
-      'zh-CN': '「AとBのあいだ」表示「A与B之间」。书店在银行与超市之间。',
-      'en': '「AとBのあいだ」 means "between A and B". The bookstore is between the bank and the supermarket.',
-      'ko': '「AとBのあいだ」는 \'A와 B 사이\'를 나타내요. 서점은 은행과 슈퍼마켓 사이에 있어요.',
-      'es': '「AとBのあいだ」 significa «entre A y B». La librería está entre el banco y el supermercado.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -601,13 +468,6 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     stem: 'わたしの へやの（　　）は たなかさんの へやです。',
     options: ['そと', 'まえ', 'した', 'となり'],
     answer: '4',
-    explain: {
-      'zh-TW': '「となり」表示同類事物緊鄰的「隔壁」。「我房間的隔壁是田中先生的房間」。',
-      'zh-CN': '「となり」表示同类事物紧挨着的「隔壁」。「我房间的隔壁是田中先生的房间」。',
-      'en': '「となり」 means "next door", right beside something of the same kind. "Next to my room is Mr. Tanaka\'s room."',
-      'ko': '「となり」는 같은 종류의 것이 바로 붙어 있는 \'옆(옆집, 옆방)\'을 나타내요. \'내 방 옆은 다나카 씨 방이에요\'라는 뜻이에요.',
-      'es': '「となり」 indica lo que está justo al lado, del mismo tipo (la habitación de al lado). «Al lado de mi habitación está la habitación del señor Tanaka».',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',

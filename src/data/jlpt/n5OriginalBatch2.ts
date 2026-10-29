@@ -13,13 +13,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'わたしの（　　）は こうこうの せんせいです。',
     options: ['おばさん', 'はは', 'おかあさん', 'あね'],
     answer: '2',
-    explain: {
-      'zh-TW': '向他人提到自己的母親時，應使用謙稱「はは」；「おかあさん」用於稱呼對方的母親或當面叫自己母親。',
-      'zh-CN': '向别人提到自己的母亲时，要用谦称「はは」；「おかあさん」用于称呼对方的母亲，或当面叫自己的母亲。',
-      'en': 'When you talk about your own mother to others, use the humble word 「はは」. 「おかあさん」 is used for someone else\'s mother, or when you call your own mother directly.',
-      'ko': '다른 사람에게 자기 어머니를 말할 때는 낮춤말「はは」를 써요. 「おかあさん」은 상대방의 어머니를 가리키거나 자기 어머니를 직접 부를 때 써요.',
-      'es': 'Cuando hablas de tu propia madre con otra persona, usas la forma humilde 「はは」. 「おかあさん」 se usa para la madre de otra persona o para llamar directamente a tu propia madre.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -44,13 +37,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'たなかさんの（　　）は いしゃです。',
     options: ['おじさん', 'おとこのひと', 'ちち', 'おとうさん'],
     answer: '4',
-    explain: {
-      'zh-TW': '提到對方的父親時，應使用敬稱「おとうさん」；「ちち」為提到自己父親時的自謙稱謂。',
-      'zh-CN': '提到对方的父亲时，要用敬称「おとうさん」；「ちち」是提到自己父亲时的谦称。',
-      'en': 'When you talk about someone else\'s father, use the respectful word 「おとうさん」. 「ちち」 is the humble word for your own father.',
-      'ko': '상대방의 아버지를 말할 때는 높임말「おとうさん」을 써요. 「ちち」는 자기 아버지를 남에게 말할 때 쓰는 낮춤말이에요.',
-      'es': 'Para hablar del padre de otra persona se usa la forma respetuosa 「おとうさん」. 「ちち」 es la forma humilde para referirse al propio padre.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -75,13 +61,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: '（　　）は ちちと ははです。',
     options: ['そふ', 'きょうだい', 'りょうしん', 'おじ'],
     answer: '3',
-    explain: {
-      'zh-TW': '「りょうしん（両親）」指父母雙方（ちちとはは）；「きょうだい」為兄弟姊妹。',
-      'zh-CN': '「りょうしん（両親）」指父母双方（ちちとはは）；「きょうだい」是兄弟姐妹。',
-      'en': '「りょうしん（両親）」 means both parents (ちちとはは). 「きょうだい」 means siblings.',
-      'ko': '「りょうしん（両親）」은 부모 두 사람(ちちとはは)을 가리켜요. 「きょうだい」는 형제자매예요.',
-      'es': '「りょうしん（両親）」 significa los dos padres (ちちとはは). 「きょうだい」 significa hermanos.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '名詞',
@@ -108,13 +87,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'まどを（　　）ください。あついです。',
     options: ['あけて', 'しめて', 'つけて', 'けして'],
     answer: '1',
-    explain: {
-      'zh-TW': '因為很熱（あついです），所以請「打開（あけて）」窗戶。關閉窗戶為「しめる」。',
-      'zh-CN': '因为很热（あついです），所以请「打开（あけて）」窗户。关窗户用「しめる」。',
-      'en': 'It is hot (あついです), so please open (あけて) the window. To close a window is 「しめる」.',
-      'ko': '덥기(あついです) 때문에 창문을「あけて」(열어) 달라는 뜻이에요. 창문을 닫는 것은「しめる」예요.',
-      'es': 'Como hace calor (あついです), se pide «abrir (あけて)» la ventana. Cerrar la ventana es 「しめる」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -139,13 +111,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'なまえを（　　）しまいました。',
     options: ['つかって', 'もって', 'わすれて', 'おぼえて'],
     answer: '3',
-    explain: {
-      'zh-TW': '「〜てしまいました」表示發生了遺憾或非預期的動作，故填「わすれて（忘記了）」。',
-      'zh-CN': '「〜てしまいました」表示发生了遗憾或意料之外的动作，所以填「わすれて（忘了）」。',
-      'en': '「〜てしまいました」 expresses an unfortunate or unintended action, so the answer is 「わすれて」 (forgot).',
-      'ko': '「〜てしまいました」는 유감스럽거나 의도하지 않은 일이 일어났음을 나타내므로「わすれて」(잊어버렸어요)를 넣어요.',
-      'es': '「〜てしまいました」 expresa una acción lamentable o no deseada, así que va 「わすれて」 (olvidé).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -170,13 +135,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'ナイフで りんごを（　　）。',
     options: ['あけます', 'しめます', 'きります', 'ぬぎます'],
     answer: '3',
-    explain: {
-      'zh-TW': '用刀子（ナイフで）處理蘋果，動作為「切（きります）」。',
-      'zh-CN': '用刀子（ナイフで）处理苹果，动作是「切（きります）」。',
-      'en': 'The action you do to an apple with a knife (ナイフで) is cutting: 「きります」.',
-      'ko': '칼로(ナイフで) 사과에 하는 동작은 \'자르다(きります)\'예요.',
-      'es': 'Con un cuchillo (ナイフで), lo que se hace con la manzana es cortarla: 「きります」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -203,13 +161,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'せんせいに（　　）が あります。',
     options: ['そうじ', 'しつもん', 'せんたく', 'じゅぎょう'],
     answer: '2',
-    explain: {
-      'zh-TW': '向老師有問題要提問，使用「しつもん（質問）」。句意為「對老師有問題要請教」。',
-      'zh-CN': '对老师有问题要提问，用「しつもん（質問）」。句意为「向老师请教问题」。',
-      'en': 'Having a question for the teacher is 「しつもん（質問）」. The sentence means "I have a question for the teacher."',
-      'ko': '선생님께 물어볼 것이 있으니「しつもん（質問）」을 써요. 문장 뜻은 \'선생님께 질문이 있어요\'예요.',
-      'es': 'Para algo que quieres preguntarle al profesor se usa 「しつもん（質問）」. La oración significa «Tengo una pregunta para el profesor».',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -234,13 +185,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'まいばん にほんごを（　　）します。',
     options: ['けっこん', 'しゃしん', 'りょこう', 'べんきょう'],
     answer: '4',
-    explain: {
-      'zh-TW': '學習日語使用「べんきょう（勉強）します」。句意為「每晚學習日語」。',
-      'zh-CN': '学习日语用「べんきょう（勉強）します」。句意为「每天晚上学习日语」。',
-      'en': 'Studying Japanese is 「べんきょう（勉強）します」. The sentence means "I study Japanese every evening."',
-      'ko': '일본어를 공부하는 것은「べんきょう（勉強）します」라고 해요. 문장 뜻은 \'매일 밤 일본어를 공부해요\'예요.',
-      'es': 'Estudiar japonés es 「べんきょう（勉強）します」. La oración significa «Estudio japonés todas las noches».',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -265,13 +209,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'きのう へやの（　　）を しました。',
     options: ['れんしゅう', 'じゅぎょう', 'そうじ', 'しつもん'],
     answer: '3',
-    explain: {
-      'zh-TW': '對房間進行打掃整理，使用「そうじ（掃除）を しました」。',
-      'zh-CN': '打扫整理房间，用「そうじ（掃除）を しました」。',
-      'en': 'Cleaning a room is 「そうじ（掃除）を しました」.',
-      'ko': '방을 청소하고 정리하는 것은「そうじ（掃除）を しました」라고 해요.',
-      'es': 'Para limpiar y ordenar una habitación se usa 「そうじ（掃除）を しました」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -298,13 +235,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'ともだちに ほんを（　　）。',
     options: ['かりました', 'もらいました', 'かしました', 'あずかりました'],
     answer: '3',
-    explain: {
-      'zh-TW': '主詞為自己，將書借給朋友（方向為出），使用「かしました（貸しました）」。向朋友借入則為「かりました」。',
-      'zh-CN': '主语是自己，把书借给朋友（方向是向外），用「かしました（貸しました）」。向朋友借入则是「かりました」。',
-      'en': 'The subject is the speaker, and the book goes out to the friend, so the verb is 「かしました（貸しました）」 (lent). Borrowing from a friend would be 「かりました」.',
-      'ko': '주어가 나 자신이고 책을 친구에게 빌려주는(내보내는) 방향이므로「かしました（貸しました）」를 써요. 친구에게서 빌리는 것은「かりました」예요.',
-      'es': 'El sujeto soy yo y el libro va de mí hacia el amigo, así que se usa 「かしました（貸しました）」 (presté). Pedirle un libro prestado a un amigo sería 「かりました」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -329,13 +259,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'わたしは あねから プレゼントを（　　）。',
     options: ['あげました', 'やりました', 'もらいました', 'かしました'],
     answer: '3',
-    explain: {
-      'zh-TW': '「から」表示來源，「あねから」就是「從姊姊那裡」。從某人那裡收到東西用「もらう」，所以是「もらいました」。',
-      'zh-CN': '「から」表示来源，「あねから」就是「从姐姐那里」。从某人那里收到东西用「もらう」，所以是「もらいました」。',
-      'en': '「から」 marks the source: 「あねから」 means "from my older sister." Receiving something from someone uses 「もらう」, so the answer is 「もらいました」.',
-      'ko': '「から」는 출처를 나타내요. 「あねから」는 \'언니(누나)에게서\'라는 뜻이에요. 누군가에게서 무언가를 받을 때는 「もらう」를 쓰므로 정답은 「もらいました」예요.',
-      'es': '「から」 marca el origen: 「あねから」 significa «de mi hermana mayor». Para recibir algo de alguien se usa 「もらう」, así que la respuesta es 「もらいました」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -360,13 +283,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'ともだちは わたしに ペンを（　　）。',
     options: ['もらいました', 'かしました', 'くれました', 'かりました'],
     answer: '3',
-    explain: {
-      'zh-TW': '主詞是朋友，接受東西的是「我」（わたしに）。別人給我要用「くれる」，所以是「くれました」；「あげる」是給別人時用的。',
-      'zh-CN': '主语是朋友，接受东西的是「我」（わたしに）。别人给我要用「くれる」，所以是「くれました」；「あげる」是给别人时用的。',
-      'en': 'The subject is the friend, and the receiver is 「わたし」 (わたしに). When someone gives something to me, Japanese uses 「くれる」, so the answer is 「くれました」. 「あげる」 is for giving to someone else.',
-      'ko': '주어는 친구이고, 받는 사람은 「わたし」(わたしに)예요. 다른 사람이 나에게 줄 때는 「くれる」를 쓰므로 정답은 「くれました」예요. 「あげる」는 다른 사람에게 줄 때 써요.',
-      'es': 'El sujeto es el amigo y quien recibe soy yo (わたしに). Cuando alguien me da algo a mí, en japonés se usa 「くれる」, así que la respuesta es 「くれました」. 「あげる」 se usa cuando se da algo a otra persona.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -393,13 +309,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'きょうは かぜが つよく（　　）。',
     options: ['はしります', 'あるきます', 'ふきます', 'おきます'],
     answer: '3',
-    explain: {
-      'zh-TW': '風（かぜ）颳起吹拂的固定搭配動詞為「ふく（吹く）」。',
-      'zh-CN': '风（かぜ）刮起、吹拂的固定搭配动词是「ふく（吹く）」。',
-      'en': 'The set verb for wind blowing is 「ふく（吹く）」.',
-      'ko': '바람(かぜ)이 \'불다\'라고 할 때 짝이 되는 동사는「ふく（吹く）」예요.',
-      'es': 'El verbo fijo para el viento (かぜ) que sopla es 「ふく（吹く）」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -424,13 +333,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'かぜを ひきましたから、くすりを（　　）。',
     options: ['のみます', 'ききます', 'みます', 'たべます'],
     answer: '1',
-    explain: {
-      'zh-TW': '日語中「吃藥」固定搭配動詞為「くすりを のむ（飲む）」，不使用「たべる」。',
-      'zh-CN': '日语中「吃药」的固定搭配动词是「くすりを のむ（飲む）」，不用「たべる」。',
-      'en': 'In Japanese you "drink" medicine: the set phrase is 「くすりを のむ（飲む）」. 「たべる」 is not used, even for pills.',
-      'ko': '\'약을 먹다\'는 일본어로「くすりを のむ（飲む）」라고 해요. 한국어로는 \'먹다\'라고 하니「たべる」를 고르기 쉽지만, 일본어에서는 쓰지 않아요.',
-      'es': 'En japonés la medicina se «bebe»: la combinación fija es 「くすりを のむ（飲む）」, no 「たべる」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -455,13 +357,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'あさ、シャワーを（　　）。',
     options: ['のみます', 'あびます', 'します', 'きります'],
     answer: '2',
-    explain: {
-      'zh-TW': '「淋浴沖澡」的日語固定搭配為「シャワーを あびる（浴びる）」，不使用「する」。',
-      'zh-CN': '「淋浴冲澡」的日语固定搭配是「シャワーを あびる（浴びる）」，不用「する」。',
-      'en': '"To take a shower" is the set phrase 「シャワーを あびる（浴びる）」. 「する」 is not used.',
-      'ko': '\'샤워하다\'는 일본어로「シャワーを あびる（浴びる）」라고 해요. 한국어 \'샤워하다\'에 이끌려「する」를 고르기 쉽지만, 일본어에서는 쓰지 않아요.',
-      'es': '«Ducharse» en japonés es la combinación fija 「シャワーを あびる（浴びる）」, no 「する」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '動詞',
@@ -488,13 +383,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'この かばんは（　　）です。五千円です。',
     options: ['あまい', 'やすい', 'くらい', 'とおい'],
     answer: '2',
-    explain: {
-      'zh-TW': '描述物品價格合理便宜，使用い形容詞「やすい（安い）」。',
-      'zh-CN': '形容物品价格合理、便宜，用い形容词「やすい（安い）」。',
-      'en': 'To say an item is cheap, use the i-adjective 「やすい（安い）」.',
-      'ko': '물건 값이 싸다는 것은 い형용사「やすい（安い）」로 나타내요.',
-      'es': 'Para decir que algo tiene un precio barato se usa el adjetivo -i 「やすい（安い）」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -519,13 +407,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'コーヒーに さとうを いれました。（　　）です。',
     options: ['さむい', 'つらい', 'からい', 'あまい'],
     answer: '4',
-    explain: {
-      'zh-TW': '咖啡中加了糖（さとう），味道變「甜（あまい）」。辣為「からい」。',
-      'zh-CN': '咖啡里加了糖（さとう），味道变「甜（あまい）」。辣是「からい」。',
-      'en': 'Sugar (さとう) was put in the coffee, so it is sweet (あまい). Spicy is 「からい」.',
-      'ko': '커피에 설탕(さとう)을 넣었으니 맛이「あまい」(달아요)가 돼요. \'매워요\'는「からい」예요.',
-      'es': 'Al café se le echó azúcar (さとう), así que sabe dulce: 「あまい」. Picante es 「からい」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -550,13 +431,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'ふゆの あさは（　　）です。',
     options: ['ちいさい', 'さむい', 'あまい', 'あつい'],
     answer: '2',
-    explain: {
-      'zh-TW': '冬天（ふゆ）的早晨氣候天氣「冷（さむい）」。熱為「あつい」。',
-      'zh-CN': '冬天（ふゆ）的早晨天气「冷（さむい）」。热是「あつい」。',
-      'en': 'Winter (ふゆ) mornings are cold (さむい). Hot is 「あつい」.',
-      'ko': '겨울(ふゆ) 아침 날씨는「さむい」(추워요)예요. \'더워요\'는「あつい」예요.',
-      'es': 'Las mañanas de invierno (ふゆ) hace frío: 「さむい」. Calor es 「あつい」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -583,13 +457,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'この アパートは（　　）です。えきに ちかいですから。',
     options: ['だめ', 'へん', 'しずか', 'べんり'],
     answer: '4',
-    explain: {
-      'zh-TW': '離車站很近生活交通「便利（べんり）」，在です前直接以語幹「べんり」出現（な形容詞）。',
-      'zh-CN': '离车站很近，生活交通「方便（べんり）」。「べんり」是な形容词，在です前直接以词干出现。',
-      'en': 'Being close to the station makes the apartment convenient (べんり). As a na-adjective, the stem 「べんり」 comes directly before です.',
-      'ko': '역에서 가까우니 생활이나 교통이「べんり」(편리)해요. な형용사라서 です 앞에서는 어간「べんり」만 그대로 와요.',
-      'es': 'Estar cerca de la estación hace la vida y el transporte «prácticos» (べんり). Es un adjetivo -na, así que delante de です aparece solo la raíz 「べんり」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -614,13 +481,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'この へやは（　　）です。こえが きこえません。',
     options: ['ゆうめい', 'にぎやか', 'すき', 'しずか'],
     answer: '4',
-    explain: {
-      'zh-TW': '聽不見聲音表示房間非常「安靜（しずか）」。熱鬧為「にぎやか」。',
-      'zh-CN': '听不到声音，说明房间非常「安静（しずか）」。热闹是「にぎやか」。',
-      'en': 'You cannot hear any sounds, so the room is quiet (しずか). Lively is 「にぎやか」.',
-      'ko': '소리가 들리지 않는다는 것은 방이 아주「しずか」(조용)하다는 뜻이에요. \'북적이다\'는「にぎやか」예요.',
-      'es': 'Si no se oyen voces, la habitación es muy «tranquila» (しずか). Animado o bullicioso es 「にぎやか」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -645,13 +505,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: '「きれい」は どの しゅるいですか。',
     options: ['動詞', 'い形容詞', '名詞', 'な形容詞'],
     answer: '4',
-    explain: {
-      'zh-TW': '「きれい（綺麗）」雖然結尾為い假名，但在日語文法分類中是標準的「な形容詞」（連體形為きれいな）。',
-      'zh-CN': '「きれい（綺麗）」虽然以い假名结尾，但在日语语法分类中是标准的「な形容词」（连体形是きれいな）。',
-      'en': '「きれい（綺麗）」 ends in the kana い, but grammatically it is a standard na-adjective (before a noun it becomes きれいな).',
-      'ko': '「きれい（綺麗）」는 끝이 い로 끝나지만, 일본어 문법 분류로는 전형적인「な형용사」예요(명사 수식형은 きれいな).',
-      'es': 'Aunque 「きれい（綺麗）」 termina en el kana い, en la gramática japonesa es un 「な形容詞」 (adjetivo -na) típico: delante de un sustantivo es きれいな.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -678,13 +531,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'この みせは ものが（　　）です。あの みせは やすいです。',
     options: ['ちいさい', 'ひくい', 'たかい', 'みじかい'],
     answer: '3',
-    explain: {
-      'zh-TW': '與「やすい（便宜）」對比的反義詞為「たかい（昂貴）」。',
-      'zh-CN': '与「やすい（便宜）」相对的反义词是「たかい（昂贵）」。',
-      'en': 'The opposite of 「やすい」 (cheap) is 「たかい」 (expensive).',
-      'ko': '「やすい」(싸다)와 대비되는 반의어는「たかい」(비싸다)예요.',
-      'es': 'El antónimo de 「やすい」 (barato) es 「たかい」 (caro).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -709,13 +555,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'へやが くらいです。「くらい」の 反義は どれですか。',
     options: ['あかるい', 'あつい', 'おもい', 'はやい'],
     answer: '1',
-    explain: {
-      'zh-TW': '「くらい（暗い）」的反義詞為「あかるい（明るい）」。',
-      'zh-CN': '「くらい（暗い）」的反义词是「あかるい（明るい）」。',
-      'en': 'The opposite of 「くらい（暗い）」 is 「あかるい（明るい）」.',
-      'ko': '「くらい（暗い）」의 반의어는「あかるい（明るい）」예요.',
-      'es': 'El antónimo de 「くらい（暗い）」 es 「あかるい（明るい）」.',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -740,13 +579,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'この くるまは おおきいです。あの くるまは（　　）です。',
     options: ['ちいさい', 'おもい', 'たかい', 'あたらしい'],
     answer: '1',
-    explain: {
-      'zh-TW': '與「おおきい（大）」形成對比的反義詞為「ちいさい（小）」。',
-      'zh-CN': '与「おおきい（大）」相对的反义词是「ちいさい（小）」。',
-      'en': 'The word that contrasts with 「おおきい」 (big) is 「ちいさい」 (small).',
-      'ko': '「おおきい」(크다)와 대비되는 반의어는「ちいさい」(작다)예요.',
-      'es': 'El antónimo que contrasta con 「おおきい」 (grande) es 「ちいさい」 (pequeño).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '形容詞',
@@ -773,13 +605,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'なつに（　　）で およぎます。',
     options: ['プール', 'テーブル', 'レストラン', 'エレベーター'],
     answer: '1',
-    explain: {
-      'zh-TW': '游泳（およぎます）的場所為外來語「プール（游泳池 pool）」。',
-      'zh-CN': '游泳（およぎます）的场所是外来语「プール（游泳池 pool）」。',
-      'en': 'The place where you swim (およぎます) is the loanword 「プール」 (pool).',
-      'ko': '수영하는(およぎます) 장소는 외래어「プール」(수영장, pool)예요.',
-      'es': 'El lugar donde se nada (およぎます) es el préstamo 「プール」 (piscina, del inglés pool).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '外来語',
@@ -804,13 +629,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'あさ（　　）を のみます。',
     options: ['カメラ', 'ダンス', 'コーヒー', 'ナイフ'],
     answer: '3',
-    explain: {
-      'zh-TW': '可供飲用（のみます）的外來語名詞為「コーヒー（咖啡 coffee）」。',
-      'zh-CN': '可以饮用（のみます）的外来语名词是「コーヒー（咖啡 coffee）」。',
-      'en': 'The loanword you can drink (のみます) is 「コーヒー」 (coffee).',
-      'ko': '마실 수 있는(のみます) 외래어 명사는「コーヒー」(커피, coffee)예요.',
-      'es': 'El préstamo que se puede beber (のみます) es 「コーヒー」 (café, del inglés coffee).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '外来語',
@@ -835,13 +653,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: 'とうきょうには（　　）が おおいです。',
     options: ['シャツ', 'プール', 'ベッド', 'ビル'],
     answer: '4',
-    explain: {
-      'zh-TW': '大城市中很多的高樓大廈外來語為「ビル（building）」。',
-      'zh-CN': '大城市里很多的高楼大厦，外来语是「ビル（building）」。',
-      'en': 'Big cities have many tall buildings, and the loanword is 「ビル」 (building).',
-      'ko': '대도시에 많은 높은 건물은 외래어로「ビル」(building)라고 해요.',
-      'es': 'Lo que abunda en una gran ciudad son los edificios altos: el préstamo 「ビル」 (del inglés building).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '外来語',
@@ -868,13 +679,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: '「せんたくします」に いちばん ちかい いみは どれですか。',
     options: ['たべます', 'ねます', 'あらいます', 'あるきます'],
     answer: '3',
-    explain: {
-      'zh-TW': '「せんたくする（洗濯する）」指洗衣服，與動詞「あらう（洗う）」語意最接近。',
-      'zh-CN': '「せんたくする（洗濯する）」指洗衣服，与动词「あらう（洗う）」意思最接近。',
-      'en': '「せんたくする（洗濯する）」 means to do the laundry, so the closest meaning is the verb 「あらう（洗う）」 (to wash).',
-      'ko': '「せんたくする（洗濯する）」는 빨래를 한다는 뜻이라서, 동사「あらう（洗う）」(씻다, 빨다)와 의미가 가장 가까워요.',
-      'es': '「せんたくする（洗濯する）」 significa lavar la ropa, y el verbo de significado más cercano es 「あらう（洗う）」 (lavar).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '類義・言い換え',
@@ -899,13 +703,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: '「りょうしん」と おなじ いみは どれですか。',
     options: ['おじと おば', 'そふと そぼ', 'あにと あね', 'ちちと はは'],
     answer: '4',
-    explain: {
-      'zh-TW': '「りょうしん（両親）」即「ちちと はは（父母）」。',
-      'zh-CN': '「りょうしん（両親）」就是「ちちと はは（父母）」。',
-      'en': '「りょうしん（両親）」 means 「ちちと はは」 (father and mother).',
-      'ko': '「りょうしん（両親）」은 곧「ちちと はは」(아버지와 어머니)예요.',
-      'es': '「りょうしん（両親）」 es lo mismo que 「ちちと はは」 (padre y madre).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '類義・言い換え',
@@ -930,13 +727,6 @@ export const N5_ORIGINAL_BATCH2: JlptQuestion[] = [
     stem: '「へやが くらいです」と ちかい いみは どれですか。',
     options: ['へやが あかるいです', 'へやが おおきいです', 'へやが しずかです', 'へやが あかるくないです'],
     answer: '4',
-    explain: {
-      'zh-TW': '反義詞加否定等於同義換言：「暗（くらい）」等價於「不亮（あかるくない）」。',
-      'zh-CN': '反义词加否定等于同义换说：「暗（くらい）」等价于「不亮（あかるくない）」。',
-      'en': 'Negating the opposite gives the same meaning: dark (くらい) equals not bright (あかるくない).',
-      'ko': '반의어에 부정을 붙이면 같은 뜻으로 바꿔 말할 수 있어요. 「くらい」(어둡다)는「あかるくない」(밝지 않다)와 같은 뜻이에요.',
-      'es': 'Antónimo + negación equivale a decir lo mismo con otras palabras: «oscuro» (くらい) equivale a «no luminoso» (あかるくない).',
-    },
     source: {
       book: 'JLPT N5',
       chapter: '類義・言い換え',
