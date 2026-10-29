@@ -47,3 +47,31 @@ describe('平假名筆順說明：五種語言', () => {
     }
   });
 });
+
+describe('筆順說明與 KanjiVG 一致', () => {
+  const step = (id: string, i: number) => HIRAGANA_STROKES[id].steps[i];
+
+  it('た 的 ③④ 是由左往右的短橫，不是撇', () => {
+    for (const i of [2, 3]) {
+      expect(step('h_ta', i)['zh-TW']).toMatch(/橫/);
+      expect(step('h_ta', i)['zh-TW']).not.toMatch(/撇/);
+      expect(step('h_ta', i).en).toMatch(/horizontal/);
+      expect(step('h_ta', i).en).not.toMatch(/sweep/i);
+    }
+  });
+
+  it('せ 和 よ 第一畫是橫', () => {
+    expect(step('h_se', 0).en).toMatch(/^① Long horizontal/);
+    expect(step('h_yo', 0).en).toMatch(/^① Short horizontal/);
+  });
+
+  it('あ 的提醒不再宣稱 あ／お 的圈在左下或右下', () => {
+    const note = HIRAGANA_STROKES.h_a.note!;
+    expect(note['zh-TW']).not.toMatch(/[左右]下/);
+    expect(note['zh-CN']).not.toMatch(/[左右]下/);
+    expect(note.en).not.toMatch(/lower (left|right)/);
+    expect(note.ko).not.toMatch(/(왼쪽|오른쪽) 아래/);
+    expect(note.es).not.toMatch(/abajo a la (izquierda|derecha)/);
+    expect(note.en).toMatch(/dot at the upper right/);
+  });
+});
