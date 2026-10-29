@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { getOwnJlptQuestions } from './jlpt';
-import { translations, Language } from '../i18n';
+import { LANGUAGES } from '../i18n';
 
-const LANGUAGES = Object.keys(translations) as Language[];
 
 // withShuffledOptions 會打亂選項順序，所以解說裡的「選 2」「option 3」指到的
 // 是資料裡的原始位置，不是學習者畫面上的位置。解說必須引用選項內容。

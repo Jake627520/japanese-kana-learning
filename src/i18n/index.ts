@@ -1,25 +1,33 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo, useRef, useCallback } from 'react';
 import { Language, TranslationSchema } from './types';
 export type { Language, TranslationSchema };
-import { zhTW } from './zh-TW';
-import { zhCN } from './zh-CN';
-import { en } from './en';
-import { ko } from './ko';
-import { es } from './es';
 
 export * from './types';
 export { localize } from './localize';
 
-export const translations: Record<Language, TranslationSchema> = {
-  'zh-TW': zhTW,
-  'zh-CN': zhCN,
-  en: en,
-  ko: ko,
-  es: es,
+// Each dictionary is its own chunk, so a visitor downloads only the language in use.
+const dictionaryLoaders: Record<Language, () => Promise<TranslationSchema>> = {
+  'zh-TW': () => import('./zh-TW').then((m) => m.zhTW),
+  'zh-CN': () => import('./zh-CN').then((m) => m.zhCN),
+  en: () => import('./en').then((m) => m.en),
+  ko: () => import('./ko').then((m) => m.ko),
+  es: () => import('./es').then((m) => m.es),
 };
 
+export const LANGUAGES = Object.keys(dictionaryLoaders) as Language[];
+
+/** A dictionary together with the language whose plural rules it follows. */
+export interface Messages {
+  language: Language;
+  dictionary: TranslationSchema;
+}
+
+export async function loadMessages(language: Language): Promise<Messages> {
+  return { language, dictionary: await dictionaryLoaders[language]() };
+}
+
 export function isLanguage(v: unknown): v is Language {
-  return typeof v === 'string' && Object.hasOwn(translations, v);
+  return typeof v === 'string' && Object.hasOwn(dictionaryLoaders, v);
 }
 
 export const LANGUAGE_STORAGE_KEY = 'kana_learning_language';
@@ -68,7 +76,6 @@ interface I18nContextType {
   setLanguage: (lang: Language) => void;
   t: (path: string, params?: TranslateParams) => string;
   tAroundCount: (path: string, count: number) => [before: string, after: string];
-  dictionary: TranslationSchema;
 }
 
 const I18nContext = createContext<I18nContextType | null>(null);
@@ -101,29 +108,23 @@ function pluralCategory(lang: Language, count: number): Intl.LDMLPluralRule {
 
 // A plural form is the key plus a CLDR category suffix (`_one`, `_few`...).
 // Locales add only the forms they need; everything else uses the bare key.
-function lookup(lang: Language, path: string, count: number | undefined): string | undefined {
-  const dictionary = translations[lang];
+// There is no fallback to another language: TranslationSchema and validate-i18n
+// already require every dictionary to be complete.
+function template({ language, dictionary }: Messages, path: string, count: number | undefined): string {
   if (count !== undefined) {
-    const form = resolvePath(dictionary, `${path}_${pluralCategory(lang, count)}`);
+    const form = resolvePath(dictionary, `${path}_${pluralCategory(language, count)}`);
     if (typeof form === 'string') return form;
   }
   const val = resolvePath(dictionary, path);
-  return typeof val === 'string' ? val : undefined;
+  if (typeof val === 'string') return val;
+  console.warn(`[i18n] Translation missing for key: "${path}" in language: "${language}"`);
+  return path;
 }
 
 export type TranslateParams = Record<string, string | number>;
 
-function template(lang: Language, path: string, count: number | undefined): string {
-  const val = lookup(lang, path, count) ?? (lang === 'en' ? undefined : lookup('en', path, count));
-  if (val === undefined) {
-    console.warn(`[i18n] Translation missing for key: "${path}" in language: "${lang}"`);
-    return path;
-  }
-  return val;
-}
-
-export function translate(lang: Language, path: string, params?: TranslateParams): string {
-  const val = template(lang, path, typeof params?.count === 'number' ? params.count : undefined);
+export function translate(messages: Messages, path: string, params?: TranslateParams): string {
+  const val = template(messages, path, typeof params?.count === 'number' ? params.count : undefined);
   if (!params) return val;
   return Object.entries(params).reduce(
     (acc, [key, replacement]) => acc.replace(new RegExp(`\\{${key}\\}`, 'g'), String(replacement)),
@@ -135,13 +136,16 @@ export function translate(lang: Language, path: string, params?: TranslateParams
  * The text before and after `{count}` in a count phrase, so the number can be
  * styled apart from its unit while the locale keeps its own spacing and order.
  */
-export function translateAroundCount(lang: Language, path: string, count: number): [before: string, after: string] {
-  const [before, after = ''] = template(lang, path, count).split('{count}');
+export function translateAroundCount(messages: Messages, path: string, count: number): [before: string, after: string] {
+  const [before, after = ''] = template(messages, path, count).split('{count}');
   return [before, after];
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(getInitialLanguage);
+/** `initial` must already be loaded so the first render never shows raw keys. */
+export function I18nProvider({ initial, children }: { initial: Messages; children: ReactNode }) {
+  const [messages, setMessages] = useState(initial);
+  const requested = useRef(initial.language);
+  const { language } = messages;
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -149,34 +153,34 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     }
   }, [language]);
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    try {
-      localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-    } catch (e) {
-      console.warn('Failed to persist language preference to localStorage:', e);
-    }
-  };
+  // The current dictionary stays on screen until the new one has loaded.
+  const setLanguage = useCallback((lang: Language) => {
+    requested.current = lang;
+    loadMessages(lang).then(
+      (next) => {
+        if (requested.current !== lang) return;
+        setMessages(next);
+        try {
+          localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+        } catch (e) {
+          console.warn('Failed to persist language preference to localStorage:', e);
+        }
+      },
+      (e) => console.warn(`[i18n] Failed to load language "${lang}":`, e),
+    );
+  }, []);
 
-  const dictionary = useMemo(() => {
-    return translations[language] || translations.en;
-  }, [language]);
-
-  const t = useMemo(
-    () => (path: string, params?: TranslateParams) => translate(language, path, params),
-    [language],
+  const value = useMemo<I18nContextType>(
+    () => ({
+      language,
+      setLanguage,
+      t: (path, params) => translate(messages, path, params),
+      tAroundCount: (path, count) => translateAroundCount(messages, path, count),
+    }),
+    [messages, language, setLanguage],
   );
 
-  const tAroundCount = useMemo(
-    () => (path: string, count: number) => translateAroundCount(language, path, count),
-    [language],
-  );
-
-  return React.createElement(
-    I18nContext.Provider,
-    { value: { language, setLanguage, t, tAroundCount, dictionary } },
-    children
-  );
+  return React.createElement(I18nContext.Provider, { value }, children);
 }
 
 export function useI18n(): I18nContextType {

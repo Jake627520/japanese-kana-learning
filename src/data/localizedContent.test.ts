@@ -4,9 +4,8 @@ import { SHADOWING_SENTENCES, getShadowingText } from './shadowing';
 import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, YOUON_DATA } from './kanaData';
 import { CONFUSABLE_GROUPS } from './confusableData';
 import { ALL_N5_TOPICS_UI, ALL_N4_TOPICS_UI, ALL_N3_TOPICS_UI, getOwnJlptQuestions } from './jlpt';
-import { translations, Language, LocalizedText } from '../i18n';
+import { LANGUAGES, Language, LocalizedText } from '../i18n';
 
-const LANGUAGES = Object.keys(translations) as Language[];
 
 describe('詞彙與跟讀內容：每個語言都有非空字串', () => {
   it('涵蓋五個語言', () => {

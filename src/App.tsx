@@ -4,7 +4,7 @@ import { HIRAGANA_DATA, KATAKANA_DATA, DAKUTEN_DATA, HANDAKUTEN_DATA, YOUON_DATA
 import { getStoredProgress } from './utils/storage';
 import { HomeDashboard } from './components/HomeDashboard';
 import { Navigation } from './components/Navigation';
-import { I18nProvider, useI18n } from './i18n';
+import { I18nProvider, Messages, useI18n } from './i18n';
 
 // 首頁與導覽列以外的分頁改為按需載入，縮小首屏 JS（JLPT 題庫、單字等資料只進各自的 chunk）
 const tabLoaders = {
@@ -235,9 +235,9 @@ function AppContent() {
   );
 }
 
-export default function App() {
+export default function App({ messages }: { messages: Messages }) {
   return (
-    <I18nProvider>
+    <I18nProvider initial={messages}>
       <AppContent />
     </I18nProvider>
   );

@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { HIRAGANA_STROKES } from './strokeData';
 import { HIRAGANA_DATA } from './kanaData';
-import { translations, Language, LocalizedText } from '../i18n';
+import { LANGUAGES, LocalizedText } from '../i18n';
 
-const LANGUAGES = Object.keys(translations) as Language[];
 const circled = (text: string) => text.match(/[①-⑳]/g) ?? [];
 const kana = (text: string) => [...new Set(text.match(/[ぁ-ゟ]/g))].sort();
 

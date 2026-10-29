@@ -2,9 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { getOwnJlptQuestions, ALL_N3_TOPICS_UI } from './jlpt';
 import { KATAKANA_DATA } from './kanaData';
 import { ALL_VOCABULARY } from './vocabulary';
-import { translations, Language } from '../i18n';
+import { LANGUAGES } from '../i18n';
 
-const LANGUAGES = Object.keys(translations) as Language[];
 
 const question = (id: string) => {
   const q = getOwnJlptQuestions().find((x) => x.id === id);

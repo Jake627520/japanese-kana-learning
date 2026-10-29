@@ -1,13 +1,17 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
+import { getInitialLanguage, loadMessages } from './i18n';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+// 先載入介面語言的字典再畫第一個畫面，避免閃出原始 key
+loadMessages(getInitialLanguage()).then((messages) => {
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <App messages={messages} />
+    </StrictMode>,
+  );
+});
 
 // 註冊 service worker：離線可用 + 可安裝到主畫面。
 // 用 BASE_URL 而不是寫死路徑——這個站部署在 GitHub Pages 子路徑底下，
