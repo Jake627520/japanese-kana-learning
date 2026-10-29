@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { ALL_LEARNABLE_KANA } from './kanaData';
 import { ALL_VOCABULARY } from './vocabulary';
 import { CONTENT_AUDIO } from './contentAudioMap';
+import { CONFUSABLE_GROUPS } from './confusableData';
 import { LANGUAGES } from '../i18n';
 
 const card = (id: string) => {
@@ -64,6 +65,26 @@ describe('例詞勘誤：假造的片假名詞與不自然的例句', () => {
         expect(audioId, `${e.id}: ${text}`).toBeDefined();
         expect(existsSync(join('public', 'audio', 'content', `${audioId}.mp3`)), `${text} → ${audioId}`).toBe(true);
       }
+    }
+  });
+});
+
+describe('あ／お：以右上那一點為主要分辨線索', () => {
+  const dotFirst: Record<string, [string, string]> = {
+    'zh-TW': ['點', '圈'],
+    'zh-CN': ['点', '圈'],
+    en: ['dot', 'loop'],
+    ko: ['점', '고리'],
+    es: ['punto', 'bucle'],
+  };
+
+  it('每個語言都先講點，再講圈', () => {
+    const group = CONFUSABLE_GROUPS.find((g) => g.id === 'cf_a_o')!;
+    for (const lang of LANGUAGES) {
+      const text = group.distinguish[lang];
+      const [dot, loop] = dotFirst[lang];
+      expect(text.indexOf(dot), `${lang} 提到點`).toBeGreaterThanOrEqual(0);
+      expect(text.indexOf(dot), `${lang} 點在圈之前`).toBeLessThan(text.indexOf(loop));
     }
   });
 });
