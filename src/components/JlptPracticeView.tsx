@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { JlptTopic, JlptQuestion, JlptGrade } from '../types';
 import {
   AVAILABLE_LEVELS,
@@ -12,9 +12,8 @@ import { shuffle, withShuffledOptions } from '../utils/shuffle';
 import { JlptWeakPointCard } from './JlptWeakPointCard';
 import { JlptWrongRedoButton } from './JlptWrongRedoButton';
 import { RichText } from './RichText';
-import { useI18n, localize } from '../i18n';
-import { loadJlptExplanations } from '../data/jlpt/explanations';
-import { explanationsReducer, offersReload } from './jlptExplanationsLoad';
+import { useI18n, localize, Language } from '../i18n';
+import { JlptExplanations, loadJlptExplanations } from '../data/jlpt/explanations';
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle, RefreshCw } from 'lucide-react';
 
 const DOMAIN_STYLE: Record<string, { band: string; tint: string; fg: string }> = {
@@ -27,6 +26,12 @@ const DOMAIN_FALLBACK = { band: 'from-slate-400 to-slate-300', tint: 'bg-[#ECE4D
 // 一次測驗是單一知識點，或兩種跨知識點的場次：全部隨機（all）、錯題重做（wrong）。
 type JlptSession = JlptTopic | { id: 'all' } | { id: 'wrong' };
 
+type ExplanationsState = { language: Language } & (
+  | { status: 'loading' }
+  | { status: 'failed' }
+  | { status: 'ready'; byId: JlptExplanations }
+);
+
 export function JlptPracticeView() {
   const { t, language } = useI18n();
   const [level, setLevel] = useState<JlptGrade>('n5');
@@ -37,28 +42,22 @@ export function JlptPracticeView() {
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const [isCompleted, setIsCompleted] = useState<boolean>(false);
-  const [explanations, dispatchExplanations] = useReducer(explanationsReducer, {
-    language,
-    failures: 0,
-    status: 'loading',
-  });
-  const [explanationsAttempt, setExplanationsAttempt] = useState(0);
-  const explanationRef = useRef<HTMLDivElement>(null);
+  const [explanations, setExplanations] = useState<ExplanationsState>({ language, status: 'loading' });
 
   useEffect(() => {
     let current = true;
-    dispatchExplanations({ type: 'load', language });
+    setExplanations({ language, status: 'loading' });
     loadJlptExplanations(language).then(
-      (byId) => current && dispatchExplanations({ type: 'loaded', byId }),
+      (byId) => current && setExplanations({ language, status: 'ready', byId }),
       (e) => {
         console.warn(`[jlpt] Failed to load ${language} explanations:`, e);
-        if (current) dispatchExplanations({ type: 'failed' });
+        if (current) setExplanations({ language, status: 'failed' });
       },
     );
     return () => {
       current = false;
     };
-  }, [language, explanationsAttempt]);
+  }, [language]);
 
   const handleStartTopic = (topic: JlptTopic) => {
     const questions = getQuestionsByTopic(topic.id);
@@ -309,11 +308,7 @@ export function JlptPracticeView() {
               {isAnswered && (
                 <div className="space-y-4 pt-4 border-t border-[#ECE4D0]">
                   {(explanationsStatus !== 'ready' || explanation !== undefined) && (
-                    <div
-                      ref={explanationRef}
-                      tabIndex={-1}
-                      className="p-4 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] space-y-2 focus:outline-hidden"
-                    >
+                    <div className="p-4 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] space-y-2">
                       <div className="text-xs font-extrabold text-[#221F18] flex items-center gap-1.5">
                         <HelpCircle className="w-4 h-4 text-[#5C6B3D]" />
                         {t('jlpt.explainTitle')}
@@ -329,35 +324,19 @@ export function JlptPracticeView() {
                       {explanationsStatus === 'failed' && (
                         <div role="alert" className="flex flex-wrap items-center justify-between gap-3">
                           <p className="flex-1 min-w-48 text-xs text-[#A6443A] font-semibold leading-relaxed">
-                            {t(offersReload(explanations) ? 'jlpt.explainStillFailing' : 'jlpt.explainLoadFailed')}
+                            {t('jlpt.explainLoadFailed')}
                           </p>
-                          <div className="shrink-0 flex items-center gap-2">
-                            <button
-                              type="button"
-                              onClick={() => {
-                                // The button unmounts while loading; keep focus inside the explanation instead of <body>.
-                                explanationRef.current?.focus();
-                                setExplanationsAttempt((n) => n + 1);
-                              }}
-                              // Enter on this button means retry, not the page-wide Enter-for-next shortcut.
-                              onKeyDown={(e) => e.key === 'Enter' && e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#221F18] bg-[#F4EEDE] border border-[#D9CDB2] hover:border-[#5C6B3D] rounded-xl cursor-pointer"
-                            >
-                              <RotateCcw className="w-3.5 h-3.5" />
-                              {t('common.retry')}
-                            </button>
-                            {offersReload(explanations) && (
-                              <button
-                                type="button"
-                                onClick={() => window.location.reload()}
-                                onKeyDown={(e) => e.key === 'Enter' && e.stopPropagation()}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#F1EFE0] bg-[#5C6B3D] hover:bg-[#47552F] rounded-xl cursor-pointer"
-                              >
-                                <RefreshCw className="w-3.5 h-3.5" />
-                                {t('common.reloadPage')}
-                              </button>
-                            )}
-                          </div>
+                          {/* A failed chunk import is cached for the page's lifetime, so only a reload can refetch it. */}
+                          <button
+                            type="button"
+                            onClick={() => window.location.reload()}
+                            // Enter on this button means reload, not the page-wide Enter-for-next shortcut.
+                            onKeyDown={(e) => e.key === 'Enter' && e.stopPropagation()}
+                            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#F1EFE0] bg-[#5C6B3D] hover:bg-[#47552F] rounded-xl cursor-pointer"
+                          >
+                            <RefreshCw className="w-3.5 h-3.5" />
+                            {t('common.reloadPage')}
+                          </button>
                         </div>
                       )}
                       {explanation !== undefined && (

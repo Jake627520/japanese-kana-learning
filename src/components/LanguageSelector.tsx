@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useI18n, Language } from '../i18n';
-import { Globe, Check, ChevronDown, Loader2 } from 'lucide-react';
+import { Globe, Check, ChevronDown, Loader2, RefreshCw } from 'lucide-react';
 
 interface LanguageSelectorProps {
   variant?: 'header' | 'compact' | 'mobile';
@@ -111,9 +111,20 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
             );
           })}
           {failedLabel && (
-            <p role="alert" className="mx-1.5 mt-1 px-2.5 py-2 rounded-xl bg-[#EFDBD5] text-[11px] leading-snug font-semibold text-[#A6443A]">
-              {t('header.languageLoadFailed', { language: failedLabel })}
-            </p>
+            <div role="alert" className="mx-1.5 mt-1 px-2.5 py-2 rounded-xl bg-[#EFDBD5] space-y-2">
+              <p className="text-[11px] leading-snug font-semibold text-[#A6443A]">
+                {t('header.languageLoadFailed', { language: failedLabel })}
+              </p>
+              {/* A failed chunk import is cached for the page's lifetime, so only a reload can refetch it. */}
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="w-full inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 text-[11px] font-bold text-[#F1EFE0] bg-[#5C6B3D] hover:bg-[#47552F] rounded-lg cursor-pointer"
+              >
+                <RefreshCw className="w-3 h-3" />
+                {t('common.reloadPage')}
+              </button>
+            </div>
           )}
         </div>
       )}
