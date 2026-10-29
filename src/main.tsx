@@ -28,10 +28,25 @@ if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .register(`${import.meta.env.BASE_URL}sw.js`, { scope: import.meta.env.BASE_URL })
         .catch((err) => console.warn('SW registration failed:', err));
+      // 第一次造訪時入口 JS/CSS 與字典在 SW 接管前就載完，SW 看不到也存不到；
+      // 把已載入的同源 URL 交給它補存（哪些該存由 sw.js 決定）。
+      // controllerchange 補上 ready 之後、接管之前才載入的資源。
+      navigator.serviceWorker.ready.then((reg) => sendLoadedUrls(reg.active));
+      navigator.serviceWorker.addEventListener('controllerchange', () =>
+        sendLoadedUrls(navigator.serviceWorker.controller),
+      );
     });
   } else {
     // 開發時主動清掉先前留下的 SW 與快取，否則之前註冊過的那一份還會繼續攔截
     navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
     caches?.keys().then((ks) => ks.forEach((k) => caches.delete(k)));
   }
+}
+
+function sendLoadedUrls(worker: ServiceWorker | null) {
+  const urls = performance
+    .getEntriesByType('resource')
+    .map((entry) => entry.name)
+    .filter((url) => url.startsWith(`${location.origin}/`));
+  worker?.postMessage({ type: 'cache-assets', urls: [...new Set(urls)] });
 }

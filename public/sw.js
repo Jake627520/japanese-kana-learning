@@ -32,6 +32,7 @@ const ENTRY = '/japanese-kana-learning/';
 
 // 內容不可變、可以放心 cache-first 的路徑
 const IMMUTABLE = [`${ENTRY}assets/`, `${ENTRY}audio/`];
+const isImmutable = (url) => IMMUTABLE.some((p) => url.pathname.startsWith(p));
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
@@ -47,6 +48,37 @@ self.addEventListener('activate', (e) => {
       .then(() => self.clients.claim()),
   );
 });
+
+// 第一次造訪時，入口 JS/CSS 與字典 chunk 在 SW 接管頁面之前就載完了，
+// 沒經過下面的 fetch handler，所以沒被快取；只造訪一次就離線會整頁空白。
+// 頁面被接管後會把已載入的 URL 傳過來，這裡補存其中的不可變資產。
+// 已在快取裡的跳過，所以頁面重送幾次都無害。
+self.addEventListener('message', (e) => {
+  if (e.data?.type !== 'cache-assets' || !Array.isArray(e.data.urls)) return;
+  e.waitUntil(cacheMissing(e.data.urls));
+});
+
+async function cacheMissing(urls) {
+  const cache = await caches.open(CACHE);
+  await Promise.all(
+    urls.map(async (raw) => {
+      let url;
+      try {
+        url = new URL(raw);
+      } catch {
+        return;
+      }
+      if (url.origin !== self.location.origin || !isImmutable(url)) return;
+      if (await cache.match(url.href, { ignoreVary: true })) return;
+      try {
+        const res = await fetch(url.href);
+        if (res.ok && res.type === 'basic') await cache.put(url.href, res);
+      } catch {
+        // 離線或資產已不存在：下次頁面重送時再試
+      }
+    }),
+  );
+}
 
 self.addEventListener('fetch', (e) => {
   const req = e.request;
@@ -72,12 +104,13 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  const isImmutable = IMMUTABLE.some((p) => url.pathname.startsWith(p));
-
-  if (isImmutable) {
-    // cache-first：hash 檔名的資產與音檔
+  if (isImmutable(url)) {
+    // cache-first：hash 檔名的資產與音檔。
+    // ignoreVary：補存的那份是 SW 自己抓的，沒有頁面請求的 Origin 標頭；
+    // 伺服器若回 Vary: Origin（vite preview 會），照 Vary 比對就永遠命中不了。
+    // 同源、檔名帶 hash 的內容不會因這些標頭而不同，忽略是安全的。
     e.respondWith(
-      caches.match(req).then((hit) => {
+      caches.match(req, { ignoreVary: true }).then((hit) => {
         if (hit) return hit;
         return fetch(req).then((res) => {
           // 只快取成功的同源回應，避免把錯誤頁存起來
