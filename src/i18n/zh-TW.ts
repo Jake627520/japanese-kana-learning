@@ -40,6 +40,7 @@ export const zhTW: TranslationSchema = {
     streakDays: '{count} 天',
     srsTag: 'SRS 記憶系統',
     selectLanguage: '切換語言',
+    languageLoadFailed: '無法載入「{language}」，請確認網路連線後再試一次。',
     langZhTW: '繁體中文',
     langZhCN: '简体中文',
     langEn: 'English',

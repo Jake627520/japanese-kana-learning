@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useI18n, Language } from '../i18n';
-import { Globe, Check, ChevronDown } from 'lucide-react';
+import { Globe, Check, ChevronDown, Loader2 } from 'lucide-react';
 
 interface LanguageSelectorProps {
   variant?: 'header' | 'compact' | 'mobile';
@@ -17,6 +17,8 @@ const LANGUAGES: { code: Language; label: string; flag: string }[] = [
 export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) {
   const { language, setLanguage, t } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
+  const [pending, setPending] = useState<Language | null>(null);
+  const [failed, setFailed] = useState<Language | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentLangObj = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0];
@@ -43,16 +45,29 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
     };
   }, [isOpen]);
 
+  // The menu stays open until the dictionary loads, so a failure is reported where the click happened.
   const handleSelect = (code: Language) => {
-    setLanguage(code);
-    setIsOpen(false);
+    if (code === language) {
+      setIsOpen(false);
+      return;
+    }
+    setPending(code);
+    setFailed(null);
+    setLanguage(code)
+      .then(() => setIsOpen(false), () => setFailed(code))
+      .finally(() => setPending(null));
   };
+
+  const failedLabel = LANGUAGES.find((l) => l.code === failed)?.label;
 
   return (
     <div className="relative inline-block text-left" ref={containerRef}>
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setFailed(null);
+        }}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-label={t('header.selectLanguage')}
@@ -79,8 +94,9 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
                 key={lang.code}
                 role="option"
                 aria-selected={isSelected}
+                disabled={pending !== null}
                 onClick={() => handleSelect(lang.code)}
-                className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-bold transition-colors cursor-pointer text-left ${
+                className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-bold transition-colors cursor-pointer disabled:cursor-wait text-left ${
                   isSelected
                     ? 'bg-[#EEF0E3] text-[#5C6B3D]'
                     : 'text-[#55503F] hover:bg-[#F0E9D8] hover:text-[#221F18]'
@@ -90,10 +106,19 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
                   <span>{lang.flag}</span>
                   <span>{lang.label}</span>
                 </div>
-                {isSelected && <Check className="w-3.5 h-3.5 text-[#5C6B3D]" />}
+                {pending === lang.code ? (
+                  <Loader2 className="w-3.5 h-3.5 text-[#8F8674] animate-spin" />
+                ) : (
+                  isSelected && <Check className="w-3.5 h-3.5 text-[#5C6B3D]" />
+                )}
               </button>
             );
           })}
+          {failedLabel && (
+            <p role="alert" className="mx-1.5 mt-1 px-2.5 py-2 rounded-xl bg-[#EFDBD5] text-[11px] leading-snug font-semibold text-[#A6443A]">
+              {t('header.languageLoadFailed', { language: failedLabel })}
+            </p>
+          )}
         </div>
       )}
     </div>

@@ -40,6 +40,7 @@ export const ko: TranslationSchema = {
     streakDays: '{count}일',
     srsTag: 'SRS 암기',
     selectLanguage: '언어 선택',
+    languageLoadFailed: '{language}을(를) 불러오지 못했습니다. 연결을 확인한 뒤 다시 시도하세요.',
     langZhTW: '繁體中文',
     langZhCN: '简体中文',
     langEn: 'English',

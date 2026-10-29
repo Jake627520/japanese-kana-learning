@@ -26,6 +26,24 @@ export async function loadMessages(language: Language): Promise<Messages> {
   return { language, dictionary: await dictionaryLoaders[language]() };
 }
 
+/**
+ * The dictionary to boot with: the wanted language, else the first other one that loads.
+ * A chunk fails when it was never cached and the network is down, or after a deploy
+ * removed it; any working language beats a blank page. zh-TW and en come first as the
+ * most used. The stored preference is left alone so the wanted language returns once
+ * its chunk can load again. Resolves to null when nothing loads.
+ */
+export async function loadBootMessages(wanted: Language, load = loadMessages): Promise<Messages | null> {
+  for (const language of new Set<Language>([wanted, 'zh-TW', 'en', ...LANGUAGES])) {
+    try {
+      return await load(language);
+    } catch (e) {
+      console.warn(`[i18n] Failed to load language "${language}":`, e);
+    }
+  }
+  return null;
+}
+
 export function isLanguage(v: unknown): v is Language {
   return typeof v === 'string' && Object.hasOwn(dictionaryLoaders, v);
 }
@@ -73,7 +91,8 @@ export function getInitialLanguage(): Language {
 
 interface I18nContextType {
   language: Language;
-  setLanguage: (lang: Language) => void;
+  /** Rejects when the dictionary cannot load; the current language stays in place. */
+  setLanguage: (lang: Language) => Promise<void>;
   t: (path: string, params?: TranslateParams) => string;
   tAroundCount: (path: string, count: number) => [before: string, after: string];
 }
@@ -154,20 +173,16 @@ export function I18nProvider({ initial, children }: { initial: Messages; childre
   }, [language]);
 
   // The current dictionary stays on screen until the new one has loaded.
-  const setLanguage = useCallback((lang: Language) => {
+  const setLanguage = useCallback(async (lang: Language) => {
     requested.current = lang;
-    loadMessages(lang).then(
-      (next) => {
-        if (requested.current !== lang) return;
-        setMessages(next);
-        try {
-          localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-        } catch (e) {
-          console.warn('Failed to persist language preference to localStorage:', e);
-        }
-      },
-      (e) => console.warn(`[i18n] Failed to load language "${lang}":`, e),
-    );
+    const next = await loadMessages(lang);
+    if (requested.current !== lang) return;
+    setMessages(next);
+    try {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch (e) {
+      console.warn('Failed to persist language preference to localStorage:', e);
+    }
   }, []);
 
   const value = useMemo<I18nContextType>(

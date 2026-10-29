@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { getInitialLanguage, isLanguage, loadMessages, localize, translate, translateAroundCount, LANGUAGES, LANGUAGE_STORAGE_KEY, Language } from './index';
+import { getInitialLanguage, isLanguage, loadBootMessages, loadMessages, localize, translate, translateAroundCount, LANGUAGES, LANGUAGE_STORAGE_KEY, Language } from './index';
 import { DICTIONARIES, messages } from '../test/dictionaries';
 import { formatNextReviewText } from '../utils/storage';
 
@@ -60,6 +60,45 @@ describe('isLanguage', () => {
 describe('loadMessages：按需載入單一語言的字典', () => {
   it.each(LANGUAGES)('%s', async (lang) => {
     expect(await loadMessages(lang)).toEqual({ language: lang, dictionary: DICTIONARIES[lang] });
+  });
+});
+
+describe('loadBootMessages：字典載不到時改用其他語言開機', () => {
+  const loaderFailing = (failing: Language[]) => {
+    const tried: Language[] = [];
+    const load = async (language: Language) => {
+      tried.push(language);
+      if (failing.includes(language)) throw new Error(`offline: ${language}`);
+      return { language, dictionary: DICTIONARIES[language] };
+    };
+    return { tried, load };
+  };
+
+  it('想要的語言載得到就只載它', async () => {
+    const { tried, load } = loaderFailing([]);
+    expect((await loadBootMessages('ko', load))?.language).toBe('ko');
+    expect(tried).toEqual(['ko']);
+  });
+
+  it('載不到時依 zh-TW、en、其餘語言的順序改用第一個載得到的', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { tried, load } = loaderFailing(['ko', 'zh-TW']);
+    expect((await loadBootMessages('ko', load))?.language).toBe('en');
+    expect(tried).toEqual(['ko', 'zh-TW', 'en']);
+  });
+
+  it('每個語言都試一次，全部失敗回傳 null', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const { tried, load } = loaderFailing(LANGUAGES);
+    expect(await loadBootMessages('es', load)).toBeNull();
+    expect(tried).toEqual(['es', 'zh-TW', 'en', 'zh-CN', 'ko']);
+  });
+
+  it('不改寫已儲存的語言偏好', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, 'ko');
+    await loadBootMessages('ko', loaderFailing(['ko']).load);
+    expect(localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe('ko');
   });
 });
 

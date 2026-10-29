@@ -1,15 +1,14 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
-import { getInitialLanguage, loadMessages } from './i18n';
+import { LoadFailedScreen } from './components/LoadFailedScreen';
+import { getInitialLanguage, loadBootMessages } from './i18n';
 import './index.css';
 
 // 先載入介面語言的字典再畫第一個畫面，避免閃出原始 key
-loadMessages(getInitialLanguage()).then((messages) => {
+loadBootMessages(getInitialLanguage()).then((messages) => {
   createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-      <App messages={messages} />
-    </StrictMode>,
+    <StrictMode>{messages ? <App messages={messages} /> : <LoadFailedScreen />}</StrictMode>,
   );
 });
 

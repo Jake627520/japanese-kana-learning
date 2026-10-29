@@ -40,6 +40,7 @@ export const zhCN: TranslationSchema = {
     streakDays: '{count} 天',
     srsTag: 'SRS 记忆系统',
     selectLanguage: '切换语言',
+    languageLoadFailed: '无法加载“{language}”，请检查网络连接后再试一次。',
     langZhTW: '繁體中文',
     langZhCN: '简体中文',
     langEn: 'English',

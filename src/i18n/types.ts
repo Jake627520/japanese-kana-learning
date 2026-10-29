@@ -43,6 +43,7 @@ export interface TranslationSchema {
     streakDays_one?: string;
     srsTag: string;
     selectLanguage: string;
+    languageLoadFailed: string;
     langZhTW: string;
     langZhCN: string;
     langEn: string;

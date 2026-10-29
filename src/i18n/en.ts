@@ -41,6 +41,7 @@ export const en: TranslationSchema = {
     streakDays_one: '{count} day',
     srsTag: 'SRS Memory',
     selectLanguage: 'Select Language',
+    languageLoadFailed: "Couldn't load {language}. Check your connection and try again.",
     langZhTW: '繁體中文',
     langZhCN: '简体中文',
     langEn: 'English',
