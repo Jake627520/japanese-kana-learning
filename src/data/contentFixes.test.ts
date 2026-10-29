@@ -5,6 +5,7 @@ import { ALL_LEARNABLE_KANA } from './kanaData';
 import { ALL_VOCABULARY } from './vocabulary';
 import { CONTENT_AUDIO } from './contentAudioMap';
 import { CONFUSABLE_GROUPS } from './confusableData';
+import { HIRAGANA_STROKES } from './strokeData';
 import { LANGUAGES } from '../i18n';
 
 const card = (id: string) => {
@@ -86,5 +87,37 @@ describe('あ／お：以右上那一點為主要分辨線索', () => {
       expect(text.indexOf(dot), `${lang} 提到點`).toBeGreaterThanOrEqual(0);
       expect(text.indexOf(dot), `${lang} 點在圈之前`).toBeLessThan(text.indexOf(loop));
     }
+  });
+});
+
+describe('筆順勘誤：か、き、な、と', () => {
+  it('步驟數等於筆畫數', () => {
+    expect(HIRAGANA_STROKES.h_ka.count).toBe(3);
+    expect(HIRAGANA_STROKES.h_ki.count).toBe(4);
+    expect(HIRAGANA_STROKES.h_na.count).toBe(4);
+    expect(HIRAGANA_STROKES.h_to.count).toBe(2);
+    for (const id of ['h_ka', 'h_ki', 'h_na', 'h_to']) {
+      expect(HIRAGANA_STROKES[id].steps, id).toHaveLength(HIRAGANA_STROKES[id].count);
+    }
+  });
+
+  it('筆順與標準一致（以英文說明核對起筆與方向）', () => {
+    const en = (id: string) => HIRAGANA_STROKES[id].steps.map((s) => s.en);
+    const [ka1, ka2, ka3] = en('h_ka');
+    expect(ka1).toMatch(/^① Horizontal.*turns down.*hook/);
+    expect(ka2).toMatch(/top down to the lower left/);
+    expect(ka3).toMatch(/dot on the right/);
+
+    const ki = en('h_ki');
+    expect(ki[2]).toMatch(/from the upper left down to the right/);
+    expect(ki[3]).toMatch(/Separate curve at the bottom, starting on the left/);
+
+    const na = en('h_na');
+    expect(na[1]).toMatch(/top down to the lower left/);
+    expect(na[2]).toMatch(/dot at the upper right/);
+    expect(na[3]).toMatch(/middle of the right side.*loop/);
+
+    const [, to2] = en('h_to');
+    expect(to2).toMatch(/^② Start at the upper right, go down to the left, then sweep right along the bottom/);
   });
 });

@@ -61,9 +61,9 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
   h_ka: {
     count: 3,
     steps: [
-      { 'zh-TW': '① 由上往下、末端向左彎的長撇', 'zh-CN': '① 从上往下、末端向左弯的长撇', en: '① Long sweep from top to bottom, curving left at the end', ko: '① 위에서 아래로 내려 끝이 왼쪽으로 휘는 긴 삐침', es: '① Haz un trazo oblicuo largo de arriba abajo que se curva a la izquierda al final' },
-      { 'zh-TW': '② 右上一短橫接下彎', 'zh-CN': '② 右上一短横接下弯', en: '② Short horizontal stroke at the upper right, continuing into a downward curve', ko: '② 오른쪽 위 짧은 가로획에 이어 아래로 곡선', es: '② Haz un trazo horizontal corto arriba a la derecha que continúa en una curva hacia abajo' },
-      { 'zh-TW': '③ 右側補一短撇', 'zh-CN': '③ 右侧补一短撇', en: '③ Short sweep added on the right', ko: '③ 오른쪽에 짧은 삐침 추가', es: '③ Añade un trazo oblicuo corto a la derecha' },
+      { 'zh-TW': '① 左上起一橫，往右再轉折往下，末端往左上勾', 'zh-CN': '① 从左上起一横，往右再转折往下，末端往左上钩', en: '① Horizontal stroke from the left that turns down, ending in a hook up to the left', ko: '① 왼쪽에서 가로획을 긋고 꺾어 아래로 내린 뒤, 끝은 왼쪽 위로 갈고리', es: '① Haz un trazo horizontal desde la izquierda que gira hacia abajo y termina con un gancho hacia arriba a la izquierda' },
+      { 'zh-TW': '② 由上方往左下的長撇（穿過第一畫）', 'zh-CN': '② 从上方往左下的长撇（穿过第一笔）', en: '② Long sweep from the top down to the lower left (crossing the first stroke)', ko: '② 위에서 왼쪽 아래로 긴 삐침 (첫 획을 관통)', es: '② Haz un trazo oblicuo largo desde arriba hacia abajo a la izquierda (cruzando el primer trazo)' },
+      { 'zh-TW': '③ 右側一短點（由左上往右下）', 'zh-CN': '③ 右侧一短点（从左上往右下）', en: '③ Short dot on the right (from upper left toward lower right)', ko: '③ 오른쪽에 짧은 점 (왼쪽 위에서 오른쪽 아래로)', es: '③ Haz un punto corto a la derecha (de arriba a la izquierda hacia abajo a la derecha)' },
     ],
   },
   h_ki: {
@@ -71,8 +71,8 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
     steps: [
       { 'zh-TW': '① 上方一短橫', 'zh-CN': '① 上方一短横', en: '① Short horizontal stroke on top', ko: '① 위쪽에 짧은 가로획', es: '① Haz un trazo horizontal corto arriba' },
       { 'zh-TW': '② 下方再一短橫（兩橫平行）', 'zh-CN': '② 下方再一短横（两横平行）', en: '② Another short horizontal stroke below (the two run parallel)', ko: '② 아래에 짧은 가로획 하나 더 (두 가로획은 평행)', es: '② Haz otro trazo horizontal corto debajo (los dos, paralelos)' },
-      { 'zh-TW': '③ 由右上往左下的長撇', 'zh-CN': '③ 从右上往左下的长撇', en: '③ Long sweep from upper right to lower left', ko: '③ 오른쪽 위에서 왼쪽 아래로 긴 삐침', es: '③ Haz un trazo oblicuo largo de arriba a la derecha hacia abajo a la izquierda' },
-      { 'zh-TW': '④ 末端向右下收', 'zh-CN': '④ 末端向右下收', en: '④ Closing stroke toward the lower right', ko: '④ 끝은 오른쪽 아래로 마무리', es: '④ Cierra hacia abajo a la derecha' },
+      { 'zh-TW': '③ 由左上往右下的斜線（穿過兩橫），末端輕輕往左上勾', 'zh-CN': '③ 从左上往右下的斜线（穿过两横），末端轻轻往左上钩', en: '③ Slanted stroke from the upper left down to the right (crossing both horizontals), ending in a small hook up to the left', ko: '③ 왼쪽 위에서 오른쪽 아래로 비스듬한 획 (두 가로획을 관통), 끝은 왼쪽 위로 살짝 갈고리', es: '③ Haz un trazo inclinado de arriba a la izquierda hacia abajo a la derecha (cruzando los dos horizontales) y termina con un gancho pequeño hacia arriba a la izquierda' },
+      { 'zh-TW': '④ 下方另起一筆，由左往右的弧線', 'zh-CN': '④ 下方另起一笔，从左往右的弧线', en: '④ Separate curve at the bottom, starting on the left and curving to the right', ko: '④ 아래에 따로 떨어진 곡선, 왼쪽에서 시작해 오른쪽으로', es: '④ Haz una curva aparte abajo, que empieza a la izquierda y se curva hacia la derecha' },
     ],
     note: { 'zh-TW': 'き 兩橫；さ 只有一橫。', 'zh-CN': 'き 两横；さ 只有一横。', en: 'き has two horizontals; さ has only one.', ko: 'き는 가로획이 둘, さ는 하나뿐이다.', es: 'き tiene dos horizontales; さ, solo uno.' },
   },
@@ -172,17 +172,17 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
   h_to: {
     count: 2,
     steps: [
-      { 'zh-TW': '① 一短豎（略斜）', 'zh-CN': '① 一短竖（略斜）', en: '① Short vertical stroke (slightly slanted)', ko: '① 짧은 세로획 (약간 비스듬히)', es: '① Haz un trazo vertical corto (algo inclinado)' },
-      { 'zh-TW': '② 由豎的中段往右下畫弧', 'zh-CN': '② 从竖的中段往右下画弧', en: '② Arc from the middle of the vertical toward the lower right', ko: '② 세로획 중간에서 오른쪽 아래로 호', es: '② Traza un arco desde la mitad del vertical hacia abajo a la derecha' },
+      { 'zh-TW': '① 左上一短豎（略向右下斜）', 'zh-CN': '① 左上一短竖（略向右下斜）', en: '① Short vertical stroke at the upper left (slanting slightly to the lower right)', ko: '① 왼쪽 위에 짧은 세로획 (오른쪽 아래로 약간 비스듬히)', es: '① Haz un trazo vertical corto arriba a la izquierda (algo inclinado hacia abajo a la derecha)' },
+      { 'zh-TW': '② 從右上起筆往左下，再沿底部往右收', 'zh-CN': '② 从右上起笔往左下，再沿底部往右收', en: '② Start at the upper right, go down to the left, then sweep right along the bottom', ko: '② 오른쪽 위에서 시작해 왼쪽 아래로 내린 뒤, 밑을 따라 오른쪽으로 마무리', es: '② Empieza arriba a la derecha, baja hacia la izquierda y termina hacia la derecha por la parte de abajo' },
     ],
   },
   h_na: {
     count: 4,
     steps: [
       { 'zh-TW': '① 上方一短橫', 'zh-CN': '① 上方一短横', en: '① Short horizontal stroke on top', ko: '① 위쪽에 짧은 가로획', es: '① Haz un trazo horizontal corto arriba' },
-      { 'zh-TW': '② 由上往下一豎（穿過橫）', 'zh-CN': '② 从上往下一竖（穿过横）', en: '② Vertical stroke from top to bottom (crossing the horizontal)', ko: '② 위에서 아래로 세로획 (가로획을 관통)', es: '② Haz un trazo vertical de arriba abajo (cruzando el horizontal)' },
-      { 'zh-TW': '③ 左下一短撇', 'zh-CN': '③ 左下一短撇', en: '③ Short sweep at the lower left', ko: '③ 왼쪽 아래에 짧은 삐침', es: '③ Haz un trazo oblicuo corto abajo a la izquierda' },
-      { 'zh-TW': '④ 右下繞一個圈', 'zh-CN': '④ 右下绕一个圈', en: '④ Loop at the lower right', ko: '④ 오른쪽 아래에 고리', es: '④ Haz un bucle abajo a la derecha' },
+      { 'zh-TW': '② 由上往左下的撇（穿過橫）', 'zh-CN': '② 从上往左下的撇（穿过横）', en: '② Sweep from the top down to the lower left (crossing the horizontal)', ko: '② 위에서 왼쪽 아래로 삐침 (가로획을 관통)', es: '② Haz un trazo oblicuo desde arriba hacia abajo a la izquierda (cruzando el horizontal)' },
+      { 'zh-TW': '③ 右上一短點', 'zh-CN': '③ 右上一短点', en: '③ Short dot at the upper right', ko: '③ 오른쪽 위에 짧은 점', es: '③ Haz un punto corto arriba a la derecha' },
+      { 'zh-TW': '④ 從右側中段往下，底部繞一個圈再往右收', 'zh-CN': '④ 从右侧中段往下，底部绕一个圈再往右收', en: '④ From the middle of the right side, go down, loop at the bottom, and finish to the right', ko: '④ 오른쪽 중간에서 아래로 내려 밑에서 고리를 돌리고 오른쪽으로 마무리', es: '④ Desde la mitad del lado derecho, baja, haz un bucle abajo y termina hacia la derecha' },
     ],
     note: { 'zh-TW': 'な 右下繞圈；た 不繞圈。', 'zh-CN': 'な 右下绕圈；た 不绕圈。', en: 'な loops at the lower right; た does not.', ko: 'な는 오른쪽 아래에서 고리를 돌고, た는 돌지 않는다.', es: 'な hace un bucle abajo a la derecha; た no.' },
   },
