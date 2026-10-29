@@ -70,6 +70,7 @@ export interface TranslationSchema {
     playAudio: string;
     stopAudio: string;
     retry: string;
+    reloadPage: string;
     reset: string;
     cancel: string;
     confirm: string;
@@ -362,6 +363,7 @@ export interface TranslationSchema {
     questionProgress: string;
     explainTitle: string;
     explainLoadFailed: string;
+    explainStillFailing: string;
     referenceBook: string;
     grammarCheck: string;
     vocabularyCheck: string;
