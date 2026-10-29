@@ -768,20 +768,20 @@ export const YOUON_DATA: KanaItem[] = [
         "word": "ぴゃっ",
         "romaji": "pya",
         "meaning": {
-          "zh-TW": "擬聲（輕快）",
-          "zh-CN": "拟声（轻快）",
-          "en": "onomatopoeia (light, quick)",
-          "ko": "휙 (가볍고 재빠른 모양)",
-          "es": "onomatopeya (movimiento ligero)"
+          "zh-TW": "擬態詞（突然迅速的動作）",
+          "zh-CN": "拟态词（突然迅速的动作）",
+          "en": "mimetic word for a sudden, quick movement",
+          "ko": "휙 (갑자기 재빠르게 움직이는 모양)",
+          "es": "palabra mimética de un movimiento rápido y repentino"
         },
-        "sentence": "ぴゃっとおどります。",
-        "sentenceDisplay": "ぴゃっ と おどります。",
+        "sentence": "ねこがぴゃっとにげました。",
+        "sentenceDisplay": "ねこ が ぴゃっ と にげました。",
         "sentenceMeaning": {
-          "zh-TW": "輕快地跳舞。",
-          "zh-CN": "轻快地跳舞。",
-          "en": "I dance with a light hop.",
-          "ko": "가볍게 춤을 춰요.",
-          "es": "Baila con ligereza."
+          "zh-TW": "貓咻地一下逃走了。",
+          "zh-CN": "猫嗖地一下逃走了。",
+          "en": "The cat dashed off.",
+          "ko": "고양이가 휙 달아났어요.",
+          "es": "El gato salió disparado."
         }
       }
     ]
@@ -1804,20 +1804,20 @@ export const YOUON_DATA: KanaItem[] = [
         "word": "ピャッ",
         "romaji": "pya",
         "meaning": {
-          "zh-TW": "擬聲",
-          "zh-CN": "拟声",
-          "en": "onomatopoeia",
-          "ko": "휙 (의성어)",
-          "es": "onomatopeya"
+          "zh-TW": "擬態詞（突然迅速的動作）",
+          "zh-CN": "拟态词（突然迅速的动作）",
+          "en": "mimetic word for a sudden, quick movement",
+          "ko": "휙 (갑자기 재빠르게 움직이는 모양)",
+          "es": "palabra mimética de un movimiento rápido y repentino"
         },
-        "sentence": "ピャっとおどります。",
-        "sentenceDisplay": "ピャっ と おどります。",
+        "sentence": "ねこがピャッとにげました。",
+        "sentenceDisplay": "ねこ が ピャッ と にげました。",
         "sentenceMeaning": {
-          "zh-TW": "輕快地跳舞。",
-          "zh-CN": "轻快地跳舞。",
-          "en": "I dance with a light hop.",
-          "ko": "가볍게 춤을 춰요.",
-          "es": "Baila con ligereza."
+          "zh-TW": "貓咻地一下逃走了。",
+          "zh-CN": "猫嗖地一下逃走了。",
+          "en": "The cat dashed off.",
+          "ko": "고양이가 휙 달아났어요.",
+          "es": "El gato salió disparado."
         }
       }
     ]

@@ -972,23 +972,23 @@ export const DAKUTEN_DATA: KanaItem[] = [
     "col": "イ段",
     "examples": [
       {
-        "word": "ラジオヂオ",
-        "romaji": "rajio",
+        "word": "チヂミ",
+        "romaji": "chijimi",
         "meaning": {
-          "zh-TW": "廣播 (古舊表記)",
-          "zh-CN": "广播 (古旧表记)",
-          "en": "radio (old spelling)",
-          "ko": "라디오 (옛 표기)",
-          "es": "radio (grafía antigua)"
+          "zh-TW": "韓式煎餅",
+          "zh-CN": "韩式煎饼",
+          "en": "Korean savory pancake (jeon)",
+          "ko": "부침개 (지짐이)",
+          "es": "tortita salada coreana"
         },
-        "sentence": "ラジオをききます。",
-        "sentenceDisplay": "ラジオ を ききます。",
+        "sentence": "チヂミをたべます。",
+        "sentenceDisplay": "チヂミ を たべます。",
         "sentenceMeaning": {
-          "zh-TW": "聽廣播。",
-          "zh-CN": "听广播。",
-          "en": "I listen to the radio.",
-          "ko": "라디오를 들어요.",
-          "es": "Escucho la radio."
+          "zh-TW": "吃韓式煎餅。",
+          "zh-CN": "吃韩式煎饼。",
+          "en": "I eat a Korean savory pancake.",
+          "ko": "부침개를 먹어요.",
+          "es": "Como una tortita salada coreana."
         }
       }
     ]
@@ -1003,23 +1003,23 @@ export const DAKUTEN_DATA: KanaItem[] = [
     "col": "ウ段",
     "examples": [
       {
-        "word": "ハナヅマ",
-        "romaji": "hanazuma",
+        "word": "ツヅキ",
+        "romaji": "tsuzuki",
         "meaning": {
-          "zh-TW": "鼻詰 (鼻塞)",
-          "zh-CN": "鼻詰 (鼻塞)",
-          "en": "stuffy nose (鼻詰)",
-          "ko": "코막힘 (鼻詰まり)",
-          "es": "congestión nasal"
+          "zh-TW": "後續；續集 (続き)",
+          "zh-CN": "后续；续集 (続き)",
+          "en": "continuation / sequel (続き)",
+          "ko": "다음 이야기 / 속편 (続き)",
+          "es": "continuación (続き)"
         },
-        "sentence": "ハナヅマをなおします。",
-        "sentenceDisplay": "ハナヅマ を なおします。",
+        "sentence": "マンガのツヅキをよみます。",
+        "sentenceDisplay": "マンガ の ツヅキ を よみます。",
         "sentenceMeaning": {
-          "zh-TW": "治好鼻塞。",
-          "zh-CN": "治好鼻塞。",
-          "en": "I cure my stuffy nose.",
-          "ko": "코막힘을 고쳐요.",
-          "es": "Me curo la congestión nasal."
+          "zh-TW": "看漫畫的後續。",
+          "zh-CN": "看漫画的后续。",
+          "en": "I read the next part of the manga.",
+          "ko": "만화의 다음 이야기를 읽어요.",
+          "es": "Leo la continuación del manga."
         }
       }
     ]
