@@ -15,10 +15,8 @@ const LANGUAGES: { code: Language; label: string; flag: string }[] = [
 ];
 
 export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) {
-  const { language, setLanguage, t } = useI18n();
+  const { language, setLanguage, pendingLanguage, failedLanguage, dismissLanguageError, t } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
-  const [pending, setPending] = useState<Language | null>(null);
-  const [failed, setFailed] = useState<Language | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentLangObj = LANGUAGES.find((l) => l.code === language) || LANGUAGES[0];
@@ -45,20 +43,18 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
     };
   }, [isOpen]);
 
-  // The menu stays open until the dictionary loads, so a failure is reported where the click happened.
+  // Every menu closes once the new language is on screen; until then it stays open
+  // so a failure is reported where the click happened.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [language]);
+
   const handleSelect = (code: Language) => {
-    if (code === language) {
-      setIsOpen(false);
-      return;
-    }
-    setPending(code);
-    setFailed(null);
-    setLanguage(code)
-      .then(() => setIsOpen(false), () => setFailed(code))
-      .finally(() => setPending(null));
+    setLanguage(code);
+    if (code === language) setIsOpen(false);
   };
 
-  const failedLabel = LANGUAGES.find((l) => l.code === failed)?.label;
+  const failedLabel = LANGUAGES.find((l) => l.code === failedLanguage)?.label;
 
   return (
     <div className="relative inline-block text-left" ref={containerRef}>
@@ -66,7 +62,7 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
         type="button"
         onClick={() => {
           setIsOpen(!isOpen);
-          setFailed(null);
+          dismissLanguageError();
         }}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -94,7 +90,7 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
                 key={lang.code}
                 role="option"
                 aria-selected={isSelected}
-                disabled={pending !== null}
+                disabled={pendingLanguage !== null}
                 onClick={() => handleSelect(lang.code)}
                 className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-bold transition-colors cursor-pointer disabled:cursor-wait text-left ${
                   isSelected
@@ -106,7 +102,7 @@ export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) 
                   <span>{lang.flag}</span>
                   <span>{lang.label}</span>
                 </div>
-                {pending === lang.code ? (
+                {pendingLanguage === lang.code ? (
                   <Loader2 className="w-3.5 h-3.5 text-[#8F8674] animate-spin" />
                 ) : (
                   isSelected && <Check className="w-3.5 h-3.5 text-[#5C6B3D]" />

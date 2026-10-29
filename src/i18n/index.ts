@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo, useRef, useCallback } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, ReactNode, useMemo, useRef, useCallback } from 'react';
 import { Language, TranslationSchema } from './types';
+import { languageSwitchReducer } from './languageSwitch';
 export type { Language, TranslationSchema };
 
 export * from './types';
@@ -91,8 +92,13 @@ export function getInitialLanguage(): Language {
 
 interface I18nContextType {
   language: Language;
-  /** Rejects when the dictionary cannot load; the current language stays in place. */
-  setLanguage: (lang: Language) => Promise<void>;
+  /** The current dictionary stays on screen until the new one has loaded. */
+  setLanguage: (lang: Language) => void;
+  /** Shared by every selector, so they all show the same switch in flight. */
+  pendingLanguage: Language | null;
+  /** The language whose latest switch failed; the current language stayed in place. */
+  failedLanguage: Language | null;
+  dismissLanguageError: () => void;
   t: (path: string, params?: TranslateParams) => string;
   tAroundCount: (path: string, count: number) => [before: string, after: string];
 }
@@ -162,8 +168,12 @@ export function translateAroundCount(messages: Messages, path: string, count: nu
 
 /** `initial` must already be loaded so the first render never shows raw keys. */
 export function I18nProvider({ initial, children }: { initial: Messages; children: ReactNode }) {
-  const [messages, setMessages] = useState(initial);
-  const requested = useRef(initial.language);
+  const [{ messages, pending, failed }, dispatch] = useReducer(languageSwitchReducer, {
+    messages: initial,
+    pending: null,
+    failed: null,
+  });
+  const lastRequest = useRef(0);
   const { language } = messages;
 
   useEffect(() => {
@@ -172,27 +182,43 @@ export function I18nProvider({ initial, children }: { initial: Messages; childre
     }
   }, [language]);
 
-  // The current dictionary stays on screen until the new one has loaded.
-  const setLanguage = useCallback(async (lang: Language) => {
-    requested.current = lang;
-    const next = await loadMessages(lang);
-    if (requested.current !== lang) return;
-    setMessages(next);
-    try {
-      localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-    } catch (e) {
-      console.warn('Failed to persist language preference to localStorage:', e);
-    }
-  }, []);
+  const setLanguage = useCallback(
+    (lang: Language) => {
+      const id = ++lastRequest.current;
+      dispatch({ type: 'request', id, language: lang });
+      if (lang === language) return;
+      loadMessages(lang).then(
+        (next) => {
+          dispatch({ type: 'loaded', id, messages: next });
+          if (lastRequest.current !== id) return;
+          try {
+            localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+          } catch (e) {
+            console.warn('Failed to persist language preference to localStorage:', e);
+          }
+        },
+        (e) => {
+          console.warn(`[i18n] Failed to load language "${lang}":`, e);
+          dispatch({ type: 'failed', id });
+        },
+      );
+    },
+    [language],
+  );
+
+  const dismissLanguageError = useCallback(() => dispatch({ type: 'dismiss' }), []);
 
   const value = useMemo<I18nContextType>(
     () => ({
       language,
       setLanguage,
+      pendingLanguage: pending?.language ?? null,
+      failedLanguage: failed,
+      dismissLanguageError,
       t: (path, params) => translate(messages, path, params),
       tAroundCount: (path, count) => translateAroundCount(messages, path, count),
     }),
-    [messages, language, setLanguage],
+    [messages, language, setLanguage, pending, failed, dismissLanguageError],
   );
 
   return React.createElement(I18nContext.Provider, { value }, children);
