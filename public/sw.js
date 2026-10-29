@@ -68,7 +68,9 @@ async function cacheMissing(urls) {
       } catch {
         return;
       }
-      if (url.origin !== self.location.origin || !isImmutable(url)) return;
+      // 只補存 /assets/，不補存音檔：這裡抓的是完整的 200 回應，
+      // 但 <audio> 播放時送的是 Range 請求，Safari 會拒絕以 200 回應 Range 的媒體。
+      if (url.origin !== self.location.origin || !url.pathname.startsWith(`${ENTRY}assets/`)) return;
       if (await cache.match(url.href, { ignoreVary: true })) return;
       try {
         const res = await fetch(url.href);
