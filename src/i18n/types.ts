@@ -361,6 +361,7 @@ export interface TranslationSchema {
     weakPoints: string;
     questionProgress: string;
     explainTitle: string;
+    explainLoadFailed: string;
     referenceBook: string;
     grammarCheck: string;
     vocabularyCheck: string;

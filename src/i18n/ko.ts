@@ -354,6 +354,7 @@ export const ko: TranslationSchema = {
     weakPoints: '약한 문법 주제',
     questionProgress: '문항',
     explainTitle: '해설 및 노트',
+    explainLoadFailed: '해설을 불러오지 못했습니다. 연결을 확인한 뒤 다시 시도하세요.',
     referenceBook: '참고 자료',
     grammarCheck: '문법 노트',
     vocabularyCheck: '핵심 어휘',

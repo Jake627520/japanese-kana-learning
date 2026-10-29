@@ -358,6 +358,7 @@ export const es: TranslationSchema = {
     weakPoints: 'Temas de gramática débiles',
     questionProgress: 'Preguntas',
     explainTitle: 'Explicación y notas',
+    explainLoadFailed: 'No se pudo cargar la explicación. Comprueba tu conexión e inténtalo de nuevo.',
     referenceBook: 'Fuente de referencia',
     grammarCheck: 'Nota gramatical',
     vocabularyCheck: 'Vocabulario clave',

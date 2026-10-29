@@ -354,6 +354,7 @@ export const zhCN: TranslationSchema = {
     weakPoints: '语法薄弱主题',
     questionProgress: '题数进度',
     explainTitle: '详解与考点分析',
+    explainLoadFailed: '无法加载详解，请检查网络连接后再试一次。',
     referenceBook: '参考来源',
     grammarCheck: '语法点说明',
     vocabularyCheck: '重点词汇',

@@ -358,6 +358,7 @@ export const en: TranslationSchema = {
     weakPoints: 'Weak Grammar Topics',
     questionProgress: 'Questions',
     explainTitle: 'Explanation & Notes',
+    explainLoadFailed: "Couldn't load the explanation. Check your connection and try again.",
     referenceBook: 'Reference Source',
     grammarCheck: 'Grammar Note',
     vocabularyCheck: 'Key Vocabulary',

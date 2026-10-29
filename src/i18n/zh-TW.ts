@@ -354,6 +354,7 @@ export const zhTW: TranslationSchema = {
     weakPoints: '文法弱點主題',
     questionProgress: '題數進度',
     explainTitle: '詳解與考點分析',
+    explainLoadFailed: '無法載入詳解，請確認網路連線後再試一次。',
     referenceBook: '參考來源',
     grammarCheck: '文法點說明',
     vocabularyCheck: '重點詞彙',
