@@ -14,9 +14,6 @@ import { UserProgress, KanaReviewState } from '../types';
 import { ConfusableGroup } from '../data/confusableData';
 import { translations } from '../i18n';
 
-// 取代 scripts/test-analytics.py、test-b8-manual-qa.py、test-listening-weakness.py（推薦部分）、
-// test-c1-3-manual-qa.py（QA-1/2/3）、test-c1-4.py（evidence）。
-// 原腳本只比對字串或在 Python 重寫一次演算法；這裡直接呼叫真的 analytics.ts。
 // 所有日期都用本地時間建構，跟 analytics.ts 的 toLocalDateString 一致，與機器時區無關。
 
 const NOW_DATE = new Date(2026, 7, 27, 10, 0, 0); // 2026-08-27 10:00 本地
@@ -184,13 +181,6 @@ describe('getWeakKanaRanking', () => {
     expect(getWeakKanaRanking(events)).toEqual([{ kanaId: 'h_tsu', attempts: 3, wrongCount: 2, wrongRate: 0.67 }]);
   });
 
-  // MISMATCH: scripts/test-b8-manual-qa.py:64 says rate ≈ 0.6666 (assertAlmostEqual places=3, i.e. 0.667),
-  // TS (src/utils/analytics.ts:114) rounds wrongRate to 2 decimals → 0.67, which differs by 0.003.
-  it.skip('b8 腳本期望錯誤率精確到小數三位（0.6666）', () => {
-    const events = [quiz('h_tsu', false), quiz('h_tsu', false), quiz('h_tsu', true)];
-    expect(getWeakKanaRanking(events)[0].wrongRate).toBeCloseTo(0.6666, 3);
-  });
-
   it('全對的假名不算弱點（wrongCount 必須 > 0）', () => {
     expect(getWeakKanaRanking(times(5, () => quiz('h_a', true)))).toEqual([]);
   });
@@ -244,7 +234,7 @@ describe('getWeakKanaRanking', () => {
   });
 });
 
-describe('analytics 是純函式（test-analytics.py 的「不碰 localStorage」）', () => {
+describe('analytics 是純函式', () => {
   it('不讀寫 localStorage，也不修改輸入陣列', () => {
     const getSpy = vi.spyOn(localStorage, 'getItem');
     const setSpy = vi.spyOn(localStorage, 'setItem');

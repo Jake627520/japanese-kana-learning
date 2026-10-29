@@ -2,9 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { ALL_KANA_AUDIO } from './kanaAudioMap';
 import { ALL_LEARNABLE_KANA } from './kanaData';
 
-// 取代 scripts/test-c1-manual-qa.py 的資料面檢查：
-// 原腳本用 regex 讀 kanaAudioMap.ts 得到 208 個假名，再模擬聽力干擾選項。
-// 干擾選項演算法本身（QuizView.tsx 的 getListeningDistractors）沒有 export，無法在這裡呼叫；
+// 聽力干擾選項演算法（QuizView.tsx 的 getListeningDistractors）沒有 export，無法在這裡呼叫；
 // 這裡驗證它依賴的資料前提：每個假名都有音檔，且同類型的假名足夠湊出 3 個不重複干擾項。
 
 const entries = Object.entries(ALL_KANA_AUDIO);
@@ -40,7 +38,7 @@ describe('聽力干擾選項的資料前提', () => {
   });
 
   it('id 前綴與 type 一致（h/hd/hp/hy = hiragana、k/kd/kp/ky = katakana）', () => {
-    // 注意：test-c1-manual-qa.py:65 用 startswith('k_') 判斷片假名，會把 kd_/kp_/ky_ 誤判成平假名
+    // 只看 'k_' 前綴會把 kd_/kp_/ky_ 誤判成平假名
     for (const k of ALL_LEARNABLE_KANA) {
       expect(k.id, k.id).toMatch(k.type === 'katakana' ? /^k[dpy]?_/ : /^h[dpy]?_/);
     }

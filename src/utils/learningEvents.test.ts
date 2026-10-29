@@ -9,9 +9,6 @@ import {
 } from './learningEvents';
 import { LearningEvent } from '../types/learning';
 
-// 取代 scripts/test-learning-events.py：原本只比對原始碼字串，
-// 再用 Python 自己模擬一份 localStorage 生命週期。這裡改成直接跑真的 TS。
-
 const NOW = new Date(2026, 7, 27, 10, 0, 0).getTime();
 
 afterEach(() => {

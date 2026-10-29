@@ -9,10 +9,6 @@ import {
 } from './storage';
 import { ALL_LEARNABLE_KANA } from '../data/kanaData';
 
-// 取代 scripts/test-phase-b7.py Test 7：原本只確認 storage.ts 裡有
-// recordReviewResult / getDueReviewItems / removeKanaFromWrong 與三個欄位名稱。
-// 這裡改成實際操作這些函式，確認 masteredKanaIds / wrongKanaIds / reviewStates 的行為。
-
 const NOW = new Date('2026-08-27T02:00:00.000Z').getTime();
 const MIN = 60 * 1000;
 const DAY = 24 * 60 * MIN;

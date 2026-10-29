@@ -12,10 +12,6 @@ import { getLearningEvents, logLearningEvent } from './learningEvents';
 import { LearningEvent } from '../types/learning';
 import { CONFUSABLE_GROUPS, ConfusableGroup } from '../data/confusableData';
 
-// 取代 scripts/test-listening-weakness.py、test-confusion-taxonomy.py（矩陣部分）、
-// test-c1-5.py（getTrainingOutcome）、test-c1-6.py（getConfusionMasterySummary）。
-// 原腳本在 Python 重寫一次演算法再驗證那份 Python；這裡直接跑 analytics.ts。
-
 const NOW = new Date(2026, 7, 28, 10, 0, 0).getTime();
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -362,7 +358,7 @@ describe('getTrainingOutcome', () => {
   });
 
   // 回歸測試：舊寫法取 after.slice(-5)，而事件是最新在前，
-  // 有歷史時會把最舊的 5 筆當成本次特訓（scripts/test-c1-5.py 的 session isolation）
+  // 有歷史時會把最舊的 5 筆當成本次特訓
   it('實際流程：先有歷史再特訓，session 應該是剛做完的 5 題', () => {
     // 歷史：5 題對 2 題（0.4）
     for (let i = 0; i < 5; i++) {

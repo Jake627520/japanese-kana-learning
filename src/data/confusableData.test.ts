@@ -3,13 +3,9 @@ import { CONFUSABLE_GROUPS } from './confusableData';
 import { ALL_LEARNABLE_KANA } from './kanaData';
 import { ALL_KANA_AUDIO } from './kanaAudioMap';
 
-// 取代 scripts/test-confusion-taxonomy.py、test-confusion-training.py、test-c1-2-manual-qa.py 的資料檢查。
-// 原腳本用 regex 掃 confusableData.ts 原始碼；這裡直接 import 真資料。
-
 const kanaById = new Map(ALL_LEARNABLE_KANA.map((k) => [k.id, k]));
 const audioIds = new Set(Object.values(ALL_KANA_AUDIO));
 
-// test-confusion-taxonomy.py:57-61 / :71 的分類
 const VISUAL_IDS = [
   'cf_nu_me', 'cf_ru_ro', 'cf_ne_re_wa', 'cf_sa_chi', 'cf_ki_sa',
   'cf_ha_ho', 'cf_ma_ki', 'cf_ta_na', 'cf_ko_ni', 'cf_ra_u',
@@ -58,7 +54,7 @@ describe('CONFUSABLE_GROUPS 資料完整性', () => {
   });
 });
 
-describe('CONFUSABLE_GROUPS modality 分類（test-confusion-taxonomy.py Test 1/3/4）', () => {
+describe('CONFUSABLE_GROUPS modality 分類', () => {
   it('每組都有合法的 modality（未設定則視為 visual）', () => {
     for (const g of CONFUSABLE_GROUPS) {
       expect(['visual', 'listening', 'both']).toContain(g.modality ?? 'visual');
@@ -74,7 +70,7 @@ describe('CONFUSABLE_GROUPS modality 分類（test-confusion-taxonomy.py Test 1/
 
   it('可做聽力特訓的組（listening / both），每個成員都有音檔', () => {
     const listeningGroups = CONFUSABLE_GROUPS.filter((g) => g.modality === 'listening' || g.modality === 'both');
-    expect(listeningGroups.length).toBeGreaterThanOrEqual(4); // test-c1-2-manual-qa.py:76
+    expect(listeningGroups.length).toBeGreaterThanOrEqual(4);
     for (const g of listeningGroups) {
       for (const m of g.members) expect(audioIds.has(m), `${g.id} 的 ${m} 沒有音檔`).toBe(true);
     }
