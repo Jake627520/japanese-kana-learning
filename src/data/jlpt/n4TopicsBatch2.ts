@@ -118,7 +118,7 @@ export const N4_TOPICS_BATCH2: JlptTopic[] = [
     description: {
       'zh-TW': 'なら 接名詞後表「如果是…的話」，最常見是針對對方剛提出的選項挑出成立的那一個回應。與だから（因果）、でも（轉折，多放句首）不同。',
       'zh-CN': 'なら 接名词后表「如果是…的话」，最常见是针对对方刚提出的选项挑出成立的那一个回应。与だから（因果）、でも（转折，多放句首）不同。',
-      'en': 'なら after a noun means “if it\'s …”. Most often it picks out the one option that works from what the other person just suggested. It differs from だから (cause and effect) and でも (contrast, usually at the start of a sentence).',
+      'en': 'なら after a noun means “if it\'s ….” Most often it picks out the one option that works from what the other person just suggested. It differs from だから (cause and effect) and でも (contrast, usually at the start of a sentence).',
       'ko': 'なら는 명사 뒤에 붙어 \'~라면\'을 나타내요. 가장 흔한 쓰임은 상대가 방금 말한 선택지 중에서 성립하는 것을 골라 답하는 경우예요. だから(인과), でも(역접, 주로 문장 앞)와 달라요.',
       'es': 'なら tras un sustantivo significa «si se trata de…»; lo más habitual es responder a las opciones que acaba de plantear el otro, eligiendo la que sí vale. Es distinto de だから (causa) y de でも (contraste, suele ir al inicio de la oración).',
     },

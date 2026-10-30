@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getOwnJlptQuestions, ALL_N3_TOPICS_UI } from './jlpt';
+import { getOwnJlptQuestions, ALL_N3_TOPICS_UI, ALL_N4_TOPICS_UI, ALL_N5_TOPICS_UI } from './jlpt';
 import { KATAKANA_DATA } from './kanaData';
 import { ALL_VOCABULARY } from './vocabulary';
 import { LANGUAGES, LocalizedText } from '../i18n';
@@ -127,5 +127,16 @@ describe('en/ko/es 解說母語審校', () => {
     for (const [id, text] of Object.entries(JLPT_EXPLANATIONS.en)) expect(text, id).not.toContain('"');
     const koreanOnlyBracket = /「[^「」ぁ-ヿ㐀-鿿]*[가-힣][^「」ぁ-ヿ㐀-鿿]*」/;
     for (const [id, text] of Object.entries(JLPT_EXPLANATIONS.ko)) expect(text, id).not.toMatch(koreanOnlyBracket);
+  });
+});
+
+describe('en 引號標點（美式：逗號句號在收尾引號內）', () => {
+  it('en 解說與主題文字沒有 ”, 或 ”. （含 ”</b>, 的情況）', () => {
+    const bad = /”(<\/b>)?[,.]/;
+    for (const [id, text] of Object.entries(JLPT_EXPLANATIONS.en)) expect(text, id).not.toMatch(bad);
+    for (const t of [...ALL_N5_TOPICS_UI, ...ALL_N4_TOPICS_UI, ...ALL_N3_TOPICS_UI]) {
+      expect(t.name.en, t.id).not.toMatch(bad);
+      expect(t.description.en, t.id).not.toMatch(bad);
+    }
   });
 });
