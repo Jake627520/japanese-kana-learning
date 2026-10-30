@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useReducer, useEffect, ReactNode, useMemo, useRef, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, ReactNode, useMemo, useState, useSyncExternalStore } from 'react';
 import { Language, TranslationSchema } from './types';
-import { languageSwitchReducer } from './languageSwitch';
+import { createLanguageSwitcher } from './languageSwitch';
 export type { Language, TranslationSchema };
 
 export * from './types';
@@ -103,7 +103,7 @@ interface I18nContextType {
   tAroundCount: (path: string, count: number) => [before: string, after: string];
 }
 
-const I18nContext = createContext<I18nContextType | null>(null);
+export const I18nContext = createContext<I18nContextType | null>(null);
 
 function resolvePath(obj: unknown, path: string): unknown {
   if (!obj || typeof obj !== 'object') return undefined;
@@ -166,15 +166,21 @@ export function translateAroundCount(messages: Messages, path: string, count: nu
   return [before, after];
 }
 
+function persistLanguage(language: Language) {
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+  } catch (e) {
+    console.warn('Failed to persist language preference to localStorage:', e);
+  }
+}
+
 /** `initial` must already be loaded so the first render never shows raw keys. */
 export function I18nProvider({ initial, children }: { initial: Messages; children: ReactNode }) {
-  const [{ messages, pending, failed }, dispatch] = useReducer(languageSwitchReducer, {
-    messages: initial,
-    pending: null,
-    failed: null,
-  });
-  const lastRequest = useRef(0);
+  const [switcher] = useState(() => createLanguageSwitcher(initial, { load: loadMessages, persist: persistLanguage }));
+  const { messages, pending, failed } = useSyncExternalStore(switcher.subscribe, switcher.getState, switcher.getState);
   const { language } = messages;
+
+  useEffect(() => switcher.dispose, [switcher]);
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -182,43 +188,17 @@ export function I18nProvider({ initial, children }: { initial: Messages; childre
     }
   }, [language]);
 
-  const setLanguage = useCallback(
-    (lang: Language) => {
-      const id = ++lastRequest.current;
-      dispatch({ type: 'request', id, language: lang });
-      if (lang === language) return;
-      loadMessages(lang).then(
-        (next) => {
-          dispatch({ type: 'loaded', id, messages: next });
-          if (lastRequest.current !== id) return;
-          try {
-            localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-          } catch (e) {
-            console.warn('Failed to persist language preference to localStorage:', e);
-          }
-        },
-        (e) => {
-          console.warn(`[i18n] Failed to load language "${lang}":`, e);
-          dispatch({ type: 'failed', id });
-        },
-      );
-    },
-    [language],
-  );
-
-  const dismissLanguageError = useCallback(() => dispatch({ type: 'dismiss' }), []);
-
   const value = useMemo<I18nContextType>(
     () => ({
       language,
-      setLanguage,
+      setLanguage: switcher.request,
       pendingLanguage: pending?.language ?? null,
       failedLanguage: failed,
-      dismissLanguageError,
+      dismissLanguageError: switcher.dismiss,
       t: (path, params) => translate(messages, path, params),
       tAroundCount: (path, count) => translateAroundCount(messages, path, count),
     }),
-    [messages, language, setLanguage, pending, failed, dismissLanguageError],
+    [messages, language, switcher, pending, failed],
   );
 
   return React.createElement(I18nContext.Provider, { value }, children);
