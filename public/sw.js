@@ -30,9 +30,8 @@ const VERSION = 'v2';
 const CACHE = `kana-${VERSION}`;
 const ENTRY = '/japanese-kana-learning/';
 
-// 內容不可變、可以放心 cache-first 的路徑
-const IMMUTABLE = [`${ENTRY}assets/`, `${ENTRY}audio/`];
-const isImmutable = (url) => IMMUTABLE.some((p) => url.pathname.startsWith(p));
+// 檔名帶 hash、內容不可變、可以放心 cache-first 的路徑（音檔另走 serveAudio）
+const isImmutable = (url) => url.pathname.startsWith(`${ENTRY}assets/`);
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
@@ -88,17 +87,35 @@ async function cacheMissing(urls) {
 // 這裡改成：不帶 Range 抓整個檔（200）存起來，再依請求的 Range 從完整檔切出
 // 那一段回 206。Safari 要求媒體的 Range 請求一定拿到 206，不能直接回 200。
 async function serveAudio(req) {
-  const cache = await caches.open(CACHE);
-  let full = await cache.match(req.url, { ignoreVary: true });
-  if (!full) {
-    const res = await fetch(req.url, { cache: 'no-store' }).catch(() => null);
-    // 抓不到完整檔（離線且沒快取、或非 200）：退回原本的請求，交給瀏覽器處理
-    if (!res || res.status !== 200 || res.type !== 'basic') return res ?? fetch(req);
-    await cache.put(req.url, res.clone());
-    full = res;
-  }
+  const full = await loadFullAudio(req.url);
+  // 抓不到完整檔（離線且沒快取、或非 200）：退回原本的請求，交給瀏覽器處理
+  if (!full) return fetch(req);
   const range = req.headers.get('range');
   return range ? sliceRange(full, range) : full;
+}
+
+// 瀏覽器常先送 bytes=0-1 探測、緊接著送 bytes=0-；同一個檔還在下載時共用同一個請求。
+const audioInFlight = new Map();
+
+async function loadFullAudio(url) {
+  const cache = await caches.open(CACHE);
+  const hit = await cache.match(url, { ignoreVary: true });
+  if (hit) return hit;
+  let pending = audioInFlight.get(url);
+  if (!pending) {
+    pending = fetch(url, { cache: 'no-store' })
+      .then(async (res) => {
+        if (res.status !== 200 || res.type !== 'basic') return null;
+        // 存不進去（容量滿、無痕模式）也照樣播，只是下次還要再抓
+        await cache.put(url, res.clone()).catch(() => {});
+        return res;
+      })
+      .catch(() => null)
+      .finally(() => audioInFlight.delete(url));
+    audioInFlight.set(url, pending);
+  }
+  const res = await pending;
+  return res && res.clone();
 }
 
 async function sliceRange(full, header) {
@@ -158,7 +175,7 @@ self.addEventListener('fetch', (e) => {
   }
 
   if (isImmutable(url)) {
-    // cache-first：hash 檔名的資產與音檔。
+    // cache-first：hash 檔名的資產。
     // ignoreVary：補存的那份是 SW 自己抓的，沒有頁面請求的 Origin 標頭；
     // 伺服器若回 Vary: Origin（vite preview 會），照 Vary 比對就永遠命中不了。
     // 同源、檔名帶 hash 的內容不會因這些標頭而不同，忽略是安全的。
