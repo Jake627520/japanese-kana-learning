@@ -8,7 +8,7 @@
 // 快取策略取決於「這個 URL 的內容會不會變」，不是「它是不是靜態檔」：
 //
 //   /assets/*        檔名帶 build hash，內容永遠不會變 → cache-first
-//   /audio/**        內容定死（重新產生會換檔名或整批換版）→ cache-first
+//   /audio/**        內容定死（重新產生會換檔名或整批換版）→ cache-first，Range 由快取切片（見 serveAudio）
 //   HTML             每次改版都變 → network-first
 //   manifest / icon  路徑固定但內容會改 → stale-while-revalidate
 //                    （先給快取讓畫面不卡，同時背景更新，下次就是新的）
@@ -82,6 +82,52 @@ async function cacheMissing(urls) {
   );
 }
 
+// ── 音檔：快取完整檔案，Range 請求由快取切片回 206 ──────────────
+// <audio> 播放時送 Range 請求，伺服器回 206（只有一段）；Cache API 不能存 206，
+// 所以照一般 cache-first 的寫法音檔永遠存不進去，離線就沒有聲音。
+// 這裡改成：不帶 Range 抓整個檔（200）存起來，再依請求的 Range 從完整檔切出
+// 那一段回 206。Safari 要求媒體的 Range 請求一定拿到 206，不能直接回 200。
+async function serveAudio(req) {
+  const cache = await caches.open(CACHE);
+  let full = await cache.match(req.url, { ignoreVary: true });
+  if (!full) {
+    const res = await fetch(req.url, { cache: 'no-store' }).catch(() => null);
+    // 抓不到完整檔（離線且沒快取、或非 200）：退回原本的請求，交給瀏覽器處理
+    if (!res || res.status !== 200 || res.type !== 'basic') return res ?? fetch(req);
+    await cache.put(req.url, res.clone());
+    full = res;
+  }
+  const range = req.headers.get('range');
+  return range ? sliceRange(full, range) : full;
+}
+
+async function sliceRange(full, header) {
+  const buf = await full.arrayBuffer();
+  const size = buf.byteLength;
+  const m = /^bytes=(\d*)-(\d*)$/.exec(header.trim());
+  let start, end;
+  if (m && m[1] !== '') {
+    start = Number(m[1]);
+    end = m[2] !== '' ? Math.min(Number(m[2]), size - 1) : size - 1;
+  } else if (m && m[2] !== '') {
+    // bytes=-N：最後 N 個位元組
+    start = Math.max(size - Number(m[2]), 0);
+    end = size - 1;
+  }
+  if (start === undefined || start > end || start >= size) {
+    return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${size}` } });
+  }
+  return new Response(buf.slice(start, end + 1), {
+    status: 206,
+    headers: {
+      'Content-Type': full.headers.get('content-type') || 'audio/mpeg',
+      'Content-Length': String(end - start + 1),
+      'Content-Range': `bytes ${start}-${end}/${size}`,
+      'Accept-Ranges': 'bytes',
+    },
+  });
+}
+
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
@@ -103,6 +149,11 @@ self.addEventListener('fetch', (e) => {
         })
         .catch(() => caches.match(ENTRY).then((hit) => hit || caches.match(req))),
     );
+    return;
+  }
+
+  if (url.pathname.startsWith(`${ENTRY}audio/`)) {
+    e.respondWith(serveAudio(req));
     return;
   }
 

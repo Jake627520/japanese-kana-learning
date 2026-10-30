@@ -83,7 +83,7 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 
 ### 9. Progressive Web App (PWA): Installable & Offline-capable
 
-Addable to mobile and desktop home screens. The service worker precaches only the entry page and caches everything else on first use. HTML is network-first and bypasses the HTTP cache, so a new deploy shows up on the next load. Hashed build assets (`/assets/`) and audio (`/audio/`) are cache-first. The manifest and icons are stale-while-revalidate. Offline, the app works with the pages and assets this browser has already loaded. Audio clips may still need a connection: the browser fetches them with Range requests, and the service worker does not store those partial responses.
+Addable to mobile and desktop home screens. The service worker precaches only the entry page and caches everything else on first use. HTML is network-first and bypasses the HTTP cache, so a new deploy shows up on the next load. Hashed build assets (`/assets/`) and audio (`/audio/`) are cache-first. The manifest and icons are stale-while-revalidate. Offline, the app works with the pages and assets this browser has already loaded. Audio works offline once a clip has been played: the browser fetches audio with Range requests, so the service worker stores the whole file and answers each Range request from it. Clips never played before still need a connection.
 
 ### 10. No Gated Content / Artificial Barriers
 

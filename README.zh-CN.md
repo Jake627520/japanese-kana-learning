@@ -82,7 +82,7 @@
 
 ### 9. PWA 规范：支持安装与离线使用
 
-支持添加至手机桌面。Service worker 安装时只预缓存入口页，其余资源用到时才缓存。HTML 采用 network-first 并绕过 HTTP 缓存（部署后下次加载即为新版）；带 hash 的构建产物（`/assets/`）与音频（`/audio/`）采用 cache-first；manifest 与图标采用 stale-while-revalidate。离线时可使用该浏览器已加载过的页面与资源。音频离线时可能仍需联网：浏览器以 Range 请求获取音频，service worker 不会保存这种部分响应。
+支持添加至手机桌面。Service worker 安装时只预缓存入口页，其余资源用到时才缓存。HTML 采用 network-first 并绕过 HTTP 缓存（部署后下次加载即为新版）；带 hash 的构建产物（`/assets/`）与音频（`/audio/`）采用 cache-first；manifest 与图标采用 stale-while-revalidate。离线时可使用该浏览器已加载过的页面与资源。播放过的音频离线也能播放：浏览器以 Range 请求获取音频，service worker 会另外保存完整文件，再从中切出请求的那一段响应。从未播放过的音频仍需联网。
 
 ### 10. 无强制解锁门槛
 

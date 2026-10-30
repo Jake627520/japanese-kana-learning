@@ -89,7 +89,7 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 
 #### 9. Progressive Web App (PWA): Installable & Offline-capable
 
-Addable to mobile and desktop home screens. The service worker precaches only the entry page and caches everything else on first use. HTML is network-first and bypasses the HTTP cache, so a new deploy shows up on the next load. Hashed build assets (`/assets/`) and audio (`/audio/`) are cache-first. The manifest and icons are stale-while-revalidate. Offline, the app works with the pages and assets this browser has already loaded. Audio clips may still need a connection: the browser fetches them with Range requests, and the service worker does not store those partial responses.
+Addable to mobile and desktop home screens. The service worker precaches only the entry page and caches everything else on first use. HTML is network-first and bypasses the HTTP cache, so a new deploy shows up on the next load. Hashed build assets (`/assets/`) and audio (`/audio/`) are cache-first. The manifest and icons are stale-while-revalidate. Offline, the app works with the pages and assets this browser has already loaded. Audio works offline once a clip has been played: the browser fetches audio with Range requests, so the service worker stores the whole file and answers each Range request from it. Clips never played before still need a connection.
 
 #### 10. No Gated Content / Artificial Barriers
 
@@ -209,7 +209,7 @@ npm run preview
 
 #### 9. PWA：可安裝、可離線
 
-可加入手機主畫面。Service worker 安裝時只預快取入口頁，其餘資源用到才存。HTML 走 network-first 並繞過 HTTP 快取（部署後下次載入即是新版）；帶 hash 的建置資產（`/assets/`）與音檔（`/audio/`）走 cache-first；manifest 與圖示走 stale-while-revalidate。離線時可使用這個瀏覽器已載入過的頁面與資產。音檔離線時可能仍需連網：瀏覽器以 Range 請求抓音檔，service worker 不會存下這種部分回應。
+可加入手機主畫面。Service worker 安裝時只預快取入口頁，其餘資源用到才存。HTML 走 network-first 並繞過 HTTP 快取（部署後下次載入即是新版）；帶 hash 的建置資產（`/assets/`）與音檔（`/audio/`）走 cache-first；manifest 與圖示走 stale-while-revalidate。離線時可使用這個瀏覽器已載入過的頁面與資產。播放過的音檔離線也能播：瀏覽器以 Range 請求抓音檔，service worker 會另外存下完整檔案，再從中切出請求的那一段回應。從沒播過的音檔仍需連網。
 
 #### 10. 不設學習門檻
 
@@ -315,7 +315,7 @@ npm run preview
 
 #### 9. PWA 规范：支持安装与离线使用
 
-支持添加至手机桌面。Service worker 安装时只预缓存入口页，其余资源用到时才缓存。HTML 采用 network-first 并绕过 HTTP 缓存（部署后下次加载即为新版）；带 hash 的构建产物（`/assets/`）与音频（`/audio/`）采用 cache-first；manifest 与图标采用 stale-while-revalidate。离线时可使用该浏览器已加载过的页面与资源。音频离线时可能仍需联网：浏览器以 Range 请求获取音频，service worker 不会保存这种部分响应。
+支持添加至手机桌面。Service worker 安装时只预缓存入口页，其余资源用到时才缓存。HTML 采用 network-first 并绕过 HTTP 缓存（部署后下次加载即为新版）；带 hash 的构建产物（`/assets/`）与音频（`/audio/`）采用 cache-first；manifest 与图标采用 stale-while-revalidate。离线时可使用该浏览器已加载过的页面与资源。播放过的音频离线也能播放：浏览器以 Range 请求获取音频，service worker 会另外保存完整文件，再从中切出请求的那一段响应。从未播放过的音频仍需联网。
 
 #### 10. 无强制解锁门槛
 
