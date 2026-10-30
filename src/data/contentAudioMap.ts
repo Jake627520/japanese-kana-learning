@@ -259,6 +259,7 @@ export const CONTENT_AUDIO: Record<string, string> = {
   "ニョキニョキ": '58d1481318f6',
   "ヌードル": 'cad29b29177b',
   "ヌードルをたべます。": 'f9865e43cb1e',
+  "ぬの": '81ad7c1e4c78',
   "ネクタイ": '8d4ce1616a36',
   "ネクタイをしめます。": '1d0de95c6551',
   "ねこ": 'd1ca85a1f5c8',

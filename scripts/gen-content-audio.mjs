@@ -36,6 +36,10 @@ function collect() {
   // 特殊音頁的例字（寫在元件裡，不在 data 底下）
   const sp = readFileSync(join(ROOT, 'src', 'components', 'SpecialSoundsView.tsx'), 'utf8');
   for (const m of sp.matchAll(/word:\s*'([^']+)'/g)) set.add(m[1]);
+  // 詞彙表的讀音：多數和例詞重疊，但沒有出現在例詞裡的（例如 ぬの）只會在這裡。
+  // 單一假名（を）由假名音檔負責，不另外產生。
+  const va = readFileSync(join(ROOT, 'src', 'data', 'vocabulary', 'vocabularyAudio.ts'), 'utf8');
+  for (const m of va.matchAll(/^\s*vocab_\w+:\s*'([^']+)'/gm)) if ([...m[1]].length > 1) set.add(m[1]);
   return [...set];
 }
 

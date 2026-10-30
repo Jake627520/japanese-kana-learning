@@ -4,6 +4,8 @@ import { join } from 'node:path';
 import { ALL_LEARNABLE_KANA } from './kanaData';
 import { ALL_VOCABULARY } from './vocabulary';
 import { CONTENT_AUDIO } from './contentAudioMap';
+import { ALL_KANA_AUDIO } from './kanaAudioMap';
+import { VOCABULARY_AUDIO_MAPPING } from './vocabulary/vocabularyAudio';
 import { CONFUSABLE_GROUPS } from './confusableData';
 import { HIRAGANA_STROKES } from './strokeData';
 import { LANGUAGES } from '../i18n';
@@ -128,5 +130,13 @@ describe('筆順勘誤：か、き、な、と', () => {
 
     const [, to2] = en('h_to');
     expect(to2).toMatch(/^② Start at the upper right, go down to the left, then sweep right along the bottom/);
+  });
+});
+
+describe('詞彙音檔', () => {
+  it('每個詞彙都有預錄音檔，不會退回瀏覽器語音', () => {
+    const missing = ALL_VOCABULARY.map((v) => VOCABULARY_AUDIO_MAPPING[v.audioKey] || v.word)
+      .filter((text) => !ALL_KANA_AUDIO[text] && !CONTENT_AUDIO[text]);
+    expect(missing).toEqual([]);
   });
 });
