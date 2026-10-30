@@ -342,6 +342,7 @@ export const zhTW: TranslationSchema = {
     ruleHeader: '規則',
     ruleAdd: '加「{kana}」',
     ruleUsuallyAdd: '通常加「{kana}」',
+    katakanaChouonTitle: '片假名長音「ー」',
   },
   jlpt: {
     title: 'JLPT 文法練習庫',

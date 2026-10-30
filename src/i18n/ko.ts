@@ -342,6 +342,7 @@ export const ko: TranslationSchema = {
     ruleHeader: '규칙',
     ruleAdd: '{kana} 붙이기',
     ruleUsuallyAdd: '보통 {kana} 붙이기',
+    katakanaChouonTitle: '가타카나 장음 "ー"',
   },
   jlpt: {
     title: 'JLPT 문법 문제집',

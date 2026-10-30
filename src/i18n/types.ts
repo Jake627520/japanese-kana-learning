@@ -349,6 +349,7 @@ export interface TranslationSchema {
     ruleHeader: string;
     ruleAdd: string;
     ruleUsuallyAdd: string;
+    katakanaChouonTitle: string;
   };
   jlpt: {
     title: string;

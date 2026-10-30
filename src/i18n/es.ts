@@ -346,6 +346,7 @@ export const es: TranslationSchema = {
     ruleHeader: 'Regla',
     ruleAdd: 'Se añade {kana}',
     ruleUsuallyAdd: 'Normalmente se añade {kana}',
+    katakanaChouonTitle: 'Vocales largas en katakana con "ー"',
   },
   jlpt: {
     title: 'Banco de gramática JLPT',

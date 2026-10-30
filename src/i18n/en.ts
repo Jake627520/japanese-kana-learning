@@ -346,6 +346,7 @@ export const en: TranslationSchema = {
     ruleHeader: 'Rule',
     ruleAdd: 'Add {kana}',
     ruleUsuallyAdd: 'Usually add {kana}',
+    katakanaChouonTitle: 'Katakana long vowels with "ー"',
   },
   jlpt: {
     title: 'JLPT Grammar Bank',
