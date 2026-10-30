@@ -138,7 +138,7 @@ npm run preview
 
 ```bash
 node scripts/gen-kana-audio.mjs     # 208 个假名音频
-node scripts/gen-content-audio.mjs  # 约 410 个例词、例句与特殊音音频
+node scripts/gen-content-audio.mjs  # 约 417 个例词、例句与特殊音音频
 node scripts/gen-audio.mjs          # 18 句跟读音频（正常语速 + 慢速版，共 36 个）
 ```
 

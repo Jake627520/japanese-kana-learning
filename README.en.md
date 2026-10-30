@@ -139,7 +139,7 @@ To re-synthesize audio assets, install and start the [VOICEVOX](https://voicevox
 
 ```bash
 node scripts/gen-kana-audio.mjs     # 208 kana clips
-node scripts/gen-content-audio.mjs  # ~410 word, sentence, and special-sound clips
+node scripts/gen-content-audio.mjs  # ~417 word, sentence, and special-sound clips
 node scripts/gen-audio.mjs          # 18 shadowing sentences, regular and time-stretched slow (36 clips)
 ```
 
