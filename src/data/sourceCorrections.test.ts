@@ -116,4 +116,16 @@ describe('en/ko/es 解說母語審校', () => {
     expect(JLPT_EXPLANATIONS.es['N5-ORIG-B2-V-14']).toContain('(en lugar de «tomarse»)');
     expect(JLPT_EXPLANATIONS.es['n3-own-b3-01']).not.toContain('chino antiguo');
   });
+
+  it('引號與標籤：es 用 «» 與 Respuesta correcta:，en 不用直引號，ko 的韓文不放進 「」', () => {
+    for (const [id, text] of Object.entries(JLPT_EXPLANATIONS.es)) {
+      expect(text, id).not.toContain('Correcta:');
+      expect(text, id).not.toMatch(/[“”]/);
+    }
+    expect(JLPT_EXPLANATIONS.es['n4-own-b1-01']).toMatch(/^Respuesta correcta:/);
+    expect(JLPT_EXPLANATIONS.es['n3-own-b1-01']).toMatch(/^Respuesta correcta:/);
+    for (const [id, text] of Object.entries(JLPT_EXPLANATIONS.en)) expect(text, id).not.toContain('"');
+    const koreanOnlyBracket = /「[^「」ぁ-ヿ㐀-鿿]*[가-힣][^「」ぁ-ヿ㐀-鿿]*」/;
+    for (const [id, text] of Object.entries(JLPT_EXPLANATIONS.ko)) expect(text, id).not.toMatch(koreanOnlyBracket);
+  });
 });
