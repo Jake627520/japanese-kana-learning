@@ -56,12 +56,12 @@ export function JlptWeakPointCard() {
 
   if (totalAnswered === 0) {
     return (
-      <div className="bg-[#F4EEDE] p-5 sm:p-6 rounded-3xl border border-[#D9CDB2] shadow-xs">
+      <div className="bg-[color:var(--paper-bg)] p-5 sm:p-6 rounded-3xl border border-[color:var(--paper-85)] shadow-xs">
         <div className="flex items-center gap-2 mb-1">
-          <Target className="w-4 h-4 text-[#5C6B3D]" />
-          <h3 className="text-sm font-extrabold text-[#221F18]">{t('jlpt.weakPoints')}</h3>
+          <Target className="w-4 h-4 text-[color:var(--moss-50)]" />
+          <h3 className="text-sm font-extrabold text-[color:var(--ink-24)]">{t('jlpt.weakPoints')}</h3>
         </div>
-        <p className="text-xs text-[#6B6252] leading-relaxed">
+        <p className="text-xs text-[color:var(--ink-50)] leading-relaxed">
           {t('jlpt.subtitle')}
         </p>
       </div>
@@ -69,13 +69,13 @@ export function JlptWeakPointCard() {
   }
 
   return (
-    <div className="bg-[#F4EEDE] p-5 sm:p-6 rounded-3xl border border-[#D9CDB2] elev-2 space-y-4">
+    <div className="bg-[color:var(--paper-bg)] p-5 sm:p-6 rounded-3xl border border-[color:var(--paper-85)] elev-2 space-y-4">
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-2">
-          <Target className="w-4 h-4 text-[#5C6B3D]" />
-          <h3 className="text-sm font-extrabold text-[#221F18]">{t('jlpt.weakPoints')}</h3>
+          <Target className="w-4 h-4 text-[color:var(--moss-50)]" />
+          <h3 className="text-sm font-extrabold text-[color:var(--ink-24)]">{t('jlpt.weakPoints')}</h3>
         </div>
-        <div className="flex items-center gap-1.5 text-xs text-[#6B6252]">
+        <div className="flex items-center gap-1.5 text-xs text-[color:var(--ink-50)]">
           <TrendingUp className="w-3.5 h-3.5" />
           {t('quiz.accuracy')}: {accuracy}% ({totalAnswered})
         </div>
@@ -90,23 +90,23 @@ export function JlptWeakPointCard() {
         />
       ) : (
         <div className="space-y-3">
-          <p className="text-xs text-[#6B6252]">
+          <p className="text-xs text-[color:var(--ink-50)]">
             {t('home.weakShadowing.desc')}
           </p>
           {weakPoints.map((w) => (
             <div key={w.topicId} className="space-y-1">
               <div className="flex items-center justify-between gap-2 text-xs">
-                <span className="font-bold text-[#221F18] flex items-center gap-1.5">
-                  <AlertTriangle className="w-3.5 h-3.5 text-[#996A2C] shrink-0" />
+                <span className="font-bold text-[color:var(--ink-24)] flex items-center gap-1.5">
+                  <AlertTriangle className="w-3.5 h-3.5 text-[color:var(--kincha-56)] shrink-0" />
                   {w.name}
                 </span>
-                <span className="text-[#6B6252] shrink-0">
+                <span className="text-[color:var(--ink-50)] shrink-0">
                   {w.wrong}/{w.total} ({Math.round(w.rate * 100)}%)
                 </span>
               </div>
-              <div className="h-1.5 w-full bg-[#ECE4D0] rounded-full overflow-hidden">
+              <div className="h-1.5 w-full bg-[color:var(--paper-92)] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#996A2C] rounded-full"
+                  className="h-full bg-[color:var(--kincha-56)] rounded-full"
                   style={{ width: `${Math.round(w.rate * 100)}%` }}
                 />
               </div>

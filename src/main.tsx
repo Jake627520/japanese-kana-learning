@@ -4,6 +4,10 @@ import App from './App.tsx';
 import { LoadFailedScreen } from './components/LoadFailedScreen';
 import { getInitialLanguage, loadBootMessages } from './i18n';
 import './index.css';
+import { applyTheme, getInitialTheme } from './theme';
+
+// 在第一個畫面前套上主題，避免先閃一下原版配色
+applyTheme(getInitialTheme());
 
 // 先載入介面語言的字典再畫第一個畫面，避免閃出原始 key
 loadBootMessages(getInitialLanguage()).then((messages) => {

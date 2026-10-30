@@ -488,7 +488,7 @@ export function QuizView({
   }, [questions, currentIndex, currentQ, isAnswered, isCompleted, quizMode, isConfusionMode, customPool, pool]);
 
   if (!currentQ && !isCompleted) {
-    return <div className="p-8 text-center text-xs text-[#6B6252]">{t('common.loading')}</div>;
+    return <div className="p-8 text-center text-xs text-[color:var(--ink-50)]">{t('common.loading')}</div>;
   }
 
   if (isCompleted) {
@@ -507,26 +507,26 @@ export function QuizView({
     };
 
     return (
-      <div className="max-w-md mx-auto bg-[#F4EEDE] p-6 sm:p-8 rounded-3xl border border-[#D9CDB2] shadow-xs rise-in">
+      <div className="max-w-md mx-auto bg-[color:var(--paper-bg)] p-6 sm:p-8 rounded-3xl border border-[color:var(--paper-85)] shadow-xs rise-in">
         <div className="space-y-6">
           <div className="text-center space-y-2">
-            <div className="w-14 h-14 rounded-2xl bg-[#E6EAD5] text-[#5C6B3D] mx-auto flex items-center justify-center">
+            <div className="w-14 h-14 rounded-2xl bg-[color:var(--moss-93)] text-[color:var(--moss-50)] mx-auto flex items-center justify-center">
               <Trophy className="w-7 h-7" />
             </div>
-            <h2 className="text-xl font-display font-bold text-[#221F18]">{t('quiz.resultTitle')}</h2>
-            <p className="text-xs text-[#6B6252]">
+            <h2 className="text-xl font-display font-bold text-[color:var(--ink-24)]">{t('quiz.resultTitle')}</h2>
+            <p className="text-xs text-[color:var(--ink-50)]">
               {allCorrect ? t('quiz.congratsPerfect') : pct >= 70 ? t('quiz.greatJob') : t('quiz.keepPracticing')}
             </p>
           </div>
 
-          <div className="p-5 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] text-center space-y-3">
-            <div className="text-4xl font-extrabold text-[#5C6B3D] leading-none">{pct}%</div>
-            <div className="text-xs font-bold text-[#6B6252]">
+          <div className="p-5 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-85)] text-center space-y-3">
+            <div className="text-4xl font-extrabold text-[color:var(--moss-50)] leading-none">{pct}%</div>
+            <div className="text-xs font-bold text-[color:var(--ink-50)]">
               {t('quiz.accuracy')}: {correctCount} / {total}
             </div>
-            <div className="h-1.5 rounded-full bg-[#D9CDB2] overflow-hidden">
+            <div className="h-1.5 rounded-full bg-[color:var(--paper-85)] overflow-hidden">
               <div
-                className="h-full rounded-full bg-[#5C6B3D] transition-[width] duration-700 ease-out"
+                className="h-full rounded-full bg-[color:var(--moss-50)] transition-[width] duration-700 ease-out"
                 style={{ width: `${pct}%` }}
               />
             </div>
@@ -534,7 +534,7 @@ export function QuizView({
 
           {results.length > 0 && (
             <div className="space-y-2">
-              <div className="text-xs font-bold text-[#6B6252]">{t('quiz.explanation')}</div>
+              <div className="text-xs font-bold text-[color:var(--ink-50)]">{t('quiz.explanation')}</div>
               <div className="flex flex-wrap gap-2">
                 {results.map((r, i) => (
                   <button
@@ -544,8 +544,8 @@ export function QuizView({
                     title={`${r.kana.kana} (${r.kana.romaji})`}
                     className={`w-11 h-11 rounded-xl border flex flex-col items-center justify-center leading-none btn-lift cursor-pointer ${
                       r.isCorrect
-                        ? 'border-[#5C6B3D]/40 bg-[#EEF0E3] text-[#221F18]'
-                        : 'border-[#CAA096] bg-[#EFDBD5] text-[#A6443A]'
+                        ? 'border-[color:var(--moss-50)]/40 bg-[color:var(--moss-95)] text-[color:var(--ink-24)]'
+                        : 'border-[color:var(--shu-74)] bg-[color:var(--shu-91)] text-[color:var(--shu-52a)]'
                     }`}
                   >
                     <span className="text-base font-extrabold">{r.kana.kana}</span>
@@ -559,15 +559,15 @@ export function QuizView({
           )}
 
           {!allCorrect && (
-            <div className="p-4 rounded-2xl bg-[#EFDBD5] border border-[#D8B8B0] space-y-3">
-              <div className="text-xs font-extrabold text-[#8E3A31]">
+            <div className="p-4 rounded-2xl bg-[color:var(--shu-91)] border border-[color:var(--shu-81)] space-y-3">
+              <div className="text-xs font-extrabold text-[color:var(--shu-46)]">
                 {t('quiz.wrongListTitle')} · {weakKana.length}
               </div>
               <div className="flex flex-wrap gap-2">
                 {weakKana.map((k) => (
                   <span
                     key={k.id}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#F4EEDE] border border-[#D8B8B0] text-xs font-extrabold text-[#A6443A]"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[color:var(--paper-bg)] border border-[color:var(--shu-81)] text-xs font-extrabold text-[color:var(--shu-52a)]"
                   >
                     <span>{k.kana}</span>
                     <span className="font-bold text-red-400 uppercase text-[11px]">{k.romaji}</span>
@@ -577,7 +577,7 @@ export function QuizView({
                         onClick={() => onPracticeWriting(k)}
                         aria-label={`${t('quiz.practiceWriting')}: ${k.kana}`}
                         title={`${t('quiz.practiceWriting')}: ${k.kana}`}
-                        className="p-0.5 text-red-400 hover:text-[#8E3A31] hover:bg-[#EFDBD5] rounded transition-colors cursor-pointer ml-0.5"
+                        className="p-0.5 text-red-400 hover:text-[color:var(--shu-46)] hover:bg-[color:var(--shu-91)] rounded transition-colors cursor-pointer ml-0.5"
                       >
                         <PenLine className="w-3 h-3" />
                       </button>
@@ -598,7 +598,7 @@ export function QuizView({
               <button
                 type="button"
                 onClick={onNavigateToReview}
-                className="w-full py-3 bg-[#F4EEDE] border border-[#A8B487] text-[#5C6B3D] font-extrabold text-xs rounded-xl hover:bg-[#E6EAD5]/60 btn-lift cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[color:var(--paper-bg)] border border-[color:var(--moss-75)] text-[color:var(--moss-50)] font-extrabold text-xs rounded-xl hover:bg-[color:var(--moss-93)]/60 btn-lift cursor-pointer flex items-center justify-center gap-2"
               >
                 <BookOpen className="w-4 h-4" />
                 {t('quiz.reviewWeakInReview')}
@@ -608,7 +608,7 @@ export function QuizView({
               <button
                 type="button"
                 onClick={handleRetryWeak}
-                className="w-full py-3 bg-[#5C6B3D] text-[#F1EFE0] font-extrabold text-xs rounded-xl hover:bg-[#47552F] btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] font-extrabold text-xs rounded-xl hover:bg-[color:var(--moss-43)] btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
               >
                 <RefreshCw className="w-4 h-4" />
                 {t('quiz.practiceWrongOnly')} ({weakKana.length})
@@ -620,7 +620,7 @@ export function QuizView({
                   setRetryPool(null);
                   generateQuiz(isConfusionMode ? customPool : pool, isConfusionMode ? 'listening' : quizMode);
                 }}
-                className="flex-1 py-3 bg-[#F4EEDE] border border-[#D9CDB2] text-[#221F18] font-bold text-xs rounded-xl hover:bg-[#F4EEDE] hover:border-[#5C6B3D] btn-lift cursor-pointer flex items-center justify-center gap-2"
+                className="flex-1 py-3 bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] text-[color:var(--ink-24)] font-bold text-xs rounded-xl hover:bg-[color:var(--paper-bg)] hover:border-[color:var(--moss-50)] btn-lift cursor-pointer flex items-center justify-center gap-2"
               >
                 <RefreshCw className="w-4 h-4" />
                 {retryPool ? t('common.reset') : t('quiz.restartQuiz')}
@@ -629,8 +629,8 @@ export function QuizView({
                 onClick={onFinish}
                 className={`flex-1 py-3 font-bold text-xs rounded-xl btn-lift cursor-pointer ${
                   allCorrect
-                    ? 'bg-[#5C6B3D] text-[#F1EFE0] hover:bg-[#47552F] elev-green'
-                    : 'bg-[#F4EEDE] border border-[#D9CDB2] text-[#221F18] hover:bg-[#F4EEDE]'
+                    ? 'bg-[color:var(--moss-50)] text-[color:var(--paper-95)] hover:bg-[color:var(--moss-43)] elev-green'
+                    : 'bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] text-[color:var(--ink-24)] hover:bg-[color:var(--paper-bg)]'
                 }`}
               >
                 {t('quiz.backHome')}
@@ -652,18 +652,18 @@ export function QuizView({
   return (
     <div className="max-w-xl mx-auto space-y-6">
       {!isReviewMode && !isConfusionMode && (
-        <div className="bg-[#F4EEDE] p-4 rounded-2xl border border-[#D9CDB2] shadow-xs space-y-3">
+        <div className="bg-[color:var(--paper-bg)] p-4 rounded-2xl border border-[color:var(--paper-85)] shadow-xs space-y-3">
           {/* Mode Switcher: Visual vs Listening */}
-          <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-[#ECE4D0]">
-            <div className="text-xs font-bold text-[#6B6252]">{t('quiz.modeSelect')}</div>
+          <div className="flex items-center justify-between gap-2 flex-wrap pb-2 border-b border-[color:var(--paper-92)]">
+            <div className="text-xs font-bold text-[color:var(--ink-50)]">{t('quiz.modeSelect')}</div>
             <div className="flex gap-1.5">
               <button
                 type="button"
                 onClick={() => handleSwitchQuizMode('visual')}
                 className={`px-3 py-1.5 text-xs font-extrabold rounded-xl transition-all cursor-pointer ${
                   quizMode === 'visual'
-                    ? 'bg-[#5C6B3D] text-[#F1EFE0] shadow-xs'
-                    : 'bg-[#ECE4D0] text-[#6B6252] hover:text-[#221F18]'
+                    ? 'bg-[color:var(--moss-50)] text-[color:var(--paper-95)] shadow-xs'
+                    : 'bg-[color:var(--paper-92)] text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)]'
                 }`}
               >
                 {t('quiz.visualMode')}
@@ -673,8 +673,8 @@ export function QuizView({
                 onClick={() => handleSwitchQuizMode('listening')}
                 className={`px-3 py-1.5 text-xs font-extrabold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${
                   quizMode === 'listening'
-                    ? 'bg-[#5C6B3D] text-[#F1EFE0] shadow-xs'
-                    : 'bg-[#ECE4D0] text-[#6B6252] hover:text-[#221F18]'
+                    ? 'bg-[color:var(--moss-50)] text-[color:var(--paper-95)] shadow-xs'
+                    : 'bg-[color:var(--paper-92)] text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)]'
                 }`}
               >
                 <Headphones className="w-3.5 h-3.5" />
@@ -700,8 +700,8 @@ export function QuizView({
                 onClick={() => setQuizScope(item.id)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                   quizScope === item.id
-                    ? 'bg-emerald-100 text-[#5C6B3D] font-extrabold border border-[#A8B487]'
-                    : 'bg-[#F0E9D8] text-[#6B6252] hover:text-[#221F18] border border-transparent'
+                    ? 'bg-emerald-100 text-[color:var(--moss-50)] font-extrabold border border-[color:var(--moss-75)]'
+                    : 'bg-[color:var(--paper-93)] text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)] border border-transparent'
                 }`}
               >
                 {item.label}
@@ -712,27 +712,27 @@ export function QuizView({
       )}
 
       {isConfusionMode && (
-        <div className="bg-[#F4EEDE] p-3.5 rounded-2xl border border-[#B6C096] bg-[#E6EAD5]/50 shadow-xs flex items-center justify-between">
+        <div className="bg-[color:var(--paper-bg)] p-3.5 rounded-2xl border border-[color:var(--moss-79)] bg-[color:var(--moss-93)]/50 shadow-xs flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="p-1.5 bg-[#5C6B3D] text-[#F1EFE0] rounded-lg">
+            <span className="p-1.5 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] rounded-lg">
               <Headphones className="w-4 h-4" />
             </span>
-            <span className="text-xs font-extrabold text-[#221F18]">
+            <span className="text-xs font-extrabold text-[color:var(--ink-24)]">
               {t('confusable.fiveQuestions')}
             </span>
           </div>
-          <span className="text-[11px] font-bold text-[#5C6B3D] bg-[#F4EEDE] px-2.5 py-1 rounded-full border border-[#B6C096]">
+          <span className="text-[11px] font-bold text-[color:var(--moss-50)] bg-[color:var(--paper-bg)] px-2.5 py-1 rounded-full border border-[color:var(--moss-79)]">
             {t('confusable.listeningPractice')}
           </span>
         </div>
       )}
 
       {/* Quiz Progress Header */}
-      <div className="flex items-center justify-between text-xs font-bold text-[#6B6252]">
+      <div className="flex items-center justify-between text-xs font-bold text-[color:var(--ink-50)]">
         <span>
           {t('quiz.questionCount')}: {currentIndex + 1} / {questions.length}
         </span>
-        <span className="text-[#5C6B3D]">{t('quiz.score')}：{score}</span>
+        <span className="text-[color:var(--moss-50)]">{t('quiz.score')}：{score}</span>
       </div>
 
       {/* a11y: 螢幕報讀器結果播報（常駐 live region，作答後才有內容） */}
@@ -750,11 +750,11 @@ export function QuizView({
       </div>
 
       {/* Question Card */}
-      <div className="bg-[#F4EEDE] p-6 sm:p-8 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-6">
+      <div className="bg-[color:var(--paper-bg)] p-6 sm:p-8 rounded-3xl border border-[color:var(--paper-85)] shadow-xs space-y-6">
         {quizMode === 'listening' ? (
           /* 🎧 聽音辨假名專屬題卡 */
-          <div className="text-center py-6 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0] space-y-4">
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#5C6B3D] bg-[#E6EAD5] px-3 py-1 rounded-full">
+          <div className="text-center py-6 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-92)] space-y-4">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[color:var(--moss-50)] bg-[color:var(--moss-93)] px-3 py-1 rounded-full">
               <Headphones className="w-3.5 h-3.5" />
               {t('quiz.listeningMode')}
             </span>
@@ -765,12 +765,12 @@ export function QuizView({
                 onClick={() => speakJapanese(currentQ.targetKana.kana)}
                 aria-label={t('quiz.replayAudio')}
                 title={t('quiz.replayAudio')}
-                className="px-6 py-3.5 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-sm rounded-2xl elev-green btn-lift flex items-center justify-center gap-2.5 mx-auto cursor-pointer"
+                className="px-6 py-3.5 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-sm rounded-2xl elev-green btn-lift flex items-center justify-center gap-2.5 mx-auto cursor-pointer"
               >
                 <Volume2 className="w-5 h-5" />
                 <span>{t('quiz.replayAudio')}</span>
               </button>
-              <p className="text-xs text-[#6B6252] font-medium">
+              <p className="text-xs text-[color:var(--ink-50)] font-medium">
                 {t('quiz.listenAndChoose')}
               </p>
             </div>
@@ -778,12 +778,12 @@ export function QuizView({
             {isAnswered && (
               <div className="text-xs font-extrabold pt-2">
                 {selectedOption === currentQ.targetKana.kana ? (
-                  <span className="text-[#5C6B3D] flex items-center justify-center gap-1">
+                  <span className="text-[color:var(--moss-50)] flex items-center justify-center gap-1">
                     <CheckCircle2 className="w-4 h-4" />
                     {t('quiz.listeningCorrect')}
                   </span>
                 ) : (
-                  <span className="text-[#A6443A] flex items-center justify-center gap-1">
+                  <span className="text-[color:var(--shu-52a)] flex items-center justify-center gap-1">
                     <XCircle className="w-4 h-4" />
                     {t('quiz.listeningIncorrect')} {currentQ.targetKana.kana} ({currentQ.targetKana.romaji})
                   </span>
@@ -793,8 +793,8 @@ export function QuizView({
           </div>
         ) : (
           /* 綜合測驗題卡 */
-          <div className="text-center py-6 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0] space-y-3">
-            <span className="text-xs font-bold text-[#6B6252] bg-[#ECE4D0] px-3 py-1 rounded-full">
+          <div className="text-center py-6 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-92)] space-y-3">
+            <span className="text-xs font-bold text-[color:var(--ink-50)] bg-[color:var(--paper-92)] px-3 py-1 rounded-full">
               {currentQ.type === 'kana-to-romaji'
                 ? t('quiz.typeKanaToRomaji')
                 : currentQ.type === 'audio-to-kana'
@@ -809,12 +809,12 @@ export function QuizView({
                 type="button"
                 onClick={() => speakJapanese(currentQ.targetKana.kana)}
                 aria-label={t('quiz.replayAudio')}
-                className="p-4 bg-[#5C6B3D] text-[#F1EFE0] rounded-2xl shadow-xs hover:bg-[#47552F] transition-all cursor-pointer mx-auto block"
+                className="p-4 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] rounded-2xl shadow-xs hover:bg-[color:var(--moss-43)] transition-all cursor-pointer mx-auto block"
               >
                 <Volume2 className="w-8 h-8" />
               </button>
             ) : (
-              <div lang="ja" className="text-6xl font-extrabold text-[#221F18]">{currentQ.targetKana.kana}</div>
+              <div lang="ja" className="text-6xl font-extrabold text-[color:var(--ink-24)]">{currentQ.targetKana.kana}</div>
             )}
           </div>
         )}
@@ -830,12 +830,12 @@ export function QuizView({
               onChange={(e) => setInputRomaji(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && !isAnswered && handleSubmitInput()}
               placeholder={t('quiz.inputPlaceholder')}
-              className="w-full px-4 py-3 bg-[#F4EEDE] border border-[#D9CDB2] rounded-2xl text-sm font-bold text-[#221F18] focus:outline-none focus:border-[#5C6B3D]"
+              className="w-full px-4 py-3 bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] rounded-2xl text-sm font-bold text-[color:var(--ink-24)] focus:outline-none focus:border-[color:var(--moss-50)]"
             />
             {!isAnswered && (
               <button
                 onClick={handleSubmitInput}
-                className="w-full py-3 bg-[#5C6B3D] text-[#F1EFE0] font-bold text-xs rounded-2xl hover:bg-[#47552F] cursor-pointer"
+                className="w-full py-3 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] font-bold text-xs rounded-2xl hover:bg-[color:var(--moss-43)] cursor-pointer"
               >
                 {t('quiz.submitAnswer')}
               </button>
@@ -846,12 +846,12 @@ export function QuizView({
             {currentQ.options.map((opt, idx) => {
               const isSelected = selectedOption === opt.label;
 
-              let btnStyle = 'bg-[#F4EEDE] border-[#D9CDB2] text-[#221F18] hover:border-[#5C6B3D]';
+              let btnStyle = 'bg-[color:var(--paper-bg)] border-[color:var(--paper-85)] text-[color:var(--ink-24)] hover:border-[color:var(--moss-50)]';
               if (isAnswered) {
                 if (opt.isCorrect) {
-                  btnStyle = 'bg-[#E6EAD5] border-[#5C6B3D] text-[#5C6B3D] font-extrabold';
+                  btnStyle = 'bg-[color:var(--moss-93)] border-[color:var(--moss-50)] text-[color:var(--moss-50)] font-extrabold';
                 } else if (isSelected) {
-                  btnStyle = 'bg-[#EFDBD5] border-red-400 text-[#A6443A] font-extrabold';
+                  btnStyle = 'bg-[color:var(--shu-91)] border-red-400 text-[color:var(--shu-52a)] font-extrabold';
                 }
               }
 
@@ -862,7 +862,7 @@ export function QuizView({
                   disabled={isAnswered}
                   className={`p-4 border rounded-2xl text-lg font-bold transition-all cursor-pointer flex items-center justify-center relative ${btnStyle}`}
                 >
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#ECE4D0] text-[11px] font-bold text-[#6B6252] flex items-center justify-center">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[color:var(--paper-92)] text-[11px] font-bold text-[color:var(--ink-50)] flex items-center justify-center">
                     {idx + 1}
                   </span>
                   <span lang={currentQ.type === 'kana-to-romaji' ? undefined : 'ja'}>{opt.label}</span>
@@ -880,17 +880,17 @@ export function QuizView({
 
         {/* Feedback Message */}
         {isAnswered && (
-          <div className="pt-4 border-t border-[#ECE4D0] space-y-3">
+          <div className="pt-4 border-t border-[color:var(--paper-92)] space-y-3">
             {feedbackNote && (
-              <div className="text-xs font-bold text-[#5C6B3D] text-center">{feedbackNote}</div>
+              <div className="text-xs font-bold text-[color:var(--moss-50)] text-center">{feedbackNote}</div>
             )}
             <QuizVocabFeedback kanaId={currentQ.targetKana.id} />
             <button
               onClick={handleNext}
-              className="w-full py-3 bg-[#5C6B3D] text-[#F1EFE0] font-bold text-xs rounded-2xl hover:bg-[#47552F] transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] font-bold text-xs rounded-2xl hover:bg-[color:var(--moss-43)] transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               <span>{currentIndex < questions.length - 1 ? t('quiz.nextQuestion') : t('quiz.finishQuiz')}</span>
-              <kbd className="text-[10px] bg-[#f4eede]/20 px-1.5 py-0.5 rounded font-mono font-bold leading-none">↵</kbd>
+              <kbd className="text-[10px] bg-[color:var(--paper-bg)]/20 px-1.5 py-0.5 rounded font-mono font-bold leading-none">↵</kbd>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

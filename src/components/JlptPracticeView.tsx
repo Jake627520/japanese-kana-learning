@@ -17,11 +17,11 @@ import { JlptExplanations, loadJlptExplanations } from '../data/jlpt/explanation
 import { GraduationCap, BookOpen, CheckCircle2, XCircle, ArrowLeft, RotateCcw, Sparkles, ChevronRight, HelpCircle, RefreshCw } from 'lucide-react';
 
 const DOMAIN_STYLE: Record<string, { band: string; tint: string; fg: string }> = {
-  '文字・語彙': { band: 'from-[#5C6B3D] to-[#8A9A63]', tint: 'bg-[#E6EAD5]', fg: 'text-[#3F4C29]' },
+  '文字・語彙': { band: 'from-[color:var(--moss-50)] to-[color:var(--moss-66)]', tint: 'bg-[color:var(--moss-93)]', fg: 'text-[color:var(--moss-40)]' },
   文法: { band: 'from-blue-500 to-blue-300', tint: 'bg-blue-50', fg: 'text-blue-600' },
-  読解: { band: 'from-amber-500 to-amber-300', tint: 'bg-[#EFE3C9]', fg: 'text-[#7A5320]' },
+  読解: { band: 'from-amber-500 to-amber-300', tint: 'bg-[color:var(--paper-92a)]', fg: 'text-[color:var(--kincha-47)]' },
 };
-const DOMAIN_FALLBACK = { band: 'from-slate-400 to-slate-300', tint: 'bg-[#ECE4D0]', fg: 'text-[#6B6252]' };
+const DOMAIN_FALLBACK = { band: 'from-slate-400 to-slate-300', tint: 'bg-[color:var(--paper-92)]', fg: 'text-[color:var(--ink-50)]' };
 
 // 一次測驗是單一知識點，或兩種跨知識點的場次：全部隨機（all）、錯題重做（wrong）。
 type JlptSession = JlptTopic | { id: 'all' } | { id: 'wrong' };
@@ -227,19 +227,19 @@ export function JlptPracticeView() {
         <div className="max-w-2xl mx-auto space-y-6">
           <button
             onClick={handleBackToTopics}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#6B6252] bg-[#F4EEDE] border border-[#D9CDB2] rounded-xl hover:text-[#221F18] cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[color:var(--ink-50)] bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] rounded-xl hover:text-[color:var(--ink-24)] cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             {t('common.back')}
           </button>
 
           {!isCompleted ? (
-            <div className="bg-[#F4EEDE] p-6 sm:p-8 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-6">
+            <div className="bg-[color:var(--paper-bg)] p-6 sm:p-8 rounded-3xl border border-[color:var(--paper-85)] shadow-xs space-y-6">
               <div className="flex items-center justify-between gap-3 flex-wrap">
-                <span className="text-xs font-bold text-[#5C6B3D] bg-[#E6EAD5] px-3 py-1 rounded-full">
+                <span className="text-xs font-bold text-[color:var(--moss-50)] bg-[color:var(--moss-93)] px-3 py-1 rounded-full">
                   {sessionTitle}
                 </span>
-                <span className="text-xs font-bold text-[#6B6252]">
+                <span className="text-xs font-bold text-[color:var(--ink-50)]">
                   {t('jlpt.questionProgress')}: {currentIndex + 1} / {quizQuestions.length}
                 </span>
               </div>
@@ -255,8 +255,8 @@ export function JlptPracticeView() {
                   : ''}
               </div>
 
-              <div className="p-5 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0]">
-                <div lang="ja" className="text-lg font-bold text-[#221F18] leading-relaxed">
+              <div className="p-5 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-92)]">
+                <div lang="ja" className="text-lg font-bold text-[color:var(--ink-24)] leading-relaxed">
                   <RichText text={currentQ.stem} />
                 </div>
               </div>
@@ -266,12 +266,12 @@ export function JlptPracticeView() {
                   const isSelected = selectedOption === idx;
                   const isCorrectAnswer = String(idx + 1) === currentQ.answer;
 
-                  let btnStyle = 'bg-[#F4EEDE] border-[#D9CDB2] text-[#221F18] hover:border-[#5C6B3D]';
+                  let btnStyle = 'bg-[color:var(--paper-bg)] border-[color:var(--paper-85)] text-[color:var(--ink-24)] hover:border-[color:var(--moss-50)]';
                   if (isAnswered) {
                     if (isCorrectAnswer) {
-                      btnStyle = 'bg-[#E6EAD5] border-[#5C6B3D] text-[#5C6B3D] font-extrabold';
+                      btnStyle = 'bg-[color:var(--moss-93)] border-[color:var(--moss-50)] text-[color:var(--moss-50)] font-extrabold';
                     } else if (isSelected) {
-                      btnStyle = 'bg-[#EFDBD5] border-[#CAA096] text-[#A6443A] font-extrabold';
+                      btnStyle = 'bg-[color:var(--shu-91)] border-[color:var(--shu-74)] text-[color:var(--shu-52a)] font-extrabold';
                     }
                   }
 
@@ -283,20 +283,20 @@ export function JlptPracticeView() {
                       className={`w-full p-4 rounded-2xl border text-left text-sm font-semibold transition-all cursor-pointer flex items-center justify-between gap-3 ${btnStyle}`}
                     >
                       <span className="flex items-center gap-3">
-                        <span className="w-6 h-6 rounded-full bg-[#ECE4D0] text-xs font-bold flex items-center justify-center shrink-0">
+                        <span className="w-6 h-6 rounded-full bg-[color:var(--paper-92)] text-xs font-bold flex items-center justify-center shrink-0">
                           {idx + 1}
                         </span>
                         <span lang="ja"><RichText text={opt} /></span>
                       </span>
                       {isAnswered && isCorrectAnswer && (
                         <>
-                          <CheckCircle2 className="w-5 h-5 text-[#5C6B3D] shrink-0" aria-hidden="true" />
+                          <CheckCircle2 className="w-5 h-5 text-[color:var(--moss-50)] shrink-0" aria-hidden="true" />
                           <span className="sr-only">（{t('common.correctAnswer')}）</span>
                         </>
                       )}
                       {isAnswered && isSelected && !isCorrectAnswer && (
                         <>
-                          <XCircle className="w-5 h-5 text-[#B0554A] shrink-0" aria-hidden="true" />
+                          <XCircle className="w-5 h-5 text-[color:var(--shu-56)] shrink-0" aria-hidden="true" />
                           <span className="sr-only">（{t('common.yourWrongAnswer')}）</span>
                         </>
                       )}
@@ -306,24 +306,24 @@ export function JlptPracticeView() {
               </div>
 
               {isAnswered && (
-                <div className="space-y-4 pt-4 border-t border-[#ECE4D0]">
+                <div className="space-y-4 pt-4 border-t border-[color:var(--paper-92)]">
                   {(explanationsStatus !== 'ready' || explanation !== undefined) && (
-                    <div className="p-4 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] space-y-2">
-                      <div className="text-xs font-extrabold text-[#221F18] flex items-center gap-1.5">
-                        <HelpCircle className="w-4 h-4 text-[#5C6B3D]" />
+                    <div className="p-4 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-85)] space-y-2">
+                      <div className="text-xs font-extrabold text-[color:var(--ink-24)] flex items-center gap-1.5">
+                        <HelpCircle className="w-4 h-4 text-[color:var(--moss-50)]" />
                         {t('jlpt.explainTitle')}
                       </div>
                       {explanationsStatus === 'loading' && (
                         <div aria-busy="true" className="space-y-2 py-0.5">
                           <span className="sr-only">{t('common.loading')}</span>
-                          <div className="h-3 w-full rounded bg-[#ECE4D0] animate-pulse" />
-                          <div className="h-3 w-11/12 rounded bg-[#ECE4D0] animate-pulse" />
-                          <div className="h-3 w-2/3 rounded bg-[#ECE4D0] animate-pulse" />
+                          <div className="h-3 w-full rounded bg-[color:var(--paper-92)] animate-pulse" />
+                          <div className="h-3 w-11/12 rounded bg-[color:var(--paper-92)] animate-pulse" />
+                          <div className="h-3 w-2/3 rounded bg-[color:var(--paper-92)] animate-pulse" />
                         </div>
                       )}
                       {explanationsStatus === 'failed' && (
                         <div role="alert" className="flex flex-wrap items-center justify-between gap-3">
-                          <p className="flex-1 min-w-48 text-xs text-[#A6443A] font-semibold leading-relaxed">
+                          <p className="flex-1 min-w-48 text-xs text-[color:var(--shu-52a)] font-semibold leading-relaxed">
                             {t('jlpt.explainLoadFailed')}
                           </p>
                           {/* A failed chunk import is cached for the page's lifetime, so only a reload can refetch it. */}
@@ -332,7 +332,7 @@ export function JlptPracticeView() {
                             onClick={() => window.location.reload()}
                             // Enter on this button means reload, not the page-wide Enter-for-next shortcut.
                             onKeyDown={(e) => e.key === 'Enter' && e.stopPropagation()}
-                            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#F1EFE0] bg-[#5C6B3D] hover:bg-[#47552F] rounded-xl cursor-pointer"
+                            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[color:var(--paper-95)] bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] rounded-xl cursor-pointer"
                           >
                             <RefreshCw className="w-3.5 h-3.5" />
                             {t('common.reloadPage')}
@@ -340,7 +340,7 @@ export function JlptPracticeView() {
                         </div>
                       )}
                       {explanation !== undefined && (
-                        <div className="text-xs text-[#6B6252] leading-relaxed">
+                        <div className="text-xs text-[color:var(--ink-50)] leading-relaxed">
                           <RichText text={explanation} />
                         </div>
                       )}
@@ -349,30 +349,30 @@ export function JlptPracticeView() {
 
                   <button
                     onClick={handleNext}
-                    className="w-full py-3.5 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-sm rounded-2xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
+                    className="w-full py-3.5 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-sm rounded-2xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
                   >
                     <span>{currentIndex + 1 < quizQuestions.length ? t('quiz.nextQuestion') : t('quiz.finishQuiz')}</span>
-                    <kbd className="text-[10px] bg-[#f4eede]/20 px-1.5 py-0.5 rounded font-mono font-bold leading-none">↵</kbd>
+                    <kbd className="text-[10px] bg-[color:var(--paper-bg)]/20 px-1.5 py-0.5 rounded font-mono font-bold leading-none">↵</kbd>
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
               )}
             </div>
           ) : (
-            <div className="bg-[#F4EEDE] p-8 rounded-3xl border border-[#D9CDB2] shadow-xs text-center space-y-6">
-              <div className="w-16 h-16 rounded-2xl bg-[#E6EAD5] text-[#5C6B3D] mx-auto flex items-center justify-center">
+            <div className="bg-[color:var(--paper-bg)] p-8 rounded-3xl border border-[color:var(--paper-85)] shadow-xs text-center space-y-6">
+              <div className="w-16 h-16 rounded-2xl bg-[color:var(--moss-93)] text-[color:var(--moss-50)] mx-auto flex items-center justify-center">
                 <Sparkles className="w-8 h-8" />
               </div>
               <div>
-                <h3 className="text-xl font-display font-bold text-[#221F18]">{t('quiz.resultTitle')}</h3>
-                <p className="text-xs text-[#6B6252] mt-1">{sessionTitle}</p>
+                <h3 className="text-xl font-display font-bold text-[color:var(--ink-24)]">{t('quiz.resultTitle')}</h3>
+                <p className="text-xs text-[color:var(--ink-50)] mt-1">{sessionTitle}</p>
               </div>
 
-              <div className="p-6 bg-[#F4EEDE] rounded-2xl border border-[#D9CDB2] max-w-xs mx-auto space-y-2">
-                <div className="text-4xl font-extrabold text-[#5C6B3D]">
+              <div className="p-6 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-85)] max-w-xs mx-auto space-y-2">
+                <div className="text-4xl font-extrabold text-[color:var(--moss-50)]">
                   {Math.round((score / quizQuestions.length) * 100)}%
                 </div>
-                <div className="text-xs font-bold text-[#6B6252]">
+                <div className="text-xs font-bold text-[color:var(--ink-50)]">
                   {t('quiz.accuracy')}: {score} / {quizQuestions.length}
                 </div>
               </div>
@@ -380,14 +380,14 @@ export function JlptPracticeView() {
               <div className="flex gap-3 max-w-xs mx-auto">
                 <button
                   onClick={handleRestart}
-                  className="flex-1 py-3 bg-[#F4EEDE] border border-[#D9CDB2] hover:border-[#5C6B3D] text-[#221F18] font-bold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5"
+                  className="flex-1 py-3 bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] hover:border-[color:var(--moss-50)] text-[color:var(--ink-24)] font-bold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   {t('quiz.restartQuiz')}
                 </button>
                 <button
                   onClick={handleBackToTopics}
-                  className="flex-1 py-3 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-bold text-xs rounded-xl cursor-pointer"
+                  className="flex-1 py-3 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-bold text-xs rounded-xl cursor-pointer"
                 >
                   {t('common.back')}
                 </button>
@@ -397,17 +397,17 @@ export function JlptPracticeView() {
         </div>
       ) : (
         <div className="space-y-6">
-          <div className="bg-[#F4EEDE] p-6 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-5">
+          <div className="bg-[color:var(--paper-bg)] p-6 rounded-3xl border border-[color:var(--paper-85)] shadow-xs space-y-5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6EAD5] text-[#5C6B3D] rounded-full text-xs font-bold">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[color:var(--moss-93)] text-[color:var(--moss-50)] rounded-full text-xs font-bold">
                   <GraduationCap className="w-3.5 h-3.5" />
                   {t('jlpt.title')}
                 </div>
-                <h2 className="text-xl sm:text-2xl font-display font-bold text-[#221F18]">
+                <h2 className="text-xl sm:text-2xl font-display font-bold text-[color:var(--ink-24)]">
                   JLPT {level.toUpperCase()} {t('jlpt.topicSelect')}
                 </h2>
-                <p className="text-xs text-[#6B6252] leading-relaxed max-w-lg">
+                <p className="text-xs text-[color:var(--ink-50)] leading-relaxed max-w-lg">
                   {t('jlpt.subtitle')}
                 </p>
               </div>
@@ -418,8 +418,8 @@ export function JlptPracticeView() {
                 disabled={levelQuestionCount === 0}
                 className={`px-5 py-3 font-extrabold text-xs sm:text-sm rounded-2xl btn-lift cursor-pointer flex items-center gap-2 shrink-0 ${
                   levelQuestionCount > 0
-                    ? 'bg-[#5C6B3D] text-[#F1EFE0] hover:bg-[#47552F] elev-green'
-                    : 'bg-[#ECE4D0] text-[#8F8674] cursor-not-allowed'
+                    ? 'bg-[color:var(--moss-50)] text-[color:var(--paper-95)] hover:bg-[color:var(--moss-43)] elev-green'
+                    : 'bg-[color:var(--paper-92)] text-[color:var(--ink-62)] cursor-not-allowed'
                 }`}
               >
                 <BookOpen className="w-4 h-4" />
@@ -428,7 +428,7 @@ export function JlptPracticeView() {
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-              <div className="flex items-center gap-1 bg-[#ECE4D0] p-1 rounded-xl w-fit">
+              <div className="flex items-center gap-1 bg-[color:var(--paper-92)] p-1 rounded-xl w-fit">
                 {AVAILABLE_LEVELS.map((lv) => (
                   <button
                     key={lv}
@@ -436,8 +436,8 @@ export function JlptPracticeView() {
                     onClick={() => setLevel(lv)}
                     className={`px-4 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all cursor-pointer ${
                       level === lv
-                        ? 'bg-[#F4EEDE] text-[#5C6B3D] elev-1'
-                        : 'text-[#6B6252] hover:text-[#221F18]'
+                        ? 'bg-[color:var(--paper-bg)] text-[color:var(--moss-50)] elev-1'
+                        : 'text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)]'
                     }`}
                   >
                     {lv.toUpperCase()}
@@ -446,13 +446,13 @@ export function JlptPracticeView() {
               </div>
 
               <div className="flex-1 flex items-center gap-3 min-w-0">
-                <div className="flex-1 h-1.5 rounded-full bg-[#ECE4D0] overflow-hidden">
+                <div className="flex-1 h-1.5 rounded-full bg-[color:var(--paper-92)] overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-[#5C6B3D] to-[#8A9A63] transition-[width] duration-700 ease-out"
+                    className="h-full rounded-full bg-gradient-to-r from-[color:var(--moss-50)] to-[color:var(--moss-66)] transition-[width] duration-700 ease-out"
                     style={{ width: `${levelCoverage}%` }}
                   />
                 </div>
-                <span className="text-xs font-bold text-[#6B6252] whitespace-nowrap">
+                <span className="text-xs font-bold text-[color:var(--ink-50)] whitespace-nowrap">
                   {topics.length} · {levelQuestionCount}
                 </span>
               </div>
@@ -474,7 +474,7 @@ export function JlptPracticeView() {
               return (
                 <div
                   key={topic.id}
-                  className="bg-[#F4EEDE] rounded-3xl border border-[#D9CDB2] elev-1 card-lift rise-in overflow-hidden flex flex-col group"
+                  className="bg-[color:var(--paper-bg)] rounded-3xl border border-[color:var(--paper-85)] elev-1 card-lift rise-in overflow-hidden flex flex-col group"
                   style={{ ['--stagger' as string]: `${Math.min(i, 7) * 40}ms` }}
                 >
                   <div aria-hidden className={`h-1 bg-gradient-to-r ${style.band}`} />
@@ -484,15 +484,15 @@ export function JlptPracticeView() {
                         <span className={`text-[10px] font-extrabold px-2.5 py-0.5 rounded-md ${style.tint} ${style.fg}`}>
                           {topic.domain} · {topic.chapter}
                         </span>
-                        <span className="text-xs font-bold text-[#5C6B3D] bg-[#E6EAD5] px-2.5 py-0.5 rounded-full">
+                        <span className="text-xs font-bold text-[color:var(--moss-50)] bg-[color:var(--moss-93)] px-2.5 py-0.5 rounded-full">
                           {count}
                         </span>
                       </div>
 
-                      <h3 className="text-base font-display font-bold text-[#221F18] group-hover:text-[#5C6B3D] transition-colors">
+                      <h3 className="text-base font-display font-bold text-[color:var(--ink-24)] group-hover:text-[color:var(--moss-50)] transition-colors">
                         {localize(topic.name, language)}
                       </h3>
-                      <p className="text-xs text-[#6B6252] leading-relaxed">
+                      <p className="text-xs text-[color:var(--ink-50)] leading-relaxed">
                         {localize(topic.description, language)}
                       </p>
                     </div>
@@ -503,8 +503,8 @@ export function JlptPracticeView() {
                       onClick={() => handleStartTopic(topic)}
                       className={`w-full py-2.5 rounded-xl font-extrabold text-xs flex items-center justify-center gap-1.5 transition-all ${
                         count > 0
-                          ? 'bg-[#F0E9D8] group-hover:bg-[#5C6B3D] text-[#221F18] group-hover:text-[#F1EFE0] border border-[#D9CDB2] group-hover:border-[#5C6B3D] cursor-pointer'
-                          : 'bg-[#ECE4D0] text-[#8F8674] border border-[#D9CDB2] cursor-not-allowed'
+                          ? 'bg-[color:var(--paper-93)] group-hover:bg-[color:var(--moss-50)] text-[color:var(--ink-24)] group-hover:text-[color:var(--paper-95)] border border-[color:var(--paper-85)] group-hover:border-[color:var(--moss-50)] cursor-pointer'
+                          : 'bg-[color:var(--paper-92)] text-[color:var(--ink-62)] border border-[color:var(--paper-85)] cursor-not-allowed'
                       }`}
                     >
                       {count > 0 ? (

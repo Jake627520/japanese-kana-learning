@@ -9,9 +9,9 @@ const MESSAGES: { lang: string; text: string }[] = [
 
 export function LoadFailedScreen() {
   return (
-    <div className="min-h-screen bg-[#E9E1CF] text-[#221F18] font-sans flex items-center justify-center p-4">
-      <div role="alert" className="max-w-md w-full bg-[#F4EEDE] border border-[#D9CDB2] rounded-3xl p-6 space-y-4 text-center">
-        <ul className="space-y-2 text-sm leading-relaxed text-[#55503F]">
+    <div className="min-h-screen bg-[color:var(--paper-91)] text-[color:var(--ink-24)] font-sans flex items-center justify-center p-4">
+      <div role="alert" className="max-w-md w-full bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] rounded-3xl p-6 space-y-4 text-center">
+        <ul className="space-y-2 text-sm leading-relaxed text-[color:var(--ink-43)]">
           {MESSAGES.map(({ lang, text }) => (
             <li key={lang} lang={lang}>
               {text}
@@ -21,7 +21,7 @@ export function LoadFailedScreen() {
         <button
           type="button"
           onClick={() => window.location.reload()}
-          className="w-full py-3 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-sm rounded-2xl cursor-pointer"
+          className="w-full py-3 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-sm rounded-2xl cursor-pointer"
         >
           <span lang="zh-TW">重試</span> / <span lang="en">Retry</span>
         </button>

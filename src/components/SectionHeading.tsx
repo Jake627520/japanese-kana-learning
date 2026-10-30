@@ -5,8 +5,8 @@ import React from 'react';
 export function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-baseline gap-2.5">
-      <span className="text-[13px] font-extrabold text-[#221F18] tracking-tight">{children}</span>
-      <span className="flex-1 h-px bg-gradient-to-r from-[#D9CDB2] to-transparent" />
+      <span className="text-[13px] font-extrabold text-[color:var(--ink-24)] tracking-tight">{children}</span>
+      <span className="flex-1 h-px bg-gradient-to-r from-[color:var(--paper-85)] to-transparent" />
     </div>
   );
 }
