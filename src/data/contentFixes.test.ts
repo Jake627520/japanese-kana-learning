@@ -90,6 +90,15 @@ describe('あ／お：以右上那一點為主要分辨線索', () => {
   });
 });
 
+describe('ら／う：以第二畫起筆分辨', () => {
+  it('不再說 ら 上面是撇', () => {
+    const group = CONFUSABLE_GROUPS.find((g) => g.id === 'cf_ra_u')!;
+    expect(group.distinguish['zh-TW']).not.toMatch(/撇/);
+    expect(group.distinguish['zh-TW']).toMatch(/起筆/);
+    expect(group.distinguish.en).toMatch(/lower stroke starts/);
+  });
+});
+
 describe('筆順勘誤：か、き、な、と', () => {
   it('步驟數等於筆畫數', () => {
     expect(HIRAGANA_STROKES.h_ka.count).toBe(3);

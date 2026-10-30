@@ -74,4 +74,18 @@ describe('筆順說明與 KanjiVG 一致', () => {
     expect(note.es).not.toMatch(/abajo a la (izquierda|derecha)/);
     expect(note.en).toMatch(/dot at the upper right/);
   });
+
+  it('お ② 寫明在底部往左繞小圈，再往右畫大弧線', () => {
+    expect(step('h_o', 1)['zh-TW']).toMatch(/底部往左上繞一個小圈.*往右畫出大弧線/);
+    expect(step('h_o', 1).en).toMatch(/small loop to the left at the bottom.*sweep wide to the right/);
+  });
+
+  it('う、ら 第一畫都是由左往右的短點，ら 不是撇', () => {
+    for (const id of ['h_u', 'h_ra']) {
+      const guide = HIRAGANA_STROKES[id];
+      expect(guide.steps[0]['zh-TW']).toMatch(/由左往右/);
+      for (const text of [guide.steps[0]['zh-TW'], guide.note!['zh-TW']]) expect(text).not.toMatch(/撇/);
+      expect(guide.steps[0].en).not.toMatch(/sweep/i);
+    }
+  });
 });

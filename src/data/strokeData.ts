@@ -37,10 +37,10 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
   h_u: {
     count: 2,
     steps: [
-      { 'zh-TW': '① 上方一小點（短橫）', 'zh-CN': '① 上方一小点（短横）', en: '① Small dot on top (a short horizontal)', ko: '① 위쪽에 작은 점 (짧은 가로획)', es: '① Haz un punto pequeño arriba (un horizontal corto)' },
-      { 'zh-TW': '② 由左往右下轉一個大彎收筆', 'zh-CN': '② 从左往右下转一个大弯收笔', en: '② From the left toward the lower right in one big curve to finish', ko: '② 왼쪽에서 오른쪽 아래로 크게 휘어 마무리', es: '② Traza desde la izquierda hacia abajo a la derecha en una curva amplia y cierra' },
+      { 'zh-TW': '① 上方居中一短點（由左往右略斜）', 'zh-CN': '① 上方居中一短点（从左往右略斜）', en: '① Short dot at the top center (slanting slightly from left to right)', ko: '① 위쪽 가운데에 짧은 점 (왼쪽에서 오른쪽으로 약간 비스듬히)', es: '① Haz un punto corto arriba, en el centro (ligeramente inclinado de izquierda a derecha)' },
+      { 'zh-TW': '② 從左側起筆往右上微揚，再往右下繞成一個大圓弧，收向左下', 'zh-CN': '② 从左侧起笔往右上微扬，再往右下绕成一个大圆弧，收向左下', en: '② Start on the left and rise slightly to the upper right, then curve around to the lower right in a big rounded arc and finish toward the lower left', ko: '② 왼쪽에서 시작해 오른쪽 위로 살짝 올린 뒤, 오른쪽 아래로 크게 둥근 곡선을 그려 왼쪽 아래로 마무리', es: '② Empieza a la izquierda subiendo un poco hacia la derecha, luego rodea hacia abajo a la derecha en una curva amplia y termina hacia abajo a la izquierda' },
     ],
-    note: { 'zh-TW': 'う 上面是一點；ら 上面是短撇。', 'zh-CN': 'う 上面是一点；ら 上面是短撇。', en: 'う has a dot on top; ら has a short sweep.', ko: 'う는 위가 점이고, ら는 위가 짧은 삐침이다.', es: 'う lleva un punto arriba; ら, un trazo oblicuo corto.' },
+    note: { 'zh-TW': '和 ら 的分辨看第二畫起筆：う 從左往右上微揚，直接繞成大圓弧；ら 先往下一豎，折角後才往右畫出圓肚。上面那一點的位置也不同：う 居中，ら 偏左。第一畫收筆可以帶一個往左下的小勾，接向第二畫；手寫不勾也可以。', 'zh-CN': '和 ら 的区分看第二笔起笔：う 从左往右上微扬，直接绕成大圆弧；ら 先往下一竖，折角后才往右画出圆肚。上面那一点的位置也不同：う 居中，ら 偏左。第一笔收笔可以带一个往左下的小钩，接向第二笔；手写不钩也可以。', en: 'To tell it from ら, look at how the second stroke starts: in う it rises slightly to the right and goes straight into the big rounded arc; in ら it first goes down, then turns before swinging out to the right. The top dot also sits differently: centered in う, to the left in ら. The first stroke may end with a small flick toward the lower left, leading into the second; it is fine to leave it out when writing by hand.', ko: 'ら와는 둘째 획의 시작으로 구별한다. う는 오른쪽 위로 살짝 올라가 바로 크게 둥근 곡선이 되고, ら는 먼저 아래로 내린 뒤 꺾어서 오른쪽으로 둥글게 나간다. 위의 점 위치도 다르다. う는 가운데, ら는 왼쪽이다. 첫 획 끝은 둘째 획으로 이어지도록 왼쪽 아래로 작게 삐칠 수 있지만, 손으로 쓸 때는 생략해도 된다.', es: 'Para distinguirla de ら, mira cómo empieza el segundo trazo: en う sube un poco hacia la derecha y pasa directamente a la curva amplia; en ら primero baja y luego quiebra antes de rodear hacia la derecha. El punto de arriba también cambia: centrado en う, a la izquierda en ら. El primer trazo puede terminar con un pequeño gancho hacia abajo a la izquierda que lleva al segundo; a mano no hace falta marcarlo.' },
   },
   h_e: {
     count: 2,
@@ -53,7 +53,7 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
     count: 3,
     steps: [
       { 'zh-TW': '① 左上往右一短橫', 'zh-CN': '① 从左上往右一短横', en: '① Short horizontal stroke from upper left to the right', ko: '① 왼쪽 위에서 오른쪽으로 짧은 가로획', es: '① Haz un trazo horizontal corto de arriba a la izquierda hacia la derecha' },
-      { 'zh-TW': '② 從橫中往下一豎並向左繞圈', 'zh-CN': '② 从横的中间往下一竖，并向左绕圈', en: '② Vertical stroke down through the middle of the horizontal, then a loop to the left', ko: '② 가로획 가운데를 지나 아래로 세로획, 이어서 왼쪽으로 고리', es: '② Haz un trazo vertical hacia abajo por el centro del horizontal y un bucle hacia la izquierda' },
+      { 'zh-TW': '② 從橫的中間往下拉直，到底部往左上繞一個小圈（不斷筆），接著順勢往右畫出大弧線，收向左下', 'zh-CN': '② 从横的中间往下拉直，到底部往左上绕一个小圈（不断笔），接着顺势往右画出大弧线，收向左下', en: '② Pull straight down through the middle of the horizontal, make a small loop to the left at the bottom without lifting the pen, then sweep wide to the right in a large curve and finish toward the lower left', ko: '② 가로획 가운데를 지나 아래로 곧게 내린 뒤, 붓을 떼지 않고 아래에서 왼쪽으로 작은 고리를 만들고, 오른쪽으로 크게 둥근 곡선을 그려 왼쪽 아래로 마무리', es: '② Baja en línea recta por el centro del horizontal, haz un pequeño bucle hacia la izquierda abajo sin levantar el lápiz y luego traza una curva amplia hacia la derecha que termina hacia abajo a la izquierda' },
       { 'zh-TW': '③ 右上補一點', 'zh-CN': '③ 右上补一点', en: '③ Dot added at the upper right', ko: '③ 오른쪽 위에 점 추가', es: '③ Añade un punto arriba a la derecha' },
     ],
     note: { 'zh-TW': 'お 有右上那一點，あ 沒有。', 'zh-CN': 'お 有右上那一点，あ 没有。', en: 'お has the dot at the upper right; あ does not.', ko: 'お는 오른쪽 위에 점이 있고, あ는 없다.', es: 'お lleva el punto de arriba a la derecha; あ no.' },
@@ -325,10 +325,10 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
   h_ra: {
     count: 2,
     steps: [
-      { 'zh-TW': '① 上方一短撇', 'zh-CN': '① 上方一短撇', en: '① Short sweep on top', ko: '① 위쪽에 짧은 삐침', es: '① Haz un trazo oblicuo corto arriba' },
+      { 'zh-TW': '① 左上一短點（由左往右略斜）', 'zh-CN': '① 左上一短点（从左往右略斜）', en: '① Short dot at the upper left (slanting slightly from left to right)', ko: '① 왼쪽 위에 짧은 점 (왼쪽에서 오른쪽으로 약간 비스듬히)', es: '① Haz un punto corto arriba a la izquierda (ligeramente inclinado de izquierda a derecha)' },
       { 'zh-TW': '② 左側由上往下，折向右上，再往右繞一個大彎，收向左下', 'zh-CN': '② 左侧从上往下，折向右上，再往右绕一个大弯，收向左下', en: '② On the left, go down from the top, turn up to the right, then swing around in a big curve to the right and finish toward the lower left', ko: '② 왼쪽에서 위에서 아래로 내린 뒤 오른쪽 위로 꺾고, 오른쪽으로 크게 휘어 왼쪽 아래로 마무리', es: '② A la izquierda, baja desde arriba, quiebra hacia arriba a la derecha, rodea en una curva amplia hacia la derecha y termina hacia abajo a la izquierda' },
     ],
-    note: { 'zh-TW': 'ら 上面是撇；う 上面是點。', 'zh-CN': 'ら 上面是撇；う 上面是点。', en: 'ら has a sweep on top; う has a dot.', ko: 'ら는 위가 삐침이고, う는 위가 점이다.', es: 'ら lleva un trazo oblicuo arriba; う, un punto.' },
+    note: { 'zh-TW': '和 う 的分辨看第二畫起筆：ら 先往下一豎，折角後才往右畫出圓肚；う 從左往右上微揚，直接繞成大圓弧。上面那一點的位置也不同：ら 偏左，う 居中。第一畫收筆可以帶一個往左下的小勾，接向第二畫；手寫不勾也可以。', 'zh-CN': '和 う 的区分看第二笔起笔：ら 先往下一竖，折角后才往右画出圆肚；う 从左往右上微扬，直接绕成大圆弧。上面那一点的位置也不同：ら 偏左，う 居中。第一笔收笔可以带一个往左下的小钩，接向第二笔；手写不钩也可以。', en: 'To tell it from う, look at how the second stroke starts: in ら it first goes down, then turns before swinging out to the right; in う it rises slightly to the right and goes straight into the big rounded arc. The top dot also sits differently: to the left in ら, centered in う. The first stroke may end with a small flick toward the lower left, leading into the second; it is fine to leave it out when writing by hand.', ko: 'う와는 둘째 획의 시작으로 구별한다. ら는 먼저 아래로 내린 뒤 꺾어서 오른쪽으로 둥글게 나가고, う는 오른쪽 위로 살짝 올라가 바로 크게 둥근 곡선이 된다. 위의 점 위치도 다르다. ら는 왼쪽, う는 가운데다. 첫 획 끝은 둘째 획으로 이어지도록 왼쪽 아래로 작게 삐칠 수 있지만, 손으로 쓸 때는 생략해도 된다.', es: 'Para distinguirla de う, mira cómo empieza el segundo trazo: en ら primero baja y luego quiebra antes de rodear hacia la derecha; en う sube un poco hacia la derecha y pasa directamente a la curva amplia. El punto de arriba también cambia: a la izquierda en ら, centrado en う. El primer trazo puede terminar con un pequeño gancho hacia abajo a la izquierda que lleva al segundo; a mano no hace falta marcarlo.' },
   },
   h_ri: {
     count: 2,
