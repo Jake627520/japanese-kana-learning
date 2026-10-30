@@ -316,7 +316,7 @@ export const en: TranslationSchema = {
     feedback: 'Pronunciation Feedback',
     score: 'Similarity Score',
     speed: 'Audio Speed',
-    slow: 'Slow (0.8x)',
+    slow: 'Slow (0.7x)',
     normal: 'Normal (1.0x)',
     fast: 'Fast (1.2x)',
     tips: 'Tip: Shadow simultaneously with native audio, then record independently to compare intonation.',

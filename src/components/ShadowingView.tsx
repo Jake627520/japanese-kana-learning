@@ -26,6 +26,10 @@ import { useI18n } from '../i18n';
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
+// 慢速音檔已在生成時拉伸到 0.7x（scripts/gen-audio.mjs SLOW_TEMPO），播放時不再降速；
+// 沒有音檔時，瀏覽器語音也用同一個速度。
+const SLOW_RATE = 0.7;
+
 export function ShadowingView() {
   const { t, language } = useI18n();
   const [progress, setProgress] = useState<ShadowingProgress>(() => getShadowingProgress());
@@ -131,7 +135,7 @@ export function ShadowingView() {
       : currentSentence.audio?.normal;
 
     if (clipPath) {
-      return playPreGeneratedClip(clipPath, isSlow ? 0.9 : 1.0);
+      return playPreGeneratedClip(clipPath);
     }
 
     return new Promise((resolve) => {
@@ -452,7 +456,7 @@ export function ShadowingView() {
               </button>
               <button
                 type="button"
-                onClick={() => playNativeTts(0.6)}
+                onClick={() => playNativeTts(SLOW_RATE)}
                 disabled={isSpeakingTts || isComparing}
                 className="flex-1 py-3 bg-[#F4EEDE] hover:bg-[#F0E9D8] border border-[#D9CDB2] hover:border-[#5C6B3D] text-[#221F18] font-extrabold text-xs sm:text-sm rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
               >

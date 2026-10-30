@@ -312,7 +312,7 @@ export const ko: TranslationSchema = {
     feedback: '발음 피드백',
     score: '유사도 점수',
     speed: '재생 속도',
-    slow: '느리게 (0.8x)',
+    slow: '느리게 (0.7x)',
     normal: '보통 (1.0x)',
     fast: '빠르게 (1.2x)',
     tips: '팁: 먼저 원어민 음성과 동시에 따라 말한 뒤, 혼자 녹음해서 억양을 비교해 보세요.',

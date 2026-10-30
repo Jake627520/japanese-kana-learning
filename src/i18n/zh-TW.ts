@@ -312,7 +312,7 @@ export const zhTW: TranslationSchema = {
     feedback: '語調評估反饋',
     score: '發音相似度',
     speed: '播放速度',
-    slow: '慢速 (0.8x)',
+    slow: '慢速 (0.7x)',
     normal: '正常 (1.0x)',
     fast: '快速 (1.2x)',
     tips: '跟讀技巧：先跟著示範音重疊發音，再單獨錄音比對音調起伏。',
