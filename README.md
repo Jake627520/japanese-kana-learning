@@ -34,9 +34,9 @@ Most starter apps stop at the basic 46 characters. In real-world reading and lis
 
 #### 2. Pre-rendered Native Voice Audio (No Web Speech Synthesis)
 
-All 208 kana, 203 vocabulary words, 204 example sentences, and 18 shadowing sentences use static audio pre-generated via **VOICEVOX** (656 MP3 files, ~7.3 MB total).
+All 208 kana, 203 example words, 205 example sentences, 18 shadowing sentences (normal and slow), and the Special Sounds examples use static audio pre-generated via **VOICEVOX** (about 660 MP3 files, about 6.4 MB total).
 
-Browser-native Web Speech Synthesis is inconsistent across devices and operating systems: engines frequently read isolated characters as raw alphabet names, while contracted (yoon) and choked (sokuon) sounds distort. Pre-rendering the entire audio catalog ensures consistent pronunciation and enables reliable offline playback.
+Browser-native Web Speech Synthesis is inconsistent across devices and operating systems: engines frequently read isolated characters as raw alphabet names, while contracted (yoon) and choked (sokuon) sounds distort. Pre-rendering the entire audio catalog ensures consistent pronunciation.
 
 #### 3. Writing Practice with Intentional Self-Evaluation
 
@@ -60,7 +60,7 @@ In generic random quizzes, a question for ぬ might present distractors like か
 
 Structured 5-step workflow: **Listen Only → Read & Listen → Whisper Shadowing → Record Output → Side-by-Side Comparison**
 
-- Dual playback speeds (Normal / 0.7x Slow). Slow audio is time-stretched from the original recording to preserve natural pitch contours.
+- Dual playback speeds (Normal / Slow). The slow clip is the same recording time-stretched to 0.7x, which preserves natural pitch contours.
 - In-browser local audio recording with immediate sequential comparison: *Native Sample → Learner Recording*.
 - Toggleable text visibility (hide Japanese, kana, or romaji) to train pure auditory processing.
 - **No automated acoustic grading**: Pitch accent evaluation algorithms on the client side remain unreliable and frequently mislead beginners. The goal is training the learner's own ear to notice discrepancies.
@@ -71,28 +71,33 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 
 #### 7. JLPT N5 / N4 / N3 Practice: 280 Original Questions with Diagnostic Distractors
 
-- **N5: 100 questions across 30 grammar points**, covering Kanji readings, rendaku, okurigana, counters, and particles.
-- **N4: 90 questions across 30 grammar points**, adding usage discrimination (mondai 5), causative, passive (`によって`), giving/receiving vectors, appearance vs. hearsay (`そうです`), and 2 reading comprehension passages.
-- **N3: 90 questions across 30 grammar points**, focusing on subtle nuance distinctions where multiple choices are grammatically valid but only one matches natural pragmatic usage (e.g., わけがない / わけではない, おかげで / せいで, ために / ように, ものだ / ことだ), along with short-passage and info-retrieval reading tasks.
+- **N5: 100 questions across 30 topics**, covering Kanji readings, rendaku, okurigana, counters, and particles.
+- **N4: 90 questions across 30 topics**, adding usage discrimination (mondai 5), causative, passive (`によって`), giving/receiving vectors, appearance vs. hearsay (`そうです`), and 2 reading comprehension passages.
+- **N3: 90 questions across 30 topics**, focusing on subtle nuance distinctions where multiple choices are grammatically valid but only one matches natural pragmatic usage (e.g., わけがない / わけではない, おかげで / せいで, ために / ように, ものだ / ことだ), along with short-passage and info-retrieval reading tasks.
 - Free switching between N5, N4, and N3 levels anytime.
-- **Weakness diagnosis**: Pinpoints recurring error patterns. Every tested grammar point contains at least 3 distinct questions to filter out noise.
+- **Weakness diagnosis**: Pinpoints recurring error patterns. Every topic has at least 3 questions to filter out noise.
 - Distractors are derived from authentic learner pitfalls (e.g., forming て-form directly from ます-stems, aspect omission, or over-generalizing irregular conjugations).
 
 #### 8. Spaced Repetition System (SRS) & Progress Tracking
 
-- 6 interval stages: 10 min → 1 day → 3 days → 7 days → 14 days → 30 days.
-- Mastery ring visualization across 5 proficiency tiers (informational only; **no arbitrary progression locks**).
+- Due reviews follow 6 stages: 10 min → 1 day → 3 days → 7 days → 14 days → 30 days. A correct answer moves a kana up one stage; a wrong answer moves it down one.
+- An adaptive scheduler (stability and difficulty per kana; first review after 10 min to 3 days depending on the rating; stability capped at 365 days) also records every answer and is included in backups. It does not set due dates yet.
+- Mastery map: 5 rings, one per kana group (Hiragana, Katakana, Dakuon, Handakuon, Yoon), each showing the share of mastered kana (informational only; **no arbitrary progression locks**).
 - **Data is stored only on this device.** Progress (kana mastery, SRS schedule, quiz records) is saved in this browser's `localStorage`. There is no account or server, so records do **not** sync across devices or browsers automatically.
 - **Using another device?** Open the **Backup & Restore Data** card on the dashboard, **Export** a JSON file here, then **Import** it on the other device. Export before clearing browser data or using private/incognito mode.
 - **What a backup contains:** kana mastery, SRS review schedule (including the adaptive scheduler state), answer history (used by the dashboard stats, weak-kana ranking and confusable-pair analysis), shadowing progress, chat-lesson position, JLPT records, and your UI language. Backups exported before this change contain only kana progress and JLPT records; importing one keeps the other data already on the device.
 
-#### 9. Progressive Web App (PWA): Installable & Fully Offline
+#### 9. Progressive Web App (PWA): Installable & Offline-capable
 
-Addable to mobile and desktop home screens. Built with a network-first strategy for index HTML (ensuring prompt updates) and cache-first for static assets and audio.
+Addable to mobile and desktop home screens. The service worker precaches only the entry page and caches everything else on first use. HTML is network-first and bypasses the HTTP cache, so a new deploy shows up on the next load. Hashed build assets (`/assets/`) and audio (`/audio/`) are cache-first. The manifest and icons are stale-while-revalidate. Offline, the app works with the pages and assets this browser has already loaded. Audio clips may still need a connection: the browser fetches them with Range requests, and the service worker does not store those partial responses.
 
 #### 10. No Gated Content / Artificial Barriers
 
 Kana training and JLPT paths remain completely unlocked from day one. Users may already know basic kana or be studying directly for N4/N3; enforcing arbitrary prerequisites wastes learner time.
+
+#### 11. Five Interface Languages
+
+The app is available in 繁體中文, 简体中文, English, 한국어, and Español. Translated content covers all UI text, the meanings of example words, sentences, and vocabulary, stroke-order steps and notes, confusable-kana tips, shadowing meanings, focus points, and tips, JLPT topic names and descriptions, and every JLPT explanation. Japanese learning material (kana, words, sentences, questions) stays in Japanese. Pick a language from the selector in the header. The choice is saved in this browser and included in backups. On the first visit, the app follows the browser language.
 
 ### Tab Modules
 
@@ -100,19 +105,19 @@ Kana training and JLPT paths remain completely unlocked from day one. Users may 
 |---|---|
 | Dashboard | Displays "Today's Actionable Next Step" (Weakness → Due Reviews → New Kana → Shadowing), mastery distribution, and backup tools. |
 | Kana Chart | 208-character grid with filters for seion, dakuon, handakuon, yoon, and hiragana/katakana. Cells display live mastery status. |
-| Kana Detail Card | Detailed breakdown with stroke order, audio, mnemonic notes, and example vocabulary/sentences. |
+| Kana Detail Card | Kana, romaji, audio, a representative vocabulary card, example words/sentences, and a mark-as-mastered toggle. |
 | Writing | Stroke order guide, onion-skin tracing mode, and freehand practice canvas. |
 | Quiz | 4 modes (Kana to Romaji, Audio to Kana, Romaji Typing, Hiragana/Katakana Conversion) with post-quiz mistake review and targeted drills. |
 | Confused Kana | 21 confusion groups with visual cues and distinction rules. |
 | Review Center | Weakness queue + scheduled SRS due items (mutually exclusive queues to avoid duplicate work). |
-| Special Sounds | Dedicated focus on Dakuon, Handakuon, and Yoon. |
+| Special Sounds | Sokuon (っ/ッ) and chouon (long vowels): rules and example words with audio. |
 | JLPT Practice | 280 original N5/N4/N3 questions with level switcher and diagnostic error analysis. |
 | Shadowing | 5-step shadowing system with built-in recording and dual-playback comparison. |
-| Chat Tutor | Interactive conversational tutor for kana guidance and Q&A. |
+| Chat Tutor | Chat-style guided lesson: teaches kana row by row, with a short quiz after each row. |
 
 ### Tech Stack & Quick Start
 
-React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react · motion
+React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
 
 ```bash
 # Run locally
@@ -147,9 +152,9 @@ npm run preview
 
 #### 2. 真人級日語發音，不用瀏覽器 TTS
 
-全部 208 個假名、203 個例詞、204 句例句與 18 句跟讀句都使用 **VOICEVOX** 預先生成音檔（656 個 mp3，共 7.3MB）。
+全部 208 個假名、203 個例詞、205 句例句、18 句跟讀句（正常＋慢速）與特殊音頁的例字都使用 **VOICEVOX** 預先生成音檔（約 660 個 mp3，共約 6.4MB）。
 
-瀏覽器內建語音合成唸單一假名時品質不穩定——有些引擎會唸成字母名稱，拗音與促音也常糊掉，而這正是初學者最需要聽清楚的部分。改用預生成音檔後發音穩定，且離線也能播。
+瀏覽器內建語音合成唸單一假名時品質不穩定——有些引擎會唸成字母名稱，拗音與促音也常糊掉，而這正是初學者最需要聽清楚的部分。改用預生成音檔後發音穩定。
 
 例詞與例句也一併預生成：在補齊之前，特殊音頁面唸的全是單字（がっこう・コーヒー），完全落在瀏覽器 TTS 上，同一個網站會出現兩種音色。全站語音固定使用同一個聲音，避免不同單元像換了老師。
 
@@ -175,7 +180,7 @@ npm run preview
 
 五步驟引導：**只聽 → 看字聽 → 輕聲跟 → 錄音 → 對照**
 
-- 正常 / 慢速（0.7x）雙速播放，慢速版由同一段原始音時間拉伸而成，語調一致才對得上
+- 正常 / 慢速雙速播放，慢速版由同一段原始音時間拉伸到 0.7x 而成，語調一致才對得上
 - 瀏覽器錄音，播放「母語版 → 自己的錄音」連續對照
 - 可隱藏日文/假名/羅馬字，練到真正靠耳朵
 - **不做發音評分**：日語 pitch accent 的機器評分現階段不可靠，錯誤回饋會誤導初學者。價值在於自己聽出差距
@@ -195,19 +200,24 @@ npm run preview
 
 #### 8. SRS 間隔複習與進度追蹤
 
-- 6 階段間隔：10 分 → 1 天 → 3 天 → 7 天 → 14 天 → 30 天
-- 假名掌握地圖：五階段圓環進度（純顯示，**不設關卡**）
+- 到期複習依 6 階段間隔：10 分 → 1 天 → 3 天 → 7 天 → 14 天 → 30 天。答對升一階，答錯降一階
+- 另有調適排程（每個假名記穩定度與難度；首次複習依作答評分為 10 分鐘到 3 天；穩定度上限 365 天）同步記錄每次作答並納入備份，但目前還不決定到期日
+- 假名掌握地圖：五個圓環，平假名、片假名、濁音、半濁音、拗音各一個，顯示該組已掌握的比例（純顯示，**不設關卡**）
 - **資料只存在你目前這台裝置的瀏覽器**：進度（假名掌握、SRS 排程、測驗紀錄）存在本機瀏覽器 `localStorage`，沒有帳號也沒有伺服器，**不會在不同裝置或瀏覽器之間自動同步**。
 - **要換到另一台裝置？** 到「學習總覽」頁的 **資料備份與還原** 卡片，在這台 **匯出** JSON 檔，再到另一台 **匯入**。清除瀏覽器資料或用無痕模式前也請先匯出。
 - **備份包含什麼**：假名掌握、SRS 複習排程（含調適排程狀態）、作答紀錄（首頁統計、弱點排行、易混辨析都靠它）、跟讀進度、對話教室進度、JLPT 紀錄、介面語言。這次改版前匯出的舊備份只有假名進度和 JLPT 紀錄；匯入舊檔時，本機其餘資料會保留不動。
 
 #### 9. PWA：可安裝、可離線
 
-可加入手機主畫面，離線完整使用。HTML 走 network-first（新版立即生效），靜態資產走 cache-first。
+可加入手機主畫面。Service worker 安裝時只預快取入口頁，其餘資源用到才存。HTML 走 network-first 並繞過 HTTP 快取（部署後下次載入即是新版）；帶 hash 的建置資產（`/assets/`）與音檔（`/audio/`）走 cache-first；manifest 與圖示走 stale-while-revalidate。離線時可使用這個瀏覽器已載入過的頁面與資產。音檔離線時可能仍需連網：瀏覽器以 Range 請求抓音檔，service worker 不會存下這種部分回應。
 
 #### 10. 不設學習門檻
 
 假名與 JLPT 兩條路徑**永遠開放**。使用者可能已會五十音、或正在準備 N4，強制要求先通過假名測驗是錯的假設。
+
+#### 11. 介面支援 5 種語言
+
+介面可切換繁體中文、简体中文、English、한국어、Español。翻譯範圍：全部介面文字、例詞／例句／詞彙的意思、筆順說明與提示、易混辨析的判斷點、跟讀句的意思／重點／技巧、JLPT 考點名稱與說明，以及每一題 JLPT 解說。日文學習內容本身（假名、單字、例句、題目）維持日文。在頁首的語言選單切換；選擇會存在這個瀏覽器，也會納入備份。第一次開啟時依瀏覽器語言決定。
 
 ### 功能分頁
 
@@ -215,15 +225,15 @@ npm run preview
 |---|---|
 | 學習總覽 | 「今日學習」給出唯一的下一步（弱點→到期→新假名→跟讀），加上進度統計、掌握地圖與備份 |
 | 五十音圖表 | 208 假名，可依清音/濁音/半濁音/拗音、平/片假名切換；每格顯示學習狀態（弱點/今日到期/學習中/已掌握/未學習）|
-| 假名卡片 | 單字詳解、例詞例句 |
+| 假名卡片 | 假名、羅馬字、發音、代表詞彙卡、例詞例句，可標記已掌握 |
 | 書寫練習 | 筆順說明 + 描紅 + 手寫 |
 | 綜合測驗 | 四種題型（看假名選羅馬字／聽音選假名／打羅馬字／平片假名互換）；完成後列出逐題對錯與本次弱點，可直接只練錯的那幾個 |
 | 易混辨析 | 21 組易混字對比 |
 | 複習中心 | 弱點假名 + SRS 到期複習（兩者互斥，同一個假名只出現在一處）|
-| 特殊音 | 濁音、半濁音、拗音專區 |
+| 特殊音 | 促音（っ/ッ）與長音：規則說明 + 有發音的例字 |
 | JLPT 練習 | 280 題 N5／N4／N3 原創題 + 分級切換 + 弱點分析 |
 | 跟讀練習 | 五步驟 shadowing + 錄音對照 |
-| 對話教室 | 聊天式假名引導教學 |
+| 對話教室 | 聊天式假名引導教學：逐行教假名，每行結束有小測驗 |
 
 ---
 
@@ -248,9 +258,9 @@ npm run preview
 
 #### 2. 真人级日语发音，不依赖浏览器 TTS
 
-全部 208 个假名、203 个例词、204 句例句与 18 句跟读句均采用 **VOICEVOX** 预生成音频（656 个 mp3 文件，共 7.3MB）。
+全部 208 个假名、203 个例词、205 句例句、18 句跟读句（正常 + 慢速）与特殊音页的例字均采用 **VOICEVOX** 预生成音频（约 660 个 mp3 文件，共约 6.4MB）。
 
-浏览器内置语音合成朗读单个假名时稳定性差——不同引擎常读成字母代码，拗音与促音容易失真，而这恰恰是初学者最需要精准分辨的声音。改用预渲染静态音频后，发音统一且离线可直接播放。
+浏览器内置语音合成朗读单个假名时稳定性差——不同引擎常读成字母代码，拗音与促音容易失真，而这恰恰是初学者最需要精准分辨的声音。改用预渲染静态音频后，发音统一。
 
 例词与例句同样全量预生成，避免不同章节在本地 TTS 与预生成音频之间频繁切换音色。全站固定同一声线，保持听觉一致性。
 
@@ -276,7 +286,7 @@ npm run preview
 
 五步跟读流程：**盲听 → 看文本听 → 低声轻读 → 录音输出 → 对比回放**
 
-- 提供正常语速与 0.7x 慢速播放；慢速版由同一原声进行时间拉伸生成，音高语调保持一致
+- 提供正常语速与慢速播放；慢速版由同一原声时间拉伸到 0.7x 生成，音高语调保持一致
 - 浏览器端纯本地录音，支持「标准发音 → 自身录音」无缝连播对比
 - 可自由隐藏假名、汉字或罗马字，训练真实听感
 - **不做声学评分**：日语音调核（Pitch Accent）的算法判定在纯前端并不稳定，生硬的打分只会误导初学者。核心价值在于让学习者自己听出两者差距。
@@ -296,19 +306,24 @@ npm run preview
 
 #### 8. SRS 间隔重复与进度追踪
 
-- 6 级记忆间隔梯级：10 分钟 → 1 天 → 3 天 → 7 天 → 14 天 → 30 天
-- 假名掌握度矩阵：5 阶环形进度指示（仅呈现数据，**不设置强制作业关卡**）
+- 到期复习按 6 级间隔：10 分钟 → 1 天 → 3 天 → 7 天 → 14 天 → 30 天。答对升一级，答错降一级
+- 另有自适应排程（每个假名记录稳定度与难度；首次复习按作答评分为 10 分钟到 3 天；稳定度上限 365 天）同步记录每次作答并纳入备份，但目前还不决定到期日
+- 假名掌握度地图：五个圆环，平假名、片假名、浊音、半浊音、拗音各一个，显示该组已掌握的比例（仅呈现数据，**不设置强制作业关卡**）
 - **数据只保存在你当前这台设备的浏览器**：进度（假名掌握、SRS 排程、测验记录）存在本机浏览器 `localStorage`，没有账号也没有服务器，**不会在不同设备或浏览器之间自动同步**。
 - **要换到另一台设备？** 到「学习总览」页的 **数据备份与还原** 卡片，在这台 **导出** JSON 文件，再到另一台 **导入**。清除浏览器数据或用无痕模式前也请先导出。
 - **备份包含什么**：假名掌握、SRS 复习计划（含自适应排程状态）、答题记录（首页统计、弱点排行、易混辨析都依赖它）、跟读进度、对话教室进度、JLPT 记录、界面语言。这次改版前导出的旧备份只有假名进度和 JLPT 记录；导入旧文件时，本机其余数据会保留不动。
 
-#### 9. PWA 规范：支持安装与完全离线
+#### 9. PWA 规范：支持安装与离线使用
 
-支持添加至手机桌面与离线使用。HTML 采用 network-first 策略保障更新及时性，静态资源采用 cache-first 策略确保毫秒级离线加载。
+支持添加至手机桌面。Service worker 安装时只预缓存入口页，其余资源用到时才缓存。HTML 采用 network-first 并绕过 HTTP 缓存（部署后下次加载即为新版）；带 hash 的构建产物（`/assets/`）与音频（`/audio/`）采用 cache-first；manifest 与图标采用 stale-while-revalidate。离线时可使用该浏览器已加载过的页面与资源。音频离线时可能仍需联网：浏览器以 Range 请求获取音频，service worker 不会保存这种部分响应。
 
 #### 10. 无强制解锁门槛
 
 假名与 JLPT 两条路径**完全开放**。许多学习者可能已掌握五十音或直接备考 N4/N3，强制要求通关假名测试再学后续内容是反人性的设计假设。
+
+#### 11. 界面支持 5 种语言
+
+界面可切换繁體中文、简体中文、English、한국어、Español。翻译范围：全部界面文字、例词／例句／词汇的释义、笔顺说明与提示、易混辨析的判断点、跟读句的释义／重点／技巧、JLPT 考点名称与说明，以及每一道 JLPT 解析。日语学习内容本身（假名、单词、例句、题目）保持日语。在页首的语言菜单切换；选择会保存在该浏览器，也会纳入备份。首次打开时按浏览器语言决定。
 
 ### 功能模块
 
@@ -316,15 +331,15 @@ npm run preview
 |---|---|
 | 学习总览 | 「今日任务」给出唯一的下一步建议（弱点复习 → 到期复习 → 新增假名 → 句子跟读），配合掌握度地图与数据备份 |
 | 五十音图表 | 208 个假名总览，支持按清音/浊音/半浊音/拗音、平片假名过滤；每个单元格实时展示掌握状态（弱点/今日到期/学习中/已掌握/未学习） |
-| 假名卡片 | 单个假名拆解，展示拼写、发音要点与对应例词例句 |
+| 假名卡片 | 单个假名拆解，展示假名、罗马字、发音、代表词汇卡与对应例词例句，可标记已掌握 |
 | 书写练习 | 笔顺拆解 + 描红临摹 + 空白画布练习 |
 | 综合测验 | 四类题型（看假名选罗马字 / 听音辨字 / 输入罗马字 / 平片假名互换）；测验后生成详细对错列表与弱点清单，支持一键专项针对练习 |
 | 易混辨析 | 21 组易混淆字形深度对比与辨析规则 |
 | 复习中心 | 弱点假名优先消化 + SRS 到期队列（两模块互斥，同一假名不会重复堆叠） |
-| 特殊音 | 浊音、半浊音、拗音专项强化 |
+| 特殊音 | 促音（っ/ッ）与长音：规则说明 + 带发音的例字 |
 | JLPT 练习 | 280 题 N5 / N4 / N3 原创题库，支持分级切换与考点弱点定位 |
 | 跟读练习 | 五步影子跟读训练法 + 本地录音对比 |
-| 对话教室 | 交互式假名学习引导问答 |
+| 对话教室 | 聊天式假名引导教学：逐行讲解假名，每行结束有小测验 |
 
 ---
 
