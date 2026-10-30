@@ -99,3 +99,21 @@ describe('內容勘誤（.audit/content-source-errors.md 接線時直接修）',
     for (const lang of LANGUAGES) expect(hyou.meaning[lang], lang).not.toMatch(/豹|leopard|표범|leopardo/i);
   });
 });
+
+describe('en/ko/es 解說母語審校', () => {
+  it('en：吃藥對照英文 take，に沿って 不用 work in line with the plan，代わりに 的例句是「你」', () => {
+    expect(JLPT_EXPLANATIONS.en['N5-ORIG-B2-V-14']).toContain('Where English uses “take,” Japanese uses のむ');
+    for (const text of Object.values(JLPT_EXPLANATIONS.en)) expect(text).not.toContain('work in line with the plan');
+    expect(JLPT_EXPLANATIONS.en['n3-own-b2-05']).toContain('I teach you Japanese, and in return you teach me English');
+  });
+
+  it('ko：냄새／맛 是正向提示，解決 寫成 解決（する）', () => {
+    expect(JLPT_EXPLANATIONS.ko['n4-own-b1-05']).toContain("한국어에서 '냄새'와 '맛'을 구분하듯");
+    expect(JLPT_EXPLANATIONS.ko['n3-own-b3-02']).toContain('解決（する）');
+  });
+
+  it('es：吃藥對照 tomar，かいけち 不用中古漢語 -t 解釋', () => {
+    expect(JLPT_EXPLANATIONS.es['N5-ORIG-B2-V-14']).toContain('(en lugar de «tomarse»)');
+    expect(JLPT_EXPLANATIONS.es['n3-own-b3-01']).not.toContain('chino antiguo');
+  });
+});
