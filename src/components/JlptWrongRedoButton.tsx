@@ -16,8 +16,8 @@ export function JlptWrongRedoButton({ onStart }: Props) {
 
   if (count === 0) {
     return (
-      <div className="bg-[#F4EEDE] p-4 sm:p-5 rounded-2xl border border-[#D9CDB2] shadow-xs flex items-center gap-2 text-xs text-[#6B6252]">
-        <CheckCircle2 className="w-4 h-4 text-[#5C6B3D] shrink-0" />
+      <div className="bg-[color:var(--paper-bg)] p-4 sm:p-5 rounded-2xl border border-[color:var(--paper-85)] shadow-xs flex items-center gap-2 text-xs text-[color:var(--ink-50)]">
+        <CheckCircle2 className="w-4 h-4 text-[color:var(--moss-50)] shrink-0" />
         {t('jlpt.wrongRedoEmpty')}
       </div>
     );
@@ -26,18 +26,18 @@ export function JlptWrongRedoButton({ onStart }: Props) {
   return (
     <button
       onClick={onStart}
-      className="w-full bg-[#F4EEDE] p-4 sm:p-5 rounded-2xl border border-[#D9CDB2] shadow-xs flex items-center justify-between gap-3 hover:border-[#5C6B3D] transition-all cursor-pointer text-left group"
+      className="w-full bg-[color:var(--paper-bg)] p-4 sm:p-5 rounded-2xl border border-[color:var(--paper-85)] shadow-xs flex items-center justify-between gap-3 hover:border-[color:var(--moss-50)] transition-all cursor-pointer text-left group"
     >
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-[#F1E1DB] flex items-center justify-center shrink-0">
-          <RotateCcw className="w-5 h-5 text-[#A6443A]" />
+        <div className="w-10 h-10 rounded-xl bg-[color:var(--shu-92)] flex items-center justify-center shrink-0">
+          <RotateCcw className="w-5 h-5 text-[color:var(--shu-52a)]" />
         </div>
         <div>
-          <div className="text-sm font-extrabold text-[#221F18]">{t('jlpt.wrongRedoTitle')}</div>
-          <div className="text-xs text-[#6B6252]">{t('jlpt.wrongRedoDesc')}</div>
+          <div className="text-sm font-extrabold text-[color:var(--ink-24)]">{t('jlpt.wrongRedoTitle')}</div>
+          <div className="text-xs text-[color:var(--ink-50)]">{t('jlpt.wrongRedoDesc')}</div>
         </div>
       </div>
-      <span className="px-3 py-1.5 rounded-full bg-[#A6443A] text-[#F1EFE0] text-xs font-extrabold shrink-0">
+      <span className="px-3 py-1.5 rounded-full bg-[color:var(--shu-52a)] text-[color:var(--paper-95)] text-xs font-extrabold shrink-0">
         {t('jlpt.questionCount', { count })}
       </span>
     </button>

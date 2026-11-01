@@ -1,0 +1,255 @@
+/* ────────────────────────────────────────────────────────────
+ 主題色票：元件只用這裡的變數，不直接寫色碼。
+ :root 是原版（和紙・抹茶），數值與改版前的色碼完全相同。
+ 其他主題掛在 html[data-theme="…"]，由 scripts/gen-themes.py 依原版色票換算：
+ 中性色換色相、主色換色相與彩度，深色主題再把明度反轉。
+ 變數名 = 色系-明度（例如 --moss-50 是明度 50% 的苔綠主色）。
+ ──────────────────────────────────────────────────────────── */
+
+:root {
+  --ai-32: #1E3743;
+  --ai-36: #24404F;
+  --ai-39: #2D4A5B;
+  --ai-88: #CDD9DE;
+  --ai-92: #DCE6EA;
+  --aotake-50: #4A6B5E;
+  --fuji-45: #5A4E6B;
+  --fuji-91: #E2DDEC;
+  --ink-24: #221F18;
+  --ink-33: #3A3529;
+  --ink-43: #55503F;
+  --ink-50: #6B6252;
+  --ink-62: #8F8674;
+  --kincha-47: #7A5320;
+  --kincha-51: #8A5A1F;
+  --kincha-56: #996A2C;
+  --kincha-86: #E2CF97;
+  --kincha-86a: #E0CF9C;
+  --moss-40: #3F4C29;
+  --moss-43: #47552F;
+  --moss-50: #5C6B3D;
+  --moss-66: #8A9A63;
+  --moss-75: #A8B487;
+  --moss-79: #B6C096;
+  --moss-89: #D9E0C6;
+  --moss-90: #DBE1C8;
+  --moss-93: #E6EAD5;
+  --moss-95: #EEF0E3;
+  --paper-81: #CABFA6;
+  --paper-85: #D9CDB2;
+  --paper-91: #E9E1CF;
+  --paper-92: #ECE4D0;
+  --paper-92a: #EFE3C9;
+  --paper-93: #F0E9D8;
+  --paper-94: #F3ECD6;
+  --paper-95: #F1EFE0;
+  --paper-96: #F1F0E6;
+  --paper-bg: #F4EEDE;
+  --shu-46: #8E3A31;
+  --shu-52: #9E4A5A;
+  --shu-52a: #A6443A;
+  --shu-56: #B0554A;
+  --shu-74: #CAA096;
+  --shu-81: #D8B8B0;
+  --shu-87: #E7CCC5;
+  --shu-90: #ECDADA;
+  --shu-91: #EFDBD5;
+  --shu-92: #F1E1DB;
+  --white: #FFFFFF;
+}
+
+/* 藍染：未漂白棉布的冷白底＋靛藍主色。標題改用黑體，像染坊的工作標籤，比原版更俐落。 */
+html[data-theme="aizome"] {
+  --ai-32: #1E3743;
+  --ai-36: #24404F;
+  --ai-39: #2D4A5B;
+  --ai-88: #CDD9DE;
+  --ai-92: #DCE6EA;
+  --aotake-50: #4A6B5E;
+  --fuji-45: #5A4E6B;
+  --fuji-91: #E2DDEC;
+  --ink-24: #1C2024;
+  --ink-33: #31363D;
+  --ink-43: #4A5159;
+  --ink-50: #5D646D;
+  --ink-62: #808891;
+  --kincha-47: #7A5320;
+  --kincha-51: #8A5A1F;
+  --kincha-56: #996A2C;
+  --kincha-86: #E2CF97;
+  --kincha-86a: #E0CF9C;
+  --moss-40: #1C3564;
+  --moss-43: #223D70;
+  --moss-50: #31518F;
+  --moss-66: #577FC9;
+  --moss-75: #7A9BD8;
+  --moss-79: #88A8E1;
+  --moss-89: #C5D9FE;
+  --moss-90: #C7DAFD;
+  --moss-93: #D6E4FD;
+  --moss-95: #E1EBFD;
+  --paper-81: #B7C1CD;
+  --paper-85: #C5CFDC;
+  --paper-91: #DBE2EC;
+  --paper-92: #DDE5F0;
+  --paper-92a: #DBE5F2;
+  --paper-93: #E3EAF3;
+  --paper-94: #E4EDF8;
+  --paper-95: #E9EFF7;
+  --paper-96: #EBF0F6;
+  --paper-bg: #E8EFF8;
+  --shu-46: #8E3A31;
+  --shu-52: #9E4A5A;
+  --shu-52a: #A6443A;
+  --shu-56: #B0554A;
+  --shu-74: #CAA096;
+  --shu-81: #D8B8B0;
+  --shu-87: #E7CCC5;
+  --shu-90: #ECDADA;
+  --shu-91: #EFDBD5;
+  --shu-92: #F1E1DB;
+  --white: #FFFFFF;
+  --shadow-rgb: 28 32 36;
+  --glow-rgb: 49 81 143;
+}
+html[lang][data-theme="aizome"] {
+  --font-display: "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+/* 桜餅：粉白底＋梅紫主色，全站改圓體字。給初學者、輕鬆可愛。 */
+html[data-theme="sakura"] {
+  --ai-32: #4A2637;
+  --ai-36: #572C40;
+  --ai-39: #63354A;
+  --ai-88: #E4D1D8;
+  --ai-92: #EFDFE5;
+  --aotake-50: #4A6B5E;
+  --fuji-45: #5A4E6B;
+  --fuji-91: #E2DDEC;
+  --ink-24: #251D1E;
+  --ink-33: #3E3233;
+  --ink-43: #5A4C4D;
+  --ink-50: #6E5F60;
+  --ink-62: #938284;
+  --kincha-47: #7A5320;
+  --kincha-51: #8A5A1F;
+  --kincha-56: #996A2C;
+  --kincha-86: #E2CF97;
+  --kincha-86a: #E0CF9C;
+  --moss-40: #70294D;
+  --moss-43: #7C2F56;
+  --moss-50: #9A3E6C;
+  --moss-66: #D5679C;
+  --moss-75: #E88DB5;
+  --moss-79: #F19CC2;
+  --moss-89: #FECCE0;
+  --moss-90: #FECEE2;
+  --moss-93: #FEDDEA;
+  --moss-95: #FFE7F0;
+  --paper-81: #CFBABC;
+  --paper-85: #DEC8CA;
+  --paper-91: #EEDDDE;
+  --paper-92: #F2DFE1;
+  --paper-92a: #F4DEE0;
+  --paper-93: #F5E5E6;
+  --paper-94: #FAE7E8;
+  --paper-95: #F9EAEB;
+  --paper-96: #F8ECED;
+  --paper-bg: #FAEAEB;
+  --shu-46: #8E3A31;
+  --shu-52: #9E4A5A;
+  --shu-52a: #A6443A;
+  --shu-56: #B0554A;
+  --shu-74: #CAA096;
+  --shu-81: #D8B8B0;
+  --shu-87: #E7CCC5;
+  --shu-90: #ECDADA;
+  --shu-91: #EFDBD5;
+  --shu-92: #F1E1DB;
+  --white: #FFFFFF;
+  --shadow-rgb: 37 29 30;
+  --glow-rgb: 154 62 108;
+}
+html[lang][data-theme="sakura"] {
+  --font-display: "M PLUS Rounded 1c", system-ui, sans-serif;
+  --font-sans: "M PLUS Rounded 1c", system-ui, sans-serif;
+}
+
+/* 夜学（深色）：深藍夜色＋山吹金主色，保留明朝體。晚上念書不刺眼。 */
+html[data-theme="yagaku"] {
+  color-scheme: dark;
+  --ai-32: #DFD3BC;
+  --ai-36: #D8CBB1;
+  --ai-39: #D0C2A7;
+  --ai-88: #23211C;
+  --ai-92: #1B1915;
+  --aotake-50: #92B5A7;
+  --fuji-45: #BEB1D2;
+  --fuji-91: #1D1A21;
+  --ink-24: #E1E8F6;
+  --ink-33: #CAD3E3;
+  --ink-43: #B1BCCE;
+  --ink-50: #A2ACBE;
+  --ink-62: #8791A3;
+  --kincha-47: #D4A876;
+  --kincha-51: #D29E65;
+  --kincha-56: #C59357;
+  --kincha-86: #2F2401;
+  --kincha-86a: #2E2505;
+  --moss-40: #E7BD6E;
+  --moss-43: #E1B55F;
+  --moss-50: #D5A237;
+  --moss-66: #AF7F00;
+  --moss-75: #966E0F;
+  --moss-79: #8D6500;
+  --moss-89: #291B01;
+  --moss-90: #281B01;
+  --moss-93: #201502;
+  --moss-95: #181207;
+  --paper-81: #273041;
+  --paper-85: #1D2738;
+  --paper-91: #141B27;
+  --paper-92: #121926;
+  --paper-92a: #101929;
+  --paper-93: #0F1622;
+  --paper-94: #0D1422;
+  --paper-95: #0D131E;
+  --paper-96: #0E131C;
+  --paper-bg: #0D131F;
+  --shu-46: #F6978A;
+  --shu-52: #E48997;
+  --shu-52a: #EF8678;
+  --shu-56: #E08073;
+  --shu-74: #936C63;
+  --shu-81: #3C2B27;
+  --shu-87: #2E201C;
+  --shu-90: #221A1A;
+  --shu-91: #231916;
+  --shu-92: #1E1714;
+  --white: #0F0F0F;
+  --shadow-rgb: 0 0 0;
+  --glow-rgb: 213 162 55;
+  /* Tailwind 內建色（提示、徽章用）：淺色淡底換成深色淡底，深色字換成淺色字 */
+  --color-white: #121926;
+  --color-red-100: #1E1213;
+  --color-red-300: #713033;
+  --color-red-600: #FDA297;
+  --color-red-700: #FDA297;
+  --color-orange-50: #120F0B;
+  --color-amber-100: #161100;
+  --color-amber-300: #584601;
+  --color-amber-800: #F8A781;
+  --color-amber-900: #EFAC8D;
+  --color-emerald-100: #05170F;
+  --color-sky-100: #0C1419;
+  --color-sky-300: #084F69;
+  --color-sky-800: #89C6F1;
+  --color-blue-50: #0D1013;
+  --color-blue-200: #142131;
+  --color-blue-300: #224973;
+  --color-blue-600: #9DBEFC;
+  --color-rose-600: #FE9FA3;
+  --color-slate-200: #15171B;
+  --color-slate-300: #414851;
+}
+html[data-theme="yagaku"] body { background-color: var(--paper-bg); }

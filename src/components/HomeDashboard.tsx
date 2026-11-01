@@ -131,7 +131,7 @@ export function HomeDashboard({
   return (
     <div className="space-y-7">
       {/* Top Banner */}
-      <div className="bg-[linear-gradient(150deg,#2D4A5B_0%,#24404F_55%,#1E3743_100%)] rounded-3xl p-6 sm:p-8 text-[#F1EFE0] elev-3 rise-in relative overflow-hidden">
+      <div className="bg-[linear-gradient(150deg,var(--ai-39)_0%,var(--ai-36)_55%,var(--ai-32)_100%)] rounded-3xl p-6 sm:p-8 text-[color:var(--paper-95)] elev-3 rise-in relative overflow-hidden">
         <div
           aria-hidden
           className="absolute top-0 -right-10 opacity-[0.08] text-[110px] sm:text-[150px] font-extrabold leading-[0.9] tracking-wide whitespace-nowrap select-none text-right pointer-events-none [mask-image:linear-gradient(to_left,black_25%,transparent_75%)]"
@@ -142,28 +142,28 @@ export function HomeDashboard({
         </div>
         <div aria-hidden className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
         <div className="relative z-10 space-y-3 max-w-xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#f4eede]/20 rounded-full text-xs font-bold backdrop-blur-xs">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[color:var(--paper-bg)]/20 rounded-full text-xs font-bold backdrop-blur-xs">
             <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
             {t('home.hero.tag')}
           </div>
           <h2 className="text-2xl sm:text-3xl font-display font-bold tracking-tight">
             {t('home.hero.title')}
           </h2>
-          <p className="text-[#F1EFE0]/80 text-xs sm:text-sm leading-relaxed">
+          <p className="text-[color:var(--paper-95)]/80 text-xs sm:text-sm leading-relaxed">
             {t('home.hero.desc')}
           </p>
         </div>
       </div>
 
       {/* AI 智能學習建議 (AI Recommendation Card) */}
-      <div className="bg-gradient-to-br from-white to-[#F1F0E6] p-6 rounded-3xl border border-[#B6C096] shadow-xs space-y-4">
+      <div className="bg-gradient-to-br from-white to-[color:var(--paper-96)] p-6 rounded-3xl border border-[color:var(--moss-79)] shadow-xs space-y-4">
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E6EAD5] text-[#5C6B3D] rounded-full text-xs font-extrabold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[color:var(--moss-93)] text-[color:var(--moss-50)] rounded-full text-xs font-extrabold">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             {t('analytics.recommendation')}
           </div>
           {aiRecommendation.priority === 'high' && (
-            <span className="text-[11px] font-bold text-[#7A5320] bg-[#EFE3C9] border border-[#E0CF9C] px-2.5 py-0.5 rounded-full">
+            <span className="text-[11px] font-bold text-[color:var(--kincha-47)] bg-[color:var(--paper-92a)] border border-[color:var(--kincha-86a)] px-2.5 py-0.5 rounded-full">
               High Priority
             </span>
           )}
@@ -171,15 +171,15 @@ export function HomeDashboard({
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="space-y-1">
-            <h3 className="text-base sm:text-lg font-bold text-[#221F18] flex items-center gap-2">
-              {aiRecommendation.recommendedAction === 'listening_confusion' && <Headphones className="w-5 h-5 text-[#8A5A1F]" />}
-              {aiRecommendation.recommendedAction === 'writing' && <PenLine className="w-5 h-5 text-[#5C6B3D]" />}
-              {aiRecommendation.recommendedAction === 'review' && <BookOpen className="w-5 h-5 text-[#5C6B3D]" />}
-              {aiRecommendation.recommendedAction === 'shadowing' && <Headphones className="w-5 h-5 text-[#5C6B3D]" />}
-              {aiRecommendation.recommendedAction === 'quiz' && <Target className="w-5 h-5 text-[#5C6B3D]" />}
+            <h3 className="text-base sm:text-lg font-bold text-[color:var(--ink-24)] flex items-center gap-2">
+              {aiRecommendation.recommendedAction === 'listening_confusion' && <Headphones className="w-5 h-5 text-[color:var(--kincha-51)]" />}
+              {aiRecommendation.recommendedAction === 'writing' && <PenLine className="w-5 h-5 text-[color:var(--moss-50)]" />}
+              {aiRecommendation.recommendedAction === 'review' && <BookOpen className="w-5 h-5 text-[color:var(--moss-50)]" />}
+              {aiRecommendation.recommendedAction === 'shadowing' && <Headphones className="w-5 h-5 text-[color:var(--moss-50)]" />}
+              {aiRecommendation.recommendedAction === 'quiz' && <Target className="w-5 h-5 text-[color:var(--moss-50)]" />}
               {t(aiRecommendation.titleKey)}
             </h3>
-            <p className="text-xs text-[#6B6252] leading-relaxed">
+            <p className="text-xs text-[color:var(--ink-50)] leading-relaxed">
               {t(aiRecommendation.reasonKey, aiRecommendation.reasonParams)}
             </p>
           </div>
@@ -187,7 +187,7 @@ export function HomeDashboard({
           <button
             type="button"
             onClick={handleRecommendationAction}
-            className="w-full sm:w-auto px-5 py-3 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-xs rounded-xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2 shrink-0"
+            className="w-full sm:w-auto px-5 py-3 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-xs rounded-xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2 shrink-0"
           >
             <span>{t('analytics.startAction')}</span>
             <ArrowRight className="w-4 h-4" />
@@ -196,33 +196,33 @@ export function HomeDashboard({
 
         {/* C1.4 推薦可解釋性面板 (Recommendation Evidence) */}
         {aiRecommendation.evidence && (
-          <div className="pt-3 border-t border-[#D9E0C6]/80 space-y-2">
-            <div className="text-[11px] font-extrabold text-[#5C6B3D] flex items-center gap-1.5">
+          <div className="pt-3 border-t border-[color:var(--moss-89)]/80 space-y-2">
+            <div className="text-[11px] font-extrabold text-[color:var(--moss-50)] flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5" />
               <span>{t('analytics.recommendationWhy')}</span>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-[#f4eede]/80 p-3 rounded-2xl border border-[#D9E0C6] text-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-[color:var(--paper-bg)]/80 p-3 rounded-2xl border border-[color:var(--moss-89)] text-center">
               <div>
-                <div className="text-[10px] font-bold text-[#6B6252]">{t('analytics.recommendationEvidenceListening')}</div>
-                <div className="text-xs font-black text-[#7A5320] mt-0.5">
+                <div className="text-[10px] font-bold text-[color:var(--ink-50)]">{t('analytics.recommendationEvidenceListening')}</div>
+                <div className="text-xs font-black text-[color:var(--kincha-47)] mt-0.5">
                   {Math.round((aiRecommendation.evidence.listeningAccuracy ?? 0) * 100)}%
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-bold text-[#6B6252]">{t('analytics.recommendationEvidenceVisual')}</div>
-                <div className="text-xs font-black text-[#5C6B3D] mt-0.5">
+                <div className="text-[10px] font-bold text-[color:var(--ink-50)]">{t('analytics.recommendationEvidenceVisual')}</div>
+                <div className="text-xs font-black text-[color:var(--moss-50)] mt-0.5">
                   {formatPercent(aiRecommendation.evidence.visualAccuracy)}
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-bold text-[#6B6252]">{t('analytics.recommendationEvidenceGap')}</div>
+                <div className="text-[10px] font-bold text-[color:var(--ink-50)]">{t('analytics.recommendationEvidenceGap')}</div>
                 <div className="text-xs font-black text-rose-600 mt-0.5">
                   {formatSignedPercent(aiRecommendation.evidence.gap)}
                 </div>
               </div>
               <div>
-                <div className="text-[10px] font-bold text-[#6B6252]">{t('analytics.recommendationEvidenceAttempts')}</div>
-                <div className="text-xs font-black text-[#221F18] mt-0.5">
+                <div className="text-[10px] font-bold text-[color:var(--ink-50)]">{t('analytics.recommendationEvidenceAttempts')}</div>
+                <div className="text-xs font-black text-[color:var(--ink-24)] mt-0.5">
                   {aiRecommendation.evidence.recentAttempts ?? 0}
                 </div>
               </div>
@@ -240,45 +240,45 @@ export function HomeDashboard({
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* 今日學習數據細分 */}
-          <div className="bg-[#F4EEDE] p-5 rounded-3xl border border-[#D9CDB2] shadow-xs flex flex-col justify-between gap-4">
+          <div className="bg-[color:var(--paper-bg)] p-5 rounded-3xl border border-[color:var(--paper-85)] shadow-xs flex flex-col justify-between gap-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-[#6B6252] flex items-center gap-1.5">
-                <Activity className="w-4 h-4 text-[#5C6B3D]" />
+              <span className="text-xs font-bold text-[color:var(--ink-50)] flex items-center gap-1.5">
+                <Activity className="w-4 h-4 text-[color:var(--moss-50)]" />
                 {t('analytics.today')}
               </span>
-              <span className="text-xs font-extrabold text-[#5C6B3D] bg-[#E6EAD5] px-2.5 py-0.5 rounded-full">
+              <span className="text-xs font-extrabold text-[color:var(--moss-50)] bg-[color:var(--moss-93)] px-2.5 py-0.5 rounded-full">
                 {t('analytics.total')}: {todayStats.totalActions}
               </span>
             </div>
 
             <div className="grid grid-cols-2 gap-2.5">
-              <div className="p-3 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0]">
-                <div className="text-[11px] font-bold text-[#6B6252]">{t('analytics.quiz')}</div>
-                <div className="text-xl font-extrabold text-[#221F18] mt-0.5">{todayStats.quizCount}</div>
+              <div className="p-3 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-92)]">
+                <div className="text-[11px] font-bold text-[color:var(--ink-50)]">{t('analytics.quiz')}</div>
+                <div className="text-xl font-extrabold text-[color:var(--ink-24)] mt-0.5">{todayStats.quizCount}</div>
               </div>
-              <div className="p-3 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0]">
-                <div className="text-[11px] font-bold text-[#6B6252]">{t('analytics.review')}</div>
-                <div className="text-xl font-extrabold text-[#221F18] mt-0.5">{todayStats.reviewCount}</div>
+              <div className="p-3 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-92)]">
+                <div className="text-[11px] font-bold text-[color:var(--ink-50)]">{t('analytics.review')}</div>
+                <div className="text-xl font-extrabold text-[color:var(--ink-24)] mt-0.5">{todayStats.reviewCount}</div>
               </div>
-              <div className="p-3 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0]">
-                <div className="text-[11px] font-bold text-[#6B6252]">{t('analytics.writing')}</div>
-                <div className="text-xl font-extrabold text-[#221F18] mt-0.5">{todayStats.writingCount}</div>
+              <div className="p-3 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-92)]">
+                <div className="text-[11px] font-bold text-[color:var(--ink-50)]">{t('analytics.writing')}</div>
+                <div className="text-xl font-extrabold text-[color:var(--ink-24)] mt-0.5">{todayStats.writingCount}</div>
               </div>
-              <div className="p-3 bg-[#F4EEDE] rounded-2xl border border-[#ECE4D0]">
-                <div className="text-[11px] font-bold text-[#6B6252]">{t('analytics.shadowing')}</div>
-                <div className="text-xl font-extrabold text-[#221F18] mt-0.5">{todayStats.shadowingCount}</div>
+              <div className="p-3 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--paper-92)]">
+                <div className="text-[11px] font-bold text-[color:var(--ink-50)]">{t('analytics.shadowing')}</div>
+                <div className="text-xl font-extrabold text-[color:var(--ink-24)] mt-0.5">{todayStats.shadowingCount}</div>
               </div>
             </div>
           </div>
 
           {/* 7 日趨勢原生 SVG 圖表 (Zero Dependency) */}
-          <div className="lg:col-span-2 bg-[#F4EEDE] p-5 rounded-3xl border border-[#D9CDB2] shadow-xs flex flex-col justify-between gap-3">
+          <div className="lg:col-span-2 bg-[color:var(--paper-bg)] p-5 rounded-3xl border border-[color:var(--paper-85)] shadow-xs flex flex-col justify-between gap-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-[#6B6252] flex items-center gap-1.5">
-                <TrendingUp className="w-4 h-4 text-[#5C6B3D]" />
+              <span className="text-xs font-bold text-[color:var(--ink-50)] flex items-center gap-1.5">
+                <TrendingUp className="w-4 h-4 text-[color:var(--moss-50)]" />
                 {t('analytics.sevenDayTrend')}
               </span>
-              <span className="text-[11px] text-[#8F8674]">Past 7 Days</span>
+              <span className="text-[11px] text-[color:var(--ink-62)]">Past 7 Days</span>
             </div>
 
             {/* 原生 SVG 響應式柱狀圖 */}
@@ -293,19 +293,19 @@ export function HomeDashboard({
                   const isToday = idx === 6;
                   return (
                     <div key={item.date} className="flex flex-col items-center gap-1.5 h-full justify-end group">
-                      <span className="text-[10px] font-bold text-[#6B6252] opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-[10px] font-bold text-[color:var(--ink-50)] opacity-0 group-hover:opacity-100 transition-opacity">
                         {item.count}
                       </span>
-                      <div className="w-full bg-[#ECE4D0] rounded-lg h-full max-h-20 flex items-end overflow-hidden">
+                      <div className="w-full bg-[color:var(--paper-92)] rounded-lg h-full max-h-20 flex items-end overflow-hidden">
                         <div
                           className={`w-full rounded-lg transition-all duration-500 ${
-                            isToday ? 'bg-[#5C6B3D]' : 'bg-[#8A9A63]/80 group-hover:bg-[#5C6B3D]'
+                            isToday ? 'bg-[color:var(--moss-50)]' : 'bg-[color:var(--moss-66)]/80 group-hover:bg-[color:var(--moss-50)]'
                           }`}
                           style={{ height: `${heightPercent}%` }}
                           title={`${item.date}: ${item.count} actions`}
                         />
                       </div>
-                      <span className={`text-[10px] font-bold ${isToday ? 'text-[#5C6B3D]' : 'text-[#8F8674]'}`}>
+                      <span className={`text-[10px] font-bold ${isToday ? 'text-[color:var(--moss-50)]' : 'text-[color:var(--ink-62)]'}`}>
                         {item.displayDate}
                       </span>
                     </div>
@@ -321,7 +321,7 @@ export function HomeDashboard({
       <div className="space-y-3">
         <SectionHeading>{t('analytics.listeningWeaknessTitle')}</SectionHeading>
 
-        <div className="bg-[#F4EEDE] p-5 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-4">
+        <div className="bg-[color:var(--paper-bg)] p-5 rounded-3xl border border-[color:var(--paper-85)] shadow-xs space-y-4">
           {listeningWeaknesses.filter((w) => w.attempts >= 3).length > 0 ? (
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {listeningWeaknesses
@@ -349,19 +349,19 @@ export function HomeDashboard({
                   return (
                     <div
                       key={w.kanaId}
-                      className="p-4 bg-gradient-to-b from-[#F4EEDE] to-white rounded-2xl border border-[#E0CF9C]/80 flex flex-col justify-between gap-3.5 shadow-2xs"
+                      className="p-4 bg-gradient-to-b from-[color:var(--paper-bg)] to-white rounded-2xl border border-[color:var(--kincha-86a)]/80 flex flex-col justify-between gap-3.5 shadow-2xs"
                     >
                       {/* Header: Kana badge & Confidence */}
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2.5">
-                          <div className="w-10 h-10 rounded-xl bg-[#EFE3C9] text-amber-800 font-extrabold text-xl flex items-center justify-center border border-[#E0CF9C]">
+                          <div className="w-10 h-10 rounded-xl bg-[color:var(--paper-92a)] text-amber-800 font-extrabold text-xl flex items-center justify-center border border-[color:var(--kincha-86a)]">
                             {kanaObj?.kana || w.kanaId}
                           </div>
                           <div>
-                            <div className="text-xs font-bold text-[#221F18]">
+                            <div className="text-xs font-bold text-[color:var(--ink-24)]">
                               #{idx + 1} {kanaObj?.romaji.toUpperCase()}
                             </div>
-                            <div className="text-[10px] text-[#6B6252]">
+                            <div className="text-[10px] text-[color:var(--ink-50)]">
                               Score {w.score}
                             </div>
                           </div>
@@ -373,7 +373,7 @@ export function HomeDashboard({
                               ? 'bg-amber-100 text-amber-800 border-amber-300'
                               : w.confidence === 'medium'
                               ? 'bg-sky-100 text-sky-800 border-sky-300'
-                              : 'bg-[#ECE4D0] text-[#6B6252] border-slate-300'
+                              : 'bg-[color:var(--paper-92)] text-[color:var(--ink-50)] border-slate-300'
                           }`}
                         >
                           {w.confidence === 'high'
@@ -385,28 +385,28 @@ export function HomeDashboard({
                       </div>
 
                       {/* Evidence: Metrics 3-Grid */}
-                      <div className="grid grid-cols-3 gap-1.5 p-2 bg-[#F0E9D8] rounded-xl border border-[#ECE4D0] text-center">
+                      <div className="grid grid-cols-3 gap-1.5 p-2 bg-[color:var(--paper-93)] rounded-xl border border-[color:var(--paper-92)] text-center">
                         <div>
-                          <div className="text-[10px] font-bold text-[#6B6252]">
+                          <div className="text-[10px] font-bold text-[color:var(--ink-50)]">
                             {t('analytics.listeningAccuracyLabel')}
                           </div>
-                          <div className="text-xs font-extrabold text-[#7A5320] mt-0.5">
+                          <div className="text-xs font-extrabold text-[color:var(--kincha-47)] mt-0.5">
                             {Math.round(w.listeningAccuracy * 100)}%
                           </div>
-                          <div className="text-[9px] text-[#8F8674]">
+                          <div className="text-[9px] text-[color:var(--ink-62)]">
                             ({w.attempts - w.wrongCount}/{w.attempts})
                           </div>
                         </div>
                         <div>
-                          <div className="text-[10px] font-bold text-[#6B6252]">
+                          <div className="text-[10px] font-bold text-[color:var(--ink-50)]">
                             {t('analytics.visualAccuracyLabel')}
                           </div>
-                          <div className="text-xs font-extrabold text-[#5C6B3D] mt-0.5">
+                          <div className="text-xs font-extrabold text-[color:var(--moss-50)] mt-0.5">
                             {formatPercent(w.visualAccuracy)}
                           </div>
                         </div>
                         <div>
-                          <div className="text-[10px] font-bold text-[#6B6252]">
+                          <div className="text-[10px] font-bold text-[color:var(--ink-50)]">
                             {t('analytics.modalityGapLabel')}
                           </div>
                           <div className="text-xs font-extrabold text-rose-600 mt-0.5">
@@ -417,14 +417,14 @@ export function HomeDashboard({
 
                       {/* Diagnosis: Top Confusion */}
                       {confusedObj ? (
-                        <div className="text-[11px] font-medium text-[#55503F] bg-[#EFE3C9]/60 px-2.5 py-1.5 rounded-lg border border-amber-100 flex items-center justify-between">
-                          <span className="text-[#6B6252] text-[10px] font-bold">{t('analytics.mostConfusedWith')}:</span>
+                        <div className="text-[11px] font-medium text-[color:var(--ink-43)] bg-[color:var(--paper-92a)]/60 px-2.5 py-1.5 rounded-lg border border-amber-100 flex items-center justify-between">
+                          <span className="text-[color:var(--ink-50)] text-[10px] font-bold">{t('analytics.mostConfusedWith')}:</span>
                           <span className="font-extrabold text-amber-900">
                             {kanaObj?.kana} → <span className="text-rose-600 font-black">{confusedObj.kana}</span> ({confusedObj.romaji})
                           </span>
                         </div>
                       ) : (
-                        <div className="text-[10px] text-[#8F8674] italic px-1">
+                        <div className="text-[10px] text-[color:var(--ink-62)] italic px-1">
                           General Listening Weakness
                         </div>
                       )}
@@ -439,7 +439,7 @@ export function HomeDashboard({
                             onNavigate('confusable');
                           }
                         }}
-                        className="w-full py-2 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-xs"
+                        className="w-full py-2 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-xs"
                       >
                         <Headphones className="w-3.5 h-3.5" />
                         <span>{t('analytics.startConfusionDrill')}</span>
@@ -449,8 +449,8 @@ export function HomeDashboard({
                 })}
             </div>
           ) : (
-            <div className="p-6 text-center text-xs font-bold text-[#6B6252] flex items-center justify-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#5C6B3D]" />
+            <div className="p-6 text-center text-xs font-bold text-[color:var(--ink-50)] flex items-center justify-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[color:var(--moss-50)]" />
               {t('analytics.noListeningWeakness')}
             </div>
           )}
@@ -461,27 +461,27 @@ export function HomeDashboard({
       <div className="space-y-3">
         <SectionHeading>{t('analytics.masterySummaryTitle')}</SectionHeading>
 
-        <div className="bg-[#F4EEDE] p-5 sm:p-6 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-5">
+        <div className="bg-[color:var(--paper-bg)] p-5 sm:p-6 rounded-3xl border border-[color:var(--paper-85)] shadow-xs space-y-5">
           {confusionMastery.totalGroupsEvaluated > 0 ? (
             <div className="space-y-4">
               {/* Summary KPIs */}
-              <div className="grid grid-cols-2 gap-3 p-4 bg-[#F0E9D8] rounded-2xl border border-[#D9CDB2] text-center">
+              <div className="grid grid-cols-2 gap-3 p-4 bg-[color:var(--paper-93)] rounded-2xl border border-[color:var(--paper-85)] text-center">
                 <div>
-                  <div className="text-xs font-bold text-[#6B6252]">
+                  <div className="text-xs font-bold text-[color:var(--ink-50)]">
                     {t('analytics.masteryResolvedGroups')}
                   </div>
-                  <div className="text-2xl font-black text-[#5C6B3D] mt-1">
+                  <div className="text-2xl font-black text-[color:var(--moss-50)] mt-1">
                     {confusionMastery.resolvedCount} / {confusionMastery.totalGroupsEvaluated}
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-[#6B6252]">
+                  <div className="text-xs font-bold text-[color:var(--ink-50)]">
                     {t('analytics.masteryAvgImprovement')}
                   </div>
                   <div
                     className={`text-2xl font-black mt-1 ${
                       confusionMastery.averageImprovement >= 0
-                        ? 'text-[#5C6B3D]'
+                        ? 'text-[color:var(--moss-50)]'
                         : 'text-rose-600'
                     }`}
                   >
@@ -495,7 +495,7 @@ export function HomeDashboard({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Resolved Groups */}
                 <div className="space-y-2">
-                  <div className="text-xs font-extrabold text-[#5C6B3D] flex items-center gap-1.5">
+                  <div className="text-xs font-extrabold text-[color:var(--moss-50)] flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>{t('analytics.masteryResolvedList')}</span>
                   </div>
@@ -513,20 +513,20 @@ export function HomeDashboard({
                           return (
                             <div
                               key={g.groupId}
-                              className="p-3 bg-[#E6EAD5]/60 rounded-xl border border-[#B6C096] flex items-center justify-between"
+                              className="p-3 bg-[color:var(--moss-93)]/60 rounded-xl border border-[color:var(--moss-79)] flex items-center justify-between"
                             >
                               <div>
-                                <div className="text-xs font-bold text-[#221F18]">
+                                <div className="text-xs font-bold text-[color:var(--ink-24)]">
                                   {titleDisplay}
                                 </div>
-                                <div className="text-[10px] text-[#6B6252]">
+                                <div className="text-[10px] text-[color:var(--ink-50)]">
                                   {t('analytics.masteryRecentAccuracy')}:{' '}
-                                  <span className="font-extrabold text-[#5C6B3D]">
+                                  <span className="font-extrabold text-[color:var(--moss-50)]">
                                     {Math.round(g.recentAccuracy * 100)}%
                                   </span>
                                 </div>
                               </div>
-                              <span className="text-xs font-black text-[#5C6B3D] bg-[#F4EEDE] px-2 py-0.5 rounded-lg border border-[#B6C096]">
+                              <span className="text-xs font-black text-[color:var(--moss-50)] bg-[color:var(--paper-bg)] px-2 py-0.5 rounded-lg border border-[color:var(--moss-79)]">
                                 +{Math.round(g.improvement * 100)}%
                               </span>
                             </div>
@@ -534,7 +534,7 @@ export function HomeDashboard({
                         })}
                     </div>
                   ) : (
-                    <div className="p-4 bg-[#F0E9D8] rounded-xl border border-slate-200 text-center text-xs text-[#8F8674] italic">
+                    <div className="p-4 bg-[color:var(--paper-93)] rounded-xl border border-slate-200 text-center text-xs text-[color:var(--ink-62)] italic">
                       {t('common.empty')}
                     </div>
                   )}
@@ -542,7 +542,7 @@ export function HomeDashboard({
 
                 {/* Active Weak Groups */}
                 <div className="space-y-2">
-                  <div className="text-xs font-extrabold text-[#7A5320] flex items-center gap-1.5">
+                  <div className="text-xs font-extrabold text-[color:var(--kincha-47)] flex items-center gap-1.5">
                     <Target className="w-4 h-4" />
                     <span>{t('analytics.masteryActiveWeakList')}</span>
                   </div>
@@ -567,19 +567,19 @@ export function HomeDashboard({
                           return (
                             <div
                               key={g.groupId}
-                              className="p-3 bg-[#EFE3C9]/60 rounded-xl border border-[#E0CF9C] flex items-center justify-between gap-2"
+                              className="p-3 bg-[color:var(--paper-92a)]/60 rounded-xl border border-[color:var(--kincha-86a)] flex items-center justify-between gap-2"
                             >
                               <div className="min-w-0 flex-1 space-y-0.5">
-                                <div className="text-xs font-bold text-[#221F18] truncate">
+                                <div className="text-xs font-bold text-[color:var(--ink-24)] truncate">
                                   {titleDisplay}
                                 </div>
-                                <div className="text-[10px] text-[#6B6252]">
+                                <div className="text-[10px] text-[color:var(--ink-50)]">
                                   {t('analytics.masteryRecentAccuracy')}:{' '}
                                   <span className="font-bold text-amber-800">
                                     {Math.round(g.recentAccuracy * 100)}%
                                   </span>
                                   {targetObj && selectedObj && (
-                                    <span className="ml-1.5 text-[10px] text-[#6B6252]">
+                                    <span className="ml-1.5 text-[10px] text-[color:var(--ink-50)]">
                                       ({targetObj.kana} → <span className="text-rose-600 font-bold">{selectedObj.kana}</span>)
                                     </span>
                                   )}
@@ -594,7 +594,7 @@ export function HomeDashboard({
                                     onNavigate('confusable');
                                   }
                                 }}
-                                className="px-2.5 py-1 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-[11px] rounded-lg cursor-pointer transition-all shadow-xs shrink-0"
+                                className="px-2.5 py-1 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-[11px] rounded-lg cursor-pointer transition-all shadow-xs shrink-0"
                               >
                                 {t('analytics.masteryPracticeAgain')}
                               </button>
@@ -603,7 +603,7 @@ export function HomeDashboard({
                         })}
                     </div>
                   ) : (
-                    <div className="p-4 bg-[#E6EAD5]/60 rounded-xl border border-[#B6C096] text-center text-xs text-[#5C6B3D] font-bold">
+                    <div className="p-4 bg-[color:var(--moss-93)]/60 rounded-xl border border-[color:var(--moss-79)] text-center text-xs text-[color:var(--moss-50)] font-bold">
                       {t('analytics.trainingOutcomeResolved')}
                     </div>
                   )}
@@ -611,7 +611,7 @@ export function HomeDashboard({
               </div>
             </div>
           ) : (
-            <div className="p-4 text-center text-xs text-[#6B6252] flex items-center justify-center gap-2">
+            <div className="p-4 text-center text-xs text-[color:var(--ink-50)] flex items-center justify-center gap-2">
               <Sparkles className="w-4 h-4 text-amber-500" />
               {t('analytics.masteryNoEvaluatedGroups')}
             </div>
@@ -623,7 +623,7 @@ export function HomeDashboard({
       <div className="space-y-3">
         <SectionHeading>{t('analytics.weakKana')}</SectionHeading>
 
-        <div className="bg-[#F4EEDE] p-5 rounded-3xl border border-[#D9CDB2] shadow-xs">
+        <div className="bg-[color:var(--paper-bg)] p-5 rounded-3xl border border-[color:var(--paper-85)] shadow-xs">
           {weakRanking.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {weakRanking.map((w, idx) => {
@@ -632,33 +632,33 @@ export function HomeDashboard({
                 return (
                   <div
                     key={w.kanaId}
-                    className="p-4 bg-[#F4EEDE] rounded-2xl border border-red-100 flex items-center justify-between gap-3"
+                    className="p-4 bg-[color:var(--paper-bg)] rounded-2xl border border-red-100 flex items-center justify-between gap-3"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-[#EFDBD5] text-[#A6443A] font-extrabold text-xl flex items-center justify-center border border-[#D8B8B0]">
+                      <div className="w-11 h-11 rounded-xl bg-[color:var(--shu-91)] text-[color:var(--shu-52a)] font-extrabold text-xl flex items-center justify-center border border-[color:var(--shu-81)]">
                         {kanaObj?.kana || w.kanaId}
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-[#221F18]">
+                        <div className="text-xs font-bold text-[color:var(--ink-24)]">
                           #{idx + 1} {kanaObj?.romaji.toUpperCase()}
                         </div>
-                        <div className="text-[11px] text-[#6B6252]">
+                        <div className="text-[11px] text-[color:var(--ink-50)]">
                           {w.wrongCount} / {w.attempts} {t('analytics.attempts')}
                         </div>
                       </div>
                     </div>
 
                     <div className="text-right">
-                      <div className="text-sm font-extrabold text-[#A6443A]">{percent}%</div>
-                      <div className="text-[10px] text-[#8F8674]">{t('analytics.errorRate')}</div>
+                      <div className="text-sm font-extrabold text-[color:var(--shu-52a)]">{percent}%</div>
+                      <div className="text-[10px] text-[color:var(--ink-62)]">{t('analytics.errorRate')}</div>
                     </div>
                   </div>
                 );
               })}
             </div>
           ) : (
-            <div className="p-6 text-center text-xs font-bold text-[#6B6252] flex items-center justify-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#5C6B3D]" />
+            <div className="p-6 text-center text-xs font-bold text-[color:var(--ink-50)] flex items-center justify-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-[color:var(--moss-50)]" />
               {t('analytics.noWeakKana')}
             </div>
           )}
@@ -683,19 +683,19 @@ export function HomeDashboard({
       <SectionHeading>{t('home.sections.otherPractices')}</SectionHeading>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Today Shadowing 3 Sentences Card */}
-        <div className="bg-[#F4EEDE] rounded-3xl border border-[#D9CDB2] elev-1 card-lift overflow-hidden flex flex-col">
-          <div aria-hidden className="h-1 bg-gradient-to-r from-[#5C6B3D] to-[#8A9A63]" />
+        <div className="bg-[color:var(--paper-bg)] rounded-3xl border border-[color:var(--paper-85)] elev-1 card-lift overflow-hidden flex flex-col">
+          <div aria-hidden className="h-1 bg-gradient-to-r from-[color:var(--moss-50)] to-[color:var(--moss-66)]" />
           <div className="p-6 flex flex-col justify-between gap-4 flex-1">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#5C6B3D] bg-[#E6EAD5] px-3 py-1 rounded-full flex items-center gap-1">
+                <span className="text-xs font-bold text-[color:var(--moss-50)] bg-[color:var(--moss-93)] px-3 py-1 rounded-full flex items-center gap-1">
                   <Headphones className="w-3 h-3" />
                   {t('nav.shadowing')}
                 </span>
-                <span className="text-xs font-bold text-[#6B6252]">{shadowingDoneCount} / 3</span>
+                <span className="text-xs font-bold text-[color:var(--ink-50)]">{shadowingDoneCount} / 3</span>
               </div>
-              <h3 className="text-lg font-display font-bold text-[#221F18]">{t('home.shadowingCard.title')}</h3>
-              <p className="text-xs text-[#6B6252]">
+              <h3 className="text-lg font-display font-bold text-[color:var(--ink-24)]">{t('home.shadowingCard.title')}</h3>
+              <p className="text-xs text-[color:var(--ink-50)]">
                 {t('home.shadowingCard.desc')}
               </p>
             </div>
@@ -706,9 +706,9 @@ export function HomeDashboard({
                 return (
                   <div
                     key={s.id}
-                    className="flex items-center gap-2 text-xs text-[#3A3529] bg-[#F4EEDE] px-3 py-2 rounded-xl border border-[#ECE4D0]"
+                    className="flex items-center gap-2 text-xs text-[color:var(--ink-33)] bg-[color:var(--paper-bg)] px-3 py-2 rounded-xl border border-[color:var(--paper-92)]"
                   >
-                    <span className={`font-extrabold ${isDone ? 'text-[#5C6B3D]' : 'text-[#6B6252]'}`}>
+                    <span className={`font-extrabold ${isDone ? 'text-[color:var(--moss-50)]' : 'text-[color:var(--ink-50)]'}`}>
                       {isDone ? '✓' : '•'}
                     </span>
                     <span className="truncate font-medium">{s.japanese}</span>
@@ -720,7 +720,7 @@ export function HomeDashboard({
             <button
               type="button"
               onClick={handleStartTodayShadowing}
-              className="w-full py-3 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-xs rounded-xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-xs rounded-xl btn-lift elev-green cursor-pointer flex items-center justify-center gap-2"
             >
               <Headphones className="w-4 h-4" />
               {t('home.shadowingCard.btnStart')}
@@ -730,7 +730,7 @@ export function HomeDashboard({
         </div>
 
         {/* Due Review Card */}
-        <div className="bg-[#F4EEDE] rounded-3xl border border-[#D9CDB2] elev-1 card-lift overflow-hidden flex flex-col">
+        <div className="bg-[color:var(--paper-bg)] rounded-3xl border border-[color:var(--paper-85)] elev-1 card-lift overflow-hidden flex flex-col">
           <div aria-hidden className="h-1 bg-gradient-to-r from-blue-500 to-indigo-400" />
           <div className="p-6 flex flex-col justify-between gap-4 flex-1">
             <div className="space-y-2">
@@ -739,10 +739,10 @@ export function HomeDashboard({
                   <RefreshCw className="w-3 h-3" />
                   {t('nav.review')}
                 </span>
-                <span className="text-xs font-bold text-[#6B6252]">{dueItems.length}</span>
+                <span className="text-xs font-bold text-[color:var(--ink-50)]">{dueItems.length}</span>
               </div>
-              <h3 className="text-lg font-display font-bold text-[#221F18]">{t('review.dueTab')}</h3>
-              <p className="text-xs text-[#6B6252]">
+              <h3 className="text-lg font-display font-bold text-[color:var(--ink-24)]">{t('review.dueTab')}</h3>
+              <p className="text-xs text-[color:var(--ink-50)]">
                 {dueItems.length > 0 ? `${t('home.todayPlan.dueCount')}: ${dueItems.length}` : t('review.noDueTitle')}
               </p>
             </div>
@@ -753,7 +753,7 @@ export function HomeDashboard({
                   <span
                     key={k.id}
                     onClick={() => onStartStudyKana(k)}
-                    className="w-10 h-10 bg-[#F4EEDE] border border-[#D9CDB2] rounded-xl flex items-center justify-center font-extrabold text-base text-[#221F18] hover:border-[#5C6B3D] cursor-pointer"
+                    className="w-10 h-10 bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] rounded-xl flex items-center justify-center font-extrabold text-base text-[color:var(--ink-24)] hover:border-[color:var(--moss-50)] cursor-pointer"
                   >
                     {k.kana}
                   </span>
@@ -763,28 +763,28 @@ export function HomeDashboard({
 
             <button
               onClick={() => onNavigate('review')}
-              className="w-full py-3 bg-[#F4EEDE] hover:bg-[#F4EEDE] border border-[#D9CDB2] hover:border-[#5C6B3D] text-[#221F18] font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3 bg-[color:var(--paper-bg)] hover:bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] hover:border-[color:var(--moss-50)] text-[color:var(--ink-24)] font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
             >
-              <RefreshCw className="w-4 h-4 text-[#5C6B3D]" />
+              <RefreshCw className="w-4 h-4 text-[color:var(--moss-50)]" />
               {t('home.reviewCard.btnStart')}
-              <ArrowRight className="w-3.5 h-3.5 text-[#6B6252]" />
+              <ArrowRight className="w-3.5 h-3.5 text-[color:var(--ink-50)]" />
             </button>
           </div>
         </div>
 
         {/* Weak Kana Card */}
-        <div className="bg-[#F4EEDE] rounded-3xl border border-[#D9CDB2] elev-1 card-lift overflow-hidden flex flex-col">
+        <div className="bg-[color:var(--paper-bg)] rounded-3xl border border-[color:var(--paper-85)] elev-1 card-lift overflow-hidden flex flex-col">
           <div aria-hidden className="h-1 bg-gradient-to-r from-red-500 to-red-300" />
           <div className="p-6 flex flex-col justify-between gap-4 flex-1">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-[#A6443A] bg-[#EFDBD5] px-3 py-1 rounded-full">
+                <span className="text-xs font-bold text-[color:var(--shu-52a)] bg-[color:var(--shu-91)] px-3 py-1 rounded-full">
                   {t('header.weak')}
                 </span>
-                <span className="text-xs font-bold text-[#6B6252]">{wrongKanaList.length}</span>
+                <span className="text-xs font-bold text-[color:var(--ink-50)]">{wrongKanaList.length}</span>
               </div>
-              <h3 className="text-lg font-display font-bold text-[#221F18]">{t('header.weak')}</h3>
-              <p className="text-xs text-[#6B6252]">
+              <h3 className="text-lg font-display font-bold text-[color:var(--ink-24)]">{t('header.weak')}</h3>
+              <p className="text-xs text-[color:var(--ink-50)]">
                 {wrongKanaList.length > 0 ? `${t('quiz.reviewWrongCount')}: ${wrongKanaList.length}` : t('review.noWeakTitle')}
               </p>
             </div>
@@ -795,7 +795,7 @@ export function HomeDashboard({
                   <span
                     key={k.id}
                     onClick={() => onStartStudyKana(k)}
-                    className="w-10 h-10 bg-[#F4EEDE] border border-[#D8B8B0] rounded-xl flex items-center justify-center font-extrabold text-base text-[#A6443A] hover:border-red-400 cursor-pointer"
+                    className="w-10 h-10 bg-[color:var(--paper-bg)] border border-[color:var(--shu-81)] rounded-xl flex items-center justify-center font-extrabold text-base text-[color:var(--shu-52a)] hover:border-red-400 cursor-pointer"
                   >
                     {k.kana}
                   </span>
@@ -805,10 +805,10 @@ export function HomeDashboard({
 
             <button
               onClick={() => onNavigate('review')}
-              className="w-full py-3 bg-[#F4EEDE] hover:bg-[#F4EEDE] border border-[#D9CDB2] hover:border-red-400 text-[#221F18] font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3 bg-[color:var(--paper-bg)] hover:bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] hover:border-red-400 text-[color:var(--ink-24)] font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               {t('home.quizCard.btnStart')}
-              <ArrowRight className="w-3.5 h-3.5 text-[#6B6252]" />
+              <ArrowRight className="w-3.5 h-3.5 text-[color:var(--ink-50)]" />
             </button>
           </div>
         </div>

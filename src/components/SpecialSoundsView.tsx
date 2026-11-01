@@ -38,52 +38,52 @@ export function SpecialSoundsView() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-[#F4EEDE] p-6 rounded-3xl border border-[#D9CDB2] shadow-xs">
-        <h2 className="text-xl font-display font-bold text-[#221F18]">{t('special.title')}</h2>
-        <p className="text-xs text-[#6B6252] mt-1">
+      <div className="bg-[color:var(--paper-bg)] p-6 rounded-3xl border border-[color:var(--paper-85)] shadow-xs">
+        <h2 className="text-xl font-display font-bold text-[color:var(--ink-24)]">{t('special.title')}</h2>
+        <p className="text-xs text-[color:var(--ink-50)] mt-1">
           {t('special.subtitle')}
         </p>
       </div>
 
       {/* 促音 Section */}
-      <div className="bg-[#F4EEDE] rounded-3xl border border-[#D9CDB2] shadow-xs overflow-hidden">
-        <div className="bg-[#EFE3C9] px-6 py-4 border-b border-[#E2CF97]">
-          <h3 className="text-base font-display font-bold text-[#7A5320] flex items-center gap-2">
+      <div className="bg-[color:var(--paper-bg)] rounded-3xl border border-[color:var(--paper-85)] shadow-xs overflow-hidden">
+        <div className="bg-[color:var(--paper-92a)] px-6 py-4 border-b border-[color:var(--kincha-86)]">
+          <h3 className="text-base font-display font-bold text-[color:var(--kincha-47)] flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
             {t('special.sokuonTab')} — っ / ッ
           </h3>
         </div>
         <div className="p-6 space-y-5">
           <div className="space-y-2">
-            <p className="text-sm text-[#3A3529] leading-relaxed">
+            <p className="text-sm text-[color:var(--ink-33)] leading-relaxed">
               {t('special.sokuonDesc')}
             </p>
-            <div className="flex items-start gap-2 bg-[#F3ECD6] p-3 rounded-xl text-xs text-[#7A5320]">
+            <div className="flex items-start gap-2 bg-[color:var(--paper-94)] p-3 rounded-xl text-xs text-[color:var(--kincha-47)]">
               <Lightbulb className="w-4 h-4 shrink-0 mt-0.5" />
               <span>{t('special.sokuonTip')}</span>
             </div>
           </div>
 
           <div>
-            <h4 className="text-sm font-extrabold text-[#221F18] mb-3">{t('special.examplesTitle')}</h4>
+            <h4 className="text-sm font-extrabold text-[color:var(--ink-24)] mb-3">{t('special.examplesTitle')}</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {SOKUON_EXAMPLES.map((item) => (
                 <div
                   key={item.word}
-                  className="flex items-center justify-between gap-3 p-3 bg-[#F4EEDE] border border-[#ECE4D0] rounded-2xl"
+                  className="flex items-center justify-between gap-3 p-3 bg-[color:var(--paper-bg)] border border-[color:var(--paper-92)] rounded-2xl"
                 >
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-lg font-extrabold text-[#221F18]">{item.word}</span>
-                      <span className="text-xs font-bold text-[#5C6B3D] uppercase">{item.romaji}</span>
+                      <span className="text-lg font-extrabold text-[color:var(--ink-24)]">{item.word}</span>
+                      <span className="text-xs font-bold text-[color:var(--moss-50)] uppercase">{item.romaji}</span>
                     </div>
-                    <div className="text-xs text-[#6B6252] mt-0.5">
+                    <div className="text-xs text-[color:var(--ink-50)] mt-0.5">
                       {item.meaning[language]} · {item.note}
                     </div>
                   </div>
                   <button
                     onClick={() => handlePlay(item.word)}
-                    className="p-2 text-[#6B6252] hover:text-[#5C6B3D] hover:bg-[#E6EAD5] rounded-xl transition-colors cursor-pointer"
+                    className="p-2 text-[color:var(--ink-50)] hover:text-[color:var(--moss-50)] hover:bg-[color:var(--moss-93)] rounded-xl transition-colors cursor-pointer"
                     title={t('common.playAudio')}
                   >
                     <Volume2 className="w-4 h-4" />
@@ -96,46 +96,46 @@ export function SpecialSoundsView() {
       </div>
 
       {/* 長音 Section */}
-      <div className="bg-[#F4EEDE] rounded-3xl border border-[#D9CDB2] shadow-xs overflow-hidden">
-        <div className="bg-[#DCE6EA] px-6 py-4 border-b border-[#CDD9DE]">
-          <h3 className="text-base font-display font-bold text-[#2D4A5B] flex items-center gap-2">
+      <div className="bg-[color:var(--paper-bg)] rounded-3xl border border-[color:var(--paper-85)] shadow-xs overflow-hidden">
+        <div className="bg-[color:var(--ai-92)] px-6 py-4 border-b border-[color:var(--ai-88)]">
+          <h3 className="text-base font-display font-bold text-[color:var(--ai-39)] flex items-center gap-2">
             <BookOpen className="w-4 h-4" />
             {t('special.chouonTab')}
           </h3>
         </div>
         <div className="p-6 space-y-5">
           <div className="space-y-2">
-            <p className="text-sm text-[#3A3529] leading-relaxed">
+            <p className="text-sm text-[color:var(--ink-33)] leading-relaxed">
               {t('special.chouonDesc')}
             </p>
           </div>
 
           <div>
-            <h4 className="text-sm font-extrabold text-[#221F18] mb-2">{t('special.rulesTitle')}</h4>
+            <h4 className="text-sm font-extrabold text-[color:var(--ink-24)] mb-2">{t('special.rulesTitle')}</h4>
             <div className="overflow-x-auto">
               <table className="w-full text-xs border-collapse">
                 <thead>
-                  <tr className="bg-[#F0E9D8]">
-                    <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">{t('special.vowelHeader')}</th>
-                    <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">{t('special.ruleHeader')}</th>
-                    <th className="text-left p-2.5 font-bold text-[#6B6252] border border-[#D9CDB2]">{t('special.examplesTitle')}</th>
+                  <tr className="bg-[color:var(--paper-93)]">
+                    <th className="text-left p-2.5 font-bold text-[color:var(--ink-50)] border border-[color:var(--paper-85)]">{t('special.vowelHeader')}</th>
+                    <th className="text-left p-2.5 font-bold text-[color:var(--ink-50)] border border-[color:var(--paper-85)]">{t('special.ruleHeader')}</th>
+                    <th className="text-left p-2.5 font-bold text-[color:var(--ink-50)] border border-[color:var(--paper-85)]">{t('special.examplesTitle')}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {CHOUON_RULES.map((rule, i) => (
-                    <tr key={rule.column} className={i % 2 === 1 ? 'bg-[#F4EEDE]' : undefined}>
-                      <td className="p-2.5 border border-[#D9CDB2] font-bold">{rule.column}</td>
-                      <td className="p-2.5 border border-[#D9CDB2]">
+                    <tr key={rule.column} className={i % 2 === 1 ? 'bg-[color:var(--paper-bg)]' : undefined}>
+                      <td className="p-2.5 border border-[color:var(--paper-85)] font-bold">{rule.column}</td>
+                      <td className="p-2.5 border border-[color:var(--paper-85)]">
                         {t(rule.usually ? 'special.ruleUsuallyAdd' : 'special.ruleAdd', { kana: rule.kana })}
                       </td>
-                      <td className="p-2.5 border border-[#D9CDB2]">
+                      <td className="p-2.5 border border-[color:var(--paper-85)]">
                         <div className="flex items-center justify-between gap-2">
                           <span>
-                            <span className="font-bold text-[#221F18]">{rule.word}</span> ({rule.romaji}) · {rule.meaning[language]}
+                            <span className="font-bold text-[color:var(--ink-24)]">{rule.word}</span> ({rule.romaji}) · {rule.meaning[language]}
                           </span>
                           <button
                             onClick={() => handlePlay(rule.word)}
-                            className="p-1.5 text-[#6B6252] hover:text-[#5C6B3D] hover:bg-[#E6EAD5] rounded-lg transition-colors cursor-pointer shrink-0"
+                            className="p-1.5 text-[color:var(--ink-50)] hover:text-[color:var(--moss-50)] hover:bg-[color:var(--moss-93)] rounded-lg transition-colors cursor-pointer shrink-0"
                             title={t('common.playAudio')}
                           >
                             <Volume2 className="w-3.5 h-3.5" />
@@ -150,25 +150,25 @@ export function SpecialSoundsView() {
           </div>
 
           <div>
-            <h4 className="text-sm font-extrabold text-[#221F18] mb-3">{t('special.katakanaChouonTitle')}</h4>
+            <h4 className="text-sm font-extrabold text-[color:var(--ink-24)] mb-3">{t('special.katakanaChouonTitle')}</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {KATAKANA_CHOUON_EXAMPLES.map((item) => (
                 <div
                   key={item.word}
-                  className="flex items-center justify-between gap-3 p-3 bg-[#F4EEDE] border border-[#ECE4D0] rounded-2xl"
+                  className="flex items-center justify-between gap-3 p-3 bg-[color:var(--paper-bg)] border border-[color:var(--paper-92)] rounded-2xl"
                 >
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="text-lg font-extrabold text-[#221F18]">{item.word}</span>
-                      <span className="text-xs font-bold text-[#5C6B3D] uppercase">{item.romaji}</span>
+                      <span className="text-lg font-extrabold text-[color:var(--ink-24)]">{item.word}</span>
+                      <span className="text-xs font-bold text-[color:var(--moss-50)] uppercase">{item.romaji}</span>
                     </div>
-                    <div className="text-xs text-[#6B6252] mt-0.5">
+                    <div className="text-xs text-[color:var(--ink-50)] mt-0.5">
                       {item.meaning[language]} · {item.note}
                     </div>
                   </div>
                   <button
                     onClick={() => handlePlay(item.word)}
-                    className="p-2 text-[#6B6252] hover:text-[#5C6B3D] hover:bg-[#E6EAD5] rounded-xl transition-colors cursor-pointer"
+                    className="p-2 text-[color:var(--ink-50)] hover:text-[color:var(--moss-50)] hover:bg-[color:var(--moss-93)] rounded-xl transition-colors cursor-pointer"
                     title={t('common.playAudio')}
                   >
                     <Volume2 className="w-4 h-4" />

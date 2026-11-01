@@ -168,16 +168,16 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
 
       return (
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-white to-[#F1F0E6] p-6 sm:p-8 rounded-3xl border border-[#B6C096] shadow-xs space-y-6">
+          <div className="bg-gradient-to-br from-white to-[color:var(--paper-96)] p-6 sm:p-8 rounded-3xl border border-[color:var(--moss-79)] shadow-xs space-y-6">
             <div className="flex items-center justify-between gap-2 flex-wrap">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E6EAD5] text-[#5C6B3D] rounded-full text-xs font-extrabold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[color:var(--moss-93)] text-[color:var(--moss-50)] rounded-full text-xs font-extrabold">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 {t('analytics.trainingOutcomeTitle')}
               </div>
               <span
                 className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border ${
                   trainingOutcome.isResolved
-                    ? 'bg-emerald-100 text-[#5C6B3D] border-[#A8B487]'
+                    ? 'bg-emerald-100 text-[color:var(--moss-50)] border-[color:var(--moss-75)]'
                     : 'bg-amber-100 text-amber-800 border-amber-300'
                 }`}
               >
@@ -188,37 +188,37 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
             </div>
 
             <div className="space-y-1">
-              <h2 className="text-xl sm:text-2xl font-display font-bold text-[#221F18]">
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-[color:var(--ink-24)]">
                 {activeTrainingGroup.title} · {t('confusable.listeningPractice')}
               </h2>
-              <p className="text-xs text-[#6B6252]">
+              <p className="text-xs text-[color:var(--ink-50)]">
                 {localize(activeTrainingGroup.distinguish, language)}
               </p>
             </div>
 
             {/* Metrics 3-Grid */}
-            <div className="grid grid-cols-3 gap-3 p-4 bg-[#F4EEDE] rounded-2xl border border-[#D9E0C6] text-center">
+            <div className="grid grid-cols-3 gap-3 p-4 bg-[color:var(--paper-bg)] rounded-2xl border border-[color:var(--moss-89)] text-center">
               <div>
-                <div className="text-xs font-bold text-[#6B6252]">
+                <div className="text-xs font-bold text-[color:var(--ink-50)]">
                   {t('analytics.trainingOutcomeSession')}
                 </div>
-                <div className="text-xl font-black text-[#5C6B3D] mt-1">
+                <div className="text-xl font-black text-[color:var(--moss-50)] mt-1">
                   {Math.round(trainingOutcome.sessionAccuracy * 100)}%
                 </div>
               </div>
               <div>
-                <div className="text-xs font-bold text-[#6B6252]">
+                <div className="text-xs font-bold text-[color:var(--ink-50)]">
                   {t('analytics.trainingOutcomeBefore')}
                 </div>
-                <div className="text-xl font-black text-[#6B6252] mt-1">
+                <div className="text-xl font-black text-[color:var(--ink-50)] mt-1">
                   {Math.round(trainingOutcome.beforeAccuracy * 100)}%
                 </div>
               </div>
               <div>
-                <div className="text-xs font-bold text-[#6B6252]">
+                <div className="text-xs font-bold text-[color:var(--ink-50)]">
                   {t('analytics.trainingOutcomeImprovement')}
                 </div>
-                <div className={`text-xl font-black mt-1 ${trainingOutcome.improvement >= 0 ? 'text-[#5C6B3D]' : 'text-rose-600'}`}>
+                <div className={`text-xl font-black mt-1 ${trainingOutcome.improvement >= 0 ? 'text-[color:var(--moss-50)]' : 'text-rose-600'}`}>
                   {trainingOutcome.improvement >= 0 ? '+' : ''}
                   {Math.round(trainingOutcome.improvement * 100)}%
                 </div>
@@ -227,14 +227,14 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
 
             {/* Remaining Confusion Direction */}
             {remainingTargetObj && remainingSelectedObj ? (
-              <div className="p-3 bg-[#EFE3C9]/70 rounded-xl border border-[#E0CF9C] text-xs font-medium text-[#55503F] flex items-center justify-between">
-                <span className="text-[#6B6252] font-bold">{t('analytics.mostConfusedWith')}:</span>
+              <div className="p-3 bg-[color:var(--paper-92a)]/70 rounded-xl border border-[color:var(--kincha-86a)] text-xs font-medium text-[color:var(--ink-43)] flex items-center justify-between">
+                <span className="text-[color:var(--ink-50)] font-bold">{t('analytics.mostConfusedWith')}:</span>
                 <span className="font-extrabold text-amber-900">
                   {remainingTargetObj.kana} ({remainingTargetObj.romaji}) → <span className="text-rose-600 font-black">{remainingSelectedObj.kana}</span> ({remainingSelectedObj.romaji})
                 </span>
               </div>
             ) : (
-              <div className="p-3 bg-[#E6EAD5] rounded-xl border border-[#B6C096] text-xs font-bold text-[#5C6B3D] flex items-center justify-center gap-1.5">
+              <div className="p-3 bg-[color:var(--moss-93)] rounded-xl border border-[color:var(--moss-79)] text-xs font-bold text-[color:var(--moss-50)] flex items-center justify-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4" />
                 <span>{t('analytics.trainingOutcomeResolved')}</span>
               </div>
@@ -248,7 +248,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
                   setTrainingOutcome(null);
                   setEventsBeforeSnapshot(getLearningEvents());
                 }}
-                className="flex-1 py-3 bg-[#5C6B3D] hover:bg-[#47552F] text-[#F1EFE0] font-extrabold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-xs"
+                className="flex-1 py-3 bg-[color:var(--moss-50)] hover:bg-[color:var(--moss-43)] text-[color:var(--paper-95)] font-extrabold text-xs rounded-xl cursor-pointer flex items-center justify-center gap-1.5 transition-all shadow-xs"
               >
                 <RotateCcw className="w-4 h-4" />
                 <span>{t('analytics.retryTraining')}</span>
@@ -260,7 +260,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
                   setActiveTrainingGroup(null);
                   onProgressChange?.();
                 }}
-                className="flex-1 py-3 bg-[#F4EEDE] hover:bg-[#F0E9D8] text-[#221F18] font-bold text-xs rounded-xl border border-[#D9CDB2] cursor-pointer flex items-center justify-center gap-1.5 transition-all"
+                className="flex-1 py-3 bg-[color:var(--paper-bg)] hover:bg-[color:var(--paper-93)] text-[color:var(--ink-24)] font-bold text-xs rounded-xl border border-[color:var(--paper-85)] cursor-pointer flex items-center justify-center gap-1.5 transition-all"
               >
                 <span>{t('analytics.finishTraining')}</span>
               </button>
@@ -282,7 +282,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
             setTrainingOutcome(null);
             setActiveTrainingGroup(null);
           }}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#6B6252] hover:text-[#221F18] cursor-pointer"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)] cursor-pointer"
         >
           ← {t('confusable.title')}
         </button>
@@ -301,14 +301,14 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
     const total = score.right + score.wrong;
     return (
       <div className="space-y-6">
-        <div className="bg-[#F4EEDE] p-8 rounded-3xl border border-[#D9CDB2] shadow-xs text-center space-y-4">
-          <h2 className="text-2xl font-display font-bold text-[#221F18]">{t('confusable.title')}</h2>
-          <p className="text-sm text-[#6B6252]">
-            {t('quiz.accuracy')}: <span className="text-[#5C6B3D] font-extrabold">{score.right}</span> / {total}
+        <div className="bg-[color:var(--paper-bg)] p-8 rounded-3xl border border-[color:var(--paper-85)] shadow-xs text-center space-y-4">
+          <h2 className="text-2xl font-display font-bold text-[color:var(--ink-24)]">{t('confusable.title')}</h2>
+          <p className="text-sm text-[color:var(--ink-50)]">
+            {t('quiz.accuracy')}: <span className="text-[color:var(--moss-50)] font-extrabold">{score.right}</span> / {total}
           </p>
           <button
             onClick={() => restart(scriptFilter, modalityFilter)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#5C6B3D] text-[#F1EFE0] font-extrabold text-sm rounded-2xl hover:bg-[#47552F] cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] font-extrabold text-sm rounded-2xl hover:bg-[color:var(--moss-43)] cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" /> {t('quiz.restartQuiz')}
           </button>
@@ -320,11 +320,11 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
   if (!q) {
     return (
       <div className="space-y-6">
-        <div className="bg-[#F4EEDE] p-8 rounded-3xl border border-[#D9CDB2] shadow-xs text-center space-y-4">
-          <p className="text-xs text-[#6B6252]">{t('common.loading')}</p>
+        <div className="bg-[color:var(--paper-bg)] p-8 rounded-3xl border border-[color:var(--paper-85)] shadow-xs text-center space-y-4">
+          <p className="text-xs text-[color:var(--ink-50)]">{t('common.loading')}</p>
           <button
             onClick={() => restart('all', 'all')}
-            className="px-4 py-2 bg-[#5C6B3D] text-[#F1EFE0] text-xs font-bold rounded-xl cursor-pointer"
+            className="px-4 py-2 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] text-xs font-bold rounded-xl cursor-pointer"
           >
             {t('common.reset')}
           </button>
@@ -338,18 +338,18 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
   return (
     <div className="space-y-6">
       <div className="space-y-1.5">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#E6EAD5] text-[#5C6B3D] rounded-full text-xs font-extrabold">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[color:var(--moss-93)] text-[color:var(--moss-50)] rounded-full text-xs font-extrabold">
           <Layers className="w-3.5 h-3.5" />
           {t('confusable.title')}
         </div>
-        <h2 className="text-xl sm:text-2xl font-display font-bold text-[#221F18]">{t('confusable.subtitle')}</h2>
-        <p className="text-xs text-[#6B6252] leading-relaxed">
+        <h2 className="text-xl sm:text-2xl font-display font-bold text-[color:var(--ink-24)]">{t('confusable.subtitle')}</h2>
+        <p className="text-xs text-[color:var(--ink-50)] leading-relaxed">
           {t('confusable.distinctionTips')}
         </p>
       </div>
 
       {/* 篩選控制器：字系與模態 */}
-      <div className="space-y-2.5 bg-[#F4EEDE] p-4 rounded-2xl border border-[#D9CDB2] shadow-xs">
+      <div className="space-y-2.5 bg-[color:var(--paper-bg)] p-4 rounded-2xl border border-[color:var(--paper-85)] shadow-xs">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           {/* 字系篩選 */}
           <div className="flex gap-1.5">
@@ -359,8 +359,8 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
                 onClick={() => restart(v, modalityFilter)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                   scriptFilter === v
-                    ? 'bg-[#5C6B3D] text-[#F1EFE0]'
-                    : 'bg-[#ECE4D0] text-[#6B6252] hover:text-[#221F18]'
+                    ? 'bg-[color:var(--moss-50)] text-[color:var(--paper-95)]'
+                    : 'bg-[color:var(--paper-92)] text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)]'
                 }`}
               >
                 {label}
@@ -376,8 +376,8 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
                 onClick={() => restart(scriptFilter, v)}
                 className={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                   modalityFilter === v
-                    ? 'bg-emerald-100 text-[#5C6B3D] font-extrabold border border-[#A8B487]'
-                    : 'bg-[#F0E9D8] text-[#6B6252] hover:text-[#221F18] border border-transparent'
+                    ? 'bg-emerald-100 text-[color:var(--moss-50)] font-extrabold border border-[color:var(--moss-75)]'
+                    : 'bg-[color:var(--paper-93)] text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)] border border-transparent'
                 }`}
               >
                 {label}
@@ -387,8 +387,8 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
         </div>
       </div>
 
-      <div className="bg-[#F4EEDE] p-6 sm:p-8 rounded-3xl border border-[#D9CDB2] shadow-xs space-y-6">
-        <div className="flex items-center justify-between text-xs text-[#6B6252]">
+      <div className="bg-[color:var(--paper-bg)] p-6 sm:p-8 rounded-3xl border border-[color:var(--paper-85)] shadow-xs space-y-6">
+        <div className="flex items-center justify-between text-xs text-[color:var(--ink-50)]">
           <span>{index + 1} / {questions.length}</span>
           <div className="flex items-center gap-3">
             {isListeningAvailable && (
@@ -400,7 +400,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
                   setEventsBeforeSnapshot(getLearningEvents());
                   setActiveTrainingGroup(q.group);
                 }}
-                className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-extrabold text-[#5C6B3D] bg-[#E6EAD5] hover:bg-[#DBE1C8] rounded-lg transition-all cursor-pointer border border-[#A8B487]"
+                className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-extrabold text-[color:var(--moss-50)] bg-[color:var(--moss-93)] hover:bg-[color:var(--moss-90)] rounded-lg transition-all cursor-pointer border border-[color:var(--moss-75)]"
               >
                 <Headphones className="w-3 h-3" />
                 {t('confusable.startListening')}
@@ -414,18 +414,18 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
 
         {/* 題目 */}
         <div className="text-center space-y-2">
-          <p className="text-xs text-[#6B6252]">{t('quiz.typeAudioToKana')}</p>
+          <p className="text-xs text-[color:var(--ink-50)]">{t('quiz.typeAudioToKana')}</p>
           <div className="flex items-center justify-center gap-3">
-            <span className="text-4xl font-extrabold text-[#221F18]">{q.target.romaji}</span>
+            <span className="text-4xl font-extrabold text-[color:var(--ink-24)]">{q.target.romaji}</span>
             <button
               onClick={() => speakJapanese(q.target.kana)}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-[#221F18] bg-[#F4EEDE] border border-[#D9CDB2] rounded-xl hover:bg-[#F0E9D8] cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-[color:var(--ink-24)] bg-[color:var(--paper-bg)] border border-[color:var(--paper-85)] rounded-xl hover:bg-[color:var(--paper-93)] cursor-pointer"
             >
               <Volume2 className="w-3.5 h-3.5" /> {t('common.playAudio')}
             </button>
           </div>
           {wrongIds.includes(q.target.id) && !answered && (
-            <span className="inline-flex items-center gap-1 text-[11px] text-[#7A5320] bg-[#EFE3C9] px-2 py-0.5 rounded-full">
+            <span className="inline-flex items-center gap-1 text-[11px] text-[color:var(--kincha-47)] bg-[color:var(--paper-92a)] px-2 py-0.5 rounded-full">
               <AlertTriangle className="w-3 h-3" /> {t('header.weak')}
             </span>
           )}
@@ -436,11 +436,11 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
           {q.options.map((opt) => {
             const isTarget = opt.id === q.target.id;
             const isPicked = picked === opt.id;
-            let cls = 'bg-[#F4EEDE] border-[#D9CDB2] hover:border-[#5C6B3D]/40';
+            let cls = 'bg-[color:var(--paper-bg)] border-[color:var(--paper-85)] hover:border-[color:var(--moss-50)]/40';
             if (answered) {
-              if (isTarget) cls = 'bg-[#E6EAD5] border-[#5C6B3D]';
-              else if (isPicked) cls = 'bg-[#EFDBD5] border-[#A6443A]';
-              else cls = 'bg-[#F4EEDE] border-[#D9CDB2] opacity-50';
+              if (isTarget) cls = 'bg-[color:var(--moss-93)] border-[color:var(--moss-50)]';
+              else if (isPicked) cls = 'bg-[color:var(--shu-91)] border-[color:var(--shu-52a)]';
+              else cls = 'bg-[color:var(--paper-bg)] border-[color:var(--paper-85)] opacity-50';
             }
             return (
               <button
@@ -449,12 +449,12 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
                 disabled={answered}
                 className={`relative py-8 rounded-2xl border-2 transition-all cursor-pointer disabled:cursor-default ${cls}`}
               >
-                <span className="text-5xl font-extrabold text-[#221F18]">{opt.kana}</span>
+                <span className="text-5xl font-extrabold text-[color:var(--ink-24)]">{opt.kana}</span>
                 {answered && isTarget && (
-                  <Check className="w-5 h-5 text-[#5C6B3D] absolute top-2 right-2" />
+                  <Check className="w-5 h-5 text-[color:var(--moss-50)] absolute top-2 right-2" />
                 )}
                 {answered && isPicked && !isTarget && (
-                  <X className="w-5 h-5 text-[#A6443A] absolute top-2 right-2" />
+                  <X className="w-5 h-5 text-[color:var(--shu-52a)] absolute top-2 right-2" />
                 )}
               </button>
             );
@@ -465,7 +465,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
         {answered && (
           <div
             className={`rounded-2xl px-4 py-3 text-xs leading-relaxed ${
-              isRight ? 'bg-[#EEF0E3] text-[#221F18]' : 'bg-[#EFE3C9] text-[#7A5320]'
+              isRight ? 'bg-[color:var(--moss-95)] text-[color:var(--ink-24)]' : 'bg-[color:var(--paper-92a)] text-[color:var(--kincha-47)]'
             }`}
           >
             <span className="font-extrabold">{t('confusable.comparison')}: </span>
@@ -476,7 +476,7 @@ export function ConfusableView({ initialGroupId, onProgressChange }: Props) {
         {answered && (
           <button
             onClick={next}
-            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#5C6B3D] text-[#F1EFE0] font-extrabold text-sm rounded-2xl hover:bg-[#47552F] cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[color:var(--moss-50)] text-[color:var(--paper-95)] font-extrabold text-sm rounded-2xl hover:bg-[color:var(--moss-43)] cursor-pointer"
           >
             {index + 1 >= questions.length ? t('quiz.finishQuiz') : t('quiz.nextQuestion')} <ArrowRight className="w-4 h-4" />
           </button>

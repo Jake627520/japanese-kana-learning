@@ -43,18 +43,18 @@ export interface KanaStatusStyle {
 export const KANA_STATUS_STYLE: Record<KanaStatus, KanaStatusStyle> = {
   weak: {
     dot: 'bg-red-500',
-    card: 'border-[#CAA096] bg-[#EFDBD5]/60',
+    card: 'border-[color:var(--shu-74)] bg-[color:var(--shu-91)]/60',
     bar: 'bg-red-500',
   },
   due: {
     dot: 'bg-amber-500',
-    card: 'border-amber-300 bg-[#EFE3C9]/60',
+    card: 'border-amber-300 bg-[color:var(--paper-92a)]/60',
     bar: 'bg-amber-500',
   },
   mastered: {
-    dot: 'bg-[#5C6B3D]',
-    card: 'border-[#5C6B3D] bg-[#EEF0E3]/60',
-    bar: 'bg-[#5C6B3D]',
+    dot: 'bg-[color:var(--moss-50)]',
+    card: 'border-[color:var(--moss-50)] bg-[color:var(--moss-95)]/60',
+    bar: 'bg-[color:var(--moss-50)]',
   },
   learning: {
     dot: 'bg-blue-500',
@@ -62,8 +62,8 @@ export const KANA_STATUS_STYLE: Record<KanaStatus, KanaStatusStyle> = {
     bar: 'bg-blue-400',
   },
   new: {
-    dot: 'bg-[#CABFA6]',
-    card: 'border-[#D9CDB2]',
+    dot: 'bg-[color:var(--paper-81)]',
+    card: 'border-[color:var(--paper-85)]',
     bar: null,
   },
 };

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./themes.css";
 
 /* ────────────────────────────────────────────────────────────
    視覺層：層次、狀態、動效
@@ -14,6 +15,9 @@
    ──────────────────────────────────────────────────────────── */
 
 :root {
+  --shadow-rgb: 60 45 20;
+  --glow-rgb: 92 107 61;
+
   --font-sans: "Zen Kaku Gothic New", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "PingFang TC", "Hiragino Sans", "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
 
@@ -21,16 +25,16 @@
     "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", "SimSun", "Noto Serif CJK TC", "Noto Serif CJK SC", serif;
 
   /* e1 基礎：不可點的資訊卡。等同原本的 shadow-xs。 */
-  --elev-1: 0 1px 2px rgb(60 45 20 / 0.05);
+  --elev-1: 0 1px 2px rgb(var(--shadow-rgb) / 0.05);
   /* e2 承載：包住其他卡片的容器（側邊欄、掌握地圖），比裡面的內容重一階。 */
-  --elev-2: 0 1px 3px rgb(60 45 20 / 0.05), 0 6px 16px -6px rgb(60 45 20 / 0.08);
+  --elev-2: 0 1px 3px rgb(var(--shadow-rgb) / 0.05), 0 6px 16px -6px rgb(var(--shadow-rgb) / 0.08);
   /* e3 浮起：只在 hover 與 Hero 出現。靜態畫面同時最多一個。 */
-  --elev-3: 0 2px 4px rgb(60 45 20 / 0.04), 0 16px 32px -12px rgb(60 45 20 / 0.14);
+  --elev-3: 0 2px 4px rgb(var(--shadow-rgb) / 0.04), 0 16px 32px -12px rgb(var(--shadow-rgb) / 0.14);
   /* 綠光：主要按鈕與側邊欄選中項。同一畫面至多兩處，多了就失去指向性。 */
-  --elev-green: 0 6px 18px -6px rgb(92 107 61 / 0.4);
+  --elev-green: 0 6px 18px -6px rgb(var(--glow-rgb) / 0.4);
 
-  --border-color: #D9CDB2;
-  --surface-color: #F4EEDE;
+  --border-color: var(--paper-85);
+  --surface-color: var(--paper-bg);
 }
 
 html[lang="zh-CN"] {
@@ -85,7 +89,7 @@ html[lang="ko"] {
 .card-lift:hover {
   box-shadow: var(--elev-3);
   transform: translateY(-3px);
-  border-color: rgb(92 107 61 / 0.35);
+  border-color: rgb(var(--glow-rgb) / 0.35);
 }
 .card-lift:active {
   transform: translateY(-1px);
@@ -145,8 +149,8 @@ html[lang="ko"] {
 /* 答題回饋。對用脈衝、錯用左右晃——顏色以外還有第二種語意，
    色盲也讀得到。 */
 @keyframes pulseCorrect {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgb(92 107 61 / 0.4); }
-  35% { transform: scale(1.06); box-shadow: 0 0 0 10px rgb(92 107 61 / 0); }
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgb(var(--glow-rgb) / 0.4); }
+  35% { transform: scale(1.06); box-shadow: 0 0 0 10px rgb(var(--glow-rgb) / 0); }
 }
 @keyframes shakeWrong {
   0%, 100% { transform: translateX(0); }
@@ -210,27 +214,27 @@ html[lang="ko"] {
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
-  color: #221F18;
+  color: var(--ink-24);
 }
 
 .vocabulary-card__word {
   font-family: var(--font-display);
   font-size: 1.25rem;
   margin-top: 0.15rem;
-  color: #3A3529;
+  color: var(--ink-33);
 }
 
 .vocabulary-card__romaji {
   margin-top: 0.2rem;
   font-size: 0.85rem;
-  color: #5C6B3D;
+  color: var(--moss-50);
   font-weight: 700;
 }
 
 .vocabulary-card__meaning {
   margin-top: 0.75rem;
   font-size: 0.95rem;
-  color: #55503F;
+  color: var(--ink-43);
   font-weight: 600;
 }
 
@@ -244,8 +248,8 @@ html[lang="ko"] {
   padding: 0.5rem 0.85rem;
   border: 0;
   border-radius: 0.75rem;
-  background-color: #5C6B3D;
-  color: #FFFFFF;
+  background-color: var(--moss-50);
+  color: var(--white);
   font-size: 0.875rem;
   font-weight: 700;
   cursor: pointer;
@@ -254,7 +258,7 @@ html[lang="ko"] {
 }
 
 .vocabulary-card__audio:hover {
-  background-color: #47552F;
+  background-color: var(--moss-43);
   transform: translateY(-1px);
 }
 
@@ -300,21 +304,21 @@ html[lang="ko"] {
   min-width: 1.75rem;
   padding: 0.15rem 0.35rem;
   border-radius: 0.4rem;
-  color: #3A3529;
+  color: var(--ink-33);
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
 }
 
 .vocabulary-kana-breakdown__kana--current {
-  color: #5C6B3D;
-  background-color: #E6EAD5;
-  box-shadow: inset 0 0 0 1.5px #5C6B3D;
+  color: var(--moss-50);
+  background-color: var(--moss-93);
+  box-shadow: inset 0 0 0 1.5px var(--moss-50);
 }
 
 .vocabulary-kana-breakdown__separator {
   opacity: 0.45;
-  color: #8F8674;
+  color: var(--ink-62);
   font-size: 0.85rem;
   margin: 0 0.1rem;
 }
@@ -324,12 +328,12 @@ html[lang="ko"] {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #221F18;
+  color: var(--ink-24);
 }
 
 .vocabulary-kana-breakdown__romaji {
   margin-top: 0.1rem;
   font-size: 0.85rem;
-  color: #5C6B3D;
+  color: var(--moss-50);
   font-weight: 700;
 }

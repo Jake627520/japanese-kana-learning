@@ -35,9 +35,9 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       label: t('header.mastered'),
       value: masteredCount,
       around: ['', ` / ${totalKana}`],
-      tint: 'bg-[#E6EAD5]',
-      fg: 'text-[#5C6B3D]',
-      bar: 'bg-[#5C6B3D]',
+      tint: 'bg-[color:var(--moss-93)]',
+      fg: 'text-[color:var(--moss-50)]',
+      bar: 'bg-[color:var(--moss-50)]',
       pct: masteredPct,
       icon: <CheckCircle className="w-5 h-5" />,
       title: `${t('header.mastered')} ${masteredCount} / ${totalKana}`,
@@ -47,8 +47,8 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
       label: t('header.weak'),
       value: wrongCount,
       around: tAroundCount('common.kanaCount', wrongCount),
-      tint: 'bg-[#EFDBD5]',
-      fg: 'text-[#B0554A]',
+      tint: 'bg-[color:var(--shu-91)]',
+      fg: 'text-[color:var(--shu-56)]',
       bar: 'bg-red-500',
       pct: wrongPct,
       icon: <AlertTriangle className="w-5 h-5" />,
@@ -74,7 +74,7 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
         <div
           key={c.key}
           title={c.title}
-          className="bg-[#F4EEDE] p-4 rounded-2xl border border-[#D9CDB2] elev-1 card-lift rise-in flex flex-col gap-3"
+          className="bg-[color:var(--paper-bg)] p-4 rounded-2xl border border-[color:var(--paper-85)] elev-1 card-lift rise-in flex flex-col gap-3"
           style={{ ['--stagger' as string]: `${i * 40}ms` }}
         >
           <div className="flex items-center gap-3">
@@ -82,15 +82,15 @@ export function HeaderStats({ progress, totalKana }: HeaderStatsProps) {
               {c.icon}
             </div>
             <div>
-              <div className="text-xs font-bold text-[#6B6252]">{c.label}</div>
-              <div className="text-lg font-extrabold text-[#221F18] leading-tight">
-                {c.around[0] && <span className="text-xs font-normal text-[#8F8674]">{c.around[0]}</span>}
+              <div className="text-xs font-bold text-[color:var(--ink-50)]">{c.label}</div>
+              <div className="text-lg font-extrabold text-[color:var(--ink-24)] leading-tight">
+                {c.around[0] && <span className="text-xs font-normal text-[color:var(--ink-62)]">{c.around[0]}</span>}
                 {c.value}
-                <span className="text-xs font-normal text-[#8F8674]">{c.around[1]}</span>
+                <span className="text-xs font-normal text-[color:var(--ink-62)]">{c.around[1]}</span>
               </div>
             </div>
           </div>
-          <div className="h-1 rounded-full bg-[#ECE4D0] overflow-hidden">
+          <div className="h-1 rounded-full bg-[color:var(--paper-92)] overflow-hidden">
             <div
               className={`h-full rounded-full ${c.bar} transition-[width] duration-700 ease-out`}
               style={{ width: `${c.pct}%` }}

@@ -62,20 +62,20 @@ export function GojuuonGrid({
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#F4EEDE] p-6 rounded-3xl border border-[#D9CDB2] elev-2 space-y-5">
+      <div className="bg-[color:var(--paper-bg)] p-6 rounded-3xl border border-[color:var(--paper-85)] elev-2 space-y-5">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-xl font-display font-bold text-[#221F18]">
+            <h2 className="text-xl font-display font-bold text-[color:var(--ink-24)]">
               {getCategoryTitle()}
             </h2>
-            <p className="text-xs text-[#6B6252] mt-1">
+            <p className="text-xs text-[color:var(--ink-50)] mt-1">
               {t('grid.subtitle')}
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
             {onKanaCategoryChange && (
-              <div className="flex items-center gap-1 bg-[#ECE4D0] p-1 rounded-xl">
+              <div className="flex items-center gap-1 bg-[color:var(--paper-92)] p-1 rounded-xl">
                 {categories.map((c) => (
                   <button
                     key={c.id}
@@ -83,8 +83,8 @@ export function GojuuonGrid({
                     onClick={() => onKanaCategoryChange(c.id)}
                     className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all cursor-pointer ${
                       kanaCategory === c.id
-                        ? 'bg-[#F4EEDE] text-[#5C6B3D] elev-1'
-                        : 'text-[#6B6252] hover:text-[#221F18]'
+                        ? 'bg-[color:var(--paper-bg)] text-[color:var(--moss-50)] elev-1'
+                        : 'text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)]'
                     }`}
                   >
                     {c.label}
@@ -94,7 +94,7 @@ export function GojuuonGrid({
             )}
 
             {onKanaTypeChange && (
-              <div className="flex items-center gap-1 bg-[#ECE4D0] p-1 rounded-xl">
+              <div className="flex items-center gap-1 bg-[color:var(--paper-92)] p-1 rounded-xl">
                 {(['hiragana', 'katakana'] as const).map((typeItem) => (
                   <button
                     key={typeItem}
@@ -102,8 +102,8 @@ export function GojuuonGrid({
                     onClick={() => onKanaTypeChange(typeItem)}
                     className={`px-3 py-1.5 text-xs sm:text-sm font-extrabold rounded-lg transition-all cursor-pointer ${
                       kanaType === typeItem
-                        ? 'bg-[#F4EEDE] text-[#5C6B3D] elev-1'
-                        : 'text-[#6B6252] hover:text-[#221F18]'
+                        ? 'bg-[color:var(--paper-bg)] text-[color:var(--moss-50)] elev-1'
+                        : 'text-[color:var(--ink-50)] hover:text-[color:var(--ink-24)]'
                     }`}
                   >
                     {typeItem === 'hiragana' ? t('common.hiragana') : t('common.katakana')}
@@ -115,15 +115,15 @@ export function GojuuonGrid({
         </div>
 
         {/* 圖例兼統計 */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 border-t border-[#ECE4D0]">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 border-t border-[color:var(--paper-92)]">
           {KANA_STATUS_ORDER.map((s) => {
             const style = KANA_STATUS_STYLE[s];
             const label = getStatusLabel(s);
             return (
               <div key={s} className="flex items-center gap-1.5" title={label}>
                 <span className={`w-2.5 h-2.5 rounded-full ${style.dot}`} />
-                <span className="text-xs font-bold text-[#6B6252]">{label}</span>
-                <span className="text-xs font-extrabold text-[#221F18]">{counts[s]}</span>
+                <span className="text-xs font-bold text-[color:var(--ink-50)]">{label}</span>
+                <span className="text-xs font-extrabold text-[color:var(--ink-24)]">{counts[s]}</span>
               </div>
             );
           })}
@@ -144,7 +144,7 @@ export function GojuuonGrid({
                 onSelectKana(item);
               }}
               title={`${item.kana} (${statusLabel})`}
-              className={`bg-[#F4EEDE] rounded-2xl border elev-1 card-lift rise-in overflow-hidden cursor-pointer relative group ${style.card}`}
+              className={`bg-[color:var(--paper-bg)] rounded-2xl border elev-1 card-lift rise-in overflow-hidden cursor-pointer relative group ${style.card}`}
               style={{ ['--stagger' as string]: `${Math.min(i, 11) * 25}ms` }}
             >
               {style.bar && <div aria-hidden className={`h-1 w-full ${style.bar}`} />}
@@ -152,12 +152,12 @@ export function GojuuonGrid({
 
               <div className="p-3 sm:p-4 flex flex-col items-center justify-between gap-2">
                 {status === 'mastered' && (
-                  <div className="absolute top-2.5 right-2 text-[#5C6B3D]">
+                  <div className="absolute top-2.5 right-2 text-[color:var(--moss-50)]">
                     <Check className="w-3.5 h-3.5" strokeWidth={3} />
                   </div>
                 )}
                 {status === 'weak' && (
-                  <div className="absolute top-2.5 right-2.5 text-[#B0554A] text-xs font-extrabold leading-none">
+                  <div className="absolute top-2.5 right-2.5 text-[color:var(--shu-56)] text-xs font-extrabold leading-none">
                     !
                   </div>
                 )}
@@ -165,18 +165,18 @@ export function GojuuonGrid({
                   <div className="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-amber-500" />
                 )}
 
-                <div className="text-2xl sm:text-3xl font-extrabold text-[#221F18] group-hover:scale-110 transition-transform">
+                <div className="text-2xl sm:text-3xl font-extrabold text-[color:var(--ink-24)] group-hover:scale-110 transition-transform">
                   {item.kana}
                 </div>
 
-                <div className="text-xs font-extrabold text-[#5C6B3D] uppercase">{item.romaji}</div>
+                <div className="text-xs font-extrabold text-[color:var(--moss-50)] uppercase">{item.romaji}</div>
 
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     speakJapanese(item.kana);
                   }}
-                  className="p-1.5 text-[#6B6252] hover:text-[#5C6B3D] rounded-lg hover:bg-[#E6EAD5] transition-colors cursor-pointer"
+                  className="p-1.5 text-[color:var(--ink-50)] hover:text-[color:var(--moss-50)] rounded-lg hover:bg-[color:var(--moss-93)] transition-colors cursor-pointer"
                   title={t('common.playAudio')}
                 >
                   <Volume2 className="w-3.5 h-3.5" />
