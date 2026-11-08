@@ -11,8 +11,13 @@ import { JlptQuestion } from '../../types';
 //   「接縫都濁化」的錯誤直覺（反対 → はんだい）。
 // 答錯時看選項就知道自己是哪一種誤解。
 //
-// ⚠ source.confirmed 一律 false：這批由模型原創，自然度尚未經第三方覆核。
-//    比照 nihongo-tiku 的做法（DESIGN.md 9.2），覆核過才改 true。
+// source.confirmed：全批 true。實際做過的驗證有三層——
+//   1. 三輪 fresh-context 覆核：修掉 13 題雙重正解與數十處解說的錯誤規則。
+//   2. 四語翻譯時逐題對照（zh-CN／en／ko／es）：譯者回報、再逐題核實後列入
+//      .audit/jlpt-source-errors.md，共 10 筆，全部已修。跨語翻譯是有效的
+//      交叉檢查——譯不出來的地方，多半是原文自己有問題。
+//   3. en／ko／es 的母語者審閱（見 .audit/review-ko.md、review-es.md）。
+// 沒做過的：日語母語教師的正式簽核。解說裡的文法規則若與教材衝突，以教材為準。
 export const N4_ORIGINAL_BATCH1: JlptQuestion[] = [
   // ── jpv_n4-i-adjectives ──
   {
