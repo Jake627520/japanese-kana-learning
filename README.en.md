@@ -1,6 +1,6 @@
 # Japanese Kana Learning
 
-[繁體中文](README.md) · [简体中文](README.zh-CN.md) · [English](README.en.md)
+[繁體中文](README.md) · [简体中文](README.zh-CN.md) · [English](README.en.md) · [한국어](README.md#한국어) · [Español](README.md#español)
 
 A static, zero-backend, offline-capable Japanese learning web app built around the core loop:
 **Recognition → Audio Discrimination → Writing → Minimal Pairs → Speaking → Quizzing → Weakness Diagnostics → Spaced Repetition (SRS)**.

@@ -3,7 +3,9 @@
 <p align="center">
   <b><a href="#english">English</a></b> · 
   <b><a href="#繁體中文">繁體中文</a></b> · 
-  <b><a href="#简体中文">简体中文</a></b>
+  <b><a href="#简体中文">简体中文</a></b> · 
+  <b><a href="#한국어">한국어</a></b> · 
+  <b><a href="#español">Español</a></b>
 </p>
 
 <p align="center">
@@ -340,6 +342,244 @@ npm run preview
 | JLPT 练习 | 280 题 N5 / N4 / N3 原创题库，支持分级切换与考点弱点定位 |
 | 跟读练习 | 五步影子跟读训练法 + 本地录音对比 |
 | 对话教室 | 聊天式假名引导教学：逐行讲解假名，每行结束有小测验 |
+
+---
+
+## 한국어
+
+정적 호스팅, 백엔드 없음, 오프라인 사용이 가능한 일본어 학습 웹 앱입니다. 핵심 흐름은 다음과 같습니다.
+**인식 → 소리 구별 → 쓰기 → 혼동 글자 구별 → 말하기 → 퀴즈 → 약점 진단 → 간격 반복(SRS)**
+
+### 주요 기능
+
+#### 1. 가나 208자 전체 수록 (기본 46자에 그치지 않음)
+
+| 분류 | 개수 |
+|---|---:|
+| 히라가나 (청음) | 46 |
+| 가타카나 (청음) | 46 |
+| 탁음 | 40 |
+| 반탁음 | 10 |
+| 요음 | 66 |
+| **합계** | **208** |
+
+입문 앱 대부분은 기본 46자에서 멈춥니다. 하지만 실제로 읽고 들을 때 학습자가 막히는 곳은 탁음과 요음입니다.
+
+#### 2. 미리 생성한 음성 파일 (브라우저 음성 합성 미사용)
+
+가나 208자, 예시 단어 203개, 예문 205개, 섀도잉 문장 18개(보통 속도·느린 속도), 특수음 예시까지 모두 **VOICEVOX**로 미리 만든 정적 음성 파일을 사용합니다(MP3 약 660개, 약 6.4MB).
+
+브라우저 내장 음성 합성은 기기와 운영체제마다 결과가 다릅니다. 글자 하나만 읽힐 때 알파벳 이름으로 읽어 버리는 엔진이 많고, 요음과 촉음은 자주 뭉개집니다. 전부 미리 생성해 두면 발음이 일정하게 유지됩니다.
+
+#### 3. 쓰기 연습: 채점하지 않고 스스로 비교
+
+- 기본 히라가나 46자의 **획순 안내**(획수 + 획마다 방향 설명).
+- 캔버스 필기 영역. **따라쓰기 모드**와 **안 보고 쓰기 모드**를 전환할 수 있습니다.
+- 글자 균형을 잡도록 돕는 십자 보조선.
+- **획순 자동 채점은 넣지 않았습니다.** 가나에 대한 필기 채점 알고리즘은 오탐과 미탐이 많습니다. 틀린 피드백은 피드백이 없는 것보다 해롭습니다. 학습자가 표준 자형과 직접 비교해 판단합니다.
+
+#### 4. 혼동하기 쉬운 가나: 오답은 같은 묶음에서만
+
+혼동 요인별로 정리한 21개 조:
+
+- **고리의 유무**: ぬ/め, る/ろ, ね/れ/わ
+- **좌우 대칭**: さ/ち
+- **획 하나 차이**: き/さ, は/ほ
+- **가타카나의 획 방향 함정**: シ/ツ, ソ/ン
+
+일반적인 무작위 퀴즈에서는 ぬ 문제의 오답으로 か, さ, と 같은 글자가 나옵니다. 너무 달라서 특징을 몰라도 소거법으로 맞힐 수 있습니다. 여기서는 **같은 혼동 묶음 안에서만** 오답을 뽑고, 조마다 "어디를 보면 되는지"를 명시합니다.
+
+#### 5. 5단계 섀도잉: 기계 점수 없이 스스로 확인하는 흐름
+
+**듣기만 → 보면서 듣기 → 작은 소리로 따라 하기 → 녹음 → 나란히 비교**의 5단계 구성.
+
+- 보통 속도와 느린 속도. 느린 음원은 같은 녹음을 0.7배로 늘인 것이라 억양이 그대로 유지됩니다.
+- 브라우저 안에서 녹음하고, **원어민 음성 → 내 녹음** 순서로 바로 이어서 들을 수 있습니다.
+- 일본어·가나·로마자 표시를 각각 끌 수 있어 순수하게 귀로만 판단하는 연습이 가능합니다.
+- **발음 자동 채점은 넣지 않았습니다.** 브라우저에서 돌아가는 억양 평가는 아직 신뢰하기 어렵고, 초보자를 잘못된 방향으로 이끄는 경우가 많습니다. 목표는 학습자 자신의 귀가 차이를 알아채게 만드는 것입니다.
+
+#### 6. 약점 가나와 섀도잉 문장의 연결
+
+퀴즈에서 틀린 가나는 그 소리가 들어 있는 섀도잉 문장과 자동으로 연결됩니다. 글자 하나만 떼어 외우기는 어렵습니다. 실제 발화 속에서 연습하면 소리 기억이 강해지고, 인식과 발화가 하나의 고리로 이어집니다.
+
+#### 7. JLPT N5 / N4 / N3 연습: 자체 제작 280문항, 오답에도 진단 기능
+
+- **N5: 30개 항목 100문항** — 한자 읽기, 연탁, 오쿠리가나, 조수사, 조사.
+- **N4: 30개 항목 90문항** — 용법 문제(문제 5), 사역, 수동(`によって`), 수수 표현의 방향, 양태와 전문의 `そうです`, 독해 지문 2세트 추가.
+- **N3: 30개 항목 90문항** — 네 선택지가 문법적으로는 모두 성립하지만 자연스러운 쓰임은 하나뿐인 유형에 집중(わけがない / わけではない, おかげで / せいで, ために / ように, ものだ / ことだ 등). 단문 독해와 정보 검색 문제 포함.
+- N5·N4·N3는 언제든지 자유롭게 전환할 수 있습니다.
+- **약점 진단**: 반복되는 실수 유형을 짚어 줍니다. 잡음을 걸러 내려고 모든 항목에 최소 3문항을 두었습니다.
+- 오답은 실제 학습자가 저지르는 실수에서 가져왔습니다(ます형에서 바로 て형을 만들기, 상 표지 누락, 예외를 규칙으로 일반화하기 등).
+
+#### 8. 간격 반복(SRS)과 진도 관리
+
+- 복습 간격은 6단계입니다. 10분 → 1일 → 3일 → 7일 → 14일 → 30일. 맞히면 한 단계 올라가고, 틀리면 한 단계 내려갑니다.
+- 적응형 스케줄러도 함께 돌아갑니다(가나별 안정도와 난이도, 평가에 따라 첫 복습은 10분에서 3일 사이, 안정도 상한은 365일). 모든 응답을 기록하고 백업에 포함하지만, 아직 복습 예정일을 직접 정하지는 않습니다.
+- 숙달 지도: 가나 그룹(히라가나·가타카나·탁음·반탁음·요음)마다 고리 하나씩 5개. 각 고리는 숙달 비율만 보여 줍니다. **단계를 잠그지 않습니다.**
+- **데이터는 이 기기에만 저장됩니다.** 진도(가나 숙달도, SRS 일정, 퀴즈 기록)는 이 브라우저의 `localStorage`에 저장됩니다. 계정도 서버도 없으므로 다른 기기나 브라우저와 **자동으로 동기화되지 않습니다**.
+- **다른 기기를 쓰려면?** 대시보드의 **데이터 백업·복원** 카드에서 JSON 파일을 **내보내기** 한 다음, 다른 기기에서 **가져오기** 하세요. 브라우저 데이터를 지우기 전이나 시크릿 모드를 쓰기 전에도 내보내 두시기 바랍니다.
+- **백업에 담기는 것:** 가나 숙달도, SRS 복습 일정(적응형 스케줄러 상태 포함), 응답 기록(대시보드 통계·약점 가나 순위·혼동 쌍 분석에 쓰임), 섀도잉 진도, 채팅 수업 위치, JLPT 기록, 화면 언어 설정. 이 기능이 생기기 전에 내보낸 백업에는 가나 진도와 JLPT 기록만 들어 있으며, 가져와도 기기에 이미 있는 나머지 데이터는 그대로 남습니다.
+
+#### 9. PWA: 설치 가능하고 오프라인에서도 동작
+
+휴대폰과 데스크톱 홈 화면에 추가할 수 있습니다. 서비스 워커는 시작 페이지만 미리 캐시하고, 나머지는 처음 사용할 때 캐시합니다. HTML은 네트워크 우선이며 HTTP 캐시를 건너뛰므로 새로 배포하면 다음 방문에 바로 반영됩니다. 해시가 붙은 빌드 자산(`/assets/`)과 음성(`/audio/`)은 캐시 우선입니다. 매니페스트와 아이콘은 stale-while-revalidate 방식입니다. 오프라인에서는 이 브라우저가 이미 불러온 페이지와 자산으로 동작합니다. 음성은 한 번 재생한 뒤부터 오프라인에서도 들을 수 있습니다. 브라우저가 Range 요청으로 음성을 가져오므로 서비스 워커가 파일 전체를 저장해 두고 각 Range 요청에 답합니다. 한 번도 재생하지 않은 음원은 여전히 연결이 필요합니다.
+
+#### 10. 잠긴 콘텐츠 없음
+
+가나 학습과 JLPT 경로는 처음부터 전부 열려 있습니다. 이미 가나를 아는 사람도 있고 바로 N4·N3를 준비하는 사람도 있습니다. 임의의 선행 조건을 강제하면 학습자의 시간만 낭비됩니다.
+
+#### 11. 화면 언어 5종
+
+繁體中文, 简体中文, English, 한국어, Español을 지원합니다. 번역 범위는 모든 화면 문구, 예시 단어·예문·어휘의 뜻, 획순 단계와 설명, 혼동 가나 요령, 섀도잉의 뜻·핵심·요령, JLPT 항목 이름과 설명, 그리고 JLPT 해설 전체입니다. 일본어 학습 자료(가나, 단어, 문장, 문제) 자체는 일본어로 둡니다. 상단의 선택기에서 언어를 고르세요. 선택한 언어는 이 브라우저에 저장되고 백업에도 포함됩니다. 처음 방문할 때는 브라우저 언어를 따릅니다.
+
+### 탭 구성
+
+| 탭 | 내용 |
+|---|---|
+| 대시보드 | "오늘 할 일"을 하나로 제시(약점 → 복습 예정 → 새 가나 → 섀도잉). 숙달 분포와 백업 도구 포함. |
+| 가나 표 | 208자 표. 청음·탁음·반탁음·요음과 히라가나/가타카나로 필터링. 칸마다 현재 숙달 상태 표시. |
+| 가나 상세 카드 | 가나, 로마자, 음성, 대표 어휘 카드, 예시 단어와 예문, 숙달 표시 전환. |
+| 쓰기 | 획순 안내, 따라쓰기 모드, 자유 필기 캔버스. |
+| 퀴즈 | 4가지 방식(가나→로마자, 소리→가나, 로마자 입력, 히라가나/가타카나 변환). 끝나면 틀린 문제만 다시 연습. |
+| 혼동 가나 | 21개 조. 시각적 단서와 구별 규칙 제공. |
+| 복습 센터 | 약점 대기열과 SRS 복습 예정(두 대기열은 서로 겹치지 않아 중복 학습이 없습니다). |
+| 특수음 | 촉음(っ/ッ)과 장음: 규칙과 예시 단어, 음성 포함. |
+| JLPT 연습 | 자체 제작 N5/N4/N3 280문항. 급수 전환과 오답 분석. |
+| 섀도잉 | 5단계 섀도잉. 녹음과 두 속도 비교 내장. |
+| 채팅 수업 | 대화형 수업. 행 단위로 가나를 배우고 행마다 짧은 퀴즈. |
+
+### 기술 스택과 실행 방법
+
+React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
+
+```bash
+# 로컬 실행
+npm install
+npm run dev
+
+# 프로덕션 빌드와 미리 보기
+npm run build
+npm run preview
+```
+
+---
+
+## Español
+
+Aplicación web estática para aprender japonés: sin backend y utilizable sin conexión. Su ciclo central es:
+**reconocer → discriminar sonidos → escribir → distinguir pares confundibles → hablar → practicar → diagnosticar puntos débiles → repaso espaciado (SRS)**.
+
+### Características principales
+
+#### 1. Los 208 kana completos (no solo los 46 básicos)
+
+| Categoría | Cantidad |
+|---|---:|
+| Hiragana (seion) | 46 |
+| Katakana (seion) | 46 |
+| Sonoras (dakuon) | 40 |
+| Semisonoras (handakuon) | 10 |
+| Contraídas (yōon) | 66 |
+| **Total** | **208** |
+
+La mayoría de las aplicaciones para principiantes se detienen en los 46 caracteres básicos. Al leer y escuchar de verdad, donde el estudiante se atasca es en las sonoras y las contraídas.
+
+#### 2. Audio pregrabado (sin síntesis de voz del navegador)
+
+Los 208 kana, 203 palabras de ejemplo, 205 oraciones de ejemplo, 18 frases de shadowing (velocidad normal y lenta) y los ejemplos de sonidos especiales usan archivos estáticos generados de antemano con **VOICEVOX** (unos 660 MP3, alrededor de 6,4 MB).
+
+La síntesis de voz del navegador no es consistente entre dispositivos ni sistemas operativos: muchos motores leen un carácter aislado como el nombre de una letra, y las contraídas y las geminadas suelen distorsionarse. Generar todo el audio por adelantado mantiene la pronunciación estable.
+
+#### 3. Práctica de escritura con autoevaluación deliberada
+
+- **Guía de trazos** completa para los 46 hiragana básicos (número de trazos y dirección de cada uno).
+- Lienzo de escritura a mano con **modo calco** y **modo de memoria** intercambiables.
+- Líneas guía en cruz para ayudar con la proporción y el equilibrio del carácter.
+- **Sin corrección automática de trazos.** Los algoritmos que puntúan escritura a mano producen muchos falsos positivos y negativos con los kana. Una corrección equivocada hace más daño que ninguna. El estudiante se calibra comparando su trazo con el modelo de referencia.
+
+#### 4. Kana que se confunden: los distractores salen solo del mismo grupo
+
+21 grupos seleccionados según el factor de confusión:
+
+- **Con bucle o sin bucle**: ぬ/め, る/ろ, ね/れ/わ
+- **Simetría especular**: さ/ち
+- **Un solo trazo de diferencia**: き/さ, は/ほ
+- **Dirección del trazo en katakana**: シ/ツ, ソ/ン
+
+En un examen aleatorio normal, una pregunta sobre ぬ puede ofrecer か, さ o と como distractores: tan distintos que se acierta por descarte sin reconocer el rasgo que distingue. Aquí las opciones **salen únicamente del mismo grupo de confusión**, y cada grupo indica exactamente qué detalle hay que mirar.
+
+#### 5. Shadowing en cinco pasos: control propio, sin puntuaciones automáticas poco fiables
+
+Flujo estructurado en 5 pasos: **solo escuchar → leer y escuchar → repetir en voz baja → grabarse → comparar en paralelo**.
+
+- Dos velocidades (normal y lenta). La versión lenta es la misma grabación estirada a 0,7x, de modo que la entonación se conserva.
+- Grabación local en el navegador y comparación inmediata: **muestra nativa → grabación del estudiante**.
+- El texto se puede ocultar por partes (japonés, kana o rōmaji) para entrenar solo el oído.
+- **Sin evaluación acústica automática.** Los algoritmos de acento tonal en el navegador siguen siendo poco fiables y con frecuencia confunden a los principiantes. El objetivo es entrenar el oído del propio estudiante para que note las diferencias.
+
+#### 6. Los kana débiles enlazan con el shadowing
+
+Los kana fallados en los exámenes se enlazan automáticamente con las frases de shadowing que contienen ese sonido. Memorizar un carácter aislado es difícil; practicarlo dentro de habla real refuerza el recuerdo fonético y cierra el ciclo entre reconocer y hablar.
+
+#### 7. Práctica JLPT N5 / N4 / N3: 280 preguntas propias con distractores diagnósticos
+
+- **N5: 100 preguntas en 30 temas**, sobre lecturas de kanji, rendaku, okurigana, contadores y partículas.
+- **N4: 90 preguntas en 30 temas**, añadiendo las preguntas de uso (mondai 5), causativo, pasiva con `によって`, dirección de dar y recibir, `そうです` de apariencia frente a rumor, y 2 textos de comprensión lectora.
+- **N3: 90 preguntas en 30 temas**, centradas en matices donde las cuatro opciones son gramaticales pero solo una resulta natural (わけがない / わけではない, おかげで / せいで, ために / ように, ものだ / ことだ, entre otras), más textos breves y tareas de búsqueda de información.
+- Se puede cambiar entre N5, N4 y N3 en cualquier momento.
+- **Diagnóstico de puntos débiles**: señala los patrones de error que se repiten. Cada tema tiene al menos 3 preguntas para filtrar el ruido.
+- Los distractores salen de errores reales de estudiantes (formar la forma て directamente desde la raíz ます, omitir la marca de aspecto, generalizar una excepción como si fuera regla).
+
+#### 8. Repaso espaciado (SRS) y seguimiento del progreso
+
+- Los repasos siguen 6 etapas: 10 min → 1 día → 3 días → 7 días → 14 días → 30 días. Un acierto sube un nivel; un fallo lo baja.
+- También funciona un planificador adaptativo (estabilidad y dificultad por kana; el primer repaso cae entre 10 minutos y 3 días según la valoración; la estabilidad se limita a 365 días). Registra cada respuesta y se incluye en las copias de seguridad, pero todavía no fija las fechas de repaso.
+- Mapa de dominio: 5 anillos, uno por grupo de kana (hiragana, katakana, dakuon, handakuon, yōon), cada uno con el porcentaje dominado (solo informativo; **no bloquea ningún contenido**).
+- **Los datos se guardan solo en este dispositivo.** El progreso (dominio de kana, calendario SRS, registros de exámenes) se guarda en el `localStorage` de este navegador. No hay cuenta ni servidor, así que **no se sincroniza** con otros dispositivos ni navegadores.
+- **¿Vas a usar otro dispositivo?** Abre la tarjeta **Copia de seguridad y restauración** del panel, **exporta** un archivo JSON aquí e **impórtalo** en el otro dispositivo. Exporta también antes de borrar los datos del navegador o de usar el modo privado.
+- **Qué contiene una copia:** dominio de los kana, calendario de repaso SRS (incluido el estado del planificador adaptativo), historial de respuestas (lo usan las estadísticas del panel, el ranking de kana débiles y el análisis de pares confundibles), progreso de shadowing, posición en la lección de chat, registros JLPT y el idioma de la interfaz. Las copias exportadas antes de este cambio solo contienen el progreso de kana y los registros JLPT; al importarlas, el resto de los datos del dispositivo se conserva.
+
+#### 9. PWA: instalable y disponible sin conexión
+
+Se puede añadir a la pantalla de inicio en móvil y escritorio. El service worker precachea únicamente la página de entrada y guarda el resto en el primer uso. El HTML va primero a la red y omite la caché HTTP, así que un despliegue nuevo aparece en la siguiente carga. Los recursos de compilación con hash (`/assets/`) y el audio (`/audio/`) van primero a caché. El manifiesto y los iconos usan stale-while-revalidate. Sin conexión, la aplicación funciona con las páginas y los recursos que este navegador ya cargó. El audio funciona sin conexión en cuanto se ha reproducido una vez: el navegador lo pide con peticiones Range, de modo que el service worker guarda el archivo entero y responde a cada Range desde él. Los clips nunca reproducidos siguen necesitando conexión.
+
+#### 10. Nada bloqueado ni barreras artificiales
+
+El entrenamiento de kana y la ruta JLPT están abiertos desde el primer día. Hay quien ya conoce los kana básicos y quien estudia directamente para N4 o N3; imponer requisitos previos arbitrarios solo hace perder el tiempo.
+
+#### 11. Cinco idiomas de interfaz
+
+La aplicación está disponible en 繁體中文, 简体中文, English, 한국어 y Español. La traducción cubre todos los textos de la interfaz, los significados de las palabras y oraciones de ejemplo y del vocabulario, los pasos y notas del orden de trazos, los consejos sobre kana confundibles, los significados, puntos clave y consejos del shadowing, los nombres y descripciones de los temas JLPT, y todas las explicaciones JLPT. El material de estudio en japonés (kana, palabras, oraciones, preguntas) permanece en japonés. Elige el idioma en el selector de la cabecera. La elección se guarda en este navegador y se incluye en las copias de seguridad. En la primera visita, la aplicación sigue el idioma del navegador.
+
+### Secciones
+
+| Sección | Detalles |
+|---|---|
+| Panel | Muestra "lo siguiente que toca hoy" (puntos débiles → repasos pendientes → kana nuevos → shadowing), la distribución del dominio y las herramientas de copia de seguridad. |
+| Tabla de kana | Cuadrícula de 208 caracteres con filtros de seion, dakuon, handakuon, yōon e hiragana/katakana. Cada celda muestra el estado de dominio actual. |
+| Ficha de kana | Kana, rōmaji, audio, una ficha de vocabulario representativa, palabras y oraciones de ejemplo, y el botón para marcar como dominado. |
+| Escritura | Guía de trazos, modo calco y lienzo de práctica libre. |
+| Examen | 4 modos (kana a rōmaji, audio a kana, escribir en rōmaji, conversión hiragana/katakana) con repaso de fallos al terminar. |
+| Kana confundibles | 21 grupos de confusión con pistas visuales y reglas de distinción. |
+| Centro de repaso | Cola de puntos débiles y repasos SRS pendientes (colas separadas para no repetir trabajo). |
+| Sonidos especiales | Geminadas (っ/ッ) y vocales largas: reglas y palabras de ejemplo con audio. |
+| Práctica JLPT | 280 preguntas propias de N5/N4/N3 con selector de nivel y análisis de errores. |
+| Shadowing | Sistema de 5 pasos con grabación integrada y comparación a dos velocidades. |
+| Tutor de chat | Lección guiada en forma de chat: enseña los kana fila por fila, con un examen corto tras cada fila. |
+
+### Tecnologías y puesta en marcha
+
+React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
+
+```bash
+# Ejecutar en local
+npm install
+npm run dev
+
+# Compilar para producción y previsualizar
+npm run build
+npm run preview
+```
 
 ---
 

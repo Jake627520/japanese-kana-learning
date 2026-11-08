@@ -1,6 +1,6 @@
 # 日语五十音速成 (Japanese Kana Learning)
 
-[繁體中文](README.md) · [简体中文](README.zh-CN.md) · [English](README.en.md)
+[繁體中文](README.md) · [简体中文](README.zh-CN.md) · [English](README.en.md) · [한국어](README.md#한국어) · [Español](README.md#español)
 
 以「**认读 → 听音 → 书写 → 辨析 → 口语 → 测验 → 弱点 → SRS**」为核心的日语学习 Web App。纯静态、无后端、支持离线使用。
 
