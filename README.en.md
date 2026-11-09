@@ -74,8 +74,8 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 
 ### 8. Spaced Repetition System (SRS) & Progress Tracking
 
-- Due reviews follow 6 stages: 10 min → 1 day → 3 days → 7 days → 14 days → 30 days. A correct answer moves a kana up one stage; a wrong answer moves it down one.
-- An adaptive scheduler (stability and difficulty per kana; first review after 10 min to 3 days depending on the rating; stability capped at 365 days) also records every answer and is included in backups. It does not set due dates yet.
+- **What actually schedules your reviews: the 6 fixed stages.** 10 min → 1 day → 3 days → 7 days → 14 days → 30 days. A correct answer moves a kana up one stage; a wrong answer moves it down one. Every due date you see comes from this.
+- **An adaptive scheduler runs alongside it, but nothing it computes is used yet.** It tracks stability and difficulty per kana (first review after 10 min to 3 days depending on the rating; stability capped at 365 days), works out its own due date, and logs it next to the fixed-stage one so the two can be compared. Its state is saved and included in backups. Switching the app over to it is a later decision — today it is measurement only.
 - Mastery map: 5 rings, one per kana group (Hiragana, Katakana, Dakuon, Handakuon, Yoon), each showing the share of mastered kana (informational only; **no arbitrary progression locks**).
 - **Data is stored only on this device.** Progress (kana mastery, SRS schedule, quiz records) is saved in this browser's `localStorage`. There is no account or server, so records do **not** sync across devices or browsers automatically.
 - **Using another device?** Open the **Backup & Restore Data** card on the dashboard, **Export** a JSON file here, then **Import** it on the other device. Export before clearing browser data or using private/incognito mode.

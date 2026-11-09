@@ -82,8 +82,8 @@ Missed kana during quizzes automatically link to shadowing sentences containing 
 
 #### 8. Spaced Repetition System (SRS) & Progress Tracking
 
-- Due reviews follow 6 stages: 10 min → 1 day → 3 days → 7 days → 14 days → 30 days. A correct answer moves a kana up one stage; a wrong answer moves it down one.
-- An adaptive scheduler (stability and difficulty per kana; first review after 10 min to 3 days depending on the rating; stability capped at 365 days) also records every answer and is included in backups. It does not set due dates yet.
+- **What actually schedules your reviews: the 6 fixed stages.** 10 min → 1 day → 3 days → 7 days → 14 days → 30 days. A correct answer moves a kana up one stage; a wrong answer moves it down one. Every due date you see comes from this.
+- **An adaptive scheduler runs alongside it, but nothing it computes is used yet.** It tracks stability and difficulty per kana (first review after 10 min to 3 days depending on the rating; stability capped at 365 days), works out its own due date, and logs it next to the fixed-stage one so the two can be compared. Its state is saved and included in backups. Switching the app over to it is a later decision — today it is measurement only.
 - Mastery map: 5 rings, one per kana group (Hiragana, Katakana, Dakuon, Handakuon, Yoon), each showing the share of mastered kana (informational only; **no arbitrary progression locks**).
 - **Data is stored only on this device.** Progress (kana mastery, SRS schedule, quiz records) is saved in this browser's `localStorage`. There is no account or server, so records do **not** sync across devices or browsers automatically.
 - **Using another device?** Open the **Backup & Restore Data** card on the dashboard, **Export** a JSON file here, then **Import** it on the other device. Export before clearing browser data or using private/incognito mode.
@@ -203,7 +203,8 @@ npm run preview
 #### 8. SRS 間隔複習與進度追蹤
 
 - 到期複習依 6 階段間隔：10 分 → 1 天 → 3 天 → 7 天 → 14 天 → 30 天。答對升一階，答錯降一階
-- 另有調適排程（每個假名記穩定度與難度；首次複習依作答評分為 10 分鐘到 3 天；穩定度上限 365 天）同步記錄每次作答並納入備份，但目前還不決定到期日
+- **實際決定到期日的，是上面那六個固定階段。** 你在複習中心看到的每一筆到期，都是它算出來的
+- **另有一套調適排程同時在跑，但它算出來的東西目前都還沒被採用。** 它記錄每個假名的穩定度與難度（首次複習依作答評分為 10 分鐘到 3 天；穩定度上限 365 天），也會算出自己的到期日，並與固定階段的結果並排記下來供比對。它的狀態會存檔並納入備份。要不要把 app 切換過去是之後的決定，現在它只負責量測
 - 假名掌握地圖：五個圓環，平假名、片假名、濁音、半濁音、拗音各一個，顯示該組已掌握的比例（純顯示，**不設關卡**）
 - **資料只存在你目前這台裝置的瀏覽器**：進度（假名掌握、SRS 排程、測驗紀錄）存在本機瀏覽器 `localStorage`，沒有帳號也沒有伺服器，**不會在不同裝置或瀏覽器之間自動同步**。
 - **要換到另一台裝置？** 到「學習總覽」頁的 **資料備份與還原** 卡片，在這台 **匯出** JSON 檔，再到另一台 **匯入**。清除瀏覽器資料或用無痕模式前也請先匯出。
@@ -309,7 +310,8 @@ npm run preview
 #### 8. SRS 间隔重复与进度追踪
 
 - 到期复习按 6 级间隔：10 分钟 → 1 天 → 3 天 → 7 天 → 14 天 → 30 天。答对升一级，答错降一级
-- 另有自适应排程（每个假名记录稳定度与难度；首次复习按作答评分为 10 分钟到 3 天；稳定度上限 365 天）同步记录每次作答并纳入备份，但目前还不决定到期日
+- **实际决定到期日的，是上面那六个固定阶段。** 你在复习中心看到的每一笔到期，都是它算出来的
+- **另有一套自适应排程同时在跑，但它算出来的东西目前都还没被采用。** 它记录每个假名的稳定度与难度（首次复习按作答评分为 10 分钟到 3 天；稳定度上限 365 天），也会算出自己的到期日，并与固定阶段的结果并排记下来供比对。它的状态会存档并纳入备份。要不要把 app 切换过去是之后的决定，现在它只负责测量
 - 假名掌握度地图：五个圆环，平假名、片假名、浊音、半浊音、拗音各一个，显示该组已掌握的比例（仅呈现数据，**不设置强制作业关卡**）
 - **数据只保存在你当前这台设备的浏览器**：进度（假名掌握、SRS 排程、测验记录）存在本机浏览器 `localStorage`，没有账号也没有服务器，**不会在不同设备或浏览器之间自动同步**。
 - **要换到另一台设备？** 到「学习总览」页的 **数据备份与还原** 卡片，在这台 **导出** JSON 文件，再到另一台 **导入**。清除浏览器数据或用无痕模式前也请先导出。
@@ -413,8 +415,8 @@ npm run preview
 
 #### 8. 간격 반복(SRS)과 진도 관리
 
-- 복습 간격은 6단계입니다. 10분 → 1일 → 3일 → 7일 → 14일 → 30일. 맞히면 한 단계 올라가고, 틀리면 한 단계 내려갑니다.
-- 적응형 스케줄러도 함께 돌아갑니다(가나별 안정도와 난이도, 평가에 따라 첫 복습은 10분에서 3일 사이, 안정도 상한은 365일). 모든 응답을 기록하고 백업에 포함하지만, 아직 복습 예정일을 직접 정하지는 않습니다.
+- **복습 일정을 실제로 정하는 것은 6단계 고정 간격입니다.** 10분 → 1일 → 3일 → 7일 → 14일 → 30일. 맞히면 한 단계 올라가고, 틀리면 한 단계 내려갑니다. 복습 센터에 보이는 예정일은 모두 여기서 나옵니다.
+- **적응형 스케줄러도 함께 돌아가지만, 그 결과는 아직 쓰이지 않습니다.** 가나별 안정도와 난이도를 기록하고(평가에 따라 첫 복습은 10분에서 3일 사이, 안정도 상한은 365일), 자체 예정일도 계산해 고정 간격의 결과와 나란히 남겨 비교할 수 있게 합니다. 상태는 저장되고 백업에도 포함됩니다. 앱을 이쪽으로 바꿀지는 나중에 정할 일이고, 지금은 측정만 합니다.
 - 숙달 지도: 가나 그룹(히라가나·가타카나·탁음·반탁음·요음)마다 고리 하나씩 5개. 각 고리는 숙달 비율만 보여 줍니다. **단계를 잠그지 않습니다.**
 - **데이터는 이 기기에만 저장됩니다.** 진도(가나 숙달도, SRS 일정, 퀴즈 기록)는 이 브라우저의 `localStorage`에 저장됩니다. 계정도 서버도 없으므로 다른 기기나 브라우저와 **자동으로 동기화되지 않습니다**.
 - **다른 기기를 쓰려면?** 대시보드의 **데이터 백업·복원** 카드에서 JSON 파일을 **내보내기** 한 다음, 다른 기기에서 **가져오기** 하세요. 브라우저 데이터를 지우기 전이나 시크릿 모드를 쓰기 전에도 내보내 두시기 바랍니다.
@@ -532,8 +534,8 @@ Los kana fallados en los exámenes se enlazan automáticamente con las frases de
 
 #### 8. Repaso espaciado (SRS) y seguimiento del progreso
 
-- Los repasos siguen 6 etapas: 10 min → 1 día → 3 días → 7 días → 14 días → 30 días. Un acierto sube un nivel; un fallo lo baja.
-- También funciona un planificador adaptativo (estabilidad y dificultad por kana; el primer repaso cae entre 10 minutos y 3 días según la valoración; la estabilidad se limita a 365 días). Registra cada respuesta y se incluye en las copias de seguridad, pero todavía no fija las fechas de repaso.
+- **Lo que fija de verdad tus repasos son las 6 etapas fijas.** 10 min → 1 día → 3 días → 7 días → 14 días → 30 días. Un acierto sube un nivel; un fallo lo baja. Todas las fechas que ves en el centro de repaso salen de aquí.
+- **Un planificador adaptativo funciona en paralelo, pero nada de lo que calcula se usa todavía.** Registra la estabilidad y la dificultad de cada kana (el primer repaso cae entre 10 minutos y 3 días según la valoración; la estabilidad se limita a 365 días), calcula su propia fecha y la guarda junto a la de las etapas fijas para poder compararlas. Su estado se guarda y se incluye en las copias de seguridad. Cambiar la aplicación a este sistema es una decisión posterior; hoy solo mide.
 - Mapa de dominio: 5 anillos, uno por grupo de kana (hiragana, katakana, dakuon, handakuon, yōon), cada uno con el porcentaje dominado (solo informativo; **no bloquea ningún contenido**).
 - **Los datos se guardan solo en este dispositivo.** El progreso (dominio de kana, calendario SRS, registros de exámenes) se guarda en el `localStorage` de este navegador. No hay cuenta ni servidor, así que **no se sincroniza** con otros dispositivos ni navegadores.
 - **¿Vas a usar otro dispositivo?** Abre la tarjeta **Copia de seguridad y restauración** del panel, **exporta** un archivo JSON aquí e **impórtalo** en el otro dispositivo. Exporta también antes de borrar los datos del navegador o de usar el modo privado.
