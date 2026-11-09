@@ -59,11 +59,12 @@ describe('JLPT 題庫勘誤（.audit/jlpt-source-errors.md）', () => {
     expect(q.explain.ko).toContain('보통');
   });
 
-  it('n4-own-b2-12：「大概兩小時吧」是 二時間ぐらい 那個選項', () => {
+  it('n4-own-b2-12：も 是「竟然多達」，解說要指出 で 不能接在數量詞後面', () => {
     const q = question('n4-own-b2-12');
-    expect(q.options[2]).toContain('二時間ぐらい');
-    expect(q.explain['zh-TW']).toContain('・「二時間ぐらいだろうと よそうして いる」（大概兩小時吧）');
-    expect(q.explain['zh-CN']).toContain('・「二時間ぐらいだろうと よそうして いる」（大概两小时吧）');
+    expect(q.options[Number(q.answer) - 1]).toBe('も');
+    expect(q.stem).toContain('近いと 聞いて いた');
+    expect(q.explain['zh-TW']).toContain('「二時間で かかりました」不成立');
+    expect(q.explain['zh-CN']).toContain('「二時間で かかりました」不成立');
   });
 
   it('n3-own-b2-23：上に 的前後必須同方向，解說要指出哪句方向相反', () => {

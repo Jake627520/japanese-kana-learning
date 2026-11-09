@@ -268,9 +268,9 @@ export const N3_ORIGINAL_BATCH2: JlptQuestion[] = [
   {
     id: 'n3-own-b2-27', subject: '日本語', year: 2026, paper: 'n3-original-batch2', number: 27,
     type: 'single', score: 1,
-    stem: '「〜ものだ」と 「〜ことだ」の ちがいとして いちばん いい せつめいは どれですか。',
-    options: ['ものだ は 一般的な 常識や 感慨、ことだ は 相手への ぐたいてきな アドバイス', 'ものだ は アドバイス、ことだ は 常識', 'ものだ は 過去、ことだ は 未来に つかう', '二つとも 同じ いみ'],
-    answer: '1',
+    stem: '「ことだ」の つかい方として 正しい ものは どれですか。',
+    options: ['若い ときは、だれでも 失敗する ことだ。', '子どもの ころ、よく この 川で 泳いだ ことだ。', '「お金を ためたいんです。」「それなら、まず 家計簿を つける ことです。」', 'わたしは 来月から 大阪で 働く ことです。'],
+    answer: '3',
     source: { book: 'JLPT N3', chapter: '感嘆與常理', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_n3-mono-da', topicIds: ['jpg_n3-mono-da', 'jpg_n3-koto-da'] },
   },

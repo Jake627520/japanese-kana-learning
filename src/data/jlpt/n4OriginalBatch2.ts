@@ -123,9 +123,9 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
   {
     id: 'n4-own-b2-12', subject: '日本語', year: 2026, paper: 'n4-original-batch2', number: 12,
     type: 'single', score: 1,
-    stem: '「駅まで 二時間も かかりました。」この 「も」は どんな 気持ちを あらわして いますか。',
-    options: ['ほかの 人も 二時間 かかったと 言って いる', '時間が 少なくて うれしいと 思って いる', '二時間ぐらいだろうと よそうして いる', '思って いたより 時間が かかって、おどろいて いる'],
-    answer: '4',
+    stem: '「駅まで 近いと 聞いて いたんですが、歩いたら 二時間（　　）かかりました。」',
+    options: ['しか', 'だけ', 'も', 'で'],
+    answer: '3',
     source: { book: 'JLPT N4', chapter: '助詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_mo-quantity-emphasis', topicIds: ['jpg_mo-quantity-emphasis'] },
   },
