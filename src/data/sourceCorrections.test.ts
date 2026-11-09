@@ -66,12 +66,11 @@ describe('JLPT 題庫勘誤（.audit/jlpt-source-errors.md）', () => {
     expect(q.explain['zh-CN']).toContain('・「二時間ぐらいだろうと よそうして いる」（大概两小时吧）');
   });
 
-  it('n3-own-b2-23：せいかくも いい 是兩個優點，雨まで 是兩件倒楣事', () => {
+  it('n3-own-b2-23：上に 的前後必須同方向，解說要指出哪句方向相反', () => {
     const q = question('n3-own-b2-23');
-    expect(q.options[2]).toContain('せいかくも いい');
-    expect(q.options[3]).toContain('雨まで');
-    expect(q.explain['zh-TW']).toContain('「頭が いい 上に、せいかくも いい」都是兩個優點，「道に まよった 上に、雨まで 降って きた」是兩個倒楣事');
-    expect(q.explain['zh-CN']).toContain('「頭が いい 上に、せいかくも いい」都是两个优点，「道に まよった 上に、雨まで 降って きた」是两个倒霉事');
+    expect(q.options[Number(q.answer) - 1]).toBe('この へやは 広い 上に、駅からも 近い。');
+    expect(q.explain['zh-TW']).toContain('寬敞是優點、房租貴是缺點，<b>方向相反</b>');
+    expect(q.explain['zh-CN']).toContain('宽敞是优点、房租贵是缺点，<b>方向相反</b>');
   });
 
   it('n3-own-b2-13：わけには いかない 並不是「沒有別的選項」', () => {
