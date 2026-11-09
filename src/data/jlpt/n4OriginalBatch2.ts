@@ -288,7 +288,7 @@ export const N4_ORIGINAL_BATCH2: JlptQuestion[] = [
   {
     id: 'n4-own-b2-29', subject: '日本語', year: 2026, paper: 'n4-original-batch2', number: 29,
     type: 'single', score: 1,
-    stem: '「おいしい」に 「かもしれません」を つけると どう なりますか。',
+    stem: 'この 店は 有名では ありませんが、（　　）。',
     options: ['おいしいだかもしれません', 'おいしくかもしれません', 'おいしいかもしれません', 'おいしいでかもしれません'],
     answer: '3',
     source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },

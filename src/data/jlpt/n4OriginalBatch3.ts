@@ -172,7 +172,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
   {
     id: 'n4-own-b3-17', subject: '日本語', year: 2026, paper: 'n4-original-batch3', number: 17,
     type: 'single', score: 1,
-    stem: '「食べる」に 「〜ことが あります」を つけて、けいけんを あらわす 形は どれですか。',
+    stem: 'わたしは 一度 なっとうを （　　）。',
     options: ['食べます ことが あります', '食べる ことが あります', '食べて ことが あります', '食べた ことが あります'],
     answer: '4',
     source: { book: 'JLPT N4', chapter: '動詞', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
@@ -221,7 +221,7 @@ export const N4_ORIGINAL_BATCH3: JlptQuestion[] = [
   {
     id: 'n4-own-b3-22', subject: '日本語', year: 2026, paper: 'n4-original-batch3', number: 22,
     type: 'single', score: 1,
-    stem: '「行く」に 「〜たら」を つけると どう なりますか。',
+    stem: 'デパートへ （　　）、くつを 買いたいです。',
     options: ['行っだら', '行ったら', '行きたら', '行くたら'],
     answer: '2',
     source: { book: 'JLPT N4', chapter: '文の構造', level: 'N4', confirmed: true, license: 'own', origin: 'own' },

@@ -28,7 +28,7 @@ export const N3_ORIGINAL_BATCH1: JlptQuestion[] = [
   {
     id: 'n3-own-b1-02', subject: '日本語', year: 2026, paper: 'n3-original-batch1', number: 2,
     type: 'single', score: 1,
-    stem: '「静かだ」に 「わけがない」を つけると どう なりますか。',
+    stem: '子どもが 五人も いるのだから、あの 家が （　　）。',
     options: ['静かだわけがない', '静かわけがない', '静かのわけがない', '静かなわけがない'],
     answer: '4',
     source: { book: 'JLPT N3', chapter: '推量與否定', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
@@ -86,7 +86,7 @@ export const N3_ORIGINAL_BATCH1: JlptQuestion[] = [
   {
     id: 'n3-own-b1-08', subject: '日本語', year: 2026, paper: 'n3-original-batch1', number: 8,
     type: 'single', score: 1,
-    stem: '「使う」に 「〜切る」を つけると どう なりますか。',
+    stem: 'のこりが 少ないので、今日中に （　　）つもりだ。',
     options: ['使い切る', '使う切る', '使った切る', '使って切る'],
     answer: '1',
     source: { book: 'JLPT N3', chapter: '複合動詞', level: 'N3', confirmed: true, license: 'own', origin: 'own' },

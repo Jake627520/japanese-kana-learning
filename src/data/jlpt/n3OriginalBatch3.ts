@@ -18,7 +18,7 @@ export const N3_ORIGINAL_BATCH3: JlptQuestion[] = [
   {
     id: 'n3-own-b3-01', subject: '日本語', year: 2026, paper: 'n3-original-batch3', number: 1,
     type: 'single', score: 1,
-    stem: '「解決」の 読み方は どれですか。',
+    stem: 'その 問題は まだ <u>解決</u>して いません。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['がいけつ', 'かいけち', 'かいけつ', 'げけつ'],
     answer: '3',
     source: { book: 'JLPT N3', chapter: '漢語語彙', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
@@ -230,7 +230,7 @@ export const N3_ORIGINAL_BATCH3: JlptQuestion[] = [
   {
     id: 'n3-own-b3-23', subject: '日本語', year: 2026, paper: 'n3-original-batch3', number: 23,
     type: 'single', score: 1,
-    stem: '「言う」に 「〜たって」を つけると どう なりますか。',
+    stem: 'いまさら 文句を （　　）、もう おそいよ。',
     options: ['言いたって', '言うたって', '言ってたって', '言ったって'],
     answer: '4',
     source: { book: 'JLPT N3', chapter: '逆接條件', level: 'N3', confirmed: true, license: 'own', origin: 'own' },

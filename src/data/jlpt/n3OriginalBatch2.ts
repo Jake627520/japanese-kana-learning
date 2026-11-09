@@ -143,7 +143,7 @@ export const N3_ORIGINAL_BATCH2: JlptQuestion[] = [
   {
     id: 'n3-own-b2-14', subject: '日本語', year: 2026, paper: 'n3-original-batch2', number: 14,
     type: 'single', score: 1,
-    stem: '「待つ」に 「〜しかない」を つけると どう なりますか。',
+    stem: '電車が 止まって しまった。うごくまで （　　）。',
     options: ['待たしかない', '待ちしかない', '待ってしかない', '待つしかない'],
     answer: '4',
     source: { book: 'JLPT N3', chapter: '限定與決斷', level: 'N3', confirmed: true, license: 'own', origin: 'own' },

@@ -9,7 +9,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 1,
     type: 'single',
     score: 1,
-    stem: '外は 雨 が ふって います。「雨」の 読み方は どれですか。',
+    stem: '外は <u>雨</u>が ふって います。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['あめ', 'かぜ', 'くも', 'ゆき'],
     answer: '1',
     source: {
@@ -33,7 +33,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 2,
     type: 'single',
     score: 1,
-    stem: 'きょうは 空 が とても あおいです。「空」の 読み方は どれですか。',
+    stem: 'きょうは <u>空</u>が とても あおいです。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['うみ', 'かわ', 'やま', 'そら'],
     answer: '4',
     source: {
@@ -57,7 +57,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 3,
     type: 'single',
     score: 1,
-    stem: 'あさ ８時に 学校 へ 行きます。「学校」の 読み方は どれですか。',
+    stem: 'あさ ８時に <u>学校</u>へ 行きます。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['がくこう', 'がこう', 'かっこう', 'がっこう'],
     answer: '4',
     source: {
@@ -81,7 +81,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 4,
     type: 'single',
     score: 1,
-    stem: '来月 ともだちが 日本へ きます。「来月」の 読み方は どれですか。',
+    stem: '<u>来月</u> ともだちが 日本へ きます。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['らいげつ', 'まいげつ', 'こんげつ', 'せんげつ'],
     answer: '1',
     source: {
@@ -105,7 +105,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 5,
     type: 'single',
     score: 1,
-    stem: 'リンゴを 半分 たべました。「半分」の 読み方は どれですか。',
+    stem: 'リンゴを <u>半分</u> たべました。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['ほんぷん', 'はんぶん', 'はんふん', 'ほんぶん'],
     answer: '2',
     source: {
@@ -129,7 +129,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 6,
     type: 'single',
     score: 1,
-    stem: 'あしたは 火曜日 です。「火曜日」の 読み方は どれですか。',
+    stem: 'あしたは <u>火曜日</u>です。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['もくようび', 'すいようび', 'かようび', 'きんようび'],
     answer: '3',
     source: {
@@ -153,7 +153,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 7,
     type: 'single',
     score: 1,
-    stem: 'この いぬは とても 小さい です。「小さい」の 読み方は どれですか。',
+    stem: 'この いぬは とても <u>小さい</u>です。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['おおきい', 'ちいさい', 'すこさい', 'ちさい'],
     answer: '2',
     source: {
@@ -177,7 +177,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 8,
     type: 'single',
     score: 1,
-    stem: 'てがみを 書いて ください。「書いて」の 読み方は どれですか。',
+    stem: 'てがみを <u>書いて</u> ください。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['きいて', 'かいて', 'こいて', 'かって'],
     answer: '2',
     source: {
@@ -297,7 +297,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 13,
     type: 'single',
     score: 1,
-    stem: 'たまごを 三つ かいました。「三つ」の 読み方は どれですか。',
+    stem: 'たまごを <u>三つ</u> かいました。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['ひとつ', 'ふたつ', 'よっつ', 'みっつ'],
     answer: '4',
     source: {
@@ -321,7 +321,7 @@ export const N5_ORIGINAL_BATCH1: JlptQuestion[] = [
     number: 14,
     type: 'single',
     score: 1,
-    stem: 'ペンが 二本 あります。「二本」の 読み方は どれですか。',
+    stem: 'ペンが <u>二本</u> あります。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['にふん', 'にほん', 'にぽん', 'にぼん'],
     answer: '2',
     source: {

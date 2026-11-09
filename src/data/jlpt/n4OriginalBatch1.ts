@@ -284,7 +284,7 @@ export const N4_ORIGINAL_BATCH1: JlptQuestion[] = [
   {
     id: 'n4-own-b1-28', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 28,
     type: 'single', score: 1,
-    stem: '「反対」の 読み方は どれですか。',
+    stem: 'わたしは その 意見に <u>反対</u>です。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['はんだい', 'ほんたい', 'はんたい', 'ばんたい'],
     answer: '3',
     source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
@@ -293,7 +293,7 @@ export const N4_ORIGINAL_BATCH1: JlptQuestion[] = [
   {
     id: 'n4-own-b1-29', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 29,
     type: 'single', score: 1,
-    stem: '「世界」の 読み方は どれですか。',
+    stem: '<u>世界</u>には たくさんの 国が あります。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['せいかい', 'よかい', 'せがい', 'せかい'],
     answer: '4',
     source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: true, license: 'own', origin: 'own' },
@@ -302,7 +302,7 @@ export const N4_ORIGINAL_BATCH1: JlptQuestion[] = [
   {
     id: 'n4-own-b1-30', subject: '日本語', year: 2026, paper: 'n4-original-batch1', number: 30,
     type: 'single', score: 1,
-    stem: '「安心」の 読み方は どれですか。',
+    stem: 'むすめが ぶじに 着いたと 聞いて <u>安心</u>しました。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['やすしん', 'あんしん', 'あんこころ', 'あんじん'],
     answer: '2',
     source: { book: 'JLPT N4', chapter: '漢字', level: 'N4', confirmed: true, license: 'own', origin: 'own' },

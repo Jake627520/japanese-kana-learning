@@ -16,7 +16,7 @@ export const N5_ORIGINAL_BATCH4: JlptQuestion[] = [
   {
     id: 'n5-own-b4-01', subject: '日本語', year: 2026, paper: 'original-batch4', number: 1,
     type: 'single', score: 1,
-    stem: 'あの 山 は とても たかいです。「山」の 読み方は どれですか。',
+    stem: 'あの <u>山</u>は とても たかいです。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['うみ', 'そら', 'やま', 'かわ'],
     answer: '3',
     source: { book: 'JLPT N5', chapter: '漢字読み', level: 'N5', confirmed: true, license: 'own', origin: 'own' },
@@ -25,7 +25,7 @@ export const N5_ORIGINAL_BATCH4: JlptQuestion[] = [
   {
     id: 'n5-own-b4-02', subject: '日本語', year: 2026, paper: 'original-batch4', number: 2,
     type: 'single', score: 1,
-    stem: 'かばんの 中 に ほんが あります。「中」の 読み方は どれですか。',
+    stem: 'かばんの <u>中</u>に ほんが あります。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['うえ', 'そと', 'した', 'なか'],
     answer: '4',
     source: { book: 'JLPT N5', chapter: '漢字読み', level: 'N5', confirmed: true, license: 'own', origin: 'own' },
@@ -36,7 +36,7 @@ export const N5_ORIGINAL_BATCH4: JlptQuestion[] = [
   {
     id: 'n5-own-b4-03', subject: '日本語', year: 2026, paper: 'original-batch4', number: 3,
     type: 'single', score: 1,
-    stem: 'わたしは 大学 に いきます。「大学」の 読み方は どれですか。',
+    stem: 'わたしは <u>大学</u>に いきます。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['たいがく', 'だいかく', 'おおがく', 'だいがく'],
     answer: '4',
     source: { book: 'JLPT N5', chapter: '漢字読み', level: 'N5', confirmed: true, license: 'own', origin: 'own' },
@@ -45,7 +45,7 @@ export const N5_ORIGINAL_BATCH4: JlptQuestion[] = [
   {
     id: 'n5-own-b4-04', subject: '日本語', year: 2026, paper: 'original-batch4', number: 4,
     type: 'single', score: 1,
-    stem: 'まいにち 電車 で かいしゃへ いきます。「電車」の 読み方は どれですか。',
+    stem: 'まいにち <u>電車</u>で かいしゃへ いきます。<br>＿＿＿の ことばは ひらがなで どう かきますか。',
     options: ['でんしゃ', 'てんしゃ', 'でんくるま', 'かでんしゃ'],
     answer: '1',
     source: { book: 'JLPT N5', chapter: '漢字読み', level: 'N5', confirmed: true, license: 'own', origin: 'own' },
