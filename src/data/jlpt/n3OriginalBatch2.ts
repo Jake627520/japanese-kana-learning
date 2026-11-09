@@ -297,9 +297,9 @@ export const N3_ORIGINAL_BATCH2: JlptQuestion[] = [
   {
     id: 'n3-own-b2-30', subject: '日本語', year: 2026, paper: 'n3-original-batch2', number: 30,
     type: 'single', score: 1,
-    stem: '「日本語が 上手に なりたければ、毎日 少しずつ 続ける ことです。」この 文の 「ことです」は 何を あらわして いますか。',
-    options: ['話す人の 決心', '人から 聞いた 話', '過去の 思い出', '相手への アドバイス'],
-    answer: '4',
+    stem: '「試験に 合格したいんですが、どう すれば いいでしょうか。」「とにかく、毎日 少しずつ 続ける（　　）。」',
+    options: ['つもりです', 'ことです', 'ところです', 'そうです'],
+    answer: '2',
     source: { book: 'JLPT N3', chapter: '建議與忠告', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_n3-koto-da', topicIds: ['jpg_n3-koto-da'] },
   },

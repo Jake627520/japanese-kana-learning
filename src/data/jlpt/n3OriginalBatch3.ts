@@ -297,9 +297,9 @@ export const N3_ORIGINAL_BATCH3: JlptQuestion[] = [
   {
     id: 'n3-own-b3-30', subject: '日本語', year: 2026, paper: 'n3-original-batch3', number: 30,
     type: 'single', score: 1,
-    stem: '「毎朝 走る ことに して います」の いみは どれですか。',
-    options: ['走った ことが ある', '会社の きそくで 走らされて いる', '自分で 決めて、しゅうかんに して いる', '走れるように なった'],
-    answer: '3',
+    stem: 'わたしは 毎朝 30分 走る（　　）。だれかに 言われたのでは なく、3年 まえに 自分で 決めました。',
+    options: ['ことに なって います', 'ことに して います', 'ように なりました', 'ことが あります'],
+    answer: '2',
     source: { book: 'JLPT N3', chapter: '決定與變化', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_n3-nani-nani-koto-da', topicIds: ['jpg_n3-nani-nani-koto-da'] },
   },
