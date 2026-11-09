@@ -259,9 +259,9 @@ export const N3_ORIGINAL_BATCH3: JlptQuestion[] = [
   {
     id: 'n3-own-b3-26', subject: '日本語', year: 2026, paper: 'n3-original-batch3', number: 26,
     type: 'single', score: 1,
-    stem: 'つぎの 中で、「ために」では なく 「ように」を つかう べき 文は どれですか。',
-    options: ['子どもにも 読める（　　）、ふりがなを つけた。', '大学に 入る（　　）、一生けんめい 勉強する。', '留学する（　　）、お金を ためて いる。', '家族の（　　）、まいにち はたらいて いる。'],
-    answer: '1',
+    stem: '「ように」の つかい方として 正しい ものは どれですか。',
+    options: ['大学に 入る ように、一生けんめい 勉強して います。', '子どもにも 読める ように、ぜんぶの かんじに ふりがなを つけました。', '留学する ように、お金を ためて います。', '家族の ように、まいにち はたらいて います。'],
+    answer: '2',
     source: { book: 'JLPT N3', chapter: '目的與期望', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_n3-youni-purpose', topicIds: ['jpg_n3-youni-purpose', 'jpg_n3-tame-ni-purpose'] },
   },

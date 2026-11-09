@@ -124,8 +124,8 @@ export const N3_ORIGINAL_BATCH1: JlptQuestion[] = [
   {
     id: 'n3-own-b1-12', subject: '日本語', year: 2026, paper: 'n3-original-batch1', number: 12,
     type: 'single', score: 1,
-    stem: '「読み直す」と 「読み終わる」の ちがいとして 正しい ものは どれですか。',
-    options: ['どちらも 同じ いみ', '読み直す＝もう一度 読む、読み終わる＝読むのが 終わる', 'どちらも 「読み始める」の いみ', '読み直す＝読むのを やめる、読み終わる＝もう一度 読む'],
+    stem: '「〜直す」の つかい方として 正しい ものは どれですか。',
+    options: ['この 本は はじめて なので、ゆっくり 読み直します。', 'まちがいが 多かったので、作文を 書き直した。', 'つらかったが、42キロを さいごまで 走り直した。', 'ごはんが のこって いたので、ぜんぶ 食べ直した。'],
     answer: '2',
     source: { book: 'JLPT N3', chapter: '複合動詞', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_n3-naosu', topicIds: ['jpg_n3-naosu', 'jpg_n3-kiru'] },
@@ -211,9 +211,9 @@ export const N3_ORIGINAL_BATCH1: JlptQuestion[] = [
   {
     id: 'n3-own-b1-21', subject: '日本語', year: 2026, paper: 'n3-original-batch1', number: 21,
     type: 'single', score: 1,
-    stem: '「に関して」と 「について」の ちがいとして いちばん いい せつめいは どれですか。',
-    options: ['いみは ほぼ 同じだが、に関して の ほうが あらたまった 場面で つかう', '二つは まったく ちがう いみ', 'に関して は 場所、について は 時間に つかう', 'に関して は 否定文、について は 肯定文に つかう'],
-    answer: '1',
+    stem: '「に関して」の つかい方として 正しい ものは どれですか。',
+    options: ['駅に関して 歩いて 10分の ところに 住んで います。', 'これは 環境問題に関して 調査です。', '新しい 制度に関して、ご質問が あれば お知らせください。', '雨に関して、きのうの 試合は 中止に なりました。'],
+    answer: '3',
     source: { book: 'JLPT N3', chapter: '話題與主題', level: 'N3', confirmed: true, license: 'own', origin: 'own' },
     topics: { primary: 'jpg_n3-ni-kanshite', topicIds: ['jpg_n3-ni-kanshite'] },
   },
