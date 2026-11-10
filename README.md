@@ -101,6 +101,10 @@ Kana training and JLPT paths remain completely unlocked from day one. Users may 
 
 The app is available in 繁體中文, 简体中文, English, 한국어, and Español. Translated content covers all UI text, the meanings of example words, sentences, and vocabulary, stroke-order steps and notes, confusable-kana tips, shadowing meanings, focus points, and tips, JLPT topic names and descriptions, and every JLPT explanation. Japanese learning material (kana, words, sentences, questions) stays in Japanese. Pick a language from the selector in the header. The choice is saved in this browser and included in backups. On the first visit, the app follows the browser language.
 
+#### 12. Visual Themes
+
+Four color themes: 原版・和紙 (the original washi-paper look), 藍染 (indigo), 桜餅 (sakura pink; it also loads the rounded M PLUS Rounded 1c font from Google Fonts), and 夜学 (dark). Switch with the 風格 / Theme menu (palette icon) next to the language selector. The choice is saved in this browser only and is not part of backups. A link ending in `?theme=aizome`, `?theme=sakura`, or `?theme=yagaku` opens the app in that theme. Theme names are shown in their Chinese/Japanese form in every UI language.
+
 ### Tab Modules
 
 | Tab | Details |
@@ -122,9 +126,12 @@ The app is available in 繁體中文, 简体中文, English, 한국어, and Espa
 React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
 
 ```bash
-# Run locally
+# Run locally (http://localhost:3000, reachable from this machine only)
 npm install
 npm run dev
+
+# Open the dev server from a phone on the same Wi-Fi/LAN (trusted networks only)
+npm run dev:lan
 
 # Production build & preview
 npm run build
@@ -222,6 +229,10 @@ npm run preview
 
 介面可切換繁體中文、简体中文、English、한국어、Español。翻譯範圍：全部介面文字、例詞／例句／詞彙的意思、筆順說明與提示、易混辨析的判斷點、跟讀句的意思／重點／技巧、JLPT 考點名稱與說明，以及每一題 JLPT 解說。日文學習內容本身（假名、單字、例句、題目）維持日文。在頁首的語言選單切換；選擇會存在這個瀏覽器，也會納入備份。第一次開啟時依瀏覽器語言決定。
 
+#### 12. 視覺主題
+
+提供 4 套配色：原版・和紙、藍染、桜餅、夜学（深色）。桜餅會另外從 Google Fonts 載入圓體字型 M PLUS Rounded 1c。在語言選單旁的「風格 / Theme」選單（調色盤圖示）切換。選擇只存在這個瀏覽器，不包含在備份裡。網址加上 `?theme=aizome`、`?theme=sakura` 或 `?theme=yagaku` 可以直接用該主題開啟。主題名稱在每種介面語言都顯示中文／日文原名。
+
 ### 功能分頁
 
 | 分頁 | 內容 |
@@ -237,6 +248,23 @@ npm run preview
 | JLPT 練習 | 280 題 N5／N4／N3 原創題 + 分級切換 + 弱點分析 |
 | 跟讀練習 | 五步驟 shadowing + 錄音對照 |
 | 對話教室 | 聊天式假名引導教學：逐行教假名，每行結束有小測驗 |
+
+### 技術架構與本機執行
+
+React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
+
+```bash
+# 本機執行（http://localhost:3000，只有這台電腦連得到）
+npm install
+npm run dev
+
+# 要用同一個 Wi-Fi／區域網路的手機開啟開發伺服器時（只在信任的網路使用）
+npm run dev:lan
+
+# 正式建置與預覽
+npm run build
+npm run preview
+```
 
 ---
 
@@ -329,6 +357,10 @@ npm run preview
 
 界面可切换繁體中文、简体中文、English、한국어、Español。翻译范围：全部界面文字、例词／例句／词汇的释义、笔顺说明与提示、易混辨析的判断点、跟读句的释义／重点／技巧、JLPT 考点名称与说明，以及每一道 JLPT 解析。日语学习内容本身（假名、单词、例句、题目）保持日语。在页首的语言菜单切换；选择会保存在该浏览器，也会纳入备份。首次打开时按浏览器语言决定。
 
+#### 12. 视觉主题
+
+提供 4 套配色：原版・和紙、藍染、桜餅、夜学（深色）。桜餅会另外从 Google Fonts 加载圆体字体 M PLUS Rounded 1c。在语言菜单旁的「風格 / Theme」菜单（调色盘图标）切换。选择只保存在当前浏览器，不包含在备份里。网址加上 `?theme=aizome`、`?theme=sakura` 或 `?theme=yagaku` 可以直接用该主题打开。主题名称在每种界面语言下都显示中文／日文原名。
+
 ### 功能模块
 
 | 模块 | 说明 |
@@ -344,6 +376,23 @@ npm run preview
 | JLPT 练习 | 280 题 N5 / N4 / N3 原创题库，支持分级切换与考点弱点定位 |
 | 跟读练习 | 五步影子跟读训练法 + 本地录音对比 |
 | 对话教室 | 聊天式假名引导教学：逐行讲解假名，每行结束有小测验 |
+
+### 技术架构与本地运行
+
+React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
+
+```bash
+# 本地运行（http://localhost:3000，仅本机可访问）
+npm install
+npm run dev
+
+# 需要用同一 Wi-Fi／局域网的手机打开开发服务器时（仅在可信网络中使用）
+npm run dev:lan
+
+# 生产构建与预览
+npm run build
+npm run preview
+```
 
 ---
 
@@ -434,6 +483,10 @@ npm run preview
 
 繁體中文, 简体中文, English, 한국어, Español을 지원합니다. 번역 범위는 모든 화면 문구, 예시 단어·예문·어휘의 뜻, 획순 단계와 설명, 혼동 가나 요령, 섀도잉의 뜻·핵심·요령, JLPT 항목 이름과 설명, 그리고 JLPT 해설 전체입니다. 일본어 학습 자료(가나, 단어, 문장, 문제) 자체는 일본어로 둡니다. 상단의 선택기에서 언어를 고르세요. 선택한 언어는 이 브라우저에 저장되고 백업에도 포함됩니다. 처음 방문할 때는 브라우저 언어를 따릅니다.
 
+#### 12. 화면 테마
+
+색상 테마 4종을 제공합니다: 原版・和紙(기본 한지 느낌), 藍染(쪽빛), 桜餅(벚꽃색), 夜学(다크). 桜餅 테마는 Google Fonts에서 둥근 글꼴 M PLUS Rounded 1c를 추가로 불러옵니다. 언어 선택 옆의 '風格 / Theme' 메뉴(팔레트 아이콘)에서 바꿀 수 있습니다. 선택은 이 브라우저에만 저장되며 백업에는 포함되지 않습니다. 주소 끝에 `?theme=aizome`, `?theme=sakura`, `?theme=yagaku`를 붙이면 해당 테마로 바로 열립니다. 테마 이름은 어느 화면 언어에서나 중국어·일본어 원래 이름으로 표시됩니다.
+
 ### 탭 구성
 
 | 탭 | 내용 |
@@ -455,9 +508,12 @@ npm run preview
 React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
 
 ```bash
-# 로컬 실행
+# 로컬 실행 (http://localhost:3000, 이 컴퓨터에서만 접속 가능)
 npm install
 npm run dev
+
+# 같은 Wi-Fi(LAN)의 휴대폰에서 개발 서버 열기 (신뢰할 수 있는 네트워크에서만)
+npm run dev:lan
 
 # 프로덕션 빌드와 미리 보기
 npm run build
@@ -553,6 +609,10 @@ El entrenamiento de kana y la ruta JLPT están abiertos desde el primer día. Ha
 
 La aplicación está disponible en 繁體中文, 简体中文, English, 한국어 y Español. La traducción cubre todos los textos de la interfaz, los significados de las palabras y oraciones de ejemplo y del vocabulario, los pasos y notas del orden de trazos, los consejos sobre kana confundibles, los significados, puntos clave y consejos del shadowing, los nombres y descripciones de los temas JLPT, y todas las explicaciones JLPT. El material de estudio en japonés (kana, palabras, oraciones, preguntas) permanece en japonés. Elige el idioma en el selector de la cabecera. La elección se guarda en este navegador y se incluye en las copias de seguridad. En la primera visita, la aplicación sigue el idioma del navegador.
 
+#### 12. Temas visuales
+
+Cuatro temas de color: 原版・和紙 (el aspecto original de papel washi), 藍染 (añil), 桜餅 (rosa sakura; además carga la fuente redondeada M PLUS Rounded 1c desde Google Fonts) y 夜学 (oscuro). Se cambian en el menú 風格 / Theme (icono de paleta), junto al selector de idioma. La elección se guarda solo en este navegador y no se incluye en las copias de seguridad. Un enlace que termina en `?theme=aizome`, `?theme=sakura` o `?theme=yagaku` abre la aplicación con ese tema. Los nombres de los temas se muestran en su forma china/japonesa en todos los idiomas de la interfaz.
+
 ### Secciones
 
 | Sección | Detalles |
@@ -574,9 +634,12 @@ La aplicación está disponible en 繁體中文, 简体中文, English, 한국�
 React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
 
 ```bash
-# Ejecutar en local
+# Ejecutar en local (http://localhost:3000, solo accesible desde este equipo)
 npm install
 npm run dev
+
+# Abrir el servidor de desarrollo desde un móvil en la misma red local (solo en redes de confianza)
+npm run dev:lan
 
 # Compilar para producción y previsualizar
 npm run build

@@ -93,6 +93,10 @@ Kana training and JLPT paths remain completely unlocked from day one. Users may 
 
 The app is available in 繁體中文, 简体中文, English, 한국어, and Español. Translated content covers all UI text, the meanings of example words, sentences, and vocabulary, stroke-order steps and notes, confusable-kana tips, shadowing meanings, focus points, and tips, JLPT topic names and descriptions, and every JLPT explanation. Japanese learning material (kana, words, sentences, questions) stays in Japanese. Pick a language from the selector in the header. The choice is saved in this browser and included in backups. On the first visit, the app follows the browser language.
 
+### 12. Visual Themes
+
+Four color themes: 原版・和紙 (the original washi-paper look), 藍染 (indigo), 桜餅 (sakura pink; it also loads the rounded M PLUS Rounded 1c font from Google Fonts), and 夜学 (dark). Switch with the 風格 / Theme menu (palette icon) next to the language selector. The choice is saved in this browser only and is not part of backups. A link ending in `?theme=aizome`, `?theme=sakura`, or `?theme=yagaku` opens the app in that theme. Theme names are shown in their Chinese/Japanese form in every UI language.
+
 ---
 
 ## Tab Modules
@@ -122,8 +126,12 @@ Pure client-side application. No backend server, no database, no third-party API
 ## Getting Started
 
 ```bash
+# http://localhost:3000, reachable from this machine only
 npm install
 npm run dev
+
+# Open the dev server from a phone on the same Wi-Fi/LAN (trusted networks only)
+npm run dev:lan
 ```
 
 ## Production Build & Preview
