@@ -53,11 +53,12 @@ export function GojuuonGrid({
 
   const getCategoryTitle = (): string => {
     const typeStr = kanaType === 'katakana' ? t('common.katakana') : t('common.hiragana');
-    let catStr = t('nav.gridShort');
+    // 清音不加分類字：nav.gridShort 是 nav.grid 的縮寫，兩個並排會變成「Hiragana Chart Kana Chart」
+    let catStr = '';
     if (kanaCategory === 'dakuten') catStr = t('common.dakuten');
     else if (kanaCategory === 'handakuten') catStr = t('common.handakuten');
     else if (kanaCategory === 'youon') catStr = t('common.youon');
-    return `${typeStr} ${catStr} ${t('nav.grid')}`;
+    return [typeStr, catStr, t('nav.grid')].filter(Boolean).join(' ');
   };
 
   return (
@@ -142,6 +143,17 @@ export function GojuuonGrid({
               onClick={() => {
                 speakJapanese(item.kana);
                 onSelectKana(item);
+              }}
+              // 卡片是 div，不補這三項的話鍵盤使用者只摸得到喇叭鈕，打不開卡片
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.target !== e.currentTarget) return;
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  speakJapanese(item.kana);
+                  onSelectKana(item);
+                }
               }}
               title={`${item.kana} (${statusLabel})`}
               className={`bg-[color:var(--paper-bg)] rounded-2xl border elev-1 card-lift rise-in overflow-hidden cursor-pointer relative group ${style.card}`}
