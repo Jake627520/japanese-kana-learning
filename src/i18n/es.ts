@@ -313,7 +313,7 @@ export const es: TranslationSchema = {
     stopRecord: 'Detener grabación',
     recording: 'Grabando...',
     playbackRecord: 'Escuchar mi grabación',
-    feedback: 'Comentarios de pronunciación',
+    feedback: 'Escucha comparada',
     score: 'Puntuación de similitud',
     speed: 'Velocidad del audio',
     slow: 'Lenta (0.7x)',

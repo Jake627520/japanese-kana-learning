@@ -309,7 +309,7 @@ export const zhTW: TranslationSchema = {
     stopRecord: '停止錄音',
     recording: '正在錄音中...',
     playbackRecord: '播放我的錄音',
-    feedback: '語調評估反饋',
+    feedback: '對照回放',
     score: '發音相似度',
     speed: '播放速度',
     slow: '慢速 (0.7x)',

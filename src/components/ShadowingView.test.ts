@@ -19,3 +19,11 @@ describe('跟讀慢速標示', () => {
     expect(view).not.toMatch(/playPreGeneratedClip\(clipPath, isSlow/);
   });
 });
+
+describe('跟讀第五步名稱', () => {
+  it('寫的是對照回放，不暗示有自動評分或發音回饋', () => {
+    for (const lang of LANGUAGES) {
+      expect(DICTIONARIES[lang].shadowing.feedback, lang).not.toMatch(/評估|评估|反饋|反馈|feedback|피드백|comentarios|pronunciation|발음|pronunciación/i);
+    }
+  });
+});

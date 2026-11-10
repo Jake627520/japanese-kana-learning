@@ -309,7 +309,7 @@ export const ko: TranslationSchema = {
     stopRecord: '녹음 정지',
     recording: '녹음 중...',
     playbackRecord: '내 녹음 듣기',
-    feedback: '발음 피드백',
+    feedback: '비교 재생',
     score: '유사도 점수',
     speed: '재생 속도',
     slow: '느리게 (0.7x)',

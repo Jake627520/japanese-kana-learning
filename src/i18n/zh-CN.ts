@@ -309,7 +309,7 @@ export const zhCN: TranslationSchema = {
     stopRecord: '停止录音',
     recording: '正在录音中...',
     playbackRecord: '播放我的录音',
-    feedback: '语调评估反馈',
+    feedback: '对照回放',
     score: '发音相似度',
     speed: '播放语速',
     slow: '慢速 (0.7x)',
