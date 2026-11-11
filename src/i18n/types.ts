@@ -1,4 +1,4 @@
-export type Language = 'zh-TW' | 'zh-CN' | 'en' | 'ko' | 'es';
+export type Language = 'zh-TW' | 'zh-CN' | 'en' | 'ko' | 'es' | 'pt-BR';
 
 export type LocalizedText = Record<Language, string>;
 
