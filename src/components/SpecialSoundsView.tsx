@@ -4,28 +4,28 @@ import { speakJapanese } from '../utils/speech';
 import { useI18n, LocalizedText } from '../i18n';
 
 const SOKUON_EXAMPLES: { word: string; romaji: string; meaning: LocalizedText; note: string }[] = [
-  { word: 'がっこう', romaji: 'gakkou', meaning: { 'zh-TW': '學校', 'zh-CN': '学校', en: 'school', ko: '학교', es: 'escuela' }, note: 'っ + こ → kk' },
-  { word: 'きっぷ', romaji: 'kippu', meaning: { 'zh-TW': '車票', 'zh-CN': '车票', en: 'ticket', ko: '표 (승차권)', es: 'boleto / billete' }, note: 'っ + ぷ → pp' },
-  { word: 'ざっし', romaji: 'zasshi', meaning: { 'zh-TW': '雜誌', 'zh-CN': '杂志', en: 'magazine', ko: '잡지', es: 'revista' }, note: 'っ + し → ssh' },
-  { word: 'みっつ', romaji: 'mittsu', meaning: { 'zh-TW': '三個', 'zh-CN': '三个', en: 'three (things)', ko: '세 개', es: 'tres (cosas)' }, note: 'っ + つ → tts' },
-  { word: 'ベッド', romaji: 'beddo', meaning: { 'zh-TW': '床', 'zh-CN': '床', en: 'bed', ko: '침대', es: 'cama' }, note: 'ッ + ド' },
-  { word: 'カップ', romaji: 'kappu', meaning: { 'zh-TW': '杯子', 'zh-CN': '杯子', en: 'cup', ko: '컵', es: 'taza' }, note: 'ッ + プ' },
+  { word: 'がっこう', romaji: 'gakkou', meaning: { 'zh-TW': '學校', 'zh-CN': '学校', en: 'school', ko: '학교', es: 'escuela', 'pt-BR': 'escola' }, note: 'っ + こ → kk' },
+  { word: 'きっぷ', romaji: 'kippu', meaning: { 'zh-TW': '車票', 'zh-CN': '车票', en: 'ticket', ko: '표 (승차권)', es: 'boleto / billete', 'pt-BR': 'passagem' }, note: 'っ + ぷ → pp' },
+  { word: 'ざっし', romaji: 'zasshi', meaning: { 'zh-TW': '雜誌', 'zh-CN': '杂志', en: 'magazine', ko: '잡지', es: 'revista', 'pt-BR': 'revista' }, note: 'っ + し → ssh' },
+  { word: 'みっつ', romaji: 'mittsu', meaning: { 'zh-TW': '三個', 'zh-CN': '三个', en: 'three (things)', ko: '세 개', es: 'tres (cosas)', 'pt-BR': 'três (coisas)' }, note: 'っ + つ → tts' },
+  { word: 'ベッド', romaji: 'beddo', meaning: { 'zh-TW': '床', 'zh-CN': '床', en: 'bed', ko: '침대', es: 'cama', 'pt-BR': 'cama' }, note: 'ッ + ド' },
+  { word: 'カップ', romaji: 'kappu', meaning: { 'zh-TW': '杯子', 'zh-CN': '杯子', en: 'cup', ko: '컵', es: 'taza', 'pt-BR': 'xícara' }, note: 'ッ + プ' },
 ];
 
 export const CHOUON_RULES: { column: string; kana: string; usually: boolean; word: string; romaji: string; meaning: LocalizedText }[] = [
-  { column: 'あ段', kana: 'あ', usually: false, word: 'おかあさん', romaji: 'okaasan', meaning: { 'zh-TW': '媽媽', 'zh-CN': '妈妈', en: 'mother', ko: '어머니', es: 'madre' } },
-  { column: 'い段', kana: 'い', usually: false, word: 'おにいさん', romaji: 'oniisan', meaning: { 'zh-TW': '哥哥', 'zh-CN': '哥哥', en: 'older brother', ko: '형 / 오빠', es: 'hermano mayor' } },
-  { column: 'う段', kana: 'う', usually: false, word: 'くうき', romaji: 'kuuki', meaning: { 'zh-TW': '空氣', 'zh-CN': '空气', en: 'air', ko: '공기', es: 'aire' } },
-  { column: 'え段', kana: 'い', usually: true, word: 'せんせい', romaji: 'sensei', meaning: { 'zh-TW': '老師', 'zh-CN': '老师', en: 'teacher', ko: '선생님', es: 'profesor / profesora' } },
-  { column: 'お段', kana: 'う', usually: true, word: 'とうきょう', romaji: 'toukyou', meaning: { 'zh-TW': '東京', 'zh-CN': '东京', en: 'Tokyo', ko: '도쿄', es: 'Tokio' } },
+  { column: 'あ段', kana: 'あ', usually: false, word: 'おかあさん', romaji: 'okaasan', meaning: { 'zh-TW': '媽媽', 'zh-CN': '妈妈', en: 'mother', ko: '어머니', es: 'madre', 'pt-BR': 'mãe' } },
+  { column: 'い段', kana: 'い', usually: false, word: 'おにいさん', romaji: 'oniisan', meaning: { 'zh-TW': '哥哥', 'zh-CN': '哥哥', en: 'older brother', ko: '형 / 오빠', es: 'hermano mayor', 'pt-BR': 'irmão mais velho' } },
+  { column: 'う段', kana: 'う', usually: false, word: 'くうき', romaji: 'kuuki', meaning: { 'zh-TW': '空氣', 'zh-CN': '空气', en: 'air', ko: '공기', es: 'aire', 'pt-BR': 'ar' } },
+  { column: 'え段', kana: 'い', usually: true, word: 'せんせい', romaji: 'sensei', meaning: { 'zh-TW': '老師', 'zh-CN': '老师', en: 'teacher', ko: '선생님', es: 'profesor / profesora', 'pt-BR': 'professor / professora' } },
+  { column: 'お段', kana: 'う', usually: true, word: 'とうきょう', romaji: 'toukyou', meaning: { 'zh-TW': '東京', 'zh-CN': '东京', en: 'Tokyo', ko: '도쿄', es: 'Tokio', 'pt-BR': 'Tóquio' } },
 ];
 
 // 四個詞合起來，「ー」接在 a・i・u・e・o 五種母音後面都出現過
 export const KATAKANA_CHOUON_EXAMPLES: { word: string; romaji: string; meaning: LocalizedText; note: string }[] = [
-  { word: 'ゲーム', romaji: 'geemu', meaning: { 'zh-TW': '遊戲', 'zh-CN': '游戏', en: 'game', ko: '게임', es: 'juego / videojuego' }, note: 'ゲー → ee' },
-  { word: 'タクシー', romaji: 'takushii', meaning: { 'zh-TW': '計程車', 'zh-CN': '出租车', en: 'taxi', ko: '택시', es: 'taxi' }, note: 'シー → ii' },
-  { word: 'コーヒー', romaji: 'koohii', meaning: { 'zh-TW': '咖啡', 'zh-CN': '咖啡', en: 'coffee', ko: '커피', es: 'café' }, note: 'コー → oo · ヒー → ii' },
-  { word: 'スーパー', romaji: 'suupaa', meaning: { 'zh-TW': '超市', 'zh-CN': '超市', en: 'supermarket', ko: '슈퍼마켓', es: 'supermercado' }, note: 'スー → uu · パー → aa' },
+  { word: 'ゲーム', romaji: 'geemu', meaning: { 'zh-TW': '遊戲', 'zh-CN': '游戏', en: 'game', ko: '게임', es: 'juego / videojuego', 'pt-BR': 'jogo / videogame' }, note: 'ゲー → ee' },
+  { word: 'タクシー', romaji: 'takushii', meaning: { 'zh-TW': '計程車', 'zh-CN': '出租车', en: 'taxi', ko: '택시', es: 'taxi', 'pt-BR': 'táxi' }, note: 'シー → ii' },
+  { word: 'コーヒー', romaji: 'koohii', meaning: { 'zh-TW': '咖啡', 'zh-CN': '咖啡', en: 'coffee', ko: '커피', es: 'café', 'pt-BR': 'café' }, note: 'コー → oo · ヒー → ii' },
+  { word: 'スーパー', romaji: 'suupaa', meaning: { 'zh-TW': '超市', 'zh-CN': '超市', en: 'supermarket', ko: '슈퍼마켓', es: 'supermercado', 'pt-BR': 'supermercado' }, note: 'スー → uu · パー → aa' },
 ];
 
 export function SpecialSoundsView() {

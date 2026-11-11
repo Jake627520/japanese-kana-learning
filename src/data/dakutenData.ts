@@ -18,7 +18,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "学校",
           "en": "school",
           "ko": "학교",
-          "es": "escuela"
+          "es": "escuela",
+          "pt-BR": "escola"
         },
         "sentence": "がっこうにいきます。",
         "sentenceDisplay": "がっこう に いきます。",
@@ -27,7 +28,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "去学校。",
           "en": "I go to school.",
           "ko": "학교에 가요.",
-          "es": "Voy a la escuela."
+          "es": "Voy a la escuela.",
+          "pt-BR": "Vou à escola."
         }
       }
     ]
@@ -49,7 +51,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "银行",
           "en": "bank",
           "ko": "은행",
-          "es": "banco"
+          "es": "banco",
+          "pt-BR": "banco"
         },
         "sentence": "ぎんこうにいきます。",
         "sentenceDisplay": "ぎんこう に いきます。",
@@ -58,7 +61,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "去银行。",
           "en": "I go to the bank.",
           "ko": "은행에 가요.",
-          "es": "Voy al banco."
+          "es": "Voy al banco.",
+          "pt-BR": "Vou ao banco."
         }
       }
     ]
@@ -80,7 +84,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "军人",
           "en": "soldier",
           "ko": "군인",
-          "es": "soldado, militar"
+          "es": "soldado, militar",
+          "pt-BR": "soldado, militar"
         },
         "sentence": "つよいぐんじんです。",
         "sentenceDisplay": "つよい ぐんじん です。",
@@ -89,7 +94,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "是强大的军人。",
           "en": "He's a strong soldier.",
           "ko": "강한 군인이에요.",
-          "es": "Es un soldado fuerte."
+          "es": "Es un soldado fuerte.",
+          "pt-BR": "É um soldado forte."
         }
       }
     ]
@@ -111,7 +117,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "精神 / 健康",
           "en": "energy / good health",
           "ko": "기운 / 건강",
-          "es": "energía / buena salud"
+          "es": "energía / buena salud",
+          "pt-BR": "energia / boa saúde"
         },
         "sentence": "げんきですか。",
         "sentenceDisplay": "げんき です か。",
@@ -120,7 +127,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "你好吗？",
           "en": "How are you?",
           "ko": "잘 지내요?",
-          "es": "¿Cómo estás?"
+          "es": "¿Cómo estás?",
+          "pt-BR": "Tudo bem?"
         }
       }
     ]
@@ -142,7 +150,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "白饭 / 饭菜",
           "en": "cooked rice / meal",
           "ko": "밥 / 식사",
-          "es": "arroz cocido / comida"
+          "es": "arroz cocido / comida",
+          "pt-BR": "arroz cozido / refeição"
         },
         "sentence": "ごはんをたべます。",
         "sentenceDisplay": "ごはん を たべます。",
@@ -151,7 +160,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "吃饭。",
           "en": "I eat a meal.",
           "ko": "밥을 먹어요.",
-          "es": "Como."
+          "es": "Como.",
+          "pt-BR": "Eu como."
         }
       }
     ]
@@ -173,7 +183,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "杂志",
           "en": "magazine",
           "ko": "잡지",
-          "es": "revista"
+          "es": "revista",
+          "pt-BR": "revista"
         },
         "sentence": "ざっしをよみます。",
         "sentenceDisplay": "ざっし を よみます。",
@@ -182,7 +193,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "读杂志。",
           "en": "I read a magazine.",
           "ko": "잡지를 읽어요.",
-          "es": "Leo una revista."
+          "es": "Leo una revista.",
+          "pt-BR": "Leio uma revista."
         }
       }
     ]
@@ -204,7 +216,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "时间",
           "en": "time",
           "ko": "시간",
-          "es": "tiempo"
+          "es": "tiempo",
+          "pt-BR": "tempo"
         },
         "sentence": "じかんがあります。",
         "sentenceDisplay": "じかん が あります。",
@@ -213,7 +226,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "有时间。",
           "en": "I have time.",
           "ko": "시간이 있어요.",
-          "es": "Tengo tiempo."
+          "es": "Tengo tiempo.",
+          "pt-BR": "Tenho tempo."
         }
       }
     ]
@@ -235,7 +249,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "地图",
           "en": "map",
           "ko": "지도",
-          "es": "mapa"
+          "es": "mapa",
+          "pt-BR": "mapa"
         },
         "sentence": "ちずをみます。",
         "sentenceDisplay": "ちず を みます。",
@@ -244,7 +259,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "看地图。",
           "en": "I look at the map.",
           "ko": "지도를 봐요.",
-          "es": "Miro el mapa."
+          "es": "Miro el mapa.",
+          "pt-BR": "Olho o mapa."
         }
       }
     ]
@@ -266,7 +282,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "全部",
           "en": "all, everything",
           "ko": "전부",
-          "es": "todo"
+          "es": "todo",
+          "pt-BR": "tudo"
         },
         "sentence": "ぜんぶたべます。",
         "sentenceDisplay": "ぜんぶ たべます。",
@@ -275,7 +292,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "全部吃掉。",
           "en": "I eat all of it.",
           "ko": "전부 먹어요.",
-          "es": "Me lo como todo."
+          "es": "Me lo como todo.",
+          "pt-BR": "Como tudo."
         }
       }
     ]
@@ -297,7 +315,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "大象",
           "en": "elephant",
           "ko": "코끼리",
-          "es": "elefante"
+          "es": "elefante",
+          "pt-BR": "elefante"
         },
         "sentence": "おおきいぞうです。",
         "sentenceDisplay": "おおきい ぞう です。",
@@ -306,7 +325,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "是大象。",
           "en": "It's a big elephant.",
           "ko": "큰 코끼리예요.",
-          "es": "Es un elefante grande."
+          "es": "Es un elefante grande.",
+          "pt-BR": "É um elefante grande."
         }
       }
     ]
@@ -328,7 +348,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "大学",
           "en": "university",
           "ko": "대학교",
-          "es": "universidad"
+          "es": "universidad",
+          "pt-BR": "universidade"
         },
         "sentence": "だいがくにいきます。",
         "sentenceDisplay": "だいがく に いきます。",
@@ -337,7 +358,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "上大学。",
           "en": "I go to university.",
           "ko": "대학교에 가요.",
-          "es": "Voy a la universidad."
+          "es": "Voy a la universidad.",
+          "pt-BR": "Vou à universidade."
         }
       }
     ]
@@ -359,7 +381,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "流鼻血",
           "en": "nosebleed",
           "ko": "코피",
-          "es": "sangrado de nariz"
+          "es": "sangrado de nariz",
+          "pt-BR": "sangramento nasal"
         },
         "sentence": "はなぢがでます。",
         "sentenceDisplay": "はなぢ が でます。",
@@ -368,7 +391,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "流鼻血。",
           "en": "My nose is bleeding.",
           "ko": "코피가 나요.",
-          "es": "Me sangra la nariz."
+          "es": "Me sangra la nariz.",
+          "pt-BR": "Meu nariz está sangrando."
         }
       }
     ]
@@ -390,7 +414,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "持续 / 继续",
           "en": "to continue, to last",
           "ko": "계속되다",
-          "es": "continuar, seguir"
+          "es": "continuar, seguir",
+          "pt-BR": "continuar, seguir"
         },
         "sentence": "まいにちつづきます。",
         "sentenceDisplay": "まいにち つづきます。",
@@ -399,7 +424,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "每天持续。",
           "en": "It continues every day.",
           "ko": "매일 계속돼요.",
-          "es": "Continúa todos los días."
+          "es": "Continúa todos los días.",
+          "pt-BR": "Continua todos os dias."
         }
       }
     ]
@@ -421,7 +447,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "电话",
           "en": "telephone",
           "ko": "전화",
-          "es": "teléfono"
+          "es": "teléfono",
+          "pt-BR": "telefone"
         },
         "sentence": "でんわをします。",
         "sentenceDisplay": "でんわ を します。",
@@ -430,7 +457,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "打电话。",
           "en": "I make a phone call.",
           "ko": "전화를 해요.",
-          "es": "Hago una llamada."
+          "es": "Hago una llamada.",
+          "pt-BR": "Faço uma ligação."
         }
       }
     ]
@@ -452,7 +480,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "哪里",
           "en": "where",
           "ko": "어디",
-          "es": "dónde"
+          "es": "dónde",
+          "pt-BR": "onde"
         },
         "sentence": "えきはどこですか。",
         "sentenceDisplay": "えき は どこ です か。",
@@ -461,7 +490,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "请问车站在哪里？",
           "en": "Where is the station?",
           "ko": "역은 어디예요?",
-          "es": "¿Dónde está la estación?"
+          "es": "¿Dónde está la estación?",
+          "pt-BR": "Onde fica a estação?"
         }
       }
     ]
@@ -483,7 +513,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "号码",
           "en": "number",
           "ko": "번호",
-          "es": "número"
+          "es": "número",
+          "pt-BR": "número"
         },
         "sentence": "でんわばんごうです。",
         "sentenceDisplay": "でんわ ばんごう です。",
@@ -492,7 +523,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "是电话号码。",
           "en": "It's a phone number.",
           "ko": "전화번호예요.",
-          "es": "Es el número de teléfono."
+          "es": "Es el número de teléfono.",
+          "pt-BR": "É o número de telefone."
         }
       }
     ]
@@ -514,7 +546,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "医院",
           "en": "hospital",
           "ko": "병원",
-          "es": "hospital"
+          "es": "hospital",
+          "pt-BR": "hospital"
         },
         "sentence": "びょういんにいきます。",
         "sentenceDisplay": "びょういん に いきます。",
@@ -523,7 +556,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "去医院。",
           "en": "I go to the hospital.",
           "ko": "병원에 가요.",
-          "es": "Voy al hospital."
+          "es": "Voy al hospital.",
+          "pt-BR": "Vou ao hospital."
         }
       }
     ]
@@ -545,7 +579,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "猪",
           "en": "pig",
           "ko": "돼지",
-          "es": "cerdo"
+          "es": "cerdo",
+          "pt-BR": "porco"
         },
         "sentence": "かわいいぶたです。",
         "sentenceDisplay": "かわいい ぶた です。",
@@ -554,7 +589,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "是可爱的猪。",
           "en": "It's a cute pig.",
           "ko": "귀여운 돼지예요.",
-          "es": "Es un cerdo adorable."
+          "es": "Es un cerdo adorable.",
+          "pt-BR": "É um porquinho fofo."
         }
       }
     ]
@@ -576,7 +612,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "学习",
           "en": "study",
           "ko": "공부",
-          "es": "estudio, estudiar"
+          "es": "estudio, estudiar",
+          "pt-BR": "estudo, estudar"
         },
         "sentence": "にほんごをべんきょうします。",
         "sentenceDisplay": "にほんご を べんきょうします。",
@@ -585,7 +622,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "学习日语。",
           "en": "I study Japanese.",
           "ko": "일본어를 공부해요.",
-          "es": "Estudio japonés."
+          "es": "Estudio japonés.",
+          "pt-BR": "Estudo japonês."
         }
       }
     ]
@@ -607,7 +645,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "帽子",
           "en": "hat, cap",
           "ko": "모자",
-          "es": "sombrero, gorra"
+          "es": "sombrero, gorra",
+          "pt-BR": "chapéu, boné"
         },
         "sentence": "ぼうしをかぶります。",
         "sentenceDisplay": "ぼうし を かぶります。",
@@ -616,7 +655,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "戴帽子。",
           "en": "I put on a hat.",
           "ko": "모자를 써요.",
-          "es": "Me pongo el sombrero."
+          "es": "Me pongo el sombrero.",
+          "pt-BR": "Coloco o chapéu."
         }
       }
     ]
@@ -638,7 +678,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "玻璃",
           "en": "glass (material)",
           "ko": "유리",
-          "es": "vidrio, cristal"
+          "es": "vidrio, cristal",
+          "pt-BR": "vidro, cristal"
         },
         "sentence": "きれいなガラスです。",
         "sentenceDisplay": "きれいな ガラス です。",
@@ -647,7 +688,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "是漂亮的玻璃。",
           "en": "It's beautiful glass.",
           "ko": "깨끗한 유리예요.",
-          "es": "Es un cristal bonito."
+          "es": "Es un cristal bonito.",
+          "pt-BR": "É um vidro bonito."
         }
       }
     ]
@@ -669,7 +711,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "吉他",
           "en": "guitar",
           "ko": "기타",
-          "es": "guitarra"
+          "es": "guitarra",
+          "pt-BR": "violão"
         },
         "sentence": "ギターをひきます。",
         "sentenceDisplay": "ギター を ひきます。",
@@ -678,7 +721,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "弹吉他。",
           "en": "I play the guitar.",
           "ko": "기타를 쳐요.",
-          "es": "Toco la guitarra."
+          "es": "Toco la guitarra.",
+          "pt-BR": "Toco violão."
         }
       }
     ]
@@ -700,7 +744,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "玻璃杯",
           "en": "drinking glass",
           "ko": "유리잔",
-          "es": "vaso, copa"
+          "es": "vaso, copa",
+          "pt-BR": "copo, taça"
         },
         "sentence": "グラスをあらいます。",
         "sentenceDisplay": "グラス を あらいます。",
@@ -709,7 +754,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "洗玻璃杯。",
           "en": "I wash the glasses.",
           "ko": "유리잔을 씻어요.",
-          "es": "Lavo los vasos."
+          "es": "Lavo los vasos.",
+          "pt-BR": "Lavo os copos."
         }
       }
     ]
@@ -731,7 +777,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "游戏",
           "en": "game",
           "ko": "게임",
-          "es": "juego, videojuego"
+          "es": "juego, videojuego",
+          "pt-BR": "jogo, videogame"
         },
         "sentence": "ゲームをします。",
         "sentenceDisplay": "ゲーム を します。",
@@ -740,7 +787,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "玩游戏。",
           "en": "I play a game.",
           "ko": "게임을 해요.",
-          "es": "Juego videojuegos."
+          "es": "Juego videojuegos.",
+          "pt-BR": "Jogo videogame."
         }
       }
     ]
@@ -762,7 +810,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "高尔夫",
           "en": "golf",
           "ko": "골프",
-          "es": "golf"
+          "es": "golf",
+          "pt-BR": "golfe"
         },
         "sentence": "ゴルフをします。",
         "sentenceDisplay": "ゴルフ を します。",
@@ -771,7 +820,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "打高尔夫。",
           "en": "I play golf.",
           "ko": "골프를 쳐요.",
-          "es": "Juego al golf."
+          "es": "Juego al golf.",
+          "pt-BR": "Jogo golfe."
         }
       }
     ]
@@ -793,7 +843,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "设计",
           "en": "design",
           "ko": "디자인",
-          "es": "diseño"
+          "es": "diseño",
+          "pt-BR": "design"
         },
         "sentence": "よいデザインです。",
         "sentenceDisplay": "よい デザイン です。",
@@ -802,7 +853,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "是好的设计。",
           "en": "It's a good design.",
           "ko": "좋은 디자인이에요.",
-          "es": "Es un buen diseño."
+          "es": "Es un buen diseño.",
+          "pt-BR": "É um bom design."
         }
       }
     ]
@@ -824,7 +876,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "果汁",
           "en": "juice",
           "ko": "주스",
-          "es": "jugo"
+          "es": "jugo",
+          "pt-BR": "suco"
         },
         "sentence": "ジュースをのみます。",
         "sentenceDisplay": "ジュース を のみます。",
@@ -833,7 +886,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "喝果汁。",
           "en": "I drink juice.",
           "ko": "주스를 마셔요.",
-          "es": "Tomo jugo."
+          "es": "Tomo jugo.",
+          "pt-BR": "Tomo suco."
         }
       }
     ]
@@ -855,7 +909,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "长裤",
           "en": "trousers, pants",
           "ko": "바지",
-          "es": "pantalones"
+          "es": "pantalones",
+          "pt-BR": "calça"
         },
         "sentence": "ズボンをはきます。",
         "sentenceDisplay": "ズボン を はきます。",
@@ -864,7 +919,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "穿长裤。",
           "en": "I put on my trousers.",
           "ko": "바지를 입어요.",
-          "es": "Me pongo los pantalones."
+          "es": "Me pongo los pantalones.",
+          "pt-BR": "Visto a calça."
         }
       }
     ]
@@ -886,7 +942,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "零",
           "en": "zero",
           "ko": "영, 제로",
-          "es": "cero"
+          "es": "cero",
+          "pt-BR": "zero"
         },
         "sentence": "ゼロからはじめます。",
         "sentenceDisplay": "ゼロ から はじめます。",
@@ -895,7 +952,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "从零开始。",
           "en": "I start from zero.",
           "ko": "처음부터 시작해요.",
-          "es": "Empiezo desde cero."
+          "es": "Empiezo desde cero.",
+          "pt-BR": "Começo do zero."
         }
       }
     ]
@@ -917,7 +975,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "区域 / 集中状态",
           "en": "zone / being in the zone",
           "ko": "구역, 존 / 몰입 상태",
-          "es": "zona / estado de concentración"
+          "es": "zona / estado de concentración",
+          "pt-BR": "zona / estado de concentração"
         },
         "sentence": "ゾーンにはいります。",
         "sentenceDisplay": "ゾーン に はいります。",
@@ -926,7 +985,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "进入状态。",
           "en": "I get into the zone.",
           "ko": "몰입 상태에 들어가요.",
-          "es": "Entro en la zona."
+          "es": "Entro en la zona.",
+          "pt-BR": "Entro no estado de concentração."
         }
       }
     ]
@@ -948,7 +1008,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "舞蹈",
           "en": "dance",
           "ko": "춤, 댄스",
-          "es": "baile"
+          "es": "baile",
+          "pt-BR": "dança"
         },
         "sentence": "ダンスをします。",
         "sentenceDisplay": "ダンス を します。",
@@ -957,7 +1018,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "跳舞。",
           "en": "I dance.",
           "ko": "춤을 춰요.",
-          "es": "Bailo."
+          "es": "Bailo.",
+          "pt-BR": "Danço."
         }
       }
     ]
@@ -979,7 +1041,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "韩式煎饼",
           "en": "Korean savory pancake (jeon)",
           "ko": "부침개 (지짐이)",
-          "es": "tortita salada coreana"
+          "es": "tortita salada coreana",
+          "pt-BR": "panqueca coreana (chijimi)"
         },
         "sentence": "チヂミをたべます。",
         "sentenceDisplay": "チヂミ を たべます。",
@@ -988,7 +1051,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "吃韩式煎饼。",
           "en": "I eat a Korean savory pancake.",
           "ko": "부침개를 먹어요.",
-          "es": "Como una tortita salada coreana."
+          "es": "Como una tortita salada coreana.",
+          "pt-BR": "Como chijimi."
         }
       }
     ]
@@ -1010,7 +1074,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "后续；续集 (続き)",
           "en": "continuation / sequel (続き)",
           "ko": "다음 이야기 / 속편 (続き)",
-          "es": "continuación (続き)"
+          "es": "continuación (続き)",
+          "pt-BR": "continuação (続き)"
         },
         "sentence": "マンガのツヅキをよみます。",
         "sentenceDisplay": "マンガ の ツヅキ を よみます。",
@@ -1019,7 +1084,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "看漫画的后续。",
           "en": "I read the next part of the manga.",
           "ko": "만화의 다음 이야기를 읽어요.",
-          "es": "Leo la continuación del manga."
+          "es": "Leo la continuación del manga.",
+          "pt-BR": "Leio a continuação do mangá."
         }
       }
     ]
@@ -1041,7 +1107,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "百货公司",
           "en": "department store",
           "ko": "백화점",
-          "es": "grandes almacenes"
+          "es": "grandes almacenes",
+          "pt-BR": "loja de departamentos"
         },
         "sentence": "デパートにいきます。",
         "sentenceDisplay": "デパート に いきます。",
@@ -1050,7 +1117,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "去百货公司。",
           "en": "I go to the department store.",
           "ko": "백화점에 가요.",
-          "es": "Voy a los grandes almacenes."
+          "es": "Voy a los grandes almacenes.",
+          "pt-BR": "Vou à loja de departamentos."
         }
       }
     ]
@@ -1072,7 +1140,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "门",
           "en": "door",
           "ko": "문",
-          "es": "puerta"
+          "es": "puerta",
+          "pt-BR": "porta"
         },
         "sentence": "ドアをあけます。",
         "sentenceDisplay": "ドア を あけます。",
@@ -1081,7 +1150,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "开门。",
           "en": "I open the door.",
           "ko": "문을 열어요.",
-          "es": "Abro la puerta."
+          "es": "Abro la puerta.",
+          "pt-BR": "Abro a porta."
         }
       }
     ]
@@ -1103,7 +1173,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "公交车",
           "en": "bus",
           "ko": "버스",
-          "es": "autobús"
+          "es": "autobús",
+          "pt-BR": "ônibus"
         },
         "sentence": "バスにのります。",
         "sentenceDisplay": "バス に のります。",
@@ -1112,7 +1183,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "坐公交车。",
           "en": "I take the bus.",
           "ko": "버스를 타요.",
-          "es": "Tomo el autobús."
+          "es": "Tomo el autobús.",
+          "pt-BR": "Pego o ônibus."
         }
       }
     ]
@@ -1134,7 +1206,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "大楼",
           "en": "building",
           "ko": "빌딩",
-          "es": "edificio"
+          "es": "edificio",
+          "pt-BR": "prédio"
         },
         "sentence": "たかいビルです。",
         "sentenceDisplay": "たかい ビル です。",
@@ -1143,7 +1216,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "是大楼。",
           "en": "It's a tall building.",
           "ko": "높은 빌딩이에요.",
-          "es": "Es un edificio alto."
+          "es": "Es un edificio alto.",
+          "pt-BR": "É um prédio alto."
         }
       }
     ]
@@ -1165,7 +1239,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "靴子",
           "en": "boots",
           "ko": "부츠",
-          "es": "botas"
+          "es": "botas",
+          "pt-BR": "botas"
         },
         "sentence": "ブーツをはきます。",
         "sentenceDisplay": "ブーツ を はきます。",
@@ -1174,7 +1249,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "穿靴子。",
           "en": "I put on boots.",
           "ko": "부츠를 신어요.",
-          "es": "Me pongo las botas."
+          "es": "Me pongo las botas.",
+          "pt-BR": "Calço as botas."
         }
       }
     ]
@@ -1196,7 +1272,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "床",
           "en": "bed",
           "ko": "침대",
-          "es": "cama"
+          "es": "cama",
+          "pt-BR": "cama"
         },
         "sentence": "ベッドでねます。",
         "sentenceDisplay": "ベッド で ねます。",
@@ -1205,7 +1282,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "在床上睡觉。",
           "en": "I sleep in a bed.",
           "ko": "침대에서 자요.",
-          "es": "Duermo en la cama."
+          "es": "Duermo en la cama.",
+          "pt-BR": "Durmo na cama."
         }
       }
     ]
@@ -1227,7 +1305,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "球",
           "en": "ball",
           "ko": "공",
-          "es": "pelota"
+          "es": "pelota",
+          "pt-BR": "bola"
         },
         "sentence": "ボールをなげます。",
         "sentenceDisplay": "ボール を なげます。",
@@ -1236,7 +1315,8 @@ export const DAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "投球。",
           "en": "I throw a ball.",
           "ko": "공을 던져요.",
-          "es": "Lanzo la pelota."
+          "es": "Lanzo la pelota.",
+          "pt-BR": "Jogo a bola."
         }
       }
     ]

@@ -20,7 +20,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "客人",
           "en": "guest, customer",
           "ko": "손님",
-          "es": "cliente, invitado"
+          "es": "cliente, invitado",
+          "pt-BR": "cliente, convidado"
         },
         "sentence": "きゃくがきます。",
         "sentenceDisplay": "きゃく が きます。",
@@ -29,7 +30,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "客人来了。",
           "en": "A guest is coming.",
           "ko": "손님이 와요.",
-          "es": "Llegan clientes."
+          "es": "Llegan clientes.",
+          "pt-BR": "Chegaram clientes."
         }
       }
     ]
@@ -51,7 +53,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "九 / 急",
           "en": "nine / sudden",
           "ko": "9 / 갑자기 (急)",
-          "es": "nueve / repentino"
+          "es": "nueve / repentino",
+          "pt-BR": "nove / repentino"
         },
         "sentence": "きゅうにでます。",
         "sentenceDisplay": "きゅう に でます。",
@@ -60,7 +63,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "突然出去。",
           "en": "I leave suddenly.",
           "ko": "갑자기 나가요.",
-          "es": "Sale de repente."
+          "es": "Sale de repente.",
+          "pt-BR": "Sai de repente."
         }
       }
     ]
@@ -82,7 +86,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "今天",
           "en": "today",
           "ko": "오늘",
-          "es": "hoy"
+          "es": "hoy",
+          "pt-BR": "hoje"
         },
         "sentence": "きょうはいいてんきです。",
         "sentenceDisplay": "きょう は いい てんき です。",
@@ -91,7 +96,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "今天是好天气。",
           "en": "The weather is nice today.",
           "ko": "오늘은 날씨가 좋아요.",
-          "es": "Hoy hace buen tiempo."
+          "es": "Hoy hace buen tiempo.",
+          "pt-BR": "Hoje o tempo está bom."
         }
       }
     ]
@@ -114,7 +120,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "相反",
           "en": "the opposite, reverse",
           "ko": "반대",
-          "es": "lo contrario"
+          "es": "lo contrario",
+          "pt-BR": "o contrário"
         },
         "sentence": "ぎゃくです。",
         "sentenceDisplay": "ぎゃく です。",
@@ -123,7 +130,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是相反的。",
           "en": "It's the opposite.",
           "ko": "반대예요.",
-          "es": "Es al revés."
+          "es": "Es al revés.",
+          "pt-BR": "É o contrário."
         }
       }
     ]
@@ -145,7 +153,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "牛奶",
           "en": "milk",
           "ko": "우유",
-          "es": "leche (de vaca)"
+          "es": "leche (de vaca)",
+          "pt-BR": "leite de vaca"
         },
         "sentence": "ぎゅうにゅうをのみます。",
         "sentenceDisplay": "ぎゅうにゅう を のみます。",
@@ -154,7 +163,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "喝牛奶。",
           "en": "I drink milk.",
           "ko": "우유를 마셔요.",
-          "es": "Tomo leche."
+          "es": "Tomo leche.",
+          "pt-BR": "Tomo leite."
         }
       }
     ]
@@ -176,7 +186,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "煎饺",
           "en": "gyoza, pan-fried dumplings",
           "ko": "군만두, 교자",
-          "es": "gyoza (empanadilla a la plancha)"
+          "es": "gyoza (empanadilla a la plancha)",
+          "pt-BR": "guioza (pastel japonês grelhado)"
         },
         "sentence": "ぎょうざをたべます。",
         "sentenceDisplay": "ぎょうざ を たべます。",
@@ -185,7 +196,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "吃煎饺。",
           "en": "I eat gyoza.",
           "ko": "교자를 먹어요.",
-          "es": "Como gyozas."
+          "es": "Como gyozas.",
+          "pt-BR": "Como guioza."
         }
       }
     ]
@@ -208,7 +220,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "照片",
           "en": "photograph",
           "ko": "사진",
-          "es": "foto"
+          "es": "foto",
+          "pt-BR": "foto"
         },
         "sentence": "しゃしんをとります。",
         "sentenceDisplay": "しゃしん を とります。",
@@ -217,7 +230,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "拍照。",
           "en": "I take a photo.",
           "ko": "사진을 찍어요.",
-          "es": "Tomo una foto."
+          "es": "Tomo una foto.",
+          "pt-BR": "Tiro uma foto."
         }
       }
     ]
@@ -239,7 +253,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "爱好 / 兴趣",
           "en": "hobby",
           "ko": "취미",
-          "es": "afición, pasatiempo"
+          "es": "afición, pasatiempo",
+          "pt-BR": "hobby, passatempo"
         },
         "sentence": "しゅみはなにですか。",
         "sentenceDisplay": "しゅみ は なに です か。",
@@ -248,7 +263,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "爱好是什么？",
           "en": "What are your hobbies?",
           "ko": "취미가 뭐예요?",
-          "es": "¿Cuál es tu pasatiempo?"
+          "es": "¿Cuál es tu pasatiempo?",
+          "pt-BR": "Qual é o seu hobby?"
         }
       }
     ]
@@ -270,7 +286,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "用餐",
           "en": "meal",
           "ko": "식사",
-          "es": "comida (el acto de comer)"
+          "es": "comida (el acto de comer)",
+          "pt-BR": "refeição (o ato de comer)"
         },
         "sentence": "しょくじをします。",
         "sentenceDisplay": "しょくじ を します。",
@@ -279,7 +296,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "用餐。",
           "en": "I have a meal.",
           "ko": "식사를 해요.",
-          "es": "Como."
+          "es": "Como.",
+          "pt-BR": "Eu como."
         }
       }
     ]
@@ -302,7 +320,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "妨碍",
           "en": "hindrance, nuisance",
           "ko": "방해",
-          "es": "estorbo, molestia"
+          "es": "estorbo, molestia",
+          "pt-BR": "atrapalho, incômodo"
         },
         "sentence": "じゃまをしないでください。",
         "sentenceDisplay": "じゃま を しないで ください。",
@@ -311,7 +330,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "请不要妨碍。",
           "en": "Please don't get in the way.",
           "ko": "방해하지 마세요.",
-          "es": "Por favor, no molestes."
+          "es": "Por favor, no molestes.",
+          "pt-BR": "Por favor, não atrapalhe."
         }
       }
     ]
@@ -333,7 +353,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "十",
           "en": "ten",
           "ko": "10",
-          "es": "diez"
+          "es": "diez",
+          "pt-BR": "dez"
         },
         "sentence": "じゅうじです。",
         "sentenceDisplay": "じゅう じ です。",
@@ -342,7 +363,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是十点。",
           "en": "It's ten o'clock.",
           "ko": "10시예요.",
-          "es": "Son las diez."
+          "es": "Son las diez.",
+          "pt-BR": "São dez horas."
         }
       }
     ]
@@ -364,7 +386,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "擅长",
           "en": "skillful, good at",
           "ko": "잘함, 능숙함",
-          "es": "hábil, que hace algo bien"
+          "es": "hábil, que hace algo bien",
+          "pt-BR": "habilidoso, bom em algo"
         },
         "sentence": "にほんごがじょうずです。",
         "sentenceDisplay": "にほんご が じょうず です。",
@@ -373,7 +396,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "日语说得很好。",
           "en": "Your Japanese is very good.",
           "ko": "일본어를 잘해요.",
-          "es": "Hablas japonés muy bien."
+          "es": "Hablas japonés muy bien.",
+          "pt-BR": "Você fala japonês muito bem."
         }
       }
     ]
@@ -396,7 +420,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "茶",
           "en": "tea",
           "ko": "차",
-          "es": "té"
+          "es": "té",
+          "pt-BR": "chá"
         },
         "sentence": "おちゃをのみます。",
         "sentenceDisplay": "おちゃ を のみます。",
@@ -405,7 +430,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "喝茶。",
           "en": "I drink tea.",
           "ko": "차를 마셔요.",
-          "es": "Tomo té."
+          "es": "Tomo té.",
+          "pt-BR": "Tomo chá."
         }
       }
     ]
@@ -427,7 +453,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "中国",
           "en": "China",
           "ko": "중국",
-          "es": "China"
+          "es": "China",
+          "pt-BR": "China"
         },
         "sentence": "ちゅうごくからきました。",
         "sentenceDisplay": "ちゅうごく から きました。",
@@ -436,7 +463,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "从中国来。",
           "en": "I came from China.",
           "ko": "중국에서 왔어요.",
-          "es": "Vengo de China."
+          "es": "Vengo de China.",
+          "pt-BR": "Venho da China."
         }
       }
     ]
@@ -458,7 +486,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "一下 / 有点",
           "en": "a little, a moment",
           "ko": "잠깐 / 조금",
-          "es": "un momento / un poco"
+          "es": "un momento / un poco",
+          "pt-BR": "um momento / um pouco"
         },
         "sentence": "ちょっとまってください。",
         "sentenceDisplay": "ちょっと まって ください。",
@@ -467,7 +496,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "请稍等一下。",
           "en": "Please wait a moment.",
           "ko": "잠깐만 기다려 주세요.",
-          "es": "Espera un momento, por favor."
+          "es": "Espera un momento, por favor.",
+          "pt-BR": "Espere um momento, por favor."
         }
       }
     ]
@@ -490,7 +520,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "小猫（口语）",
           "en": "kitty (casual)",
           "ko": "야옹이, 고양이 (구어)",
-          "es": "gatito (coloquial)"
+          "es": "gatito (coloquial)",
+          "pt-BR": "gatinho (coloquial)"
         },
         "sentence": "かわいいにゃんこです。",
         "sentenceDisplay": "かわいい にゃんこ です。",
@@ -499,7 +530,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是可爱的小猫。",
           "en": "It's a cute kitty.",
           "ko": "귀여운 야옹이예요.",
-          "es": "Es un gatito adorable."
+          "es": "Es un gatito adorable.",
+          "pt-BR": "É um gatinho fofo."
         }
       }
     ]
@@ -521,7 +553,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "入学",
           "en": "school enrollment",
           "ko": "입학",
-          "es": "ingreso en la escuela"
+          "es": "ingreso en la escuela",
+          "pt-BR": "ingresso na escola"
         },
         "sentence": "にゅうがくします。",
         "sentenceDisplay": "にゅうがく します。",
@@ -530,7 +563,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "入学。",
           "en": "I start school.",
           "ko": "입학해요.",
-          "es": "Ingreso en la escuela."
+          "es": "Ingreso en la escuela.",
+          "pt-BR": "Ingresso na escola."
         }
       }
     ]
@@ -552,7 +586,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "妻子（旧称）",
           "en": "wife (old-fashioned)",
           "ko": "아내 (옛 표현)",
-          "es": "esposa (término antiguo)"
+          "es": "esposa (término antiguo)",
+          "pt-BR": "esposa (termo antigo)"
         },
         "sentence": "にょうぼうです。",
         "sentenceDisplay": "にょうぼう です。",
@@ -561,7 +596,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是妻子。",
           "en": "She's my wife.",
           "ko": "아내예요.",
-          "es": "Es mi esposa."
+          "es": "Es mi esposa.",
+          "pt-BR": "É minha esposa."
         }
       }
     ]
@@ -584,7 +620,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "一百",
           "en": "one hundred",
           "ko": "100",
-          "es": "cien"
+          "es": "cien",
+          "pt-BR": "cem"
         },
         "sentence": "ひゃくえんです。",
         "sentenceDisplay": "ひゃく えん です。",
@@ -593,7 +630,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是一百日圆。",
           "en": "It's 100 yen.",
           "ko": "100엔이에요.",
-          "es": "Son cien yenes."
+          "es": "Son cien yenes.",
+          "pt-BR": "São cem ienes."
         }
       }
     ]
@@ -615,7 +653,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "日向（地名）",
           "en": "Hyuga (place name)",
           "ko": "휴가 (日向, 지명)",
-          "es": "Hyūga (topónimo)"
+          "es": "Hyūga (topónimo)",
+          "pt-BR": "Hyūga (topônimo)"
         },
         "sentence": "ひゅうがにいきます。",
         "sentenceDisplay": "ひゅうが に いきます。",
@@ -624,7 +663,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "去日向。",
           "en": "I'm going to Hyuga.",
           "ko": "휴가(日向) 지방에 가요.",
-          "es": "Voy a Hyūga."
+          "es": "Voy a Hyūga.",
+          "pt-BR": "Vou a Hyūga."
         }
       }
     ]
@@ -646,7 +686,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "表 / 豹",
           "en": "chart, table / leopard",
           "ko": "표 / 표범",
-          "es": "tabla / leopardo"
+          "es": "tabla / leopardo",
+          "pt-BR": "tabela / leopardo"
         },
         "sentence": "ひょうをみます。",
         "sentenceDisplay": "ひょう を みます。",
@@ -655,7 +696,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "看表。",
           "en": "I look at the chart.",
           "ko": "표를 봐요.",
-          "es": "Miro la tabla."
+          "es": "Miro la tabla.",
+          "pt-BR": "Olho a tabela."
         }
       }
     ]
@@ -678,7 +720,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "白夜",
           "en": "white night, midnight sun",
           "ko": "백야",
-          "es": "noche blanca"
+          "es": "noche blanca",
+          "pt-BR": "noite branca"
         },
         "sentence": "びゃくやです。",
         "sentenceDisplay": "びゃくや です。",
@@ -687,7 +730,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是白夜。",
           "en": "It's a white night.",
           "ko": "백야예요.",
-          "es": "Es una noche blanca."
+          "es": "Es una noche blanca.",
+          "pt-BR": "É uma noite branca."
         }
       }
     ]
@@ -709,7 +753,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "呼啸声",
           "en": "whoosh (sound of wind)",
           "ko": "휭 (바람 소리)",
-          "es": "silbido (del viento)"
+          "es": "silbido (del viento)",
+          "pt-BR": "assobio (do vento)"
         },
         "sentence": "かぜがびゅうとふきます。",
         "sentenceDisplay": "かぜ が びゅう と ふきます。",
@@ -718,7 +763,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "风呼啸地吹。",
           "en": "The wind blows with a whoosh.",
           "ko": "바람이 휭 하고 불어요.",
-          "es": "El viento sopla silbando."
+          "es": "El viento sopla silbando.",
+          "pt-BR": "O vento sopra assobiando."
         }
       }
     ]
@@ -740,7 +786,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "医院",
           "en": "hospital",
           "ko": "병원",
-          "es": "hospital"
+          "es": "hospital",
+          "pt-BR": "hospital"
         },
         "sentence": "びょういんにいきます。",
         "sentenceDisplay": "びょういん に いきます。",
@@ -749,7 +796,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "去医院。",
           "en": "I go to the hospital.",
           "ko": "병원에 가요.",
-          "es": "Voy al hospital."
+          "es": "Voy al hospital.",
+          "pt-BR": "Vou ao hospital."
         }
       }
     ]
@@ -772,7 +820,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "拟态词（突然迅速的动作）",
           "en": "mimetic word for a sudden, quick movement",
           "ko": "휙 (갑자기 재빠르게 움직이는 모양)",
-          "es": "palabra mimética de un movimiento rápido y repentino"
+          "es": "palabra mimética de un movimiento rápido y repentino",
+          "pt-BR": "palavra mimética de um movimento rápido e repentino"
         },
         "sentence": "ねこがぴゃっとにげました。",
         "sentenceDisplay": "ねこ が ぴゃっ と にげました。",
@@ -781,7 +830,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "猫嗖地一下逃走了。",
           "en": "The cat dashed off.",
           "ko": "고양이가 휙 달아났어요.",
-          "es": "El gato salió disparado."
+          "es": "El gato salió disparado.",
+          "pt-BR": "O gato saiu disparado."
         }
       }
     ]
@@ -803,7 +853,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "呼啸声",
           "en": "whoosh (sound of wind)",
           "ko": "쌩 (바람 소리)",
-          "es": "silbido (del viento)"
+          "es": "silbido (del viento)",
+          "pt-BR": "assobio (do vento)"
         },
         "sentence": "かぜがぴゅうとふきます。",
         "sentenceDisplay": "かぜ が ぴゅう と ふきます。",
@@ -812,7 +863,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "风呼啸地吹。",
           "en": "The wind blows with a whoosh.",
           "ko": "바람이 쌩 하고 불어요.",
-          "es": "El viento sopla silbando."
+          "es": "El viento sopla silbando.",
+          "pt-BR": "O vento sopra assobiando."
         }
       }
     ]
@@ -834,7 +886,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "跳跃声",
           "en": "boing (sound of a hop)",
           "ko": "깡충 (뛰는 모양)",
-          "es": "sonido de un salto"
+          "es": "sonido de un salto",
+          "pt-BR": "som de um pulo"
         },
         "sentence": "うさぎがぴょんととびます。",
         "sentenceDisplay": "うさぎ が ぴょん と とびます。",
@@ -843,7 +896,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "兔子跳一下。",
           "en": "The rabbit hops.",
           "ko": "토끼가 깡충 뛰어요.",
-          "es": "El conejo da un saltito."
+          "es": "El conejo da un saltito.",
+          "pt-BR": "O coelho dá um pulinho."
         }
       }
     ]
@@ -866,7 +920,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "脉搏",
           "en": "pulse",
           "ko": "맥박",
-          "es": "pulso"
+          "es": "pulso",
+          "pt-BR": "pulso"
         },
         "sentence": "みゃくをはかります。",
         "sentenceDisplay": "みゃく を はかります。",
@@ -875,7 +930,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "量脉搏。",
           "en": "I take my pulse.",
           "ko": "맥박을 재요.",
-          "es": "Tomo el pulso."
+          "es": "Tomo el pulso.",
+          "pt-BR": "Meço o pulso."
         }
       }
     ]
@@ -897,7 +953,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "音乐（外来语）",
           "en": "music (loanword)",
           "ko": "음악 (외래어)",
-          "es": "música (préstamo)"
+          "es": "música (préstamo)",
+          "pt-BR": "música (empréstimo)"
         },
         "sentence": "みゅうじっくをききます。",
         "sentenceDisplay": "みゅうじっく を ききます。",
@@ -906,7 +963,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "听音乐。",
           "en": "I listen to music.",
           "ko": "음악을 들어요.",
-          "es": "Escucho música."
+          "es": "Escucho música.",
+          "pt-BR": "Ouço música."
         }
       }
     ]
@@ -928,7 +986,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "姓氏",
           "en": "family name, surname",
           "ko": "성, 성씨",
-          "es": "apellido"
+          "es": "apellido",
+          "pt-BR": "sobrenome"
         },
         "sentence": "みょうじはなんですか。",
         "sentenceDisplay": "みょうじ は なん です か。",
@@ -937,7 +996,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "姓氏是什么？",
           "en": "What is your family name?",
           "ko": "성이 어떻게 되세요?",
-          "es": "¿Cuál es tu apellido?"
+          "es": "¿Cuál es tu apellido?",
+          "pt-BR": "Qual é o seu sobrenome?"
         }
       }
     ]
@@ -960,7 +1020,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "省略",
           "en": "abbreviation, omission",
           "ko": "생략",
-          "es": "abreviatura, omisión"
+          "es": "abreviatura, omisión",
+          "pt-BR": "abreviação, omissão"
         },
         "sentence": "りゃくします。",
         "sentenceDisplay": "りゃく します。",
@@ -969,7 +1030,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "省略。",
           "en": "I'll skip that.",
           "ko": "생략할게요.",
-          "es": "Lo abrevio."
+          "es": "Lo abrevio.",
+          "pt-BR": "Eu abrevio."
         }
       }
     ]
@@ -991,7 +1053,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "留学",
           "en": "studying abroad",
           "ko": "유학",
-          "es": "estudiar en el extranjero"
+          "es": "estudiar en el extranjero",
+          "pt-BR": "estudar no exterior"
         },
         "sentence": "りゅうがくします。",
         "sentenceDisplay": "りゅうがく します。",
@@ -1000,7 +1063,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "留学。",
           "en": "I study abroad.",
           "ko": "유학을 가요.",
-          "es": "Me voy a estudiar al extranjero."
+          "es": "Me voy a estudiar al extranjero.",
+          "pt-BR": "Vou estudar no exterior."
         }
       }
     ]
@@ -1022,7 +1086,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "旅行",
           "en": "trip, travel",
           "ko": "여행",
-          "es": "viaje"
+          "es": "viaje",
+          "pt-BR": "viagem"
         },
         "sentence": "りょこうにいきます。",
         "sentenceDisplay": "りょこう に いきます。",
@@ -1031,7 +1096,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "去旅行。",
           "en": "I go on a trip.",
           "ko": "여행을 가요.",
-          "es": "Me voy de viaje."
+          "es": "Me voy de viaje.",
+          "pt-BR": "Vou viajar."
         }
       }
     ]
@@ -1056,7 +1122,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "露营",
           "en": "camping",
           "ko": "캠핑",
-          "es": "campamento"
+          "es": "campamento",
+          "pt-BR": "acampamento"
         },
         "sentence": "キャンプにいきます。",
         "sentenceDisplay": "キャンプ に いきます。",
@@ -1065,7 +1132,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "去露营。",
           "en": "I go camping.",
           "ko": "캠핑하러 가요.",
-          "es": "Me voy de campamento."
+          "es": "Me voy de campamento.",
+          "pt-BR": "Vou acampar."
         }
       }
     ]
@@ -1087,7 +1155,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "可爱的",
           "en": "cute",
           "ko": "귀여운, 큐트한",
-          "es": "mono, adorable"
+          "es": "mono, adorable",
+          "pt-BR": "fofo, adorável"
         },
         "sentence": "キュートなねこです。",
         "sentenceDisplay": "キュート な ねこ です。",
@@ -1096,7 +1165,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是可爱的猫。",
           "en": "It's a cute cat.",
           "ko": "귀여운 고양이예요.",
-          "es": "Es un gato adorable."
+          "es": "Es un gato adorable.",
+          "pt-BR": "É um gato fofo."
         }
       }
     ]
@@ -1118,7 +1188,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "今日（片假名表记）",
           "en": "today (今日, written in katakana)",
           "ko": "오늘 (가타카나 표기)",
-          "es": "hoy (escrito en katakana)"
+          "es": "hoy (escrito en katakana)",
+          "pt-BR": "hoje (escrito em katakana)"
         },
         "sentence": "キョウはやすみです。",
         "sentenceDisplay": "キョウ は やすみ です。",
@@ -1127,7 +1198,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "今天休息。",
           "en": "Today is a day off.",
           "ko": "오늘은 쉬는 날이에요.",
-          "es": "Hoy es día libre."
+          "es": "Hoy es día libre.",
+          "pt-BR": "Hoje é folga."
         }
       }
     ]
@@ -1150,7 +1222,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "笑话 / 梗",
           "en": "joke, gag",
           "ko": "개그 / 농담",
-          "es": "chiste, gag"
+          "es": "chiste, gag",
+          "pt-BR": "piada, gag"
         },
         "sentence": "ギャグをいいます。",
         "sentenceDisplay": "ギャグ を いいます。",
@@ -1159,7 +1232,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "说笑话。",
           "en": "I tell a joke.",
           "ko": "개그를 해요.",
-          "es": "Cuento un chiste."
+          "es": "Cuento un chiste.",
+          "pt-BR": "Conto uma piada."
         }
       }
     ]
@@ -1181,7 +1255,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "牛肉",
           "en": "beef",
           "ko": "소고기",
-          "es": "carne de res"
+          "es": "carne de res",
+          "pt-BR": "carne bovina"
         },
         "sentence": "ギュウニクをたべます。",
         "sentenceDisplay": "ギュウニク を たべます。",
@@ -1190,7 +1265,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "吃牛肉。",
           "en": "I eat beef.",
           "ko": "소고기를 먹어요.",
-          "es": "Como carne de res."
+          "es": "Como carne de res.",
+          "pt-BR": "Como carne bovina."
         }
       }
     ]
@@ -1212,7 +1288,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "煎饺",
           "en": "gyoza, pan-fried dumplings",
           "ko": "군만두, 교자",
-          "es": "gyoza (empanadilla a la plancha)"
+          "es": "gyoza (empanadilla a la plancha)",
+          "pt-BR": "guioza (pastel japonês grelhado)"
         },
         "sentence": "ギョーザをたべます。",
         "sentenceDisplay": "ギョーザ を たべます。",
@@ -1221,7 +1298,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "吃煎饺。",
           "en": "I eat gyoza.",
           "ko": "교자를 먹어요.",
-          "es": "Como gyozas."
+          "es": "Como gyozas.",
+          "pt-BR": "Como guioza."
         }
       }
     ]
@@ -1244,7 +1322,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "衬衫",
           "en": "shirt",
           "ko": "셔츠",
-          "es": "camisa"
+          "es": "camisa",
+          "pt-BR": "camisa"
         },
         "sentence": "シャツをきます。",
         "sentenceDisplay": "シャツ を きます。",
@@ -1253,7 +1332,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "穿衬衫。",
           "en": "I put on a shirt.",
           "ko": "셔츠를 입어요.",
-          "es": "Me pongo la camisa."
+          "es": "Me pongo la camisa.",
+          "pt-BR": "Visto a camisa."
         }
       }
     ]
@@ -1275,7 +1355,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "鞋子",
           "en": "shoes",
           "ko": "신발, 슈즈",
-          "es": "zapatos"
+          "es": "zapatos",
+          "pt-BR": "sapatos"
         },
         "sentence": "シューズをはきます。",
         "sentenceDisplay": "シューズ を はきます。",
@@ -1284,7 +1365,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "穿鞋子。",
           "en": "I put on my shoes.",
           "ko": "신발을 신어요.",
-          "es": "Me pongo los zapatos."
+          "es": "Me pongo los zapatos.",
+          "pt-BR": "Calço os sapatos."
         }
       }
     ]
@@ -1306,7 +1388,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "购物",
           "en": "shopping",
           "ko": "쇼핑",
-          "es": "compras"
+          "es": "compras",
+          "pt-BR": "compras"
         },
         "sentence": "ショッピングにいきます。",
         "sentenceDisplay": "ショッピング に いきます。",
@@ -1315,7 +1398,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "去购物。",
           "en": "I go shopping.",
           "ko": "쇼핑하러 가요.",
-          "es": "Me voy de compras."
+          "es": "Me voy de compras.",
+          "pt-BR": "Vou fazer compras."
         }
       }
     ]
@@ -1338,7 +1422,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "爵士乐",
           "en": "jazz",
           "ko": "재즈",
-          "es": "jazz"
+          "es": "jazz",
+          "pt-BR": "jazz"
         },
         "sentence": "ジャズをききます。",
         "sentenceDisplay": "ジャズ を ききます。",
@@ -1347,7 +1432,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "听爵士乐。",
           "en": "I listen to jazz.",
           "ko": "재즈를 들어요.",
-          "es": "Escucho jazz."
+          "es": "Escucho jazz.",
+          "pt-BR": "Ouço jazz."
         }
       }
     ]
@@ -1369,7 +1455,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "果汁",
           "en": "juice",
           "ko": "주스",
-          "es": "jugo"
+          "es": "jugo",
+          "pt-BR": "suco"
         },
         "sentence": "ジュースをのみます。",
         "sentenceDisplay": "ジュース を のみます。",
@@ -1378,7 +1465,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "喝果汁。",
           "en": "I drink juice.",
           "ko": "주스를 마셔요.",
-          "es": "Tomo jugo."
+          "es": "Tomo jugo.",
+          "pt-BR": "Tomo suco."
         }
       }
     ]
@@ -1400,7 +1488,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "慢跑",
           "en": "jogging",
           "ko": "조깅",
-          "es": "trote, jogging"
+          "es": "trote, jogging",
+          "pt-BR": "corrida leve, jogging"
         },
         "sentence": "ジョギングをします。",
         "sentenceDisplay": "ジョギング を します。",
@@ -1409,7 +1498,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "慢跑。",
           "en": "I go jogging.",
           "ko": "조깅을 해요.",
-          "es": "Salgo a trotar."
+          "es": "Salgo a trotar.",
+          "pt-BR": "Saio para correr."
         }
       }
     ]
@@ -1432,7 +1522,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "机会",
           "en": "chance, opportunity",
           "ko": "기회, 찬스",
-          "es": "oportunidad"
+          "es": "oportunidad",
+          "pt-BR": "oportunidade"
         },
         "sentence": "チャンスです。",
         "sentenceDisplay": "チャンス です。",
@@ -1441,7 +1532,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是机会。",
           "en": "It's a chance.",
           "ko": "기회예요.",
-          "es": "Es una oportunidad."
+          "es": "Es una oportunidad.",
+          "pt-BR": "É uma oportunidade."
         }
       }
     ]
@@ -1463,7 +1555,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "郁金香",
           "en": "tulip",
           "ko": "튤립",
-          "es": "tulipán"
+          "es": "tulipán",
+          "pt-BR": "tulipa"
         },
         "sentence": "チューリップがきれいです。",
         "sentenceDisplay": "チューリップ が きれい です。",
@@ -1472,7 +1565,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "郁金香很漂亮。",
           "en": "The tulips are beautiful.",
           "ko": "튤립이 예뻐요.",
-          "es": "Los tulipanes son preciosos."
+          "es": "Los tulipanes son preciosos.",
+          "pt-BR": "As tulipas são lindas."
         }
       }
     ]
@@ -1494,7 +1588,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "巧克力",
           "en": "chocolate",
           "ko": "초콜릿",
-          "es": "chocolate"
+          "es": "chocolate",
+          "pt-BR": "chocolate"
         },
         "sentence": "チョコをたべます。",
         "sentenceDisplay": "チョコ を たべます。",
@@ -1503,7 +1598,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "吃巧克力。",
           "en": "I eat chocolate.",
           "ko": "초콜릿을 먹어요.",
-          "es": "Como chocolate."
+          "es": "Como chocolate.",
+          "pt-BR": "Como chocolate."
         }
       }
     ]
@@ -1526,7 +1622,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "喵（猫叫声）",
           "en": "meow (a cat's cry)",
           "ko": "야옹 (고양이 울음소리)",
-          "es": "miau (maullido)"
+          "es": "miau (maullido)",
+          "pt-BR": "miau (miado)"
         },
         "sentence": "ねこがニャーとなきます。",
         "sentenceDisplay": "ねこ が ニャー と なきます。",
@@ -1535,7 +1632,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "猫喵喵叫。",
           "en": "The cat meows.",
           "ko": "고양이가 야옹 하고 울어요.",
-          "es": "El gato maúlla."
+          "es": "El gato maúlla.",
+          "pt-BR": "O gato mia."
         }
       }
     ]
@@ -1557,7 +1655,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "新闻 / 新闻报导",
           "en": "news / news report",
           "ko": "뉴스",
-          "es": "noticias / noticiero"
+          "es": "noticias / noticiero",
+          "pt-BR": "notícias / noticiário"
         },
         "sentence": "ニュースをみます。",
         "sentenceDisplay": "ニュース を みます。",
@@ -1566,7 +1665,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "看新闻。",
           "en": "I watch the news.",
           "ko": "뉴스를 봐요.",
-          "es": "Veo las noticias."
+          "es": "Veo las noticias.",
+          "pt-BR": "Assisto ao noticiário."
         }
       }
     ]
@@ -1588,7 +1688,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "快速冒出（拟态）",
           "en": "springing up fast (mimetic word)",
           "ko": "쑥쑥 (빠르게 돋아나는 모양)",
-          "es": "brotar rápidamente (mimético)"
+          "es": "brotar rápidamente (mimético)",
+          "pt-BR": "brotar rapidamente (mimético)"
         },
         "sentence": "きのこがニョキニョキはえます。",
         "sentenceDisplay": "きのこ が ニョキニョキ はえます。",
@@ -1597,7 +1698,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "蘑菇快速长出来。",
           "en": "Mushrooms are sprouting up fast.",
           "ko": "버섯이 쑥쑥 돋아나요.",
-          "es": "Los hongos brotan uno tras otro."
+          "es": "Los hongos brotan uno tras otro.",
+          "pt-BR": "Os cogumelos brotam um atrás do outro."
         }
       }
     ]
@@ -1620,7 +1722,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "一百",
           "en": "one hundred",
           "ko": "100",
-          "es": "cien"
+          "es": "cien",
+          "pt-BR": "cem"
         },
         "sentence": "ヒャクえんです。",
         "sentenceDisplay": "ヒャク えん です。",
@@ -1629,7 +1732,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是一百日圆。",
           "en": "It's 100 yen.",
           "ko": "100엔이에요.",
-          "es": "Son cien yenes."
+          "es": "Son cien yenes.",
+          "pt-BR": "São cem ienes."
         }
       }
     ]
@@ -1651,7 +1755,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "呼啸声",
           "en": "whoosh (sound of wind)",
           "ko": "휭 (바람 소리)",
-          "es": "silbido (del viento)"
+          "es": "silbido (del viento)",
+          "pt-BR": "assobio (do vento)"
         },
         "sentence": "かぜがヒューとふきます。",
         "sentenceDisplay": "かぜ が ヒュー と ふきます。",
@@ -1660,7 +1765,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "风呼啸地吹。",
           "en": "The wind blows with a whoosh.",
           "ko": "바람이 휭 하고 불어요.",
-          "es": "El viento sopla silbando."
+          "es": "El viento sopla silbando.",
+          "pt-BR": "O vento sopra assobiando."
         }
       }
     ]
@@ -1682,7 +1788,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "豹",
           "en": "leopard",
           "ko": "표범",
-          "es": "leopardo"
+          "es": "leopardo",
+          "pt-BR": "leopardo"
         },
         "sentence": "ヒョウをみます。",
         "sentenceDisplay": "ヒョウ を みます。",
@@ -1691,7 +1798,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "看豹。",
           "en": "I look at the leopard.",
           "ko": "표범을 봐요.",
-          "es": "Miro el leopardo."
+          "es": "Miro el leopardo.",
+          "pt-BR": "Olho o leopardo."
         }
       }
     ]
@@ -1714,7 +1822,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "白夜",
           "en": "white night, midnight sun",
           "ko": "백야",
-          "es": "noche blanca"
+          "es": "noche blanca",
+          "pt-BR": "noite branca"
         },
         "sentence": "ビャクヤです。",
         "sentenceDisplay": "ビャクヤ です。",
@@ -1723,7 +1832,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是白夜。",
           "en": "It's a white night.",
           "ko": "백야예요.",
-          "es": "Es una noche blanca."
+          "es": "Es una noche blanca.",
+          "pt-BR": "É uma noite branca."
         }
       }
     ]
@@ -1745,7 +1855,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "景色 / 视图",
           "en": "view / scenery",
           "ko": "경치, 전망 / 뷰",
-          "es": "vista, paisaje"
+          "es": "vista, paisaje",
+          "pt-BR": "vista, paisagem"
         },
         "sentence": "ビューがきれいです。",
         "sentenceDisplay": "ビュー が きれい です。",
@@ -1754,7 +1865,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "景色很漂亮。",
           "en": "The view is beautiful.",
           "ko": "경치가 아름다워요.",
-          "es": "La vista es preciosa."
+          "es": "La vista es preciosa.",
+          "pt-BR": "A vista é linda."
         }
       }
     ]
@@ -1776,7 +1888,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "医院",
           "en": "hospital",
           "ko": "병원",
-          "es": "hospital"
+          "es": "hospital",
+          "pt-BR": "hospital"
         },
         "sentence": "ビョウインにいきます。",
         "sentenceDisplay": "ビョウイン に いきます。",
@@ -1785,7 +1898,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "去医院。",
           "en": "I go to the hospital.",
           "ko": "병원에 가요.",
-          "es": "Voy al hospital."
+          "es": "Voy al hospital.",
+          "pt-BR": "Vou ao hospital."
         }
       }
     ]
@@ -1808,7 +1922,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "拟态词（突然迅速的动作）",
           "en": "mimetic word for a sudden, quick movement",
           "ko": "휙 (갑자기 재빠르게 움직이는 모양)",
-          "es": "palabra mimética de un movimiento rápido y repentino"
+          "es": "palabra mimética de un movimiento rápido y repentino",
+          "pt-BR": "palavra mimética de um movimento rápido e repentino"
         },
         "sentence": "ねこがピャッとにげました。",
         "sentenceDisplay": "ねこ が ピャッ と にげました。",
@@ -1817,7 +1932,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "猫嗖地一下逃走了。",
           "en": "The cat dashed off.",
           "ko": "고양이가 휙 달아났어요.",
-          "es": "El gato salió disparado."
+          "es": "El gato salió disparado.",
+          "pt-BR": "O gato saiu disparado."
         }
       }
     ]
@@ -1839,7 +1955,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "纯真",
           "en": "pure",
           "ko": "순수함, 퓨어",
-          "es": "puro, inocente"
+          "es": "puro, inocente",
+          "pt-BR": "puro, inocente"
         },
         "sentence": "ピュアなこころです。",
         "sentenceDisplay": "ピュア な こころ です。",
@@ -1848,7 +1965,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "是纯真的心。",
           "en": "It's a pure heart.",
           "ko": "순수한 마음이에요.",
-          "es": "Es un corazón puro."
+          "es": "Es un corazón puro.",
+          "pt-BR": "É um coração puro."
         }
       }
     ]
@@ -1870,7 +1988,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "跳跃声",
           "en": "boing (sound of a hop)",
           "ko": "깡충 (뛰는 모양)",
-          "es": "sonido de un salto"
+          "es": "sonido de un salto",
+          "pt-BR": "som de um pulo"
         },
         "sentence": "うさぎがピョンととびます。",
         "sentenceDisplay": "うさぎ が ピョン と とびます。",
@@ -1879,7 +1998,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "兔子跳一下。",
           "en": "The rabbit hops.",
           "ko": "토끼가 깡충 뛰어요.",
-          "es": "El conejo da un saltito."
+          "es": "El conejo da un saltito.",
+          "pt-BR": "O coelho dá um pulinho."
         }
       }
     ]
@@ -1902,7 +2022,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "脉搏",
           "en": "pulse",
           "ko": "맥박",
-          "es": "pulso"
+          "es": "pulso",
+          "pt-BR": "pulso"
         },
         "sentence": "ミャクをはかります。",
         "sentenceDisplay": "ミャク を はかります。",
@@ -1911,7 +2032,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "量脉搏。",
           "en": "I take my pulse.",
           "ko": "맥박을 재요.",
-          "es": "Tomo el pulso."
+          "es": "Tomo el pulso.",
+          "pt-BR": "Meço o pulso."
         }
       }
     ]
@@ -1933,7 +2055,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "音乐",
           "en": "music",
           "ko": "음악, 뮤직",
-          "es": "música"
+          "es": "música",
+          "pt-BR": "música"
         },
         "sentence": "ミュージックをききます。",
         "sentenceDisplay": "ミュージック を ききます。",
@@ -1942,7 +2065,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "听音乐。",
           "en": "I listen to music.",
           "ko": "음악을 들어요.",
-          "es": "Escucho música."
+          "es": "Escucho música.",
+          "pt-BR": "Ouço música."
         }
       }
     ]
@@ -1964,7 +2088,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "姓氏",
           "en": "family name, surname",
           "ko": "성, 성씨",
-          "es": "apellido"
+          "es": "apellido",
+          "pt-BR": "sobrenome"
         },
         "sentence": "ミョウジはなんですか。",
         "sentenceDisplay": "ミョウジ は なん です か。",
@@ -1973,7 +2098,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "姓氏是什么？",
           "en": "What is your family name?",
           "ko": "성이 어떻게 되세요?",
-          "es": "¿Cuál es tu apellido?"
+          "es": "¿Cuál es tu apellido?",
+          "pt-BR": "Qual é o seu sobrenome?"
         }
       }
     ]
@@ -1996,7 +2122,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "省略",
           "en": "abbreviation, omission",
           "ko": "생략",
-          "es": "abreviatura, omisión"
+          "es": "abreviatura, omisión",
+          "pt-BR": "abreviação, omissão"
         },
         "sentence": "リャクします。",
         "sentenceDisplay": "リャク します。",
@@ -2005,7 +2132,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "省略。",
           "en": "I'll skip that.",
           "ko": "생략할게요.",
-          "es": "Lo abrevio."
+          "es": "Lo abrevio.",
+          "pt-BR": "Eu abrevio."
         }
       }
     ]
@@ -2027,7 +2155,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "双肩包",
           "en": "backpack",
           "ko": "배낭, 백팩",
-          "es": "mochila"
+          "es": "mochila",
+          "pt-BR": "mochila"
         },
         "sentence": "リュックをせおいます。",
         "sentenceDisplay": "リュック を せおいます。",
@@ -2036,7 +2165,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "背双肩包。",
           "en": "I put on my backpack.",
           "ko": "배낭을 메요.",
-          "es": "Me cuelgo la mochila."
+          "es": "Me cuelgo la mochila.",
+          "pt-BR": "Coloco a mochila nas costas."
         }
       }
     ]
@@ -2058,7 +2188,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "旅行",
           "en": "trip, travel",
           "ko": "여행",
-          "es": "viaje"
+          "es": "viaje",
+          "pt-BR": "viagem"
         },
         "sentence": "リョコウにいきます。",
         "sentenceDisplay": "リョコウ に いきます。",
@@ -2067,7 +2198,8 @@ export const YOUON_DATA: KanaItem[] = [
           "zh-CN": "去旅行。",
           "en": "I go on a trip.",
           "ko": "여행을 가요.",
-          "es": "Me voy de viaje."
+          "es": "Me voy de viaje.",
+          "pt-BR": "Vou viajar."
         }
       }
     ]

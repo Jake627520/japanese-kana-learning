@@ -18,7 +18,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "面包",
           "en": "bread",
           "ko": "빵",
-          "es": "pan"
+          "es": "pan",
+          "pt-BR": "pão"
         },
         "sentence": "ぱんをたべます。",
         "sentenceDisplay": "ぱん を たべます。",
@@ -27,7 +28,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "吃面包。",
           "en": "I eat bread.",
           "ko": "빵을 먹어요.",
-          "es": "Como pan."
+          "es": "Como pan.",
+          "pt-BR": "Como pão."
         }
       }
     ]
@@ -49,7 +51,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "铅笔",
           "en": "pencil",
           "ko": "연필",
-          "es": "lápiz"
+          "es": "lápiz",
+          "pt-BR": "lápis"
         },
         "sentence": "えんぴつでかきます。",
         "sentenceDisplay": "えんぴつ で かきます。",
@@ -58,7 +61,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "用铅笔写。",
           "en": "I write with a pencil.",
           "ko": "연필로 써요.",
-          "es": "Escribo con un lápiz."
+          "es": "Escribo con un lápiz.",
+          "pt-BR": "Escrevo com lápis."
         }
       }
     ]
@@ -80,7 +84,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "天妇罗",
           "en": "tempura",
           "ko": "튀김, 덴푸라",
-          "es": "tempura"
+          "es": "tempura",
+          "pt-BR": "tempurá"
         },
         "sentence": "てんぷらをたべます。",
         "sentenceDisplay": "てんぷら を たべます。",
@@ -89,7 +94,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "吃天妇罗。",
           "en": "I eat tempura.",
           "ko": "덴푸라를 먹어요.",
-          "es": "Como tempura."
+          "es": "Como tempura.",
+          "pt-BR": "Como tempurá."
         }
       }
     ]
@@ -111,7 +117,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "笔",
           "en": "pen",
           "ko": "펜",
-          "es": "bolígrafo, pluma"
+          "es": "bolígrafo, pluma",
+          "pt-BR": "caneta"
         },
         "sentence": "ぺんでかきます。",
         "sentenceDisplay": "ぺん で かきます。",
@@ -120,7 +127,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "用笔写。",
           "en": "I write with a pen.",
           "ko": "펜으로 써요.",
-          "es": "Escribo con un bolígrafo."
+          "es": "Escribo con un bolígrafo.",
+          "pt-BR": "Escrevo com caneta."
         }
       }
     ]
@@ -142,7 +150,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "散步",
           "en": "walk, stroll",
           "ko": "산책",
-          "es": "paseo"
+          "es": "paseo",
+          "pt-BR": "passeio"
         },
         "sentence": "さんぽをします。",
         "sentenceDisplay": "さんぽ を します。",
@@ -151,7 +160,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "散步。",
           "en": "I take a walk.",
           "ko": "산책을 해요.",
-          "es": "Doy un paseo."
+          "es": "Doy un paseo.",
+          "pt-BR": "Dou um passeio."
         }
       }
     ]
@@ -173,7 +183,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "面包",
           "en": "bread",
           "ko": "빵",
-          "es": "pan"
+          "es": "pan",
+          "pt-BR": "pão"
         },
         "sentence": "パンをたべます。",
         "sentenceDisplay": "パン を たべます。",
@@ -182,7 +193,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "吃面包。",
           "en": "I eat bread.",
           "ko": "빵을 먹어요.",
-          "es": "Como pan."
+          "es": "Como pan.",
+          "pt-BR": "Como pão."
         }
       }
     ]
@@ -204,7 +216,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "钢琴",
           "en": "piano",
           "ko": "피아노",
-          "es": "piano"
+          "es": "piano",
+          "pt-BR": "piano"
         },
         "sentence": "ピアノをひきます。",
         "sentenceDisplay": "ピアノ を ひきます。",
@@ -213,7 +226,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "弹钢琴。",
           "en": "I play the piano.",
           "ko": "피아노를 쳐요.",
-          "es": "Toco el piano."
+          "es": "Toco el piano.",
+          "pt-BR": "Toco piano."
         }
       }
     ]
@@ -235,7 +249,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "游泳池",
           "en": "swimming pool",
           "ko": "수영장",
-          "es": "piscina"
+          "es": "piscina",
+          "pt-BR": "piscina"
         },
         "sentence": "プールでおよぎます。",
         "sentenceDisplay": "プール で およぎます。",
@@ -244,7 +259,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "在游泳池游泳。",
           "en": "I swim in the pool.",
           "ko": "수영장에서 수영해요.",
-          "es": "Nado en la piscina."
+          "es": "Nado en la piscina.",
+          "pt-BR": "Nado na piscina."
         }
       }
     ]
@@ -266,7 +282,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "钢笔 / 笔",
           "en": "pen",
           "ko": "펜",
-          "es": "pluma / bolígrafo"
+          "es": "pluma / bolígrafo",
+          "pt-BR": "caneta"
         },
         "sentence": "ペンでかきます。",
         "sentenceDisplay": "ペン で かきます。",
@@ -275,7 +292,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "用笔写。",
           "en": "I write with a pen.",
           "ko": "펜으로 써요.",
-          "es": "Escribo con un bolígrafo."
+          "es": "Escribo con un bolígrafo.",
+          "pt-BR": "Escrevo com caneta."
         }
       }
     ]
@@ -297,7 +315,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "邮筒",
           "en": "mailbox, postbox",
           "ko": "우체통",
-          "es": "buzón"
+          "es": "buzón",
+          "pt-BR": "caixa de correio"
         },
         "sentence": "てがみをポストにいれます。",
         "sentenceDisplay": "てがみ を ポスト に いれます。",
@@ -306,7 +325,8 @@ export const HANDAKUTEN_DATA: KanaItem[] = [
           "zh-CN": "把信放入邮筒。",
           "en": "I put the letter in the mailbox.",
           "ko": "편지를 우체통에 넣어요.",
-          "es": "Echo la carta al buzón."
+          "es": "Echo la carta al buzón.",
+          "pt-BR": "Coloco a carta na caixa de correio."
         }
       }
     ]

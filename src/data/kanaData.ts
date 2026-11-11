@@ -25,7 +25,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "早晨",
           "en": "morning",
           "ko": "아침",
-          "es": "mañana (parte del día)"
+          "es": "mañana (parte del día)",
+          "pt-BR": "manhã (período do dia)"
         },
         "sentence": "あさです。",
         "sentenceMeaning": {
@@ -33,7 +34,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是早晨。",
           "en": "It's morning.",
           "ko": "아침이에요.",
-          "es": "Es de mañana."
+          "es": "Es de mañana.",
+          "pt-BR": "É de manhã."
         },
         "sentenceDisplay": "あさ です。"
       },
@@ -45,7 +47,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "下雨 / 糖果",
           "en": "rain / candy",
           "ko": "비 / 사탕",
-          "es": "lluvia / caramelo"
+          "es": "lluvia / caramelo",
+          "pt-BR": "chuva / bala"
         },
         "sentence": "あめがふります。",
         "sentenceMeaning": {
@@ -53,7 +56,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "下雨了。",
           "en": "It's raining.",
           "ko": "비가 와요.",
-          "es": "Llueve."
+          "es": "Llueve.",
+          "pt-BR": "Está chovendo."
         },
         "sentenceDisplay": "あめ が ふります。"
       }
@@ -76,7 +80,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "狗",
           "en": "dog",
           "ko": "개",
-          "es": "perro"
+          "es": "perro",
+          "pt-BR": "cachorro"
         },
         "sentence": "かわいいいぬです。",
         "sentenceMeaning": {
@@ -84,7 +89,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是可爱的狗。",
           "en": "It's a cute dog.",
           "ko": "귀여운 개예요.",
-          "es": "Es un perro adorable."
+          "es": "Es un perro adorable.",
+          "pt-BR": "É um cachorro fofo."
         },
         "sentenceDisplay": "かわいい いぬ です。"
       },
@@ -96,7 +102,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "家",
           "en": "house, home",
           "ko": "집",
-          "es": "casa"
+          "es": "casa",
+          "pt-BR": "casa"
         },
         "sentence": "いえにかえります。",
         "sentenceMeaning": {
@@ -104,7 +111,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "回家。",
           "en": "I'm going home.",
           "ko": "집에 돌아가요.",
-          "es": "Vuelvo a casa."
+          "es": "Vuelvo a casa.",
+          "pt-BR": "Volto para casa."
         },
         "sentenceDisplay": "いえ に かえります。"
       }
@@ -127,7 +135,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "大海",
           "en": "sea, ocean",
           "ko": "바다",
-          "es": "mar"
+          "es": "mar",
+          "pt-BR": "mar"
         },
         "sentence": "うみがきれいですね。",
         "sentenceMeaning": {
@@ -135,7 +144,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "大海真漂亮呢。",
           "en": "The sea is beautiful, isn't it?",
           "ko": "바다가 예쁘네요.",
-          "es": "El mar es precioso, ¿verdad?"
+          "es": "El mar es precioso, ¿verdad?",
+          "pt-BR": "O mar é lindo, né?"
         },
         "sentenceDisplay": "うみ が きれい です ね。"
       },
@@ -147,7 +157,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "歌曲",
           "en": "song",
           "ko": "노래",
-          "es": "canción"
+          "es": "canción",
+          "pt-BR": "canção"
         },
         "sentence": "うたをうたいます。",
         "sentenceMeaning": {
@@ -155,7 +166,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "唱歌。",
           "en": "I sing a song.",
           "ko": "노래를 불러요.",
-          "es": "Canto una canción."
+          "es": "Canto una canción.",
+          "pt-BR": "Canto uma canção."
         },
         "sentenceDisplay": "うた を うたいます。"
       }
@@ -178,7 +190,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "车站",
           "en": "station",
           "ko": "역",
-          "es": "estación (de tren)"
+          "es": "estación (de tren)",
+          "pt-BR": "estação (de trem)"
         },
         "sentence": "えきはどこですか。",
         "sentenceMeaning": {
@@ -186,7 +199,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "请问车站在哪里？",
           "en": "Where is the station?",
           "ko": "역은 어디예요?",
-          "es": "¿Dónde está la estación?"
+          "es": "¿Dónde está la estación?",
+          "pt-BR": "Onde fica a estação?"
         },
         "sentenceDisplay": "えき は どこ です か。"
       },
@@ -198,7 +212,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "铅笔",
           "en": "pencil",
           "ko": "연필",
-          "es": "lápiz"
+          "es": "lápiz",
+          "pt-BR": "lápis"
         },
         "sentence": "えんぴつでかきます。",
         "sentenceMeaning": {
@@ -206,7 +221,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "用铅笔写。",
           "en": "I write with a pencil.",
           "ko": "연필로 써요.",
-          "es": "Escribo con un lápiz."
+          "es": "Escribo con un lápiz.",
+          "pt-BR": "Escrevo com lápis."
         },
         "sentenceDisplay": "えんぴつ で かきます。"
       }
@@ -229,7 +245,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "音乐",
           "en": "music",
           "ko": "음악",
-          "es": "música"
+          "es": "música",
+          "pt-BR": "música"
         },
         "sentence": "おんがくをききます。",
         "sentenceMeaning": {
@@ -237,7 +254,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "听音乐。",
           "en": "I listen to music.",
           "ko": "음악을 들어요.",
-          "es": "Escucho música."
+          "es": "Escucho música.",
+          "pt-BR": "Ouço música."
         },
         "sentenceDisplay": "おんがく を ききます。"
       },
@@ -249,7 +267,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "茶",
           "en": "tea",
           "ko": "차",
-          "es": "té"
+          "es": "té",
+          "pt-BR": "chá"
         },
         "sentence": "おちゃをのみます。",
         "sentenceMeaning": {
@@ -257,7 +276,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "喝茶。",
           "en": "I drink tea.",
           "ko": "차를 마셔요.",
-          "es": "Tomo té."
+          "es": "Tomo té.",
+          "pt-BR": "Tomo chá."
         },
         "sentenceDisplay": "おちゃ を のみます。"
       }
@@ -280,7 +300,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "伞",
           "en": "umbrella",
           "ko": "우산",
-          "es": "paraguas"
+          "es": "paraguas",
+          "pt-BR": "guarda-chuva"
         },
         "sentence": "かさをさします。",
         "sentenceMeaning": {
@@ -288,7 +309,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "撑伞。",
           "en": "I put up my umbrella.",
           "ko": "우산을 써요.",
-          "es": "Abro el paraguas."
+          "es": "Abro el paraguas.",
+          "pt-BR": "Abro o guarda-chuva."
         },
         "sentenceDisplay": "かさ を さします。"
       }
@@ -311,7 +333,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "昨天",
           "en": "yesterday",
           "ko": "어제",
-          "es": "ayer"
+          "es": "ayer",
+          "pt-BR": "ontem"
         },
         "sentence": "きのうははれでした。",
         "sentenceMeaning": {
@@ -319,7 +342,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "昨天是晴天。",
           "en": "Yesterday was sunny.",
           "ko": "어제는 맑았어요.",
-          "es": "Ayer hizo buen tiempo."
+          "es": "Ayer hizo buen tiempo.",
+          "pt-BR": "Ontem fez sol."
         },
         "sentenceDisplay": "きのう は はれ でした。"
       }
@@ -342,7 +366,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "汽车",
           "en": "car",
           "ko": "자동차",
-          "es": "coche, auto"
+          "es": "coche, auto",
+          "pt-BR": "carro"
         },
         "sentence": "あかいくるまです。",
         "sentenceMeaning": {
@@ -350,7 +375,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是红色的汽车。",
           "en": "It's a red car.",
           "ko": "빨간 자동차예요.",
-          "es": "Es un coche rojo."
+          "es": "Es un coche rojo.",
+          "pt-BR": "É um carro vermelho."
         },
         "sentenceDisplay": "あかい くるま です。"
       }
@@ -373,7 +399,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "警察",
           "en": "police",
           "ko": "경찰",
-          "es": "policía"
+          "es": "policía",
+          "pt-BR": "polícia"
         },
         "sentence": "けいさつにでんわします。",
         "sentenceMeaning": {
@@ -381,7 +408,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "给警察打电话。",
           "en": "I call the police.",
           "ko": "경찰에 전화해요.",
-          "es": "Llamo a la policía."
+          "es": "Llamo a la policía.",
+          "pt-BR": "Ligo para a polícia."
         },
         "sentenceDisplay": "けいさつ に でんわ します。"
       }
@@ -404,7 +432,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "小孩",
           "en": "child",
           "ko": "아이",
-          "es": "niño, niños"
+          "es": "niño, niños",
+          "pt-BR": "criança, crianças"
         },
         "sentence": "こどもがあそんでいます。",
         "sentenceMeaning": {
@@ -412,7 +441,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "小孩在玩耍。",
           "en": "The children are playing.",
           "ko": "아이가 놀고 있어요.",
-          "es": "Los niños están jugando."
+          "es": "Los niños están jugando.",
+          "pt-BR": "As crianças estão brincando."
         },
         "sentenceDisplay": "こども が あそんで います。"
       }
@@ -435,7 +465,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "樱花",
           "en": "cherry blossom",
           "ko": "벚꽃",
-          "es": "flor de cerezo"
+          "es": "flor de cerezo",
+          "pt-BR": "flor de cerejeira"
         },
         "sentence": "さくらがさきました。",
         "sentenceMeaning": {
@@ -443,7 +474,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "樱花开了。",
           "en": "The cherry blossoms have bloomed.",
           "ko": "벚꽃이 피었어요.",
-          "es": "Florecieron los cerezos."
+          "es": "Florecieron los cerezos.",
+          "pt-BR": "As cerejeiras floresceram."
         },
         "sentenceDisplay": "さくら が さきました。"
       }
@@ -466,7 +498,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "报纸",
           "en": "newspaper",
           "ko": "신문",
-          "es": "periódico"
+          "es": "periódico",
+          "pt-BR": "jornal"
         },
         "sentence": "しんぶんをよみます。",
         "sentenceMeaning": {
@@ -474,7 +507,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "读报纸。",
           "en": "I read the newspaper.",
           "ko": "신문을 읽어요.",
-          "es": "Leo el periódico."
+          "es": "Leo el periódico.",
+          "pt-BR": "Leio o jornal."
         },
         "sentenceDisplay": "しんぶん を よみます。"
       }
@@ -497,7 +531,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "寿司",
           "en": "sushi",
           "ko": "초밥",
-          "es": "sushi"
+          "es": "sushi",
+          "pt-BR": "sushi"
         },
         "sentence": "すしをたべます。",
         "sentenceMeaning": {
@@ -505,7 +540,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "吃寿司。",
           "en": "I eat sushi.",
           "ko": "초밥을 먹어요.",
-          "es": "Como sushi."
+          "es": "Como sushi.",
+          "pt-BR": "Como sushi."
         },
         "sentenceDisplay": "すし を たべます。"
       }
@@ -528,7 +564,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "老师",
           "en": "teacher",
           "ko": "선생님",
-          "es": "profesor, profesora"
+          "es": "profesor, profesora",
+          "pt-BR": "professor, professora"
         },
         "sentence": "やさしいせんせいです。",
         "sentenceMeaning": {
@@ -536,7 +573,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是亲切的老师。",
           "en": "They're a kind teacher.",
           "ko": "친절한 선생님이에요.",
-          "es": "Es una profesora amable."
+          "es": "Es una profesora amable.",
+          "pt-BR": "É uma professora gentil."
         },
         "sentenceDisplay": "やさしい せんせい です。"
       }
@@ -559,7 +597,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "天空",
           "en": "sky",
           "ko": "하늘",
-          "es": "cielo"
+          "es": "cielo",
+          "pt-BR": "céu"
         },
         "sentence": "そらがあおいです。",
         "sentenceMeaning": {
@@ -567,7 +606,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "天空很蓝。",
           "en": "The sky is blue.",
           "ko": "하늘이 파래요.",
-          "es": "El cielo está azul."
+          "es": "El cielo está azul.",
+          "pt-BR": "O céu está azul."
         },
         "sentenceDisplay": "そら が あおい です。"
       }
@@ -590,7 +630,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "鸡蛋",
           "en": "egg",
           "ko": "달걀",
-          "es": "huevo"
+          "es": "huevo",
+          "pt-BR": "ovo"
         },
         "sentence": "たまごをたべます。",
         "sentenceMeaning": {
@@ -598,7 +639,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "吃鸡蛋。",
           "en": "I eat an egg.",
           "ko": "달걀을 먹어요.",
-          "es": "Como huevos."
+          "es": "Como huevos.",
+          "pt-BR": "Como ovo."
         },
         "sentenceDisplay": "たまご を たべます。"
       }
@@ -621,7 +663,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "地图",
           "en": "map",
           "ko": "지도",
-          "es": "mapa"
+          "es": "mapa",
+          "pt-BR": "mapa"
         },
         "sentence": "ちずをみます。",
         "sentenceMeaning": {
@@ -629,7 +672,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "看地图。",
           "en": "I look at the map.",
           "ko": "지도를 봐요.",
-          "es": "Miro el mapa."
+          "es": "Miro el mapa.",
+          "pt-BR": "Olho o mapa."
         },
         "sentenceDisplay": "ちず を みます。"
       }
@@ -652,7 +696,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "桌子",
           "en": "desk",
           "ko": "책상",
-          "es": "escritorio, mesa"
+          "es": "escritorio, mesa",
+          "pt-BR": "escrivaninha, mesa"
         },
         "sentence": "つくえのうえです。",
         "sentenceMeaning": {
@@ -660,7 +705,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "在桌子上。",
           "en": "It's on the desk.",
           "ko": "책상 위예요.",
-          "es": "Está sobre el escritorio."
+          "es": "Está sobre el escritorio.",
+          "pt-BR": "Está em cima da escrivaninha."
         },
         "sentenceDisplay": "つくえ の うえ です。"
       }
@@ -683,7 +729,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "信",
           "en": "letter",
           "ko": "편지",
-          "es": "carta"
+          "es": "carta",
+          "pt-BR": "carta"
         },
         "sentence": "てがみをかきます。",
         "sentenceMeaning": {
@@ -691,7 +738,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "写信。",
           "en": "I write a letter.",
           "ko": "편지를 써요.",
-          "es": "Escribo una carta."
+          "es": "Escribo una carta.",
+          "pt-BR": "Escrevo uma carta."
         },
         "sentenceDisplay": "てがみ を かきます。"
       }
@@ -714,7 +762,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "钟表",
           "en": "clock, watch",
           "ko": "시계",
-          "es": "reloj"
+          "es": "reloj",
+          "pt-BR": "relógio"
         },
         "sentence": "とけいをみます。",
         "sentenceMeaning": {
@@ -722,7 +771,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "看钟表。",
           "en": "I look at the clock.",
           "ko": "시계를 봐요.",
-          "es": "Miro el reloj."
+          "es": "Miro el reloj.",
+          "pt-BR": "Olho o relógio."
         },
         "sentenceDisplay": "とけい を みます。"
       }
@@ -745,7 +795,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "夏天",
           "en": "summer",
           "ko": "여름",
-          "es": "verano"
+          "es": "verano",
+          "pt-BR": "verão"
         },
         "sentence": "あついなつです。",
         "sentenceMeaning": {
@@ -753,7 +804,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "炎热的夏天。",
           "en": "It's a hot summer.",
           "ko": "더운 여름이에요.",
-          "es": "Es un verano caluroso."
+          "es": "Es un verano caluroso.",
+          "pt-BR": "É um verão quente."
         },
         "sentenceDisplay": "あつい なつ です。"
       }
@@ -776,7 +828,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "肉",
           "en": "meat",
           "ko": "고기",
-          "es": "carne"
+          "es": "carne",
+          "pt-BR": "carne"
         },
         "sentence": "にくをたべます。",
         "sentenceMeaning": {
@@ -784,7 +837,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "吃肉。",
           "en": "I eat meat.",
           "ko": "고기를 먹어요.",
-          "es": "Como carne."
+          "es": "Como carne.",
+          "pt-BR": "Como carne."
         },
         "sentenceDisplay": "にく を たべます。"
       }
@@ -807,7 +861,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "狗",
           "en": "dog",
           "ko": "개",
-          "es": "perro"
+          "es": "perro",
+          "pt-BR": "cachorro"
         },
         "sentence": "いぬがいます。",
         "sentenceMeaning": {
@@ -815,7 +870,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "有狗。",
           "en": "There is a dog.",
           "ko": "개가 있어요.",
-          "es": "Hay un perro."
+          "es": "Hay un perro.",
+          "pt-BR": "Tem um cachorro."
         },
         "sentenceDisplay": "いぬ が います。"
       }
@@ -838,7 +894,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "猫",
           "en": "cat",
           "ko": "고양이",
-          "es": "gato"
+          "es": "gato",
+          "pt-BR": "gato"
         },
         "sentence": "ねこがすきです。",
         "sentenceMeaning": {
@@ -846,7 +903,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "我喜欢猫。",
           "en": "I like cats.",
           "ko": "고양이를 좋아해요.",
-          "es": "Me gustan los gatos."
+          "es": "Me gustan los gatos.",
+          "pt-BR": "Eu gosto de gatos."
         },
         "sentenceDisplay": "ねこ が すき です。"
       }
@@ -869,7 +927,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "饮料",
           "en": "drink, beverage",
           "ko": "음료",
-          "es": "bebida"
+          "es": "bebida",
+          "pt-BR": "bebida"
         },
         "sentence": "つめたいのみものです。",
         "sentenceMeaning": {
@@ -877,7 +936,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是冷饮。",
           "en": "It's a cold drink.",
           "ko": "시원한 음료예요.",
-          "es": "Es una bebida fría."
+          "es": "Es una bebida fría.",
+          "pt-BR": "É uma bebida gelada."
         },
         "sentenceDisplay": "つめたい のみもの です。"
       }
@@ -900,7 +960,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "花 / 鼻子",
           "en": "flower / nose",
           "ko": "꽃 / 코",
-          "es": "flor / nariz"
+          "es": "flor / nariz",
+          "pt-BR": "flor / nariz"
         },
         "sentence": "きれいなはなです。",
         "sentenceMeaning": {
@@ -908,7 +969,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是美丽的花。",
           "en": "It's a beautiful flower.",
           "ko": "예쁜 꽃이에요.",
-          "es": "Es una flor bonita."
+          "es": "Es una flor bonita.",
+          "pt-BR": "É uma flor bonita."
         },
         "sentenceDisplay": "きれいな はな です。"
       }
@@ -931,7 +993,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "光",
           "en": "light",
           "ko": "빛",
-          "es": "luz"
+          "es": "luz",
+          "pt-BR": "luz"
         },
         "sentence": "ひかりがさしこみます。",
         "sentenceMeaning": {
@@ -939,7 +1002,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "阳光照进来。",
           "en": "Light streams in.",
           "ko": "빛이 들어와요.",
-          "es": "Entra la luz."
+          "es": "Entra la luz.",
+          "pt-BR": "A luz do sol entra."
         },
         "sentenceDisplay": "ひかり が さしこみます。"
       }
@@ -962,7 +1026,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "船",
           "en": "boat, ship",
           "ko": "배",
-          "es": "barco"
+          "es": "barco",
+          "pt-BR": "barco"
         },
         "sentence": "ふねにのります。",
         "sentenceMeaning": {
@@ -970,7 +1035,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "坐船。",
           "en": "I get on the boat.",
           "ko": "배를 타요.",
-          "es": "Subo al barco."
+          "es": "Subo al barco.",
+          "pt-BR": "Pego um barco."
         },
         "sentenceDisplay": "ふね に のります。"
       }
@@ -993,7 +1059,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "房间",
           "en": "room",
           "ko": "방",
-          "es": "habitación"
+          "es": "habitación",
+          "pt-BR": "quarto"
         },
         "sentence": "ひろいへやです。",
         "sentenceMeaning": {
@@ -1001,7 +1068,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是宽敞的房间。",
           "en": "It's a spacious room.",
           "ko": "넓은 방이에요.",
-          "es": "Es una habitación amplia."
+          "es": "Es una habitación amplia.",
+          "pt-BR": "É um quarto espaçoso."
         },
         "sentenceDisplay": "ひろい へや です。"
       }
@@ -1024,7 +1092,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "书本",
           "en": "book",
           "ko": "책",
-          "es": "libro"
+          "es": "libro",
+          "pt-BR": "livro"
         },
         "sentence": "ほんをよみます。",
         "sentenceMeaning": {
@@ -1032,7 +1101,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "读书。",
           "en": "I read a book.",
           "ko": "책을 읽어요.",
-          "es": "Leo un libro."
+          "es": "Leo un libro.",
+          "pt-BR": "Leio um livro."
         },
         "sentenceDisplay": "ほん を よみます。"
       }
@@ -1055,7 +1125,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "城镇",
           "en": "town",
           "ko": "마을, 동네",
-          "es": "ciudad, pueblo"
+          "es": "ciudad, pueblo",
+          "pt-BR": "cidade, vila"
         },
         "sentence": "しずかなまちです。",
         "sentenceMeaning": {
@@ -1063,7 +1134,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是安静的城镇。",
           "en": "It's a quiet town.",
           "ko": "조용한 동네예요.",
-          "es": "Es un pueblo tranquilo."
+          "es": "Es un pueblo tranquilo.",
+          "pt-BR": "É uma cidade tranquila."
         },
         "sentenceDisplay": "しずかな まち です。"
       }
@@ -1086,7 +1158,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "水",
           "en": "water",
           "ko": "물",
-          "es": "agua"
+          "es": "agua",
+          "pt-BR": "água"
         },
         "sentence": "みずをのみます。",
         "sentenceMeaning": {
@@ -1094,7 +1167,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "喝水。",
           "en": "I drink water.",
           "ko": "물을 마셔요.",
-          "es": "Bebo agua."
+          "es": "Bebo agua.",
+          "pt-BR": "Bebo água."
         },
         "sentenceDisplay": "みず を のみます。"
       }
@@ -1117,7 +1191,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "昆虫",
           "en": "insect, bug",
           "ko": "벌레",
-          "es": "insecto"
+          "es": "insecto",
+          "pt-BR": "inseto"
         },
         "sentence": "むしがいます。",
         "sentenceMeaning": {
@@ -1125,7 +1200,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "有昆虫。",
           "en": "There's a bug.",
           "ko": "벌레가 있어요.",
-          "es": "Hay un insecto."
+          "es": "Hay un insecto.",
+          "pt-BR": "Tem um inseto."
         },
         "sentenceDisplay": "むし が います。"
       }
@@ -1148,7 +1224,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "眼睛",
           "en": "eye",
           "ko": "눈",
-          "es": "ojo"
+          "es": "ojo",
+          "pt-BR": "olho"
         },
         "sentence": "めをとじます。",
         "sentenceMeaning": {
@@ -1156,7 +1233,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "闭上眼睛。",
           "en": "I close my eyes.",
           "ko": "눈을 감아요.",
-          "es": "Cierro los ojos."
+          "es": "Cierro los ojos.",
+          "pt-BR": "Fecho os olhos."
         },
         "sentenceDisplay": "め を とじます。"
       }
@@ -1179,7 +1257,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "森林",
           "en": "forest",
           "ko": "숲",
-          "es": "bosque"
+          "es": "bosque",
+          "pt-BR": "floresta"
         },
         "sentence": "ふかいもりです。",
         "sentenceMeaning": {
@@ -1187,7 +1266,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是深邃的森林。",
           "en": "It's a deep forest.",
           "ko": "깊은 숲이에요.",
-          "es": "Es un bosque profundo."
+          "es": "Es un bosque profundo.",
+          "pt-BR": "É uma floresta profunda."
         },
         "sentenceDisplay": "ふかい もり です。"
       }
@@ -1210,7 +1290,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "山",
           "en": "mountain",
           "ko": "산",
-          "es": "montaña"
+          "es": "montaña",
+          "pt-BR": "montanha"
         },
         "sentence": "たかいやまです。",
         "sentenceMeaning": {
@@ -1218,7 +1299,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是高山。",
           "en": "It's a high mountain.",
           "ko": "높은 산이에요.",
-          "es": "Es una montaña alta."
+          "es": "Es una montaña alta.",
+          "pt-BR": "É uma montanha alta."
         },
         "sentenceDisplay": "たかい やま です。"
       }
@@ -1241,7 +1323,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "雪",
           "en": "snow",
           "ko": "눈 (내리는 눈)",
-          "es": "nieve"
+          "es": "nieve",
+          "pt-BR": "neve"
         },
         "sentence": "ゆきがふります。",
         "sentenceMeaning": {
@@ -1249,7 +1332,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "下雪了。",
           "en": "It's snowing.",
           "ko": "눈이 와요.",
-          "es": "Nieva."
+          "es": "Nieva.",
+          "pt-BR": "Está nevando."
         },
         "sentenceDisplay": "ゆき が ふります。"
       }
@@ -1272,7 +1356,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "夜晚",
           "en": "night",
           "ko": "밤",
-          "es": "noche"
+          "es": "noche",
+          "pt-BR": "noite"
         },
         "sentence": "しずかなよるです。",
         "sentenceMeaning": {
@@ -1280,7 +1365,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是安静的夜晚。",
           "en": "It's a quiet night.",
           "ko": "조용한 밤이에요.",
-          "es": "Es una noche tranquila."
+          "es": "Es una noche tranquila.",
+          "pt-BR": "É uma noite tranquila."
         },
         "sentenceDisplay": "しずかな よる です。"
       }
@@ -1303,7 +1389,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "下周",
           "en": "next week",
           "ko": "다음 주",
-          "es": "la semana que viene"
+          "es": "la semana que viene",
+          "pt-BR": "semana que vem"
         },
         "sentence": "らいしゅうあいます。",
         "sentenceMeaning": {
@@ -1311,7 +1398,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "下周见。",
           "en": "We'll meet next week.",
           "ko": "다음 주에 만나요.",
-          "es": "Nos vemos la semana que viene."
+          "es": "Nos vemos la semana que viene.",
+          "pt-BR": "Até a semana que vem."
         },
         "sentenceDisplay": "らいしゅう あいます。"
       }
@@ -1334,7 +1422,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "苹果",
           "en": "apple",
           "ko": "사과",
-          "es": "manzana"
+          "es": "manzana",
+          "pt-BR": "maçã"
         },
         "sentence": "あかいりんごです。",
         "sentenceMeaning": {
@@ -1342,7 +1431,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "是红苹果。",
           "en": "It's a red apple.",
           "ko": "빨간 사과예요.",
-          "es": "Es una manzana roja."
+          "es": "Es una manzana roja.",
+          "pt-BR": "É uma maçã vermelha."
         },
         "sentenceDisplay": "あかい りんご です。"
       }
@@ -1365,7 +1455,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "不在家",
           "en": "being away from home",
           "ko": "부재중",
-          "es": "ausencia (no estar en casa)"
+          "es": "ausencia (no estar en casa)",
+          "pt-BR": "ausência (não estar em casa)"
         },
         "sentence": "いまはるすです。",
         "sentenceMeaning": {
@@ -1373,7 +1464,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "现在不在家。",
           "en": "Nobody is home right now.",
           "ko": "지금은 집에 없어요.",
-          "es": "Ahora no hay nadie en casa."
+          "es": "Ahora no hay nadie en casa.",
+          "pt-BR": "Agora não tem ninguém em casa."
         },
         "sentenceDisplay": "いま は るす です。"
       }
@@ -1396,7 +1488,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "历史",
           "en": "history",
           "ko": "역사",
-          "es": "historia"
+          "es": "historia",
+          "pt-BR": "história"
         },
         "sentence": "れきしをべんきょうします。",
         "sentenceMeaning": {
@@ -1404,7 +1497,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "学习历史。",
           "en": "I study history.",
           "ko": "역사를 공부해요.",
-          "es": "Estudio historia."
+          "es": "Estudio historia.",
+          "pt-BR": "Estudo história."
         },
         "sentenceDisplay": "れきし を べんきょう します。"
       }
@@ -1427,7 +1521,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "蜡烛",
           "en": "candle",
           "ko": "양초",
-          "es": "vela"
+          "es": "vela",
+          "pt-BR": "vela"
         },
         "sentence": "ろうそくをつけます。",
         "sentenceMeaning": {
@@ -1435,7 +1530,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "点燃蜡烛。",
           "en": "I light a candle.",
           "ko": "양초에 불을 붙여요.",
-          "es": "Enciendo una vela."
+          "es": "Enciendo una vela.",
+          "pt-BR": "Acendo uma vela."
         },
         "sentenceDisplay": "ろうそく を つけます。"
       }
@@ -1458,7 +1554,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "我",
           "en": "I, me",
           "ko": "나, 저",
-          "es": "yo"
+          "es": "yo",
+          "pt-BR": "eu"
         },
         "sentence": "わたしはがくせいです。",
         "sentenceMeaning": {
@@ -1466,7 +1563,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "我是学生。",
           "en": "I am a student.",
           "ko": "저는 학생이에요.",
-          "es": "Soy estudiante."
+          "es": "Soy estudiante.",
+          "pt-BR": "Eu sou estudante."
         },
         "sentenceDisplay": "わたし は がくせい です。"
       }
@@ -1489,7 +1587,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "书（を：把～ 助词，接在动作对象后面）",
           "en": "book (を: particle that marks the direct object of an action)",
           "ko": "책 (を: 동작의 대상 뒤에 붙는 조사, '~을/를')",
-          "es": "libro (を: partícula que se coloca tras el objeto directo de la acción)"
+          "es": "libro (を: partícula que se coloca tras el objeto directo de la acción)",
+          "pt-BR": "livro (を: partícula que vem depois do objeto direto da ação)"
         },
         "sentence": "ほんをよみます。",
         "sentenceMeaning": {
@@ -1497,7 +1596,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "读书。",
           "en": "I read a book.",
           "ko": "책을 읽어요.",
-          "es": "Leo un libro."
+          "es": "Leo un libro.",
+          "pt-BR": "Leio um livro."
         },
         "sentenceDisplay": "ほん を よみます。"
       }
@@ -1520,7 +1620,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "日本",
           "en": "Japan",
           "ko": "일본",
-          "es": "Japón"
+          "es": "Japón",
+          "pt-BR": "Japão"
         },
         "sentence": "にほんにいきます。",
         "sentenceMeaning": {
@@ -1528,7 +1629,8 @@ export const HIRAGANA_DATA: KanaItem[] = [
           "zh-CN": "去日本。",
           "en": "I'm going to Japan.",
           "ko": "일본에 가요.",
-          "es": "Voy a Japón."
+          "es": "Voy a Japón.",
+          "pt-BR": "Vou ao Japão."
         },
         "sentenceDisplay": "にほん に いきます。"
       }
