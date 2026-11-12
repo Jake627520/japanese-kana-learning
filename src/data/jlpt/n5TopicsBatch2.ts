@@ -147,7 +147,7 @@ export const N5_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'i-adjective vocabulary',
       'ko': 'い형용사 어휘',
       'es': 'Vocabulario de adjetivos -i',
-      'pt-BR': 'Vocabulário de adjetivos-i',
+      'pt-BR': 'Vocabulário de i-adjetivos',
     },
     description: {
       'zh-TW': 'たかい・おおきい・あまい・さむい 等い形容詞。',
@@ -174,7 +174,7 @@ export const N5_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'na-adjective vocabulary',
       'ko': 'な형용사 어휘',
       'es': 'Vocabulario de adjetivos -na',
-      'pt-BR': 'Vocabulário de adjetivos-na',
+      'pt-BR': 'Vocabulário de na-adjetivos',
     },
     description: {
       'zh-TW': 'べんり・しずか・きれい・すき；きれい是な形容詞。',
@@ -182,7 +182,7 @@ export const N5_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'べんり・しずか・きれい・すき. Note that きれい is a na-adjective even though it ends in い.',
       'ko': 'べんり・しずか・きれい・すき. きれい는 い로 끝나지만 な형용사예요.',
       'es': 'べんり・しずか・きれい・すき; ojo: きれい es un adjetivo -na.',
-      'pt-BR': 'べんり・しずか・きれい・すき; atenção: きれい é um adjetivo-na, mesmo terminando em い.',
+      'pt-BR': 'べんり・しずか・きれい・すき; atenção: きれい é um na-adjetivo, mesmo terminando em い.',
     },
     book: 'JLPT N5',
     chapter: '形容詞',

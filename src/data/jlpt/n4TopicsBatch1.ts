@@ -11,7 +11,7 @@ export const N4_TOPICS_BATCH1: JlptTopic[] = [
       'en': 'N4 i-adjective vocabulary',
       'ko': 'N4 い형용사 어휘',
       'es': 'Vocabulario de adjetivos -i del N4',
-      'pt-BR': 'Vocabulário de adjetivos-i do N4',
+      'pt-BR': 'Vocabulário de i-adjetivos do N4',
     },
     book: 'JLPT N4', chapter: '語彙', grade: 'n4',
     description: {
@@ -39,7 +39,7 @@ export const N4_TOPICS_BATCH1: JlptTopic[] = [
       'en': 'Japanese splits these senses into four words: 味 (taste, with the mouth) and 匂い (smell, with the nose); 音 (sound made by things) and 声 (voice of a person or animal). Unlike English “sound,” 音 is not used for a living creature\'s cry: a dog\'s bark or a bird\'s song is 声.',
       'ko': '한국어의 맛／냄새, 소리／목소리처럼 일본어도 네 단어로 나눠요. 味(입으로 맛봄)／匂い(코로 맡음), 音(사물의 소리)／声(사람이나 동물의 목소리)예요. 声를 \'소리\'로 옮겨 생각하면 音와 헷갈리기 쉬워요.',
       'es': 'El japonés usa cuatro palabras: 味 (sabor, lo que se prueba con la boca), 匂い (olor, lo que se percibe con la nariz), 音 (sonido de cosas) y 声 (voz de personas o animales). La trampa es usar 音 para una voz: el canto de un pájaro o la voz de alguien siempre es 声.',
-      'pt-BR': 'O japonês usa quatro palavras: 味 (sabor, sentido pela boca), 匂い (cheiro, sentido pelo nariz), 音 (som de coisas) e 声 (voz de pessoas ou animais). A armadilha para quem fala português é o “som”: dizemos “o som dos pássaros”, mas em japonês o canto de um pássaro ou o latido de um cachorro é sempre 声, nunca 音.',
+      'pt-BR': 'O japonês usa quatro palavras: 味 (sabor, sentido pela boca), 匂い (cheiro, sentido pelo nariz), 音 (som de coisas) e 声 (voz de pessoas ou animais). Atenção: o canto de um pássaro e o latido de um cachorro também são 声, nunca 音.',
     },
     evidence: ['能依感官來源選對：鼻子聞到用匂い不是味', '能分辨音（物體聲響）與声（聲帶發出）'] },
   { id: 'jpv_n4-social-reaction-nouns', type: 'vocabulary', subject: '日本語', domain: '文字・語彙',

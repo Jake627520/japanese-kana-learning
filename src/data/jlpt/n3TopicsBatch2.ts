@@ -151,7 +151,7 @@ export const N3_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'Piling up things that point the same way. It attaches to the plain form, na-adjective + な, or noun + の. Both parts must be good points or both bad points: mixing one good and one bad is wrong, and this is the most common mistake.',
       'ko': '같은 방향으로 쌓이는 첨가예요. 접속은 보통형／な형용사＋な／명사＋の＋上に예요. 앞뒤가 모두 장점이거나 모두 단점이어야 해요. 하나는 좋고 하나는 나쁘면 틀려요. 이것이 가장 흔한 오용이에요.',
       'es': 'Acumulación en la misma dirección. Conexión: forma llana / adjetivo -na + な / sustantivo + の + 上に. Las dos partes deben ser ventajas o desventajas a la vez; mezclar una buena y una mala es incorrecto, y es el error más común.',
-      'pt-BR': 'Acúmulo na mesma direção. Ligação: forma simples / adjetivo-na + な / substantivo + の + 上に. As duas partes precisam ser ambas vantagens ou ambas desvantagens; misturar uma boa e uma ruim é errado, e esse é o erro mais comum.',
+      'pt-BR': 'Acúmulo na mesma direção. Ligação: forma simples / na-adjetivo + な / substantivo + の + 上に. As duas partes precisam ser ambas vantagens ou ambas desvantagens; misturar uma boa e uma ruim é errado, e esse é o erro mais comum.',
     },
     evidence: ['能用上に表達同方向的疊加', '知道上に前後方向必須一致'] },
   { id: 'jpg_n3-mono-da', type: 'grammar', subject: '日本語', domain: '文法',
