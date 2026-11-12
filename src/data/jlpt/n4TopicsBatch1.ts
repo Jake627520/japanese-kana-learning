@@ -20,7 +20,7 @@ export const N4_TOPICS_BATCH1: JlptTopic[] = [
       'en': 'New N4 i-adjectives such as 楽しい・硬い・美しい. They conjugate the same way as at N5. The difficulty is that the options are often similar adjectives with close meanings, so you have to choose from context.',
       'ko': '楽しい・硬い・美しい 같은 N4에서 새로 나오는 い형용사예요. 활용은 N5와 같아요. 어려운 점은 선택지가 뜻이 비슷한 형용사들이라 문맥으로 골라야 한다는 거예요.',
       'es': 'Adjetivos -i nuevos del N4, como 楽しい・硬い・美しい. Se conjugan igual que en el N5; la dificultad es que las opciones suelen ser adjetivos de significado parecido y hay que elegir por el contexto.',
-      'pt-BR': 'Adjetivos-i novos do N4, como 楽しい・硬い・美しい. A conjugação é igual à do N5; a dificuldade é que as alternativas costumam ser adjetivos de sentido parecido, e é preciso escolher pelo contexto.',
+      'pt-BR': 'i-adjetivos novos do N4, como 楽しい・硬い・美しい. A conjugação é igual à do N5; a dificuldade é que as alternativas costumam ser adjetivos de sentido parecido, e é preciso escolher pelo contexto.',
     },
     evidence: ['看到楽しい・硬い・美しい 能立刻理解', '四個都是い形容詞時能靠語境選出唯一合理的'] },
   { id: 'jpv_n4-sensory-nouns', type: 'vocabulary', subject: '日本語', domain: '文字・語彙',

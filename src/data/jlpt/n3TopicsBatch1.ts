@@ -23,7 +23,7 @@ export const N3_TOPICS_BATCH1: JlptTopic[] = [
       'en': 'Judging from common sense or objective facts that something is “absolutely impossible.” It attaches to the plain form of verbs and i-adjectives (dictionary, ない or た form), to na-adjectives with な, and to nouns with の. It is most often confused with わけではない (not entirely …, a partial negation): one word apart, very different meanings.',
       'ko': '상식이나 객관적 사실에 근거해 \'절대 그럴 리 없다\'고 판단해요. 접속은 동사・い형용사 보통형 (사전형／ない형／た형 모두 가능)＋わけがない, な형용사＋な, 명사＋の예요. 가장 헷갈리는 것은 わけではない(완전히 ~인 것은 아니다, 부분 부정)로, 한 글자 차이지만 뜻이 크게 달라요.',
       'es': 'A partir del sentido común o de hechos objetivos, afirma que algo es «imposible». Conexión: forma llana de verbos y adjetivos -i (forma de diccionario, forma ない o forma た) + わけがない; adjetivo -na + な; sustantivo + の. Lo que más se confunde es わけではない («no es que…», negación parcial): la forma cambia muy poco, pero el significado cambia mucho.',
-      'pt-BR': 'Com base no bom senso ou em fatos objetivos, afirma que algo é “impossível”. Ligação: forma simples de verbos e i-adjetivos (forma de dicionário, forma -nai ou forma -ta) + わけがない; na-adjetivo + な; substantivo + の. O que mais se confunde é わけではない (“não é que…”, negação parcial): a forma muda pouco, mas o sentido muda muito.',
+      'pt-BR': 'Com base no bom senso ou em fatos objetivos, afirma que algo é “impossível”. Ligação: forma simples de verbos e i-adjetivos (forma de dicionário, forma NAI ou forma TA) + わけがない; na-adjetivo + な; substantivo + の. O que mais se confunde é わけではない (“não é que…”, negação parcial): a forma muda pouco, mas o sentido muda muito.',
     },
     evidence: ['能根據前提事實判斷強烈否定推測', '能區分 わけがない（絕不可能）與 わけではない（並非完全）'] },
   { id: 'jpg_n3-ni-chigainai', type: 'grammar', subject: '日本語', domain: '文法',

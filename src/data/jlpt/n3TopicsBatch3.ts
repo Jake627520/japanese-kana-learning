@@ -153,7 +153,7 @@ export const N3_TOPICS_BATCH3: JlptTopic[] = [
       'en': 'A strong, casual concession, equivalent to 〜ても. In form, you replace the た of the verb\'s た-form with たって (走った→走ったって). It often pairs with いくら or どんなに.',
       'ko': '구어의 강한 역접으로, 〜ても에 해당해요. 형태는 동사 た형의 た를 たって로 바꾼 거예요 (走った→走ったって). いくら・どんなに와 자주 함께 써요.',
       'es': 'Concesión fuerte en lengua coloquial; equivale a 〜ても. Se forma cambiando el た final de la forma た por たって (走った→走ったって). Suele ir con いくら・どんなに.',
-      'pt-BR': 'Concessão forte na língua falada; equivale a 〜ても. Forma-se trocando o た final da forma -ta por たって (走った→走ったって). Costuma vir com いくら・どんなに.',
+      'pt-BR': 'Concessão forte na língua falada; equivale a 〜ても. Forma-se trocando o た final da forma TA por たって (走った→走ったって). Costuma vir com いくら・どんなに.',
     },
     evidence: ['能理解口語逆接的語氣', '知道たって是た形的口語縮略變形'] },
   { id: 'jpg_n3-youni-purpose', type: 'grammar', subject: '日本語', domain: '文法',

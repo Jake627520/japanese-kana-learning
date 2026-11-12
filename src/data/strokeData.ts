@@ -306,7 +306,7 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
       { 'zh-TW': '② 上方一短點', 'zh-CN': '② 上方一短点', en: '② Short dot on top', ko: '② 위쪽에 짧은 점', es: '② Haz un punto corto arriba', 'pt-BR': '② Ponto curto em cima' },
       { 'zh-TW': '③ 由左上往右下的長斜線（穿過第一畫）', 'zh-CN': '③ 从左上往右下的长斜线（穿过第一笔）', en: '③ Long slanted stroke from the upper left down to the right (crossing the first stroke)', ko: '③ 왼쪽 위에서 오른쪽 아래로 긴 비스듬한 획 (첫 획을 관통)', es: '③ Haz un trazo inclinado largo de arriba a la izquierda hacia abajo a la derecha (cruzando el primer trazo)', 'pt-BR': '③ Traço inclinado longo de cima à esquerda para baixo à direita (cruzando o primeiro traço)' },
     ],
-    note: { 'zh-TW': '小寫 ゃ 用於拗音。', 'zh-CN': '小写 ゃ 用于拗音。', en: 'Small ゃ is used in contracted sounds (yōon).', ko: '작은 ゃ는 요음에 쓴다.', es: 'La ゃ pequeña se usa en los sonidos contraídos (yōon).', 'pt-BR': 'O ゃ pequeno é usado nos sons contraídos (yōon).' },
+    note: { 'zh-TW': '小寫 ゃ 用於拗音。', 'zh-CN': '小写 ゃ 用于拗音。', en: 'Small ゃ is used in contracted sounds (yōon).', ko: '작은 ゃ는 요음에 쓴다.', es: 'La ゃ pequeña se usa en los sonidos contraídos (yoon).', 'pt-BR': 'O ゃ pequeno é usado nos sons contraídos (yoon).' },
   },
   h_yu: {
     count: 2,

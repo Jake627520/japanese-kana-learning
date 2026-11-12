@@ -170,7 +170,7 @@ export const N3_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'Expresses general common sense or social norms, and also deep feelings. After the た-form, it expresses nostalgia for past habits (よく泳いだものだ). It is often tested together with ことだ (specific advice).',
       'ko': '보편적인 상식이나 사회 규범을 나타내고, 깊은 감회에도 써요. た형에 붙으면 과거 습관에 대한 그리움이에요 (よく泳いだものだ). ことだ(구체적인 조언)와 함께 자주 출제되는 짝이에요.',
       'es': 'Expresa lo que es normal o una norma social, y también una emoción profunda; con la forma た expresa nostalgia por un hábito del pasado (よく泳いだものだ). Forma con ことだ (consejo concreto) un par frecuente en los exámenes.',
-      'pt-BR': 'Expressa o que é normal ou uma norma social, e também uma emoção profunda; com a forma -ta, expressa nostalgia de um hábito do passado (よく泳いだものだ). Forma com ことだ (conselho concreto) um par frequente nas provas.',
+      'pt-BR': 'Expressa o que é normal ou uma norma social, e também uma emoção profunda; com a forma TA, expressa nostalgia de um hábito do passado (よく泳いだものだ). Forma com ことだ (conselho concreto) um par frequente nas provas.',
     },
     evidence: ['能理解た形＋ものだ的懷舊語感', '能區分ものだ（常理感慨）與ことだ（具體建議）'] },
   { id: 'jpg_n3-koto-da', type: 'grammar', subject: '日本語', domain: '文法',
@@ -189,7 +189,7 @@ export const N3_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'Gives the listener specific advice, “you\'d better do this.” It attaches to the dictionary form or ない form of verbs. It is common in advice from doctors or elders.',
       'ko': '상대에게 \'이렇게 하는 게 좋다\'는 구체적인 충고를 해요. 접속은 동사 사전형／ない형＋ことだ예요. 의사나 윗사람의 조언에서 자주 보여요.',
       'es': 'Da un consejo concreto al otro: «lo mejor es hacer esto». Conexión: forma de diccionario / forma ない + ことだ. Es típico de los consejos de médicos o de personas mayores.',
-      'pt-BR': 'Dá um conselho concreto ao outro: “o melhor é fazer isso”. Ligação: forma de dicionário / forma -nai + ことだ. É típico de conselhos de médicos ou de pessoas mais velhas.',
+      'pt-BR': 'Dá um conselho concreto ao outro: “o melhor é fazer isso”. Ligação: forma de dicionário / forma NAI + ことだ. É típico de conselhos de médicos ou de pessoas mais velhas.',
     },
     evidence: ['能識別具體忠告的語氣', '能正確接辭書形或ない形'] },
 ];

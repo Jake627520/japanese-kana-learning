@@ -155,7 +155,7 @@ export const N5_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'i-adjectives such as たかい・おおきい・あまい・さむい.',
       'ko': 'たかい・おおきい・あまい・さむい 같은 い형용사예요.',
       'es': 'Adjetivos -i como たかい・おおきい・あまい・さむい.',
-      'pt-BR': 'Adjetivos-i como たかい・おおきい・あまい・さむい.',
+      'pt-BR': 'i-adjetivos como たかい・おおきい・あまい・さむい.',
     },
     book: 'JLPT N5',
     chapter: '形容詞',

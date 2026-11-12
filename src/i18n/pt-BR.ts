@@ -100,7 +100,7 @@ export const ptBR: TranslationSchema = {
     hero: {
       tag: 'Sistema de estudo de kana japoneses',
       title: 'Domine os 208 kana e crie uma base sólida em japonês',
-      desc: 'Cobertura completa de seion, dakuten, handakuten e yōon em hiragana e katakana. Inclui áudio nativo, ordem dos traços, palavras de exemplo e revisão espaçada (SRS).',
+      desc: 'Cobertura completa de seion, dakuten, handakuten e yoon em hiragana e katakana. Inclui áudio nativo, ordem dos traços, palavras de exemplo e revisão espaçada (SRS).',
     },
     sections: {
       todayOverview: 'Resumo de hoje',
@@ -126,7 +126,7 @@ export const ptBR: TranslationSchema = {
       katakanaMastery: 'Domínio de katakana',
       dakutenMastery: 'Domínio de dakuten',
       handakutenMastery: 'Domínio de handakuten',
-      youonMastery: 'Domínio de yōon',
+      youonMastery: 'Domínio de yoon',
       viewGrid: 'Abrir a tabela de kana',
     },
     backup: {
@@ -145,7 +145,7 @@ export const ptBR: TranslationSchema = {
       step1Desc: 'Familiarize-se com as formas e os sons dos 46 hiragana.',
       step2Title: '2. Katakana e seu hiragana',
       step2Desc: 'Relacione cada katakana ao hiragana de mesmo som para criar associações visuais.',
-      step3Title: '3. Dakuten e combinações yōon',
+      step3Title: '3. Dakuten e combinações yoon',
       step3Desc: 'Aprenda os sons com dakuten, com handakuten (p) e os sons combinados.',
       step4Title: '4. Testes e shadowing',
       step4Desc: 'Fixe a memória motora e o acento tonal com testes interativos e shadowing.',
@@ -331,7 +331,7 @@ export const ptBR: TranslationSchema = {
   },
   special: {
     title: 'Guia de sons especiais',
-    subtitle: 'Domine as regras e a pronúncia do yōon (sons contraídos), do sokuon (consoantes dobradas) e do chōon (vogais longas).',
+    subtitle: 'Domine as regras e a pronúncia do yoon (sons contraídos), do sokuon (consoantes dobradas) e do choon (vogais longas).',
     youonTab: 'Yoon (contraídos)',
     sokuonTab: 'Sokuon (consoante dobrada)',
     chouonTab: 'Choon (vogal longa)',
@@ -385,7 +385,7 @@ export const ptBR: TranslationSchema = {
       a: '{kana}: todas são vogais. Os outros sons se baseiam nelas, então domine estas 5 primeiro 💪',
       ka: '{kana}: K com cada vogal. Mantenha o ritmo constante.',
       sa: '{kana}: os sons com S. Repare que é shi, não si: a única exceção desta linha.',
-      ta: '{kana}: os sons com T, com duas exceções: chi e tsu. chi soa quase como o “ti” de “tia” no Brasil. O resto segue a regra.',
+      ta: '{kana}: os sons com T, com duas exceções: chi e tsu. chi soa quase como o “ti” de “tia” em boa parte do Brasil. O resto segue a regra.',
       na: '{kana}: os sons com N. Suaves e fáceis de aprender.',
       ha: '{kana}: os sons com H. Atenção: em japonês o h é pronunciado, como o r de “rato”, e não é mudo. fu é o diferente: não é o f do português (dentes no lábio), mas um sopro leve entre os lábios, sem encostá-los, entre h e f. Ouça algumas vezes.',
       ma: '{kana}: os sons com M. Feche os lábios primeiro e depois fale.',
