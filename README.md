@@ -5,7 +5,8 @@
   <b><a href="#繁體中文">繁體中文</a></b> · 
   <b><a href="#简体中文">简体中文</a></b> · 
   <b><a href="#한국어">한국어</a></b> · 
-  <b><a href="#español">Español</a></b>
+  <b><a href="#español">Español</a></b> · 
+  <b><a href="#português-brasil">Português (Brasil)</a></b>
 </p>
 
 <p align="center">
@@ -97,9 +98,9 @@ Addable to mobile and desktop home screens. The service worker precaches only th
 
 Kana training and JLPT paths remain completely unlocked from day one. Users may already know basic kana or be studying directly for N4/N3; enforcing arbitrary prerequisites wastes learner time.
 
-#### 11. Five Interface Languages
+#### 11. Six Interface Languages
 
-The app is available in 繁體中文, 简体中文, English, 한국어, and Español. Translated content covers all UI text, the meanings of example words, sentences, and vocabulary, stroke-order steps and notes, confusable-kana tips, shadowing meanings, focus points, and tips, JLPT topic names and descriptions, and every JLPT explanation. Japanese learning material (kana, words, sentences, questions) stays in Japanese. Pick a language from the selector in the header. The choice is saved in this browser and included in backups. On the first visit, the app follows the browser language.
+The app is available in 繁體中文, 简体中文, English, 한국어, Español, and Português (Brasil). Translated content covers all UI text, the meanings of example words, sentences, and vocabulary, stroke-order steps and notes, confusable-kana tips, shadowing meanings, focus points, and tips, JLPT topic names and descriptions, and every JLPT explanation. Japanese learning material (kana, words, sentences, questions) stays in Japanese. Pick a language from the selector in the header. The choice is saved in this browser and included in backups. On the first visit, the app follows the browser language.
 
 #### 12. Visual Themes
 
@@ -225,9 +226,9 @@ npm run preview
 
 假名與 JLPT 兩條路徑**永遠開放**。使用者可能已會五十音、或正在準備 N4，強制要求先通過假名測驗是錯的假設。
 
-#### 11. 介面支援 5 種語言
+#### 11. 介面支援 6 種語言
 
-介面可切換繁體中文、简体中文、English、한국어、Español。翻譯範圍：全部介面文字、例詞／例句／詞彙的意思、筆順說明與提示、易混辨析的判斷點、跟讀句的意思／重點／技巧、JLPT 考點名稱與說明，以及每一題 JLPT 解說。日文學習內容本身（假名、單字、例句、題目）維持日文。在頁首的語言選單切換；選擇會存在這個瀏覽器，也會納入備份。第一次開啟時依瀏覽器語言決定。
+介面可切換繁體中文、简体中文、English、한국어、Español、Português (Brasil)。翻譯範圍：全部介面文字、例詞／例句／詞彙的意思、筆順說明與提示、易混辨析的判斷點、跟讀句的意思／重點／技巧、JLPT 考點名稱與說明，以及每一題 JLPT 解說。日文學習內容本身（假名、單字、例句、題目）維持日文。在頁首的語言選單切換；選擇會存在這個瀏覽器，也會納入備份。第一次開啟時依瀏覽器語言決定。
 
 #### 12. 視覺主題
 
@@ -353,9 +354,9 @@ npm run preview
 
 假名与 JLPT 两条路径**完全开放**。许多学习者可能已掌握五十音或直接备考 N4/N3，强制要求通关假名测试再学后续内容是反人性的设计假设。
 
-#### 11. 界面支持 5 种语言
+#### 11. 界面支持 6 种语言
 
-界面可切换繁體中文、简体中文、English、한국어、Español。翻译范围：全部界面文字、例词／例句／词汇的释义、笔顺说明与提示、易混辨析的判断点、跟读句的释义／重点／技巧、JLPT 考点名称与说明，以及每一道 JLPT 解析。日语学习内容本身（假名、单词、例句、题目）保持日语。在页首的语言菜单切换；选择会保存在该浏览器，也会纳入备份。首次打开时按浏览器语言决定。
+界面可切换繁體中文、简体中文、English、한국어、Español、Português (Brasil)。翻译范围：全部界面文字、例词／例句／词汇的释义、笔顺说明与提示、易混辨析的判断点、跟读句的释义／重点／技巧、JLPT 考点名称与说明，以及每一道 JLPT 解析。日语学习内容本身（假名、单词、例句、题目）保持日语。在页首的语言菜单切换；选择会保存在该浏览器，也会纳入备份。首次打开时按浏览器语言决定。
 
 #### 12. 视觉主题
 
@@ -479,9 +480,9 @@ npm run preview
 
 가나 학습과 JLPT 경로는 처음부터 전부 열려 있습니다. 이미 가나를 아는 사람도 있고 바로 N4·N3를 준비하는 사람도 있습니다. 임의의 선행 조건을 강제하면 학습자의 시간만 낭비됩니다.
 
-#### 11. 화면 언어 5종
+#### 11. 화면 언어 6종
 
-繁體中文, 简体中文, English, 한국어, Español을 지원합니다. 번역 범위는 모든 화면 문구, 예시 단어·예문·어휘의 뜻, 획순 단계와 설명, 혼동 가나 요령, 섀도잉의 뜻·핵심·요령, JLPT 항목 이름과 설명, 그리고 JLPT 해설 전체입니다. 일본어 학습 자료(가나, 단어, 문장, 문제) 자체는 일본어로 둡니다. 상단의 선택기에서 언어를 고르세요. 선택한 언어는 이 브라우저에 저장되고 백업에도 포함됩니다. 처음 방문할 때는 브라우저 언어를 따릅니다.
+繁體中文, 简体中文, English, 한국어, Español, Português (Brasil)를 지원합니다. 번역 범위는 모든 화면 문구, 예시 단어·예문·어휘의 뜻, 획순 단계와 설명, 혼동 가나 요령, 섀도잉의 뜻·핵심·요령, JLPT 항목 이름과 설명, 그리고 JLPT 해설 전체입니다. 일본어 학습 자료(가나, 단어, 문장, 문제) 자체는 일본어로 둡니다. 상단의 선택기에서 언어를 고르세요. 선택한 언어는 이 브라우저에 저장되고 백업에도 포함됩니다. 처음 방문할 때는 브라우저 언어를 따릅니다.
 
 #### 12. 화면 테마
 
@@ -605,9 +606,9 @@ Se puede añadir a la pantalla de inicio en móvil y escritorio. El service work
 
 El entrenamiento de kana y la ruta JLPT están abiertos desde el primer día. Hay quien ya conoce los kana básicos y quien estudia directamente para N4 o N3; imponer requisitos previos arbitrarios solo hace perder el tiempo.
 
-#### 11. Cinco idiomas de interfaz
+#### 11. Seis idiomas de interfaz
 
-La aplicación está disponible en 繁體中文, 简体中文, English, 한국어 y Español. La traducción cubre todos los textos de la interfaz, los significados de las palabras y oraciones de ejemplo y del vocabulario, los pasos y notas del orden de trazos, los consejos sobre kana confundibles, los significados, puntos clave y consejos del shadowing, los nombres y descripciones de los temas JLPT, y todas las explicaciones JLPT. El material de estudio en japonés (kana, palabras, oraciones, preguntas) permanece en japonés. Elige el idioma en el selector de la cabecera. La elección se guarda en este navegador y se incluye en las copias de seguridad. En la primera visita, la aplicación sigue el idioma del navegador.
+La aplicación está disponible en 繁體中文, 简体中文, English, 한국어, Español y Português (Brasil). La traducción cubre todos los textos de la interfaz, los significados de las palabras y oraciones de ejemplo y del vocabulario, los pasos y notas del orden de trazos, los consejos sobre kana confundibles, los significados, puntos clave y consejos del shadowing, los nombres y descripciones de los temas JLPT, y todas las explicaciones JLPT. El material de estudio en japonés (kana, palabras, oraciones, preguntas) permanece en japonés. Elige el idioma en el selector de la cabecera. La elección se guarda en este navegador y se incluye en las copias de seguridad. En la primera visita, la aplicación sigue el idioma del navegador.
 
 #### 12. Temas visuales
 
@@ -642,6 +643,130 @@ npm run dev
 npm run dev:lan
 
 # Compilar para producción y previsualizar
+npm run build
+npm run preview
+```
+
+## Português (Brasil)
+
+Aplicativo web estático para aprender japonês: sem backend e utilizável offline. O ciclo central é:
+**reconhecer → distinguir sons → escrever → diferenciar kana parecidos → falar → praticar → diagnosticar pontos fracos → revisão espaçada (SRS)**.
+
+### Principais recursos
+
+#### 1. Os 208 kana completos (não só os 46 básicos)
+
+| Categoria | Quantidade |
+|---|---:|
+| Hiragana (seion) | 46 |
+| Katakana (seion) | 46 |
+| Sonoros (dakuon) | 40 |
+| Semissonoros (handakuon) | 10 |
+| Contraídos (yoon) | 66 |
+| **Total** | **208** |
+
+A maioria dos aplicativos para iniciantes para nos 46 caracteres básicos. Na leitura e na escuta reais, o estudante trava justamente nos sonoros e nos contraídos.
+
+#### 2. Áudio pré-gerado (sem síntese de voz do navegador)
+
+Os 208 kana, 203 palavras de exemplo, 205 frases de exemplo, 18 frases de shadowing (velocidade normal e lenta) e os exemplos de sons especiais usam arquivos estáticos gerados com antecedência pelo **VOICEVOX** (cerca de 660 MP3, uns 6,4 MB).
+
+A síntese de voz do navegador não é consistente entre dispositivos e sistemas operacionais: muitos motores leem um caractere isolado como o nome de uma letra, e os yoon e a consoante dobrada (sokuon) costumam sair distorcidos. Gerar todo o áudio com antecedência mantém a pronúncia estável.
+
+#### 3. Prática de escrita com autoavaliação deliberada
+
+- **Guia da ordem dos traços** completo para os 46 hiragana básicos (número de traços e direção de cada um).
+- Tela de escrita à mão com **modo decalque** e **modo de memória** alternáveis.
+- Linhas-guia em cruz para ajudar na proporção e no equilíbrio do caractere.
+- **Sem correção automática dos traços.** Os algoritmos que avaliam escrita à mão geram muitos falsos positivos e negativos com kana. Uma correção errada faz mais mal do que nenhuma. Você se calibra comparando seu traço com o modelo de referência.
+
+#### 4. Kana parecidos: os distratores saem só do mesmo grupo
+
+21 grupos selecionados pelo fator de confusão:
+
+- **Com laço ou sem laço**: ぬ/め, る/ろ, ね/れ/わ
+- **Simetria espelhada**: さ/ち
+- **Um traço de diferença**: き/さ, は/ほ
+- **Direção do traço no katakana**: シ/ツ, ソ/ン
+
+Num teste aleatório comum, uma pergunta sobre ぬ pode oferecer か, さ ou と como distratores: tão diferentes que dá para acertar por eliminação sem reconhecer o traço que distingue. Aqui as opções **saem apenas do mesmo grupo de confusão**, e cada grupo indica exatamente qual detalhe observar.
+
+#### 5. Shadowing em cinco etapas: autocontrole, sem notas automáticas pouco confiáveis
+
+Fluxo estruturado em 5 etapas: **só ouvir → ler e ouvir → repetir em voz baixa → gravar-se → comparar lado a lado**.
+
+- Duas velocidades (normal e lenta). A versão lenta é a mesma gravação esticada a 0,7x, então a entonação se mantém.
+- Gravação local no navegador e comparação imediata: **amostra nativa → sua gravação**.
+- O texto pode ser ocultado por partes (japonês, kana ou rōmaji) para treinar só o ouvido.
+- **Sem avaliação acústica automática.** Os algoritmos de acento tonal no navegador ainda são pouco confiáveis e muitas vezes confundem iniciantes. O objetivo é treinar o seu próprio ouvido para perceber as diferenças.
+
+#### 6. Os kana fracos se conectam ao shadowing
+
+Os kana que você erra nos testes são ligados automaticamente às frases de shadowing que contêm aquele som. Memorizar um caractere isolado é difícil; praticá-lo dentro da fala real reforça a memória fonética e fecha o ciclo entre reconhecer e falar.
+
+#### 7. Prática JLPT N5 / N4 / N3: 280 perguntas próprias com distratores diagnósticos
+
+- **N5: 100 perguntas em 30 temas**, sobre leituras de kanji, rendaku, okurigana, contadores e partículas.
+- **N4: 90 perguntas em 30 temas**, acrescentando as perguntas de uso (mondai 5), causativo, passiva com `によって`, direção de dar e receber, `そうです` de aparência versus boato, e 2 textos de compreensão de leitura.
+- **N3: 90 perguntas em 30 temas**, focadas em nuances em que as quatro opções são gramaticais mas só uma soa natural (わけがない / わけではない, おかげで / せいで, ために / ように, ものだ / ことだ, entre outras), além de textos curtos e tarefas de busca de informação.
+- Você pode alternar entre N5, N4 e N3 a qualquer momento.
+- **Diagnóstico de pontos fracos**: aponta os padrões de erro que se repetem. Cada tema tem pelo menos 3 perguntas para filtrar o ruído.
+- Os distratores vêm de erros reais de estudantes (formar a forma TE direto da base ます, omitir a marca de aspecto, generalizar uma exceção como se fosse regra).
+
+#### 8. Revisão espaçada (SRS) e acompanhamento do progresso
+
+- **Quem define de fato as suas revisões são as 6 etapas fixas.** 10 min → 1 dia → 3 dias → 7 dias → 14 dias → 30 dias. Um acerto sobe uma etapa; um erro desce uma. Todas as datas que você vê na Central de revisão saem daqui.
+- **Um agendador adaptativo roda em paralelo, mas nada do que ele calcula é usado ainda.** Ele registra a estabilidade e a dificuldade de cada kana (a primeira revisão cai entre 10 minutos e 3 dias conforme a avaliação; a estabilidade tem limite de 365 dias), calcula a própria data e a guarda ao lado da data das etapas fixas para que as duas possam ser comparadas. O estado dele é salvo e incluído nos backups. Mudar o aplicativo para esse sistema é uma decisão futura; hoje ele só mede.
+- Mapa de domínio: 5 anéis, um por grupo de kana (hiragana, katakana, dakuon, handakuon, yoon), cada um com a porcentagem dominada (só informativo; **não bloqueia nenhum conteúdo**).
+- **Os dados ficam só neste dispositivo.** O progresso (domínio dos kana, agenda SRS, registros de testes) é salvo no `localStorage` deste navegador. Não há conta nem servidor, então **não há sincronização** com outros dispositivos ou navegadores.
+- **Vai usar outro dispositivo?** Abra o cartão **Backup e restauração** no Início, **exporte** um arquivo JSON aqui e **importe-o** no outro dispositivo. Exporte também antes de apagar os dados do navegador ou de usar a navegação anônima.
+- **O que um backup contém:** domínio dos kana, agenda de revisão SRS (incluindo o estado do agendador adaptativo), histórico de respostas (usado pelas estatísticas do Início, pelo ranking de kana fracos e pela análise de kana parecidos), progresso no shadowing, posição nas Aulas em chat, registros JLPT e o idioma da interface. Backups exportados antes dessa mudança contêm só o progresso dos kana e os registros JLPT; ao importá-los, os demais dados do dispositivo são mantidos.
+
+#### 9. PWA: instalável e disponível offline
+
+Dá para adicionar à tela inicial no celular e no computador. O service worker faz pré-cache apenas da página de entrada e guarda o resto no primeiro uso. O HTML vai primeiro à rede e ignora o cache HTTP, então um deploy novo aparece no carregamento seguinte. Os recursos de build com hash (`/assets/`) e o áudio (`/audio/`) vão primeiro ao cache. O manifesto e os ícones usam stale-while-revalidate. Offline, o aplicativo funciona com as páginas e os recursos que este navegador já carregou. O áudio funciona offline depois de ser reproduzido uma vez: o navegador o pede com requisições Range, então o service worker guarda o arquivo inteiro e responde a cada Range a partir dele. Os áudios nunca reproduzidos continuam precisando de conexão.
+
+#### 10. Nada bloqueado, sem barreiras artificiais
+
+O treino de kana e a trilha JLPT ficam abertos desde o primeiro dia. Há quem já conheça os kana básicos e quem estude direto para o N4 ou N3; impor pré-requisitos arbitrários só faz perder tempo.
+
+#### 11. Seis idiomas de interface
+
+O aplicativo está disponível em 繁體中文, 简体中文, English, 한국어, Español e Português (Brasil). A tradução cobre todos os textos da interface, os significados das palavras e frases de exemplo e do vocabulário, as etapas e notas da ordem dos traços, as dicas sobre kana parecidos, os significados, pontos-chave e dicas do shadowing, os nomes e descrições dos temas JLPT, e todas as explicações JLPT. O material de estudo em japonês (kana, palavras, frases, perguntas) continua em japonês. Escolha o idioma no seletor do cabeçalho. A escolha é salva neste navegador e incluída nos backups. Na primeira visita, o aplicativo segue o idioma do navegador.
+
+#### 12. Temas visuais
+
+Quatro temas de cor: 原版・和紙 (o visual original de papel washi), 藍染 (anil), 桜餅 (rosa sakura; também carrega a fonte arredondada M PLUS Rounded 1c do Google Fonts) e 夜学 (escuro). Você troca o tema no menu 風格 / Theme (ícone de paleta), ao lado do seletor de idioma. A escolha é salva só neste navegador e não entra nos backups. Um link que termina em `?theme=aizome`, `?theme=sakura` ou `?theme=yagaku` abre o aplicativo com esse tema. Os nomes dos temas aparecem na forma chinesa/japonesa em todos os idiomas da interface.
+
+### Seções
+
+| Seção | Detalhes |
+|---|---|
+| Início | Mostra "o próximo passo de hoje" (pontos fracos → revisões pendentes → kana novos → shadowing), a distribuição do domínio e as ferramentas de backup. |
+| Tabela de kana | Grade de 208 caracteres com filtros de seion, dakuon, handakuon, yoon e hiragana/katakana. Cada célula mostra o estado de domínio atual. |
+| Cartões de kana | Kana, rōmaji, áudio, um cartão de vocabulário representativo, palavras e frases de exemplo, e o botão para marcar como dominado. |
+| Prática de escrita | Guia da ordem dos traços, modo decalque e tela de prática livre. |
+| Teste de kana | 4 modos (kana para rōmaji, áudio para kana, digitar em rōmaji, conversão hiragana/katakana) com revisão dos erros ao final. |
+| Kana parecidos | 21 grupos de confusão com pistas visuais e regras para diferenciar. |
+| Central de revisão | Fila de pontos fracos e revisões SRS pendentes (filas separadas para não repetir trabalho). |
+| Sons especiais | Consoante dobrada (sokuon, っ/ッ) e vogal longa (choon): regras e palavras de exemplo com áudio. |
+| Prática JLPT | 280 perguntas próprias de N5/N4/N3 com seletor de nível e análise de erros. |
+| Shadowing | Sistema de 5 etapas com gravação integrada e comparação em duas velocidades. |
+| Aulas em chat | Aula guiada em formato de chat: ensina os kana linha por linha, com um teste curto depois de cada linha. |
+
+### Tecnologias e como rodar
+
+React 19 · TypeScript · Vite · Tailwind CSS 4 · lucide-react
+
+```bash
+# Rodar localmente (http://localhost:3000, acessível só neste computador)
+npm install
+npm run dev
+
+# Abrir o servidor de desenvolvimento num celular na mesma rede local (só em redes confiáveis)
+npm run dev:lan
+
+# Build de produção e pré-visualização
 npm run build
 npm run preview
 ```

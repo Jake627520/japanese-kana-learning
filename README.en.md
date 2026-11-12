@@ -1,6 +1,6 @@
 # Japanese Kana Learning
 
-[繁體中文](README.md) · [简体中文](README.zh-CN.md) · [English](README.en.md) · [한국어](README.md#한국어) · [Español](README.md#español)
+[繁體中文](README.md) · [简体中文](README.zh-CN.md) · [English](README.en.md) · [한국어](README.md#한국어) · [Español](README.md#español) · [Português (Brasil)](README.md#português-brasil)
 
 A static, zero-backend, offline-capable Japanese learning web app built around the core loop:
 **Recognition → Audio Discrimination → Writing → Minimal Pairs → Speaking → Quizzing → Weakness Diagnostics → Spaced Repetition (SRS)**.
@@ -89,9 +89,9 @@ Addable to mobile and desktop home screens. The service worker precaches only th
 
 Kana training and JLPT paths remain completely unlocked from day one. Users may already know basic kana or be studying directly for N4/N3; enforcing arbitrary prerequisites wastes learner time.
 
-### 11. Five Interface Languages
+### 11. Six Interface Languages
 
-The app is available in 繁體中文, 简体中文, English, 한국어, and Español. Translated content covers all UI text, the meanings of example words, sentences, and vocabulary, stroke-order steps and notes, confusable-kana tips, shadowing meanings, focus points, and tips, JLPT topic names and descriptions, and every JLPT explanation. Japanese learning material (kana, words, sentences, questions) stays in Japanese. Pick a language from the selector in the header. The choice is saved in this browser and included in backups. On the first visit, the app follows the browser language.
+The app is available in 繁體中文, 简体中文, English, 한국어, Español, and Português (Brasil). Translated content covers all UI text, the meanings of example words, sentences, and vocabulary, stroke-order steps and notes, confusable-kana tips, shadowing meanings, focus points, and tips, JLPT topic names and descriptions, and every JLPT explanation. Japanese learning material (kana, words, sentences, questions) stays in Japanese. Pick a language from the selector in the header. The choice is saved in this browser and included in backups. On the first visit, the app follows the browser language.
 
 ### 12. Visual Themes
 
