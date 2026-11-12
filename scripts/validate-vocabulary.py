@@ -92,7 +92,7 @@ KATAKANA_YOUON_33_KANA_IDS = [
     'ky_rya', 'ky_ryu', 'ky_ryo',
 ]
 
-LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es']
+LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es', 'pt-BR']
 
 def find_meaning(raw, lang):
     m = re.search(

@@ -10,6 +10,8 @@ const loaders: Record<Language, () => Promise<JlptExplanations>> = {
   en: () => import('./explanations.en').then((m) => m.explanations),
   ko: () => import('./explanations.ko').then((m) => m.explanations),
   es: () => import('./explanations.es').then((m) => m.explanations),
+  // Temporary: pt-BR shows the English explanations until explanations.pt-BR.ts exists.
+  'pt-BR': () => import('./explanations.en').then((m) => m.explanations),
 };
 
 export function loadJlptExplanations(language: Language): Promise<JlptExplanations> {

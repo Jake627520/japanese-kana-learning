@@ -6,4 +6,4 @@ import { explanations as en } from '../data/jlpt/explanations.en';
 import { explanations as ko } from '../data/jlpt/explanations.ko';
 import { explanations as es } from '../data/jlpt/explanations.es';
 
-export const JLPT_EXPLANATIONS: Record<Language, JlptExplanations> = { 'zh-TW': zhTW, 'zh-CN': zhCN, en, ko, es };
+export const JLPT_EXPLANATIONS: Record<Language, JlptExplanations> = { 'zh-TW': zhTW, 'zh-CN': zhCN, en, ko, es, 'pt-BR': en };

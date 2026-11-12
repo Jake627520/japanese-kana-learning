@@ -5,6 +5,7 @@ const MESSAGES: { lang: string; text: string }[] = [
   { lang: 'en', text: "Couldn't load the app's text. Check your connection and try again." },
   { lang: 'ko', text: '앱 텍스트를 불러오지 못했습니다. 연결을 확인한 뒤 다시 시도하세요.' },
   { lang: 'es', text: 'No se pudo cargar el texto de la aplicación. Comprueba tu conexión e inténtalo de nuevo.' },
+  { lang: 'pt-BR', text: 'Não foi possível carregar os textos do app. Confira sua conexão e tente de novo.' },
 ];
 
 export function LoadFailedScreen() {

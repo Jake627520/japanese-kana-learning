@@ -13,6 +13,7 @@ const dictionaryLoaders: Record<Language, () => Promise<TranslationSchema>> = {
   en: () => import('./en').then((m) => m.en),
   ko: () => import('./ko').then((m) => m.ko),
   es: () => import('./es').then((m) => m.es),
+  'pt-BR': () => import('./pt-BR').then((m) => m.ptBR),
 };
 
 export const LANGUAGES = Object.keys(dictionaryLoaders) as Language[];
@@ -82,6 +83,10 @@ export function getInitialLanguage(): Language {
     }
     if (primary === 'es') {
       return 'es';
+    }
+    // Brazilian Portuguese is the only Portuguese we ship, so pt-PT and bare pt use it too.
+    if (primary === 'pt') {
+      return 'pt-BR';
     }
   } catch (e) {
     console.warn('Failed to detect browser language:', e);

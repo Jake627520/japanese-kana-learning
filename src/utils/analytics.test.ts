@@ -42,7 +42,7 @@ const times = <T>(n: number, f: (i: number) => T): T[] => Array.from({ length: n
 const TSU_SHI: ConfusableGroup = {
   id: 'cf_tsu_shi',
   members: ['h_tsu', 'h_shi'],
-  distinguish: { 'zh-TW': 'x', 'zh-CN': 'x', en: 'x', ko: 'x', es: 'x' },
+  distinguish: { 'zh-TW': 'x', 'zh-CN': 'x', en: 'x', ko: 'x', es: 'x', 'pt-BR': 'x' },
   category: 'hiragana',
   modality: 'both',
 };

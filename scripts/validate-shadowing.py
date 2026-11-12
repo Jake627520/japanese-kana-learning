@@ -16,7 +16,7 @@ import os
 import re
 
 EXPECTED_SHADOWING_COUNT = 18
-LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es']
+LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es', 'pt-BR']
 
 STRING_RE = r'(?:\'(?:[^\'\\]|\\.)*\'|"(?:[^"\\]|\\.)*")'
 

@@ -12,6 +12,7 @@ const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
   { code: 'ko', label: '한국어', flag: '🇰🇷' },
   { code: 'es', label: 'Español', flag: '🇪🇸' },
+  { code: 'pt-BR', label: 'Português (Brasil)', flag: '🇧🇷' },
 ];
 
 export function LanguageSelector({ variant = 'header' }: LanguageSelectorProps) {

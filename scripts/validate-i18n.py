@@ -14,7 +14,7 @@ import sys
 import os
 import re
 
-LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es']
+LOCALES = ['zh-TW', 'zh-CN', 'en', 'ko', 'es', 'pt-BR']
 
 # t() looks up `key_<CLDR plural category>` before `key` when params.count is a
 # number, so a locale may add plural forms that the base locale lacks.

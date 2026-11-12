@@ -17,6 +17,9 @@ describe('getInitialLanguage：瀏覽器語言偵測', () => {
     ['es-ES', 'es'],
     ['es-419', 'es'],
     ['es', 'es'],
+    ['pt-BR', 'pt-BR'],
+    ['pt-PT', 'pt-BR'],
+    ['pt', 'pt-BR'],
     ['en-US', 'en'],
     ['zh-TW', 'zh-TW'],
     ['zh-CN', 'zh-CN'],
@@ -37,7 +40,7 @@ describe('getInitialLanguage：瀏覽器語言偵測', () => {
     expect(getInitialLanguage()).toBe('zh-TW');
   });
 
-  it.each<Language>(['ko', 'es'])('已儲存的 %s 優先於瀏覽器語言', (saved) => {
+  it.each<Language>(['ko', 'es', 'pt-BR'])('已儲存的 %s 優先於瀏覽器語言', (saved) => {
     stubBrowserLanguage('en-US');
     localStorage.setItem(LANGUAGE_STORAGE_KEY, saved);
     expect(getInitialLanguage()).toBe(saved);
@@ -91,7 +94,7 @@ describe('loadBootMessages：字典載不到時改用其他語言開機', () => 
     vi.spyOn(console, 'warn').mockImplementation(() => {});
     const { tried, load } = loaderFailing(LANGUAGES);
     expect(await loadBootMessages('es', load)).toBeNull();
-    expect(tried).toEqual(['es', 'zh-TW', 'en', 'zh-CN', 'ko']);
+    expect(tried).toEqual(['es', 'zh-TW', 'en', 'zh-CN', 'ko', 'pt-BR']);
   });
 
   it('不改寫已儲存的語言偏好', async () => {
@@ -156,6 +159,7 @@ describe('數字＋單位的間距由各語系決定', () => {
     ['zh-CN', '5 天', '5 个'],
     ['en', '5 days', '5 kana'],
     ['es', '5 días', '5 kana'],
+    ['pt-BR', '5 dias', '5 kana'],
   ])('%s', (lang, days, kana) => {
     expect(translate(messages(lang), 'header.streakDays', { count: 5 })).toBe(days);
     expect(translate(messages(lang), 'common.kanaCount', { count: 5 })).toBe(kana);
@@ -174,6 +178,7 @@ describe('translateAroundCount：數字前後的文字，讓數字能單獨放�
     ['en', 5, '', ' days'],
     ['en', 1, '', ' day'],
     ['es', 1, '', ' día'],
+    ['pt-BR', 1, '', ' dia'],
   ])('%s %i -> [%s, %s]', (lang, count, before, after) => {
     expect(translateAroundCount(messages(lang), 'header.streakDays', count)).toEqual([before, after]);
   });
@@ -210,6 +215,8 @@ describe('formatNextReviewText：下次複習時間依語言顯示', () => {
     ['ko', 3 * 60 * minute, '3시간 후'],
     ['es', 60 * minute, 'en 1 hora'],
     ['es', 2 * 24 * 60 * minute, 'en 2 días'],
+    ['pt-BR', 60 * minute, 'em 1 hora'],
+    ['pt-BR', 2 * 24 * 60 * minute, 'em 2 dias'],
   ])('%s +%ims -> %s', (lang, offset, expected) => {
     expect(fmt(lang, now + offset)).toBe(expected);
   });

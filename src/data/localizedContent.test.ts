@@ -10,8 +10,8 @@ import { JLPT_EXPLANATIONS } from '../test/jlptExplanations';
 
 
 describe('詞彙與跟讀內容：每個語言都有非空字串', () => {
-  it('涵蓋五個語言', () => {
-    expect([...LANGUAGES].sort()).toEqual(['en', 'es', 'ko', 'zh-CN', 'zh-TW']);
+  it('涵蓋六個語言', () => {
+    expect([...LANGUAGES].sort()).toEqual(['en', 'es', 'ko', 'pt-BR', 'zh-CN', 'zh-TW']);
   });
 
   it('每個詞彙的 meaning', () => {
@@ -87,6 +87,10 @@ describe('假名例詞、易混辨析、JLPT 內容：每個語言都有非空�
 
   it.each(LANGUAGES)('loadJlptExplanations(%s) 載入該語言的解說模組', async (lang) => {
     expect(await loadJlptExplanations(lang)).toBe(JLPT_EXPLANATIONS[lang]);
+  });
+
+  it('pt-BR 的解說暫時用英文版', async () => {
+    expect(await loadJlptExplanations('pt-BR')).toBe(await loadJlptExplanations('en'));
   });
 });
 
