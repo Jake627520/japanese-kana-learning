@@ -250,7 +250,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Emphasis on adverb "totemo" with adjective ending',
       'ko': '부사 "とても"의 강조와 형용사 어미',
       'es': 'Énfasis en el adverbio "totemo" con la terminación del adjetivo',
-      'pt-BR': 'Ênfase no advérbio 「とても」 e a terminação do adjetivo',
+      'pt-BR': 'Ênfase no advérbio 「とても」 e na terminação do adjetivo',
     },
     tags: ['adjective', 'taste'],
     tip: {
@@ -288,12 +288,12 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
     },
     tags: ['transport', 'movement'],
     tip: {
-      'zh-TW': '交通手段「「で」與移動方向助詞「へ (發音 e)」的發音。',
+      'zh-TW': '交通手段「で」與移動方向助詞「へ (發音 e)」的發音。',
       'zh-CN': '交通手段“で”与移动方向助词“へ (发音 e)”的发音。',
       'en': 'Pronounce particle "へ" as "e" when indicating destination.',
       'ko': '목적지를 나타내는 조사 "へ"는 "e"로 발음해요.',
       'es': 'Pronuncia la partícula "へ" como "e" cuando indica destino.',
-      'pt-BR': 'Pronuncie a partícula 「で」 de meio de transporte e, ao indicar destino, a partícula 「へ」 como “e”, não “he”.',
+      'pt-BR': 'Ao indicar destino, a partícula 「へ」 se pronuncia “e”, não “he”. A partícula 「で」 (meio de transporte) se pronuncia normalmente.',
     },
     focusKana: ['す'],
     audio: { normal: 'audio/shadowing/sh-08.mp3', slow: 'audio/shadowing/sh-08-slow.mp3' },

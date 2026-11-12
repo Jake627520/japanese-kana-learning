@@ -338,7 +338,7 @@ export const SEION_46_VOCABULARY: VocabularyItem[] = [
       'en': 'desk',
       'ko': '책상',
       'es': 'escritorio',
-      'pt-BR': 'escrivaninha',
+      'pt-BR': 'mesa (escrivaninha)',
     },
     audioKey: 'vocab_tsukue',
     tag: 'seion46',

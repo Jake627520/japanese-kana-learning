@@ -170,7 +170,7 @@ export const N3_TOPICS_BATCH2: JlptTopic[] = [
       'en': 'Expresses general common sense or social norms, and also deep feelings. After the た-form, it expresses nostalgia for past habits (よく泳いだものだ). It is often tested together with ことだ (specific advice).',
       'ko': '보편적인 상식이나 사회 규범을 나타내고, 깊은 감회에도 써요. た형에 붙으면 과거 습관에 대한 그리움이에요 (よく泳いだものだ). ことだ(구체적인 조언)와 함께 자주 출제되는 짝이에요.',
       'es': 'Expresa lo que es normal o una norma social, y también una emoción profunda; con la forma た expresa nostalgia por un hábito del pasado (よく泳いだものだ). Forma con ことだ (consejo concreto) un par frecuente en los exámenes.',
-      'pt-BR': 'Expressa o que é normal ou uma norma social, e também uma emoção profunda; com a forma TA, expressa nostalgia de um hábito do passado (よく泳いだものだ). Forma com ことだ (conselho concreto) um par frequente nas provas.',
+      'pt-BR': 'Expressa o que é normal ou uma norma social, e também uma emoção profunda; com a forma TA, expressa nostalgia de um hábito do passado (よく泳いだものだ). Junto com ことだ (conselho concreto), forma um par que cai muito nas provas.',
     },
     evidence: ['能理解た形＋ものだ的懷舊語感', '能區分ものだ（常理感慨）與ことだ（具體建議）'] },
   { id: 'jpg_n3-koto-da', type: 'grammar', subject: '日本語', domain: '文法',

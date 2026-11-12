@@ -10,7 +10,9 @@ describe('跟讀慢速標示', () => {
     const tempo = script.match(/const SLOW_TEMPO = ([\d.]+);/)?.[1];
     expect(tempo).toBeDefined();
     for (const lang of LANGUAGES) {
-      expect(DICTIONARIES[lang].shadowing.slow, lang).toContain(`(${tempo}x)`);
+      // pt-BR writes the decimal with a comma (0,7x).
+      const shown = lang === 'pt-BR' ? tempo!.replace('.', ',') : tempo;
+      expect(DICTIONARIES[lang].shadowing.slow, lang).toContain(`(${shown}x)`);
     }
   });
 

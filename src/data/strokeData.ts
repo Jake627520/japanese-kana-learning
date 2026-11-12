@@ -106,7 +106,7 @@ export const HIRAGANA_STROKES: Record<string, StrokeGuide> = {
       { 'zh-TW': '② 由左上往右下的斜線（穿過橫），末端往左勾', 'zh-CN': '② 从左上往右下的斜线（穿过横），末端往左钩', en: '② Slanted stroke from the upper left down to the right (crossing the horizontal), ending in a hook to the left', ko: '② 왼쪽 위에서 오른쪽 아래로 비스듬한 획 (가로획을 관통), 끝은 왼쪽으로 갈고리', es: '② Haz un trazo inclinado de arriba a la izquierda hacia abajo a la derecha (cruzando el horizontal) y termina con un gancho hacia la izquierda', 'pt-BR': '② Traço inclinado de cima à esquerda para baixo à direita (cruzando o horizontal), terminando num gancho para a esquerda' },
       { 'zh-TW': '③ 末端向右下收（彎向左）', 'zh-CN': '③ 末端向右下收（弯向左）', en: '③ Closing stroke toward the lower right (curving left)', ko: '③ 끝은 오른쪽 아래로 마무리 (왼쪽으로 휘게)', es: '③ Cierra hacia abajo a la derecha (curvando a la izquierda)', 'pt-BR': '③ Traço final para baixo à direita (curvando para a esquerda)' },
     ],
-    note: { 'zh-TW': 'さ 的彎往左；ち 的彎往右（鏡像）。', 'zh-CN': 'さ 的弯往左；ち 的弯往右（镜像）。', en: 'さ curves left; ち curves right (mirror images).', ko: 'さ는 왼쪽으로 휘고, ち는 오른쪽으로 휜다 (좌우 대칭).', es: 'さ se curva a la izquierda; ち, a la derecha (son imagen especular).', 'pt-BR': 'さ curva para a esquerda; ち curva para a direita (são espelhadas).' },
+    note: { 'zh-TW': 'さ 的彎往左；ち 的彎往右（鏡像）。', 'zh-CN': 'さ 的弯往左；ち 的弯往右（镜像）。', en: 'さ curves left; ち curves right (mirror images).', ko: 'さ는 왼쪽으로 휘고, ち는 오른쪽으로 휜다 (좌우 대칭).', es: 'さ se curva a la izquierda; ち, a la derecha (son imagen especular).', 'pt-BR': 'さ curva para a esquerda; ち curva para a direita (são espelhados).' },
   },
   h_shi: {
     count: 1,

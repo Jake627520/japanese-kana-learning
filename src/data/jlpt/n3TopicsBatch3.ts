@@ -115,7 +115,7 @@ export const N3_TOPICS_BATCH3: JlptTopic[] = [
       'en': 'Posters, guides and tables: find the one answer that meets two or three overlapping conditions, and check the exceptions marked ※ below the table. Missing the small print is the most common way to lose points.',
       'ko': '포스터, 안내문, 표 같은 문제 유형이에요. 2〜3개의 조건을 교차해 유일한 답을 찾고, 표 아래 ※의 예외 규정도 확인해요. 작은 글씨를 놓치는 것이 가장 흔한 실점 원인이에요.',
       'es': 'Preguntas sobre carteles, guías y tablas: encuentra la única respuesta que cumple 2〜3 condiciones cruzadas y revisa las excepciones marcadas con ※ debajo de la tabla. No leer la letra pequeña es la causa más común de perder puntos.',
-      'pt-BR': 'Questões com cartazes, guias e tabelas: encontre a única resposta que atende a 2〜3 condições cruzadas e confira as exceções marcadas com ※ embaixo da tabela. Não ler as letras miúdas é a causa mais comum de perder pontos.',
+      'pt-BR': 'Questões com cartazes, guias e tabelas: encontre a única resposta que atende a 2 ou 3 condições cruzadas e confira as exceções marcadas com ※ embaixo da tabela. Não ler as letras miúdas é a causa mais comum de perder pontos.',
     },
     evidence: ['能同時滿足多個條件找到唯一解', '不漏掉※的例外約束'] },
   { id: 'jpg_n3-tame-ni-purpose', type: 'grammar', subject: '日本語', domain: '文法',

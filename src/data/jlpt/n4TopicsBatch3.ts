@@ -38,7 +38,7 @@ export const N4_TOPICS_BATCH3: JlptTopic[] = [
       'en': 'て-form + もらえますか = could you do … for me? The listener does the action. It points the opposite way from てもいいですか (asking permission to do something yourself).',
       'ko': 'て형에 もらえますか를 붙이면 \'~해 주실 수 있어요?\'라는 뜻이에요. 동작을 하는 사람은 상대예요. てもいいですか(내가 해도 되는지 허락을 구함)와 방향이 반대예요.',
       'es': 'Forma て + もらえますか = ¿podrías hacerme el favor de…? Quien realiza la acción es el otro. Es la dirección opuesta a てもいいですか (pedir permiso para hacer algo uno mismo).',
-      'pt-BR': 'Forma -te + もらえますか = você poderia fazer… para mim? Quem faz a ação é o outro. É a direção oposta de てもいいですか (pedir permissão para você mesmo fazer algo).',
+      'pt-BR': 'Forma TE + もらえますか = você poderia fazer… para mim? Quem faz a ação é o outro. É a direção oposta de てもいいですか (pedir permissão para você mesmo fazer algo).',
     },
     evidence: ['能用て形＋もらえますか提出禮貌請求', '知道動作者是聽話者，與てもいいですか方向相反'] },
   { id: 'jpg_embedded-question', type: 'grammar', subject: '日本語', domain: '文法',
