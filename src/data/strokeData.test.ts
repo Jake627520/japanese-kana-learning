@@ -72,6 +72,7 @@ describe('筆順說明與 KanjiVG 一致', () => {
     expect(note.en).not.toMatch(/lower (left|right)/);
     expect(note.ko).not.toMatch(/(왼쪽|오른쪽) 아래/);
     expect(note.es).not.toMatch(/abajo a la (izquierda|derecha)/);
+    expect(note['pt-BR']).not.toMatch(/embaixo à (esquerda|direita)/);
     expect(note.en).toMatch(/dot at the upper right/);
   });
 

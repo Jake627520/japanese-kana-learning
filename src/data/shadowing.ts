@@ -39,6 +39,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Nice to meet you. Pleased to meet you.',
       'ko': '처음 뵙겠습니다. 잘 부탁드립니다.',
       'es': 'Mucho gusto. Espero que nos llevemos bien.',
+      'pt-BR': 'Muito prazer. Conto com você.',
     },
     focus: {
       'zh-TW': '初次見面自我介紹常用禮貌語調',
@@ -46,6 +47,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Polite intonation for self-introductions',
       'ko': '자기소개에 쓰는 정중한 억양',
       'es': 'Entonación cortés para presentarse',
+      'pt-BR': 'Entonação educada para se apresentar',
     },
     tags: ['greeting'],
     tip: {
@@ -54,6 +56,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Note the gentle falling intonation on "hajimemashite" and "onegaishimasu".',
       'ko': '"はじめまして"와 "おねがいします"의 부드럽게 내려가는 억양에 주의하세요.',
       'es': 'Fíjate en la suave entonación descendente de "hajimemashite" y "onegaishimasu".',
+      'pt-BR': 'Repare na entonação calma e descendente de 「はじめまして」 e 「おねがいします」.',
     },
     focusKana: ['し'],
     audio: { normal: 'audio/shadowing/sh-01.mp3', slow: 'audio/shadowing/sh-01-slow.mp3' },
@@ -70,6 +73,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'This is my bag.',
       'ko': '이건 제 가방이에요.',
       'es': 'Este es mi bolso.',
+      'pt-BR': 'Esta é a minha bolsa.',
     },
     focus: {
       'zh-TW': '助詞「は」「の」的自然語調與停頓',
@@ -77,6 +81,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Natural rhythm and pauses around particles "wa" and "no"',
       'ko': '조사 "は(wa)"와 "の" 주변의 자연스러운 리듬과 쉼',
       'es': 'Ritmo natural y pausas alrededor de las partículas "wa" y "no"',
+      'pt-BR': 'Ritmo natural e pausas em torno das partículas 「は」 (wa) e 「の」',
     },
     tags: ['daily'],
     tip: {
@@ -85,6 +90,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Smooth flow and slight pauses between nouns and particles "wa" / "no".',
       'ko': '명사와 조사 "は(wa)" / "の" 사이를 매끄럽게 잇고 살짝 쉬어 주세요.',
       'es': 'Fluidez y pausas breves entre los sustantivos y las partículas "wa" / "no".',
+      'pt-BR': 'Encadeamento suave e pequenas pausas entre os substantivos e as partículas 「は」 (wa) e 「の」.',
     },
     audio: { normal: 'audio/shadowing/sh-02.mp3', slow: 'audio/shadowing/sh-02-slow.mp3' },
   },
@@ -100,6 +106,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I wake up at 7:00 every morning.',
       'ko': '매일 아침 7시에 일어나요.',
       'es': 'Me levanto a las 7:00 todas las mañanas.',
+      'pt-BR': 'Acordo às 7h todas as manhãs.',
     },
     focus: {
       'zh-TW': '時間助詞「に」與動詞「おきます」的節奏',
@@ -107,6 +114,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Rhythm with time particle "ni" and verb "okimasu"',
       'ko': '시간 조사 "に"와 동사 "おきます"의 리듬',
       'es': 'Ritmo de la partícula de tiempo "ni" y el verbo "okimasu"',
+      'pt-BR': 'Ritmo da partícula de tempo 「に」 com o verbo 「おきます」',
     },
     tags: ['daily', 'time'],
     tip: {
@@ -115,6 +123,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Crisp rhythm on time particle "ni" leading into "okimasu".',
       'ko': '시간 조사 "に"에서 "おきます"로 경쾌하게 이어지는 리듬을 살리세요.',
       'es': 'Ritmo ágil en la partícula de tiempo "ni" al pasar a "okimasu".',
+      'pt-BR': 'Ritmo leve na partícula de tempo 「に」, emendando em 「おきます」.',
     },
     focusKana: ['し', 'ち'],
     audio: { normal: 'audio/shadowing/sh-03.mp3', slow: 'audio/shadowing/sh-03-slow.mp3' },
@@ -131,6 +140,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Would you like to have coffee together?',
       'ko': '같이 커피 마시지 않을래요?',
       'es': '¿Quieres tomar un café conmigo?',
+      'pt-BR': 'Que tal tomarmos um café juntos?',
     },
     focus: {
       'zh-TW': '促音「っ」與邀約句型「〜ませんか」句尾上揚語調',
@@ -138,6 +148,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Double consonant pause and rising tone on invitation "~masen ka"',
       'ko': '촉음 "っ"의 쉼과 권유 표현 "〜ませんか"의 올라가는 억양',
       'es': 'Pausa de la consonante doble y tono ascendente en la invitación "~masen ka"',
+      'pt-BR': 'Pausa do sokuon 「っ」 e entonação ascendente no convite 「〜ませんか」',
     },
     tags: ['invitation'],
     tip: {
@@ -146,6 +157,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Brief pause on double consonant "っ" and natural lift at the end of "~masen ka".',
       'ko': '촉음 "っ"에서 받침처럼 한 박 막았다가, "〜ませんか" 끝을 자연스럽게 올리세요.',
       'es': 'Haz una pausa breve en la consonante doble "っ" y sube la entonación de forma natural al final de "~masen ka".',
+      'pt-BR': 'Segure o 「っ」 (sokuon) por um tempo inteiro, como uma pausa: o português não marca essa diferença de duração. No final de 「〜ませんか」, suba a entonação de leve.',
     },
     focusKana: ['し'],
     audio: { normal: 'audio/shadowing/sh-04.mp3', slow: 'audio/shadowing/sh-04-slow.mp3' },
@@ -162,6 +174,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I read a book in the library yesterday.',
       'ko': '어제 도서관에서 책을 읽었어요.',
       'es': 'Ayer leí un libro en la biblioteca.',
+      'pt-BR': 'Ontem eu li um livro na biblioteca.',
     },
     focus: {
       'zh-TW': '場所助詞「で」與過去式「〜ました」發音',
@@ -169,6 +182,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Location particle "de" and past tense ending "~mashita"',
       'ko': '장소 조사 "で"와 과거형 "〜ました"의 발음',
       'es': 'Partícula de lugar "de" y terminación de pasado "~mashita"',
+      'pt-BR': 'Partícula de lugar 「で」 e a terminação de passado 「〜ました」',
     },
     tags: ['past', 'action'],
     tip: {
@@ -177,6 +191,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Smooth transition across location particle "de" and past tense "~mashita".',
       'ko': '장소 조사 "で"와 과거형 "〜ました"를 매끄럽게 이어 말하세요.',
       'es': 'Transición fluida entre la partícula de lugar "de" y el pasado "~mashita".',
+      'pt-BR': 'Transição suave entre a partícula de lugar 「で」 e o passado 「〜ました」. O 「で」 é “de” com e fechado, sem virar “dji” como a preposição “de” costuma soar no Brasil.',
     },
     focusKana: ['し'],
     audio: { normal: 'audio/shadowing/sh-05.mp3', slow: 'audio/shadowing/sh-05-slow.mp3' },
@@ -193,6 +208,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Excuse me, where is the station?',
       'ko': '실례합니다, 역은 어디예요?',
       'es': 'Disculpe, ¿dónde está la estación?',
+      'pt-BR': 'Com licença, onde fica a estação?',
     },
     focus: {
       'zh-TW': '詢問方向時禮貌語氣與問句尾音',
@@ -200,6 +216,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Polite inquiry tone and rising question ending',
       'ko': '정중하게 묻는 말투와 의문문 끝 억양',
       'es': 'Tono cortés de pregunta y final interrogativo ascendente',
+      'pt-BR': 'Tom educado de pergunta e final interrogativo ascendente',
     },
     tags: ['question', 'travel'],
     tip: {
@@ -208,6 +225,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Natural rising question tone on "doko desu ka".',
       'ko': '"どこですか"에서 자연스럽게 묻는 억양을 살리세요.',
       'es': 'Entonación interrogativa natural y ascendente en "doko desu ka".',
+      'pt-BR': 'Entonação natural de pergunta em 「どこですか」.',
     },
     focusKana: ['す'],
     audio: { normal: 'audio/shadowing/sh-06.mp3', slow: 'audio/shadowing/sh-06-slow.mp3' },
@@ -224,6 +242,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'This apple is very delicious.',
       'ko': '이 사과는 아주 맛있어요.',
       'es': 'Esta manzana está muy rica.',
+      'pt-BR': 'Esta maçã é muito gostosa.',
     },
     focus: {
       'zh-TW': '副詞「とても」的強調語氣與形容詞結尾',
@@ -231,6 +250,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Emphasis on adverb "totemo" with adjective ending',
       'ko': '부사 "とても"의 강조와 형용사 어미',
       'es': 'Énfasis en el adverbio "totemo" con la terminación del adjetivo',
+      'pt-BR': 'Ênfase no advérbio 「とても」 e a terminação do adjetivo',
     },
     tags: ['adjective', 'taste'],
     tip: {
@@ -239,6 +259,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Expressive emphasis on "totemo" with the cadence of "oishii desu".',
       'ko': '"とても"를 힘 있게 강조하고 "おいしいです"의 높낮이를 살리세요.',
       'es': 'Enfatiza "totemo" con expresividad y sigue la cadencia de "oishii desu".',
+      'pt-BR': 'Dê ênfase a 「とても」 e acompanhe o sobe e desce de 「おいしいです」.',
     },
     focusKana: ['り', 'し'],
     audio: { normal: 'audio/shadowing/sh-07.mp3', slow: 'audio/shadowing/sh-07-slow.mp3' },
@@ -255,6 +276,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I go to school by bus.',
       'ko': '버스로 학교에 가요.',
       'es': 'Voy a la escuela en autobús.',
+      'pt-BR': 'Vou à escola de ônibus.',
     },
     focus: {
       'zh-TW': '交通手段「で」與移動方向助詞「へ (e)」',
@@ -262,6 +284,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Means particle "de" and direction particle "e" (written へ)',
       'ko': '수단 조사 "で"와 방향 조사 "へ(e)"',
       'es': 'Partícula de medio de transporte "de" y partícula de dirección "e" (escrita へ)',
+      'pt-BR': 'Partícula de meio de transporte 「で」 e partícula de direção 「へ」 (pronuncia-se “e”)',
     },
     tags: ['transport', 'movement'],
     tip: {
@@ -270,6 +293,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Pronounce particle "へ" as "e" when indicating destination.',
       'ko': '목적지를 나타내는 조사 "へ"는 "e"로 발음해요.',
       'es': 'Pronuncia la partícula "へ" como "e" cuando indica destino.',
+      'pt-BR': 'Pronuncie a partícula 「で」 de meio de transporte e, ao indicar destino, a partícula 「へ」 como “e”, não “he”.',
     },
     focusKana: ['す'],
     audio: { normal: 'audio/shadowing/sh-08.mp3', slow: 'audio/shadowing/sh-08-slow.mp3' },
@@ -286,6 +310,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I will watch a movie with a friend tomorrow.',
       'ko': '내일 친구와 영화를 봐요.',
       'es': 'Mañana voy a ver una película con un amigo o una amiga.',
+      'pt-BR': 'Amanhã vou ver um filme com um amigo.',
     },
     focus: {
       'zh-TW': '伴隨助詞「と」與受詞助詞「を」的平穩過渡',
@@ -293,6 +318,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Smooth pacing across accompaniment particle "to" and object particle "o"',
       'ko': '동반 조사 "と"와 목적격 조사 "を"의 매끄러운 연결',
       'es': 'Ritmo fluido entre la partícula "to" (con) y la partícula de objeto "o"',
+      'pt-BR': 'Ritmo estável entre a partícula de companhia 「と」 e a partícula de objeto 「を」',
     },
     tags: ['plan', 'activity'],
     tip: {
@@ -301,6 +327,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Balanced cadence between partner particle "to" and direct object "o".',
       'ko': '동반 조사 "と"와 목적격 조사 "を" 사이의 리듬을 고르게 유지하세요.',
       'es': 'Cadencia equilibrada entre la partícula "to" (con) y el objeto directo "o".',
+      'pt-BR': 'Cadência equilibrada entre 「と」 (com) e 「を」 (objeto direto) numa frase longa.',
     },
     focusKana: ['ち', 'し'],
     audio: { normal: 'audio/shadowing/sh-09.mp3', slow: 'audio/shadowing/sh-09-slow.mp3' },
@@ -317,6 +344,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'The weather is very nice today, isn\'t it?',
       'ko': '오늘은 날씨가 정말 좋네요.',
       'es': 'Hoy hace muy buen tiempo, ¿verdad?',
+      'pt-BR': 'O tempo está ótimo hoje, né?',
     },
     focus: {
       'zh-TW': '句尾共感終助詞「ね」的自然降調與延伸',
@@ -324,6 +352,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Friendly agreement particle "ne" at sentence end',
       'ko': '문장 끝에서 공감을 구하는 종조사 "ね"',
       'es': 'Partícula final "ne" para buscar el acuerdo del interlocutor',
+      'pt-BR': 'Partícula final 「ね」, que busca a concordância do outro: tom natural, descendente e alongado',
     },
     tags: ['conversation', 'weather'],
     tip: {
@@ -332,6 +361,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Relaxed, friendly tone on final particle "ne" seeking agreement.',
       'ko': '공감을 구하는 종조사 "ね"를 편안하고 다정한 말투로 말하세요.',
       'es': 'Tono relajado y amable en la partícula final "ne", que busca el acuerdo del otro.',
+      'pt-BR': 'Tom relaxado e simpático na partícula final 「ね」, que busca a concordância do outro, com a entonação descendo.',
     },
     audio: { normal: 'audio/shadowing/sh-10.mp3', slow: 'audio/shadowing/sh-10-slow.mp3' },
   },
@@ -347,6 +377,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'There is a book on the desk.',
       'ko': '책상 위에 책이 있어요.',
       'es': 'Hay un libro sobre el escritorio.',
+      'pt-BR': 'Tem um livro em cima da mesa.',
     },
     focus: {
       'zh-TW': '「つ」的清脆發音與存在句「あります」',
@@ -354,6 +385,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Crisp "tsu" pronunciation and existence verb "arimasu"',
       'ko': '또렷한 "つ" 발음과 존재 동사 "あります"',
       'es': 'Pronunciación nítida de "tsu" y el verbo de existencia "arimasu"',
+      'pt-BR': 'Pronúncia nítida de 「つ」 e o verbo de existência 「あります」',
     },
     tags: ['daily'],
     tip: {
@@ -362,6 +394,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Focus on crisp "tsu" without rounding your lips excessively.',
       'ko': '"つ"는 ㅜ가 아니라 ㅡ에 가깝게, 입술을 둥글게 하지 않고 또렷하게 발음하세요.',
       'es': 'Pronuncia "tsu" con nitidez y sin redondear demasiado los labios.',
+      'pt-BR': 'O 「つ」 no começo da frase é difícil: “ts” + um “u” sem arredondar os lábios. Não diga “tu” nem “su”.',
     },
     focusKana: ['つ'],
     audio: { normal: 'audio/shadowing/sh-11.mp3', slow: 'audio/shadowing/sh-11-slow.mp3' },
@@ -378,6 +411,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I want to go to the beach during summer vacation.',
       'ko': '여름 방학에 바다에 가고 싶어요.',
       'es': 'Quiero ir a la playa en las vacaciones de verano.',
+      'pt-BR': 'Nas férias de verão, quero ir à praia.',
     },
     focus: {
       'zh-TW': '「つ」「す」相鄰對比與願望句「〜たいです」',
@@ -385,6 +419,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Distinguishing "tsu" vs "su" and desire form "~tai desu"',
       'ko': '"つ"와 "す"의 구별과 희망 표현 "〜たいです"',
       'es': 'Distinguir "tsu" de "su" y la forma de deseo "~tai desu"',
+      'pt-BR': 'Contraste entre 「つ」 e 「す」, lado a lado, e a forma de desejo 「〜たいです」',
     },
     tags: ['plan'],
     tip: {
@@ -393,6 +428,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Practice differentiating "tsu" in "natsu" and "su" in "yasumi".',
       'ko': '"なつ"의 "つ(tsu)"와 "やすみ"의 "す(su)"를 구별해서 연습하세요.',
       'es': 'Practica la diferencia entre "tsu" en "natsu" y "su" en "yasumi".',
+      'pt-BR': '「なつ」 (tsu) e 「やすみ」 (su) ficam lado a lado: ótimo para treinar a diferença entre つ e す.',
     },
     focusKana: ['つ', 'す'],
     audio: { normal: 'audio/shadowing/sh-12.mp3', slow: 'audio/shadowing/sh-12-slow.mp3' },
@@ -409,6 +445,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'It is very cold in winter.',
       'ko': '겨울은 아주 추워요.',
       'es': 'En invierno hace mucho frío.',
+      'pt-BR': 'No inverno faz muito frio.',
     },
     focus: {
       'zh-TW': '「ふ」的雙唇送氣（非英文 f）',
@@ -416,6 +453,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Bilabial voiceless fricative for "fu" (not English "f")',
       'ko': '두 입술로 내는 "ふ" (영어 f가 아님)',
       'es': 'Fricativa bilabial sorda de "fu" (no es la "f" del español)',
+      'pt-BR': '「ふ」 com sopro entre os dois lábios (não é o “f” do português)',
     },
     tags: ['conversation', 'weather'],
     tip: {
@@ -424,6 +462,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Blow gently through both lips without touching upper teeth to lower lip.',
       'ko': '윗니를 아랫입술에 대지 말고 두 입술 사이로 살짝 숨을 불어 내세요.',
       'es': 'Sopla suavemente entre los labios sin apoyar los dientes de arriba en el labio inferior.',
+      'pt-BR': 'Em 「ふ」, os dentes de cima não tocam o lábio inferior: o ar sai por uma fresta entre os dois lábios, como quando você sopra uma vela.',
     },
     focusKana: ['ふ'],
     audio: { normal: 'audio/shadowing/sh-13.mp3', slow: 'audio/shadowing/sh-13-slow.mp3' },
@@ -440,6 +479,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I bought new shoes.',
       'ko': '새 신발을 샀어요.',
       'es': 'Compré zapatos nuevos.',
+      'pt-BR': 'Comprei sapatos novos.',
     },
     focus: {
       'zh-TW': '「ら」行彈舌與「つ」的組合',
@@ -447,6 +487,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Combination of "ra" tap and "tsu"',
       'ko': '"ら"의 탄설음과 "つ"의 조합',
       'es': 'Combinación del golpe de lengua (vibrante simple) de "ra" y "tsu"',
+      'pt-BR': 'Batida da língua na linha 「ら」 combinada com 「つ」',
     },
     tags: ['past', 'action'],
     tip: {
@@ -455,6 +496,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Lightly tap the roof of your mouth for "ra" (not English "r" or "l").',
       'ko': '"ら"는 한국어 모음 사이의 ㄹ처럼 혀끝으로 윗잇몸 뒤를 가볍게 한 번 튕기세요 (영어 r이나 l이 아니에요).',
       'es': 'Para "ra", toca con la punta de la lengua justo detrás de los dientes de arriba, como la r de "pero" (no es una r fuerte ni una l).',
+      'pt-BR': 'O ら de 「あたらしい」 é uma única batida rápida da língua, como o “r” de “caro”; não é o “r” forte de “rato”, nem “l”.',
     },
     focusKana: ['ら', 'つ'],
     audio: { normal: 'audio/shadowing/sh-14.mp3', slow: 'audio/shadowing/sh-14-slow.mp3' },
@@ -471,6 +513,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'This dish is not spicy.',
       'ko': '이 요리는 맵지 않아요.',
       'es': 'Este plato no pica.',
+      'pt-BR': 'Este prato não é apimentado.',
     },
     focus: {
       'zh-TW': '「ら」「り」與拗音「りょ」的彈舌節奏',
@@ -478,6 +521,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Rhythm of "ra", "ri", and youon "ryo"',
       'ko': '"ら", "り"와 요음 "りょ"의 리듬',
       'es': 'Ritmo de "ra", "ri" y el yōon "ryo"',
+      'pt-BR': 'Ritmo de batidas da língua em 「ら」, 「り」 e no yōon 「りょ」',
     },
     tags: ['adjective', 'taste'],
     tip: {
@@ -486,6 +530,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Maintain clean Japanese taps through "ryouri" and "karakunai".',
       'ko': '"りょうり"와 "からくない"에서 계속 혀를 가볍게 튕기며 말하세요.',
       'es': 'Mantén golpes de lengua simples y limpios en "ryouri" y "karakunai".',
+      'pt-BR': 'Em 「りょうり」 e 「からくない」, todos os sons da linha ら são batidas leves da língua, como o “r” de “caro”; não enrole a língua.',
     },
     focusKana: ['ら', 'り'],
     audio: { normal: 'audio/shadowing/sh-15.mp3', slow: 'audio/shadowing/sh-15-slow.mp3' },
@@ -502,6 +547,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I worked until late at night.',
       'ko': '밤늦게까지 일했어요.',
       'es': 'Trabajé hasta bien entrada la noche.',
+      'pt-BR': 'Trabalhei até tarde da noite.',
     },
     focus: {
       'zh-TW': '「る」「ら」行在句中的輕彈',
@@ -509,6 +555,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Light taps for "ru" and "ra" within the sentence',
       'ko': '문장 속 "る"와 "ら"의 가벼운 탄설음',
       'es': 'Golpes de lengua suaves de "ru" y "ra" dentro de la frase',
+      'pt-BR': 'Batidas leves de 「る」 e 「ら」 no meio da frase',
     },
     tags: ['past', 'action'],
     tip: {
@@ -517,6 +564,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Quick, light taps on "ru" in "yoru" and "ra" in "hataraki".',
       'ko': '"よる"의 "る"와 "はたらき"의 "ら"는 빠르고 가볍게 튕기세요.',
       'es': 'Golpes de lengua rápidos y suaves en "ru" de "yoru" y "ra" de "hataraki".',
+      'pt-BR': 'O る de 「よる」 e o ら de 「はたらき」: uma batida leve e rápida da língua, sem se demorar.',
     },
     focusKana: ['る', 'ら'],
     audio: { normal: 'audio/shadowing/sh-16.mp3', slow: 'audio/shadowing/sh-16-slow.mp3' },
@@ -533,6 +581,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'I go to Japan by airplane.',
       'ko': '비행기로 일본에 가요.',
       'es': 'Voy a Japón en avión.',
+      'pt-BR': 'Vou ao Japão de avião.',
     },
     focus: {
       'zh-TW': '「ひ」的清音與交通手段「で」',
@@ -540,6 +589,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Voiceless palatal fricative "hi" and transport particle "de"',
       'ko': '입천장 쪽으로 내는 "ひ"와 수단 조사 "で"',
       'es': 'Fricativa palatal sorda de "hi" y la partícula de medio "de"',
+      'pt-BR': '「ひ」 surdo e a partícula de meio de transporte 「で」',
     },
     tags: ['transport', 'travel'],
     tip: {
@@ -548,6 +598,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Channel air against the hard palate for "hi" without slurring into "shi".',
       'ko': '"ひ"는 공기를 단단한 입천장 쪽으로 보내고 "し"처럼 되지 않게 하세요.',
       'es': 'Dirige el aire hacia el paladar duro en "hi" sin que se convierta en "shi".',
+      'pt-BR': 'Em 「ひ」, o ar passa junto ao palato duro; não deixe virar 「し」.',
     },
     focusKana: ['ひ'],
     audio: { normal: 'audio/shadowing/sh-17.mp3', slow: 'audio/shadowing/sh-17-slow.mp3' },
@@ -564,6 +615,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'There is a little cat under the desk.',
       'ko': '작은 고양이가 책상 밑에 있어요.',
       'es': 'Hay un gato pequeño debajo del escritorio.',
+      'pt-BR': 'Tem um gatinho embaixo da mesa.',
     },
     focus: {
       'zh-TW': '「ち」「つ」相鄰對比與存在句「います」',
@@ -571,6 +623,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Contrasting "chi" vs "tsu" and animate existence verb "imasu"',
       'ko': '"ち"와 "つ"의 구별과 존재 동사 "います"',
       'es': 'Contraste entre "chi" y "tsu" y el verbo de existencia para seres vivos "imasu"',
+      'pt-BR': 'Contraste entre 「ち」 e 「つ」, lado a lado, e o verbo de existência 「います」 (para seres vivos)',
     },
     tags: ['daily'],
     tip: {
@@ -579,6 +632,7 @@ export const SHADOWING_SENTENCES: ShadowingSentence[] = [
       'en': 'Practice switching clearly between "chi" in "chiisai" and "tsu" in "tsukue".',
       'ko': '"ちいさい"의 "ち(chi)"와 "つくえ"의 "つ(tsu)"를 또렷하게 구별해서 연습하세요.',
       'es': 'Practica alternar con claridad entre "chi" en "chiisai" y "tsu" en "tsukue".',
+      'pt-BR': 'Em 「ちいさい」 (chi) e 「つくえ」 (tsu) você treina a diferença entre ち e つ. O 「ち」 soa como o “ti” de “tia” no Brasil (“tchi”); o 「つ」 é “ts”, não “tchu”.',
     },
     focusKana: ['ち', 'つ'],
     audio: { normal: 'audio/shadowing/sh-18.mp3', slow: 'audio/shadowing/sh-18-slow.mp3' },
