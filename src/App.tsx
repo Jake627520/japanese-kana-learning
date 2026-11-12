@@ -19,6 +19,7 @@ const tabLoaders = {
   chat: () => import('./components/ChatTutorView'),
   writing: () => import('./components/WritingPracticeView'),
   confusable: () => import('./components/ConfusableView'),
+  units: () => import('./components/UnitsView'),
 };
 
 const GojuuonGrid = lazy(() => tabLoaders.grid().then((m) => ({ default: m.GojuuonGrid })));
@@ -31,6 +32,7 @@ const ShadowingView = lazy(() => tabLoaders.shadowing().then((m) => ({ default: 
 const ChatTutorView = lazy(() => tabLoaders.chat().then((m) => ({ default: m.ChatTutorView })));
 const WritingPracticeView = lazy(() => tabLoaders.writing().then((m) => ({ default: m.WritingPracticeView })));
 const ConfusableView = lazy(() => tabLoaders.confusable().then((m) => ({ default: m.ConfusableView })));
+const UnitsView = lazy(() => tabLoaders.units().then((m) => ({ default: m.UnitsView })));
 
 // 首屏畫完、瀏覽器閒置時預先抓所有分頁 chunk 與目前語言的 JLPT 解說：
 // 1. 之後切分頁幾乎不會看到佔位；2. Service worker 用「用到才存」，
@@ -198,6 +200,21 @@ function AppContent() {
                 <ConfusableView
                   initialGroupId={targetConfusionGroupId}
                   onProgressChange={refreshProgress}
+                />
+              )}
+
+              {currentTab === 'units' && (
+                <UnitsView
+                  onNavigate={handleSelectTab}
+                  onStartStudyKana={handleStartStudyKana}
+                  onPracticeWriting={(kana) => {
+                    setTargetWritingKanaId(kana.id);
+                    setCurrentTab('writing');
+                  }}
+                  onPracticeConfusionGroup={(groupId) => {
+                    setTargetConfusionGroupId(groupId);
+                    setCurrentTab('confusable');
+                  }}
                 />
               )}
             </Suspense>

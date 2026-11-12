@@ -26,6 +26,8 @@ export interface TranslationSchema {
     shadowingShort: string;
     chat: string;
     chatShort: string;
+    units: string;
+    unitsShort: string;
     more: string;
     practiceGroup: string;
     advancedGroup: string;
@@ -350,6 +352,21 @@ export interface TranslationSchema {
     ruleAdd: string;
     ruleUsuallyAdd: string;
     katakanaChouonTitle: string;
+  };
+  units: {
+    title: string;
+    subtitle: string;
+    completedCount: string;
+    markComplete: string;
+    markIncomplete: string;
+    completedBadge: string;
+    teachingPoints: string;
+    kanaInUnit: string;
+    practiceLinks: string;
+    acceptance: string;
+    backToList: string;
+    unitNumber: string;
+    noKanaNote: string;
   };
   jlpt: {
     title: string;

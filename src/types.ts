@@ -42,7 +42,7 @@ export interface UserProgress {
   reviewStates?: Record<string, KanaReviewState>;
 }
 
-export type NavigationTab = 'home' | 'grid' | 'study' | 'quiz' | 'review' | 'special' | 'jlpt' | 'shadowing' | 'chat' | 'writing' | 'confusable';
+export type NavigationTab = 'home' | 'grid' | 'study' | 'quiz' | 'review' | 'special' | 'jlpt' | 'shadowing' | 'chat' | 'writing' | 'confusable' | 'units';
 
 export interface QuizQuestion {
   type: 'kana-to-romaji' | 'audio-to-kana' | 'input-romaji' | 'kana-to-kana';

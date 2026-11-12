@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavigationTab } from '../types';
-import { Home, Grid, BookOpen, BrainCircuit, RefreshCw, Sparkles, AudioLines, GraduationCap, Headphones, MessagesSquare, PenLine, Layers, LayoutGrid, X } from 'lucide-react';
+import { Home, Grid, BookOpen, BrainCircuit, RefreshCw, Sparkles, AudioLines, GraduationCap, Headphones, MessagesSquare, PenLine, Layers, LayoutGrid, ListOrdered, X } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { LanguageSelector } from './LanguageSelector';
 import { ThemePicker } from './ThemePicker';
@@ -39,6 +39,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
     badge?: number;
   }[] = [
     { id: 'home', label: t('nav.home'), shortLabel: t('nav.homeShort'), icon: Home },
+    { id: 'units', label: t('nav.units'), shortLabel: t('nav.unitsShort'), icon: ListOrdered },
     { id: 'grid', label: t('nav.grid'), shortLabel: t('nav.gridShort'), icon: Grid },
     { id: 'study', label: t('nav.study'), shortLabel: t('nav.studyShort'), icon: BookOpen },
     { id: 'writing', label: t('nav.writing'), shortLabel: t('nav.writingShort'), icon: PenLine },
@@ -52,7 +53,7 @@ export function Navigation({ currentTab, onSelectTab, wrongCount }: NavigationPr
   ];
 
   const sheetGroups: { label: string; ids: NavigationTab[] }[] = [
-    { label: t('nav.practiceGroup'), ids: ['study', 'writing', 'confusable', 'special'] },
+    { label: t('nav.practiceGroup'), ids: ['units', 'study', 'writing', 'confusable', 'special'] },
     { label: t('nav.advancedGroup'), ids: ['jlpt', 'shadowing', 'chat'] },
   ];
 

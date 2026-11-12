@@ -348,3 +348,34 @@ export function clearAllProgress(): void {
     console.error('Failed to clear progress:', e);
   }
 }
+
+// ── 單元學習完成狀態（獨立 key，不動既有進度結構）──
+export const STORAGE_KEY_COMPLETED_UNITS = 'ai_japanese_learning_completed_units_v1';
+
+export function getCompletedUnitIds(): string[] {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY_COMPLETED_UNITS);
+    if (!raw) return [];
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((id): id is string => typeof id === 'string');
+  } catch (e) {
+    console.error('Failed to read completed units:', e);
+    return [];
+  }
+}
+
+export function setUnitCompleted(unitId: string, completed: boolean): string[] {
+  const current = getCompletedUnitIds();
+  const next = completed
+    ? current.includes(unitId)
+      ? current
+      : [...current, unitId]
+    : current.filter((id) => id !== unitId);
+  try {
+    localStorage.setItem(STORAGE_KEY_COMPLETED_UNITS, JSON.stringify(next));
+  } catch (e) {
+    console.error('Failed to save completed units:', e);
+  }
+  return next;
+}
