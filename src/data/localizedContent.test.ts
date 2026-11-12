@@ -88,10 +88,6 @@ describe('假名例詞、易混辨析、JLPT 內容：每個語言都有非空�
   it.each(LANGUAGES)('loadJlptExplanations(%s) 載入該語言的解說模組', async (lang) => {
     expect(await loadJlptExplanations(lang)).toBe(JLPT_EXPLANATIONS[lang]);
   });
-
-  it('pt-BR 的解說暫時用英文版', async () => {
-    expect(await loadJlptExplanations('pt-BR')).toBe(await loadJlptExplanations('en'));
-  });
 });
 
 describe('getShadowingText：缺語言時退回英文', () => {

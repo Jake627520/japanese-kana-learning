@@ -117,6 +117,14 @@ describe('en/ko/es 解說母語審校', () => {
     expect(JLPT_EXPLANATIONS.es['n3-own-b3-01']).not.toContain('chino antiguo');
   });
 
+  it('pt-BR：吃藥對照 tomar remédio，術語用 forma TE/TA 與 on\'yomi，不用直引號', () => {
+    expect(JLPT_EXPLANATIONS['pt-BR']['N5-ORIG-B2-V-14']).toContain('tomar remédio');
+    for (const [id, text] of Object.entries(JLPT_EXPLANATIONS['pt-BR'])) {
+      expect(text, id).not.toContain('"');
+      expect(text, id).not.toMatch(/forma -(te|ta|nai|masu)\b|(on|kun)[-’]yomi/);
+    }
+  });
+
   it('引號與標籤：es 用 «» 與 Respuesta correcta:，en 不用直引號，ko 的韓文不放進 「」', () => {
     for (const [id, text] of Object.entries(JLPT_EXPLANATIONS.es)) {
       expect(text, id).not.toContain('Correcta:');
